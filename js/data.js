@@ -1,336 +1,530 @@
 /*
- * Atlas Codex content.
- * Every page on the site is rendered from this file. To add an entry, copy
- * one of the objects below, give it a unique `slug`, and fill in the fields.
+ * Atlas Codex content. Every page is rendered from this file.
  *
- *   type:     "compound" (shows in the Codex index) or "article" (guides/notes)
- *   status:   "Approved" | "Investigational" | "Research only"
- *   sections: [{ heading, body }]  — body is HTML
+ * Compound entries can carry any of these blocks (missing ones are skipped):
+ *   names, structure     prose for the intro block (HTML allowed)
+ *   pubchem              name to fetch a structure image from PubChem (false to hide)
+ *   profile              { note, rows: [{ label, score 0-5, neg }] }  neg = higher is worse
+ *   risks                [{ system, level, text, evidence, detail }]
+ *   activity             [{ title, evidence, summary, detail, refs }]
+ *   trials               [{ title, evidence, meta: [..], body, note, refs }]
+ *   noTrials             text shown when there is no human clinical record
+ *
+ * evidence: "human rct" | "human obs" | "established" | "animal" | "in vitro" | "anecdotal" | "contested" | "unknown"
+ * refs are ids from the `references` list at the bottom.
  */
 window.ATLAS = {
   site: {
     title: "Atlas Codex",
+    wordmark: ["ATLAS", "CODEX"],
+    heroTitle: "the atlas codex",
+    heroLines: ["every compound worth knowing, cited and graded.", "mechanisms, trials, risks, and what the evidence actually says."],
     tagline: "An open reference library of peptides and research compounds.",
     disclaimer:
-      "Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions."
+      "Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.",
+    ticker: [
+      "NEW: retatrutide entry updated with phase 2 data",
+      "GUIDE: how to read a clinical trial phase",
+      "17 entries · every claim graded by evidence"
+    ],
+    tickerLink: { label: "guides →", href: "codex.html?cat=guides" },
+    headerButtons: [
+      { label: "SUPPORT", href: "about.html#support", primary: true },
+      { label: "CONTACT", href: "about.html#contact" }
+    ],
+    cards: [
+      { icon: "chat", tone: "gold", title: "join the community", text: "talk through research, ask questions, and flag entries that need updating.", href: "about.html#contact" },
+      { icon: "form", tone: "violet", title: "request an entry", text: "tell us which compound to cover next and what you want to know about it.", href: "about.html#contact" },
+      { icon: "book", tone: "plain", title: "read the guides", text: "how to judge evidence, read trial phases, and spot a weak claim.", href: "codex.html?cat=guides" }
+    ]
   },
 
   categories: [
-    { id: "metabolic", name: "Metabolic", blurb: "Incretin mimetics and compounds studied for weight and glucose control." },
-    { id: "repair", name: "Tissue Repair", blurb: "Peptides studied for wound healing, tendon and gut repair." },
-    { id: "gh", name: "Growth Hormone Axis", blurb: "Secretagogues and GHRH analogs that act on the GH pathway." },
-    { id: "nootropic", name: "Neuro & Cognitive", blurb: "Peptides studied for anxiety, cognition and neuroprotection." },
-    { id: "longevity", name: "Longevity", blurb: "Compounds investigated for ageing biology and mitochondrial function." },
-    { id: "immune", name: "Immune", blurb: "Thymic peptides and immunomodulators." },
-    { id: "skin", name: "Skin & Hair", blurb: "Cosmetic and dermatological peptides." },
-    { id: "melanocortin", name: "Melanocortin", blurb: "Agonists of the melanocortin receptor family." },
-    { id: "guides", name: "Guides", blurb: "Background reading on how to evaluate research." }
+    { id: "metabolic", name: "metabolic", blurb: "Incretin mimetics and compounds studied for weight and glucose control." },
+    { id: "repair", name: "repair", blurb: "Peptides studied for wound healing, tendon and gut repair." },
+    { id: "gh", name: "gh axis", blurb: "Secretagogues and GHRH analogs that act on the GH pathway." },
+    { id: "nootropic", name: "noots", blurb: "Peptides studied for anxiety, cognition and neuroprotection." },
+    { id: "longevity", name: "longevity", blurb: "Compounds investigated for ageing biology and mitochondrial function." },
+    { id: "immune", name: "immune", blurb: "Thymic peptides and immunomodulators." },
+    { id: "skin", name: "skin", blurb: "Cosmetic and dermatological peptides." },
+    { id: "melanocortin", name: "melanocortin", blurb: "Agonists of the melanocortin receptor family." },
+    { id: "guides", name: "guides", blurb: "Background reading on how to evaluate research." }
   ],
 
   entries: [
+    /* ------------------------------------------------------------ metabolic */
     {
-      slug: "semaglutide",
-      type: "compound",
-      name: "Semaglutide",
-      aliases: ["Ozempic", "Wegovy", "Rybelsus"],
-      category: "metabolic",
-      status: "Approved",
-      class: "GLP-1 receptor agonist",
-      developer: "Novo Nordisk",
-      added: "2026-01-12",
-      updated: "2026-09-18",
+      slug: "semaglutide", type: "compound", name: "Semaglutide",
+      aliases: ["Ozempic", "Wegovy", "Rybelsus"], category: "metabolic", status: "Approved",
+      class: "GLP-1 receptor agonist", developer: "Novo Nordisk",
+      added: "2026-01-12", updated: "2026-09-18",
       tags: ["GLP-1", "obesity", "type 2 diabetes", "incretin"],
-      summary:
-        "A long-acting GLP-1 receptor agonist approved for type 2 diabetes and chronic weight management, given as a weekly injection or a daily tablet.",
-      sections: [
-        { heading: "Overview", body: "<p>Semaglutide is an analog of human glucagon-like peptide-1 (GLP-1). A fatty-acid side chain lets it bind albumin, which slows clearance and gives it a half-life of about a week.</p>" },
-        { heading: "Mechanism", body: "<p>It activates the GLP-1 receptor. That increases glucose-dependent insulin release, suppresses glucagon, slows gastric emptying, and acts on appetite centres in the brain.</p>" },
-        { heading: "Regulatory history", body: "<ul><li><strong>2017</strong>: FDA approval for type 2 diabetes (Ozempic).</li><li><strong>2019</strong>: oral form approved (Rybelsus).</li><li><strong>2021</strong>: approved for chronic weight management (Wegovy).</li></ul>" },
-        { heading: "Key research", body: "<p>The STEP trial programme studied semaglutide 2.4 mg for weight management. The SELECT trial studied cardiovascular outcomes in adults with overweight or obesity who did not have diabetes.</p>" }
+      summary: "A long-acting GLP-1 receptor agonist approved for type 2 diabetes and chronic weight management, given as a weekly injection or a daily tablet.",
+      names: "Sold as Ozempic (weekly injection for type 2 diabetes), Wegovy (weekly injection for weight management) and Rybelsus (daily tablet for type 2 diabetes). Novo Nordisk developed it as the once-weekly successor to liraglutide. Semaglutide has large outcome trials behind it, so its clinical record below is long; most entries in the codex have little or none.",
+      structure: "C<sub>187</sub>H<sub>291</sub>N<sub>45</sub>O<sub>59</sub>, molecular weight about 4113.6 g/mol. It is an analog of human GLP-1(7–37) with about 94% sequence homology. An Aib substitution at position 8 blocks cleavage by DPP-4. A C18 fatty diacid on lysine 26 lets it bind albumin, which slows renal clearance and gives it a half-life of about a week.",
+      pubchem: "semaglutide",
+      profile: {
+        note: "Scored relative to other metabolic compounds in the codex at studied doses, not on an absolute scale.",
+        rows: [
+          { label: "Weight loss", score: 4 },
+          { label: "Glycaemic control", score: 5 },
+          { label: "GI side effects", score: 3, neg: true },
+          { label: "Risk load", score: 2, neg: true },
+          { label: "Evidence quality", score: 5 }
+        ]
+      },
+      risks: [
+        { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting, diarrhoea and constipation are the most common adverse effects. They cluster during dose escalation.", evidence: "human rct", detail: "GI effects were the main reason for stopping treatment in the STEP and SELECT trials. Slow dose escalation is the standard way to reduce them." },
+        { system: "Gallbladder", level: "low", text: "Higher rates of gallstones and cholecystitis than placebo", evidence: "human rct", detail: "Rapid weight loss itself raises gallstone risk, so part of the signal may come from weight loss rather than the drug." },
+        { system: "Pancreas", level: "low", text: "Acute pancreatitis has been reported. Events are rare and whether the drug causes them is unsettled.", evidence: "contested", detail: "Large outcome trials did not show a clear excess, but the label carries a warning. Treatment is stopped if pancreatitis is suspected." },
+        { system: "Retina", level: "moderate", text: "More diabetic retinopathy complications in people with type 2 diabetes in SUSTAIN-6", evidence: "human rct", detail: "The excess was concentrated in people with pre-existing retinopathy and was linked to rapid HbA1c reduction.", refs: [2] },
+        { system: "Thyroid", level: "low", text: "Thyroid C-cell tumours occurred in rodents. Whether this is relevant to humans has not been established.", evidence: "animal", detail: "Carries a boxed warning. It is contraindicated with a personal or family history of medullary thyroid carcinoma or MEN2." },
+        { system: "Lean mass", level: "moderate", text: "A meaningful share of the weight lost is lean mass", evidence: "human rct", detail: "This holds for most large weight losses, whatever the method. Resistance training and adequate protein are the usual countermeasures." }
+      ],
+      activity: [
+        { title: "GLP-1 receptor", evidence: "human rct", summary: "Full agonist. Increases glucose-dependent insulin secretion and suppresses glucagon", detail: "The receptor response is glucose-dependent, so semaglutide on its own carries a low risk of hypoglycaemia. The risk rises when it is combined with insulin or sulfonylureas.", refs: [26] },
+        { title: "DPP-4 resistance", evidence: "established", summary: "The Aib substitution at position 8 blocks the enzyme that inactivates native GLP-1 within minutes", detail: "Native GLP-1 has a half-life of about two minutes. DPP-4 resistance is one of the two changes that turn it into a weekly drug.", refs: [26] },
+        { title: "Albumin binding", evidence: "established", summary: "The fatty-acid side chain binds serum albumin, giving a half-life of about a week", detail: "Reversible albumin binding protects the peptide from renal filtration and from proteolysis.", refs: [26] },
+        { title: "Gastric emptying", evidence: "human rct", summary: "Slows gastric emptying. The effect weakens with continued dosing", detail: "This drives early satiety and much of the nausea. It also matters for anaesthesia because of the risk of aspiration." },
+        { title: "Central appetite", evidence: "human rct", summary: "Lowers energy intake and food cravings through receptors in the hypothalamus and hindbrain", detail: "Studies of energy intake show lower ad libitum calorie consumption and less preference for high-fat foods. Appetite reduction, not a change in energy expenditure, appears to drive the weight loss." }
+      ],
+      trials: [
+        { title: "STEP 1: weight management without diabetes", evidence: "human rct", meta: ["1,961 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "semaglutide 2.4 mg weekly or placebo, plus lifestyle intervention", "68 weeks", "randomised, double-blind, placebo-controlled"], body: "Mean body weight changed by −14.9% with semaglutide against −2.4% with placebo. 86.4% of the semaglutide group lost at least 5% of body weight, against 31.5% on placebo. GI events were the most common adverse effects.", note: "In the off-treatment extension, participants regained about two-thirds of the weight they had lost within a year of stopping. The effect lasts only while the drug is taken.", refs: [1, 4] },
+        { title: "SUSTAIN-6: cardiovascular safety in type 2 diabetes", evidence: "human rct", meta: ["3,297 adults with type 2 diabetes at high cardiovascular risk", "semaglutide 0.5 or 1.0 mg weekly or placebo", "104 weeks", "randomised, double-blind, non-inferiority"], body: "The primary composite of cardiovascular death, non-fatal MI or non-fatal stroke occurred in 6.6% on semaglutide against 8.9% on placebo (HR 0.74). Retinopathy complications were higher: 3.0% against 1.8%.", note: "This trial was designed to show non-inferiority, so the superiority finding was not pre-specified. SELECT later tested superiority directly.", refs: [2] },
+        { title: "SELECT: cardiovascular outcomes in obesity without diabetes", evidence: "human rct", meta: ["17,604 adults ≥45 years with established cardiovascular disease and BMI ≥27, no diabetes", "semaglutide 2.4 mg weekly or placebo", "mean follow-up 39.8 months", "randomised, double-blind, event-driven"], body: "Major adverse cardiovascular events occurred in 6.5% against 8.0% (HR 0.80). Treatment was stopped because of adverse events in 16.6% against 8.2%.", note: "This is the first trial to show a cardiovascular outcome benefit for an anti-obesity drug in people without diabetes.", refs: [3] }
       ],
       related: ["tirzepatide", "retatrutide"]
     },
     {
-      slug: "tirzepatide",
-      type: "compound",
-      name: "Tirzepatide",
-      aliases: ["Mounjaro", "Zepbound"],
-      category: "metabolic",
-      status: "Approved",
-      class: "Dual GIP / GLP-1 receptor agonist",
-      developer: "Eli Lilly",
-      added: "2026-01-12",
-      updated: "2026-08-30",
+      slug: "tirzepatide", type: "compound", name: "Tirzepatide",
+      aliases: ["Mounjaro", "Zepbound", "LY3298176"], category: "metabolic", status: "Approved",
+      class: "Dual GIP / GLP-1 receptor agonist", developer: "Eli Lilly",
+      added: "2026-01-12", updated: "2026-08-30",
       tags: ["GIP", "GLP-1", "obesity", "type 2 diabetes", "incretin"],
-      summary:
-        "A once-weekly peptide that activates both the GIP and GLP-1 receptors, approved for type 2 diabetes and chronic weight management.",
-      sections: [
-        { heading: "Overview", body: "<p>Tirzepatide is a 39-amino-acid peptide built on the GIP sequence. It is engineered to also activate the GLP-1 receptor, which makes it the first approved dual incretin agonist.</p>" },
-        { heading: "Mechanism", body: "<p>Activating both GIP and GLP-1 receptors improves insulin secretion and sensitivity and reduces appetite. In trials it lowered weight more than single GLP-1 agonism did.</p>" },
-        { heading: "Regulatory history", body: "<ul><li><strong>2022</strong>: FDA approval for type 2 diabetes (Mounjaro).</li><li><strong>2023</strong>: approved for chronic weight management (Zepbound).</li></ul>" },
-        { heading: "Key research", body: "<p>The SURPASS programme covered glycaemic control and the SURMOUNT programme covered weight management.</p>" }
+      summary: "A once-weekly peptide that activates both the GIP and GLP-1 receptors, approved for type 2 diabetes and chronic weight management.",
+      names: "Sold as Mounjaro for type 2 diabetes and Zepbound for weight management, both once-weekly injections. Its development code was LY3298176. It was the first approved drug to activate two incretin receptors.",
+      structure: "C<sub>225</sub>H<sub>348</sub>N<sub>48</sub>O<sub>68</sub>, molecular weight about 4813.5 g/mol. It is a 39-amino-acid peptide built on the GIP sequence, with Aib residues at positions 2 and 13 and a C20 fatty diacid on lysine 20 for albumin binding. Its half-life is about 5 days.",
+      pubchem: "tirzepatide",
+      profile: {
+        note: "Scored relative to other metabolic compounds in the codex at studied doses.",
+        rows: [
+          { label: "Weight loss", score: 5 },
+          { label: "Glycaemic control", score: 5 },
+          { label: "GI side effects", score: 3, neg: true },
+          { label: "Risk load", score: 2, neg: true },
+          { label: "Evidence quality", score: 5 }
+        ]
+      },
+      risks: [
+        { system: "Gastrointestinal", level: "moderate", text: "Nausea, diarrhoea, vomiting and constipation, mostly during dose escalation", evidence: "human rct", detail: "The profile is similar to selective GLP-1 agonists. Rates rise with dose." },
+        { system: "Gallbladder", level: "low", text: "Gallbladder events are more frequent than with placebo", evidence: "human rct" },
+        { system: "Pancreas", level: "low", text: "Pancreatitis is a labelled warning. Events are rare", evidence: "contested" },
+        { system: "Thyroid", level: "low", text: "C-cell tumours in rodents. Relevance to humans is unknown", evidence: "animal", detail: "Carries the same boxed warning as other long-acting GLP-1 agonists." },
+        { system: "Hypoglycaemia", level: "low", text: "Low risk on its own. Higher when combined with insulin or sulfonylureas", evidence: "established" }
+      ],
+      activity: [
+        { title: "GIP receptor", evidence: "in vitro", summary: "Potency at the GIP receptor is similar to native GIP", detail: "The molecule is deliberately imbalanced: it favours the GIP receptor and is several-fold weaker than native GLP-1 at the GLP-1 receptor.", refs: [25] },
+        { title: "GLP-1 receptor", evidence: "in vitro", summary: "A biased agonist that favours cAMP signalling over β-arrestin recruitment", detail: "Biased signalling may reduce receptor internalisation. Whether this explains its larger clinical effect is still debated.", refs: [25] },
+        { title: "Insulin sensitivity", evidence: "human rct", summary: "Improves insulin sensitivity more than its weight loss alone would predict", detail: "Clamp studies suggest a GIP-related contribution in addition to weight reduction." }
+      ],
+      trials: [
+        { title: "SURPASS-2: against semaglutide 1 mg in type 2 diabetes", evidence: "human rct", meta: ["1,879 adults with type 2 diabetes on metformin", "tirzepatide 5, 10 or 15 mg weekly or semaglutide 1 mg weekly", "40 weeks", "randomised, open-label, active-controlled"], body: "HbA1c fell by 2.01, 2.24 and 2.30 percentage points with the three tirzepatide doses, against 1.86 with semaglutide 1 mg. Weight reductions were also larger at every tirzepatide dose.", note: "The comparator was semaglutide 1 mg, not the 2.0 mg or 2.4 mg doses used later.", refs: [5] },
+        { title: "SURMOUNT-1: weight management without diabetes", evidence: "human rct", meta: ["2,539 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "tirzepatide 5, 10 or 15 mg weekly or placebo", "72 weeks", "randomised, double-blind, placebo-controlled"], body: "Mean weight change was −15.0%, −19.5% and −20.9% across the three doses, against −3.1% with placebo.", refs: [6] },
+        { title: "SURMOUNT-5: head to head with semaglutide in obesity", evidence: "human rct", meta: ["751 adults with obesity, no diabetes", "tirzepatide at maximum tolerated dose or semaglutide at maximum tolerated dose", "72 weeks", "randomised, open-label"], body: "Mean weight change was −20.2% with tirzepatide against −13.7% with semaglutide.", note: "This is the first direct comparison of the two drugs at their obesity doses.", refs: [7] }
       ],
       related: ["semaglutide", "retatrutide"]
     },
     {
-      slug: "retatrutide",
-      type: "compound",
-      name: "Retatrutide",
-      aliases: ["LY3437943"],
-      category: "metabolic",
-      status: "Investigational",
-      class: "Triple GIP / GLP-1 / glucagon receptor agonist",
-      developer: "Eli Lilly",
-      added: "2026-02-03",
-      updated: "2026-09-02",
+      slug: "retatrutide", type: "compound", name: "Retatrutide",
+      aliases: ["LY3437943"], category: "metabolic", status: "Investigational",
+      class: "Triple GIP / GLP-1 / glucagon receptor agonist", developer: "Eli Lilly",
+      added: "2026-02-03", updated: "2026-09-02",
       tags: ["GIP", "GLP-1", "glucagon", "obesity", "triple agonist"],
-      summary:
-        "An investigational once-weekly peptide that activates three receptors (GIP, GLP-1 and glucagon) and is in Phase 3 trials for obesity.",
-      sections: [
-        { heading: "Overview", body: "<p>Retatrutide adds glucagon-receptor activity to the dual incretin approach. Glucagon signalling is thought to raise energy expenditure on top of the appetite effects of the incretins.</p>" },
-        { heading: "Key research", body: "<p>In a 48-week Phase 2 trial published in the <em>New England Journal of Medicine</em> in 2023, the highest dose produced mean weight reductions of about 24%. The Phase 3 TRIUMPH programme is ongoing.</p>" },
-        { heading: "Status", body: "<p>Not approved by any major regulator. It is available only inside clinical trials.</p>" }
+      summary: "An investigational once-weekly peptide that activates three receptors (GIP, GLP-1 and glucagon) and is in Phase 3 trials for obesity.",
+      names: "Known by its development code LY3437943. It has no brand name and is not approved anywhere. It is available legitimately only inside clinical trials. Material sold online under this name is unregulated and unverified.",
+      structure: "A single peptide built on a GIP-like backbone, with a fatty-acid moiety for once-weekly dosing. It is engineered to activate three receptors. The glucagon activity is the addition over tirzepatide.",
+      pubchem: "retatrutide",
+      profile: {
+        note: "Scored relative to other metabolic compounds in the codex. Risk load is scored higher because long-term data do not yet exist.",
+        rows: [
+          { label: "Weight loss", score: 5 },
+          { label: "Glycaemic control", score: 4 },
+          { label: "GI side effects", score: 3, neg: true },
+          { label: "Risk load", score: 3, neg: true },
+          { label: "Evidence quality", score: 3 }
+        ]
+      },
+      risks: [
+        { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting and diarrhoea, dose-related and mostly early", evidence: "human rct", detail: "Lower starting doses reduced GI events in the phase 2 trial.", refs: [8] },
+        { system: "Heart rate", level: "moderate", text: "Resting heart rate rose with dose, peaked around 24 weeks, then declined", evidence: "human rct", refs: [8] },
+        { system: "Long-term safety", level: "unknown", text: "No long-term outcome data. Phase 3 is ongoing", evidence: "unknown" },
+        { system: "Product quality", level: "high", text: "Material sold outside trials is unregulated. Its identity, dose and sterility are unknown", evidence: "established" }
+      ],
+      activity: [
+        { title: "Glucagon receptor", evidence: "human rct", summary: "Adds glucagon receptor agonism, which is thought to raise energy expenditure and liver fat oxidation", detail: "Glucagon raises blood glucose on its own. In this molecule the incretin activity offsets that effect.", refs: [8] },
+        { title: "GIP and GLP-1 receptors", evidence: "human rct", summary: "Incretin agonism similar to tirzepatide drives the appetite and insulin effects", refs: [8, 9] },
+        { title: "Liver fat", evidence: "human rct", summary: "Large reductions in liver fat in a phase 2 substudy", detail: "Most participants with fatty liver at baseline reached normal liver fat levels at higher doses." }
+      ],
+      trials: [
+        { title: "Phase 2: obesity without diabetes", evidence: "human rct", meta: ["338 adults, BMI ≥30 or ≥27 with a comorbidity", "retatrutide 1, 4, 8 or 12 mg weekly or placebo", "48 weeks", "randomised, double-blind, placebo-controlled"], body: "Mean weight change at 48 weeks was −8.7%, −17.1%, −22.8% and −24.2% across the four doses, against −2.1% with placebo. Weight was still falling at 48 weeks in the higher-dose groups.", note: "These are the largest mean reductions reported for a drug in a trial of this length. This is phase 2, with small arms; phase 3 has to confirm them.", refs: [8] },
+        { title: "Phase 2: type 2 diabetes", evidence: "human rct", meta: ["281 adults with type 2 diabetes", "retatrutide at several doses, placebo, or dulaglutide 1.5 mg", "36 weeks", "randomised, double-blind, active and placebo-controlled"], body: "HbA1c fell by up to about 2 percentage points at 24 weeks. Weight fell by up to about 17% at 36 weeks at the highest dose.", refs: [9] }
       ],
       related: ["tirzepatide", "semaglutide"]
     },
+
+    /* ------------------------------------------------------------ repair */
     {
-      slug: "bpc-157",
-      type: "compound",
-      name: "BPC-157",
-      aliases: ["Body Protection Compound-157", "PL 14736"],
-      category: "repair",
-      status: "Research only",
-      class: "Synthetic pentadecapeptide",
-      developer: "University of Zagreb (research origin)",
-      added: "2026-01-20",
-      updated: "2026-07-14",
+      slug: "bpc-157", type: "compound", name: "BPC-157",
+      aliases: ["Body Protection Compound-157", "PL 14736", "PL-10", "Bepecin"], category: "repair", status: "Research only",
+      class: "Synthetic pentadecapeptide", developer: "University of Zagreb (research origin)",
+      added: "2026-01-20", updated: "2026-07-14",
       tags: ["gut", "tendon", "angiogenesis", "preclinical"],
-      summary:
-        "A 15-amino-acid peptide derived from a protein found in gastric juice. It is widely studied in animal models of tissue and gut injury but has very little human clinical data.",
-      sections: [
-        { heading: "Overview", body: "<p>BPC-157 is a partial sequence of a larger \"body protection compound\" isolated from gastric juice. Most of the published work comes from one research group and uses rodent models.</p>" },
-        { heading: "Proposed mechanisms", body: "<p>Preclinical papers describe effects on angiogenesis (VEGFR2 signalling), nitric-oxide pathways and growth-factor expression. None of these have been confirmed in controlled human trials.</p>" },
-        { heading: "Evidence quality", body: "<p>The literature is mostly animal studies. Human data are limited to small or early-stage reports. Treat claims of human benefit with caution.</p>" },
-        { heading: "Regulatory notes", body: "<p>Not approved for human use. In 2023 the US FDA listed it among bulk substances that raise significant safety concerns for compounding.</p>" }
+      summary: "A 15-amino-acid peptide derived from a protein found in gastric juice. It is widely studied in animal models of tissue and gut injury but has very little human clinical data.",
+      names: "Also called PL 14736 or PL-10 in development, and sold as BPC 15 or \"Body Protection Compound\". It is not a licensed medicine anywhere. Everything sold under the name comes from research-chemical vendors. Most of the published literature comes from one research group in Zagreb, which is the most important fact about this entry.",
+      structure: "Gly-Glu-Pro-Pro-Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val. C<sub>62</sub>H<sub>98</sub>N<sub>16</sub>O<sub>22</sub>, molecular weight about 1419.5 g/mol. It is described as stable in gastric juice, and the oral-use claims rest on this. Stability in the gut does not by itself establish oral bioavailability in humans.",
+      pubchem: "BPC 157",
+      profile: {
+        note: "Risk load reflects the absence of human safety data rather than observed harms.",
+        rows: [
+          { label: "Preclinical signal", score: 4 },
+          { label: "Human evidence", score: 1 },
+          { label: "Risk load", score: 2, neg: true },
+          { label: "Evidence quality", score: 1 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "unknown", text: "No controlled human safety data exist", evidence: "unknown", detail: "The absence of reported harm reflects the absence of trials, not evidence of safety." },
+        { system: "Angiogenesis", level: "unknown", text: "Pro-angiogenic signalling raises a theoretical concern about tumour growth", evidence: "contested", detail: "No study has shown this effect. The concern is mechanistic: anything that promotes new blood vessels could in principle support existing tumours." },
+        { system: "Product quality", level: "high", text: "Vendor material is unregulated. Purity, dose and sterility are unverified", evidence: "established", detail: "The FDA placed BPC-157 on its list of bulk substances that raise significant safety concerns for compounding, citing a lack of human safety data and risks from impurities." },
+        { system: "Sport", level: "moderate", text: "Prohibited by WADA as an unapproved substance (S0)", evidence: "established" }
       ],
+      activity: [
+        { title: "Angiogenesis / VEGFR2", evidence: "animal", summary: "Promotes new blood vessel formation in injury models, with VEGFR2 signalling proposed", detail: "Most data come from rodent models of tendon, muscle, gut and vascular injury.", refs: [10] },
+        { title: "Nitric oxide system", evidence: "animal", summary: "Reported to modulate nitric oxide pathways and to counteract both NOS blockers and NO donors", refs: [10] },
+        { title: "Tendon fibroblasts", evidence: "in vitro", summary: "Increased fibroblast outgrowth, migration and growth hormone receptor expression in cultured tendon cells", detail: "These findings are cell-culture results. They do not by themselves predict an effect on tendon healing in humans." }
+      ],
+      trials: [],
+      noTrials: "There are no randomised controlled trials in humans. PL 14736 entered a phase 2 trial for ulcerative colitis in the 2000s, but no peer-reviewed results were published. Human reports are limited to small case series.",
       related: ["tb-500", "ghk-cu"]
     },
     {
-      slug: "tb-500",
-      type: "compound",
-      name: "TB-500",
-      aliases: ["Thymosin beta-4 fragment"],
-      category: "repair",
-      status: "Research only",
-      class: "Synthetic fragment of thymosin β4",
-      developer: "N/A",
-      added: "2026-01-20",
-      updated: "2026-06-21",
+      slug: "tb-500", type: "compound", name: "TB-500",
+      aliases: ["Thymosin beta-4 fragment", "Tβ4 (17–23)"], category: "repair", status: "Research only",
+      class: "Synthetic fragment of thymosin β4", developer: "N/A",
+      added: "2026-01-20", updated: "2026-06-21",
       tags: ["actin", "wound healing", "preclinical", "WADA prohibited"],
-      summary:
-        "A synthetic peptide based on the active region of thymosin beta-4, a naturally occurring actin-binding protein involved in cell migration and wound repair.",
-      sections: [
-        { heading: "Overview", body: "<p>Thymosin β4 (Tβ4) is a 43-amino-acid protein that sequesters G-actin. TB-500 is marketed as a synthetic analog of its actin-binding region.</p>" },
-        { heading: "Research", body: "<p>Full-length Tβ4 has been studied for dermal and corneal wound healing and cardiac repair. Evidence specific to the TB-500 fragment comes mostly from preclinical and veterinary sources.</p>" },
-        { heading: "Regulatory notes", body: "<p>Not approved for human use. It is prohibited in sport under the WADA list.</p>" }
+      summary: "A synthetic peptide based on the active region of thymosin beta-4, a naturally occurring actin-binding protein involved in cell migration and wound repair.",
+      names: "TB-500 is a vendor name, not a pharmacological one. It usually refers to a fragment of thymosin β4 (Tβ4), but some products sold under the name are full-length Tβ4. Clinical research on full-length Tβ4 includes eye drops (RGN-259) for dry eye and neurotrophic keratitis. None of that research applies directly to the fragment.",
+      structure: "Commonly described as the acetylated 17–23 fragment of Tβ4 (LKKTETQ), the actin-binding motif. Full-length Tβ4 is a 43-amino-acid protein that is abundant in platelets and white blood cells.",
+      pubchem: false,
+      profile: {
+        rows: [
+          { label: "Preclinical signal", score: 3 },
+          { label: "Human evidence", score: 1 },
+          { label: "Risk load", score: 2, neg: true },
+          { label: "Evidence quality", score: 1 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "unknown", text: "No human data for the fragment", evidence: "unknown" },
+        { system: "Product identity", level: "high", text: "The same name is used for different molecules", evidence: "established" },
+        { system: "Sport", level: "moderate", text: "Prohibited by WADA, with positive tests in horse racing and human sport", evidence: "established" }
       ],
+      activity: [
+        { title: "G-actin sequestration", evidence: "established", summary: "Full-length Tβ4 binds monomeric actin and regulates its polymerisation", refs: [11] },
+        { title: "Cell migration and angiogenesis", evidence: "animal", summary: "Promotes keratinocyte and endothelial cell migration in wound models", refs: [11] },
+        { title: "Anti-inflammatory signalling", evidence: "animal", summary: "Reduced inflammatory signalling in models of cardiac and corneal injury", refs: [11] }
+      ],
+      trials: [],
+      noTrials: "There are no human trials of the TB-500 fragment. Full-length Tβ4 has been tested in humans as eye drops and in cardiac studies, with mixed results.",
       related: ["bpc-157", "thymosin-alpha-1"]
     },
+
+    /* ------------------------------------------------------------ skin */
     {
-      slug: "ghk-cu",
-      type: "compound",
-      name: "GHK-Cu",
-      aliases: ["Copper peptide", "Glycyl-L-histidyl-L-lysine copper"],
-      category: "skin",
-      status: "Approved",
-      class: "Copper-binding tripeptide",
-      developer: "Discovered by Loren Pickart (1973)",
-      added: "2026-02-10",
-      updated: "2026-08-05",
+      slug: "ghk-cu", type: "compound", name: "GHK-Cu",
+      aliases: ["Copper peptide", "Copper tripeptide-1"], category: "skin", status: "Approved",
+      class: "Copper-binding tripeptide", developer: "Discovered by Loren Pickart (1973)",
+      added: "2026-02-10", updated: "2026-08-05",
       tags: ["collagen", "cosmetic", "copper", "skin"],
-      summary:
-        "A naturally occurring tripeptide–copper complex found in human plasma. It is widely used in topical cosmetics for its effects on skin remodelling.",
-      sections: [
-        { heading: "Overview", body: "<p>GHK was first isolated from human plasma, and its levels fall with age. It binds copper(II) with high affinity, and the complex is the form most often studied.</p>" },
-        { heading: "Research", body: "<p>In vitro and topical studies report increased collagen and glycosaminoglycan synthesis and support for wound remodelling. Gene-expression analyses suggest broad effects on tissue-repair pathways.</p>" },
-        { heading: "Status", body: "<p>Common as a cosmetic ingredient. The \"Approved\" label here refers to cosmetic use only; it is not an approved drug.</p>" }
+      summary: "A naturally occurring tripeptide–copper complex found in human plasma. It is widely used in topical cosmetics for its effects on skin remodelling.",
+      names: "Listed on cosmetic labels as copper tripeptide-1. It was first isolated from human plasma by Loren Pickart in 1973. The \"Approved\" status here covers cosmetic use only; GHK-Cu is not an approved drug. Injectable products sold by peptide vendors fall outside that cosmetic status.",
+      structure: "Glycyl-L-histidyl-L-lysine complexed with copper(II). The GHK peptide alone has a molecular weight of about 340.4 g/mol. Reported plasma levels fall with age.",
+      pubchem: "GHK-Cu",
+      profile: {
+        note: "Scored for topical use.",
+        rows: [
+          { label: "Topical skin effect", score: 3 },
+          { label: "Evidence quality", score: 2 },
+          { label: "Risk load", score: 1, neg: true }
+        ]
+      },
+      risks: [
+        { system: "Skin", level: "low", text: "Occasional irritation with topical use", evidence: "anecdotal" },
+        { system: "Injectable use", level: "unknown", text: "Systemic dosing of copper peptides has no human safety data", evidence: "unknown" }
       ],
+      activity: [
+        { title: "Collagen and GAG synthesis", evidence: "in vitro", summary: "Increases collagen and glycosaminoglycan synthesis in fibroblast cultures", refs: [12, 13] },
+        { title: "Wound remodelling", evidence: "animal", summary: "Accelerated wound contraction and healing in animal models", refs: [13] },
+        { title: "Gene expression", evidence: "in vitro", summary: "Connectivity-map analyses suggest it shifts the expression of many repair-related genes", detail: "These are computational analyses of expression data, not clinical outcomes.", refs: [13] }
+      ],
+      trials: [],
+      noTrials: "There is no large randomised human trial on record. Topical cosmetic studies are small and often sponsored by manufacturers.",
       related: ["bpc-157"]
     },
+
+    /* ------------------------------------------------------------ gh axis */
     {
-      slug: "ipamorelin",
-      type: "compound",
-      name: "Ipamorelin",
-      aliases: ["NNC 26-0161"],
-      category: "gh",
-      status: "Research only",
-      class: "Growth hormone secretagogue (ghrelin receptor agonist)",
-      developer: "Novo Nordisk (1990s)",
-      added: "2026-03-01",
-      updated: "2026-07-28",
+      slug: "ipamorelin", type: "compound", name: "Ipamorelin",
+      aliases: ["NNC 26-0161"], category: "gh", status: "Research only",
+      class: "Growth hormone secretagogue (ghrelin receptor agonist)", developer: "Novo Nordisk (1990s)",
+      added: "2026-03-01", updated: "2026-07-28",
       tags: ["GHS-R1a", "growth hormone", "pentapeptide"],
-      summary:
-        "A selective pentapeptide agonist of the ghrelin receptor. It triggers growth hormone release with little effect on cortisol or prolactin.",
-      sections: [
-        { heading: "Overview", body: "<p>Ipamorelin was developed as a selective growth hormone secretagogue. Earlier compounds in the class also raised ACTH and cortisol; its selectivity set it apart from them.</p>" },
-        { heading: "Clinical history", body: "<p>It reached mid-stage clinical trials for postoperative ileus but was not taken to approval.</p>" },
-        { heading: "Regulatory notes", body: "<p>Not approved for human use. It is prohibited in sport under the WADA list.</p>" }
+      summary: "A selective pentapeptide agonist of the ghrelin receptor. It triggers growth hormone release with little effect on cortisol or prolactin.",
+      names: "Developed by Novo Nordisk in the 1990s as NNC 26-0161. Helsinn later licensed it for postoperative ileus. It never received approval, and today it is sold only as a research chemical.",
+      structure: "Aib-His-D-2-Nal-D-Phe-Lys-NH<sub>2</sub>, molecular weight about 711.9 g/mol. The unnatural amino acids make it resistant to proteolysis. It was presented as the first selective GH secretagogue.",
+      pubchem: "ipamorelin",
+      profile: {
+        rows: [
+          { label: "GH release", score: 3 },
+          { label: "Selectivity", score: 4 },
+          { label: "Risk load", score: 2, neg: true },
+          { label: "Evidence quality", score: 2 }
+        ]
+      },
+      risks: [
+        { system: "Glucose", level: "low", text: "Raising GH can reduce insulin sensitivity", evidence: "contested", detail: "This is a class effect of raising growth hormone. It has not been quantified for ipamorelin in long-term human use." },
+        { system: "Sport", level: "moderate", text: "Prohibited by WADA as a GH secretagogue", evidence: "established" }
+      ],
+      activity: [
+        { title: "Ghrelin receptor (GHS-R1a)", evidence: "animal", summary: "Agonist that triggers GH release from the pituitary", refs: [14] },
+        { title: "Selectivity", evidence: "animal", summary: "Did not raise ACTH or cortisol at doses well above those that release GH", detail: "This set it apart from GHRP-6 and GHRP-2, which raise cortisol and prolactin. The data come mainly from studies in swine.", refs: [14] }
+      ],
+      trials: [
+        { title: "Postoperative ileus after bowel resection", evidence: "human rct", meta: ["about 114 adults undergoing bowel resection", "ipamorelin 0.03 mg/kg IV twice daily or placebo, for up to 7 days", "proof of concept", "randomised, double-blind, placebo-controlled"], body: "There was no significant difference between groups in time to the first tolerated meal. The drug was well tolerated.", note: "This is the only published efficacy trial. It was negative on its primary endpoint, and development for the indication did not continue.", refs: [15] }
       ],
       related: ["cjc-1295"]
     },
     {
-      slug: "cjc-1295",
-      type: "compound",
-      name: "CJC-1295",
-      aliases: ["DAC:GRF", "Modified GRF (1-29)"],
-      category: "gh",
-      status: "Research only",
-      class: "GHRH analog",
-      developer: "ConjuChem",
-      added: "2026-03-01",
-      updated: "2026-07-28",
+      slug: "cjc-1295", type: "compound", name: "CJC-1295",
+      aliases: ["CJC-1295 with DAC", "DAC:GRF"], category: "gh", status: "Research only",
+      class: "GHRH analog", developer: "ConjuChem",
+      added: "2026-03-01", updated: "2026-07-28",
       tags: ["GHRH", "growth hormone", "albumin binding"],
-      summary:
-        "A synthetic analog of growth-hormone-releasing hormone (GHRH). The DAC version binds albumin and stays in the body for days rather than minutes.",
-      sections: [
-        { heading: "Overview", body: "<p>CJC-1295 modifies the first 29 amino acids of GHRH to resist enzymatic breakdown. The \"with DAC\" form adds a Drug Affinity Complex that binds serum albumin, which extends its half-life to several days.</p>" },
-        { heading: "Research", body: "<p>Early human studies showed sustained rises in GH and IGF-1 after a single dose. Clinical development was discontinued.</p>" },
-        { heading: "Terminology", body: "<p>Vendors often sell \"CJC-1295 without DAC\". That compound is more accurately called Modified GRF (1-29) and is a different molecule.</p>" }
+      summary: "A synthetic analog of growth-hormone-releasing hormone (GHRH). The DAC version binds albumin and stays in the body for days rather than minutes.",
+      names: "Developed by ConjuChem. Clinical development stopped in 2006. Vendors often sell \"CJC-1295 without DAC\"; that compound is more accurately called Modified GRF (1-29), a different molecule with a half-life of about 30 minutes.",
+      structure: "GHRH(1-29) with four substitutions (D-Ala2, Gln8, Ala15, Leu27) that resist enzymatic breakdown, plus a C-terminal lysine carrying a maleimide group (the Drug Affinity Complex). The DAC binds covalently to albumin, which extends the half-life to roughly 6–8 days.",
+      pubchem: "CJC-1295",
+      profile: {
+        rows: [
+          { label: "GH / IGF-1 elevation", score: 4 },
+          { label: "Risk load", score: 3, neg: true },
+          { label: "Evidence quality", score: 2 }
+        ]
+      },
+      risks: [
+        { system: "Injection site", level: "moderate", text: "Injection-site reactions were the most common adverse effect", evidence: "human rct", refs: [16] },
+        { system: "Vasodilation", level: "low", text: "Transient flushing and headache", evidence: "human rct", refs: [16] },
+        { system: "GH excess", level: "moderate", text: "Elevated IGF-1 lasting weeks brings the class risks of GH excess, such as fluid retention and insulin resistance", evidence: "contested" }
+      ],
+      activity: [
+        { title: "GHRH receptor", evidence: "human rct", summary: "Agonist that increases GH secretion from the pituitary", refs: [16] },
+        { title: "Pulsatility", evidence: "human rct", summary: "GH pulses persisted, with a large rise in trough GH levels", detail: "Continuous GHRH stimulation did not abolish the natural pulsatile pattern of GH release.", refs: [17] }
+      ],
+      trials: [
+        { title: "Single and repeated dosing in healthy adults", evidence: "human rct", meta: ["healthy adults aged 21–61", "single subcutaneous doses of 30–250 µg/kg, or repeated doses, or placebo", "up to 28 days of follow-up", "randomised, double-blind, placebo-controlled"], body: "After a single dose, GH rose 2- to 10-fold for 6 days or more, and IGF-1 rose 1.5- to 3-fold for 9 to 11 days. The estimated half-life was 5.8 to 8.1 days. Repeated dosing kept IGF-1 raised for up to 28 days.", refs: [16] }
       ],
       related: ["ipamorelin"]
     },
+
+    /* ------------------------------------------------------------ longevity */
     {
-      slug: "epitalon",
-      type: "compound",
-      name: "Epitalon",
-      aliases: ["Epithalon", "AEDG peptide"],
-      category: "longevity",
-      status: "Research only",
-      class: "Synthetic tetrapeptide (Ala-Glu-Asp-Gly)",
-      developer: "V. Khavinson, St. Petersburg Institute of Bioregulation",
-      added: "2026-04-14",
-      updated: "2026-08-11",
+      slug: "epitalon", type: "compound", name: "Epitalon",
+      aliases: ["Epithalon", "AEDG peptide"], category: "longevity", status: "Research only",
+      class: "Synthetic tetrapeptide", developer: "V. Khavinson, St. Petersburg Institute of Bioregulation",
+      added: "2026-04-14", updated: "2026-08-11",
       tags: ["telomerase", "pineal", "ageing"],
-      summary:
-        "A four-amino-acid peptide modelled on a pineal gland extract, studied mainly in Russia for effects on ageing markers.",
-      sections: [
-        { heading: "Overview", body: "<p>Epitalon is a synthetic version of the active component claimed for epithalamin, a bovine pineal extract.</p>" },
-        { heading: "Research", body: "<p>Reports include telomerase activation in cell cultures and lifespan effects in rodents. Most studies come from a single research school, and independent replication is limited.</p>" }
+      summary: "A four-amino-acid peptide modelled on a pineal gland extract, studied mainly in Russia for effects on ageing markers.",
+      names: "A synthetic version of the claimed active component of epithalamin, a bovine pineal extract. Almost all published work comes from Vladimir Khavinson's institute.",
+      structure: "Ala-Glu-Asp-Gly, molecular weight about 390.3 g/mol.",
+      pubchem: "epitalon",
+      profile: {
+        rows: [
+          { label: "Preclinical signal", score: 2 },
+          { label: "Human evidence", score: 1 },
+          { label: "Evidence quality", score: 1 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "unknown", text: "No independent controlled human safety data", evidence: "unknown" },
+        { system: "Telomerase", level: "unknown", text: "Activating telomerase is a theoretical cancer concern", evidence: "contested" }
       ],
+      activity: [
+        { title: "Telomerase", evidence: "in vitro", summary: "Reported to induce telomerase activity and telomere elongation in human somatic cells", refs: [18] },
+        { title: "Lifespan", evidence: "animal", summary: "Lifespan extension reported in rodents and fruit flies, mostly from a single group" }
+      ],
+      trials: [],
+      noTrials: "There are no randomised human trials from independent groups.",
       related: ["mots-c"]
     },
     {
-      slug: "selank",
-      type: "compound",
-      name: "Selank",
-      aliases: ["TP-7"],
-      category: "nootropic",
-      status: "Approved",
-      class: "Synthetic analog of tuftsin (heptapeptide)",
-      developer: "Institute of Molecular Genetics, Russian Academy of Sciences",
-      added: "2026-04-02",
-      updated: "2026-06-30",
-      tags: ["anxiolytic", "tuftsin", "intranasal"],
-      summary:
-        "A heptapeptide derived from the immunomodulatory peptide tuftsin. It is registered in Russia as an anxiolytic nasal spray.",
-      sections: [
-        { heading: "Overview", body: "<p>Selank extends tuftsin (Thr-Lys-Pro-Arg) with a Pro-Gly-Pro tail that improves its stability.</p>" },
-        { heading: "Status", body: "<p>Approved in Russia. It is not approved by the FDA or EMA, so the \"Approved\" label here applies to Russia only.</p>" }
+      slug: "mots-c", type: "compound", name: "MOTS-c",
+      aliases: ["Mitochondrial ORF of the 12S rRNA type-c"], category: "longevity", status: "Research only",
+      class: "Mitochondrial-derived peptide", developer: "Discovered by Lee et al., 2015",
+      added: "2026-05-09", updated: "2026-09-10",
+      tags: ["mitochondria", "AMPK", "exercise mimetic", "metabolism"],
+      summary: "A 16-amino-acid peptide encoded in the mitochondrial genome. It regulates metabolism and is studied as an exercise mimetic.",
+      names: "Described in <em>Cell Metabolism</em> in 2015. CohBar developed an analog, CB4211, which entered early clinical trials for fatty liver disease and obesity. MOTS-c itself has not been through clinical development.",
+      structure: "MRWQEMGYIFYPRKLR, 16 amino acids, molecular weight about 2174.6 g/mol. It is encoded by a short open reading frame inside the mitochondrial 12S rRNA gene.",
+      pubchem: "MOTS-c",
+      profile: {
+        rows: [
+          { label: "Preclinical signal", score: 3 },
+          { label: "Human evidence", score: 1 },
+          { label: "Evidence quality", score: 2 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "unknown", text: "No published human safety data for MOTS-c itself", evidence: "unknown" }
       ],
+      activity: [
+        { title: "AMPK activation", evidence: "animal", summary: "Activated AMPK through the folate cycle and AICAR accumulation, which improved insulin sensitivity in mice", refs: [20] },
+        { title: "Nuclear translocation", evidence: "in vitro", summary: "Moves to the nucleus under metabolic stress and regulates stress-response genes", refs: [27] },
+        { title: "Physical capacity", evidence: "animal", summary: "Improved physical performance in young and old mice. Levels rise with exercise in humans", refs: [21] }
+      ],
+      trials: [],
+      noTrials: "There are no human efficacy trials of MOTS-c. Human data are observational measurements of circulating levels.",
+      related: ["epitalon"]
+    },
+
+    /* ------------------------------------------------------------ noots */
+    {
+      slug: "selank", type: "compound", name: "Selank",
+      aliases: ["TP-7"], category: "nootropic", status: "Approved",
+      class: "Synthetic analog of tuftsin", developer: "Institute of Molecular Genetics, Russian Academy of Sciences",
+      added: "2026-04-02", updated: "2026-06-30",
+      tags: ["anxiolytic", "tuftsin", "intranasal"],
+      summary: "A heptapeptide derived from the immunomodulatory peptide tuftsin. It is registered in Russia as an anxiolytic nasal spray.",
+      names: "Registered in Russia as an anxiolytic nasal spray. It is not approved by the FDA or EMA, so the \"Approved\" status here applies to Russia only.",
+      structure: "Thr-Lys-Pro-Arg-Pro-Gly-Pro, molecular weight about 751.9 g/mol. It is tuftsin (TKPR) with a Pro-Gly-Pro tail that improves stability.",
+      pubchem: "selank",
+      profile: {
+        rows: [
+          { label: "Anxiolytic signal", score: 2 },
+          { label: "Risk load", score: 1, neg: true },
+          { label: "Evidence quality", score: 2 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "low", text: "Few adverse effects reported in Russian clinical use", evidence: "anecdotal" }
+      ],
+      activity: [
+        { title: "GABA-A modulation", evidence: "animal", summary: "Proposed allosteric modulation of GABA-A receptors" },
+        { title: "Enkephalin degradation", evidence: "in vitro", summary: "Inhibits enzymes that break down enkephalins" }
+      ],
+      trials: [],
+      noTrials: "Russian clinical studies exist but are small, often unblinded, and mostly untranslated. None meet the bar for this record.",
       related: ["semax"]
     },
     {
-      slug: "semax",
-      type: "compound",
-      name: "Semax",
-      aliases: ["ACTH(4-7)-Pro-Gly-Pro"],
-      category: "nootropic",
-      status: "Approved",
-      class: "Synthetic ACTH(4-10) analog",
-      developer: "Institute of Molecular Genetics, Russian Academy of Sciences",
-      added: "2026-04-02",
-      updated: "2026-06-30",
+      slug: "semax", type: "compound", name: "Semax",
+      aliases: ["ACTH(4-7)-Pro-Gly-Pro"], category: "nootropic", status: "Approved",
+      class: "Synthetic ACTH(4-10) analog", developer: "Institute of Molecular Genetics, Russian Academy of Sciences",
+      added: "2026-04-02", updated: "2026-06-30",
       tags: ["neuroprotection", "BDNF", "stroke", "intranasal"],
-      summary:
-        "A heptapeptide based on a fragment of adrenocorticotropic hormone, without hormonal activity. It is used in Russia for stroke and cognitive disorders.",
-      sections: [
-        { heading: "Overview", body: "<p>Semax keeps the ACTH(4-7) sequence and adds Pro-Gly-Pro. This removes the hormone's corticotropic effects and improves stability.</p>" },
-        { heading: "Research", body: "<p>Studies report increased BDNF expression and neuroprotective effects in ischaemia models.</p>" },
-        { heading: "Status", body: "<p>On Russia's list of essential medicines. It is not approved by the FDA or EMA, so the \"Approved\" label here applies to Russia only.</p>" }
+      summary: "A heptapeptide based on a fragment of adrenocorticotropic hormone, without hormonal activity. It is used in Russia for stroke and cognitive disorders.",
+      names: "On Russia's list of essential medicines as a nasal spray. It is not approved by the FDA or EMA, so the \"Approved\" status here applies to Russia only.",
+      structure: "Met-Glu-His-Phe-Pro-Gly-Pro, molecular weight about 813.9 g/mol. It keeps the ACTH(4–7) sequence, which has no corticotropic activity, and adds Pro-Gly-Pro for stability.",
+      pubchem: "semax",
+      profile: {
+        rows: [
+          { label: "Neuroprotective signal", score: 2 },
+          { label: "Risk load", score: 1, neg: true },
+          { label: "Evidence quality", score: 2 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "low", text: "Few adverse effects reported in Russian clinical use", evidence: "anecdotal" }
       ],
+      activity: [
+        { title: "BDNF", evidence: "animal", summary: "Increased BDNF and TrkB expression in rat hippocampus", refs: [19] },
+        { title: "Melanocortin receptors", evidence: "in vitro", summary: "Interacts with melanocortin receptors without stimulating the adrenal cortex" }
+      ],
+      trials: [],
+      noTrials: "Russian stroke studies exist but are small and of limited quality.",
       related: ["selank"]
     },
+
+    /* ------------------------------------------------------------ melanocortin */
     {
-      slug: "mots-c",
-      type: "compound",
-      name: "MOTS-c",
-      aliases: ["Mitochondrial ORF of the 12S rRNA type-c"],
-      category: "longevity",
-      status: "Research only",
-      class: "Mitochondrial-derived peptide (16 aa)",
-      developer: "Discovered by Lee et al., 2015",
-      added: "2026-05-09",
-      updated: "2026-09-10",
-      tags: ["mitochondria", "AMPK", "exercise mimetic", "metabolism"],
-      summary:
-        "A 16-amino-acid peptide encoded in the mitochondrial genome. It regulates metabolism and is studied as an exercise mimetic.",
-      sections: [
-        { heading: "Overview", body: "<p>MOTS-c was described in <em>Cell Metabolism</em> in 2015. It is encoded by a short open reading frame inside the mitochondrial 12S rRNA gene.</p>" },
-        { heading: "Research", body: "<p>In mice, MOTS-c activated AMPK, improved insulin sensitivity and protected against diet-induced obesity. Human data are early-stage.</p>" }
-      ],
-      related: ["epitalon"]
-    },
-    {
-      slug: "bremelanotide",
-      type: "compound",
-      name: "Bremelanotide",
-      aliases: ["PT-141", "Vyleesi"],
-      category: "melanocortin",
-      status: "Approved",
-      class: "Melanocortin receptor agonist",
-      developer: "Palatin Technologies",
-      added: "2026-05-22",
-      updated: "2026-08-19",
+      slug: "bremelanotide", type: "compound", name: "Bremelanotide",
+      aliases: ["PT-141", "Vyleesi"], category: "melanocortin", status: "Approved",
+      class: "Melanocortin receptor agonist", developer: "Palatin Technologies",
+      added: "2026-05-22", updated: "2026-08-19",
       tags: ["MC4R", "melanocortin", "HSDD"],
-      summary:
-        "A cyclic melanocortin agonist approved in the US for hypoactive sexual desire disorder (HSDD) in premenopausal women.",
-      sections: [
-        { heading: "Overview", body: "<p>Bremelanotide is a metabolite of melanotan II. It acts mainly on the MC4 receptor in the central nervous system.</p>" },
-        { heading: "Regulatory history", body: "<p>FDA approved in 2019 as an on-demand subcutaneous autoinjector (Vyleesi).</p>" },
-        { heading: "Known effects", body: "<p>Common adverse effects in trials included nausea, flushing and transient increases in blood pressure.</p>" }
+      summary: "A cyclic melanocortin agonist approved in the US for hypoactive sexual desire disorder (HSDD) in premenopausal women.",
+      names: "Sold as Vyleesi, an on-demand subcutaneous autoinjector, after FDA approval in 2019. It was developed from melanotan II, which is why it was known as PT-141.",
+      structure: "A cyclic heptapeptide: Ac-Nle-cyclo[Asp-His-D-Phe-Arg-Trp-Lys]-OH. C<sub>50</sub>H<sub>68</sub>N<sub>14</sub>O<sub>10</sub>, molecular weight about 1025.2 g/mol.",
+      pubchem: "bremelanotide",
+      profile: {
+        rows: [
+          { label: "Efficacy for indication", score: 2 },
+          { label: "Nausea", score: 4, neg: true },
+          { label: "Risk load", score: 2, neg: true },
+          { label: "Evidence quality", score: 4 }
+        ]
+      },
+      risks: [
+        { system: "Nausea", level: "high", text: "Nausea affected about 40% of users in phase 3", evidence: "human rct", refs: [22] },
+        { system: "Blood pressure", level: "moderate", text: "Transient rise in blood pressure and fall in heart rate after each dose", evidence: "human rct", detail: "Contraindicated with uncontrolled hypertension or known cardiovascular disease.", refs: [24] },
+        { system: "Pigmentation", level: "low", text: "Focal hyperpigmentation of the face, gums or breasts, which may not resolve", evidence: "human rct", refs: [24] },
+        { system: "Interactions", level: "moderate", text: "Lowers exposure to oral naltrexone", evidence: "established", refs: [24] }
+      ],
+      activity: [
+        { title: "MC4 receptor", evidence: "human rct", summary: "Agonist in the central nervous system. Thought to drive the effect on desire", refs: [22] },
+        { title: "MC1 receptor", evidence: "human rct", summary: "Activity at MC1R explains the hyperpigmentation", refs: [24] }
+      ],
+      trials: [
+        { title: "RECONNECT: two phase 3 trials in HSDD", evidence: "human rct", meta: ["about 1,250 premenopausal women with HSDD across two trials", "bremelanotide 1.75 mg subcutaneous as needed, or placebo", "24 weeks", "randomised, double-blind, placebo-controlled"], body: "Both trials showed significant improvement in desire and reduced distress about low desire compared with placebo. The number of satisfying sexual events did not differ significantly.", note: "The effect sizes were modest. Nausea was common, and few users continue the drug long term.", refs: [22] }
       ],
       related: []
     },
+
+    /* ------------------------------------------------------------ immune */
     {
-      slug: "thymosin-alpha-1",
-      type: "compound",
-      name: "Thymosin Alpha-1",
-      aliases: ["Thymalfasin", "Zadaxin", "Tα1"],
-      category: "immune",
-      status: "Approved",
-      class: "Thymic peptide (28 aa)",
-      developer: "SciClone Pharmaceuticals (Zadaxin)",
-      added: "2026-06-03",
-      updated: "2026-09-01",
-      tags: ["T-cell", "hepatitis B", "immunomodulator"],
-      summary:
-        "A 28-amino-acid peptide originally isolated from thymus tissue. As thymalfasin it is approved in a number of countries as an immunomodulator.",
-      sections: [
-        { heading: "Overview", body: "<p>Tα1 promotes T-cell maturation and modulates innate immune signalling, including Toll-like receptor pathways.</p>" },
-        { heading: "Status", body: "<p>Approved in several countries, mainly for chronic hepatitis B and as a vaccine adjuvant. It is not FDA approved, so the \"Approved\" label here does not apply to the US.</p>" }
+      slug: "thymosin-alpha-1", type: "compound", name: "Thymosin Alpha-1",
+      aliases: ["Thymalfasin", "Zadaxin", "Tα1"], category: "immune", status: "Approved",
+      class: "Thymic peptide", developer: "SciClone Pharmaceuticals (Zadaxin)",
+      added: "2026-06-03", updated: "2026-09-01",
+      tags: ["T-cell", "hepatitis B", "immunomodulator", "sepsis"],
+      summary: "A 28-amino-acid peptide originally isolated from thymus tissue. As thymalfasin it is approved in a number of countries as an immunomodulator.",
+      names: "Sold as Zadaxin (thymalfasin) and approved in several countries outside the US and EU, mainly for chronic hepatitis B and as a vaccine adjuvant. It is not FDA approved, so the \"Approved\" status here does not apply to the US.",
+      structure: "An N-acetylated 28-amino-acid peptide, molecular weight about 3108.3 g/mol, derived from prothymosin α.",
+      pubchem: "thymalfasin",
+      profile: {
+        rows: [
+          { label: "Immune modulation", score: 2 },
+          { label: "Risk load", score: 1, neg: true },
+          { label: "Evidence quality", score: 3 }
+        ]
+      },
+      risks: [
+        { system: "Tolerability", level: "low", text: "Generally well tolerated in clinical trials", evidence: "human rct", refs: [23] }
+      ],
+      activity: [
+        { title: "Toll-like receptors", evidence: "in vitro", summary: "Signals through TLR2 and TLR9 on dendritic cells" },
+        { title: "T-cell maturation", evidence: "animal", summary: "Promotes T-cell differentiation and function" }
+      ],
+      trials: [
+        { title: "TESTS: thymosin alpha 1 in sepsis", evidence: "human rct", meta: ["about 1,100 adults with sepsis", "thymosin α1 subcutaneous or placebo, for 7 days", "28-day follow-up", "multicentre, randomised, double-blind, placebo-controlled"], body: "There was no significant difference in 28-day all-cause mortality between groups.", note: "This was a large, well-run trial that overturned earlier optimism from smaller studies.", refs: [23] }
       ],
       related: ["tb-500"]
     },
 
-    /* ---- Articles / guides ---- */
+    /* ------------------------------------------------------------ guides */
     {
-      slug: "reading-clinical-trial-phases",
-      type: "article",
-      name: "Reading Clinical Trial Phases",
-      category: "guides",
-      status: "Guide",
-      added: "2026-02-15",
-      updated: "2026-05-01",
+      slug: "reading-clinical-trial-phases", type: "article", name: "Reading Clinical Trial Phases",
+      category: "guides", status: "Guide", added: "2026-02-15", updated: "2026-05-01",
       tags: ["methodology", "evidence"],
       summary: "What Phase 1, 2, 3 and 4 trials actually test, and why a preclinical result says little about effects in humans.",
       sections: [
@@ -342,13 +536,8 @@ window.ATLAS = {
       ]
     },
     {
-      slug: "understanding-half-life",
-      type: "article",
-      name: "Understanding Peptide Half-Life",
-      category: "guides",
-      status: "Guide",
-      added: "2026-03-20",
-      updated: "2026-06-12",
+      slug: "understanding-half-life", type: "article", name: "Understanding Peptide Half-Life",
+      category: "guides", status: "Guide", added: "2026-03-20", updated: "2026-06-12",
       tags: ["pharmacokinetics", "chemistry"],
       summary: "Why native peptides break down within minutes and how chemists stretch that to days.",
       sections: [
@@ -357,18 +546,44 @@ window.ATLAS = {
       ]
     },
     {
-      slug: "evaluating-evidence",
-      type: "article",
-      name: "Evaluating the Evidence",
-      category: "guides",
-      status: "Guide",
-      added: "2026-07-07",
-      updated: "2026-09-25",
+      slug: "evaluating-evidence", type: "article", name: "Evaluating the Evidence",
+      category: "guides", status: "Guide", added: "2026-07-07", updated: "2026-09-25",
       tags: ["methodology", "evidence", "critical reading"],
       summary: "A short checklist for judging claims about any compound: who ran the study, in whom, and how large it was.",
       sections: [
-        { heading: "Checklist", body: "<ol><li>Was it done in humans, animals or cells?</li><li>Was it randomised and controlled?</li><li>How many participants?</li><li>Has an independent group replicated it?</li><li>Who funded it?</li></ol>" }
+        { heading: "Checklist", body: "<ol><li>Was it done in humans, animals or cells?</li><li>Was it randomised and controlled?</li><li>How many participants?</li><li>Has an independent group replicated it?</li><li>Who funded it?</li></ol>" },
+        { heading: "Evidence badges in the codex", body: "<p><strong>human rct</strong>: randomised controlled trials in people. <strong>established</strong>: settled pharmacology. <strong>human obs</strong>: observational human data. <strong>animal</strong> and <strong>in vitro</strong>: preclinical only. <strong>anecdotal</strong>: user reports. <strong>contested</strong>: evidence points both ways. <strong>unknown</strong>: no data.</p>" }
       ]
     }
-  ]
+  ],
+
+  references: {
+    1: "Wilding JPH et al. Once-Weekly Semaglutide in Adults with Overweight or Obesity. N Engl J Med 2021;384:989–1002.",
+    2: "Marso SP et al. Semaglutide and Cardiovascular Outcomes in Patients with Type 2 Diabetes. N Engl J Med 2016;375:1834–1844.",
+    3: "Lincoff AM et al. Semaglutide and Cardiovascular Outcomes in Obesity without Diabetes. N Engl J Med 2023;389:2221–2232.",
+    4: "Wilding JPH et al. Weight regain and cardiometabolic effects after withdrawal of semaglutide: The STEP 1 trial extension. Diabetes Obes Metab 2022;24:1553–1564.",
+    5: "Frías JP et al. Tirzepatide versus Semaglutide Once Weekly in Patients with Type 2 Diabetes. N Engl J Med 2021;385:503–515.",
+    6: "Jastreboff AM et al. Tirzepatide Once Weekly for the Treatment of Obesity. N Engl J Med 2022;387:205–216.",
+    7: "Aronne LJ et al. Tirzepatide as Compared with Semaglutide for the Treatment of Obesity. N Engl J Med 2025.",
+    8: "Jastreboff AM et al. Triple–Hormone-Receptor Agonist Retatrutide for Obesity — A Phase 2 Trial. N Engl J Med 2023;389:514–526.",
+    9: "Rosenstock J et al. Retatrutide, a GIP, GLP-1 and glucagon receptor agonist, for people with type 2 diabetes: a randomised, double-blind, placebo and active-controlled, parallel-group, phase 2 trial. Lancet 2023;402:529–544.",
+    10: "Seiwerth S et al. BPC 157 and Standard Angiogenic Growth Factors. Gastrointestinal Tract Healing, Lessons from Tendon, Ligament, Muscle and Bone Healing. Curr Pharm Des 2018;24:1972–1989.",
+    11: "Goldstein AL, Hannappel E, Kleinman HK. Thymosin β4: actin-sequestering protein moonlights to repair injured tissues. Trends Mol Med 2005;11:421–429.",
+    12: "Pickart L, Thaler MM. Tripeptide in human serum which prolongs survival of normal liver cells and stimulates growth in neoplastic liver. Nat New Biol 1973;243:85–87.",
+    13: "Pickart L, Margolina A. Regenerative and Protective Actions of the GHK-Cu Peptide in the Light of the New Gene Data. Int J Mol Sci 2018;19:1987.",
+    14: "Raun K et al. Ipamorelin, the first selective growth hormone secretagogue. Eur J Endocrinol 1998;139:552–561.",
+    15: "Beck DE et al. Prospective, randomized, controlled, proof-of-concept study of the Ghrelin mimetic ipamorelin for the management of postoperative ileus in bowel resection patients. Int J Colorectal Dis 2014;29:1527–1534.",
+    16: "Teichman SL et al. Prolonged stimulation of growth hormone (GH) and insulin-like growth factor I secretion by CJC-1295, a long-acting analog of GH-releasing hormone, in healthy adults. J Clin Endocrinol Metab 2006;91:799–805.",
+    17: "Ionescu M, Frohman LA. Pulsatile secretion of growth hormone (GH) persists during continuous stimulation by CJC-1295, a long-acting GH-releasing hormone analog. J Clin Endocrinol Metab 2006;91:4792–4797.",
+    18: "Khavinson VKh et al. Epithalon peptide induces telomerase activity and telomere elongation in human somatic cells. Bull Exp Biol Med 2003;135:590–592.",
+    19: "Dolotov OV et al. Semax, an analog of ACTH(4-10) with cognitive effects, regulates BDNF and trkB expression in the rat hippocampus. Brain Res 2006;1117:54–60.",
+    20: "Lee C et al. The mitochondrial-derived peptide MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance. Cell Metab 2015;21:443–454.",
+    21: "Reynolds JC et al. MOTS-c is an exercise-induced mitochondrial-encoded regulator of age-dependent physical decline and muscle homeostasis. Nat Commun 2021;12:470.",
+    22: "Kingsberg SA et al. Bremelanotide for the Treatment of Hypoactive Sexual Desire Disorder: Two Randomized Phase 3 Trials. Obstet Gynecol 2019;134:899–908.",
+    23: "Wu J et al. Efficacy of thymosin alpha 1 in sepsis (TESTS): multicentre, double blinded, randomised, placebo controlled trial. BMJ 2025.",
+    24: "Vyleesi (bremelanotide injection) prescribing information. US FDA, 2019.",
+    25: "Coskun T et al. LY3298176, a novel dual GIP and GLP-1 receptor agonist for the treatment of type 2 diabetes mellitus: from discovery to clinical proof of concept. Mol Metab 2018;18:3–14.",
+    26: "Lau J et al. Discovery of the Once-Weekly Glucagon-Like Peptide-1 (GLP-1) Analogue Semaglutide. J Med Chem 2015;58:7370–7380.",
+    27: "Kim KH et al. The Mitochondrial-Encoded Peptide MOTS-c Translocates to the Nucleus to Regulate Nuclear Gene Expression in Response to Metabolic Stress. Cell Metab 2018;28:516–524."
+  }
 };

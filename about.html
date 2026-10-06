@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About · Atlas Codex</title>
-  <meta name="description" content="Atlas Codex — an open reference library of peptides and research compounds.">
+  <meta name="description" content="Atlas Codex — every compound worth knowing, cited and graded.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
@@ -16,26 +16,38 @@
 <body data-page="about">
   <header id="site-header"></header>
   <main>
-    <div class="wrap">
+    <div class="wrap about">
       <header class="page-head">
-        <p class="eyebrow">About</p>
-        <h1>About Atlas Codex</h1>
+        <span class="label">about</span>
+        <h1>about atlas codex</h1>
         <p>A plain-language atlas of the compounds people are talking about.</p>
       </header>
-      <div class="prose">
-        <h2>What this is</h2>
-        <p>Atlas Codex is a reference library. Each entry summarises what a compound is, its proposed mechanism, its regulatory status, and the quality of the evidence behind it.</p>
-        <h2>Status labels</h2>
-        <ul>
-          <li><span class="status status-approved">Approved</span> Approved as a medicine (or, for cosmetics, a permitted ingredient) in at least one jurisdiction. Entries say which.</li>
-          <li><span class="status status-investigational">Investigational</span> In formal clinical development.</li>
-          <li><span class="status status-research-only">Research only</span> Not approved for human use anywhere relevant. Evidence is mostly preclinical.</li>
-        </ul>
-        <h2>Editorial standards</h2>
-        <p>We favour peer-reviewed human data over animal data, and animal data over anecdote. Where evidence is thin, entries say so.</p>
-        <h2>Disclaimer</h2>
-        <p class="disclaimer">Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.</p>
-      </div>
+      <h2>what this is</h2>
+      <p>Atlas Codex is a reference library. Each entry covers what a compound is, its structure, how it acts on the body, its risks, and the human clinical record behind it. Every claim carries a grade for the evidence behind it.</p>
+      <h2>evidence grades</h2>
+      <ul>
+        <li><span class="badge ev-human-rct">human rct</span> randomised controlled trials in people</li>
+        <li><span class="badge ev-established">established</span> settled pharmacology</li>
+        <li><span class="badge ev-human-obs">human obs</span> observational human data</li>
+        <li><span class="badge ev-animal">animal</span> <span class="badge ev-in-vitro">in vitro</span> preclinical only</li>
+        <li><span class="badge ev-anecdotal">anecdotal</span> user reports</li>
+        <li><span class="badge ev-contested">contested</span> evidence points both ways</li>
+        <li><span class="badge ev-unknown">unknown</span> no data</li>
+      </ul>
+      <h2>status labels</h2>
+      <ul>
+        <li><span class="status st-approved">approved</span> approved as a medicine, or as a cosmetic ingredient, in at least one jurisdiction. Each entry says which.</li>
+        <li><span class="status st-investigational">investigational</span> in formal clinical development</li>
+        <li><span class="status st-research-only">research only</span> not approved for human use. Evidence is mostly preclinical.</li>
+      </ul>
+      <h2>profile scores</h2>
+      <p>Profile bars are editorial judgements on a 1–5 scale, relative to similar compounds. Red rows are attributes where a higher score is worse. Visitors can add their own scores; these are stored only in their own browser.</p>
+      <h2 id="support">support</h2>
+      <p>Atlas Codex is free. If you'd like to support it, add your preferred link here.</p>
+      <h2 id="contact">contact &amp; requests</h2>
+      <p>To request an entry or report an error, add your contact link or form here.</p>
+      <h2>disclaimer</h2>
+      <p class="disclaimer">Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.</p>
     </div>
   </main>
   <footer id="site-footer"></footer>

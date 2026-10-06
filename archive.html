@@ -1,14 +1,14 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Archive · Atlas Codex</title>
-  <meta name="description" content="Atlas Codex — an open reference library of peptides and research compounds.">
+  <meta name="description" content="Atlas Codex — every compound worth knowing, cited and graded.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
@@ -18,25 +18,25 @@
   <main>
     <div class="wrap">
       <header class="page-head">
-        <p class="eyebrow">Archive</p>
-        <h1>The Archive</h1>
-        <p>Every compound and guide in chronological order, grouped by month.</p>
+        <span class="label">archive</span>
+        <h1>the chronological record</h1>
+        <p>Every compound and guide, grouped by month.</p>
       </header>
       <div class="toolbar">
-        <input id="archive-q" type="search" placeholder="Search the archive…" aria-label="Search the archive">
+        <input id="archive-q" type="search" placeholder="search the archive…" aria-label="Search the archive">
         <select id="archive-type" aria-label="Type">
-          <option value="all">All types</option>
-          <option value="compound">Compounds</option>
-          <option value="article">Guides</option>
+          <option value="all">all types</option>
+          <option value="compound">compounds</option>
+          <option value="article">guides</option>
         </select>
         <select id="archive-field" aria-label="Date">
-          <option value="updated">By last updated</option>
-          <option value="added">By date added</option>
+          <option value="updated">by last updated</option>
+          <option value="added">by date added</option>
         </select>
-        <button class="btn ghost" id="archive-sort" type="button">Newest first ↓</button>
-        <span class="count" id="archive-count"></span>
+        <button class="btn" id="archive-sort" type="button">newest first ↓</button>
+        <span class="mono-sm count" id="archive-count"></span>
       </div>
-      <div id="archive-list" style="padding-bottom:48px"></div>
+      <div id="archive-list"></div>
     </div>
   </main>
   <footer id="site-footer"></footer>
