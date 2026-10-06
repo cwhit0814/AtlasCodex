@@ -24,7 +24,7 @@ Other features:
 
 ## Editing content
 
-All content and site settings live in `js/data.js`. That file sets the ticker text, header buttons, home cards, categories, entries and references. The comment at the top of the file documents the entry schema.
+Site settings and the original entries live in `js/data.js`. More entries live in `js/entries-aas.js` (steroids and GH), `js/entries-noots.js` (racetams and other nootropics) and `js/entries-metabolic.js` (exercise mimetics). Each extra file adds to the same list, so you can put a new entry in any of them. That file sets the ticker text, header buttons, home cards, categories, entries and references. The comment at the top of the file documents the entry schema.
 
 ## Running locally
 
