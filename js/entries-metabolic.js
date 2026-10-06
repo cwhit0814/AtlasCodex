@@ -13,25 +13,25 @@
       added: "2026-10-06", updated: "2026-10-06",
       tags: ["PPARδ", "exercise mimetic", "endurance", "WADA prohibited", "carcinogenicity"],
       summary: "A PPARδ activator developed for cholesterol and metabolic disease. It improved blood lipids in small human studies, but GSK abandoned it in 2007 after it caused cancers in long-term animal studies.",
-      names: "GW501516 is the GSK development code. It is sold as \"Cardarine\" or \"Endurobol\" on the grey market, often wrongly labelled as a SARM. GSK stopped development around 2007 after two-year rodent carcinogenicity studies found cancers in multiple organs. In 2013 WADA took the unusual step of issuing a public health warning about it. It is prohibited in sport.",
+      names: "GW501516 is the GSK development code. It is sold as \"Cardarine\" or \"Endurobol\" on the gray market, often wrongly labeled as a SARM. GSK stopped development around 2007 after two-year rodent carcinogenicity studies found cancers in multiple organs. In 2013 WADA took the unusual step of issuing a public health warning about it. It is prohibited in sport.",
       structure: "C<sub>21</sub>H<sub>18</sub>F<sub>3</sub>NO<sub>3</sub>S<sub>2</sub>, about 453.5 g/mol. It is a phenoxyacetic acid with a thiazole ring and is a highly selective agonist of PPARδ (also called PPARβ/δ) over PPARα and PPARγ.",
       pubchem: "GW501516",
       profile: { note: mimeticNote, rows: [
         { label: "Endurance signal", score: 4 }, { label: "Lipid improvement", score: 3 },
         { label: "Risk load", score: 5, neg: true }, { label: "Evidence quality", score: 2 } ] },
       risks: [
-        { system: "Cancer", level: "high", text: "Caused cancers in multiple organs in two-year rodent studies, which ended its development", evidence: "animal", detail: "The tumours appeared at doses relevant to the exposures intended for humans. Whether this applies to people is unknown, but no regulator would allow further development on that record.", refs: [67] },
+        { system: "Cancer", level: "high", text: "Caused cancers in multiple organs in two-year rodent studies, which ended its development", evidence: "animal", detail: "The tumors appeared at doses relevant to the exposures intended for humans. Whether this applies to people is unknown, but no regulator would allow further development on that record.", refs: [67] },
         { system: "Sport", level: "high", text: "Prohibited by WADA at all times, with a specific public health warning", evidence: "established", refs: [67] },
         greyMarket
       ],
       activity: [
         { title: "PPARδ", evidence: "established", summary: "Activates the nuclear receptor PPARδ, shifting muscle and liver toward burning fat for fuel" },
-        { title: "Endurance", evidence: "animal", summary: "Combined with exercise, it increased running endurance and oxidative muscle fibres in mice", refs: [66] },
+        { title: "Endurance", evidence: "animal", summary: "Combined with exercise, it increased running endurance and oxidative muscle fibers in mice", refs: [66] },
         { title: "Lipids and liver fat", evidence: "human rct", summary: "Raised HDL, lowered triglycerides and LDL, and reduced liver fat in small human studies", refs: [64, 65] }
       ],
       trials: [
-        { title: "Moderately obese men", evidence: "human rct", meta: ["13 moderately obese men", "GW501516 10 mg daily or placebo", "2 weeks per period", "randomised, double-blind, crossover"], body: "GW501516 lowered fasting triglycerides, LDL, insulin and liver fat, and increased fat oxidation in muscle.", note: "This is a very small, very short study. It shows the drug does what the mechanism predicts in people, but says nothing about long-term safety.", refs: [64] },
-        { title: "Lipids in healthy volunteers", evidence: "human rct", meta: ["healthy volunteers", "GW501516 at increasing doses or placebo", "2 weeks", "randomised, placebo-controlled"], body: "Triglycerides fell and HDL rose with dose, as the mechanism predicts.", refs: [65] }
+        { title: "Moderately obese men", evidence: "human rct", meta: ["13 moderately obese men", "GW501516 10 mg daily or placebo", "2 weeks per period", "randomized, double-blind, crossover"], body: "GW501516 lowered fasting triglycerides, LDL, insulin and liver fat, and increased fat oxidation in muscle.", note: "This is a very small, very short study. It shows the drug does what the mechanism predicts in people, but says nothing about long-term safety.", refs: [64] },
+        { title: "Lipids in healthy volunteers", evidence: "human rct", meta: ["healthy volunteers", "GW501516 at increasing doses or placebo", "2 weeks", "randomized, placebo-controlled"], body: "Triglycerides fell and HDL rose with dose, as the mechanism predicts.", refs: [65] }
       ],
       related: ["slu-pp-332", "bam15", "atx-304"]
     },
@@ -58,7 +58,7 @@
       ],
       activity: [
         { title: "ERRα (and ERRβ/γ)", evidence: "in vitro", summary: "Agonist of all three ERR isoforms, with the strongest action on ERRα", refs: [68] },
-        { title: "Exercise mimetic", evidence: "animal", summary: "Shifted mouse muscle toward oxidative fibres and increased running endurance", refs: [68] },
+        { title: "Exercise mimetic", evidence: "animal", summary: "Shifted mouse muscle toward oxidative fibers and increased running endurance", refs: [68] },
         { title: "Metabolic syndrome", evidence: "animal", summary: "Reduced fat mass, improved insulin sensitivity and increased energy expenditure in obese mice", refs: [69] }
       ],
       trials: [],
@@ -74,7 +74,7 @@
       added: "2026-10-06", updated: "2026-10-06",
       tags: ["mitochondrial uncoupler", "fat loss", "energy expenditure", "DNP"],
       summary: "A mitochondrial uncoupler that makes cells burn more fuel to produce the same energy. In mice it reversed diet-induced obesity without the overheating that made DNP notorious. There are no human data.",
-      names: "Identified in 2014 as an uncoupler that, unlike older ones, does not depolarise the outer cell membrane. Several academic groups have studied it in mice. There has been no clinical development, and analogs are being explored to improve its poor solubility.",
+      names: "Identified in 2014 as an uncoupler that, unlike older ones, does not depolarize the outer cell membrane. Several academic groups have studied it in mice. There has been no clinical development, and analogs are being explored to improve its poor solubility.",
       structure: "C<sub>16</sub>H<sub>10</sub>F<sub>2</sub>N<sub>6</sub>O, about 340.3 g/mol. It is an oxadiazolopyrazine, chemically unrelated to DNP.",
       pubchem: "BAM15",
       profile: { note: mimeticNote, rows: [
@@ -86,7 +86,7 @@
         greyMarket
       ],
       activity: [
-        { title: "Mitochondrial uncoupling", evidence: "in vitro", summary: "Carries protons across the inner mitochondrial membrane, so cells burn more fuel for the same ATP", detail: "Unlike older uncouplers it does not depolarise the plasma membrane. That selectivity is the main reason it looks safer in cell studies.", refs: [70] },
+        { title: "Mitochondrial uncoupling", evidence: "in vitro", summary: "Carries protons across the inner mitochondrial membrane, so cells burn more fuel for the same ATP", detail: "Unlike older uncouplers it does not depolarize the plasma membrane. That selectivity is the main reason it looks safer in cell studies.", refs: [70] },
         { title: "Obesity models", evidence: "animal", summary: "Reversed diet-induced obesity and insulin resistance in mice without reducing food intake or lean mass", refs: [71] }
       ],
       trials: [],
@@ -106,7 +106,7 @@
       structure: "A small-molecule activator of all AMPK isoforms. It works by protecting AMPK from being switched off (dephosphorylated), rather than by binding the same site as AMP.",
       pubchem: "O304",
       profile: { note: mimeticNote, rows: [
-        { label: "Glycaemic signal", score: 2 }, { label: "Exercise-mimetic signal", score: 3 },
+        { label: "Glycemic signal", score: 2 }, { label: "Exercise-mimetic signal", score: 3 },
         { label: "Risk load", score: 2, neg: true }, { label: "Evidence quality", score: 2 } ] },
       risks: [
         { system: "Tolerability", level: "low", text: "Well tolerated in early human studies", evidence: "human rct", refs: [72] },
@@ -119,7 +119,7 @@
         { title: "Microvascular perfusion", evidence: "human rct", summary: "Improved blood flow in small peripheral vessels in people with type 2 diabetes", refs: [72] }
       ],
       trials: [
-        { title: "Phase 2a in type 2 diabetes on metformin", evidence: "human rct", meta: ["adults with type 2 diabetes on metformin", "O304 or placebo added to metformin", "28 days", "randomised, double-blind, placebo-controlled"], body: "O304 lowered fasting glucose and improved peripheral microvascular perfusion compared with placebo, and was well tolerated.", note: "This was a short, small trial. Larger studies are needed before any conclusion about efficacy.", refs: [72] }
+        { title: "Phase 2a in type 2 diabetes on metformin", evidence: "human rct", meta: ["adults with type 2 diabetes on metformin", "O304 or placebo added to metformin", "28 days", "randomized, double-blind, placebo-controlled"], body: "O304 lowered fasting glucose and improved peripheral microvascular perfusion compared with placebo, and was well tolerated.", note: "This was a short, small trial. Larger studies are needed before any conclusion about efficacy.", refs: [72] }
       ],
       related: ["bam15", "slu-pp-332", "mots-c"]
     }

@@ -350,3 +350,4 @@ main { min-height: 70vh; }
 .st-veterinary { color: var(--teal); border-color: color-mix(in srgb, var(--teal) 45%, transparent); background: color-mix(in srgb, var(--teal) 10%, transparent); }
 .st-never-approved { color: var(--red); border-color: var(--red-line); background: color-mix(in srgb, var(--red) 10%, transparent); }
 .intro p, .row-name small, .trial-meta, .refs-list li { overflow-wrap: anywhere; }
+.ask-intro { margin: 0; color: var(--muted); font-size: .9rem; }

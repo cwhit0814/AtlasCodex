@@ -17,26 +17,26 @@ window.ATLAS = {
   site: {
     title: "Atlas Codex",
     wordmark: ["ATLAS", "CODEX"],
-    heroTitle: "the atlas codex",
-    heroLines: ["every compound worth knowing, cited and graded.", "mechanisms, trials, risks, and what the evidence actually says."],
+    heroTitle: "The Atlas Codex",
+    heroLines: ["Every compound worth knowing, cited and graded.", "Mechanisms, trials, risks, and what the evidence actually says."],
     tagline: "An open reference library of peptides and research compounds.",
     disclaimer:
       "Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.",
     ticker: [
-      "NEW: retatrutide entry updated with phase 2 data",
-      "GUIDE: how to read a clinical trial phase",
-      "{count} entries · every claim graded by evidence",
-      "SUPPORT: use code ATLAS at halfnattys.is"
+      "New: Retatrutide entry updated with phase 2 data",
+      "Guide: How to read a clinical trial phase",
+      "{count} entries, every claim graded by evidence",
+      "Support: Use code ATLAS at halfnattys.is"
     ],
-    tickerLink: { label: "guides →", href: "codex.html?cat=guides" },
+    tickerLink: { label: "Guides →", href: "codex.html?cat=guides" },
     headerButtons: [
       { label: "SUPPORT ME", href: "support.html", primary: true },
       { label: "CONTACT", href: "about.html#contact" }
     ],
     cards: [
-      { icon: "chat", tone: "gold", title: "join the community", text: "talk through research, ask questions, and flag entries that need updating.", href: "about.html#contact" },
-      { icon: "form", tone: "violet", title: "request an entry", text: "tell us which compound to cover next and what you want to know about it.", href: "about.html#contact" },
-      { icon: "book", tone: "plain", title: "read the guides", text: "how to judge evidence, read trial phases, and spot a weak claim.", href: "codex.html?cat=guides" }
+      { icon: "chat", tone: "gold", title: "Join the Community", text: "Talk through research, ask questions, and flag entries that need updating.", href: "about.html#contact" },
+      { icon: "form", tone: "violet", title: "Request an Entry", text: "Tell us which compound to cover next and what you want to know about it.", href: "about.html#contact" },
+      { icon: "book", tone: "plain", title: "Read the Guides", text: "How to judge evidence, read trial phases, and spot a weak claim.", href: "codex.html?cat=guides" }
     ]
   },
 
@@ -44,14 +44,14 @@ window.ATLAS = {
    * Sources shown on the Support Me page (support.html). Add one object per source.
    *   logo:       optional image path (e.g. "img/halfnattys.png"); initials are shown if omitted
    *   attributes: outlined tags (e.g. "US shipping")
-   *   sells:      grey tags under "what they sell"
-   *   logoBg:     background colour behind the logo (default light grey)
+   *   sells:      gray tags under "what they sell"
+   *   logoBg:     background color behind the logo (default light gray)
    *   popular:    [{ name, slug }]; items with a slug link to that codex entry
    */
   support: {
-    eyebrow: "trusted sources",
-    title: "support me",
-    intro: "using my code at the sources below supports atlas codex at no extra cost to you. thank you for keeping the archive running.",
+    eyebrow: "Trusted sources",
+    title: "Support Me",
+    intro: "Using my code at the sources below supports Atlas Codex at no extra cost to you. Thank you for keeping the archive running.",
     disclosure: "Atlas Codex earns a commission on purchases made with these codes. A listing here is not an endorsement of any product, and nothing on this page is medical advice.",
     sources: [
       {
@@ -61,28 +61,28 @@ window.ATLAS = {
         logo: "img/halfnattys.png",
         logoBg: "#000",
         blurb: "Research-market products across peptides, capsules, sprays and topicals, with a public COA library.",
-        attributes: ["COA library", "Research market"],
-        sells: ["Peptides", "Capsules", "Sprays", "Topicals", "Aminos", "Liquids", "Lab supplies"],
+        attributes: ["COA Library", "Research Market"],
+        sells: ["Peptides", "Capsules", "Sprays", "Topicals", "Aminos", "Liquids", "Lab Supplies"],
         popular: [
           { name: "GHK-Cu", slug: "ghk-cu" },
           { name: "BPC-157", slug: "bpc-157" },
           { name: "Dihexa", slug: "dihexa" },
-          { name: "Tri-blend hair loss topical", slug: "tri-blend-topical" }
+          { name: "Tri-Blend Hair Loss Topical", slug: "tri-blend-topical" }
         ]
       }
     ]
   },
 
   categories: [
-    { id: "metabolic", name: "metabolic", blurb: "Incretin mimetics and compounds studied for weight and glucose control." },
-    { id: "repair", name: "repair", blurb: "Peptides studied for wound healing, tendon and gut repair." },
-    { id: "gh", name: "gh axis", blurb: "Secretagogues and GHRH analogs that act on the GH pathway." },
-    { id: "nootropic", name: "noots", blurb: "Peptides studied for anxiety, cognition and neuroprotection." },
-    { id: "longevity", name: "longevity", blurb: "Compounds investigated for ageing biology and mitochondrial function." },
-    { id: "immune", name: "immune", blurb: "Thymic peptides and immunomodulators." },
-    { id: "skin", name: "skin & hair", blurb: "Cosmetic and dermatological peptides, and topical treatments for hair loss." },
-    { id: "melanocortin", name: "melanocortin", blurb: "Agonists of the melanocortin receptor family." },
-    { id: "guides", name: "guides", blurb: "Background reading on how to evaluate research." }
+    { id: "metabolic", name: "Metabolic", blurb: "Incretin mimetics and compounds studied for weight and glucose control." },
+    { id: "repair", name: "Repair", blurb: "Peptides studied for wound healing, tendon and gut repair." },
+    { id: "gh", name: "GH Axis", blurb: "Secretagogues and GHRH analogs that act on the GH pathway." },
+    { id: "nootropic", name: "Nootropics", blurb: "Peptides studied for anxiety, cognition and neuroprotection." },
+    { id: "longevity", name: "Longevity", blurb: "Compounds investigated for aging biology and mitochondrial function." },
+    { id: "immune", name: "Immune", blurb: "Thymic peptides and immunomodulators." },
+    { id: "skin", name: "Skin & Hair", blurb: "Cosmetic and dermatological peptides, and topical treatments for hair loss." },
+    { id: "melanocortin", name: "Melanocortin", blurb: "Agonists of the melanocortin receptor family." },
+    { id: "guides", name: "Guides", blurb: "Background reading on how to evaluate research." }
   ],
 
   entries: [
@@ -101,31 +101,31 @@ window.ATLAS = {
         note: "Scored relative to other metabolic compounds in the codex at studied doses, not on an absolute scale.",
         rows: [
           { label: "Weight loss", score: 4 },
-          { label: "Glycaemic control", score: 5 },
+          { label: "Glycemic control", score: 5 },
           { label: "GI side effects", score: 3, neg: true },
           { label: "Risk load", score: 2, neg: true },
           { label: "Evidence quality", score: 5 }
         ]
       },
       risks: [
-        { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting, diarrhoea and constipation are the most common adverse effects. They cluster during dose escalation.", evidence: "human rct", detail: "GI effects were the main reason for stopping treatment in the STEP and SELECT trials. Slow dose escalation is the standard way to reduce them." },
+        { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting, diarrhea and constipation are the most common adverse effects. They cluster during dose escalation.", evidence: "human rct", detail: "GI effects were the main reason for stopping treatment in the STEP and SELECT trials. Slow dose escalation is the standard way to reduce them." },
         { system: "Gallbladder", level: "low", text: "Higher rates of gallstones and cholecystitis than placebo", evidence: "human rct", detail: "Rapid weight loss itself raises gallstone risk, so part of the signal may come from weight loss rather than the drug." },
         { system: "Pancreas", level: "low", text: "Acute pancreatitis has been reported. Events are rare and whether the drug causes them is unsettled.", evidence: "contested", detail: "Large outcome trials did not show a clear excess, but the label carries a warning. Treatment is stopped if pancreatitis is suspected." },
         { system: "Retina", level: "moderate", text: "More diabetic retinopathy complications in people with type 2 diabetes in SUSTAIN-6", evidence: "human rct", detail: "The excess was concentrated in people with pre-existing retinopathy and was linked to rapid HbA1c reduction.", refs: [2] },
-        { system: "Thyroid", level: "low", text: "Thyroid C-cell tumours occurred in rodents. Whether this is relevant to humans has not been established.", evidence: "animal", detail: "Carries a boxed warning. It is contraindicated with a personal or family history of medullary thyroid carcinoma or MEN2." },
+        { system: "Thyroid", level: "low", text: "Thyroid C-cell tumors occurred in rodents. Whether this is relevant to humans has not been established.", evidence: "animal", detail: "Carries a boxed warning. It is contraindicated with a personal or family history of medullary thyroid carcinoma or MEN2." },
         { system: "Lean mass", level: "moderate", text: "A meaningful share of the weight lost is lean mass", evidence: "human rct", detail: "This holds for most large weight losses, whatever the method. Resistance training and adequate protein are the usual countermeasures." }
       ],
       activity: [
-        { title: "GLP-1 receptor", evidence: "human rct", summary: "Full agonist. Increases glucose-dependent insulin secretion and suppresses glucagon", detail: "The receptor response is glucose-dependent, so semaglutide on its own carries a low risk of hypoglycaemia. The risk rises when it is combined with insulin or sulfonylureas.", refs: [26] },
+        { title: "GLP-1 receptor", evidence: "human rct", summary: "Full agonist. Increases glucose-dependent insulin secretion and suppresses glucagon", detail: "The receptor response is glucose-dependent, so semaglutide on its own carries a low risk of hypoglycemia. The risk rises when it is combined with insulin or sulfonylureas.", refs: [26] },
         { title: "DPP-4 resistance", evidence: "established", summary: "The Aib substitution at position 8 blocks the enzyme that inactivates native GLP-1 within minutes", detail: "Native GLP-1 has a half-life of about two minutes. DPP-4 resistance is one of the two changes that turn it into a weekly drug.", refs: [26] },
         { title: "Albumin binding", evidence: "established", summary: "The fatty-acid side chain binds serum albumin, giving a half-life of about a week", detail: "Reversible albumin binding protects the peptide from renal filtration and from proteolysis.", refs: [26] },
-        { title: "Gastric emptying", evidence: "human rct", summary: "Slows gastric emptying. The effect weakens with continued dosing", detail: "This drives early satiety and much of the nausea. It also matters for anaesthesia because of the risk of aspiration." },
+        { title: "Gastric emptying", evidence: "human rct", summary: "Slows gastric emptying. The effect weakens with continued dosing", detail: "This drives early satiety and much of the nausea. It also matters for anesthesia because of the risk of aspiration." },
         { title: "Central appetite", evidence: "human rct", summary: "Lowers energy intake and food cravings through receptors in the hypothalamus and hindbrain", detail: "Studies of energy intake show lower ad libitum calorie consumption and less preference for high-fat foods. Appetite reduction, not a change in energy expenditure, appears to drive the weight loss." }
       ],
       trials: [
-        { title: "STEP 1: weight management without diabetes", evidence: "human rct", meta: ["1,961 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "semaglutide 2.4 mg weekly or placebo, plus lifestyle intervention", "68 weeks", "randomised, double-blind, placebo-controlled"], body: "Mean body weight changed by −14.9% with semaglutide against −2.4% with placebo. 86.4% of the semaglutide group lost at least 5% of body weight, against 31.5% on placebo. GI events were the most common adverse effects.", note: "In the off-treatment extension, participants regained about two-thirds of the weight they had lost within a year of stopping. The effect lasts only while the drug is taken.", refs: [1, 4] },
-        { title: "SUSTAIN-6: cardiovascular safety in type 2 diabetes", evidence: "human rct", meta: ["3,297 adults with type 2 diabetes at high cardiovascular risk", "semaglutide 0.5 or 1.0 mg weekly or placebo", "104 weeks", "randomised, double-blind, non-inferiority"], body: "The primary composite of cardiovascular death, non-fatal MI or non-fatal stroke occurred in 6.6% on semaglutide against 8.9% on placebo (HR 0.74). Retinopathy complications were higher: 3.0% against 1.8%.", note: "This trial was designed to show non-inferiority, so the superiority finding was not pre-specified. SELECT later tested superiority directly.", refs: [2] },
-        { title: "SELECT: cardiovascular outcomes in obesity without diabetes", evidence: "human rct", meta: ["17,604 adults ≥45 years with established cardiovascular disease and BMI ≥27, no diabetes", "semaglutide 2.4 mg weekly or placebo", "mean follow-up 39.8 months", "randomised, double-blind, event-driven"], body: "Major adverse cardiovascular events occurred in 6.5% against 8.0% (HR 0.80). Treatment was stopped because of adverse events in 16.6% against 8.2%.", note: "This is the first trial to show a cardiovascular outcome benefit for an anti-obesity drug in people without diabetes.", refs: [3] }
+        { title: "STEP 1: Weight management without diabetes", evidence: "human rct", meta: ["1,961 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "semaglutide 2.4 mg weekly or placebo, plus lifestyle intervention", "68 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean body weight changed by −14.9% with semaglutide against −2.4% with placebo. 86.4% of the semaglutide group lost at least 5% of body weight, against 31.5% on placebo. GI events were the most common adverse effects.", note: "In the off-treatment extension, participants regained about two-thirds of the weight they had lost within a year of stopping. The effect lasts only while the drug is taken.", refs: [1, 4] },
+        { title: "SUSTAIN-6: Cardiovascular safety in type 2 diabetes", evidence: "human rct", meta: ["3,297 adults with type 2 diabetes at high cardiovascular risk", "semaglutide 0.5 or 1.0 mg weekly or placebo", "104 weeks", "randomized, double-blind, non-inferiority"], body: "The primary composite of cardiovascular death, non-fatal MI or non-fatal stroke occurred in 6.6% on semaglutide against 8.9% on placebo (HR 0.74). Retinopathy complications were higher: 3.0% against 1.8%.", note: "This trial was designed to show non-inferiority, so the superiority finding was not pre-specified. SELECT later tested superiority directly.", refs: [2] },
+        { title: "SELECT: Cardiovascular outcomes in obesity without diabetes", evidence: "human rct", meta: ["17,604 adults ≥45 years with established cardiovascular disease and BMI ≥27, no diabetes", "semaglutide 2.4 mg weekly or placebo", "mean follow-up 39.8 months", "randomized, double-blind, event-driven"], body: "Major adverse cardiovascular events occurred in 6.5% against 8.0% (HR 0.80). Treatment was stopped because of adverse events in 16.6% against 8.2%.", note: "This is the first trial to show a cardiovascular outcome benefit for an anti-obesity drug in people without diabetes.", refs: [3] }
       ],
       related: ["tirzepatide", "retatrutide"]
     },
@@ -143,28 +143,28 @@ window.ATLAS = {
         note: "Scored relative to other metabolic compounds in the codex at studied doses.",
         rows: [
           { label: "Weight loss", score: 5 },
-          { label: "Glycaemic control", score: 5 },
+          { label: "Glycemic control", score: 5 },
           { label: "GI side effects", score: 3, neg: true },
           { label: "Risk load", score: 2, neg: true },
           { label: "Evidence quality", score: 5 }
         ]
       },
       risks: [
-        { system: "Gastrointestinal", level: "moderate", text: "Nausea, diarrhoea, vomiting and constipation, mostly during dose escalation", evidence: "human rct", detail: "The profile is similar to selective GLP-1 agonists. Rates rise with dose." },
+        { system: "Gastrointestinal", level: "moderate", text: "Nausea, diarrhea, vomiting and constipation, mostly during dose escalation", evidence: "human rct", detail: "The profile is similar to selective GLP-1 agonists. Rates rise with dose." },
         { system: "Gallbladder", level: "low", text: "Gallbladder events are more frequent than with placebo", evidence: "human rct" },
-        { system: "Pancreas", level: "low", text: "Pancreatitis is a labelled warning. Events are rare", evidence: "contested" },
-        { system: "Thyroid", level: "low", text: "C-cell tumours in rodents. Relevance to humans is unknown", evidence: "animal", detail: "Carries the same boxed warning as other long-acting GLP-1 agonists." },
-        { system: "Hypoglycaemia", level: "low", text: "Low risk on its own. Higher when combined with insulin or sulfonylureas", evidence: "established" }
+        { system: "Pancreas", level: "low", text: "Pancreatitis is a labeled warning. Events are rare", evidence: "contested" },
+        { system: "Thyroid", level: "low", text: "C-cell tumors in rodents. Relevance to humans is unknown", evidence: "animal", detail: "Carries the same boxed warning as other long-acting GLP-1 agonists." },
+        { system: "Hypoglycemia", level: "low", text: "Low risk on its own. Higher when combined with insulin or sulfonylureas", evidence: "established" }
       ],
       activity: [
-        { title: "GIP receptor", evidence: "in vitro", summary: "Potency at the GIP receptor is similar to native GIP", detail: "The molecule is deliberately imbalanced: it favours the GIP receptor and is several-fold weaker than native GLP-1 at the GLP-1 receptor.", refs: [25] },
-        { title: "GLP-1 receptor", evidence: "in vitro", summary: "A biased agonist that favours cAMP signalling over β-arrestin recruitment", detail: "Biased signalling may reduce receptor internalisation. Whether this explains its larger clinical effect is still debated.", refs: [25] },
+        { title: "GIP receptor", evidence: "in vitro", summary: "Potency at the GIP receptor is similar to native GIP", detail: "The molecule is deliberately imbalanced: it favors the GIP receptor and is several-fold weaker than native GLP-1 at the GLP-1 receptor.", refs: [25] },
+        { title: "GLP-1 receptor", evidence: "in vitro", summary: "A biased agonist that favors cAMP signaling over β-arrestin recruitment", detail: "Biased signaling may reduce receptor internalisation. Whether this explains its larger clinical effect is still debated.", refs: [25] },
         { title: "Insulin sensitivity", evidence: "human rct", summary: "Improves insulin sensitivity more than its weight loss alone would predict", detail: "Clamp studies suggest a GIP-related contribution in addition to weight reduction." }
       ],
       trials: [
-        { title: "SURPASS-2: against semaglutide 1 mg in type 2 diabetes", evidence: "human rct", meta: ["1,879 adults with type 2 diabetes on metformin", "tirzepatide 5, 10 or 15 mg weekly or semaglutide 1 mg weekly", "40 weeks", "randomised, open-label, active-controlled"], body: "HbA1c fell by 2.01, 2.24 and 2.30 percentage points with the three tirzepatide doses, against 1.86 with semaglutide 1 mg. Weight reductions were also larger at every tirzepatide dose.", note: "The comparator was semaglutide 1 mg, not the 2.0 mg or 2.4 mg doses used later.", refs: [5] },
-        { title: "SURMOUNT-1: weight management without diabetes", evidence: "human rct", meta: ["2,539 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "tirzepatide 5, 10 or 15 mg weekly or placebo", "72 weeks", "randomised, double-blind, placebo-controlled"], body: "Mean weight change was −15.0%, −19.5% and −20.9% across the three doses, against −3.1% with placebo.", refs: [6] },
-        { title: "SURMOUNT-5: head to head with semaglutide in obesity", evidence: "human rct", meta: ["751 adults with obesity, no diabetes", "tirzepatide at maximum tolerated dose or semaglutide at maximum tolerated dose", "72 weeks", "randomised, open-label"], body: "Mean weight change was −20.2% with tirzepatide against −13.7% with semaglutide.", note: "This is the first direct comparison of the two drugs at their obesity doses.", refs: [7] }
+        { title: "SURPASS-2: Against semaglutide 1 mg in type 2 diabetes", evidence: "human rct", meta: ["1,879 adults with type 2 diabetes on metformin", "tirzepatide 5, 10 or 15 mg weekly or semaglutide 1 mg weekly", "40 weeks", "randomized, open-label, active-controlled"], body: "HbA1c fell by 2.01, 2.24 and 2.30 percentage points with the three tirzepatide doses, against 1.86 with semaglutide 1 mg. Weight reductions were also larger at every tirzepatide dose.", note: "The comparator was semaglutide 1 mg, not the 2.0 mg or 2.4 mg doses used later.", refs: [5] },
+        { title: "SURMOUNT-1: Weight management without diabetes", evidence: "human rct", meta: ["2,539 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "tirzepatide 5, 10 or 15 mg weekly or placebo", "72 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change was −15.0%, −19.5% and −20.9% across the three doses, against −3.1% with placebo.", refs: [6] },
+        { title: "SURMOUNT-5: Head to head with semaglutide in obesity", evidence: "human rct", meta: ["751 adults with obesity, no diabetes", "tirzepatide at maximum tolerated dose or semaglutide at maximum tolerated dose", "72 weeks", "randomized, open-label"], body: "Mean weight change was −20.2% with tirzepatide against −13.7% with semaglutide.", note: "This is the first direct comparison of the two drugs at their obesity doses.", refs: [7] }
       ],
       related: ["semaglutide", "retatrutide"]
     },
@@ -182,14 +182,14 @@ window.ATLAS = {
         note: "Scored relative to other metabolic compounds in the codex. Risk load is scored higher because long-term data do not yet exist.",
         rows: [
           { label: "Weight loss", score: 5 },
-          { label: "Glycaemic control", score: 4 },
+          { label: "Glycemic control", score: 4 },
           { label: "GI side effects", score: 3, neg: true },
           { label: "Risk load", score: 3, neg: true },
           { label: "Evidence quality", score: 3 }
         ]
       },
       risks: [
-        { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting and diarrhoea, dose-related and mostly early", evidence: "human rct", detail: "Lower starting doses reduced GI events in the phase 2 trial.", refs: [8] },
+        { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting and diarrhea, dose-related and mostly early", evidence: "human rct", detail: "Lower starting doses reduced GI events in the phase 2 trial.", refs: [8] },
         { system: "Heart rate", level: "moderate", text: "Resting heart rate rose with dose, peaked around 24 weeks, then declined", evidence: "human rct", refs: [8] },
         { system: "Long-term safety", level: "unknown", text: "No long-term outcome data. Phase 3 is ongoing", evidence: "unknown" },
         { system: "Product quality", level: "high", text: "Material sold outside trials is unregulated. Its identity, dose and sterility are unknown", evidence: "established" }
@@ -200,8 +200,8 @@ window.ATLAS = {
         { title: "Liver fat", evidence: "human rct", summary: "Large reductions in liver fat in a phase 2 substudy", detail: "Most participants with fatty liver at baseline reached normal liver fat levels at higher doses." }
       ],
       trials: [
-        { title: "Phase 2: obesity without diabetes", evidence: "human rct", meta: ["338 adults, BMI ≥30 or ≥27 with a comorbidity", "retatrutide 1, 4, 8 or 12 mg weekly or placebo", "48 weeks", "randomised, double-blind, placebo-controlled"], body: "Mean weight change at 48 weeks was −8.7%, −17.1%, −22.8% and −24.2% across the four doses, against −2.1% with placebo. Weight was still falling at 48 weeks in the higher-dose groups.", note: "These are the largest mean reductions reported for a drug in a trial of this length. This is phase 2, with small arms; phase 3 has to confirm them.", refs: [8] },
-        { title: "Phase 2: type 2 diabetes", evidence: "human rct", meta: ["281 adults with type 2 diabetes", "retatrutide at several doses, placebo, or dulaglutide 1.5 mg", "36 weeks", "randomised, double-blind, active and placebo-controlled"], body: "HbA1c fell by up to about 2 percentage points at 24 weeks. Weight fell by up to about 17% at 36 weeks at the highest dose.", refs: [9] }
+        { title: "Phase 2: Obesity without diabetes", evidence: "human rct", meta: ["338 adults, BMI ≥30 or ≥27 with a comorbidity", "retatrutide 1, 4, 8 or 12 mg weekly or placebo", "48 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change at 48 weeks was −8.7%, −17.1%, −22.8% and −24.2% across the four doses, against −2.1% with placebo. Weight was still falling at 48 weeks in the higher-dose groups.", note: "These are the largest mean reductions reported for a drug in a trial of this length. This is phase 2, with small arms; phase 3 has to confirm them.", refs: [8] },
+        { title: "Phase 2: Type 2 diabetes", evidence: "human rct", meta: ["281 adults with type 2 diabetes", "retatrutide at several doses, placebo, or dulaglutide 1.5 mg", "36 weeks", "randomized, double-blind, active and placebo-controlled"], body: "HbA1c fell by up to about 2 percentage points at 24 weeks. Weight fell by up to about 17% at 36 weeks at the highest dose.", refs: [9] }
       ],
       related: ["tirzepatide", "semaglutide"]
     },
@@ -228,17 +228,17 @@ window.ATLAS = {
       },
       risks: [
         { system: "Human safety", level: "unknown", text: "No controlled human safety data exist", evidence: "unknown", detail: "The absence of reported harm reflects the absence of trials, not evidence of safety." },
-        { system: "Angiogenesis", level: "unknown", text: "Pro-angiogenic signalling raises a theoretical concern about tumour growth", evidence: "contested", detail: "No study has shown this effect. The concern is mechanistic: anything that promotes new blood vessels could in principle support existing tumours." },
+        { system: "Angiogenesis", level: "unknown", text: "Pro-angiogenic signaling raises a theoretical concern about tumor growth", evidence: "contested", detail: "No study has shown this effect. The concern is mechanistic: anything that promotes new blood vessels could in principle support existing tumors." },
         { system: "Product quality", level: "high", text: "Vendor material is unregulated. Purity, dose and sterility are unverified", evidence: "established", detail: "The FDA placed BPC-157 on its list of bulk substances that raise significant safety concerns for compounding, citing a lack of human safety data and risks from impurities." },
         { system: "Sport", level: "moderate", text: "Prohibited by WADA as an unapproved substance (S0)", evidence: "established" }
       ],
       activity: [
-        { title: "Angiogenesis / VEGFR2", evidence: "animal", summary: "Promotes new blood vessel formation in injury models, with VEGFR2 signalling proposed", detail: "Most data come from rodent models of tendon, muscle, gut and vascular injury.", refs: [10] },
+        { title: "Angiogenesis / VEGFR2", evidence: "animal", summary: "Promotes new blood vessel formation in injury models, with VEGFR2 signaling proposed", detail: "Most data come from rodent models of tendon, muscle, gut and vascular injury.", refs: [10] },
         { title: "Nitric oxide system", evidence: "animal", summary: "Reported to modulate nitric oxide pathways and to counteract both NOS blockers and NO donors", refs: [10] },
         { title: "Tendon fibroblasts", evidence: "in vitro", summary: "Increased fibroblast outgrowth, migration and growth hormone receptor expression in cultured tendon cells", detail: "These findings are cell-culture results. They do not by themselves predict an effect on tendon healing in humans." }
       ],
       trials: [],
-      noTrials: "There are no randomised controlled trials in humans. PL 14736 entered a phase 2 trial for ulcerative colitis in the 2000s, but no peer-reviewed results were published. Human reports are limited to small case series.",
+      noTrials: "There are no randomized controlled trials in humans. PL 14736 entered a phase 2 trial for ulcerative colitis in the 2000s, but no peer-reviewed results were published. Human reports are limited to small case series.",
       related: ["tb-500", "ghk-cu"]
     },
     {
@@ -267,7 +267,7 @@ window.ATLAS = {
       activity: [
         { title: "G-actin sequestration", evidence: "established", summary: "Full-length Tβ4 binds monomeric actin and regulates its polymerisation", refs: [11] },
         { title: "Cell migration and angiogenesis", evidence: "animal", summary: "Promotes keratinocyte and endothelial cell migration in wound models", refs: [11] },
-        { title: "Anti-inflammatory signalling", evidence: "animal", summary: "Reduced inflammatory signalling in models of cardiac and corneal injury", refs: [11] }
+        { title: "Anti-inflammatory signaling", evidence: "animal", summary: "Reduced inflammatory signaling in models of cardiac and corneal injury", refs: [11] }
       ],
       trials: [],
       noTrials: "There are no human trials of the TB-500 fragment. Full-length Tβ4 has been tested in humans as eye drops and in cardiac studies, with mixed results.",
@@ -303,7 +303,7 @@ window.ATLAS = {
         { title: "Gene expression", evidence: "in vitro", summary: "Connectivity-map analyses suggest it shifts the expression of many repair-related genes", detail: "These are computational analyses of expression data, not clinical outcomes.", refs: [13] }
       ],
       trials: [],
-      noTrials: "There is no large randomised human trial on record. Topical cosmetic studies are small and often sponsored by manufacturers.",
+      noTrials: "There is no large randomized human trial on record. Topical cosmetic studies are small and often sponsored by manufacturers.",
       related: ["bpc-157"]
     },
 
@@ -335,7 +335,7 @@ window.ATLAS = {
         { title: "Selectivity", evidence: "animal", summary: "Did not raise ACTH or cortisol at doses well above those that release GH", detail: "This set it apart from GHRP-6 and GHRP-2, which raise cortisol and prolactin. The data come mainly from studies in swine.", refs: [14] }
       ],
       trials: [
-        { title: "Postoperative ileus after bowel resection", evidence: "human rct", meta: ["about 114 adults undergoing bowel resection", "ipamorelin 0.03 mg/kg IV twice daily or placebo, for up to 7 days", "proof of concept", "randomised, double-blind, placebo-controlled"], body: "There was no significant difference between groups in time to the first tolerated meal. The drug was well tolerated.", note: "This is the only published efficacy trial. It was negative on its primary endpoint, and development for the indication did not continue.", refs: [15] }
+        { title: "Postoperative ileus after bowel resection", evidence: "human rct", meta: ["about 114 adults undergoing bowel resection", "ipamorelin 0.03 mg/kg IV twice daily or placebo, for up to 7 days", "proof of concept", "randomized, double-blind, placebo-controlled"], body: "There was no significant difference between groups in time to the first tolerated meal. The drug was well tolerated.", note: "This is the only published efficacy trial. It was negative on its primary endpoint, and development for the indication did not continue.", refs: [15] }
       ],
       related: ["cjc-1295"]
     },
@@ -366,7 +366,7 @@ window.ATLAS = {
         { title: "Pulsatility", evidence: "human rct", summary: "GH pulses persisted, with a large rise in trough GH levels", detail: "Continuous GHRH stimulation did not abolish the natural pulsatile pattern of GH release.", refs: [17] }
       ],
       trials: [
-        { title: "Single and repeated dosing in healthy adults", evidence: "human rct", meta: ["healthy adults aged 21–61", "single subcutaneous doses of 30–250 µg/kg, or repeated doses, or placebo", "up to 28 days of follow-up", "randomised, double-blind, placebo-controlled"], body: "After a single dose, GH rose 2- to 10-fold for 6 days or more, and IGF-1 rose 1.5- to 3-fold for 9 to 11 days. The estimated half-life was 5.8 to 8.1 days. Repeated dosing kept IGF-1 raised for up to 28 days.", refs: [16] }
+        { title: "Single and repeated dosing in healthy adults", evidence: "human rct", meta: ["healthy adults aged 21–61", "single subcutaneous doses of 30–250 µg/kg, or repeated doses, or placebo", "up to 28 days of follow-up", "randomized, double-blind, placebo-controlled"], body: "After a single dose, GH rose 2- to 10-fold for 6 days or more, and IGF-1 rose 1.5- to 3-fold for 9 to 11 days. The estimated half-life was 5.8 to 8.1 days. Repeated dosing kept IGF-1 raised for up to 28 days.", refs: [16] }
       ],
       related: ["ipamorelin"]
     },
@@ -377,8 +377,8 @@ window.ATLAS = {
       aliases: ["Epithalon", "AEDG peptide"], category: "longevity", status: "Research only",
       class: "Synthetic tetrapeptide", developer: "V. Khavinson, St. Petersburg Institute of Bioregulation",
       added: "2026-04-14", updated: "2026-08-11",
-      tags: ["telomerase", "pineal", "ageing"],
-      summary: "A four-amino-acid peptide modelled on a pineal gland extract, studied mainly in Russia for effects on ageing markers.",
+      tags: ["telomerase", "pineal", "aging"],
+      summary: "A four-amino-acid peptide modeled on a pineal gland extract, studied mainly in Russia for effects on aging markers.",
       names: "A synthetic version of the claimed active component of epithalamin, a bovine pineal extract. Almost all published work comes from Vladimir Khavinson's institute.",
       structure: "Ala-Glu-Asp-Gly, molecular weight about 390.3 g/mol.",
       pubchem: "epitalon",
@@ -398,7 +398,7 @@ window.ATLAS = {
         { title: "Lifespan", evidence: "animal", summary: "Lifespan extension reported in rodents and fruit flies, mostly from a single group" }
       ],
       trials: [],
-      noTrials: "There are no randomised human trials from independent groups.",
+      noTrials: "There are no randomized human trials from independent groups.",
       related: ["mots-c"]
     },
     {
@@ -519,7 +519,7 @@ window.ATLAS = {
         { title: "MC1 receptor", evidence: "human rct", summary: "Activity at MC1R explains the hyperpigmentation", refs: [24] }
       ],
       trials: [
-        { title: "RECONNECT: two phase 3 trials in HSDD", evidence: "human rct", meta: ["about 1,250 premenopausal women with HSDD across two trials", "bremelanotide 1.75 mg subcutaneous as needed, or placebo", "24 weeks", "randomised, double-blind, placebo-controlled"], body: "Both trials showed significant improvement in desire and reduced distress about low desire compared with placebo. The number of satisfying sexual events did not differ significantly.", note: "The effect sizes were modest. Nausea was common, and few users continue the drug long term.", refs: [22] }
+        { title: "RECONNECT: Two phase 3 trials in HSDD", evidence: "human rct", meta: ["about 1,250 premenopausal women with HSDD across two trials", "bremelanotide 1.75 mg subcutaneous as needed, or placebo", "24 weeks", "randomized, double-blind, placebo-controlled"], body: "Both trials showed significant improvement in desire and reduced distress about low desire compared with placebo. The number of satisfying sexual events did not differ significantly.", note: "The effect sizes were modest. Nausea was common, and few users continue the drug long term.", refs: [22] }
       ],
       related: []
     },
@@ -550,7 +550,7 @@ window.ATLAS = {
         { title: "T-cell maturation", evidence: "animal", summary: "Promotes T-cell differentiation and function" }
       ],
       trials: [
-        { title: "TESTS: thymosin alpha 1 in sepsis", evidence: "human rct", meta: ["about 1,100 adults with sepsis", "thymosin α1 subcutaneous or placebo, for 7 days", "28-day follow-up", "multicentre, randomised, double-blind, placebo-controlled"], body: "There was no significant difference in 28-day all-cause mortality between groups.", note: "This was a large, well-run trial that overturned earlier optimism from smaller studies.", refs: [23] }
+        { title: "TESTS: Thymosin alpha 1 in sepsis", evidence: "human rct", meta: ["about 1,100 adults with sepsis", "thymosin α1 subcutaneous or placebo, for 7 days", "28-day follow-up", "multicentre, randomized, double-blind, placebo-controlled"], body: "There was no significant difference in 28-day all-cause mortality between groups.", note: "This was a large, well-run trial that overturned earlier optimism from smaller studies.", refs: [23] }
       ],
       related: ["tb-500"]
     },
@@ -562,8 +562,8 @@ window.ATLAS = {
       class: "Angiotensin IV analog / HGF–c-Met potentiator", developer: "Washington State University (Harding & Wright labs)",
       added: "2026-10-06", updated: "2026-10-06",
       tags: ["HGF", "c-Met", "synaptogenesis", "angiotensin IV", "cognition", "preclinical"],
-      summary: "A small, orally active peptide-like molecule derived from angiotensin IV. In animal studies it improved memory by strengthening hepatocyte growth factor signalling. It has never been tested in humans.",
-      names: "Developed at Washington State University in research on angiotensin IV analogs as possible anti-dementia drugs. It is often quoted as being \"seven orders of magnitude more potent than BDNF\". That figure comes from a cell-culture synapse-formation assay, not from any measure of effect in a living brain. The same research programme led to Athira Pharma (formerly M3 Biotechnology). Athira's clinical candidate was fosgonimeton, a different molecule, not Dihexa. In 2021 Athira's chief executive, a co-author on the foundational papers, resigned after an internal review found she had altered images in research from her doctoral work.",
+      summary: "A small, orally active peptide-like molecule derived from angiotensin IV. In animal studies it improved memory by strengthening hepatocyte growth factor signaling. It has never been tested in humans.",
+      names: "Developed at Washington State University in research on angiotensin IV analogs as possible anti-dementia drugs. It is often quoted as being \"seven orders of magnitude more potent than BDNF\". That figure comes from a cell-culture synapse-formation assay, not from any measure of effect in a living brain. The same research program led to Athira Pharma (formerly M3 Biotechnology). Athira's clinical candidate was fosgonimeton, a different molecule, not Dihexa. In 2021 Athira's chief executive, a co-author on the foundational papers, resigned after an internal review found she had altered images in research from her doctoral work.",
       structure: "C<sub>27</sub>H<sub>44</sub>N<sub>4</sub>O<sub>5</sub>, molecular weight about 504.7 g/mol. It is a modified fragment of angiotensin IV. N-terminal hexanoylation and a C-terminal aminohexanoic amide protect it from peptidases, which makes it stable enough to be active orally in rodents and lets it cross the blood–brain barrier.",
       pubchem: "dihexa",
       profile: {
@@ -577,12 +577,12 @@ window.ATLAS = {
       },
       risks: [
         { system: "Human safety", level: "unknown", text: "No published human pharmacokinetic or safety data", evidence: "unknown", detail: "No phase 1 trial of Dihexa has been published. Every dose in circulation is extrapolated from rodents." },
-        { system: "Oncogenic signalling", level: "unknown", text: "HGF/c-Met is a proto-oncogenic pathway, and potentiating it raises a theoretical cancer concern", evidence: "contested", detail: "Abnormal c-Met activation drives several cancers, and c-Met inhibitors are approved cancer drugs. Whether brief, low-level potentiation by Dihexa carries meaningful risk is unknown. No study has looked." },
+        { system: "Oncogenic signaling", level: "unknown", text: "HGF/c-Met is a proto-oncogenic pathway, and potentiating it raises a theoretical cancer concern", evidence: "contested", detail: "Abnormal c-Met activation drives several cancers, and c-Met inhibitors are approved cancer drugs. Whether brief, low-level potentiation by Dihexa carries meaningful risk is unknown. No study has looked." },
         { system: "Persistence", level: "unknown", text: "Synapse formation is meant to be lasting, so unwanted effects may not simply wear off", evidence: "contested" },
         { system: "Product quality", level: "high", text: "Vendor material is unregulated. Purity and identity are unverified", evidence: "established" }
       ],
       activity: [
-        { title: "HGF / c-Met system", evidence: "animal", summary: "Binds hepatocyte growth factor and promotes its dimerisation, which strengthens c-Met receptor signalling", detail: "Blocking c-Met abolished both the pro-cognitive and the synapse-forming effects. This was the key experiment linking Dihexa's activity to the HGF system.", refs: [29] },
+        { title: "HGF / c-Met system", evidence: "animal", summary: "Binds hepatocyte growth factor and promotes its dimerization, which strengthens c-Met receptor signaling", detail: "Blocking c-Met abolished both the pro-cognitive and the synapse-forming effects. This was the key experiment linking Dihexa's activity to the HGF system.", refs: [29] },
         { title: "Synaptogenesis", evidence: "in vitro", summary: "Increased dendritic spine density and new synapse formation in cultured hippocampal neurons", refs: [29] },
         { title: "Memory models", evidence: "animal", summary: "Reversed scopolamine-induced spatial learning deficits and improved performance in aged rats in the water maze", detail: "Dosing was oral or intraperitoneal in rats. These are standard acute-deficit models. They do not show disease modification in humans.", refs: [28] },
         { title: "Angiotensin IV / AT4 site", evidence: "contested", summary: "Originally framed as acting at the \"AT4 receptor\"; later work attributed its effects to the HGF/c-Met system instead", refs: [29] }
@@ -596,16 +596,16 @@ window.ATLAS = {
     /* ------------------------------------------------------------ skin & hair: tri-blend */
     {
       slug: "tri-blend-topical", type: "compound", name: "Tri-Blend Topical",
-      aliases: ["Minoxidil + RU-58841 + Finasteride", "Tri-blend hair loss topical"], category: "skin", status: "Research only",
+      aliases: ["Minoxidil + RU-58841 + Finasteride", "Tri-Blend Hair Loss Topical"], category: "skin", status: "Research only",
       class: "Topical combination: K⁺ channel opener + androgen receptor antagonist + 5α-reductase inhibitor", developer: "Compounded / research-market blend",
       added: "2026-10-06", updated: "2026-10-06",
       tags: ["hair loss", "androgenetic alopecia", "minoxidil", "finasteride", "RU-58841", "DHT", "topical"],
       summary: "A scalp solution that combines three ways of fighting androgenetic hair loss: minoxidil 10%, the research antiandrogen RU-58841 at 25 mg/mL, and finasteride at 500 µg/mL (0.05%). Two of the ingredients are approved drugs. The combination as a whole has never been tested.",
-      names: "Sold as a 30 mL research-market topical labelled \"Minoxidil + RU-58841 + Finasteride, 10%, 25 mg/mL, 500 mcg/mL\". Each ingredient has a different regulatory status. Minoxidil is approved over the counter at 2% and 5%; 10% is above any approved strength. Oral finasteride 1 mg (Propecia) is approved for male pattern hair loss, and topical finasteride is approved in some countries. RU-58841 has never been approved anywhere and never finished clinical development. The \"Research only\" status here applies to the blend, mainly because it contains RU-58841.",
+      names: "Sold as a 30 mL research-market topical labeled \"Minoxidil + RU-58841 + Finasteride, 10%, 25 mg/mL, 500 mcg/mL\". Each ingredient has a different regulatory status. Minoxidil is approved over the counter at 2% and 5%; 10% is above any approved strength. Oral finasteride 1 mg (Propecia) is approved for male pattern hair loss, and topical finasteride is approved in some countries. RU-58841 has never been approved anywhere and never finished clinical development. The \"Research only\" status here applies to the blend, mainly because it contains RU-58841.",
       structure: "<strong>Minoxidil</strong>: C<sub>9</sub>H<sub>15</sub>N<sub>5</sub>O, molecular weight about 209.2 g/mol. It is a prodrug, activated in the hair follicle by the enzyme sulfotransferase (SULT1A1). <strong>RU-58841</strong>: C<sub>17</sub>H<sub>18</sub>F<sub>3</sub>N<sub>3</sub>O<sub>3</sub>, molecular weight about 369.3 g/mol. It is a non-steroidal antiandrogen (a cyanophenyl-imidazolidinedione) designed for topical use. <strong>Finasteride</strong>: C<sub>23</sub>H<sub>36</sub>N<sub>2</sub>O<sub>2</sub>, molecular weight about 372.5 g/mol. It is a 4-azasteroid that inhibits type II 5α-reductase.",
       pubchem: false,
       profile: {
-        note: "Scored for the blend as labelled. Efficacy is inferred from trials of the individual ingredients; no trial has tested this combination.",
+        note: "Scored for the blend as labeled. Efficacy is inferred from trials of the individual ingredients; no trial has tested this combination.",
         rows: [
           { label: "Hair retention (expected)", score: 4 },
           { label: "Regrowth (expected)", score: 3 },
@@ -619,22 +619,22 @@ window.ATLAS = {
         { system: "Initial shedding", level: "moderate", text: "Temporary increase in shedding in the first weeks of minoxidil", evidence: "established", detail: "Follicles leave the resting phase and push out old hairs as they re-enter growth. It typically settles within 2–3 months." },
         { system: "Cardiovascular", level: "low", text: "Systemic minoxidil absorption can cause palpitations, a faster heart rate, dizziness or fluid retention", evidence: "human obs", detail: "This is uncommon with topical use, but more likely at 10%, with large application volumes or on broken skin. Minoxidil was originally an oral blood-pressure drug." },
         { system: "Facial / body hair", level: "low", text: "Unwanted hair growth where the solution runs or is transferred", evidence: "human rct", refs: [31] },
-        { system: "Sexual function", level: "low", text: "Decreased libido, erectile dysfunction and lower ejaculate volume have been reported with finasteride. A topical RU-58841 dose that reaches the bloodstream could add to this", evidence: "human rct", detail: "In the oral finasteride 1 mg trials, sexual adverse events occurred in 3.8% on finasteride against 2.1% on placebo. Topical finasteride lowered serum DHT less than oral, but still lowered it. Reports of lasting symptoms after stopping (\"post-finasteride syndrome\") are disputed and poorly characterised.", refs: [32, 33] },
+        { system: "Sexual function", level: "low", text: "Decreased libido, erectile dysfunction and lower ejaculate volume have been reported with finasteride. A topical RU-58841 dose that reaches the bloodstream could add to this", evidence: "human rct", detail: "In the oral finasteride 1 mg trials, sexual adverse events occurred in 3.8% on finasteride against 2.1% on placebo. Topical finasteride lowered serum DHT less than oral, but still lowered it. Reports of lasting symptoms after stopping (\"post-finasteride syndrome\") are disputed and poorly characterized.", refs: [32, 33] },
         { system: "Mood", level: "low", text: "Depression and suicidal ideation are listed as post-marketing reports on the finasteride label", evidence: "contested" },
         { system: "Unknown component", level: "unknown", text: "RU-58841 has no human safety, pharmacokinetic or long-term data", evidence: "unknown", detail: "Users report systemic antiandrogen effects such as low libido, fatigue and breast tenderness. None of this has been studied. How much RU-58841 reaches the bloodstream from the scalp in humans is not known." },
-        { system: "Pregnancy / handling", level: "high", text: "Finasteride and antiandrogens can feminise a male fetus. Anyone who is or may become pregnant should not handle the product", evidence: "established", detail: "Skin contact with finasteride is a labelled hazard. Treated scalp and pillowcases are realistic routes of exposure." },
+        { system: "Pregnancy / handling", level: "high", text: "Finasteride and antiandrogens can feminise a male fetus. Anyone who is or may become pregnant should not handle the product", evidence: "established", detail: "Skin contact with finasteride is a labeled hazard. Treated scalp and pillowcases are realistic routes of exposure." },
         { system: "Pets", level: "high", text: "Topical minoxidil is highly toxic to cats, even from small amounts of residue", evidence: "established", detail: "Cats lack the enzyme activity needed to clear minoxidil. Fatal poisonings have followed contact with treated skin, bedding or licked fur." }
       ],
       activity: [
-        { title: "Minoxidil: follicle stimulation", evidence: "human rct", summary: "Lengthens the growth phase (anagen) and enlarges shrunken follicles. Its exact mechanism remains unclear", detail: "Minoxidil sulfate opens ATP-sensitive potassium channels and increases local blood flow and growth-factor signalling (VEGF). Response depends on how much follicular sulfotransferase a person has, which is why some people respond poorly.", refs: [31] },
+        { title: "Minoxidil: Follicle stimulation", evidence: "human rct", summary: "Lengthens the growth phase (anagen) and enlarges shrunken follicles. Its exact mechanism remains unclear", detail: "Minoxidil sulfate opens ATP-sensitive potassium channels and increases local blood flow and growth-factor signaling (VEGF). Response depends on how much follicular sulfotransferase a person has, which is why some people respond poorly.", refs: [31] },
         { title: "Finasteride: 5α-reductase type II", evidence: "human rct", summary: "Blocks the conversion of testosterone to DHT, the androgen that drives shrinkage of genetically susceptible follicles", detail: "At 500 µg/mL (0.05%), the finasteride in this blend is one-fifth the strength of the 0.25% spray tested in phase 3. Systemic DHT suppression from topical use is real but smaller than from the oral drug.", refs: [32, 33] },
-        { title: "RU-58841: androgen receptor", evidence: "animal", summary: "Competitive androgen receptor antagonist designed for topical activity with limited systemic exposure", detail: "It prevented and partly reversed balding on the scalp of stumptail macaques, a primate model of androgenetic alopecia. Development by Roussel Uclaf stopped before any controlled human trial was completed.", refs: [34, 35] },
+        { title: "RU-58841: Androgen receptor", evidence: "animal", summary: "Competitive androgen receptor antagonist designed for topical activity with limited systemic exposure", detail: "It prevented and partly reversed balding on the scalp of stumptail macaques, a primate model of androgenetic alopecia. Development by Roussel Uclaf stopped before any controlled human trial was completed.", refs: [34, 35] },
         { title: "Rationale for combining", evidence: "contested", summary: "Lower DHT (finasteride), block what remains at the receptor (RU-58841), and stimulate growth directly (minoxidil)", detail: "Combining oral finasteride with topical minoxidil works better than either alone in clinical studies. Adding a topical antiandrogen is a plausible extension, but nobody has tested it." }
       ],
       trials: [
-        { title: "Topical minoxidil 5% against 2% and placebo", evidence: "human rct", meta: ["393 men aged 18–49 with androgenetic alopecia", "5% minoxidil, 2% minoxidil or placebo, twice daily", "48 weeks", "randomised, double-blind, placebo-controlled"], body: "5% minoxidil was significantly better than 2% and placebo on hair counts and on patient and investigator ratings. It produced about 45% more regrowth than 2% at 48 weeks. Itching and local irritation were more frequent with 5%.", note: "This is the basis for the 5% strength. No comparably large trial supports 10% over 5% topically.", refs: [31] },
-        { title: "Oral finasteride 1 mg in men", evidence: "human rct", meta: ["1,553 men aged 18–41 with vertex or frontal hair loss", "finasteride 1 mg daily or placebo", "1 year, with a blinded extension to 2 years", "two randomised, double-blind, placebo-controlled trials"], body: "Finasteride increased hair counts and slowed further loss compared with placebo, and the benefit held at 2 years. Sexual adverse events occurred in 3.8% against 2.1% and resolved in men who stopped treatment.", note: "This is the oral drug. It is included because it establishes that lowering DHT works. The blend delivers finasteride topically at a lower and more variable systemic exposure.", refs: [32] },
-        { title: "Topical finasteride 0.25% spray (phase 3)", evidence: "human rct", meta: ["458 men with androgenetic alopecia", "topical finasteride 0.25%, oral finasteride 1 mg, or placebo spray", "24 weeks", "randomised, controlled"], body: "Target-area hair counts improved with topical finasteride by about as much as with oral finasteride, and significantly more than with placebo. Plasma finasteride was far lower with the topical, and serum DHT fell by about a third against about half with oral dosing.", note: "The blend contains 0.05% finasteride, one-fifth of the strength tested here, so this trial does not show that the blend's finasteride component is effective.", refs: [33] }
+        { title: "Topical minoxidil 5% against 2% and placebo", evidence: "human rct", meta: ["393 men aged 18–49 with androgenetic alopecia", "5% minoxidil, 2% minoxidil or placebo, twice daily", "48 weeks", "randomized, double-blind, placebo-controlled"], body: "5% minoxidil was significantly better than 2% and placebo on hair counts and on patient and investigator ratings. It produced about 45% more regrowth than 2% at 48 weeks. Itching and local irritation were more frequent with 5%.", note: "This is the basis for the 5% strength. No comparably large trial supports 10% over 5% topically.", refs: [31] },
+        { title: "Oral finasteride 1 mg in men", evidence: "human rct", meta: ["1,553 men aged 18–41 with vertex or frontal hair loss", "finasteride 1 mg daily or placebo", "1 year, with a blinded extension to 2 years", "two randomized, double-blind, placebo-controlled trials"], body: "Finasteride increased hair counts and slowed further loss compared with placebo, and the benefit held at 2 years. Sexual adverse events occurred in 3.8% against 2.1% and resolved in men who stopped treatment.", note: "This is the oral drug. It is included because it establishes that lowering DHT works. The blend delivers finasteride topically at a lower and more variable systemic exposure.", refs: [32] },
+        { title: "Topical finasteride 0.25% spray (phase 3)", evidence: "human rct", meta: ["458 men with androgenetic alopecia", "topical finasteride 0.25%, oral finasteride 1 mg, or placebo spray", "24 weeks", "randomized, controlled"], body: "Target-area hair counts improved with topical finasteride by about as much as with oral finasteride, and significantly more than with placebo. Plasma finasteride was far lower with the topical, and serum DHT fell by about a third against about half with oral dosing.", note: "The blend contains 0.05% finasteride, one-fifth of the strength tested here, so this trial does not show that the blend's finasteride component is effective.", refs: [33] }
       ],
       noTrials: "",
       related: ["ghk-cu"]
@@ -650,7 +650,7 @@ window.ATLAS = {
         { heading: "Preclinical", body: "<p>Cell and animal work shows whether a mechanism is plausible. It does not show that the compound is safe or effective in humans.</p>" },
         { heading: "Phase 1", body: "<p>Small studies, often in healthy volunteers, that look at safety, tolerability and pharmacokinetics.</p>" },
         { heading: "Phase 2", body: "<p>Dose-finding and early efficacy in the target population.</p>" },
-        { heading: "Phase 3", body: "<p>Large randomised controlled trials that confirm efficacy and safety. Regulators base approval decisions on these.</p>" },
+        { heading: "Phase 3", body: "<p>Large randomized controlled trials that confirm efficacy and safety. Regulators base approval decisions on these.</p>" },
         { heading: "Phase 4", body: "<p>Monitoring after approval, including rare adverse events.</p>" }
       ]
     },
@@ -661,7 +661,7 @@ window.ATLAS = {
       summary: "Why native peptides break down within minutes and how chemists stretch that to days.",
       sections: [
         { heading: "The problem", body: "<p>Native peptides are cleaved quickly by proteases and filtered by the kidneys.</p>" },
-        { heading: "Common strategies", body: "<ul><li>Amino-acid substitution (e.g. D-amino acids, Aib)</li><li>Fatty-acid acylation for albumin binding (semaglutide)</li><li>Albumin-binding complexes (CJC-1295 with DAC)</li><li>PEGylation and cyclisation</li></ul>" }
+        { heading: "Common strategies", body: "<ul><li>Amino-acid substitution (e.g. D-amino acids, Aib)</li><li>Fatty-acid acylation for albumin binding (semaglutide)</li><li>Albumin-binding complexes (CJC-1295 with DAC)</li><li>PEGylation and cyclization</li></ul>" }
       ]
     },
     {
@@ -670,8 +670,8 @@ window.ATLAS = {
       tags: ["methodology", "evidence", "critical reading"],
       summary: "A short checklist for judging claims about any compound: who ran the study, in whom, and how large it was.",
       sections: [
-        { heading: "Checklist", body: "<ol><li>Was it done in humans, animals or cells?</li><li>Was it randomised and controlled?</li><li>How many participants?</li><li>Has an independent group replicated it?</li><li>Who funded it?</li></ol>" },
-        { heading: "Evidence badges in the codex", body: "<p><strong>human rct</strong>: randomised controlled trials in people. <strong>established</strong>: settled pharmacology. <strong>human obs</strong>: observational human data. <strong>animal</strong> and <strong>in vitro</strong>: preclinical only. <strong>anecdotal</strong>: user reports. <strong>contested</strong>: evidence points both ways. <strong>unknown</strong>: no data.</p>" }
+        { heading: "Checklist", body: "<ol><li>Was it done in humans, animals or cells?</li><li>Was it randomized and controlled?</li><li>How many participants?</li><li>Has an independent group replicated it?</li><li>Who funded it?</li></ol>" },
+        { heading: "Evidence badges in the codex", body: "<p><strong>human rct</strong>: randomized controlled trials in people. <strong>established</strong>: settled pharmacology. <strong>human obs</strong>: observational human data. <strong>animal</strong> and <strong>in vitro</strong>: preclinical only. <strong>anecdotal</strong>: user reports. <strong>contested</strong>: evidence points both ways. <strong>unknown</strong>: no data.</p>" }
       ]
     }
   ],

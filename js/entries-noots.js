@@ -29,8 +29,8 @@
         { title: "Myoclonus", evidence: "human rct", summary: "Reduces cortical myoclonus at high doses", refs: [53] }
       ],
       trials: [
-        { title: "Progressive myoclonus epilepsy", evidence: "human rct", meta: ["20 patients with Unverricht-Lundborg disease", "piracetam 9.6, 16.8 or 24 g daily or placebo", "crossover", "multicentre, randomised, double-blind"], body: "Piracetam improved myoclonus and functional disability scores, with the largest effect at the highest dose.", note: "This is the indication it is actually approved for. The doses are many times those used for nootropic purposes.", refs: [53] },
-        { title: "Cochrane review: dementia and cognitive impairment", evidence: "human rct", meta: ["randomised trials of piracetam in dementia or cognitive impairment", "systematic review"], body: "Global impression scores favoured piracetam, but the trials were heterogeneous and showed signs of publication bias. Measures of cognition did not support a benefit, and the review did not support its use for dementia.", refs: [52] }
+        { title: "Progressive myoclonus epilepsy", evidence: "human rct", meta: ["20 patients with Unverricht-Lundborg disease", "piracetam 9.6, 16.8 or 24 g daily or placebo", "crossover", "multicentre, randomized, double-blind"], body: "Piracetam improved myoclonus and functional disability scores, with the largest effect at the highest dose.", note: "This is the indication it is actually approved for. The doses are many times those used for nootropic purposes.", refs: [53] },
+        { title: "Cochrane review: Dementia and cognitive impairment", evidence: "human rct", meta: ["randomized trials of piracetam in dementia or cognitive impairment", "systematic review"], body: "Global impression scores favored piracetam, but the trials were heterogeneous and showed signs of publication bias. Measures of cognition did not support a benefit, and the review did not support its use for dementia.", refs: [52] }
       ],
       related: ["aniracetam", "oxiracetam", "phenylpiracetam", "pramiracetam"]
     },
@@ -54,9 +54,9 @@
         greyMarket
       ],
       activity: [
-        { title: "AMPA receptor", evidence: "in vitro", summary: "Slows AMPA receptor desensitisation and deactivation, increasing excitatory currents", detail: "This was the first demonstration of an \"ampakine\" mechanism, and it made aniracetam the template for later AMPA modulators.", refs: [54] },
+        { title: "AMPA receptor", evidence: "in vitro", summary: "Slows AMPA receptor desensitization and deactivation, increasing excitatory currents", detail: "This was the first demonstration of an \"ampakine\" mechanism, and it made aniracetam the template for later AMPA modulators.", refs: [54] },
         { title: "Metabolites", evidence: "animal", summary: "N-anisoyl-GABA and other metabolites are thought to contribute to its effects after oral dosing" },
-        { title: "Anxiety models", evidence: "animal", summary: "Reduced anxiety-like behaviour in rodent tests" }
+        { title: "Anxiety models", evidence: "animal", summary: "Reduced anxiety-like behavior in rodent tests" }
       ],
       trials: [],
       noTrials: "Small older clinical studies in cognitive impairment exist, mostly from the 1980s and 1990s, but none are recent or high-quality. There are no meaningful trials in healthy people.",
@@ -113,7 +113,7 @@
         { title: "Receptor binding", evidence: "in vitro", summary: "Little affinity for major neurotransmitter receptors", refs: [55] }
       ],
       trials: [],
-      noTrials: "Human data are limited to small studies, including work in memory disorders after brain injury. There are no robust randomised trials.",
+      noTrials: "Human data are limited to small studies, including work in memory disorders after brain injury. There are no robust randomized trials.",
       related: ["piracetam", "oxiracetam", "phenylpiracetam"]
     },
 
@@ -142,7 +142,7 @@
         { title: "Locomotor activity", evidence: "animal", summary: "Increased locomotor activity and physical endurance in rodents, mainly from the R-enantiomer", refs: [56] }
       ],
       trials: [],
-      noTrials: "Russian clinical studies exist, for example after stroke and in fatigue, but they are small and mostly not available in English. There are no Western randomised trials.",
+      noTrials: "Russian clinical studies exist, for example after stroke and in fatigue, but they are small and mostly not available in English. There are no Western randomized trials.",
       related: ["piracetam", "pramiracetam"]
     },
 
@@ -182,7 +182,7 @@
       added: "2026-10-06", updated: "2026-10-06",
       tags: ["memory", "single study", "phenethylamine"],
       summary: "A compound tested once in humans, in 1978, where a single dose improved word-list recall. That study has never been replicated, and nothing is known about its long-term safety.",
-      names: "Named after its inventor's lab code. It was patented by Nikolaus Hansl at Creighton University and never commercially developed. All current supply is grey-market powder.",
+      names: "Named after its inventor's lab code. It was patented by Nikolaus Hansl at Creighton University and never commercially developed. All current supply is gray-market powder.",
       structure: "Methyl 3-[2-[benzyl(methyl)amino]ethyl]benzoate. C<sub>18</sub>H<sub>21</sub>NO<sub>2</sub>, about 283.4 g/mol. It is a benzoic-acid ester with a phenethylamine-type side chain.",
       pubchem: "PRL-8-53",
       profile: { note: "There is a single human study, so every score here rests on that study.", rows: [
@@ -256,8 +256,8 @@
         { title: "Synaptic plasticity", evidence: "animal", summary: "Raised BDNF and synaptic markers in rodent models" }
       ],
       trials: [
-        { title: "Phase 1b in major depression", evidence: "human rct", meta: ["24 adults with major depressive disorder", "NSI-189 at three dose levels or placebo", "28 days", "randomised, double-blind, placebo-controlled"], body: "Depression and cognition scores improved more with NSI-189 than placebo. The study was small and exploratory.", refs: [62] },
-        { title: "Phase 2 in major depression", evidence: "human rct", meta: ["220 outpatients with major depressive disorder", "NSI-189 40 mg or 80 mg daily or placebo", "12 weeks", "randomised, double-blind, placebo-controlled"], body: "NSI-189 did not beat placebo on the primary depression rating scale (MADRS). The 40 mg dose improved some secondary self-rated depression and cognitive measures.", note: "This trial failed its primary endpoint. The cognitive findings are secondary and need confirmation.", refs: [63] }
+        { title: "Phase 1b in major depression", evidence: "human rct", meta: ["24 adults with major depressive disorder", "NSI-189 at three dose levels or placebo", "28 days", "randomized, double-blind, placebo-controlled"], body: "Depression and cognition scores improved more with NSI-189 than placebo. The study was small and exploratory.", refs: [62] },
+        { title: "Phase 2 in major depression", evidence: "human rct", meta: ["220 outpatients with major depressive disorder", "NSI-189 40 mg or 80 mg daily or placebo", "12 weeks", "randomized, double-blind, placebo-controlled"], body: "NSI-189 did not beat placebo on the primary depression rating scale (MADRS). The 40 mg dose improved some secondary self-rated depression and cognitive measures.", note: "This trial failed its primary endpoint. The cognitive findings are secondary and need confirmation.", refs: [63] }
       ],
       related: ["9-me-bc", "prl-8-53"]
     }
