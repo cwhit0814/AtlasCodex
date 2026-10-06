@@ -308,7 +308,7 @@
             ${e.structure ? `<span class="label">Structure</span><p>${e.structure}</p>` : ""}
             ${!e.names && !e.structure ? `<p>${esc(e.summary)}</p>` : ""}
           </div>`;
-      out.push(`<header class="entry-head">${img}<h1>${esc(e.name)}</h1>${intro}</header>`);
+      out.push(`<header class="entry-head">${img}<h1>${esc(e.name)}</h1>${e.type === "compound" ? buyBlock(e) : ""}${intro}</header>`);
 
       // profile
       if (e.profile) {
@@ -456,6 +456,29 @@
 
     about() {}
   };
+
+  // "Buy from" block on compound pages. Links live in js/buy.js; sources in support.sources.
+  function buyBlock(e) {
+    const sources = (A.support && A.support.sources) || [];
+    const items = ((A.buy || {})[e.slug] || [])
+      .map((b) => ({ ...b, src: sources.find((s) => s.id === b.source) }))
+      .filter((b) => b.src && b.href);
+    if (!items.length) {
+      return `<div class="buy"><span class="mono-sm">Buy from</span><div class="buy-list"><span class="buy-btn none">No current stock</span></div></div>`;
+    }
+    const withRef = (href, code) => {
+      try { const u = new URL(href); if (code && !u.searchParams.has("ref")) u.searchParams.set("ref", code); return u.href; } catch (_) { return href; }
+    };
+    const codes = [...new Set(items.map((b) => b.src.code).filter(Boolean))];
+    return `<div class="buy">
+      <span class="mono-sm">Buy from</span>${codes.length ? `<span class="buy-code">Code <b>${codes.map(esc).join(", ")}</b></span>` : ""}
+      <div class="buy-list">${items.map((b) => `
+        <a class="buy-btn" href="${esc(withRef(b.href, b.src.code))}" target="_blank" rel="noopener sponsored">
+          <span class="buy-logo" style="${b.src.logoBg ? `background:${esc(b.src.logoBg)}` : ""}">${b.src.logo ? `<img src="${esc(b.src.logo)}" alt="">` : esc(b.src.name.slice(0, 2).toUpperCase())}</span>
+          <span class="buy-name">${esc(b.label || b.src.name)}</span><span class="buy-star" aria-hidden="true">★</span>
+        </a>`).join("")}</div>
+    </div>`;
+  }
 
   function row(e) {
     return `<a class="row" href="${entryUrl(e)}">

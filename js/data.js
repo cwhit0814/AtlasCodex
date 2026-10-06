@@ -55,6 +55,7 @@ window.ATLAS = {
     disclosure: "Atlas Codex earns a commission on purchases made with these codes. A listing here is not an endorsement of any product, and nothing on this page is medical advice.",
     sources: [
       {
+        id: "halfnattys",
         name: "Half Nattys",
         href: "https://halfnattys.is/?ref=ATLAS",
         code: "ATLAS",
