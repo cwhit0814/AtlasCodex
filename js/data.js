@@ -56,7 +56,7 @@ window.ATLAS = {
     sources: [
       {
         name: "Half Nattys",
-        href: "https://halfnattys.is/",
+        href: "https://halfnattys.is/?ref=ATLAS",
         code: "ATLAS",
         logo: "img/halfnattys.png",
         logoBg: "#000",
