@@ -377,3 +377,6 @@ main { min-height: 70vh; }
 .buy-name { flex: 1; }
 .buy-star { color: var(--violet); font-size: .85rem; }
 .buy-btn.none { border-style: dashed; border-color: var(--line-2); background: transparent; color: var(--dim); font: 500 .85rem var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 14px 18px; }
+.ticker-run a.ticker-link { color: var(--violet); font-family: var(--mono); }
+.ticker-run a.ticker-link:hover { text-decoration: underline; }
+.ticker:hover .ticker-run { animation-play-state: paused; }

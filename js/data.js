@@ -26,7 +26,7 @@ window.ATLAS = {
       "New: Retatrutide entry updated with phase 2 data",
       "Guide: How to read a clinical trial phase",
       "{count} entries, every claim graded by evidence",
-      "Support: Use code ATLAS at halfnattys.is"
+      { text: "Support: Use code ATLAS at halfnattys.is →", href: "https://halfnattys.is/?ref=ATLAS" }
     ],
     tickerLink: { label: "Guides →", href: "codex.html?cat=guides" },
     headerButtons: [

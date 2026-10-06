@@ -203,7 +203,7 @@
     home() {
       const S = A.site;
       const compounds = A.entries.filter((e) => e.type === "compound");
-      const tick = S.ticker.map((t) => `<span>${esc(t.replace("{count}", A.entries.length))}</span>`).join("");
+      const tick = S.ticker.map((t) => { const item = typeof t === "string" ? { text: t } : t; const text = esc(item.text.replace("{count}", A.entries.length)); return item.href ? `<a class="ticker-link" href="${esc(item.href)}" target="_blank" rel="noopener sponsored">${text}</a>` : `<span>${text}</span>`; }).join("");
       $("#ticker").innerHTML = `<div class="ticker-track"><div class="ticker-run">${tick}${tick}</div><div class="ticker-run" aria-hidden="true">${tick}${tick}</div></div><a href="${S.tickerLink.href}">${esc(S.tickerLink.label)}</a>`;
       $("#hero-title").textContent = S.heroTitle;
       $("#hero-sub").innerHTML = S.heroLines.map(esc).join("<br>");
