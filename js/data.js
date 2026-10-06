@@ -25,7 +25,7 @@ window.ATLAS = {
     ticker: [
       "NEW: retatrutide entry updated with phase 2 data",
       "GUIDE: how to read a clinical trial phase",
-      "17 entries · every claim graded by evidence",
+      "{count} entries · every claim graded by evidence",
       "SUPPORT: use code ATLAS at halfnattys.is"
     ],
     tickerLink: { label: "guides →", href: "codex.html?cat=guides" },
@@ -66,8 +66,8 @@ window.ATLAS = {
         popular: [
           { name: "GHK-Cu", slug: "ghk-cu" },
           { name: "BPC-157", slug: "bpc-157" },
-          { name: "Dihexa" },
-          { name: "Tri-blend hair loss topical" }
+          { name: "Dihexa", slug: "dihexa" },
+          { name: "Tri-blend hair loss topical", slug: "tri-blend-topical" }
         ]
       }
     ]
@@ -80,7 +80,7 @@ window.ATLAS = {
     { id: "nootropic", name: "noots", blurb: "Peptides studied for anxiety, cognition and neuroprotection." },
     { id: "longevity", name: "longevity", blurb: "Compounds investigated for ageing biology and mitochondrial function." },
     { id: "immune", name: "immune", blurb: "Thymic peptides and immunomodulators." },
-    { id: "skin", name: "skin", blurb: "Cosmetic and dermatological peptides." },
+    { id: "skin", name: "skin & hair", blurb: "Cosmetic and dermatological peptides, and topical treatments for hair loss." },
     { id: "melanocortin", name: "melanocortin", blurb: "Agonists of the melanocortin receptor family." },
     { id: "guides", name: "guides", blurb: "Background reading on how to evaluate research." }
   ],
@@ -555,6 +555,91 @@ window.ATLAS = {
       related: ["tb-500"]
     },
 
+    /* ------------------------------------------------------------ noots: dihexa */
+    {
+      slug: "dihexa", type: "compound", name: "Dihexa",
+      aliases: ["PNB-0408", "N-hexanoic-Tyr-Ile-(6) aminohexanoic amide"], category: "nootropic", status: "Research only",
+      class: "Angiotensin IV analog / HGF–c-Met potentiator", developer: "Washington State University (Harding & Wright labs)",
+      added: "2026-10-06", updated: "2026-10-06",
+      tags: ["HGF", "c-Met", "synaptogenesis", "angiotensin IV", "cognition", "preclinical"],
+      summary: "A small, orally active peptide-like molecule derived from angiotensin IV. In animal studies it improved memory by strengthening hepatocyte growth factor signalling. It has never been tested in humans.",
+      names: "Developed at Washington State University in research on angiotensin IV analogs as possible anti-dementia drugs. It is often quoted as being \"seven orders of magnitude more potent than BDNF\". That figure comes from a cell-culture synapse-formation assay, not from any measure of effect in a living brain. The same research programme led to Athira Pharma (formerly M3 Biotechnology). Athira's clinical candidate was fosgonimeton, a different molecule, not Dihexa. In 2021 Athira's chief executive, a co-author on the foundational papers, resigned after an internal review found she had altered images in research from her doctoral work.",
+      structure: "C<sub>27</sub>H<sub>44</sub>N<sub>4</sub>O<sub>5</sub>, molecular weight about 504.7 g/mol. It is a modified fragment of angiotensin IV. N-terminal hexanoylation and a C-terminal aminohexanoic amide protect it from peptidases, which makes it stable enough to be active orally in rodents and lets it cross the blood–brain barrier.",
+      pubchem: "dihexa",
+      profile: {
+        note: "Risk load reflects a plausible mechanistic concern and the complete absence of human data, not observed harms.",
+        rows: [
+          { label: "Preclinical signal", score: 3 },
+          { label: "Human evidence", score: 0 },
+          { label: "Risk load", score: 3, neg: true },
+          { label: "Evidence quality", score: 1 }
+        ]
+      },
+      risks: [
+        { system: "Human safety", level: "unknown", text: "No published human pharmacokinetic or safety data", evidence: "unknown", detail: "No phase 1 trial of Dihexa has been published. Every dose in circulation is extrapolated from rodents." },
+        { system: "Oncogenic signalling", level: "unknown", text: "HGF/c-Met is a proto-oncogenic pathway, and potentiating it raises a theoretical cancer concern", evidence: "contested", detail: "Abnormal c-Met activation drives several cancers, and c-Met inhibitors are approved cancer drugs. Whether brief, low-level potentiation by Dihexa carries meaningful risk is unknown. No study has looked." },
+        { system: "Persistence", level: "unknown", text: "Synapse formation is meant to be lasting, so unwanted effects may not simply wear off", evidence: "contested" },
+        { system: "Product quality", level: "high", text: "Vendor material is unregulated. Purity and identity are unverified", evidence: "established" }
+      ],
+      activity: [
+        { title: "HGF / c-Met system", evidence: "animal", summary: "Binds hepatocyte growth factor and promotes its dimerisation, which strengthens c-Met receptor signalling", detail: "Blocking c-Met abolished both the pro-cognitive and the synapse-forming effects. This was the key experiment linking Dihexa's activity to the HGF system.", refs: [29] },
+        { title: "Synaptogenesis", evidence: "in vitro", summary: "Increased dendritic spine density and new synapse formation in cultured hippocampal neurons", refs: [29] },
+        { title: "Memory models", evidence: "animal", summary: "Reversed scopolamine-induced spatial learning deficits and improved performance in aged rats in the water maze", detail: "Dosing was oral or intraperitoneal in rats. These are standard acute-deficit models. They do not show disease modification in humans.", refs: [28] },
+        { title: "Angiotensin IV / AT4 site", evidence: "contested", summary: "Originally framed as acting at the \"AT4 receptor\"; later work attributed its effects to the HGF/c-Met system instead", refs: [29] }
+      ],
+      trials: [],
+      noTrials: "There are no human trials of Dihexa. The closest human data come from fosgonimeton (ATH-1017), a different HGF positive modulator from the same research lineage. It failed its primary endpoint in the ACT-AD phase 2 trial and again in the LIFT-AD phase 2/3 trial in mild-to-moderate Alzheimer's disease. That does not directly test Dihexa, but it is the best evidence available that this mechanism may not carry over to people.",
+      noTrialsRefs: [30],
+      related: ["semax", "selank"]
+    },
+
+    /* ------------------------------------------------------------ skin & hair: tri-blend */
+    {
+      slug: "tri-blend-topical", type: "compound", name: "Tri-Blend Topical",
+      aliases: ["Minoxidil + RU-58841 + Finasteride", "Tri-blend hair loss topical"], category: "skin", status: "Research only",
+      class: "Topical combination: K⁺ channel opener + androgen receptor antagonist + 5α-reductase inhibitor", developer: "Compounded / research-market blend",
+      added: "2026-10-06", updated: "2026-10-06",
+      tags: ["hair loss", "androgenetic alopecia", "minoxidil", "finasteride", "RU-58841", "DHT", "topical"],
+      summary: "A scalp solution that combines three ways of fighting androgenetic hair loss: minoxidil 10%, the research antiandrogen RU-58841 at 25 mg/mL, and finasteride at 500 µg/mL (0.05%). Two of the ingredients are approved drugs. The combination as a whole has never been tested.",
+      names: "Sold as a 30 mL research-market topical labelled \"Minoxidil + RU-58841 + Finasteride, 10%, 25 mg/mL, 500 mcg/mL\". Each ingredient has a different regulatory status. Minoxidil is approved over the counter at 2% and 5%; 10% is above any approved strength. Oral finasteride 1 mg (Propecia) is approved for male pattern hair loss, and topical finasteride is approved in some countries. RU-58841 has never been approved anywhere and never finished clinical development. The \"Research only\" status here applies to the blend, mainly because it contains RU-58841.",
+      structure: "<strong>Minoxidil</strong>: C<sub>9</sub>H<sub>15</sub>N<sub>5</sub>O, molecular weight about 209.2 g/mol. It is a prodrug, activated in the hair follicle by the enzyme sulfotransferase (SULT1A1). <strong>RU-58841</strong>: C<sub>17</sub>H<sub>18</sub>F<sub>3</sub>N<sub>3</sub>O<sub>3</sub>, molecular weight about 369.3 g/mol. It is a non-steroidal antiandrogen (a cyanophenyl-imidazolidinedione) designed for topical use. <strong>Finasteride</strong>: C<sub>23</sub>H<sub>36</sub>N<sub>2</sub>O<sub>2</sub>, molecular weight about 372.5 g/mol. It is a 4-azasteroid that inhibits type II 5α-reductase.",
+      pubchem: false,
+      profile: {
+        note: "Scored for the blend as labelled. Efficacy is inferred from trials of the individual ingredients; no trial has tested this combination.",
+        rows: [
+          { label: "Hair retention (expected)", score: 4 },
+          { label: "Regrowth (expected)", score: 3 },
+          { label: "Scalp irritation", score: 3, neg: true },
+          { label: "Risk load", score: 3, neg: true },
+          { label: "Evidence quality", score: 2 }
+        ]
+      },
+      risks: [
+        { system: "Scalp", level: "moderate", text: "Itching, flaking and contact dermatitis. These are more common at higher minoxidil strengths and with propylene glycol bases", evidence: "human rct", detail: "In the 5% against 2% minoxidil trial, local irritation and itching were more frequent at the higher strength. At 10% this is likely to be more pronounced.", refs: [31] },
+        { system: "Initial shedding", level: "moderate", text: "Temporary increase in shedding in the first weeks of minoxidil", evidence: "established", detail: "Follicles leave the resting phase and push out old hairs as they re-enter growth. It typically settles within 2–3 months." },
+        { system: "Cardiovascular", level: "low", text: "Systemic minoxidil absorption can cause palpitations, a faster heart rate, dizziness or fluid retention", evidence: "human obs", detail: "This is uncommon with topical use, but more likely at 10%, with large application volumes or on broken skin. Minoxidil was originally an oral blood-pressure drug." },
+        { system: "Facial / body hair", level: "low", text: "Unwanted hair growth where the solution runs or is transferred", evidence: "human rct", refs: [31] },
+        { system: "Sexual function", level: "low", text: "Decreased libido, erectile dysfunction and lower ejaculate volume have been reported with finasteride. A topical RU-58841 dose that reaches the bloodstream could add to this", evidence: "human rct", detail: "In the oral finasteride 1 mg trials, sexual adverse events occurred in 3.8% on finasteride against 2.1% on placebo. Topical finasteride lowered serum DHT less than oral, but still lowered it. Reports of lasting symptoms after stopping (\"post-finasteride syndrome\") are disputed and poorly characterised.", refs: [32, 33] },
+        { system: "Mood", level: "low", text: "Depression and suicidal ideation are listed as post-marketing reports on the finasteride label", evidence: "contested" },
+        { system: "Unknown component", level: "unknown", text: "RU-58841 has no human safety, pharmacokinetic or long-term data", evidence: "unknown", detail: "Users report systemic antiandrogen effects such as low libido, fatigue and breast tenderness. None of this has been studied. How much RU-58841 reaches the bloodstream from the scalp in humans is not known." },
+        { system: "Pregnancy / handling", level: "high", text: "Finasteride and antiandrogens can feminise a male fetus. Anyone who is or may become pregnant should not handle the product", evidence: "established", detail: "Skin contact with finasteride is a labelled hazard. Treated scalp and pillowcases are realistic routes of exposure." },
+        { system: "Pets", level: "high", text: "Topical minoxidil is highly toxic to cats, even from small amounts of residue", evidence: "established", detail: "Cats lack the enzyme activity needed to clear minoxidil. Fatal poisonings have followed contact with treated skin, bedding or licked fur." }
+      ],
+      activity: [
+        { title: "Minoxidil: follicle stimulation", evidence: "human rct", summary: "Lengthens the growth phase (anagen) and enlarges shrunken follicles. Its exact mechanism remains unclear", detail: "Minoxidil sulfate opens ATP-sensitive potassium channels and increases local blood flow and growth-factor signalling (VEGF). Response depends on how much follicular sulfotransferase a person has, which is why some people respond poorly.", refs: [31] },
+        { title: "Finasteride: 5α-reductase type II", evidence: "human rct", summary: "Blocks the conversion of testosterone to DHT, the androgen that drives shrinkage of genetically susceptible follicles", detail: "At 500 µg/mL (0.05%), the finasteride in this blend is one-fifth the strength of the 0.25% spray tested in phase 3. Systemic DHT suppression from topical use is real but smaller than from the oral drug.", refs: [32, 33] },
+        { title: "RU-58841: androgen receptor", evidence: "animal", summary: "Competitive androgen receptor antagonist designed for topical activity with limited systemic exposure", detail: "It prevented and partly reversed balding on the scalp of stumptail macaques, a primate model of androgenetic alopecia. Development by Roussel Uclaf stopped before any controlled human trial was completed.", refs: [34, 35] },
+        { title: "Rationale for combining", evidence: "contested", summary: "Lower DHT (finasteride), block what remains at the receptor (RU-58841), and stimulate growth directly (minoxidil)", detail: "Combining oral finasteride with topical minoxidil works better than either alone in clinical studies. Adding a topical antiandrogen is a plausible extension, but nobody has tested it." }
+      ],
+      trials: [
+        { title: "Topical minoxidil 5% against 2% and placebo", evidence: "human rct", meta: ["393 men aged 18–49 with androgenetic alopecia", "5% minoxidil, 2% minoxidil or placebo, twice daily", "48 weeks", "randomised, double-blind, placebo-controlled"], body: "5% minoxidil was significantly better than 2% and placebo on hair counts and on patient and investigator ratings. It produced about 45% more regrowth than 2% at 48 weeks. Itching and local irritation were more frequent with 5%.", note: "This is the basis for the 5% strength. No comparably large trial supports 10% over 5% topically.", refs: [31] },
+        { title: "Oral finasteride 1 mg in men", evidence: "human rct", meta: ["1,553 men aged 18–41 with vertex or frontal hair loss", "finasteride 1 mg daily or placebo", "1 year, with a blinded extension to 2 years", "two randomised, double-blind, placebo-controlled trials"], body: "Finasteride increased hair counts and slowed further loss compared with placebo, and the benefit held at 2 years. Sexual adverse events occurred in 3.8% against 2.1% and resolved in men who stopped treatment.", note: "This is the oral drug. It is included because it establishes that lowering DHT works. The blend delivers finasteride topically at a lower and more variable systemic exposure.", refs: [32] },
+        { title: "Topical finasteride 0.25% spray (phase 3)", evidence: "human rct", meta: ["458 men with androgenetic alopecia", "topical finasteride 0.25%, oral finasteride 1 mg, or placebo spray", "24 weeks", "randomised, controlled"], body: "Target-area hair counts improved with topical finasteride by about as much as with oral finasteride, and significantly more than with placebo. Plasma finasteride was far lower with the topical, and serum DHT fell by about a third against about half with oral dosing.", note: "The blend contains 0.05% finasteride, one-fifth of the strength tested here, so this trial does not show that the blend's finasteride component is effective.", refs: [33] }
+      ],
+      noTrials: "",
+      related: ["ghk-cu"]
+    },
+
     /* ------------------------------------------------------------ guides */
     {
       slug: "reading-clinical-trial-phases", type: "article", name: "Reading Clinical Trial Phases",
@@ -618,6 +703,14 @@ window.ATLAS = {
     24: "Vyleesi (bremelanotide injection) prescribing information. US FDA, 2019.",
     25: "Coskun T et al. LY3298176, a novel dual GIP and GLP-1 receptor agonist for the treatment of type 2 diabetes mellitus: from discovery to clinical proof of concept. Mol Metab 2018;18:3–14.",
     26: "Lau J et al. Discovery of the Once-Weekly Glucagon-Like Peptide-1 (GLP-1) Analogue Semaglutide. J Med Chem 2015;58:7370–7380.",
+    28: "McCoy AT et al. Evaluation of metabolically stabilized angiotensin IV analogs as procognitive/antidementia agents. J Pharmacol Exp Ther 2013;344:141–154.",
+    29: "Benoist CC et al. The procognitive and synaptogenic effects of angiotensin IV-derived peptides are dependent on activation of the hepatocyte growth factor/c-Met system. J Pharmacol Exp Ther 2014;351:390–402.",
+    30: "Athira Pharma. LIFT-AD phase 2/3 trial of fosgonimeton in mild-to-moderate Alzheimer's disease: topline results. Company announcement, 2024.",
+    31: "Olsen EA et al. A randomized clinical trial of 5% topical minoxidil versus 2% topical minoxidil and placebo in the treatment of androgenetic alopecia in men. J Am Acad Dermatol 2002;47:377–385.",
+    32: "Kaufman KD et al. Finasteride in the treatment of men with androgenetic alopecia. J Am Acad Dermatol 1998;39:578–589.",
+    33: "Piraccini BM et al. Efficacy and safety of topical finasteride spray solution for male androgenetic alopecia: a phase III, randomized, controlled clinical trial. J Eur Acad Dermatol Venereol 2022;36:286–294.",
+    34: "Battmann T et al. RU 58841, a new specific topical antiandrogen: a candidate of choice for the treatment of acne, androgenetic alopecia and hirsutism. J Steroid Biochem Mol Biol 1994;48:55–60.",
+    35: "Pan HJ et al. Evaluation of RU58841 as an anti-androgen in prostate PC3 cells and a topical anti-alopecia agent in the bald scalp of stumptailed macaques. Endocrine 1998;9:39–43.",
     27: "Kim KH et al. The Mitochondrial-Encoded Peptide MOTS-c Translocates to the Nucleus to Regulate Nuclear Gene Expression in Response to Metabolic Stress. Cell Metab 2018;28:516–524."
   }
 };

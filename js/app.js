@@ -200,7 +200,7 @@
     home() {
       const S = A.site;
       const compounds = A.entries.filter((e) => e.type === "compound");
-      const tick = S.ticker.map((t) => `<span>${esc(t)}</span>`).join("");
+      const tick = S.ticker.map((t) => `<span>${esc(t.replace("{count}", A.entries.length))}</span>`).join("");
       $("#ticker").innerHTML = `<div class="ticker-track"><div class="ticker-run">${tick}${tick}</div><div class="ticker-run" aria-hidden="true">${tick}${tick}</div></div><a href="${S.tickerLink.href}">${esc(S.tickerLink.label)}</a>`;
       $("#hero-title").textContent = S.heroTitle;
       $("#hero-sub").innerHTML = S.heroLines.map(esc).join("<br>");
@@ -357,7 +357,7 @@
                 ${t.note ? `<div class="note">${esc(t.note)}</div>` : ""}
                 ${refsLine(t.refs)}
               </article>`).join("")}</div>`
-          : `<div class="panel empty-record"><p>${esc(e.noTrials || "No controlled human trials are recorded for this compound.")}</p></div>`);
+          : `<div class="panel empty-record"><p>${esc(e.noTrials || "No controlled human trials are recorded for this compound.")}</p>${refsLine(e.noTrialsRefs)}</div>`);
       }
 
       // article sections
@@ -367,10 +367,10 @@
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...(e.activity || []), ...(e.trials || [])].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         out.push(`<h2 class="label">references</h2><ol class="panel refs-list">${[...ids].sort((a, b) => a - b).map((id) => `
-          <li id="ref-${id}"><span class="mono-sm">${id}</span><span>${esc(A.references[id])} <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">pubmed ↗</a></span></li>`).join("")}</ol>`);
+          <li id="ref-${id}"><span class="mono-sm">${id}</span><span>${esc(A.references[id])}${/announcement|prescribing information/i.test(A.references[id]) ? "" : ` <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">pubmed ↗</a>`}</span></li>`).join("")}</ol>`);
       }
 
       const related = (e.related || []).map(bySlug).filter(Boolean);
