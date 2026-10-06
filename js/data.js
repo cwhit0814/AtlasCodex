@@ -45,6 +45,8 @@ window.ATLAS = {
    *   logo:       optional image path (e.g. "img/halfnattys.png"); initials are shown if omitted
    *   attributes: outlined tags (e.g. "US shipping")
    *   sells:      grey tags under "what they sell"
+   *   logoBg:     background colour behind the logo (default light grey)
+   *   popular:    [{ name, slug }]; items with a slug link to that codex entry
    */
   support: {
     eyebrow: "trusted sources",
@@ -56,10 +58,17 @@ window.ATLAS = {
         name: "Half Nattys",
         href: "https://halfnattys.is/",
         code: "ATLAS",
-        logo: "",
-        blurb: "Use code ATLAS at checkout.",
-        attributes: [],
-        sells: []
+        logo: "img/halfnattys.png",
+        logoBg: "#000",
+        blurb: "Research-market products across peptides, capsules, sprays and topicals, with a public COA library.",
+        attributes: ["COA library", "Research market"],
+        sells: ["Peptides", "Capsules", "Sprays", "Topicals", "Aminos", "Liquids", "Lab supplies"],
+        popular: [
+          { name: "GHK-Cu", slug: "ghk-cu" },
+          { name: "BPC-157", slug: "bpc-157" },
+          { name: "Dihexa" },
+          { name: "Tri-blend hair loss topical" }
+        ]
       }
     ]
   },

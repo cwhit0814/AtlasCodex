@@ -425,12 +425,13 @@
       const tags = (label, list, cls) => list && list.length ? `<span class="label sm">${label}</span><div class="tag-list">${list.map((t) => `<span class="${cls}">${esc(t)}</span>`).join("")}</div>` : "";
       $("#sources").innerHTML = S.sources.map((s) => `
         <article class="source">
-          <a class="source-logo" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo">` : `<span>${esc(initials(s.name))}</span>`}</a>
+          <a class="source-logo" style="${s.logoBg ? `background:${esc(s.logoBg)}` : ""}" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo">` : `<span>${esc(initials(s.name))}</span>`}</a>
           <h2>${esc(s.name)}</h2>
           ${s.code ? `<button class="code-chip" data-code="${esc(s.code)}" title="Copy code">code <b>${esc(s.code)}</b></button>` : ""}
           ${s.blurb ? `<p>${esc(s.blurb)}</p>` : ""}
           ${tags("attributes", s.attributes, "attr")}
           ${tags("what they sell", s.sells, "sell")}
+          ${s.popular && s.popular.length ? `<span class="label sm">popular</span><div class="tag-list">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="sell linked" href="entry.html?slug=${encodeURIComponent(p.slug)}" title="Read the codex entry">${esc(p.name)} ↗</a>` : `<span class="sell">${esc(p.name)}</span>`).join("")}</div>` : ""}
           <a class="shop-btn" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">SHOP NOW</a>
         </article>`).join("");
       $$(".code-chip").forEach((b) => b.addEventListener("click", async () => {
