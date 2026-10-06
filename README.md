@@ -15,6 +15,7 @@ An open reference library of peptides and research compounds, built as a static,
   - **human clinical record**: trials with design meta lines and editor's notes
   - **references**, with links to PubMed
 - `support.html`: "support me" page with source cards (logo, copy-to-clipboard code, attributes, what they sell, shop button). Sources are set in `support.sources` in `js/data.js`
+- Every compound page also has a **Pharmacokinetics** panel (route, bioavailability, half-life, metabolism, excretion). The data live in `js/pk.js`, keyed by entry slug
 - `about.html`: evidence grades, status labels and disclaimer
 
 Other features:

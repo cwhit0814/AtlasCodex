@@ -145,6 +145,7 @@
     (e.trials || []).forEach((t) => parts.push(`${t.title}. ${t.body} ${t.note || ""}`));
     (e.sections || []).forEach((s) => parts.push(`${s.heading}. ${s.body}`));
     if (e.noTrials) parts.push(e.noTrials);
+    if (e.pk) parts.push("Pharmacokinetics. " + e.pk.rows.map(([k, v]) => `${k}: ${v}.`).join(" ") + " " + (e.pk.note || ""));
     return strip(parts.filter(Boolean).join(" \n "));
   }
   function ask(q) {
@@ -324,6 +325,15 @@
         </div>`);
       }
 
+      // pharmacokinetics
+      if (e.pk) {
+        out.push(`<h2 class="label">Pharmacokinetics</h2><div class="panel pk">
+          <div class="pk-head"><span class="mono-sm">Source quality</span>${badge(e.pk.evidence)}</div>
+          <dl class="pk-grid">${e.pk.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>
+          ${e.pk.note || (e.pk.refs && e.pk.refs.length) ? `<div class="pk-foot">${e.pk.note ? `<p>${sent(e.pk.note)}</p>` : ""}${refsLine(e.pk.refs)}</div>` : ""}
+        </div>`);
+      }
+
       // risks
       if (e.risks && e.risks.length) {
         out.push(`<h2 class="label">Risk and monitoring</h2><div class="risk-grid">${e.risks.map((r) => `
@@ -369,10 +379,10 @@
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, e.pk || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         out.push(`<h2 class="label">References</h2><ol class="panel refs-list">${[...ids].sort((a, b) => a - b).map((id) => `
-          <li id="ref-${id}"><span class="mono-sm">${id}</span><span>${esc(A.references[id])}${/announcement|prescribing information|federal register/i.test(A.references[id]) ? "" : ` <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed ↗</a>`}</span></li>`).join("")}</ol>`);
+          <li id="ref-${id}"><span class="mono-sm">${id}</span><span>${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics/i.test(A.references[id]) ? "" : ` <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed ↗</a>`}</span></li>`).join("")}</ol>`);
       }
 
       const related = (e.related || []).map(bySlug).filter(Boolean);
