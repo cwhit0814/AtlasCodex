@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Atlas Codex</title>
+  <meta name="description" content="Atlas Codex — an open reference library of peptides and research compounds.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body data-page="home">
+  <header id="site-header"></header>
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">The open compound reference</p>
+        <h1>Atlas Codex</h1>
+        <p class="lede">Clear, sourced overviews of peptides and research compounds: what they are, how they work, and how strong the evidence is.</p>
+        <form id="hero-search" role="search">
+          <input id="hero-q" type="search" placeholder="Search e.g. GLP-1, BPC-157, telomerase…" aria-label="Search the codex">
+          <button class="btn" type="submit">Search</button>
+        </form>
+        <div class="stats" id="stats"></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>Browse by category</h2><a href="codex.html">View full codex →</a></div>
+        <div class="grid" id="categories"></div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head"><h2>Recently updated</h2><a href="archive.html">Open the archive →</a></div>
+        <div class="grid" id="recent"></div>
+      </div>
+    </section>
+  </main>
+  <footer id="site-footer"></footer>
+</body>
+</html>
