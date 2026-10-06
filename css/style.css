@@ -380,3 +380,6 @@ main { min-height: 70vh; }
 .ticker-run a.ticker-link { color: var(--violet); font-family: var(--mono); }
 .ticker-run a.ticker-link:hover { text-decoration: underline; }
 .ticker:hover .ticker-run { animation-play-state: paused; }
+.st-banned { color: #fff; border-color: var(--red); background: color-mix(in srgb, var(--red) 70%, #000); }
+:root[data-theme="light"] .st-banned { color: #fff; }
+.st-supplement { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 45%, transparent); background: var(--amber-bg); }
