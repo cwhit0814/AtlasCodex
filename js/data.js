@@ -25,17 +25,42 @@ window.ATLAS = {
     ticker: [
       "NEW: retatrutide entry updated with phase 2 data",
       "GUIDE: how to read a clinical trial phase",
-      "17 entries · every claim graded by evidence"
+      "17 entries · every claim graded by evidence",
+      "SUPPORT: use code ATLAS at halfnattys.is"
     ],
     tickerLink: { label: "guides →", href: "codex.html?cat=guides" },
     headerButtons: [
-      { label: "SUPPORT", href: "about.html#support", primary: true },
+      { label: "SUPPORT ME", href: "support.html", primary: true },
       { label: "CONTACT", href: "about.html#contact" }
     ],
     cards: [
       { icon: "chat", tone: "gold", title: "join the community", text: "talk through research, ask questions, and flag entries that need updating.", href: "about.html#contact" },
       { icon: "form", tone: "violet", title: "request an entry", text: "tell us which compound to cover next and what you want to know about it.", href: "about.html#contact" },
       { icon: "book", tone: "plain", title: "read the guides", text: "how to judge evidence, read trial phases, and spot a weak claim.", href: "codex.html?cat=guides" }
+    ]
+  },
+
+  /*
+   * Sources shown on the Support Me page (support.html). Add one object per source.
+   *   logo:       optional image path (e.g. "img/halfnattys.png"); initials are shown if omitted
+   *   attributes: outlined tags (e.g. "US shipping")
+   *   sells:      grey tags under "what they sell"
+   */
+  support: {
+    eyebrow: "trusted sources",
+    title: "support me",
+    intro: "using my code at the sources below supports atlas codex at no extra cost to you. thank you for keeping the archive running.",
+    disclosure: "Atlas Codex earns a commission on purchases made with these codes. A listing here is not an endorsement of any product, and nothing on this page is medical advice.",
+    sources: [
+      {
+        name: "Half Nattys",
+        href: "https://halfnattys.is/",
+        code: "ATLAS",
+        logo: "",
+        blurb: "Use code ATLAS at checkout.",
+        attributes: [],
+        sells: []
+      }
     ]
   },
 

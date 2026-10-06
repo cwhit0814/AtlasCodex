@@ -64,7 +64,7 @@
         <div class="header-tools">
           <button class="search-pill" id="search-open">${icons.search}<span>search the archive</span><kbd>${isMac ? "⌘K" : "Ctrl K"}</kbd></button>
           <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">${root.dataset.theme === "dark" ? icons.sun : icons.moon}</button>
-          ${S.headerButtons.map((b) => `<a class="pill-btn${b.primary ? " primary" : ""}" href="${b.href}">${esc(b.label)}</a>`).join("")}
+          ${S.headerButtons.map((b) => `<a class="pill-btn${b.primary ? " primary" : ""}${page === "support" && b.href === "support.html" ? " current" : ""}" href="${b.href}">${esc(b.label)}</a>`).join("")}
         </div>
       </div>`;
     $("#site-footer").innerHTML = `
@@ -412,6 +412,32 @@
         store.set("atlas-rate-" + e.slug, mine);
         $$(".meter i", row).forEach((x) => x.classList.toggle("on", +x.dataset.v <= v));
         row.lastElementChild.textContent = v + "/5";
+      }));
+    },
+
+    support() {
+      const S = A.support;
+      $("#support-eyebrow").textContent = S.eyebrow;
+      $("#support-title").textContent = S.title;
+      $("#support-intro").textContent = S.intro;
+      $("#support-disclosure").textContent = S.disclosure;
+      const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
+      const tags = (label, list, cls) => list && list.length ? `<span class="label sm">${label}</span><div class="tag-list">${list.map((t) => `<span class="${cls}">${esc(t)}</span>`).join("")}</div>` : "";
+      $("#sources").innerHTML = S.sources.map((s) => `
+        <article class="source">
+          <a class="source-logo" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo">` : `<span>${esc(initials(s.name))}</span>`}</a>
+          <h2>${esc(s.name)}</h2>
+          ${s.code ? `<button class="code-chip" data-code="${esc(s.code)}" title="Copy code">code <b>${esc(s.code)}</b></button>` : ""}
+          ${s.blurb ? `<p>${esc(s.blurb)}</p>` : ""}
+          ${tags("attributes", s.attributes, "attr")}
+          ${tags("what they sell", s.sells, "sell")}
+          <a class="shop-btn" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">SHOP NOW</a>
+        </article>`).join("");
+      $$(".code-chip").forEach((b) => b.addEventListener("click", async () => {
+        try { await navigator.clipboard.writeText(b.dataset.code); } catch (_) { return; }
+        const html = b.innerHTML;
+        b.innerHTML = "copied ✓";
+        setTimeout(() => (b.innerHTML = html), 1400);
       }));
     },
 

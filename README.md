@@ -14,6 +14,7 @@ An open reference library of peptides and research compounds, built as a static,
   - **mechanism and receptor activity**: a list with a detail panel
   - **human clinical record**: trials with design meta lines and editor's notes
   - **references**, with links to PubMed
+- `support.html`: "support me" page with source cards (logo, copy-to-clipboard code, attributes, what they sell, shop button). Sources are set in `support.sources` in `js/data.js`
 - `about.html`: evidence grades, status labels and disclaimer
 
 Other features:

@@ -317,3 +317,28 @@ main { min-height: 70vh; }
 .about p, .about li { font: 1.05rem/1.7 var(--serif); }
 .about li { margin-bottom: 8px; }
 [hidden] { display: none !important; }
+
+/* ---------- support / sources ---------- */
+.support-head { padding: 44px 0 8px; max-width: 780px; }
+.support-head .eyebrow { font: 500 .95rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--violet); }
+.support-head h1 { font: 500 clamp(2.4rem, 6vw, 3.4rem)/1.1 var(--sans); margin: 14px 0 18px; letter-spacing: -.01em; }
+.support-head p { color: var(--muted); font-size: 1.12rem; margin: 0; }
+.sources { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; margin-top: 28px; }
+.source { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; padding: 20px; }
+.source-logo { display: grid; place-items: center; aspect-ratio: 3 / 2; background: #dcdcdc; border-radius: 2px; margin-bottom: 18px; overflow: hidden; }
+.source-logo img { width: 100%; height: 100%; object-fit: contain; }
+.source-logo span { font: 700 3rem var(--sans); color: #111; letter-spacing: -.02em; }
+.source h2 { font: 500 1.3rem var(--sans); margin: 0 0 10px; }
+.code-chip { align-self: flex-start; font: 500 .78rem var(--mono); color: var(--violet); background: var(--violet-bg); border: 0; border-radius: 99px; padding: 5px 12px; cursor: pointer; margin-bottom: 12px; }
+.code-chip b { font-weight: 600; letter-spacing: .06em; }
+.code-chip:hover { box-shadow: 0 0 0 1px var(--violet); }
+.source > p { margin: 0 0 6px; font-size: 1rem; }
+.source .label.sm { margin: 16px 0 10px; font-size: .75rem; letter-spacing: .14em; }
+.tag-list { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.attr { font: .76rem var(--mono); letter-spacing: .04em; color: var(--violet); border: 1px solid var(--violet); border-radius: 99px; padding: 4px 12px; }
+.sell { font: .76rem var(--mono); letter-spacing: .04em; color: var(--muted); background: var(--panel-2); border-radius: 99px; padding: 5px 12px; }
+.shop-btn { margin-top: auto; display: block; text-align: center; font: 500 1rem var(--sans); letter-spacing: .04em; color: #111; background: #f2f2f4; border-radius: 99px; padding: 11px; }
+.source > *:nth-last-child(2) { margin-bottom: 22px; }
+.shop-btn:hover { text-decoration: none; background: #fff; box-shadow: 0 0 18px rgba(255,255,255,.2); }
+.support-note { margin-top: 32px; }
+.pill-btn.current { box-shadow: 0 0 0 2px var(--violet); }
