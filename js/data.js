@@ -108,7 +108,7 @@ window.ATLAS = {
         name: "Tanner Tattered", handle: "@tattered", href: "https://hoo.be/tattered",
         image: "img/creator-tattered.webp", accent: "#c9a227", accent2: "#8a6d12",
         known: "Long-running Q&As and a large public FAQ covering peptides, anabolics and harm reduction.",
-        text: "The one I trust most, on all of it. He puts his clients' health ahead of everything else, and he gives the entire FAQ away for free. That document is where this codex's compound list came from, and most of the blood work and monitoring guidance with it.",
+        text: "The one I trust most, on all of it. He puts his clients' health ahead of everything else, and he gives the entire FAQ away for free. A lot of the compound list here still overlaps with his, and most of the blood work and monitoring guidance came from it. I'm adding compounds he doesn't cover and leaving out ones I don't think belong, so the overlap will shrink as this becomes its own thing.",
         topics: [["Peptides", "codex.html?cat=repair"], ["AAS", "codex.html?cat=aas"], ["Blood work", "entry.html?slug=blood-work-and-monitoring"]],
         linkLabel: "hoo.be/tattered"
       },
