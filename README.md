@@ -14,6 +14,7 @@ An open reference library of peptides and research compounds, built as a static,
   - **mechanism and receptor activity**: a list with a detail panel
   - **human clinical record**: trials with design meta lines and editor's notes
   - **references**, with links to PubMed
+- `credits.html`: "Creators I Learned From" page. Cards come from `credits.people` in `js/data.js` and use generated monogram avatars; set `image` on a person to use a real photo or logo you have permission to use
 - `support.html`: "support me" page with source cards (logo, copy-to-clipboard code, attributes, what they sell, shop button). Sources are set in `support.sources` in `js/data.js`
 - Compound pages carry a **Monitoring** section from `js/monitoring.js`: which markers that compound makes worth watching, why, and warning signs. Target ranges are deliberately omitted, since interpreting a result is a clinical decision
 - Longer guide articles live in `js/entries-guides.js`

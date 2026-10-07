@@ -56,9 +56,10 @@
             ["archive.html", "Archive", "Chronological record"],
             ...cats.map((c) => [`codex.html?cat=${c.id}`, c.name])
           ])}
-          ${menu("COMMUNITY", page === "about", [
+          ${menu("COMMUNITY", ["about", "credits"].includes(page), [
             ["codex.html?cat=guides", "Guides", "How to read the evidence"],
             ["about.html", "About", "Standards and disclaimer"],
+            ["credits.html", "Credits", "Creators I learned from"],
             ["about.html#contact", "Request an entry"]
           ])}
           <a class="nav-link${page === "archive" ? " active" : ""}" href="archive.html">ARCHIVE</a>
@@ -66,7 +67,7 @@
         <div class="header-tools">
           <button class="search-pill" id="search-open">${icons.search}<span>Search the archive</span><kbd>${isMac ? "⌘K" : "Ctrl K"}</kbd></button>
           <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">${root.dataset.theme === "dark" ? icons.sun : icons.moon}</button>
-          ${S.headerButtons.map((b) => `<a class="pill-btn${b.primary ? " primary" : ""}${page === "support" && b.href === "support.html" ? " current" : ""}" href="${b.href}">${esc(b.label)}</a>`).join("")}
+          ${S.headerButtons.map((b) => `<a class="pill-btn${b.primary ? " primary" : ""}${(page === "support" && b.href === "support.html") || (page === "credits" && b.href === "credits.html") ? " current" : ""}" href="${b.href}">${esc(b.label)}</a>`).join("")}
         </div>
       </div>`;
     $("#site-footer").innerHTML = `
@@ -482,6 +483,30 @@
         b.innerHTML = "Copied ✓";
         setTimeout(() => (b.innerHTML = html), 1400);
       }));
+    },
+
+    credits() {
+      const C = A.credits;
+      $("#credits-eyebrow").textContent = C.eyebrow;
+      $("#credits-title").textContent = C.title;
+      $("#credits-intro").textContent = C.intro;
+      $("#credits-note").textContent = C.note;
+      // Two-letter monogram: initials for multi-word names, first two characters otherwise.
+      const initials = (n) => {
+        const words = n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean);
+        return (words.length > 1 ? words.map((w) => w[0]).join("") : (words[0] || "?").slice(0, 2)).slice(0, 2).toUpperCase();
+      };
+      $("#creators").innerHTML = C.people.map((p) => `
+        <article class="creator" style="--c1:${esc(p.accent)};--c2:${esc(p.accent2)}">
+          <div class="creator-top">
+            <span class="creator-avatar">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}">` : `<span>${esc(initials(p.name))}</span>`}</span>
+            <span class="creator-id"><h2>${esc(p.name)}</h2><span class="mono-sm">${esc(p.handle)}</span></span>
+          </div>
+          <p class="creator-known">${sent(p.known)}</p>
+          <p class="creator-text">${sent(p.text)}</p>
+          ${p.topics && p.topics.length ? `<div class="creator-topics">${p.topics.map(([l, h]) => `<a href="${esc(h)}">${esc(l)}</a>`).join("")}</div>` : ""}
+          <a class="creator-link" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.linkLabel || "Visit")} ↗</a>
+        </article>`).join("");
     },
 
     about() {}

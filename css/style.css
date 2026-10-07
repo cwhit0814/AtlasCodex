@@ -393,3 +393,22 @@ main { min-height: 70vh; }
 .mon-watch ul { margin: 0; padding-left: 18px; }
 .mon-watch li { margin-bottom: 8px; font-size: .95rem; }
 .mon-watch li::marker { color: var(--amber); }
+
+/* ---------- credits ---------- */
+.creators { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 18px; margin-top: 28px; }
+.creator { display: flex; flex-direction: column; background: var(--panel); border: 1px solid var(--line-2); border-radius: 12px; padding: 22px; position: relative; overflow: hidden; }
+.creator::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 3px; background: linear-gradient(90deg, var(--c1), var(--c2)); }
+.creator:hover { border-color: color-mix(in srgb, var(--c1) 55%, transparent); }
+.creator-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.creator-avatar { flex: 0 0 56px; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; overflow: hidden; background: linear-gradient(135deg, var(--c1), var(--c2)); }
+.creator-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.creator-avatar span { font: 600 1.15rem var(--sans); color: #0b0b0e; letter-spacing: .02em; }
+.creator-id { min-width: 0; }
+.creator-id h2 { font: 500 1.25rem var(--sans); margin: 0 0 2px; }
+.creator-known { margin: 0 0 12px; font-size: .95rem; }
+.creator-text { margin: 0 0 16px; font: .98rem/1.6 var(--serif); color: var(--muted); }
+.creator-topics { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+.creator-topics a { font: .72rem var(--mono); letter-spacing: .04em; color: var(--muted); background: var(--panel-2); border-radius: 99px; padding: 5px 11px; }
+.creator-topics a:hover { color: var(--text); text-decoration: none; box-shadow: 0 0 0 1px var(--c1); }
+.creator-link { margin-top: auto; display: block; text-align: center; font: 500 .95rem var(--sans); color: var(--text); border: 1px solid var(--line-2); border-radius: 99px; padding: 10px; }
+.creator-link:hover { text-decoration: none; border-color: var(--c1); color: var(--c1); }
