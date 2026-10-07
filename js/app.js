@@ -145,6 +145,8 @@
     (e.trials || []).forEach((t) => parts.push(`${t.title}. ${t.body} ${t.note || ""}`));
     (e.sections || []).forEach((s) => parts.push(`${s.heading}. ${s.body}`));
     if (e.noTrials) parts.push(e.noTrials);
+    const m = (A.monitoring || {})[e.slug];
+    if (m) parts.push("Monitoring. " + (m.markers || []).map(([k, v]) => `${k}: ${v}.`).join(" ") + " " + (m.watch || []).join(" "));
     const d = (A.dosing || {})[e.slug];
     if (d) parts.push("Dosing. " + d.rows.map(([k, v]) => `${k}: ${v}.`).join(" "));
     if (e.pk) parts.push("Pharmacokinetics. " + e.pk.rows.map(([k, v]) => `${k}: ${v}.`).join(" ") + " " + (e.pk.note || ""));
@@ -361,6 +363,16 @@
             ${badge(r.evidence)}
             ${r.detail ? `<div class="risk-detail" hidden><p>${sent(r.detail)}</p>${refsLine(r.refs)}</div>` : ""}
           </div>`).join("")}</div>`);
+      }
+
+      // monitoring
+      const mon = (A.monitoring || {})[e.slug];
+      if (mon && ((mon.markers && mon.markers.length) || (mon.watch && mon.watch.length))) {
+        out.push(`<h2 class="label">Monitoring</h2><div class="panel mon">
+          ${mon.markers && mon.markers.length ? `<dl class="pk-grid">${mon.markers.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>` : ""}
+          ${mon.watch && mon.watch.length ? `<div class="mon-watch"><span class="label sm">Warning signs</span><ul>${mon.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>` : ""}
+          <div class="pk-foot"><p>${mon.note ? sent(mon.note) + " " : ""}What a result means depends on the person, the lab and the assay, so target ranges are deliberately not listed here. Take results to a clinician.</p></div>
+        </div>`);
       }
 
       // activity
