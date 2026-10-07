@@ -81,7 +81,7 @@ window.ATLAS = {
     ],
     cards: [
       { icon: "chat", tone: "gold", title: "Join the Community", text: "Talk through research, ask questions, and flag entries that need updating.", href: "about.html#contact" },
-      { icon: "form", tone: "violet", title: "Request an Entry", text: "Tell us which compound to cover next and what you want to know about it.", href: "about.html#contact" },
+      { icon: "form", tone: "accent", title: "Request an Entry", text: "Tell us which compound to cover next and what you want to know about it.", href: "about.html#contact" },
       { icon: "book", tone: "plain", title: "Read the Guides", text: "How to judge evidence, read trial phases, and spot a weak claim.", href: "codex.html?cat=guides" }
     ]
   },
@@ -106,7 +106,7 @@ window.ATLAS = {
     people: [
       {
         name: "Tanner Tattered", handle: "tanner.tattered", href: "https://hoo.be/tattered",
-        image: "img/creator-tattered.webp", accent: "#c9a227", accent2: "#8a6d12",
+        image: "img/creator-tattered.webp", accent: "#c89a5b", accent2: "#8a6224",
         known: "Long-running Q&As and a large public FAQ covering peptides, anabolics and harm reduction.",
         text: "The one I trust most, on all of it. He puts his clients' health ahead of everything else, and he gives the entire FAQ away for free. A lot of the compound list here still overlaps with his, and most of the blood work and monitoring guidance came from it. I'm adding compounds he doesn't cover and leaving out ones I don't think belong, so the overlap will shrink as this becomes its own thing.",
         topics: [["Peptides", "codex.html?cat=repair"], ["AAS", "codex.html?cat=aas"], ["Blood work", "entry.html?slug=blood-work-and-monitoring"]],
@@ -114,7 +114,7 @@ window.ATLAS = {
       },
       {
         name: "1MinAnabolics", handle: "Maximum Pharma Archive", href: "https://maxpharma.wiki/",
-        image: "img/creator-1minanabolics.png", accent: "#8b8cf6", accent2: "#4b4ab0",
+        image: "img/creator-1minanabolics.png", accent: "#a69d88", accent2: "#6e6757",
         known: "The Maximum Pharma Archive, a searchable reference of compounds with per-claim evidence grading.",
         text: "Along with ScientificSean, the reason this codex exists at all — his archive gave me the idea, and I'm taking this somewhere of its own rather than leaving it a copy of his. He's who I watch for the extreme end: he pushes the envelope in his own research and reports what he finds either way, good or bad, so nobody else has to.",
         topics: [["Archive", "archive.html"], ["Evidence grades", "about.html"]],
@@ -122,7 +122,7 @@ window.ATLAS = {
       },
       {
         name: "ScientificSean", handle: "scientificsean.wiki", href: "https://www.scientificsean.wiki/support",
-        image: "img/creator-scientificsean.png", accent: "#5fcbc0", accent2: "#19857a",
+        image: "img/creator-scientificsean.png", accent: "#6fa89a", accent2: "#2f6b5c",
         known: "A compound wiki written with an emphasis on citations and mechanism.",
         text: "The other half of where this codex came from. He's who I go to for nootropics, and he digs deeper than anyone else I follow. If you want to understand what these compounds are doing at the receptor level, his work is where to go.",
         topics: [["Mechanisms", "codex.html?cat=metabolic"], ["Guides", "codex.html?cat=guides"]],
@@ -130,7 +130,7 @@ window.ATLAS = {
       },
       {
         name: "Vigorous Steve", handle: "vigoroussteve.com", href: "https://vigoroussteve.com/",
-        image: "img/creator-vigorous-steve.png", imagePos: "50% 22%", accent: "#8fd16a", accent2: "#3f7f1f",
+        image: "img/creator-vigorous-steve.png", imagePos: "50% 22%", accent: "#86a877", accent2: "#4a6b32",
         known: "Years of harm-reduction education on performance-enhancing drugs, their side effects and what to monitor.",
         text: "One of the two who started all of this for me. Steve and Leo are why I got into this side of research in the first place, and his harm-reduction framing — what to watch and when to stop, rather than how much to take — is the line this codex tries to hold.",
         topics: [["Monitoring", "entry.html?slug=blood-work-and-monitoring"], ["AAS", "codex.html?cat=aas"]],
@@ -138,7 +138,7 @@ window.ATLAS = {
       },
       {
         name: "Leo and Longevity", handle: "YouTube", href: "https://www.youtube.com/c/LeoandLongevity", memorial: "In memoriam",
-        image: "img/creator-leo.png", accent: "#f0776a", accent2: "#a23a3a",
+        image: "img/creator-leo.png", accent: "#cf7a6b", accent2: "#9b3127",
         known: "Video essays on hormones, body composition and longevity, aimed at the mechanism rather than the protocol.",
         text: "Rest in peace. Leo and Steve are the two who got me into this, and none of what I've written here would exist without him. He taught the mechanism instead of the protocol, which is the standard I've tried to keep. If you still use his codes, that support goes directly to his wife and daughter.",
         topics: [["Longevity", "codex.html?cat=longevity"], ["GH axis", "codex.html?cat=gh"]],

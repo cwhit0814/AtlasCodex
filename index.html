@@ -8,7 +8,7 @@
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/entries-aas.js"></script>
@@ -30,11 +30,33 @@
   <header id="site-header"></header>
   <main>
     <div class="home">
-      <!-- decorative molecule line art -->
-      <svg class="molecule" style="right:110px;top:20px" width="80" height="60" viewBox="0 0 80 60" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M8 12l10-6 10 6v12l-10 6-10-6zM28 12l10-6 10 6v12l-10 6-10-6zM38 30v10l10 6 10-6V30M58 40l10 6"/><circle cx="8" cy="12" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="48" cy="24" r="2.5"/><circle cx="68" cy="46" r="2.5"/><circle cx="58" cy="40" r="2.5"/></svg>
-      <svg class="molecule" style="right:0;top:170px" width="170" height="100" viewBox="0 0 170 100" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M10 72l38-22 0-44M48 50l38 22 38-22 0-44M86 66l36-20M124 50l38 22"/><circle cx="10" cy="72" r="6"/></svg>
-      <svg class="molecule" style="left:260px;top:130px" width="60" height="34" viewBox="0 0 60 34" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M6 10l10-6 10 6v10l-10 6-10-6zM26 10l12 6 12-4"/><circle cx="6" cy="10" r="2.5"/><circle cx="26" cy="20" r="2.5"/><circle cx="50" cy="12" r="2.5"/></svg>
-      <svg class="molecule" style="left:40px;top:430px" width="120" height="120" viewBox="0 0 120 120" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".5"><path d="M30 40l20-12 20 12v24l-20 12-20-12zM70 40l20-12 20 12M50 76v24"/><circle cx="50" cy="100" r="3"/></svg>
+      <!-- Decorative line art: compass rose, astrolabe ring and graticule, after the
+           instruments and charts of an ancient library rather than modern chemistry. -->
+      <svg class="figure" style="right:40px;top:40px" width="210" height="210" viewBox="0 0 120 120" fill="none" stroke="currentColor" aria-hidden="true">
+        <circle cx="60" cy="60" r="52" stroke-width=".7"/>
+        <circle cx="60" cy="60" r="44" stroke-width=".4"/>
+        <circle cx="60" cy="60" r="19" stroke-width=".4"/>
+        <g stroke-width=".7"><path d="M60 8v104M8 60h104"/></g>
+        <g stroke-width=".4" opacity=".75"><path d="M23 23l74 74M97 23l-74 74"/></g>
+        <path d="M60 14 66 54 106 60 66 66 60 106 54 66 14 60 54 54Z" stroke-width=".7"/>
+        <g stroke-width=".45" opacity=".6">
+          <path d="M60 16v6M60 98v6M16 60h6M98 60h6M31 31l4 4M85 85l4 4M89 31l-4 4M35 85l-4 4"/>
+        </g>
+      </svg>
+      <svg class="figure" style="left:56px;top:300px" width="150" height="150" viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true" opacity=".7">
+        <circle cx="50" cy="50" r="42" stroke-width=".6"/>
+        <ellipse cx="50" cy="50" rx="42" ry="15" stroke-width=".4"/>
+        <ellipse cx="50" cy="50" rx="42" ry="29" stroke-width=".4"/>
+        <ellipse cx="50" cy="50" rx="15" ry="42" stroke-width=".4"/>
+        <ellipse cx="50" cy="50" rx="29" ry="42" stroke-width=".4"/>
+        <path d="M8 50h84M50 8v84" stroke-width=".5"/>
+      </svg>
+      <svg class="figure" style="right:150px;top:430px" width="120" height="76" viewBox="0 0 80 50" fill="none" stroke="currentColor" aria-hidden="true" opacity=".55">
+        <path d="M2 40c14-22 28-30 38-30s24 8 38 30" stroke-width=".6"/>
+        <path d="M2 30c14-16 28-22 38-22s24 6 38 22" stroke-width=".4"/>
+        <path d="M2 48c14-26 28-36 38-36s24 10 38 36" stroke-width=".4"/>
+        <g stroke-width=".4"><path d="M18 46V16M40 44V9M62 46V16"/></g>
+      </svg>
 
       <div class="ticker-wrap"><div class="ticker" id="ticker"></div></div>
 
@@ -56,7 +78,7 @@
       <div class="cta-grid" id="cta"></div>
 
       <div class="wrap">
-        <div class="section-head"><h2 class="label">Recently updated</h2><a class="mono-sm violet" href="archive.html">Full archive →</a></div>
+        <div class="section-head"><h2 class="label">Recently updated</h2><a class="mono-sm accent" href="archive.html">Full archive →</a></div>
         <div class="panel" id="recent"></div>
       </div>
     </div>

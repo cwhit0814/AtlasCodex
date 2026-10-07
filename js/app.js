@@ -323,7 +323,7 @@
           ${e.profile.rows.map((r) => `
             <div class="p-row${r.neg ? " neg" : ""}">
               <div class="p-main"><span>${esc(r.label)}</span>${meter(r.score, r.neg ? "red" : "")}<span class="mono-sm">${r.score}/5</span></div>
-              <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span class="mono-sm violet">● Your score</span>${meter(mine[r.label] || 0, "violet")}<span class="mono-sm violet">${mine[r.label] ? mine[r.label] + "/5" : "–"}</span></div>
+              <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span class="mono-sm accent">● Your score</span>${meter(mine[r.label] || 0, "accent")}<span class="mono-sm accent">${mine[r.label] ? mine[r.label] + "/5" : "–"}</span></div>
             </div>`).join("")}
           <div class="rate-bar"><span>${hasMine ? "You have scored this compound." : "Score this compound yourself."}</span><button class="rate-btn" id="rate-btn">${hasMine ? "Edit scores" : "Rate"}</button></div>
           <div class="p-notes">${e.profile.note ? `<p>${sent(e.profile.note)}</p>` : ""}<p>Your scores are saved only in this browser. They are not part of the codex's assessment.</p></div>
