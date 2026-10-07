@@ -26,7 +26,7 @@ Other features:
 
 ## Editing content
 
-Site settings and the original entries live in `js/data.js`. More entries live in `js/entries-aas.js` (steroids and GH), `js/entries-noots.js` (racetams and other nootropics) and `js/entries-metabolic.js` (exercise mimetics) and `js/entries-fatloss.js` (fat loss agents, plus TAK-653). `js/entries-faq-1.js` and `js/entries-faq-2.js` hold the larger batch added later, written in a shorter format using `ATLAS.add()` from `js/builder.js` (the short forms are documented at the top of that file). Each extra file adds to the same list, so you can put a new entry in any of them. That file sets the ticker text, header buttons, home cards, categories, entries and references. The comment at the top of the file documents the entry schema.
+Site settings and the original entries live in `js/data.js`. More entries live in `js/entries-aas.js` (steroids and GH), `js/entries-noots.js` (racetams and other nootropics) and `js/entries-metabolic.js` (exercise mimetics) and `js/entries-fatloss.js` (fat loss agents, plus TAK-653). `js/entries-faq-1.js` and `js/entries-faq-2.js` hold the larger batch added later, written in a shorter format using `ATLAS.add()` from `js/builder.js` (the short forms are documented at the top of that file). `js/entries-products.js` holds blends and branded products. Each extra file adds to the same list, so you can put a new entry in any of them. That file sets the ticker text, header buttons, home cards, categories, entries and references. The comment at the top of the file documents the entry schema.
 
 ## Running locally
 

@@ -383,3 +383,5 @@ main { min-height: 70vh; }
 .st-banned { color: #fff; border-color: var(--red); background: color-mix(in srgb, var(--red) 70%, #000); }
 :root[data-theme="light"] .st-banned { color: #fff; }
 .st-supplement { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 45%, transparent); background: var(--amber-bg); }
+.st-cosmetic { color: var(--violet); border-color: #3a3970; background: var(--violet-bg); }
+.st-compounded { color: var(--teal); border-color: color-mix(in srgb, var(--teal) 45%, transparent); background: color-mix(in srgb, var(--teal) 10%, transparent); }
