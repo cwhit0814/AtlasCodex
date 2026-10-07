@@ -145,6 +145,8 @@
     (e.trials || []).forEach((t) => parts.push(`${t.title}. ${t.body} ${t.note || ""}`));
     (e.sections || []).forEach((s) => parts.push(`${s.heading}. ${s.body}`));
     if (e.noTrials) parts.push(e.noTrials);
+    const d = (A.dosing || {})[e.slug];
+    if (d) parts.push("Dosing. " + d.rows.map(([k, v]) => `${k}: ${v}.`).join(" "));
     if (e.pk) parts.push("Pharmacokinetics. " + e.pk.rows.map(([k, v]) => `${k}: ${v}.`).join(" ") + " " + (e.pk.note || ""));
     return strip(parts.filter(Boolean).join(" \n "));
   }
@@ -332,6 +334,22 @@
           <dl class="pk-grid">${e.pk.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>
           ${e.pk.note || (e.pk.refs && e.pk.refs.length) ? `<div class="pk-foot">${e.pk.note ? `<p>${sent(e.pk.note)}</p>` : ""}${refsLine(e.pk.refs)}</div>` : ""}
         </div>`);
+      }
+
+      // dosing (from approved labels and published trials only)
+      if (e.type === "compound") {
+        const d = (A.dosing || {})[e.slug];
+        if (d) {
+          out.push(`<h2 class="label">Dosing in Labels and Trials</h2><div class="panel pk">
+            <div class="pk-head"><span class="mono-sm">${esc(d.source || "Source")}</span>${badge(d.evidence)}</div>
+            <dl class="pk-grid">${d.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>
+            <div class="pk-foot"><p>${d.note ? sent(d.note) + " " : ""}These are the amounts studied or approved, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.</p>${refsLine(d.refs)}</div>
+          </div>`);
+        } else {
+          out.push(`<h2 class="label">Dosing in Labels and Trials</h2><div class="panel no-dose">
+            <p><strong>${(A.site.noDoseBySlug || {})[e.slug] ? "No dose listed here." : "No established human dose."}</strong> ${esc((A.site.noDoseBySlug || {})[e.slug] || A.site.noDose[e.status] || A.site.noDose.default)}</p>
+          </div>`);
+        }
       }
 
       // risks

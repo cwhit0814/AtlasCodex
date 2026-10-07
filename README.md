@@ -15,6 +15,7 @@ An open reference library of peptides and research compounds, built as a static,
   - **human clinical record**: trials with design meta lines and editor's notes
   - **references**, with links to PubMed
 - `support.html`: "support me" page with source cards (logo, copy-to-clipboard code, attributes, what they sell, shop button). Sources are set in `support.sources` in `js/data.js`
+- Every compound page has a **Dosing in Labels and Trials** panel. `js/dosing.js` holds only two kinds of numbers: dosing from an approved regulator-reviewed label, and dosing a published trial actually administered. Protocols from forums, vendors or coaching documents are deliberately excluded. Compounds with neither source show an honest "no established human dose" panel instead, with per-compound wording in `site.noDoseBySlug` for drugs approved abroad or sold as cosmetics
 - Every compound page also has a **Pharmacokinetics** panel (route, bioavailability, half-life, metabolism, excretion). The data live in `js/pk.js`, keyed by entry slug
 - Every compound page has a **Buy from** block under the title. Add product links in `js/buy.js` (keyed by entry slug, pointing at a source `id` from `support.sources`). The `?ref=` code is added automatically. Compounds with no link show "No current stock"
 - `about.html`: evidence grades, status labels and disclaimer
