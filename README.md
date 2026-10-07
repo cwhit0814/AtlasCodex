@@ -25,7 +25,7 @@ An open reference library of peptides and research compounds, built as a static,
 
 ## Design
 
-The identity is an Alexandrian library by way of Victorian scientific engraving: ink, parchment and antique gold, taken from the brand mark (`#17181d`, `#eee8d2`, `#b8874f`). Every colour is a token in the `:root` block of `css/style.css`; dark is the default and light is aged paper rather than white, so changing a theme means editing one block. The background is a laid-paper texture (fine engraver's hatch plus widely spaced chain lines) rather than a grid. Display type is Cormorant Garamond, prose is EB Garamond, and Inter and JetBrains Mono carry the dense data. The home page line art is a compass rose, an armillary sphere and a graticule.
+The identity is an Alexandrian library by way of Victorian scientific engraving: ink, parchment and antique gold, taken from the brand mark (`#17181d`, `#eee8d2`, `#b8874f`). Every colour is a token in the `:root` block of `css/style.css`; dark is the default and light is aged paper rather than white, so changing a theme means editing one block. The background is a laid-paper texture (fine engraver's hatch plus widely spaced chain lines) rather than a grid. Display type is Cormorant Garamond, prose is EB Garamond, and Inter and JetBrains Mono carry the dense data. The home page line art is a compass rose, an armillary sphere and a graticule. Section headings carry a hairline out to the margin like an engraved running head, a compass ornament marks true breaks, and entry ledes open with a gold drop cap.
 
 Other features:
 - Press `⌘K`, `Ctrl+K` or `/` to search.

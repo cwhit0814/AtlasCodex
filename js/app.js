@@ -201,6 +201,7 @@
   const badge = (ev) => ev ? `<span class="badge ev-${ev.replace(/\s+/g, "-")}">${esc(ev)}</span>` : "";
   const statusTag = (s) => `<span class="status st-${String(s).toLowerCase().replace(/\s+/g, "-")}">${esc(s)}</span>`;
   const meter = (n, cls = "") => `<span class="meter ${cls}">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? "on" : ""}" data-v="${i}"></i>`).join("")}</span>`;
+  const ornament = `<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`;
   const refsLine = (refs) => refs && refs.length ? `<p class="refs">Referenced: ${refs.map((r) => `<a href="#ref-${r}">${r}</a>`).join(", ")}</p>` : "";
 
   /* ---------- pages ---------- */
@@ -412,6 +413,7 @@
       const ids = new Set();
       [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, e.pk || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
+        out.push(ornament);
         out.push(`<h2 class="label">References</h2><ol class="panel refs-list">${[...ids].sort((a, b) => a - b).map((id) => `
           <li id="ref-${id}"><span class="mono-sm">${id}</span><span>${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(A.references[id]) ? "" : ` <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed ↗</a>`}</span></li>`).join("")}</ol>`);
       }
