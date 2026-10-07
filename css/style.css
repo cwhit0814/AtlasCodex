@@ -414,3 +414,8 @@ main { min-height: 70vh; }
 .creator-link:hover { text-decoration: none; border-color: var(--c1); color: var(--c1); }
 /* Several creator marks are light-on-black, so a ring keeps the avatar distinct from the card. */
 .creator-avatar.has-img { background: #0b0b0e; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c1) 60%, transparent); }
+/* A tribute card: marked quietly rather than decorated. */
+.creator.memorial { border-color: color-mix(in srgb, var(--c1) 35%, var(--line-2)); }
+.memorial-tag { position: absolute; top: 14px; right: 16px; font: 500 .62rem var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--c1); opacity: .85; }
+.creator.memorial .creator-id h2 { display: flex; align-items: center; gap: 8px; }
+.creator.memorial .creator-top { padding-right: 92px; }

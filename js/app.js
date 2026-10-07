@@ -497,7 +497,8 @@
         return (words.length > 1 ? words.map((w) => w[0]).join("") : (words[0] || "?").slice(0, 2)).slice(0, 2).toUpperCase();
       };
       $("#creators").innerHTML = C.people.map((p) => `
-        <article class="creator" style="--c1:${esc(p.accent)};--c2:${esc(p.accent2)}">
+        <article class="creator${p.memorial ? " memorial" : ""}" style="--c1:${esc(p.accent)};--c2:${esc(p.accent2)}">
+          ${p.memorial ? `<span class="memorial-tag">${esc(p.memorial)}</span>` : ""}
           <div class="creator-top">
             <span class="creator-avatar${p.image ? " has-img" : ""}">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}"${p.imagePos ? ` style="object-position:${esc(p.imagePos)}"` : ""}>` : `<span>${esc(initials(p.name))}</span>`}</span>
             <span class="creator-id"><h2>${esc(p.name)}</h2><span class="mono-sm">${esc(p.handle)}</span></span>
