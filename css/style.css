@@ -412,3 +412,5 @@ main { min-height: 70vh; }
 .creator-topics a:hover { color: var(--text); text-decoration: none; box-shadow: 0 0 0 1px var(--c1); }
 .creator-link { margin-top: auto; display: block; text-align: center; font: 500 .95rem var(--sans); color: var(--text); border: 1px solid var(--line-2); border-radius: 99px; padding: 10px; }
 .creator-link:hover { text-decoration: none; border-color: var(--c1); color: var(--c1); }
+/* Several creator marks are light-on-black, so a ring keeps the avatar distinct from the card. */
+.creator-avatar.has-img { background: #0b0b0e; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c1) 60%, transparent); }

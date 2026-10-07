@@ -499,7 +499,7 @@
       $("#creators").innerHTML = C.people.map((p) => `
         <article class="creator" style="--c1:${esc(p.accent)};--c2:${esc(p.accent2)}">
           <div class="creator-top">
-            <span class="creator-avatar">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}">` : `<span>${esc(initials(p.name))}</span>`}</span>
+            <span class="creator-avatar${p.image ? " has-img" : ""}">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}"${p.imagePos ? ` style="object-position:${esc(p.imagePos)}"` : ""}>` : `<span>${esc(initials(p.name))}</span>`}</span>
             <span class="creator-id"><h2>${esc(p.name)}</h2><span class="mono-sm">${esc(p.handle)}</span></span>
           </div>
           <p class="creator-known">${sent(p.known)}</p>

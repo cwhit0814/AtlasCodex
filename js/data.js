@@ -92,6 +92,7 @@ window.ATLAS = {
    *   image: "img/creator-name.jpg"
    * Only add an image you have permission to use: these are real people, and their
    * portraits and brand marks belong to them.
+   *   imagePos: object-position for the circular crop, e.g. "50% 22%" to favour the head
    *   accent/accent2: the monogram gradient
    *   known:  what they cover, in one line
    *   topics: [[label, href]] chips, usually into the codex
@@ -104,7 +105,7 @@ window.ATLAS = {
     people: [
       {
         name: "Tanner Tattered", handle: "@tattered", href: "https://hoo.be/tattered",
-        image: "", accent: "#c9a227", accent2: "#8a6d12",
+        image: "img/creator-tattered.webp", accent: "#c9a227", accent2: "#8a6d12",
         known: "Long-running Q&As and a large public FAQ covering peptides, anabolics and harm reduction.",
         text: "His FAQ is the source of the compound list this codex was built out to cover, and of the blood work and monitoring material in the guides.",
         topics: [["Peptides", "codex.html?cat=repair"], ["AAS", "codex.html?cat=aas"], ["Blood work", "entry.html?slug=blood-work-and-monitoring"]],
@@ -112,7 +113,7 @@ window.ATLAS = {
       },
       {
         name: "1MinAnabolics", handle: "Maximum Pharma Archive", href: "https://maxpharma.wiki/",
-        image: "", accent: "#8b8cf6", accent2: "#4b4ab0",
+        image: "img/creator-1minanabolics.png", accent: "#8b8cf6", accent2: "#4b4ab0",
         known: "The Maximum Pharma Archive, a searchable reference of compounds with per-claim evidence grading.",
         text: "The archive's structure is the direct model for this site: evidence badges on every claim, a profile block, and a clinical record that stays empty when there is nothing to put in it.",
         topics: [["Archive", "archive.html"], ["Evidence grades", "about.html"]],
@@ -120,7 +121,7 @@ window.ATLAS = {
       },
       {
         name: "ScientificSean", handle: "scientificsean.wiki", href: "https://www.scientificsean.wiki/support",
-        image: "", accent: "#5fcbc0", accent2: "#19857a",
+        image: "img/creator-scientificsean.png", accent: "#5fcbc0", accent2: "#19857a",
         known: "A compound wiki written with an emphasis on citations and mechanism.",
         text: "A reference-first approach to the same material, and part of why this codex puts the source quality of a claim next to the claim itself.",
         topics: [["Mechanisms", "codex.html?cat=metabolic"], ["Guides", "codex.html?cat=guides"]],
@@ -128,7 +129,7 @@ window.ATLAS = {
       },
       {
         name: "Vigorous Steve", handle: "vigoroussteve.com", href: "https://vigoroussteve.com/",
-        image: "", accent: "#8fd16a", accent2: "#3f7f1f",
+        image: "img/creator-vigorous-steve.png", imagePos: "50% 22%", accent: "#8fd16a", accent2: "#3f7f1f",
         known: "Years of harm-reduction education on performance-enhancing drugs, their side effects and what to monitor.",
         text: "The harm-reduction framing, that the useful question is what to watch and when to stop rather than how much to take, runs through the monitoring sections here.",
         topics: [["Monitoring", "entry.html?slug=blood-work-and-monitoring"], ["AAS", "codex.html?cat=aas"]],
@@ -136,7 +137,7 @@ window.ATLAS = {
       },
       {
         name: "Leo and Longevity", handle: "YouTube", href: "https://www.youtube.com/c/LeoandLongevity",
-        image: "", accent: "#f0776a", accent2: "#a23a3a",
+        image: "img/creator-leo.png", accent: "#f0776a", accent2: "#a23a3a",
         known: "Video essays on hormones, body composition and longevity, aimed at the mechanism rather than the protocol.",
         text: "A reminder that explaining why something works is more durable than telling people what to take, which is the line this codex tries to hold.",
         topics: [["Longevity", "codex.html?cat=longevity"], ["GH axis", "codex.html?cat=gh"]],
