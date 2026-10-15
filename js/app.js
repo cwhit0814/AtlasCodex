@@ -59,7 +59,7 @@
         <span class="aff-go">Shop →</span>
       </a>`;
   }
-  // The slim bar that rises once the reader is past the first screen. Dismissed bars stay away for the session.
+  // The slim bar that rises as soon as the reader starts scrolling. Dismissed bars stay away for the session.
   function supportBar() {
     const s = mainSource();
     const page = document.body.dataset.page;
@@ -83,7 +83,7 @@
     let shown = false, ticking = false;
     const check = () => {
       ticking = false;
-      const want = scrollY > Math.min(600, innerHeight * 0.7);
+      const want = scrollY > 16;
       if (want !== shown) { shown = want; bar.classList.toggle("show", want); document.body.classList.toggle("sbar-on", want); }
     };
     addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
