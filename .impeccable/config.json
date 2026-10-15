@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-10-15T02:32:52.286Z",
+        "reason": "Claude: field-page and gilt-band inset their text 48px+ via padding on their inner wrappers (verified in 1440/768/390 screenshots); detector does not count child padding"
+      }
+    ]
+  }
+}
