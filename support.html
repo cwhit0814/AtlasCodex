@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Support Me · Atlas Codex</title>
-  <meta name="description" content="Atlas Codex — every compound worth knowing, cited and graded.">
+  <meta name="description" content="Atlas Codex: every compound worth knowing, cited and graded by its evidence.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/entries-aas.js"></script>
@@ -29,15 +30,14 @@
 <body data-page="support">
   <header id="site-header"></header>
   <main>
-    <div class="wrap">
-      <header class="support-head">
-        <span class="eyebrow" id="support-eyebrow"></span>
-        <h1 id="support-title"></h1>
-        <p id="support-intro"></p>
-      </header>
-      <div class="sources" id="sources"></div>
-      <p class="disclaimer support-note" id="support-disclosure"></p>
-    </div>
+    <header class="wrap spread page-title">
+      <div class="side"><p class="small" id="support-disclosure" data-rise style="--i:2"></p></div>
+      <div class="main">
+        <h1 class="lines"><span class="line"><span data-line style="--i:0" id="support-title"></span></span></h1>
+        <p class="lead" id="support-intro" data-rise style="--i:1;margin-top:2rem;max-width:44ch"></p>
+      </div>
+    </header>
+    <div id="sources" style="padding-bottom:var(--section)"></div>
   </main>
   <footer id="site-footer"></footer>
 </body>

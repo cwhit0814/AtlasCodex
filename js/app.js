@@ -1,4 +1,4 @@
-/* Atlas Codex — shared rendering for every page. Content lives in data.js. */
+/* Atlas Codex: shared rendering for every page. Content lives in data.js and the entries-*.js files. */
 (function () {
   const A = window.ATLAS;
   const $ = (s, r = document) => r.querySelector(s);
@@ -11,6 +11,12 @@
   const bySlug = (s) => A.entries.find((e) => e.slug === s);
   const fmtDate = (d) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
   const entryUrl = (e) => "entry.html?slug=" + encodeURIComponent(e.slug);
+  const plateUrl = (name, size = 300) => `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${encodeURIComponent(name)}/PNG?image_size=${size}x${size}`;
+  const compounds = () => A.entries.filter((e) => e.type === "compound");
+  const hasRct = (e) => (e.trials || []).some((t) => t.evidence === "human rct");
+  const words = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty"];
+  const word = (n) => words[n] || String(n);
+  const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
   const store = {
     get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch (_) { return null; } },
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} }
@@ -18,15 +24,29 @@
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
 
   const icons = {
-    search: '<svg viewBox="0 0 24 24" width="16" height="16"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
-    sun: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
-    moon: '<svg viewBox="0 0 24 24" width="18" height="18"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',
-    sparkle: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>',
-    chev: '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>',
-    chat: '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/></svg>',
-    form: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>',
-    book: '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2Z"/><path d="M4 21V5"/></svg>'
+    search: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
+    sun: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+    moon: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+    sparkle: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>',
+    close: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+    chev: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
   };
+
+  /* ---------- evidence grades and status, set as words ---------- */
+  const EV = {
+    "human rct": ["Human RCT", "t-good"], established: ["Established", "t-good"], "human obs": ["Human observational", "t-obs"],
+    animal: ["Animal", "t-weak"], "in vitro": ["In vitro", "t-weak"], anecdotal: ["Anecdotal", "t-weak"],
+    contested: ["Contested", "t-weak"], unknown: ["Unknown", "t-plain"]
+  };
+  const ST = {
+    approved: "t-good", investigational: "t-weak", "research only": "t-bad", discontinued: "t-plain", veterinary: "t-obs",
+    "never approved": "t-bad", banned: "t-solid-bad", supplement: "t-weak", compounded: "t-obs", cosmetic: "t-plain"
+  };
+  const badge = (ev) => { if (!ev) return ""; const [label, tone] = EV[ev] || [cap(ev), "t-plain"]; return `<span class="ev ${tone}">${esc(label)}</span>`; };
+  const statusTag = (s) => `<span class="st ${ST[String(s).toLowerCase()] || "t-plain"}">${esc(cap(String(s)))}</span>`;
+  const meter = (n, cls = "") => `<span class="meter ${cls}" aria-hidden="true">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? "on" : ""}" data-v="${i}"></i>`).join("")}</span>`;
+  const refsLine = (refs) => refs && refs.length ? `<p class="refs-line">References ${refs.map((r) => `<a href="#ref-${r}">${r}</a>`).join(", ")}</p>` : "";
+  const selectBox = (id, label, options) => `<label class="select"><span class="sr-only">${label}</span><select class="field" id="${id}">${options}</select>${icons.chev}</label>`;
 
   /* ---------- theme (dark by default) ---------- */
   const root = document.documentElement;
@@ -34,71 +54,94 @@
   function toggleTheme() {
     root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
     store.set("atlas-theme", root.dataset.theme);
-    $("#theme-toggle").innerHTML = root.dataset.theme === "dark" ? icons.sun : icons.moon;
+    const b = $("#theme-toggle");
+    b.innerHTML = root.dataset.theme === "dark" ? icons.sun : icons.moon;
+    b.setAttribute("aria-label", root.dataset.theme === "dark" ? "Switch to the light theme" : "Switch to the dark theme");
   }
+
+  /* ---------- entrances: each part rises once as its section arrives ---------- */
+  let io;
+  function reveal(scope = document) {
+    const targets = $$("[data-reveal]:not(.is-in)", scope);
+    if (!targets.length) return;
+    if (!("IntersectionObserver" in window)) { targets.forEach((el) => el.classList.add("is-in")); return; }
+    io = io || new IntersectionObserver((entries) => {
+      for (const en of entries) if (en.isIntersecting) { en.target.classList.add("is-in"); io.unobserve(en.target); }
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
+    targets.forEach((el) => io.observe(el));
+  }
+  // Safety net: nothing may stay hidden if the observer never fires.
+  window.addEventListener("load", () => setTimeout(() => $$("[data-reveal]:not(.is-in)").forEach((el) => {
+    const r = el.getBoundingClientRect();
+    if (r.top < innerHeight && r.bottom > 0) el.classList.add("is-in");
+  }), 2500));
 
   /* ---------- shell ---------- */
   function shell() {
     const page = document.body.dataset.page;
     const S = A.site;
-    const cats = A.categories.filter((c) => c.id !== "guides");
-    const menu = (label, active, items) => `
-      <div class="menu">
-        <button class="menu-btn${active ? " active" : ""}" aria-haspopup="true">${label} ${icons.chev}</button>
-        <div class="menu-list">${items.map(([href, t, sub]) => `<a href="${href}"><span>${t}</span>${sub ? `<small>${sub}</small>` : ""}</a>`).join("")}</div>
-      </div>`;
-    $("#site-header").innerHTML = `
-      <div class="header-inner">
-        <a class="wordmark" href="index.html">${esc(S.wordmark[0])} <span>${esc(S.wordmark[1])}</span></a>
-        <nav class="nav">
-          ${menu("BROWSE", ["codex", "archive", "entry"].includes(page), [
-            ["codex.html", "Database", "Every entry, filterable"],
-            ["archive.html", "Archive", "Chronological record"],
-            ...cats.map((c) => [`codex.html?cat=${c.id}`, c.name])
-          ])}
-          ${menu("COMMUNITY", ["about", "credits"].includes(page), [
-            ["codex.html?cat=guides", "Guides", "How to read the evidence"],
-            ["about.html", "About", "Standards and disclaimer"],
-            ["credits.html", "Credits", "Creators I learned from"],
-            ["about.html#contact", "Request an entry"]
-          ])}
-          <a class="nav-link${page === "archive" ? " active" : ""}" href="archive.html">ARCHIVE</a>
+    const here = (p) => (p === page ? ' aria-current="page"' : "");
+    const header = $("#site-header");
+    header.innerHTML = `
+      <div class="top" id="top">
+        <a class="wordmark" href="index.html">${esc(S.title)}</a>
+        <nav class="top-nav" id="top-nav" aria-label="Main">
+          <a class="link" href="codex.html"${here("codex")}>Codex</a>
+          <a class="link" href="archive.html"${here("archive")}>Archive</a>
+          <a class="link" href="codex.html?cat=guides">Guides</a>
+          <a class="link" href="credits.html"${here("credits")}>Credits</a>
+          <a class="link" href="support.html"${here("support")}>Support</a>
         </nav>
-        <div class="header-tools">
-          <button class="search-pill" id="search-open">${icons.search}<span>Search the archive</span><kbd>${isMac ? "⌘K" : "Ctrl K"}</kbd></button>
-          <button class="icon-btn" id="theme-toggle" aria-label="Toggle theme">${root.dataset.theme === "dark" ? icons.sun : icons.moon}</button>
-          ${S.headerButtons.map((b) => `<a class="pill-btn${b.primary ? " primary" : ""}${(page === "support" && b.href === "support.html") || (page === "credits" && b.href === "credits.html") ? " current" : ""}" href="${b.href}">${esc(b.label)}</a>`).join("")}
+        <div class="top-tools">
+          <button class="icon-btn" id="theme-toggle" type="button" aria-label="${root.dataset.theme === "dark" ? "Switch to the light theme" : "Switch to the dark theme"}">${root.dataset.theme === "dark" ? icons.sun : icons.moon}</button>
+          <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="top-nav">Menu</button>
+          <button class="button" id="search-open" type="button" title="Search (${isMac ? "⌘K" : "Ctrl K"} or /)">${icons.search}<span>Search</span></button>
         </div>
       </div>`;
-    $("#site-footer").innerHTML = `
-      <div class="footer-inner">
-        <div class="wordmark">${esc(S.wordmark[0])} <span>${esc(S.wordmark[1])}</span></div>
-        <p>${esc(S.tagline)}</p>
-        <p class="disclaimer">${esc(S.disclaimer)}</p>
-        <p class="mono-sm">© ${new Date().getFullYear()} ${esc(S.title)} · ${A.entries.length} entries</p>
-      </div>`;
+
+    const credits = (A.pictureCredits || []).map((c) => `<a href="${esc(c.href)}">“${esc(c.title)}”</a>${c.by ? ` by ${esc(c.by)}` : ""}, ${esc(c.licence)}`).join("; ");
+    const footer = $("#site-footer");
+    footer.className = "foot";
+    footer.innerHTML = `
+      <p class="foot-name" aria-hidden="true">${esc(S.title)}</p>
+      <div class="foot-row">
+        <div class="foot-places">
+          <button type="button" class="link" data-act="search">Search the codex</button>
+          <button type="button" class="link" data-act="ask">Ask the archive</button>
+          <a class="link" href="support.html">Support the codex</a>
+        </div>
+        <div class="foot-cols">
+          <div><h3>Browse</h3><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li></ul></div>
+          <div><h3>The codex</h3><ul class="plain"><li><a class="link" href="about.html">About</a></li><li><a class="link" href="about.html#grades">Evidence grades</a></li><li><a class="link" href="credits.html">Credits</a></li></ul></div>
+          <div><h3>Elsewhere</h3><ul class="plain"><li><a class="link" href="support.html">Support me</a></li><li><a class="link" href="about.html#contact">Request an entry</a></li></ul></div>
+        </div>
+      </div>
+      <p class="foot-disclaimer">${esc(S.disclaimer)}</p>
+      <p class="foot-credits muted">${credits ? `Pictures: ${credits}. ` : ""}Structure drawings from <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a>, US National Library of Medicine, public domain.</p>
+      <div class="foot-legal muted"><span>© ${new Date().getFullYear()} ${esc(S.title)} · <span class="nums">${A.entries.length}</span> entries</span><a class="link" href="#top">Back to top</a></div>`;
 
     const fab = document.createElement("button");
     fab.className = "ask-fab";
+    fab.type = "button";
     fab.setAttribute("aria-label", "Ask the archive");
-    fab.innerHTML = icons.sparkle;
+    fab.innerHTML = `${icons.sparkle}<span>Ask the archive</span>`;
     fab.addEventListener("click", () => openAsk());
     document.body.appendChild(fab);
 
-    $$(".menu-btn").forEach((b) => b.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const m = b.parentElement, open = m.classList.contains("open");
-      $$(".menu.open").forEach((x) => x.classList.remove("open"));
-      if (!open) m.classList.add("open");
-    }));
-    document.addEventListener("click", () => $$(".menu.open").forEach((x) => x.classList.remove("open")));
     $("#theme-toggle").addEventListener("click", toggleTheme);
     $("#search-open").addEventListener("click", () => openSearch());
+    $("#menu-btn").addEventListener("click", (ev) => {
+      const open = $("#top").classList.toggle("open");
+      ev.currentTarget.setAttribute("aria-expanded", open);
+      ev.currentTarget.textContent = open ? "Close" : "Menu";
+    });
+    $$("[data-act]", footer).forEach((b) => b.addEventListener("click", () => (b.dataset.act === "ask" ? openAsk() : openSearch())));
     document.addEventListener("keydown", (e) => {
       const typing = /input|textarea|select/i.test(document.activeElement.tagName);
       if ((e.key === "k" && (e.metaKey || e.ctrlKey)) || (e.key === "/" && !typing)) { e.preventDefault(); openSearch(); }
       if (e.key === "Escape") { closeSearch(); closeAsk(); }
     });
+    $$("[data-count='entries']").forEach((n) => (n.textContent = A.entries.length));
   }
 
   /* ---------- search ---------- */
@@ -111,8 +154,8 @@
       d = document.createElement("div");
       d.id = "search-dialog";
       d.className = "overlay";
-      d.innerHTML = `<div class="search-panel" role="dialog" aria-label="Search">
-        <div class="search-row">${icons.search}<input id="search-input" type="search" placeholder="Search compounds, aliases, tags…" autocomplete="off"><kbd>esc</kbd></div>
+      d.innerHTML = `<div class="search-panel" role="dialog" aria-modal="true" aria-label="Search the codex">
+        <div class="search-row">${icons.search}<input id="search-input" type="search" placeholder="Search compounds, aliases, tags" autocomplete="off" aria-label="Search the codex"><kbd>Esc</kbd></div>
         <ul id="search-results"></ul></div>`;
       document.body.appendChild(d);
       d.addEventListener("click", (e) => { if (e.target === d) closeSearch(); });
@@ -121,7 +164,7 @@
         const q = input.value.trim();
         const hits = (q ? A.entries.filter((e) => matches(e, q)) : A.entries).slice(0, 9);
         $("#search-results").innerHTML = hits.map((e) => `<li><a href="${entryUrl(e)}"><span class="r-name">${esc(e.name)}</span><span class="r-class">${esc(e.class || e.summary)}</span><span class="r-cat">${esc(cat(e.category).name)}</span></a></li>`).join("") ||
-          `<li class="empty">No matches for “${esc(q)}”. Try <button class="link" id="ask-instead">asking instead</button>.</li>`;
+          `<li class="empty">No matches for “${esc(q)}”. Try <button class="text-btn" id="ask-instead" type="button">asking the archive</button> instead.</li>`;
         const ai = $("#ask-instead");
         if (ai) ai.onclick = () => { closeSearch(); openAsk(q); };
       };
@@ -137,7 +180,7 @@
   }
   function closeSearch() { const d = $("#search-dialog"); if (d) d.hidden = true; }
 
-  /* ---------- ask the archive (local retrieval over entry text) ---------- */
+  /* ---------- ask the archive (local keyword retrieval over entry text; not an AI model) ---------- */
   const STOP = new Set("a an and are as at be but by can do does for from has have how i if in is it its me my of on or should so than that the their them then there these they this to was what when where which who why will with would you your about any much many does did".split(" "));
   function entryText(e) {
     const parts = [e.name, (e.aliases || []).join(" "), e.class, e.summary, e.names, e.structure];
@@ -171,10 +214,12 @@
       p = document.createElement("div");
       p.id = "ask-panel";
       p.className = "ask-panel";
+      p.setAttribute("role", "dialog");
+      p.setAttribute("aria-label", "Ask the archive");
       p.innerHTML = `
-        <div class="ask-head"><span>${icons.sparkle} Ask the archive</span><button class="icon-btn" id="ask-close" aria-label="Close">✕</button></div>
-        <div class="ask-body" id="ask-body"><p class="ask-intro">Ask a question in plain words. Answers are pulled from codex entries, with links to the source.</p></div>
-        <form class="ask-form" id="ask-form"><input id="ask-input" placeholder="e.g. Which compounds raise heart rate?" autocomplete="off"><button class="pill-btn primary">Ask</button></form>`;
+        <div class="ask-head"><span>Ask the archive</span><button class="icon-btn" id="ask-close" type="button" aria-label="Close">${icons.close}</button></div>
+        <div class="ask-body" id="ask-body"><p class="muted">Ask in plain words. Answers are sentences pulled from codex entries by keyword, with a link to each source. It is a search, not an AI model.</p></div>
+        <form class="ask-form" id="ask-form"><input id="ask-input" placeholder="Which compounds raise heart rate?" autocomplete="off" aria-label="Your question"><button class="button">Ask</button></form>`;
       document.body.appendChild(p);
       $("#ask-close").onclick = closeAsk;
       $("#ask-form").addEventListener("submit", (ev) => {
@@ -184,8 +229,8 @@
         const res = ask(q);
         const body = $("#ask-body");
         body.insertAdjacentHTML("beforeend", `<div class="ask-q">${esc(q)}</div>` + (res.length
-          ? `<div class="ask-a">${res.map((r) => `<div class="ask-hit"><a href="${entryUrl(r.e)}">${esc(r.e.name)} →</a>${r.best.map((s) => `<p>${esc(s)}</p>`).join("") || `<p>${esc(r.e.summary)}</p>`}</div>`).join("")}</div>`
-          : `<div class="ask-a"><p>Nothing in the codex covers that yet. <a href="about.html#contact">Request an entry</a>.</p></div>`));
+          ? `<div class="ask-a">${res.map((r) => `<div class="ask-hit"><a class="link" href="${entryUrl(r.e)}">${esc(r.e.name)}</a>${r.best.map((s) => `<p>${esc(s)}</p>`).join("") || `<p>${esc(r.e.summary)}</p>`}</div>`).join("")}</div>`
+          : `<div class="ask-a"><p>Nothing in the codex covers that yet. <a class="link-plain" href="about.html#contact">Request an entry</a>.</p></div>`));
         body.scrollTop = body.scrollHeight;
         $("#ask-input").value = "";
       });
@@ -197,56 +242,120 @@
   }
   function closeAsk() { const p = $("#ask-panel"); if (p) p.classList.remove("open"); }
 
-  /* ---------- shared bits ---------- */
-  const badge = (ev) => ev ? `<span class="badge ev-${ev.replace(/\s+/g, "-")}">${esc(ev)}</span>` : "";
-  const statusTag = (s) => `<span class="status st-${String(s).toLowerCase().replace(/\s+/g, "-")}">${esc(s)}</span>`;
-  const meter = (n, cls = "") => `<span class="meter ${cls}">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? "on" : ""}" data-v="${i}"></i>`).join("")}</span>`;
-  const ornament = `<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`;
-  const refsLine = (refs) => refs && refs.length ? `<p class="refs">Referenced: ${refs.map((r) => `<a href="#ref-${r}">${r}</a>`).join(", ")}</p>` : "";
+  /* ---------- the banded row used everywhere ---------- */
+  function band(e, i = 0, opts = {}) {
+    const thumb = opts.thumbs !== false && e.pubchem
+      ? `<span class="band-thumb"><img src="${plateUrl(e.pubchem, 120)}" alt="" loading="${i < 10 ? "eager" : "lazy"}" width="52" height="52" onerror="this.parentNode.className='band-thumb empty';this.remove()"></span>`
+      : `<span class="band-thumb empty"></span>`;
+    const note = opts.note ?? (e.class || e.summary);
+    return `<a class="band" href="${entryUrl(e)}" data-reveal style="--i:${Math.min(i, 6)}">
+      ${opts.lead ?? statusTag(e.status)}
+      <span class="band-text"><span class="band-name">${esc(e.name)}</span><span class="band-note">${esc(note)}</span></span>
+      ${opts.tail ?? thumb}
+    </a>`;
+  }
 
   /* ---------- pages ---------- */
   const pages = {
     home() {
-      const S = A.site;
-      const compounds = A.entries.filter((e) => e.type === "compound");
-      const tick = S.ticker.map((t) => { const item = typeof t === "string" ? { text: t } : t; const text = esc(item.text.replace("{count}", A.entries.length)); return item.href ? `<a class="ticker-link" href="${esc(item.href)}" target="_blank" rel="noopener sponsored">${text}</a>` : `<span>${text}</span>`; }).join("");
-      $("#ticker").innerHTML = `<div class="ticker-track"><div class="ticker-run">${tick}${tick}</div><div class="ticker-run" aria-hidden="true">${tick}${tick}</div></div><a href="${S.tickerLink.href}">${esc(S.tickerLink.label)}</a>`;
-      $("#hero-title").textContent = S.heroTitle;
-      $("#hero-sub").innerHTML = S.heroLines.map(esc).join("<br>");
-      const hs = $("#hero-search");
-      hs.placeholder = `Search ${compounds.length} compounds, guides, mechanisms…`;
-      $("#hero-kbd").textContent = isMac ? "⌘K" : "Ctrl K";
-      hs.addEventListener("focus", () => { hs.blur(); openSearch(); });
-      $("#ask-btn").addEventListener("click", () => openAsk());
-      $("#chips").innerHTML = A.categories.map((c) => {
-        const n = A.entries.filter((e) => e.category === c.id).length;
-        return n ? `<a class="chip" href="codex.html?cat=${c.id}">${esc(c.name)} <span>${n}</span></a>` : "";
+      $("#hero-search").addEventListener("click", () => openSearch());
+
+      // The live figure: how many compounds have a randomized trial in people, recounted per field.
+      const all = compounds();
+      const fields = A.categories.filter((c) => all.some((e) => e.category === c.id));
+      const picker = $("#picker");
+      picker.innerHTML = [`<button class="pick" type="button" data-cat="all" aria-pressed="true">All fields<span class="n nums">${all.length}</span></button>`,
+        ...fields.map((c) => `<button class="pick" type="button" data-cat="${c.id}" aria-pressed="false">${esc(c.name)}<span class="n nums">${all.filter((e) => e.category === c.id).length}</span></button>`)].join("");
+      const count = (id) => {
+        const set = id === "all" ? all : all.filter((e) => e.category === id);
+        const r = set.filter(hasRct).length, none = set.filter((e) => !(e.trials || []).length).length;
+        const pct = set.length ? Math.round((r / set.length) * 100) : 0;
+        const where = id === "all" ? "in the codex" : `in ${cat(id).name}`;
+        const claim = pct === 50 ? "Half have a randomized human trial." : pct > 50 ? "Most have a randomized human trial." : "Most have no randomized human trial.";
+        const n = set.length;
+        const rest = none === 0 ? "Every one has at least some human trial on record."
+          : none === n ? (n === 1 ? "It has no human trial on record at all." : "None of them has a human trial on record at all.")
+          : `${none} ${none === 1 ? "has" : "have"} no human trial on record at all.`;
+        return { pct, claim, caption: `Of ${n} ${n === 1 ? "compound" : "compounds"} ${where}, ${r} ${r === 1 ? "has" : "have"} at least one randomized controlled trial in people. ${rest}` };
+      };
+      const show = (id) => {
+        const c = count(id);
+        const v = $("#fig-v");
+        v.textContent = c.pct;
+        v.classList.remove("swap"); void v.offsetWidth; v.classList.add("swap");
+        $("#fig-cap").textContent = c.caption;
+        $("#tested-title").textContent = c.claim;
+        $$(".pick", picker).forEach((b) => b.setAttribute("aria-pressed", b.dataset.cat === id));
+      };
+      picker.addEventListener("click", (ev) => { const b = ev.target.closest(".pick"); if (b) show(b.dataset.cat); });
+      show("all");
+
+      // Browse by field: tabs on the left, the field's entries as bands on the right.
+      const withEntries = A.categories.filter((c) => A.entries.some((e) => e.category === c.id));
+      $("#field-count").textContent = `${cap(word(withEntries.length))} fields,`;
+      const tabs = [{ id: "recent", name: "Recently updated", n: 8 }, ...withEntries.map((c) => ({ id: c.id, name: c.name, n: A.entries.filter((e) => e.category === c.id).length }))];
+      $("#tabs").innerHTML = tabs.map((t, i) => `<button class="tab" role="tab" type="button" id="tab-${t.id}" data-id="${t.id}" aria-selected="${i === 0}"><b>${esc(t.name)}</b><span class="n nums">${t.n}</span></button>`).join("");
+      const fill = (id) => {
+        $$("#tabs .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.id === id));
+        $("#bands").setAttribute("aria-labelledby", "tab-" + id);
+        const list = id === "recent"
+          ? [...A.entries].sort((a, b) => b.updated.localeCompare(a.updated)).slice(0, 8)
+          : A.entries.filter((e) => e.category === id).sort((a, b) => a.name.localeCompare(b.name));
+        const shown = list.slice(0, 10);
+        $("#bands").innerHTML = shown.map((e, i) => band(e, i, id === "recent" ? { note: `Updated ${fmtDate(e.updated)} · ${e.class || cat(e.category).name}` } : {})).join("") +
+          (list.length > shown.length ? `<a class="band" href="codex.html?cat=${id}" data-reveal style="--i:6"><span></span><span class="band-text"><span class="band-name go">See all ${list.length} in ${esc(cat(id).name)}</span></span><span></span></a>` : "");
+        reveal($("#bands"));
+      };
+      $("#tabs").addEventListener("click", (ev) => { const b = ev.target.closest(".tab"); if (b) fill(b.dataset.id); });
+      fill("recent");
+
+      // Three entries that show the range of the record.
+      const featured = [["semaglutide", "img/plates/semaglutide.png"], ["bpc-157", "img/plates/bpc-157.png"], ["clenbuterol", "img/plates/clenbuterol.png"]];
+      $("#features").innerHTML = featured.map(([slug, img]) => {
+        const e = bySlug(slug);
+        if (!e) return "";
+        const hl = e.pk && e.pk.rows.find(([k]) => /half-life/i.test(k));
+        const trials = (e.trials || []).length;
+        return `<article class="feature">
+          <figure class="feature-plate shutter" data-reveal><img src="${img}" width="600" height="600" alt="Structure drawing of ${esc(e.name)}" loading="lazy"></figure>
+          <div class="feature-cluster">
+            <dl class="feature-facts" data-reveal style="--i:1">
+              <div><dt>Status</dt><dd>${esc(cap(e.status))}</dd></div>
+              <div><dt>Human trials in the record</dt><dd class="nums">${trials ? trials : "None"}</dd></div>
+              ${hl ? `<div><dt>Half-life</dt><dd>${esc(hl[1].replace(/\s*\(.*\)/, ""))}</dd></div>` : ""}
+            </dl>
+            <div class="feature-text" data-reveal style="--i:2">
+              <h3>${esc(e.name)}</h3>
+              <div><p>${sent(e.summary)}</p><a class="link" href="${entryUrl(e)}">Read the entry</a></div>
+            </div>
+          </div>
+        </article>`;
       }).join("");
-      $("#cta").innerHTML = S.cards.map((c) => `
-        <a class="cta cta-${c.tone}" href="${c.href}">
-          <span class="cta-icon">${icons[c.icon] || icons.book}</span>
-          <span><strong>${esc(c.title)}</strong><span>${esc(c.text)}</span></span>
-        </a>`).join("");
-      const recent = [...A.entries].sort((a, b) => b.updated.localeCompare(a.updated)).slice(0, 8);
-      $("#recent").innerHTML = recent.map(row).join("");
     },
 
     codex() {
       const params = new URLSearchParams(location.search);
       const state = { q: params.get("q") || "", cat: params.get("cat") || "all", status: "all", sort: "name" };
+      const statuses = [...new Set(A.entries.map((e) => e.status))];
+      $("#codex-filters").innerHTML = `
+        <label><span class="sr-only">Filter entries</span><input class="field" id="codex-q" type="search" placeholder="Filter by name, alias or tag"></label>
+        ${selectBox("status-filter", "Filter by status", `<option value="all">Any status</option>` + statuses.map((s) => `<option value="${esc(s)}">${esc(cap(s))}</option>`).join(""))}
+        ${selectBox("sort", "Sort", `<option value="name">A to Z</option><option value="updated">Recently updated</option>`)}
+        <p class="count nums" id="codex-count" aria-live="polite"></p>`;
       const q = $("#codex-q");
       q.value = state.q;
       const cats = A.categories.filter((c) => A.entries.some((e) => e.category === c.id));
-      $("#cat-chips").innerHTML = [`<button class="chip" data-cat="all">All <span>${A.entries.length}</span></button>`, ...cats.map((c) => `<button class="chip" data-cat="${c.id}">${esc(c.name)} <span>${A.entries.filter((e) => e.category === c.id).length}</span></button>`)].join("");
-      const statuses = [...new Set(A.entries.map((e) => e.status))];
-      $("#status-filter").innerHTML = `<option value="all">Any status</option>` + statuses.map((s) => `<option value="${esc(s)}">${esc(s)}</option>`).join("");
+      $("#cat-chips").innerHTML = [`<button class="tab" type="button" data-cat="all"><b>All</b><span class="n nums">${A.entries.length}</span></button>`, ...cats.map((c) => `<button class="tab" type="button" data-cat="${c.id}"><b>${esc(c.name)}</b><span class="n nums">${A.entries.filter((e) => e.category === c.id).length}</span></button>`)].join("");
       function render() {
-        $$("#cat-chips .chip").forEach((b) => b.setAttribute("aria-pressed", b.dataset.cat === state.cat));
+        $$("#cat-chips .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.cat === state.cat));
         const list = A.entries
           .filter((e) => (state.cat === "all" || e.category === state.cat) && (state.status === "all" || e.status === state.status) && matches(e, state.q))
           .sort((a, b) => state.sort === "updated" ? b.updated.localeCompare(a.updated) : a.name.localeCompare(b.name));
         $("#codex-count").textContent = `${list.length} ${list.length === 1 ? "entry" : "entries"}`;
-        $("#codex-list").innerHTML = list.length ? list.map(row).join("") : `<p class="empty-state">No entries match these filters.</p>`;
+        $("#codex-list").innerHTML = list.length ? list.map((e, i) => band(e, i % 8)).join("") : `<p class="empty-state">No entries match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`;
+        const cf = $("#clear-filters");
+        if (cf) cf.onclick = () => { state.q = ""; state.cat = "all"; state.status = "all"; q.value = ""; $("#status-filter").value = "all"; render(); };
+        reveal($("#codex-list"));
         const url = new URL(location);
         state.q ? url.searchParams.set("q", state.q) : url.searchParams.delete("q");
         state.cat !== "all" ? url.searchParams.set("cat", state.cat) : url.searchParams.delete("cat");
@@ -261,6 +370,12 @@
 
     archive() {
       const state = { q: "", type: "all", sort: "desc", field: "updated" };
+      $("#archive-filters").innerHTML = `
+        <label><span class="sr-only">Search the archive</span><input class="field" id="archive-q" type="search" placeholder="Search the archive"></label>
+        ${selectBox("archive-type", "Type", `<option value="all">All types</option><option value="compound">Compounds</option><option value="article">Guides</option>`)}
+        ${selectBox("archive-field", "Date", `<option value="updated">By last updated</option><option value="added">By date added</option>`)}
+        <button class="button quiet" id="archive-sort" type="button">Newest first</button>
+        <p class="count nums" id="archive-count" aria-live="polite"></p>`;
       function render() {
         const list = A.entries
           .filter((e) => (state.type === "all" || e.type === state.type) && matches(e, state.q))
@@ -273,21 +388,22 @@
           groups.get(key).push(e);
         });
         $("#archive-list").innerHTML = list.length ? [...groups].map(([month, items]) => `
-          <section class="archive-month">
-            <h2 class="label">${month} <span>${items.length}</span></h2>
-            <ol class="panel">${items.map((e) => `
-              <li><time datetime="${e[state.field]}">${fmtDate(e[state.field])}</time>
-                <a href="${entryUrl(e)}">${esc(e.name)}</a>
-                <span class="mono-sm">${e.type === "article" ? "Guide" : "Compound"}</span>
-                <span class="mono-sm dim">${esc(cat(e.category).name)}</span></li>`).join("")}</ol>
+          <section class="month-block">
+            <h2 class="month-h" data-reveal>${month} <span class="nums">${items.length} ${items.length === 1 ? "record" : "records"}</span></h2>
+            <div class="bands">${items.map((e, i) => band(e, i % 8, {
+              lead: `<time class="nums" datetime="${e[state.field]}">${fmtDate(e[state.field])}</time>`,
+              note: `${e.type === "article" ? "Guide" : "Compound"} · ${cat(e.category).name}`,
+              tail: statusTag(e.status)
+            })).join("")}</div>
           </section>`).join("") : `<p class="empty-state">Nothing in the archive matches.</p>`;
+        reveal($("#archive-list"));
       }
       $("#archive-q").addEventListener("input", (e) => { state.q = e.target.value.trim(); render(); });
       $("#archive-type").addEventListener("change", (e) => { state.type = e.target.value; render(); });
       $("#archive-field").addEventListener("change", (e) => { state.field = e.target.value; render(); });
       $("#archive-sort").addEventListener("click", (e) => {
         state.sort = state.sort === "desc" ? "asc" : "desc";
-        e.currentTarget.textContent = state.sort === "desc" ? "Newest first ↓" : "Oldest first ↑";
+        e.currentTarget.textContent = state.sort === "desc" ? "Newest first" : "Oldest first";
         render();
       });
       render();
@@ -297,130 +413,145 @@
       const e = bySlug(new URLSearchParams(location.search).get("slug"));
       const host = $("#entry");
       if (!e) {
-        host.innerHTML = `<a class="back" href="codex.html">← Back to database</a><div class="empty-state"><h1>Entry not found</h1><p>That page isn't in the codex. <a href="codex.html">Browse all entries →</a></p></div>`;
+        host.innerHTML = `<div class="wrap spread page-title"><div class="side"><p>That page isn't in the codex.</p></div><div class="main"><h1>Entry not found</h1><p style="margin-top:1.5rem"><a class="button" href="codex.html">Browse every entry</a></p></div></div>`;
         return;
       }
       document.title = `${e.name} · ${A.site.title}`;
+      const sec = (title, note, body) => `<section class="wrap spread entry-sec"><div class="side"><h2 data-reveal>${esc(title)}</h2>${note ? `<p class="note" data-reveal style="--i:1">${note}</p>` : ""}</div><div class="main" data-reveal style="--i:1">${body}</div></section>`;
       const out = [];
-      out.push(`<a class="back" href="codex.html${e.category ? "?cat=" + e.category : ""}">← Back to database</a>`);
-
-      // intro
-      const img = e.pubchem ? `<figure class="structure"><img alt="${esc(e.name)} structure" loading="lazy" src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/${encodeURIComponent(e.pubchem)}/PNG?image_size=300x300" onerror="this.closest('figure').remove()"></figure>` : "";
+      
+      // head: the plate and the facts in the side zone, the name and the lede on the axis
+      const plate = e.pubchem ? `<figure class="plate-card" data-rise style="--i:0"><img alt="Structure drawing of ${esc(e.name)}" src="${plateUrl(e.pubchem, 500)}" width="500" height="500" onerror="this.closest('figure').remove()"></figure>` : "";
       const intro = e.type === "article"
-        ? `<div class="intro"><span class="label">Summary</span><p>${esc(e.summary)}</p></div>`
-        : `<div class="intro">
-            <div class="meta-row">${statusTag(e.status)}<span class="mono-sm">${esc(e.class || "")}</span><a class="mono-sm" href="codex.html?cat=${e.category}">${esc(cat(e.category).name)}</a></div>
-            ${e.names ? `<span class="label">Names and origin</span><p>${e.names}</p>` : ""}
-            ${e.structure ? `<span class="label">Structure</span><p>${e.structure}</p>` : ""}
+        ? `<div class="entry-intro" data-rise style="--i:2"><p>${esc(e.summary)}</p></div>`
+        : `<div class="entry-intro" data-rise style="--i:2">
+            ${e.names ? `<div><h2>Names and origin</h2><p>${e.names}</p></div>` : ""}
+            ${e.structure ? `<div><h2>Structure</h2><p>${e.structure}</p></div>` : ""}
             ${!e.names && !e.structure ? `<p>${esc(e.summary)}</p>` : ""}
           </div>`;
-      out.push(`<header class="entry-head">${img}<h1>${esc(e.name)}</h1>${e.type === "compound" ? buyBlock(e) : ""}${intro}</header>`);
+      out.push(`<header class="wrap spread entry-head" style="padding-top:clamp(2rem,5vw,4rem)">
+        <div class="side entry-side">
+          ${plate}
+          <div class="meta-list" data-rise style="--i:1">
+            ${e.type === "compound" ? `<span>${statusTag(e.status)}</span>` : ""}
+            ${e.class ? `<span>${esc(e.class)}</span>` : ""}
+            <span>Filed under <a class="link-plain" href="codex.html?cat=${e.category}">${esc(cat(e.category).name)}</a></span>
+          </div>
+          ${e.type === "compound" ? buyBlock(e) : ""}
+        </div>
+        <div class="main">
+          <h1 class="lines"><span class="line"><span data-line>${esc(e.name)}</span></span></h1>
+          ${intro}
+        </div>
+      </header>`);
 
       // profile
       if (e.profile) {
         const mine = store.get("atlas-rate-" + e.slug) || {};
         const hasMine = Object.keys(mine).length > 0;
-        out.push(`<h2 class="label">Profile</h2><div class="panel profile" id="profile">
-          ${e.profile.rows.map((r) => `
-            <div class="p-row${r.neg ? " neg" : ""}">
-              <div class="p-main"><span>${esc(r.label)}</span>${meter(r.score, r.neg ? "red" : "")}<span class="mono-sm">${r.score}/5</span></div>
-              <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span class="mono-sm accent">● Your score</span>${meter(mine[r.label] || 0, "accent")}<span class="mono-sm accent">${mine[r.label] ? mine[r.label] + "/5" : "–"}</span></div>
-            </div>`).join("")}
-          <div class="rate-bar"><span>${hasMine ? "You have scored this compound." : "Score this compound yourself."}</span><button class="rate-btn" id="rate-btn">${hasMine ? "Edit scores" : "Rate"}</button></div>
-          <div class="p-notes">${e.profile.note ? `<p>${sent(e.profile.note)}</p>` : ""}<p>Your scores are saved only in this browser. They are not part of the codex's assessment.</p></div>
-        </div>`);
+        out.push(sec("Profile", `Editorial scores from 1 to 5, relative to similar compounds. Rows in red are ones where higher is worse.`, `
+          <div class="sheet profile" id="profile">
+            ${e.profile.rows.map((r) => `
+              <div class="p-wrap">
+                <div class="p-row${r.neg ? " neg" : ""}"><span class="p-label">${esc(r.label)}</span>${meter(r.score, r.neg ? "red" : "")}<span class="p-score nums">${r.score} of 5</span></div>
+                <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span>Your score</span>${meter(mine[r.label] || 0, "mine")}<span class="p-score nums">${mine[r.label] ? mine[r.label] + " of 5" : "Not set"}</span></div>
+              </div>`).join("")}
+            ${e.profile.note ? `<p class="soft small" style="margin-top:1rem">${sent(e.profile.note)}</p>` : ""}
+          </div>
+          <div class="sheet rate-bar"><span>${hasMine ? "You have scored this compound. Your scores stay in this browser and are not part of the codex's assessment." : "Score it yourself. Your scores stay in this browser and are not part of the codex's assessment."}</span><button class="button quiet" id="rate-btn" type="button">${hasMine ? "Edit my scores" : "Add my scores"}</button></div>`));
       }
 
       // pharmacokinetics
       if (e.pk) {
-        out.push(`<h2 class="label">Pharmacokinetics</h2><div class="panel pk">
-          <div class="pk-head"><span class="mono-sm">Source quality</span>${badge(e.pk.evidence)}</div>
-          <dl class="pk-grid">${e.pk.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>
-          ${e.pk.note || (e.pk.refs && e.pk.refs.length) ? `<div class="pk-foot">${e.pk.note ? `<p>${sent(e.pk.note)}</p>` : ""}${refsLine(e.pk.refs)}</div>` : ""}
-        </div>`);
+        out.push(sec("Pharmacokinetics", `Source quality ${badge(e.pk.evidence)}`, `
+          <div class="sheet">
+            <table class="table"><tbody>${e.pk.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
+            ${e.pk.note ? `<p class="soft" style="margin-top:1rem;font-size:1rem">${sent(e.pk.note)}</p>` : ""}${refsLine(e.pk.refs)}
+          </div>`));
       }
 
       // dosing (from approved labels and published trials only)
       if (e.type === "compound") {
         const d = (A.dosing || {})[e.slug];
+        const fixed = "These are the amounts studied or approved, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.";
         if (d) {
-          out.push(`<h2 class="label">Dosing in Labels and Trials</h2><div class="panel pk">
-            <div class="pk-head"><span class="mono-sm">${esc(d.source || "Source")}</span>${badge(d.evidence)}</div>
-            <dl class="pk-grid">${d.rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>
-            <div class="pk-foot"><p>${d.note ? sent(d.note) + " " : ""}These are the amounts studied or approved, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.</p>${refsLine(d.refs)}</div>
-          </div>`);
+          out.push(sec("Dosing in labels and trials", `${esc(d.source || "Source")} ${badge(d.evidence)}`, `
+            <div class="sheet">
+              <table class="table"><tbody>${d.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
+              <p class="soft" style="margin-top:1rem;font-size:1rem">${d.note ? sent(d.note) + " " : ""}${fixed}</p>${refsLine(d.refs)}
+            </div>`));
         } else {
-          out.push(`<h2 class="label">Dosing in Labels and Trials</h2><div class="panel no-dose">
-            <p><strong>${(A.site.noDoseBySlug || {})[e.slug] ? "No dose listed here." : "No established human dose."}</strong> ${esc((A.site.noDoseBySlug || {})[e.slug] || A.site.noDose[e.status] || A.site.noDose.default)}</p>
-          </div>`);
+          const special = (A.site.noDoseBySlug || {})[e.slug];
+          out.push(sec("Dosing in labels and trials", "Only regulator labels and doses a published trial gave are recorded here.", `
+            <div class="sheet no-dose"><p><strong>${special ? "No dose listed here." : "No established human dose."}</strong> ${esc(special || A.site.noDose[e.status] || A.site.noDose.default)}</p></div>`));
         }
       }
 
       // risks
       if (e.risks && e.risks.length) {
-        out.push(`<h2 class="label">Risk and monitoring</h2><div class="risk-grid">${e.risks.map((r) => `
-          <div class="risk lv-${r.level}">
-            <div class="risk-top"><span class="label sm"><i></i>${esc(r.system)} <b>${esc(r.level)}</b></span>${r.detail ? `<button class="plus" aria-label="More">+</button>` : ""}</div>
+        out.push(sec("Risk and monitoring", "Each risk is graded by the evidence behind it. Open one for the detail.", `<div class="risks">${e.risks.map((r) => `
+          <div class="risk lv-${esc(r.level)}">
+            <div class="risk-top"><span class="risk-sys">${esc(r.system)}<span class="lv">${esc(cap(r.level))} risk</span></span>${r.detail ? `<button class="plus" type="button" aria-expanded="false" aria-label="More about ${esc(r.system)}">+</button>` : ""}</div>
             <p>${sent(r.text)}</p>
             ${badge(r.evidence)}
             ${r.detail ? `<div class="risk-detail" hidden><p>${sent(r.detail)}</p>${refsLine(r.refs)}</div>` : ""}
-          </div>`).join("")}</div>`);
+          </div>`).join("")}</div>`));
       }
 
       // monitoring
       const mon = (A.monitoring || {})[e.slug];
       if (mon && ((mon.markers && mon.markers.length) || (mon.watch && mon.watch.length))) {
-        out.push(`<h2 class="label">Monitoring</h2><div class="panel mon">
-          ${mon.markers && mon.markers.length ? `<dl class="pk-grid">${mon.markers.map(([k, v]) => `<dt>${esc(k)}</dt><dd>${sent(v)}</dd>`).join("")}</dl>` : ""}
-          ${mon.watch && mon.watch.length ? `<div class="mon-watch"><span class="label sm">Warning signs</span><ul>${mon.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>` : ""}
-          <div class="pk-foot"><p>${mon.note ? sent(mon.note) + " " : ""}What a result means depends on the person, the lab and the assay, so target ranges are deliberately not listed here. Take results to a clinician.</p></div>
-        </div>`);
+        out.push(sec("Monitoring", "Which markers this compound makes worth watching. Target ranges are left out on purpose.", `
+          <div class="sheet">
+            ${mon.markers && mon.markers.length ? `<table class="table"><tbody>${mon.markers.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>` : ""}
+            ${mon.watch && mon.watch.length ? `<div class="watch"><h3>Warning signs</h3><ul>${mon.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>` : ""}
+            <p class="soft" style="margin-top:1rem;font-size:1rem">${mon.note ? sent(mon.note) + " " : ""}What a result means depends on the person, the lab and the assay. Take results to a clinician.</p>
+          </div>`));
       }
 
       // activity
       if (e.activity && e.activity.length) {
-        out.push(`<h2 class="label">Mechanism and receptor activity</h2><div class="panel act">
-          <div class="act-list">${e.activity.map((a, i) => `
-            <button class="act-item${i === 0 ? " sel" : ""}" data-i="${i}">
-              <span class="act-top"><span>${esc(a.title)}</span>${badge(a.evidence)}</span>
-              <span class="act-sum">${sent(a.summary)}</span>
-            </button>`).join("")}</div>
-          <div class="act-detail" id="act-detail"></div>
-        </div>`);
+        out.push(sec("Mechanism and receptor activity", "Choose a mechanism to read the detail beside it.", `
+          <div class="act">
+            <div class="act-list">${e.activity.map((a, i) => `
+              <button class="act-item${i === 0 ? " sel" : ""}" type="button" data-i="${i}" aria-pressed="${i === 0}">
+                <span class="act-top"><span>${esc(a.title)}</span>${badge(a.evidence)}</span>
+                <span class="act-sum">${sent(a.summary)}</span>
+              </button>`).join("")}</div>
+            <div class="act-detail" id="act-detail" aria-live="polite"></div>
+          </div>`));
       }
 
       // trials
       if (e.type === "compound") {
-        out.push(`<h2 class="label">Human clinical record</h2>`);
-        out.push(e.trials && e.trials.length
-          ? `<div class="panel trials">${e.trials.map((t) => `
-              <article class="trial">
+        const n = (e.trials || []).length;
+        out.push(sec("Human clinical record", n ? `${cap(word(n))} ${n === 1 ? "trial" : "trials"} recorded, each with the editor's reading.` : "", n
+          ? e.trials.map((t) => `
+              <article class="sheet trial">
                 <h3>${esc(t.title)} ${badge(t.evidence)}</h3>
-                <p class="trial-meta">${t.meta.map(esc).join(" / ")}</p>
+                <p class="trial-meta">${t.meta.map(esc).join(" · ")}</p>
                 <p>${sent(t.body)}</p>
-                ${t.note ? `<div class="note">${sent(t.note)}</div>` : ""}
+                ${t.note ? `<p class="editor-note"><b>Editor's note.</b> ${sent(t.note)}</p>` : ""}
                 ${refsLine(t.refs)}
-              </article>`).join("")}</div>`
-          : `<div class="panel empty-record"><p>${sent(e.noTrials || "No controlled human trials are recorded for this compound.")}</p>${refsLine(e.noTrialsRefs)}</div>`);
+              </article>`).join("")
+          : `<div class="sheet"><p>${sent(e.noTrials || "No controlled human trials are recorded for this compound.")}</p>${refsLine(e.noTrialsRefs)}</div>`));
       }
 
       // article sections
-      if (e.sections) {
-        out.push(e.sections.map((s) => `<h2 class="label">${esc(s.heading)}</h2><div class="panel prose">${s.body}</div>`).join(""));
-      }
+      if (e.sections) e.sections.forEach((s) => out.push(sec(s.heading, "", `<div class="sheet prose">${s.body}</div>`)));
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, e.pk || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
-        out.push(ornament);
-        out.push(`<h2 class="label">References</h2><ol class="panel refs-list">${[...ids].sort((a, b) => a - b).map((id) => `
-          <li id="ref-${id}"><span class="mono-sm">${id}</span><span>${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(A.references[id]) ? "" : ` <a href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed ↗</a>`}</span></li>`).join("")}</ol>`);
+        const sorted = [...ids].sort((a, b) => a - b);
+        out.push(sec("References", "Linked to a PubMed search where the source is a paper.", `<div class="sheet"><ol class="refs-list nums">${sorted.map((id) => `
+          <li id="ref-${id}" value="${id}">${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(A.references[id]) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div>`));
       }
 
       const related = (e.related || []).map(bySlug).filter(Boolean);
-      if (related.length) out.push(`<h2 class="label">Related</h2><div class="panel">${related.map(row).join("")}</div>`);
-      out.push(`<p class="mono-sm dim updated">Added ${fmtDate(e.added)} · Last updated ${fmtDate(e.updated)}</p><p class="disclaimer">${esc(A.site.disclaimer)}</p>`);
+      if (related.length) out.push(sec("Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`));
+      out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(e.added)}. Last updated ${fmtDate(e.updated)}.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
       host.innerHTML = out.join("");
 
       // interactions
@@ -428,16 +559,17 @@
         const d = b.closest(".risk").querySelector(".risk-detail");
         d.hidden = !d.hidden;
         b.textContent = d.hidden ? "+" : "−";
+        b.setAttribute("aria-expanded", !d.hidden);
       }));
       if (e.activity && e.activity.length) {
         const show = (i) => {
           const a = e.activity[i];
-          $$(".act-item").forEach((x) => x.classList.toggle("sel", +x.dataset.i === i));
-          $("#act-detail").innerHTML = `<h3>${esc(a.title)}</h3><p class="serif">${sent(a.summary)} ${badge(a.evidence)}</p>${a.detail ? `<p class="serif">${sent(a.detail)}</p>` : ""}${refsLine(a.refs)}`;
+          $$(".act-item").forEach((x) => { x.classList.toggle("sel", +x.dataset.i === i); x.setAttribute("aria-pressed", +x.dataset.i === i); });
+          $("#act-detail").innerHTML = `<h3>${esc(a.title)}</h3><p>${sent(a.summary)} ${badge(a.evidence)}</p>${a.detail ? `<p>${sent(a.detail)}</p>` : ""}${refsLine(a.refs)}`;
         };
         $$(".act-item").forEach((x) => x.addEventListener("click", () => {
           show(+x.dataset.i);
-          if (matchMedia("(max-width: 860px)").matches) $("#act-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
+          if (matchMedia("(max-width: 56rem)").matches) $("#act-detail").scrollIntoView({ behavior: "smooth", block: "nearest" });
         }));
         show(0);
       }
@@ -446,8 +578,8 @@
         const prof = $("#profile");
         const editing = prof.classList.toggle("editing");
         $$(".p-mine", prof).forEach((m) => (m.hidden = false));
-        rb.textContent = editing ? "Done" : "Edit scores";
-        if (!editing) $(".rate-bar span", prof).textContent = "You have scored this compound.";
+        rb.textContent = editing ? "Done" : "Edit my scores";
+        if (!editing) $(".rate-bar span").textContent = "You have scored this compound. Your scores stay in this browser and are not part of the codex's assessment.";
       });
       $$(".p-mine .meter i").forEach((sq) => sq.addEventListener("click", () => {
         if (!$("#profile").classList.contains("editing")) return;
@@ -456,59 +588,65 @@
         mine[row.dataset.label] = v;
         store.set("atlas-rate-" + e.slug, mine);
         $$(".meter i", row).forEach((x) => x.classList.toggle("on", +x.dataset.v <= v));
-        row.lastElementChild.textContent = v + "/5";
+        row.lastElementChild.textContent = v + " of 5";
       }));
     },
 
     support() {
       const S = A.support;
-      $("#support-eyebrow").textContent = S.eyebrow;
       $("#support-title").textContent = S.title;
       $("#support-intro").textContent = S.intro;
       $("#support-disclosure").textContent = S.disclosure;
       const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
-      const tags = (label, list, cls) => list && list.length ? `<span class="label sm">${label}</span><div class="tag-list">${list.map((t) => `<span class="${cls}">${esc(t)}</span>`).join("")}</div>` : "";
+      const tags = (label, list) => list && list.length ? `<div class="tag-group"><h3>${label}</h3><div class="chips">${list.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div></div>` : "";
       $("#sources").innerHTML = S.sources.map((s) => `
-        <article class="source">
-          <a class="source-logo" style="${s.logoBg ? `background:${esc(s.logoBg)}` : ""}" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo">` : `<span>${esc(initials(s.name))}</span>`}</a>
-          <h2>${esc(s.name)}</h2>
-          ${s.code ? `<button class="code-chip" data-code="${esc(s.code)}" title="Copy code">Code <b>${esc(s.code)}</b></button>` : ""}
-          ${s.blurb ? `<p>${esc(s.blurb)}</p>` : ""}
-          ${tags("Attributes", s.attributes, "attr")}
-          ${tags("What they sell", s.sells, "sell")}
-          ${s.popular && s.popular.length ? `<span class="label sm">Popular</span><div class="tag-list">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="sell linked" href="entry.html?slug=${encodeURIComponent(p.slug)}" title="Read the codex entry">${esc(p.name)} ↗</a>` : `<span class="sell">${esc(p.name)}</span>`).join("")}</div>` : ""}
-          <a class="shop-btn" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">SHOP NOW</a>
+        <article class="wrap spread person">
+          <div class="side"><a class="source-logo" data-reveal style="${s.logoBg ? `background:${esc(s.logoBg)}` : ""}" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo">` : `<span class="head">${esc(initials(s.name))}</span>`}</a></div>
+          <div class="main" data-reveal style="--i:1">
+            <h2>${esc(s.name)}</h2>
+            ${s.blurb ? `<p class="known">${esc(s.blurb)}</p>` : ""}
+            <div class="person-actions">
+              <a class="button" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">Shop ${esc(s.name)}</a>
+              ${s.code ? `<button class="code-btn" type="button" data-code="${esc(s.code)}">Copy code <b>${esc(s.code)}</b></button>` : ""}
+            </div>
+            ${tags("Attributes", s.attributes)}
+            ${tags("What they sell", s.sells)}
+            ${s.popular && s.popular.length ? `<div class="tag-group"><h3>Popular, with the codex entry</h3><div class="chips">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="chip go" href="entry.html?slug=${encodeURIComponent(p.slug)}">${esc(p.name)}</a>` : `<span class="chip">${esc(p.name)}</span>`).join("")}</div></div>` : ""}
+          </div>
         </article>`).join("");
-      $$(".code-chip").forEach((b) => b.addEventListener("click", async () => {
+      $$(".code-btn").forEach((b) => b.addEventListener("click", async () => {
         try { await navigator.clipboard.writeText(b.dataset.code); } catch (_) { return; }
         const html = b.innerHTML;
-        b.innerHTML = "Copied ✓";
+        b.textContent = "Copied";
         setTimeout(() => (b.innerHTML = html), 1400);
       }));
     },
 
     credits() {
       const C = A.credits;
-      $("#credits-eyebrow").textContent = C.eyebrow;
       $("#credits-title").textContent = C.title;
       $("#credits-intro").textContent = C.intro;
       $("#credits-note").textContent = C.note;
       // Two-letter monogram: initials for multi-word names, first two characters otherwise.
       const initials = (n) => {
-        const words = n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean);
-        return (words.length > 1 ? words.map((w) => w[0]).join("") : (words[0] || "?").slice(0, 2)).slice(0, 2).toUpperCase();
+        const w = n.replace(/[^A-Za-z0-9 ]/g, "").split(/\s+/).filter(Boolean);
+        return (w.length > 1 ? w.map((x) => x[0]).join("") : (w[0] || "?").slice(0, 2)).slice(0, 2).toUpperCase();
       };
       $("#creators").innerHTML = C.people.map((p) => `
-        <article class="creator${p.memorial ? " memorial" : ""}" style="--c1:${esc(p.accent)};--c2:${esc(p.accent2)}">
-          ${p.memorial ? `<span class="memorial-tag">${esc(p.memorial)}</span>` : ""}
-          <div class="creator-top">
-            <span class="creator-avatar${p.image ? " has-img" : ""}">${p.image ? `<img src="${esc(p.image)}" alt="${esc(p.name)}"${p.imagePos ? ` style="object-position:${esc(p.imagePos)}"` : ""}>` : `<span>${esc(initials(p.name))}</span>`}</span>
-            <span class="creator-id"><h2>${esc(p.name)}</h2><span class="mono-sm">${esc(p.handle)}</span></span>
+        <article class="wrap spread person">
+          <div class="side">
+            ${p.image
+              ? `<figure class="person-pic" data-reveal><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy"${p.imagePos ? ` style="object-position:${esc(p.imagePos)}"` : ""}></figure>`
+              : `<div class="person-pic mono" data-reveal style="background:${esc(p.accent)}" aria-hidden="true">${esc(initials(p.name))}</div>`}
           </div>
-          <p class="creator-known">${sent(p.known)}</p>
-          <p class="creator-text">${sent(p.text)}</p>
-          ${p.topics && p.topics.length ? `<div class="creator-topics">${p.topics.map(([l, h]) => `<a href="${esc(h)}">${esc(l)}</a>`).join("")}</div>` : ""}
-          <a class="creator-link" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.linkLabel || "Visit")} ↗</a>
+          <div class="main" data-reveal style="--i:1">
+            <h2>${esc(p.name)}</h2>
+            <p class="handle">${esc(p.handle)}${p.memorial ? ` · <span class="memorial">${esc(p.memorial)}</span>` : ""}</p>
+            <p class="known">${sent(p.known)}</p>
+            <p class="text">${sent(p.text)}</p>
+            ${p.topics && p.topics.length ? `<div class="chips">${p.topics.map(([l, h]) => `<a class="chip" href="${esc(h)}">${esc(l)}</a>`).join("")}</div>` : ""}
+            <div class="person-actions"><a class="link go" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.linkLabel || "Visit")} ↗</a></div>
+          </div>
         </article>`).join("");
     },
 
@@ -521,34 +659,24 @@
     const items = ((A.buy || {})[e.slug] || [])
       .map((b) => ({ ...b, src: sources.find((s) => s.id === b.source) }))
       .filter((b) => b.src && b.href);
-    if (!items.length) {
-      return `<div class="buy"><span class="mono-sm">Buy from</span><div class="buy-list"><span class="buy-btn none">No current stock</span></div></div>`;
-    }
+    if (!items.length) return `<div class="buy" data-rise style="--i:2"><span class="buy-title">Buy from</span><span class="buy-none">No current stock</span></div>`;
     const withRef = (href, code) => {
       try { const u = new URL(href); if (code && !u.searchParams.has("ref")) u.searchParams.set("ref", code); return u.href; } catch (_) { return href; }
     };
     const codes = [...new Set(items.map((b) => b.src.code).filter(Boolean))];
-    return `<div class="buy">
-      <span class="mono-sm">Buy from</span>${codes.length ? `<span class="buy-code">Code <b>${codes.map(esc).join(", ")}</b></span>` : ""}
-      <div class="buy-list">${items.map((b) => `
+    return `<div class="buy" data-rise style="--i:2">
+      <span class="buy-title">Buy from${codes.length ? `, code <b>${codes.map(esc).join(", ")}</b>` : ""}</span>
+      ${items.map((b) => `
         <a class="buy-btn" href="${esc(withRef(b.href, b.src.code))}" target="_blank" rel="noopener sponsored">
           <span class="buy-logo" style="${b.src.logoBg ? `background:${esc(b.src.logoBg)}` : ""}">${b.src.logo ? `<img src="${esc(b.src.logo)}" alt="">` : esc(b.src.name.slice(0, 2).toUpperCase())}</span>
-          <span class="buy-name">${esc(b.label || b.src.name)}</span><span class="buy-star" aria-hidden="true">★</span>
-        </a>`).join("")}</div>
+          <span>${esc(b.label || b.src.name)}</span>
+        </a>`).join("")}
     </div>`;
-  }
-
-  function row(e) {
-    return `<a class="row" href="${entryUrl(e)}">
-      <span class="row-name">${esc(e.name)}${e.aliases && e.aliases.length ? `<small>${esc(e.aliases.slice(0, 2).join(" · "))}</small>` : ""}</span>
-      <span class="row-class">${esc(e.class || e.summary)}</span>
-      <span class="mono-sm dim row-cat">${esc(cat(e.category).name)}</span>
-      ${statusTag(e.status)}
-    </a>`;
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     shell();
     (pages[document.body.dataset.page] || (() => {}))();
+    reveal();
   });
 })();

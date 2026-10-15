@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Database · Atlas Codex</title>
-  <meta name="description" content="Atlas Codex — every compound worth knowing, cited and graded.">
+  <meta name="description" content="Atlas Codex: every compound worth knowing, cited and graded by its evidence.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/entries-aas.js"></script>
@@ -29,23 +30,16 @@
 <body data-page="codex">
   <header id="site-header"></header>
   <main>
-    <div class="wrap">
-      <header class="page-head">
-        <span class="label">Database</span>
-        <h1>Every Entry in the Codex</h1>
-        <p>Filter by category or status, or search by name, alias or tag.</p>
-      </header>
-      <div class="toolbar">
-        <input id="codex-q" type="search" placeholder="Filter entries…" aria-label="Filter entries">
-        <select id="status-filter" aria-label="Filter by status"></select>
-        <select id="sort" aria-label="Sort">
-          <option value="name">A → Z</option>
-          <option value="updated">Recently updated</option>
-        </select>
-        <span class="mono-sm count" id="codex-count"></span>
+    <header class="wrap spread page-title">
+      <div class="side"><p data-rise style="--i:0">Filter by field or status, or search by name, alias or tag. Every entry grades its own claims.</p></div>
+      <div class="main"><h1 class="lines"><span class="line"><span data-line style="--i:0">Every entry</span></span><span class="line"><span data-line style="--i:1">in the codex</span></span></h1></div>
+    </header>
+    <div class="wrap spread" style="padding-bottom:var(--section)">
+      <div class="side"><div class="filters" id="codex-filters" data-rise style="--i:1"></div></div>
+      <div class="main">
+        <div class="cat-row" id="cat-chips" role="group" aria-label="Fields" data-rise style="--i:2"></div>
+        <div class="bands" id="codex-list"></div>
       </div>
-      <div class="chips" id="cat-chips"></div>
-      <div class="panel" id="codex-list"></div>
     </div>
   </main>
   <footer id="site-footer"></footer>

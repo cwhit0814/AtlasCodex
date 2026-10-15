@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Atlas Codex</title>
-  <meta name="description" content="Atlas Codex — every compound worth knowing, cited and graded.">
+  <meta name="description" content="Atlas Codex: an open reference library of peptides and research compounds, every claim graded by its evidence.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/entries-aas.js"></script>
@@ -29,60 +30,93 @@
 <body data-page="home">
   <header id="site-header"></header>
   <main>
-    <div class="home">
-      <!-- Decorative line art: compass rose, astrolabe ring and graticule, after the
-           instruments and charts of an ancient library rather than modern chemistry. -->
-      <svg class="figure" style="right:40px;top:40px" width="210" height="210" viewBox="0 0 120 120" fill="none" stroke="currentColor" aria-hidden="true">
-        <circle cx="60" cy="60" r="52" stroke-width=".7"/>
-        <circle cx="60" cy="60" r="44" stroke-width=".4"/>
-        <circle cx="60" cy="60" r="19" stroke-width=".4"/>
-        <g stroke-width=".7"><path d="M60 8v104M8 60h104"/></g>
-        <g stroke-width=".4" opacity=".75"><path d="M23 23l74 74M97 23l-74 74"/></g>
-        <path d="M60 14 66 54 106 60 66 66 60 106 54 66 14 60 54 54Z" stroke-width=".7"/>
-        <g stroke-width=".45" opacity=".6">
-          <path d="M60 16v6M60 98v6M16 60h6M98 60h6M31 31l4 4M85 85l4 4M89 31l-4 4M35 85l-4 4"/>
-        </g>
-      </svg>
-      <svg class="figure" style="left:56px;top:300px" width="150" height="150" viewBox="0 0 100 100" fill="none" stroke="currentColor" aria-hidden="true" opacity=".7">
-        <circle cx="50" cy="50" r="42" stroke-width=".6"/>
-        <ellipse cx="50" cy="50" rx="42" ry="15" stroke-width=".4"/>
-        <ellipse cx="50" cy="50" rx="42" ry="29" stroke-width=".4"/>
-        <ellipse cx="50" cy="50" rx="15" ry="42" stroke-width=".4"/>
-        <ellipse cx="50" cy="50" rx="29" ry="42" stroke-width=".4"/>
-        <path d="M8 50h84M50 8v84" stroke-width=".5"/>
-      </svg>
-      <svg class="figure" style="right:150px;top:430px" width="120" height="76" viewBox="0 0 80 50" fill="none" stroke="currentColor" aria-hidden="true" opacity=".55">
-        <path d="M2 40c14-22 28-30 38-30s24 8 38 30" stroke-width=".6"/>
-        <path d="M2 30c14-16 28-22 38-22s24 6 38 22" stroke-width=".4"/>
-        <path d="M2 48c14-26 28-36 38-36s24 10 38 36" stroke-width=".4"/>
-        <g stroke-width=".4"><path d="M18 46V16M40 44V9M62 46V16"/></g>
-      </svg>
-
-      <div class="ticker-wrap"><div class="ticker" id="ticker"></div></div>
-
-      <section class="hero">
-        <h1 id="hero-title"></h1>
-        <p class="sub" id="hero-sub"></p>
-        <div class="hero-search">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input id="hero-search" type="search" readonly aria-label="Search the archive">
-          <kbd id="hero-kbd"></kbd>
-        </div>
-        <div class="ask-row">
-          <button class="ask-btn" id="ask-btn"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>Ask Atlas</button>
-          <span>Ask in plain words and the archive answers.</span>
-        </div>
-        <div class="chips" id="chips"></div>
-      </section>
-
-      <div class="cta-grid" id="cta"></div>
-
-      <div class="wrap">
-        <div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>
-        <div class="section-head"><h2 class="label">Recently updated</h2><a class="mono-sm accent" href="archive.html">Full archive →</a></div>
-        <div class="panel" id="recent"></div>
-      </div>
+    <!-- Masthead: a gutterless plate of PubChem structure drawings, archival engravings and flat print colour. -->
+    <div class="mosaic">
+      <figure class="tile plate"><img src="img/plates/testosterone.png" width="600" height="600" alt="Structure drawing of testosterone"></figure>
+      <figure class="tile photo wide drift"><img src="img/archive/library-alexandria.jpg" width="1400" height="1400" alt="Nineteenth-century engraving of scholars reading scrolls in the Great Library of Alexandria"></figure>
+      <figure class="tile plate"><img src="img/plates/bpc-157.png" width="600" height="600" alt="Structure drawing of the peptide BPC-157"></figure>
+      <div class="tile gilt"></div>
+      <figure class="tile photo"><img src="img/archive/apothecary-distilling.jpg" width="1400" height="1138" alt="Sixteenth-century woodcut of an apothecary drawing liquid from a distillation furnace"></figure>
     </div>
+
+    <section class="wrap spread hero">
+      <div class="side">
+        <p data-rise style="--i:0">An open reference library of peptides and research compounds. Dosing comes only from approved labels and published trials.</p>
+      </div>
+      <div class="main">
+        <h1 class="display lines">
+          <span class="line"><span data-line style="--i:0">Every claim</span></span>
+          <span class="line"><span data-line style="--i:1">carries a grade.</span></span>
+        </h1>
+        <div class="hero-actions" data-rise style="--i:1">
+          <button class="button" id="hero-search" type="button">Search the codex</button>
+          <a class="link go" href="codex.html">Browse all <span data-count="entries">180</span> entries</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- One figure owns the screen; the field list recounts it from the entries (the page's live thing). -->
+    <section class="field-page" id="tested" aria-labelledby="tested-title">
+      <div class="wrap spread">
+        <div class="side field-picker" style="align-self:end;padding-bottom:clamp(4rem,8vw,7rem)">
+          <p data-reveal>Count again for one field.</p>
+          <div class="row" id="picker" role="group" aria-label="Choose a field" data-reveal style="--i:1"></div>
+        </div>
+        <div class="main figure-page">
+          <h2 class="figure-claim" id="tested-title" data-reveal>Most were never tested in people.</h2>
+          <div class="figure-body">
+            <p class="figure-num nums" data-reveal style="--i:1" aria-live="polite"><span class="v" id="fig-v">27</span><sup>%</sup></p>
+            <p class="figure-caption" id="fig-cap" data-reveal style="--i:2">Of 175 compounds in the codex, 48 have at least one randomized controlled trial in people. 127 have no human trial on record at all.</p>
+          </div>
+          <p class="figure-source small muted" data-reveal style="--i:3">Counted from the entries as they stand today. A compound counts once the codex records a randomized controlled trial in people.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="browse" style="padding-top:var(--section)">
+      <div class="list-head">
+        <h2 class="head" data-reveal><span class="soft" id="field-count">Seventeen fields,</span>one standard.</h2>
+        <a class="button quiet" href="codex.html" data-reveal style="--i:1">Open the full codex</a>
+      </div>
+      <div class="browse">
+        <div class="tabs" role="tablist" aria-label="Fields" id="tabs"></div>
+        <div class="bands" id="bands" role="tabpanel"></div>
+      </div>
+    </section>
+
+    <section class="section wrap" aria-label="Three entries">
+      <div class="feature-set" id="features"></div>
+    </section>
+
+    <section class="wrap about-block" aria-label="How the codex is written">
+      <div class="about-facts" data-reveal>
+        <div><b><span data-count="entries">180</span> entries</b>and growing</div>
+        <div><b>Graded per claim</b>eight evidence levels</div>
+        <div><b>Free to read</b>no account, no tracking</div>
+      </div>
+      <div class="about-copy" data-reveal style="--i:1">
+        <p class="statement"><span class="cap"><img src="img/archive/farnese-atlas.jpg" width="1400" height="2114" alt="The Farnese Atlas, a Roman marble of the titan Atlas carrying the celestial globe" loading="lazy"></span><strong>Atlas Codex is written from primary sources,</strong> not forums or vendor sheets. Where a creator&rsquo;s view and the published record disagree, the codex follows the record.</p>
+        <p>Each entry grades its own claims, gives dosing only where a regulator approved it or a trial administered it, and says plainly when nothing is known. It is an educational reference, not medical advice, and not an endorsement of using any compound. The <a class="link-plain" href="about.html">standards and evidence grades</a> are set out in full.</p>
+      </div>
+    </section>
+
+    <section aria-label="Guides">
+      <div class="strip">
+        <figure class="shutter" data-reveal><img src="img/archive/library-alexandria.jpg" width="1400" height="1400" alt="Engraving of the Great Library of Alexandria" loading="lazy" style="object-position:50% 70%"></figure>
+        <figure class="shutter" data-reveal style="--i:1"><img src="img/archive/apothecary-shop.jpg" width="1400" height="1019" alt="Victorian engraving of an apothecary and his apprentice at work in a crowded shop" loading="lazy"></figure>
+        <figure class="shutter" data-reveal style="--i:2"><img src="img/archive/cellarius-atlas.jpg" width="1400" height="2328" alt="Title page of Cellarius's celestial atlas, astronomers gathered around globes and an armillary sphere" loading="lazy" style="object-position:50% 78%"></figure>
+      </div>
+      <div class="gilt-band">
+        <div class="gilt-copy">
+          <p class="statement" data-reveal>Before you trust any number here, <a href="codex.html?cat=guides">learn how to read a trial</a>.</p>
+          <div class="small-lines" data-reveal style="--i:1">
+            <p>Five short guides cover evidence grades, trial phases, half-life and how to spot a weak claim.</p>
+            <p>Missing a compound? <a href="about.html#contact">Request an entry</a>.</p>
+          </div>
+        </div>
+        <figure class="gilt-plate" data-reveal style="--i:2"><img src="img/archive/cellarius-atlas.jpg" width="1400" height="2328" alt="Detail of an engraved celestial atlas title page" loading="lazy"></figure>
+      </div>
+    </section>
   </main>
   <footer id="site-footer"></footer>
 </body>

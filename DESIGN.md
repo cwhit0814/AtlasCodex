@@ -1,308 +1,213 @@
 ---
 name: Atlas Codex
-description: An open reference library of peptides and research compounds, set in ink, parchment and antique gold.
+description: An open reference library of peptides and research compounds, set as a two-colour printed annual.
 colors:
-  ink: "#17181d"
-  ink-raised: "#1c1e24"
-  folio: "#1b1d23"
-  folio-raised: "#23252c"
-  hairline: "#2c2e36"
-  rule: "#3b3d47"
-  parchment: "#eee8d2"
-  faded-ink: "#a69d88"
-  marginalia: "#968e7c"
+  ink-ground: "#17181d"
+  surface: "#1f2027"
+  surface-raised: "#282a32"
+  parchment-ink: "#eee8d2"
+  soft-ink: "#c4bba5"
   lamp-gold: "#c89a5b"
-  brass: "#b8874f"
-  gilt-wash: "#272016"
-  oxblood: "#cf7a6b"
-  oxblood-line: "#6b382f"
-  amber-caution: "#d7a24e"
-  amber-wash: "#2b2213"
-  laurel: "#86a877"
-  laurel-wash: "#1b2419"
-  verdigris: "#6fa89a"
-  aged-paper: "#f3eee1"
-  aged-paper-raised: "#fbf8ef"
-  paper-folio: "#fcfaf3"
-  paper-folio-raised: "#ece5d5"
-  paper-hairline: "#ddd4bf"
-  paper-rule: "#c7bba1"
-  press-ink: "#1d1f25"
-  paper-muted: "#5d5747"
-  paper-dim: "#6a6355"
-  burnished-gold: "#80591d"
-  paper-oxblood: "#9b3127"
-  paper-laurel: "#4a6b32"
-  paper-verdigris: "#2f6b5c"
+  lamp-gold-hover: "#d8ad72"
+  paper-field: "#eee8d2"
+  paper-field-raised: "#e3dbc3"
+  paper-soft-ink: "#443e31"
+  gilt-field: "#b8874f"
+  laurel: "#9fc48f"
+  verdigris: "#7ab3a4"
+  amber: "#deae5f"
+  crimson: "#e27e8a"
+  light-ground: "#f3eee1"
+  light-surface: "#e9e2cf"
+  light-surface-raised: "#ddd5be"
+  light-soft-ink: "#555043"
+  light-gold: "#7d571c"
 typography:
   display:
-    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
-    fontSize: "clamp(2.8rem, 9vw, 6.2rem)"
-    fontWeight: 600
-    lineHeight: 1
-    letterSpacing: ".015em"
+    fontFamily: "Young Serif, Georgia, serif"
+    fontSize: "clamp(3.25rem, 1rem + 6.6vw, 6.5rem)"
+    fontWeight: 400
+    lineHeight: 0.95
+    letterSpacing: "-0.035em"
   headline:
-    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
-    fontSize: "clamp(2.2rem, 5vw, 3rem)"
-    fontWeight: 600
-    lineHeight: 1.15
-    letterSpacing: ".005em"
-  title:
-    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
-    fontSize: "1.4rem"
-    fontWeight: 600
-    lineHeight: 1.15
-  wordmark:
-    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
-    fontSize: "1.18rem"
-    fontWeight: 600
-    letterSpacing: ".2em"
-  prose:
-    fontFamily: "EB Garamond, Georgia, Times New Roman, serif"
-    fontSize: "1.02rem"
+    fontFamily: "Young Serif, Georgia, serif"
+    fontSize: "clamp(2rem, 1.4rem + 2.2vw, 2.75rem)"
     fontWeight: 400
-    lineHeight: 1.65
+    lineHeight: 1
+    letterSpacing: "-0.02em"
+  lead:
+    fontFamily: "Young Serif, Georgia, serif"
+    fontSize: "clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)"
+    fontWeight: 400
+    lineHeight: 1.3
   body:
-    fontFamily: "Inter, system-ui, -apple-system, Segoe UI, sans-serif"
-    fontSize: "15px"
+    fontFamily: "Source Serif 4, Georgia, serif"
+    fontSize: "clamp(1.0625rem, 1.02rem + 0.25vw, 1.25rem)"
     fontWeight: 400
-    lineHeight: 1.6
-  label:
-    fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
-    fontSize: ".72rem"
-    fontWeight: 500
-    letterSpacing: ".24em"
-  data:
-    fontFamily: "JetBrains Mono, ui-monospace, SFMono-Regular, Menlo, monospace"
-    fontSize: ".6875rem"
-    fontWeight: 600
-    letterSpacing: ".08em"
+    lineHeight: 1.55
+  small:
+    fontFamily: "Source Serif 4, Georgia, serif"
+    fontSize: "1rem"
+    fontWeight: 400
+    lineHeight: 1.45
+  figure:
+    fontFamily: "Young Serif, Georgia, serif"
+    fontSize: "clamp(9rem, 23vw, 23.75rem)"
+    fontWeight: 400
+    lineHeight: 0.8
+    letterSpacing: "-0.05em"
 rounded:
-  hairline: "2px"
-  stamp: "3px"
-  panel: "6px"
-  field: "8px"
-  banner: "10px"
-  card: "12px"
-  overlay: "14px"
-  pill: "99px"
+  none: "0px"
 spacing:
-  xs: "6px"
-  sm: "10px"
-  md: "16px"
-  lg: "24px"
-  xl: "36px"
-  section: "56px"
-  container: "1170px"
+  band-gap: "4px"
+  margin: "clamp(1.25rem, 3.3vw, 3rem)"
+  gutter: "clamp(1rem, 2vw, 2rem)"
+  section: "clamp(6rem, 11vw, 11rem)"
 components:
   button-primary:
-    backgroundColor: "{colors.parchment}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.pill}"
-    padding: "9px 18px"
-  button-secondary:
-    backgroundColor: "transparent"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.pill}"
-    padding: "9px 18px"
-  button-gilt:
     backgroundColor: "{colors.lamp-gold}"
-    textColor: "{colors.ink}"
-    rounded: "{rounded.pill}"
-    padding: "11px"
-  chip:
-    backgroundColor: "{colors.ink-raised}"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.pill}"
-    padding: "8px 18px"
-  chip-selected:
-    backgroundColor: "{colors.gilt-wash}"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.pill}"
-    padding: "8px 18px"
-  input-field:
-    backgroundColor: "{colors.ink-raised}"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.field}"
-    padding: "10px 14px"
-  panel:
-    backgroundColor: "{colors.folio}"
-    textColor: "{colors.parchment}"
-    rounded: "{rounded.panel}"
-  status-stamp:
-    typography: "{typography.data}"
-    rounded: "{rounded.stamp}"
-    padding: "3px 8px"
-  evidence-badge:
-    typography: "{typography.data}"
-    rounded: "{rounded.hairline}"
-    padding: "4px 8px"
+    textColor: "{colors.ink-ground}"
+    rounded: "{rounded.none}"
+    height: "48px"
+    padding: "0 22px"
+  button-quiet:
+    backgroundColor: "{colors.surface-raised}"
+    textColor: "{colors.parchment-ink}"
+    rounded: "{rounded.none}"
+    height: "48px"
+  band:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.parchment-ink}"
+    rounded: "{rounded.none}"
+    padding: "11px 20px"
+  tab-selected:
+    backgroundColor: "{colors.parchment-ink}"
+    textColor: "{colors.ink-ground}"
+    rounded: "{rounded.none}"
+  field:
+    backgroundColor: "{colors.surface}"
+    textColor: "{colors.parchment-ink}"
+    rounded: "{rounded.none}"
+    height: "48px"
 ---
 
 # Design System: Atlas Codex
 
 ## Overview
 
-**Creative North Star: "The Alexandrian Reading Room"**
+**Creative North Star: "The Printed Annual"**
 
-Atlas Codex is a reading room at night. The lamp is low, the folios are open, and the authority comes from what is written rather than how loudly it is said. The palette comes straight from the brand mark (ink, parchment and antique gold), and the material language is Victorian scientific engraving: laid paper, hairline rules, captions and plates. Dark is the native state. The light theme is aged paper, never white.
+Atlas Codex is laid out like a well-edited printed report: a masthead plate, a tight oversized title, text held to one strict column line, and colour used in solid blocks the way a two-colour print job would. The reader should feel that someone edited this. Ink is the ground, parchment is the ink, and antique gold from the brand mark is the single action colour. Parchment and gilt also appear as whole field colours, the way a printed annual turns to a coloured spread.
 
-The system is restrained and archival. Panels are tonal leaves with hairline edges, not floating cards. Gold is lamplight: it lands only where something means something, such as a running head, a selected item, a drop cap, the reader's own scores, or an action. Density is high where readers compare (risk grids, PK tables, trial meta) and loose where they read (ledes, guide prose). Four typefaces each have one job, so dense data never has to compete with the serif voice.
+Everything hangs from one vertical line at 42% of the viewport. Headings start on it, body text hangs from it, and the zone to its left carries side notes, figures, filters and the structure plate. On a phone the line collapses to the left margin and side notes move inline above their content.
 
-Ornament follows engraved-plate convention and is never decoration for its own sake. Section labels run a hairline out to the margin like a running head. A compass motif marks a true break. Entry ledes open with one gold drop cap. The home page carries line art (compass rose, armillary sphere, graticule) at low opacity, and it is hidden below 900px.
+The pictures come from the codex's own world: PubChem structure drawings (public domain) on parchment tiles, and archival engravings and photographs from open collections, all in greyscale. No ornament stands in for content.
 
 **Key Characteristics:**
-- Ink-dark ground with a laid-paper texture (a fine 5px hatch plus chain lines every 68px), fixed to the viewport
-- Gold used sparingly, as signal and never as fill
-- Cormorant Garamond for display, EB Garamond for prose, Inter for interface and JetBrains Mono for data and labels
-- Flat tonal panels with hairline borders; shadows only on things that float above the page
-- Evidence and status shown with a disciplined color code (laurel, verdigris, amber, oxblood)
-- Every color is a token on `:root` in `css/style.css`, so a theme is one block
+- One axis at 42% of the viewport, reused on every page
+- Ink ground, parchment ink, one gold action colour; parchment and gilt as whole field colours
+- Young Serif for display, Source Serif 4 for everything read; no monospace anywhere
+- Surfaces separated by 4px gaps and steps of tone, never by lines or shadows (tables excepted)
+- Square corners everywhere
+- Evidence and status written as words on a tint of their meaning colour
 
 ## Colors
 
-An ink-and-parchment library palette with one warm metal and a small set of semantic hues for evidence and risk.
+Two print colours on an ink ground, with four meaning colours kept for evidence and status.
 
 ### Primary
-- **Lamp Gold** (`lamp-gold`): the accent. Used for links, running-head labels, selected-state borders, drop caps, focus outlines, the wordmark's CODEX half and the reader's own meter. On light paper it becomes **Burnished Gold** (`burnished-gold`) so it keeps its contrast.
-- **Brass** (`brass`): the deeper gold from the brand mark. Used on secondary accent edges such as the ask button's border.
-- **Gilt Wash** (`gilt-wash`): a near-black gold tint. It is the ground for selected chips, the ticker, the rate bar, targeted references and gilt CTA cards.
+- **Lamp Gold** (`lamp-gold`): the one action colour. Primary buttons, link accents, the active nav item, focus outlines, the reader's own scores. It deepens to `light-gold` in the parchment theme.
 
-### Secondary (semantic: evidence, status and risk)
-- **Laurel** (`laurel`, on `laurel-wash`): strong evidence (human RCT, established) and approved status. Also marks low risk.
-- **Verdigris** (`verdigris`): human observational evidence, veterinary and compounded status.
-- **Amber Caution** (`amber-caution`, on `amber-wash`): weaker evidence (animal, in vitro, anecdotal, contested), investigational and supplement status, editor's notes, moderate risk and the monitoring "watch" markers.
-- **Oxblood** (`oxblood`, edged with `oxblood-line`): research-only and never-approved status, high risk, profile rows where higher is worse, and the outline of the risk grid. Banned status is the only solid fill: oxblood behind ink.
+### Secondary
+- **Paper Field** (`paper-field`): a whole section in parchment with ink text, used for the live figure page and the footer. In the light theme this field inverts to ink.
+- **Gilt Field** (`gilt-field`): the closing band on the home page, with ink text and one underlined link.
+
+### Tertiary
+- **Laurel** (`laurel`): human RCT, established, approved.
+- **Verdigris** (`verdigris`): human observational, veterinary, compounded.
+- **Amber** (`amber`): animal, in vitro, anecdotal, contested; investigational, supplement; editor's notes and warning signs.
+- **Crimson** (`crimson`): research only, never approved, high risk, and profile rows where higher is worse. Banned is the one solid stamp.
 
 ### Neutral
-- **Ink** (`ink`): the page ground, and the ink on primary buttons.
-- **Ink Raised** (`ink-raised`): inputs, chips and the search pill.
-- **Folio** / **Folio Raised** (`folio`, `folio-raised`): panel surfaces, and their hover and selected rows.
-- **Hairline** (`hairline`): row dividers inside panels.
-- **Rule** (`rule`): panel borders, input strokes and empty meter cells.
-- **Parchment** (`parchment`): primary text, and the fill of primary buttons.
-- **Faded Ink** (`faded-ink`): secondary text, subtitles and detail prose.
-- **Marginalia** (`marginalia`): tertiary text, timestamps, ref lines and keyboard hints.
-- **Light theme:** `aged-paper` (ground), `aged-paper-raised`, `paper-folio`, `paper-folio-raised`, `paper-hairline`, `paper-rule`, `press-ink` (text), `paper-muted`, `paper-dim`, `paper-oxblood`, `paper-laurel` and `paper-verdigris` map one to one onto the dark roles.
+- **Ink Ground**, **Surface**, **Surface Raised** (`ink-ground`, `surface`, `surface-raised`): the page and its two tone steps. Bands alternate between the steps.
+- **Parchment Ink** (`parchment-ink`): all running text.
+- **Soft Ink** (`soft-ink`): secondary notes only.
 
 ### Named Rules
-**The Lamplight Rule.** Gold marks meaning: something selected, a heading, an action, the reader's own input. It is never a background fill bigger than a button. Large surfaces take gold only as a wash.
+**The Full Ink Rule.** Running text is set in the full ink. The soft ink is for notes, captions and secondary labels, never for paragraphs a visitor came to read.
 
-**The Evidence Code Rule.** Laurel, verdigris, amber and oxblood carry evidence and risk meaning and nothing else. Never use them for decoration, branding or category color.
-
-**The Aged Paper Rule.** The light theme is parchment (`aged-paper`), never `#fff`. PubChem structure plates sit on aged paper with `mix-blend-mode: multiply` in both themes.
+**The Meaning Colour Rule.** Laurel, verdigris, amber and crimson carry evidence, status and risk and nothing else.
 
 ## Typography
 
-**Display Font:** Cormorant Garamond (falling back to EB Garamond, Georgia)
-**Prose Font:** EB Garamond (falling back to Georgia, Times New Roman)
-**Interface Font:** Inter (falling back to system-ui)
-**Label/Data Font:** JetBrains Mono (falling back to ui-monospace)
+**Display Font:** Young Serif (with Georgia)
+**Body Font:** Source Serif 4 (with Georgia)
 
-**Character:** a high-contrast engraver's display serif over a bookish text serif, with a neutral sans and a tracked monospace handling the index-card work. The serifs speak. The sans and mono record.
+**Character:** a heavy, round old-style headline face over a clear transitional text serif. Warmth with weight, and an editor's voice.
 
 ### Hierarchy
-- **Display** (600, `clamp(2.8rem, 9vw, 6.2rem)`, 1): the home hero title only. It carries the lamp glow `text-shadow`.
-- **Headline** (600, `clamp(2.2rem, 5vw, 3rem)`, 1.15): page and entry titles. On the support page it rises to `clamp(2.6rem, 6vw, 3.8rem)`.
-- **Title** (600, 1.4–1.45rem): card names (creators, sources).
-- **Wordmark** (600, 1.18rem, tracked .2em, uppercase): ATLAS in parchment, CODEX in gold.
-- **Prose** (400, 1.02–1.05rem, 1.6–1.7): entry ledes, risk and activity detail, trial notes, references, about and guide copy. Keep measure near 70ch (`.about` caps at 760px).
-- **Body** (400, 15px, 1.6): interface copy, rows, summaries and trial bodies.
-- **Label** (500, .72rem, tracked .24em, uppercase, gold at .82 opacity): section running heads.
-- **Data** (500–600, .6875–.72rem (11px floor), tracked .04–.1em, uppercase): status stamps, evidence badges, trial meta, PK terms, ref lines and nav links.
+- **Display** (400, 52–104px, leading 0.95, -0.035em): page titles and the home statement. Two lines at most, each line set by hand and revealed from its baseline.
+- **Headline** (400, 32–44px): section claims, featured entry names.
+- **Lead** (400, 20–26px, Young Serif): side-zone section titles, statements, entry ledes, the footer's ways in.
+- **Body** (400, 17–20px, leading 1.55): everything read. Measure 45–75 characters.
+- **Small** (16px): notes, band notes, filters, legal lines. Nothing is smaller.
+- **Figure** (up to 23vw): the single live figure on the home page.
 
 ### Named Rules
-**The Four Hands Rule.** Each face has one job. Display serif for titles, text serif for anything read as an argument, sans for interface, mono for labels and data. Don't set prose in Inter or titles in mono.
+**The Two Line Rule.** Every heading fits in two lines at every width. Cut words before shrinking type.
 
-**The Running Head Rule.** Section labels are tracked uppercase mono followed by a gold hairline that fades out to the margin (`h2.label::after`). This is the only section-heading form.
+**The No Costume Rule.** No monospace, no tiny tracked capitals, no eyebrow labels above headings, no index numbers. Data uses tabular lining figures in the text face.
 
 ## Layout
 
-The container is 1170px, centered, with 16px gutters that grow to 32px from 720px up. The header is sticky at 70px. It wraps below 960px, with the nav dropping to its own full-width row and secondary pill buttons hidden. Sections open with a 56px top margin, and running-head labels sit 36px above their panels. Panel internals use 14–18px padding on a 16px base.
+Tight side margins (20–48px), the axis at 42vw, and 96–176px between sections. Pages alternate between text spreads (title on the axis, body to its right, notes to its left) and full-bleed field pages. Lists are banded: rows of alternating tone, 4px apart, with fixed column starts (status, name and note, structure thumbnail).
 
-Data layouts are grids that collapse cleanly:
-- Codex rows run 4 columns (`minmax(160px,1.2fr) 2fr 120px 120px`) and drop to 2 below 760px.
-- The risk grid is 2-up and drops to 1 below 760px.
-- Activity is a list plus a sticky detail panel (sticky at `top: 90px`) and stacks below 860px.
-- The PK grid is a term/definition table and stacks below 600px.
-- The archive runs 4 columns and drops to 2 below 640px.
+The home page runs: masthead mosaic, statement, the live figure, browse by field (tabs and bands), three featured entries with oversized plates bleeding off the left edge, the standards paragraph with the Farnese Atlas as its drop cap, three archival pictures over the gilt band, and the footer with the name first.
 
-Card collections use `auto-fill` grids (sources `minmax(260px,1fr)`, creators `minmax(330px,1fr)`). Home CTAs are 3-up and drop to 1 below 900px. Floating UI (the ask FAB and panel) anchors 28px from the bottom-right corner, 16px on phones.
+Below 56rem the axis collapses, tabs wrap into rows, bands stack status under name, and side zones move inline.
 
 ## Elevation & Depth
 
-Flat by default. Depth comes from tonal layering: ink, then folio, then folio-raised, with hairline and rule borders separating leaves. The laid-paper texture gives the ground a physical grain that flat panels sit on. Shadows are reserved for elements that genuinely float above the page (dropdown menus, the search overlay and the ask panel), plus the gold lamp glow on the hero title and on hover for gilt actions.
-
-### Shadow Vocabulary
-- **Menu lift** (`box-shadow: 0 20px 50px rgba(0,0,0,.35)`): nav dropdowns.
-- **Overlay lift** (`box-shadow: 0 30px 80px rgba(0,0,0,.5)`): the search panel and ask panel. Paired with a 60% black scrim and a 3px blur.
-- **Lamp glow** (`--glow`: `0 0 22px rgba(238,232,210,.28), 0 0 60px rgba(200,154,91,.14)`, lighter on paper): hero title text only.
-- **Gilt hover** (`0 0 18px color-mix(in srgb, var(--accent) 35%, transparent)`): hover on gold-filled actions.
-
-### Named Rules
-**The Flat Folio Rule.** Panels and cards rest flat. Shadows belong only to things that float (menus, overlays, the FAB). Hover changes border color, tone or brightness, not elevation.
-
-**The Lifted Float Rule.** Floating controls (the ask FAB) take a real offset shadow (`0 10px 28px rgba(0,0,0,.35)`), and gold glow is added only on hover. Violet glows from the previous identity were removed; never reintroduce them.
+Flat. Depth is a step in tone between `ink-ground`, `surface` and `surface-raised`. Only the two things that truly float carry a shadow: the search dialog and the ask panel (`0 30px 80px rgba(0,0,0,.45)`). The ask button is flat.
 
 ## Shapes
 
-Corners scale with the role of the object. Stamps and plates are nearly square: evidence badges, editor's notes and the structure plate use 2px, and status stamps use 3px. Reading surfaces are softly squared: panels, the risk grid, CTAs and the disclaimer use 6px. Fields use 8px, the ticker and buy buttons 10px, and cards and menus 12px, with overlays at 14px. Everything a finger presses or a filter toggles is a full pill (99px): nav pills, chips, the search pill, shop and creator links, and code chips. Borders are 1px throughout. The only heavier strokes are a 3px gold left edge on the ticker, a 2px left rule on the entry intro, and a 2px gold left edge on the selected activity item. Dashed 1px borders mean "secondary or empty": profile "mine" rows, risk detail, the disclaimer and the "No current stock" state. Meter cells are hard-edged squares (11px).
+Square corners on everything: buttons, bands, tabs, fields, tiles, pictures. Lines appear only inside real tables (pharmacokinetics, dosing, monitoring), at 14% ink.
 
 ## Components
 
-Restrained and archival: hairline-edged leaves and tracked labels, with gold held back for meaning.
-
 ### Buttons
-- **Shape:** full pill (99px).
-- **Primary** (`button-primary`): a parchment fill with ink text, Inter 600 at .82rem tracked .06em, padded 9px 18px. Header "Support me".
-- **Secondary** (`button-secondary`): transparent with a 1px rule border and parchment text. Hover turns the border gold.
-- **Gilt** (`button-gilt`): a gold fill with ink text. Only for the shop action on a source card. Hover adds brightness 1.12 and the gilt glow.
-- **Rate button:** a squared variant (4px) in gold with mono text, inside the profile's rate bar.
-- **Focus:** a 2px gold outline at a 2px offset, on every interactive element.
+- **Primary:** gold fill, ink text, 48px tall, square, Source Serif 600. Presses to 97% scale; hover lightens the gold.
+- **Quiet:** raised-surface fill, full ink text, same shape.
+- **Text link:** the underline appears on hover; gold where the link is the way forward.
 
-### Chips
-- **Style** (`chip`): an ink-raised pill with a 1px rule border, Inter at 1rem, and an optional mono count in marginalia.
-- **Selected** (`chip-selected`, `aria-pressed="true"`): a gold border on a gilt-wash ground. Hover on any chip turns the border gold.
-- **Code chip:** a gold mono pill on gilt wash for the referral code, which copies on click.
+### Bands
+The codex's list unit: a full-width row in one of two alternating tones, 4px apart. Status word at the left, name (600) with a one-line note, and a parchment thumbnail of the structure at the right on desktop. Hover tints the row with gold.
 
-### Status stamps & evidence badges
-The signature data marks. Uppercase mono at .6–.64rem with 1px borders tinted from the semantic hue (45–50% mix) on its wash. Status stamps use 3px corners. Evidence badges use 2px and read like a plate caption. Banned is the only solid stamp. Unknown evidence is marginalia text on a rule border, with no fill.
+### Tabs and pickers
+Filled blocks, never outlined. Selected is inverted (parchment block, ink text). Counts sit beside each name in tabular figures.
 
-### Cards / Containers
-- **Panel:** folio ground, 1px rule border, 6px corners, flat. Rows inside are separated by hairlines and hover to folio-raised.
-- **Source and creator cards:** folio ground with 12px corners and 20–22px padding. Creator cards carry a 3px gradient top edge in the creator's own accent pair and turn that hue on hover.
-- **Risk grid:** a panel outlined in oxblood-line, with a 2-up cell grid and an 8px square level marker (laurel, amber, oxblood or marginalia) before each system label.
-- **Editor's note:** an amber 55% border on amber wash with amber text and 2px corners.
+### Evidence and status
+Words in sentence case on a 13–15% tint of their meaning colour, such as "Human RCT" or "Research only". Square, 16px, weight 600.
 
-### Inputs / Fields
-- **Style:** an ink-raised ground with a 1px rule stroke, 8px corners and 10px 14px padding. The hero search is the exception: a 12px radius, a 55% gold stroke, 1.25rem text and an inset search glyph.
-- **Search pill:** a 300px pill (200px below 1180px, icon only below 960px) showing the ⌘K kbd hint. Hover turns the border gold.
-- **Focus:** a 2px gold outline at a 2px offset.
+### Entry spreads
+Each section is a spread: its title and a one-line note in the side zone (sticky on desktop), the content on the axis in sheets of `surface`. Tables carry the data, the activity list pairs with a sticky detail panel, and trials are sheets with an amber editor's note.
 
-### Navigation
-A sticky header on ink at 90% with a 10px backdrop blur and a hairline bottom border. Nav links are mono at .85rem tracked .14em in parchment, turning gold on hover and when active. Dropdown menus are 12px folio leaves with menu lift; items have 8px corners and hover to folio-raised. Below 960px the nav wraps to its own row. Below 480px the wordmark and links shrink.
-
-### Profile meter
-Five hard-edged 11px squares. Filled cells are parchment, or oxblood on rows where higher is worse. The reader's own meter is outlined gold and fills gold, sitting under a dashed divider, with cells that grow to 15px while editing.
-
-### Ornament
-A running-head hairline on every section `h2.label`, a centered compass rose (a 17px stroked star in a circle) between 190px fading hairlines for true breaks, and a gold Cormorant drop cap (3.3em, 2.9em on phones) on the first paragraph of an entry intro.
+### The live figure
+On the home page, one number owns a parchment field: the share of compounds with a randomized human trial, recounted from the entry data for whichever field the visitor picks. The claim above it rewrites itself to stay true.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** take every color from a `:root` token in `css/style.css` and define its light-theme counterpart in the same change.
-- **Do** keep gold to meaning: labels, selection, focus, actions and the reader's own input (The Lamplight Rule).
-- **Do** show evidence grade and status with the existing stamps and badges, at the point of the claim.
-- **Do** set argued prose (ledes, detail, notes, guides) in EB Garamond and data in tracked uppercase JetBrains Mono.
-- **Do** separate leaves with hairlines and tone. Panels stay flat (The Flat Folio Rule).
-- **Do** keep a 2px gold focus outline at a 2px offset on every interactive element.
-- **Do** respect `prefers-reduced-motion`. The ticker already stops under it.
+- **Do** start every heading on the axis and hang the content from it.
+- **Do** separate surfaces with a 4px gap or a tone step.
+- **Do** set every paragraph in the full ink at 16px or more.
+- **Do** use real pictures of the codex's world (structure plates, archival engravings) and credit each one in the footer.
+- **Do** give every entrance a reduced-motion fallback that keeps the content visible.
 
 ### Don't:
-- **Don't** use violet or indigo anywhere. That palette belongs to the retired identity.
-- **Don't** use `#fff` or pure white surfaces. The light theme is aged paper.
-- **Don't** use laurel, verdigris, amber or oxblood for anything other than evidence, status or risk.
-- **Don't** add drop shadows to resting panels or cards.
-- **Don't** add new ornament forms. Use the running head, compass break and drop cap, and keep the home line art below 0.55 opacity and hidden under 900px.
-- **Don't** let the gilt "Buy from" or shop treatments outweigh the evidence panels on a compound page. Commerce stays secondary to the record.
+- **Don't** use monospace, eyebrow labels, tracked micro capitals, index numbers, hairline rules outside tables, gradients, glows or resting shadows.
+- **Don't** round a corner.
+- **Don't** use the meaning colours for decoration.
+- **Don't** let a heading run to three lines.
+- **Don't** let the Buy from block or shop buttons outweigh the evidence on a compound page.

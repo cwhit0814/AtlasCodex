@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About · Atlas Codex</title>
-  <meta name="description" content="Atlas Codex — every compound worth knowing, cited and graded.">
+  <meta name="description" content="Atlas Codex: every compound worth knowing, cited and graded by its evidence.">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <script>document.documentElement.classList.add('js')</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/data.js"></script>
   <script src="js/entries-aas.js"></script>
@@ -28,47 +29,65 @@
 </head>
 <body data-page="about">
   <header id="site-header"></header>
-  <main>
-    <div class="wrap about">
-      <header class="page-head">
-        <span class="label">About</span>
-        <h1>About Atlas Codex</h1>
-        <p>A plain-language atlas of the compounds people are talking about.</p>
-      </header>
-      <h2>What this is</h2>
-      <p>Atlas Codex is a reference library. Each entry covers what a compound is, its structure, how it acts on the body, its risks, and the human clinical record behind it. Every claim carries a grade for the evidence behind it.</p>
-      <h2>Evidence grades</h2>
-      <ul>
-        <li><span class="badge ev-human-rct">human rct</span> Randomized controlled trials in people.</li>
-        <li><span class="badge ev-established">established</span> Settled pharmacology.</li>
-        <li><span class="badge ev-human-obs">human obs</span> Observational human data.</li>
-        <li><span class="badge ev-animal">animal</span> <span class="badge ev-in-vitro">in vitro</span> Preclinical only.</li>
-        <li><span class="badge ev-anecdotal">anecdotal</span> User reports.</li>
-        <li><span class="badge ev-contested">contested</span> Evidence points both ways.</li>
-        <li><span class="badge ev-unknown">unknown</span> No data.</li>
-      </ul>
-      <h2>Status labels</h2>
-      <ul>
-        <li><span class="status st-approved">approved</span> Approved as a medicine, or as a cosmetic ingredient, in at least one jurisdiction. Each entry says which.</li>
-        <li><span class="status st-investigational">investigational</span> In formal clinical development.</li>
-        <li><span class="status st-research-only">research only</span> Not approved for human use. Evidence is mostly preclinical.</li>
-        <li><span class="status st-discontinued">discontinued</span> Was once an approved medicine but has been withdrawn or is no longer marketed.</li>
-        <li><span class="status st-veterinary">veterinary</span> Approved for animals only.</li>
-        <li><span class="status st-never-approved">never approved</span> Never approved as a medicine anywhere, for example designer steroids.</li>
-        <li><span class="status st-banned">banned</span> Prohibited for human use or unlawful in supplements, for example DNP and DMAA.</li>
-        <li><span class="status st-supplement">supplement</span> Sold as a dietary supplement rather than an approved drug.</li>
-        <li><span class="status st-compounded">compounded</span> Made to prescription by a compounding pharmacy rather than sold as an approved product.</li>
-        <li><span class="status st-cosmetic">cosmetic</span> Sold as a cosmetic or personal care product, not as a drug.</li>
-      </ul>
-      <h2>Profile scores</h2>
-      <p>Profile bars are editorial judgements on a 1–5 scale, relative to similar compounds. Red rows are attributes where a higher score is worse. Visitors can add their own scores; these are stored only in their own browser.</p>
-      <h2 id="support">Support</h2>
-      <p>Atlas Codex is free. You can support it by using my code at the sources on the <a href="support.html">Support Me</a> page.</p>
-      <h2 id="contact">Contact &amp; requests</h2>
-      <p>To request an entry or report an error, add your contact link or form here.</p>
-      <h2>Disclaimer</h2>
-      <p class="disclaimer">Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.</p>
-    </div>
+  <main style="padding-bottom:var(--section)">
+    <header class="wrap spread page-title">
+      <div class="side"><p data-rise style="--i:0">A plain-language atlas of the compounds people are talking about, and the rules it is written by.</p></div>
+      <div class="main"><h1 class="lines"><span class="line"><span data-line style="--i:0">About</span></span><span class="line"><span data-line style="--i:1">the codex</span></span></h1></div>
+    </header>
+    
+    <section class="wrap spread about-sec">
+      <div class="side"><h2 data-reveal>What this is</h2></div>
+      <div class="main" data-reveal style="--i:1"><p class="lead">Atlas Codex is a reference library. Each entry covers what a compound is, its structure, how it acts on the body, its risks, and the human clinical record behind it. Every claim carries a grade for the evidence behind it.</p></div>
+    </section>
+    
+    <section class="wrap spread about-sec" id="grades">
+      <div class="side"><h2 data-reveal>Evidence grades</h2></div>
+      <div class="main" data-reveal style="--i:1"><ul class="legend">
+      <li><span><span class="ev t-good">Human RCT</span></span>Randomized controlled trials in people.</li>
+      <li><span><span class="ev t-good">Established</span></span>Settled pharmacology.</li>
+      <li><span><span class="ev t-obs">Human observational</span></span>Observational human data.</li>
+      <li><span><span class="ev t-weak">Animal</span><span class="ev t-weak">In vitro</span></span>Preclinical only.</li>
+      <li><span><span class="ev t-weak">Anecdotal</span></span>User reports.</li>
+      <li><span><span class="ev t-weak">Contested</span></span>Evidence points both ways.</li>
+      <li><span><span class="ev t-plain">Unknown</span></span>No data.</li>
+    </ul></div>
+    </section>
+    
+    <section class="wrap spread about-sec">
+      <div class="side"><h2 data-reveal>Status labels</h2></div>
+      <div class="main" data-reveal style="--i:1"><ul class="legend">
+      <li><span><span class="st t-good">Approved</span></span>Approved as a medicine, or as a cosmetic ingredient, in at least one jurisdiction. Each entry says which.</li>
+      <li><span><span class="st t-weak">Investigational</span></span>In formal clinical development.</li>
+      <li><span><span class="st t-bad">Research only</span></span>Not approved for human use. Evidence is mostly preclinical.</li>
+      <li><span><span class="st t-plain">Discontinued</span></span>Was once an approved medicine but has been withdrawn or is no longer marketed.</li>
+      <li><span><span class="st t-obs">Veterinary</span></span>Approved for animals only.</li>
+      <li><span><span class="st t-bad">Never approved</span></span>Never approved as a medicine anywhere, for example designer steroids.</li>
+      <li><span><span class="st t-solid-bad">Banned</span></span>Prohibited for human use or unlawful in supplements, for example DNP and DMAA.</li>
+      <li><span><span class="st t-weak">Supplement</span></span>Sold as a dietary supplement rather than an approved drug.</li>
+      <li><span><span class="st t-obs">Compounded</span></span>Made to prescription by a compounding pharmacy rather than sold as an approved product.</li>
+      <li><span><span class="st t-plain">Cosmetic</span></span>Sold as a cosmetic or personal care product, not as a drug.</li>
+    </ul></div>
+    </section>
+    
+    <section class="wrap spread about-sec">
+      <div class="side"><h2 data-reveal>Profile scores</h2></div>
+      <div class="main" data-reveal style="--i:1"><p>Profile bars are editorial judgements on a 1 to 5 scale, relative to similar compounds. Red rows are attributes where a higher score is worse. Visitors can add their own scores; these are stored only in their own browser.</p></div>
+    </section>
+    
+    <section class="wrap spread about-sec" id="support">
+      <div class="side"><h2 data-reveal>Support</h2></div>
+      <div class="main" data-reveal style="--i:1"><p>Atlas Codex is free. You can support it by using my code at the sources on the <a class="link-plain" href="support.html">Support Me</a> page.</p></div>
+    </section>
+    
+    <section class="wrap spread about-sec" id="contact">
+      <div class="side"><h2 data-reveal>Contact and requests</h2></div>
+      <div class="main" data-reveal style="--i:1"><p>To request an entry or report an error, add your contact link or form here.</p></div>
+    </section>
+    
+    <section class="wrap spread about-sec">
+      <div class="side"><h2 data-reveal>Disclaimer</h2></div>
+      <div class="main" data-reveal style="--i:1"><p>Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.</p></div>
+    </section>
   </main>
   <footer id="site-footer"></footer>
 </body>

@@ -8,3 +8,6 @@
 
 # Symlink to an absolute path on one machine; reinstall from skills-lock.json
 .claude/skills/design-taste-frontend
+
+# Taste-skill inspector screenshots (regenerated on every run)
+.taste-skill/inspect/

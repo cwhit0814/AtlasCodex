@@ -1,270 +1,118 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-15T01:32:12.060Z",
+  "generatedAt": "2026-10-15T02:21:14.112Z",
   "title": "Design System: Atlas Codex",
   "extensions": {
     "colorMeta": {
       "lamp-gold": {
         "role": "primary",
         "displayName": "Lamp Gold",
-        "canonical": "#c89a5b",
-        "tonalRamp": [
-          "#2a1f10",
-          "#4a371c",
-          "#6b4f28",
-          "#8a6224",
-          "#a97f40",
-          "#c89a5b",
-          "#dcbd8f",
-          "#f0e3cc"
-        ]
+        "canonical": "#c89a5b"
       },
-      "brass": {
-        "role": "primary",
-        "displayName": "Brass",
-        "canonical": "#b8874f",
-        "tonalRamp": [
-          "#271c0f",
-          "#45321b",
-          "#644828",
-          "#835e35",
-          "#a27542",
-          "#b8874f",
-          "#d6b68d",
-          "#efe1cd"
-        ]
+      "paper-field": {
+        "role": "secondary",
+        "displayName": "Paper Field",
+        "canonical": "#eee8d2"
       },
-      "gilt-wash": {
-        "role": "primary",
-        "displayName": "Gilt Wash",
-        "canonical": "#272016"
+      "gilt-field": {
+        "role": "secondary",
+        "displayName": "Gilt Field",
+        "canonical": "#b8874f"
       },
       "laurel": {
-        "role": "secondary",
+        "role": "tertiary",
         "displayName": "Laurel",
-        "canonical": "#86a877",
-        "tonalRamp": [
-          "#151d12",
-          "#26341f",
-          "#3b5030",
-          "#4a6b32",
-          "#6a8b5a",
-          "#86a877",
-          "#b3cba8",
-          "#e7eedd"
-        ]
+        "canonical": "#9fc48f"
       },
       "verdigris": {
-        "role": "secondary",
+        "role": "tertiary",
         "displayName": "Verdigris",
-        "canonical": "#6fa89a",
-        "tonalRamp": [
-          "#0f1e1a",
-          "#1c362f",
-          "#2a5046",
-          "#2f6b5c",
-          "#4f8a7b",
-          "#6fa89a",
-          "#a3cbc1",
-          "#dcede8"
-        ]
+        "canonical": "#7ab3a4"
       },
-      "amber-caution": {
-        "role": "secondary",
-        "displayName": "Amber Caution",
-        "canonical": "#d7a24e",
-        "tonalRamp": [
-          "#2b2213",
-          "#4d3a17",
-          "#6f531f",
-          "#8a6224",
-          "#b4853a",
-          "#d7a24e",
-          "#e8c88f",
-          "#f3e8cd"
-        ]
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Amber",
+        "canonical": "#deae5f"
       },
-      "oxblood": {
-        "role": "secondary",
-        "displayName": "Oxblood",
-        "canonical": "#cf7a6b",
-        "tonalRamp": [
-          "#2a1310",
-          "#4a201b",
-          "#6b382f",
-          "#9b3127",
-          "#b65a4b",
-          "#cf7a6b",
-          "#e3ada3",
-          "#f4ddd8"
-        ]
+      "crimson": {
+        "role": "tertiary",
+        "displayName": "Crimson",
+        "canonical": "#e27e8a"
       },
-      "ink": {
+      "ink-ground": {
         "role": "neutral",
-        "displayName": "Ink",
+        "displayName": "Ink Ground",
         "canonical": "#17181d",
         "tonalRamp": [
           "#17181d",
-          "#1c1e24",
-          "#23252c",
-          "#2c2e36",
-          "#3b3d47",
-          "#5d5747",
-          "#7a7365",
-          "#a69d88"
+          "#1f2027",
+          "#282a32",
+          "#3a3c45",
+          "#6b6556",
+          "#9b927d",
+          "#c4bba5",
+          "#eee8d2"
         ]
-      },
-      "folio": {
-        "role": "neutral",
-        "displayName": "Folio",
-        "canonical": "#1b1d23"
-      },
-      "parchment": {
-        "role": "neutral",
-        "displayName": "Parchment",
-        "canonical": "#eee8d2",
-        "tonalRamp": [
-          "#5d5747",
-          "#7a7365",
-          "#8b8373",
-          "#a69d88",
-          "#c7bba1",
-          "#ddd4bf",
-          "#eee8d2",
-          "#fbf8ef"
-        ]
-      },
-      "faded-ink": {
-        "role": "neutral",
-        "displayName": "Faded Ink",
-        "canonical": "#a69d88"
-      },
-      "marginalia": {
-        "role": "neutral",
-        "displayName": "Marginalia",
-        "canonical": "#968e7c"
-      },
-      "aged-paper": {
-        "role": "neutral",
-        "displayName": "Aged Paper (light ground)",
-        "canonical": "#f3eee1"
-      },
-      "burnished-gold": {
-        "role": "primary",
-        "displayName": "Burnished Gold (light accent)",
-        "canonical": "#80591d"
-      },
-      "paper-dim": {
-        "role": "neutral",
-        "displayName": "Paper Dim (light tertiary text)",
-        "canonical": "#6a6355"
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Home hero title only, with the lamp glow."
+        "purpose": "Page titles and the home statement; two lines at most."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Page and entry titles."
+        "purpose": "Section claims and featured entry names."
       },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Creator and source card names."
-      },
-      "wordmark": {
-        "displayName": "Wordmark",
-        "purpose": "ATLAS / CODEX in the header."
-      },
-      "prose": {
-        "displayName": "Prose",
-        "purpose": "Ledes, detail text, notes, references, guides."
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Side-zone titles, statements, ledes."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Interface copy, rows, summaries."
+        "purpose": "Everything read."
       },
-      "label": {
-        "displayName": "Running Head",
-        "purpose": "Section labels with a gold hairline to the margin."
+      "small": {
+        "displayName": "Small",
+        "purpose": "Notes and filters; the floor."
       },
-      "data": {
-        "displayName": "Data",
-        "purpose": "Status stamps, evidence badges, trial meta, PK terms."
+      "figure": {
+        "displayName": "Figure",
+        "purpose": "The live figure on the home page."
       }
     },
     "shadows": [
       {
-        "name": "menu-lift",
-        "value": "0 20px 50px rgba(0,0,0,.35)",
-        "purpose": "Nav dropdown menus."
-      },
-      {
-        "name": "overlay-lift",
-        "value": "0 30px 80px rgba(0,0,0,.5)",
-        "purpose": "Search panel and ask panel, over a 60% black scrim with 3px blur."
-      },
-      {
-        "name": "lamp-glow",
-        "value": "0 0 22px rgba(238,232,210,.28), 0 0 60px rgba(200,154,91,.14)",
-        "purpose": "Hero title text-shadow (dark); light theme uses 0 0 26px rgba(138,98,36,.18)."
-      },
-      {
-        "name": "gilt-hover",
-        "value": "0 0 18px color-mix(in srgb, var(--accent) 35%, transparent)",
-        "purpose": "Hover on gold-filled actions; the replacement for the drifted violet glows."
-      },
-      {
-        "name": "float-lift",
-        "value": "0 10px 28px rgba(0,0,0,.35)",
-        "purpose": "Resting shadow for the ask FAB; hover deepens it and adds a gold glow."
+        "name": "overlay",
+        "value": "0 30px 80px rgba(0,0,0,.45)",
+        "purpose": "Search dialog and ask panel only."
       }
     ],
     "motion": [
       {
-        "name": "ticker",
-        "value": "tick 40s linear infinite",
-        "purpose": "Announcement ticker scroll; pauses on hover, stops under prefers-reduced-motion."
+        "name": "masked-line",
+        "value": "translateY(105%) to none, 900ms cubic-bezier(0.22,1,0.36,1), 110ms per line",
+        "purpose": "Headlines rise from their baselines on load."
       },
       {
-        "name": "scroll",
-        "value": "scroll-behavior: smooth; scroll-padding-top: 90px",
-        "purpose": "Anchor jumps clear the sticky header."
+        "name": "reveal",
+        "value": "opacity 0 and translateY(24px) to rest, 700-900ms, 75ms stagger",
+        "purpose": "The parts of each section enter once."
+      },
+      {
+        "name": "drift",
+        "value": "scale 1.04 to 1.16, 26s alternate",
+        "purpose": "The one moving picture: the library engraving in the masthead."
       }
     ],
     "breakpoints": [
       {
-        "name": "phone",
-        "value": "480px"
-      },
-      {
-        "name": "small",
-        "value": "600px"
-      },
-      {
-        "name": "gutter",
-        "value": "720px"
-      },
-      {
         "name": "stack",
-        "value": "760px"
+        "value": "56rem"
       },
       {
-        "name": "split",
-        "value": "860px"
-      },
-      {
-        "name": "figures",
-        "value": "900px"
-      },
-      {
-        "name": "header-wrap",
-        "value": "960px"
-      },
-      {
-        "name": "header-tight",
-        "value": "1180px"
+        "name": "narrow",
+        "value": "40rem"
       }
     ]
   },
@@ -273,139 +121,89 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Parchment-filled pill for the single primary header action.",
-      "html": "<a class=\"ds-pill-btn ds-primary\" href=\"#\">SUPPORT ME</a>",
-      "css": ".ds-pill-btn { display: inline-block; font: 600 .82rem 'Inter', system-ui, sans-serif; letter-spacing: .06em; padding: 9px 18px; border-radius: 99px; color: var(--text); border: 1px solid var(--line-2); background: transparent; cursor: pointer; text-decoration: none; transition: border-color .15s; } .ds-pill-btn.ds-primary { background: var(--text); color: var(--bg); border-color: var(--text); } .ds-pill-btn:hover { border-color: var(--accent); } .ds-pill-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+      "description": "Gold fill, square, the one action.",
+      "html": "<button class=\"ds-button\">Search the codex</button>",
+      "css": ".ds-button{display:inline-flex;align-items:center;min-height:3rem;padding:0 1.4rem;border:0;border-radius:0;background:var(--accent);color:var(--accent-ink);font:600 1.125rem 'Source Serif 4', Georgia, serif;cursor:pointer;transition:transform 140ms cubic-bezier(.22,1,.36,1),background-color 180ms}.ds-button:hover{background:var(--accent-hover)}.ds-button:active{transform:scale(.97)}.ds-button:focus-visible{outline:2px solid var(--accent);outline-offset:3px}"
     },
     {
-      "name": "Secondary Button",
+      "name": "Quiet Button",
       "kind": "button",
-      "refersTo": "button-secondary",
-      "description": "Outlined pill; border turns gold on hover.",
-      "html": "<a class=\"ds-pill-btn-2\" href=\"#\">CREDITS</a>",
-      "css": ".ds-pill-btn-2 { display: inline-block; font: 600 .82rem 'Inter', system-ui, sans-serif; letter-spacing: .06em; padding: 9px 18px; border-radius: 99px; color: var(--text); border: 1px solid var(--line-2); background: transparent; text-decoration: none; transition: border-color .15s; } .ds-pill-btn-2:hover { border-color: var(--accent); } .ds-pill-btn-2:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+      "refersTo": "button-quiet",
+      "description": "Raised surface, full ink.",
+      "html": "<button class=\"ds-quiet\">Open the full codex</button>",
+      "css": ".ds-quiet{min-height:3rem;padding:0 1.4rem;border:0;border-radius:0;background:var(--surface-2);color:var(--ink);font:600 1.125rem 'Source Serif 4', Georgia, serif;cursor:pointer}.ds-quiet:hover{background:var(--surface)}.ds-quiet:focus-visible{outline:2px solid var(--accent);outline-offset:3px}"
     },
     {
-      "name": "Gilt Shop Button",
-      "kind": "button",
-      "refersTo": "button-gilt",
-      "description": "Gold-filled pill used only for the shop action on a source card.",
-      "html": "<a class=\"ds-shop-btn\" href=\"#\">Shop Half Nattys</a>",
-      "css": ".ds-shop-btn { display: block; text-align: center; font: 500 1rem 'Inter', system-ui, sans-serif; letter-spacing: .04em; color: var(--bg); background: var(--accent); border-radius: 99px; padding: 11px; text-decoration: none; } .ds-shop-btn:hover { filter: brightness(1.12); box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 35%, transparent); } .ds-shop-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+      "name": "Band",
+      "kind": "custom",
+      "refersTo": "band",
+      "description": "The list row: status, name and note, alternating tone.",
+      "html": "<a class=\"ds-band\" href=\"#\"><span class=\"ds-st\">Research only</span><span><b>BPC-157</b><small>Synthetic pentadecapeptide</small></span></a>",
+      "css": ".ds-band{display:grid;grid-template-columns:9.5rem 1fr;gap:1.25rem;align-items:center;min-height:4.75rem;padding:.7rem 1.25rem;background:var(--surface);color:var(--ink);text-decoration:none;font-family:'Source Serif 4', Georgia, serif}.ds-band:hover{background:color-mix(in srgb,var(--accent) 16%,var(--surface))}.ds-band b{display:block;font-weight:600}.ds-band small{display:block;font-size:1rem}.ds-st{justify-self:start;padding:.12rem .5rem;font-weight:600;color:var(--bad);background:color-mix(in srgb,var(--bad) 15%,transparent)}"
     },
     {
-      "name": "Filter Chip",
+      "name": "Tab",
       "kind": "chip",
-      "refersTo": "chip",
-      "description": "Category filter pill with mono count; pressed state is gilt.",
-      "html": "<button class=\"ds-chip\">Peptides <span>42</span></button> <button class=\"ds-chip\" aria-pressed=\"true\">Nootropics <span>18</span></button>",
-      "css": ".ds-chip { display: inline-flex; align-items: center; gap: 8px; font: 400 1rem 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 99px; padding: 8px 18px; cursor: pointer; } .ds-chip span { font: .75rem 'JetBrains Mono', ui-monospace, monospace; color: var(--dim); } .ds-chip:hover { border-color: var(--accent); } .ds-chip[aria-pressed=\"true\"] { border-color: var(--accent); background: var(--accent-bg); } .ds-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
+      "refersTo": "tab-selected",
+      "description": "Filled block; the selected tab inverts.",
+      "html": "<button class=\"ds-tab\" aria-selected=\"true\">Metabolic 15</button> <button class=\"ds-tab\">Repair 6</button>",
+      "css": ".ds-tab{min-height:3rem;padding:.55rem .8rem;border:0;border-radius:0;background:var(--surface);color:var(--ink);font:600 1rem 'Source Serif 4', Georgia, serif;cursor:pointer}.ds-tab[aria-selected=true]{background:var(--ink);color:var(--bg)}.ds-tab:hover{background:var(--surface-2)}"
     },
     {
-      "name": "Evidence Badge & Status Stamp",
-      "kind": "custom",
-      "refersTo": "evidence-badge",
-      "description": "The signature data marks: tracked uppercase mono in semantic hues.",
-      "html": "<span class=\"ds-badge ds-ev-rct\">human rct</span> <span class=\"ds-badge ds-ev-animal\">animal</span> <span class=\"ds-status ds-st-research\">Research only</span> <span class=\"ds-status ds-st-approved\">Approved</span>",
-      "css": ".ds-badge, .ds-status { display: inline-block; font: 600 .62rem 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .08em; text-transform: uppercase; border: 1px solid; white-space: nowrap; } .ds-badge { padding: 4px 8px; border-radius: 2px; } .ds-status { padding: 3px 8px; border-radius: 3px; } .ds-ev-rct, .ds-st-approved { color: var(--green); border-color: color-mix(in srgb, var(--green) 50%, transparent); background: var(--green-bg); } .ds-ev-animal { color: var(--amber); border-color: color-mix(in srgb, var(--amber) 50%, transparent); background: var(--amber-bg); } .ds-st-research { color: var(--red); border-color: var(--red-line); background: color-mix(in srgb, var(--red) 10%, transparent); }"
-    },
-    {
-      "name": "Panel with Running Head",
-      "kind": "card",
-      "refersTo": "panel",
-      "description": "Flat folio leaf under a tracked mono label that runs a gold hairline to the margin.",
-      "html": "<h2 class=\"ds-label\">Risk and monitoring</h2><div class=\"ds-panel\"><div class=\"ds-row\">Cardiovascular</div><div class=\"ds-row\">Endocrine</div></div>",
-      "css": ".ds-label { display: flex; align-items: center; gap: 14px; font: 500 .72rem 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .24em; text-transform: uppercase; color: var(--accent); opacity: .82; margin: 0 0 12px; } .ds-label::after { content: \"\"; flex: 1; height: 1px; background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 34%, transparent), transparent); } .ds-panel { background: var(--panel); border: 1px solid var(--line-2); border-radius: 6px; } .ds-row { padding: 14px 18px; border-bottom: 1px solid var(--line); color: var(--text); font: 15px/1.6 'Inter', system-ui, sans-serif; } .ds-row:last-child { border-bottom: 0; } .ds-row:hover { background: var(--panel-2); }"
-    },
-    {
-      "name": "Toolbar Input",
+      "name": "Field",
       "kind": "input",
-      "refersTo": "input-field",
-      "description": "Ink-raised field with rule stroke and gold focus outline.",
-      "html": "<input class=\"ds-input\" placeholder=\"Filter compounds…\">",
-      "css": ".ds-input { font: 15px 'Inter', system-ui, sans-serif; color: var(--text); background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 8px; padding: 10px 14px; } .ds-input::placeholder { color: var(--dim); } .ds-input:focus { outline: 2px solid var(--accent); outline-offset: 2px; }"
-    },
-    {
-      "name": "Header Navigation",
-      "kind": "nav",
-      "refersTo": "nav",
-      "description": "Wordmark plus tracked mono links; gold on hover and active.",
-      "html": "<nav class=\"ds-nav\"><a class=\"ds-wordmark\" href=\"#\">ATLAS <span>CODEX</span></a><a class=\"ds-nav-link ds-active\" href=\"#\">CODEX</a><a class=\"ds-nav-link\" href=\"#\">ARCHIVE</a><a class=\"ds-nav-link\" href=\"#\">ABOUT</a></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: 22px; padding: 0 24px; height: 70px; background: color-mix(in srgb, var(--bg) 90%, transparent); border-bottom: 1px solid var(--line); } .ds-wordmark { font: 600 1.18rem 'Cormorant Garamond', Georgia, serif; letter-spacing: .2em; text-transform: uppercase; color: var(--text); text-decoration: none; margin-right: 24px; } .ds-wordmark span { color: var(--accent); } .ds-nav-link { font: 500 .85rem 'JetBrains Mono', ui-monospace, monospace; letter-spacing: .14em; color: var(--text); text-decoration: none; padding: 8px 0; } .ds-nav-link:hover, .ds-nav-link.ds-active { color: var(--accent); } .ds-nav-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }"
-    },
-    {
-      "name": "Profile Meter",
-      "kind": "custom",
-      "refersTo": "profile-meter",
-      "description": "Five hard-edged squares; oxblood where higher is worse, gold outline for the reader's own score.",
-      "html": "<span class=\"ds-meter\"><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i></span> <span class=\"ds-meter ds-red\"><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i><i></i></span> <span class=\"ds-meter ds-mine\"><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i></i></span>",
-      "css": ".ds-meter { display: inline-flex; gap: 4px; } .ds-meter i { width: 11px; height: 11px; background: var(--line-2); display: block; } .ds-meter i.on { background: var(--text); } .ds-meter.ds-red i.on { background: var(--red); } .ds-meter.ds-mine i { background: transparent; border: 1px solid var(--accent); } .ds-meter.ds-mine i.on { background: var(--accent); }"
+      "refersTo": "field",
+      "description": "Surface fill, no border, gold focus.",
+      "html": "<input class=\"ds-field\" placeholder=\"Filter by name, alias or tag\">",
+      "css": ".ds-field{min-height:3rem;padding:.7rem .9rem;border:0;border-radius:0;background:var(--surface);color:var(--ink);font:1.0625rem 'Source Serif 4', Georgia, serif}.ds-field:focus{outline:2px solid var(--accent);outline-offset:3px}"
     }
   ],
   "narrative": {
-    "northStar": "The Alexandrian Reading Room",
-    "overview": "Atlas Codex is a reading room at night. The lamp is low, the folios are open, and the authority comes from what is written rather than how loudly it is said. The palette comes straight from the brand mark (ink, parchment and antique gold), and the material language is Victorian scientific engraving: laid paper, hairline rules, captions and plates. Dark is the native state. The light theme is aged paper, never white.\n\nThe system is restrained and archival. Panels are tonal leaves with hairline edges, not floating cards. Gold is lamplight: it lands only where something means something, such as a running head, a selected item, a drop cap, the reader's own scores, or an action. Density is high where readers compare (risk grids, PK tables, trial meta) and loose where they read (ledes, guide prose). Four typefaces each have one job, so dense data never has to compete with the serif voice.\n\nOrnament follows engraved-plate convention and is never decoration for its own sake. Section labels run a hairline out to the margin like a running head. A compass motif marks a true break. Entry ledes open with one gold drop cap. The home page carries line art (compass rose, armillary sphere, graticule) at low opacity, and it is hidden below 900px.",
+    "northStar": "The Printed Annual",
+    "overview": "Atlas Codex is laid out like a well-edited printed report: a masthead plate, a tight oversized title, text held to one strict column line, and colour used in solid blocks the way a two-colour print job would. Everything hangs from one vertical line at 42% of the viewport.",
     "keyCharacteristics": [
-      "Ink-dark ground with a laid-paper texture (a fine 5px hatch plus chain lines every 68px), fixed to the viewport",
-      "Gold used sparingly, as signal and never as fill",
-      "Cormorant Garamond for display, EB Garamond for prose, Inter for interface and JetBrains Mono for data and labels",
-      "Flat tonal panels with hairline borders; shadows only on things that float above the page",
-      "Evidence and status shown with a disciplined color code (laurel, verdigris, amber, oxblood)",
-      "Every color is a token on `:root` in `css/style.css`, so a theme is one block"
+      "One axis at 42% of the viewport, reused on every page",
+      "Ink ground, parchment ink, one gold action colour; parchment and gilt as whole field colours",
+      "Young Serif for display, Source Serif 4 for everything read; no monospace anywhere",
+      "Surfaces separated by 4px gaps and steps of tone, never by lines or shadows (tables excepted)",
+      "Square corners everywhere",
+      "Evidence and status written as words on a tint of their meaning colour"
     ],
     "rules": [
       {
-        "name": "The Lamplight Rule",
-        "body": "Gold marks meaning: something selected, a heading, an action, the reader's own input. It is never a background fill bigger than a button. Large surfaces take gold only as a wash.",
+        "name": "The Full Ink Rule",
+        "body": "Running text is set in the full ink. The soft ink is for notes, captions and secondary labels, never for paragraphs a visitor came to read.",
         "section": "colors"
       },
       {
-        "name": "The Evidence Code Rule",
-        "body": "Laurel, verdigris, amber and oxblood carry evidence and risk meaning and nothing else. Never use them for decoration, branding or category color.",
+        "name": "The Meaning Colour Rule",
+        "body": "Laurel, verdigris, amber and crimson carry evidence, status and risk and nothing else.",
         "section": "colors"
       },
       {
-        "name": "The Aged Paper Rule",
-        "body": "The light theme is parchment (`aged-paper`), never `#fff`. PubChem structure plates sit on aged paper with `mix-blend-mode: multiply` in both themes.",
-        "section": "colors"
-      },
-      {
-        "name": "The Four Hands Rule",
-        "body": "Each face has one job. Display serif for titles, text serif for anything read as an argument, sans for interface, mono for labels and data. Don't set prose in Inter or titles in mono.",
+        "name": "The Two Line Rule",
+        "body": "Every heading fits in two lines at every width. Cut words before shrinking type.",
         "section": "typography"
       },
       {
-        "name": "The Running Head Rule",
-        "body": "Section labels are tracked uppercase mono followed by a gold hairline that fades out to the margin (`h2.label::after`). This is the only section-heading form.",
+        "name": "The No Costume Rule",
+        "body": "No monospace, no tiny tracked capitals, no eyebrow labels above headings, no index numbers. Data uses tabular lining figures in the text face.",
         "section": "typography"
-      },
-      {
-        "name": "The Flat Folio Rule",
-        "body": "Panels and cards rest flat. Shadows belong only to things that float (menus, overlays, the FAB). Hover changes border color, tone or brightness, not elevation.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Lifted Float Rule",
-        "body": "Floating controls (the ask FAB) take a real offset shadow (`0 10px 28px rgba(0,0,0,.35)`), and gold glow is added only on hover. Violet glows from the previous identity were removed; never reintroduce them.",
-        "section": "elevation"
       }
     ],
     "dos": [
-      "Do take every color from a `:root` token in `css/style.css` and define its light-theme counterpart in the same change.",
-      "Do keep gold to meaning: labels, selection, focus, actions and the reader's own input (The Lamplight Rule).",
-      "Do show evidence grade and status with the existing stamps and badges, at the point of the claim.",
-      "Do set argued prose (ledes, detail, notes, guides) in EB Garamond and data in tracked uppercase JetBrains Mono.",
-      "Do separate leaves with hairlines and tone. Panels stay flat (The Flat Folio Rule).",
-      "Do keep a 2px gold focus outline at a 2px offset on every interactive element.",
-      "Do respect `prefers-reduced-motion`. The ticker already stops under it."
+      "Do start every heading on the axis and hang the content from it.",
+      "Do separate surfaces with a 4px gap or a tone step.",
+      "Do set every paragraph in the full ink at 16px or more.",
+      "Do use real pictures of the codex's world (structure plates, archival engravings) and credit each one in the footer.",
+      "Do give every entrance a reduced-motion fallback that keeps the content visible."
     ],
     "donts": [
-      "Don't use violet or indigo anywhere. That palette belongs to the retired identity.",
-      "Don't use `#fff` or pure white surfaces. The light theme is aged paper.",
-      "Don't use laurel, verdigris, amber or oxblood for anything other than evidence, status or risk.",
-      "Don't add drop shadows to resting panels or cards.",
-      "Don't add new ornament forms. Use the running head, compass break and drop cap, and keep the home line art below 0.55 opacity and hidden under 900px.",
-      "Don't let the gilt \"Buy from\" or shop treatments outweigh the evidence panels on a compound page. Commerce stays secondary to the record."
+      "Don't use monospace, eyebrow labels, tracked micro capitals, index numbers, hairline rules outside tables, gradients, glows or resting shadows.",
+      "Don't round a corner.",
+      "Don't use the meaning colours for decoration.",
+      "Don't let a heading run to three lines.",
+      "Don't let the Buy from block or shop buttons outweigh the evidence on a compound page."
     ]
   }
 }

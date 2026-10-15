@@ -4,7 +4,7 @@ An open reference library of peptides and research compounds, built as a static,
 
 ## Pages
 
-- `index.html`: home page with an announcement ticker, glowing hero, ⌘K search, "ask atlas", category chips, call-to-action cards and recently updated entries
+- `index.html`: home page with a masthead of structure plates and archival engravings, the statement and search, a live figure (how many compounds have a randomized human trial, recounted per field), browse by field, three featured entries, the codex's standards and a link to the guides
 - `codex.html`: the database, with filters by category, status and sort order
 - `archive.html`: chronological archive grouped by month
 - `entry.html?slug=…`: compound page with these sections:
@@ -25,7 +25,9 @@ An open reference library of peptides and research compounds, built as a static,
 
 ## Design
 
-The identity is an Alexandrian library by way of Victorian scientific engraving: ink, parchment and antique gold, taken from the brand mark (`#17181d`, `#eee8d2`, `#b8874f`). Every colour is a token in the `:root` block of `css/style.css`; dark is the default and light is aged paper rather than white, so changing a theme means editing one block. The background is a laid-paper texture (fine engraver's hatch plus widely spaced chain lines) rather than a grid. Display type is Cormorant Garamond, prose is EB Garamond, and Inter and JetBrains Mono carry the dense data. The home page line art is a compass rose, an armillary sphere and a graticule. Section headings carry a hairline out to the margin like an engraved running head, a compass ornament marks true breaks, and entry ledes open with a gold drop cap.
+The identity is a two-colour printed annual: ink ground, parchment ink and one antique gold action colour, all taken from the brand mark (`#17181d`, `#eee8d2`, `#b8874f`). Every page hangs from one vertical line at 42% of the viewport: headings start on it, text hangs from it, and the zone to its left holds notes, filters and the structure plate. Display type is Young Serif and everything read is Source Serif 4. Surfaces are separated by steps of tone rather than lines, corners are square, and evidence grades and statuses are written as words on a tint of their meaning colour. Every colour is a token in the `:root` block of `css/style.css`; dark is the default and the light theme is parchment. `DESIGN.md` records the full system.
+
+Pictures are PubChem structure drawings (public domain, in `img/plates/`) and archival images from open collections (in `img/archive/`, with sources and licences in `img/archive/credits.json` and `pictureCredits` in `js/data.js`). They are credited in every page footer.
 
 Other features:
 - Press `⌘K`, `Ctrl+K` or `/` to search.

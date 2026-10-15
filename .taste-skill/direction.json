@@ -1,0 +1,527 @@
+{
+ "version": 1,
+ "at": "2026-10-15T01:38:48.163Z",
+ "seed": 1489790186,
+ "redraws": 0,
+ "input": {
+  "brief": "Atlas Codex: an open reference library of 175 peptides and research compounds, every claim graded by evidence, dosing only from labels and trials",
+  "sector": "education",
+  "tone": "editorial",
+  "have": [],
+  "keep": [
+   "palette"
+  ],
+  "avoid": [],
+  "sections": [
+   "stats",
+   "list",
+   "work",
+   "about",
+   "cta",
+   "footer"
+  ],
+  "direction": "editorial-report"
+ },
+ "imagery": "atmosphere",
+ "allow": [],
+ "direction": {
+  "id": "editorial-report",
+  "name": "The printed annual",
+  "sectors": [
+   "culture",
+   "nonprofit",
+   "education",
+   "finance",
+   "saas",
+   "ai-product",
+   "health",
+   "agency",
+   "other"
+  ],
+  "tones": [
+   "editorial",
+   "bold"
+  ],
+  "needs": [],
+  "idea": "Lay the page out like a well-designed printed report or magazine feature: a masthead image, a tight oversized title, text held to a strict column line, and colour used in solid blocks the way a two-colour print job would. It gives weight and authority to subjects that are really about content: findings, a manifesto, a programme, a serious product. The reader should feel that someone edited this.",
+  "composition": "A fixed vertical axis at about 42% of the viewport width organises everything: headings begin on it, body columns hang from it, and the 0–42% zone holds small side notes, figures or stays empty. Masthead: a wide image band (photographic mosaic or a single crop) across the top 45% of the first screen; below it the title at 7–9vw starting on the axis, with a two-sentence standfirst at 20–24px. Sections alternate between text pages (title on the axis, body in one or two columns of 34–40ch to its right) and full-bleed colour pages carrying one large figure, quotation or image mosaic. Mosaics are gutterless: photographs and flat colour tiles butted together in a 4- or 6-cell grid. Page numbers, running heads and other print furniture are left out.",
+  "typography": "A tight heavy grotesk or a sharp serif for titles; an excellent text face for reading at 18–20px with leading near 1.5. Headings in sentence case, tracked tight.",
+  "typeClasses": [
+   "grotesk-tight",
+   "serif-display",
+   "serif-text"
+  ],
+  "colour": "Paper, ink and two or three solid block colours. A colour page is a whole section in one flat colour.",
+  "paletteTags": [
+   "flat-loud",
+   "two-tone",
+   "mono-accent"
+  ],
+  "imagery": "Photographs used as blocks in mosaics alongside flat colour tiles; mixed subjects are fine if cropped tight and converted to one treatment.",
+  "photoTreatment": "Give all photographs in a mosaic one treatment: greyscale via `filter: grayscale(1) contrast(1.05)`, or all full colour. Do not mix.",
+  "sectionTags": [
+   "type-led",
+   "colour-field",
+   "dense",
+   "poster"
+  ],
+  "motion": "masked-headline",
+  "richness": "The column line, the mosaics and whole pages of colour give structure and variety without ornaments.",
+  "pitfalls": "The axis must be exact and reused everywhere or it reads as random indentation. Keep paragraphs to a real reading measure. On a phone the axis collapses to the left margin and side notes move inline above their paragraph.",
+  "seenIn": [
+   "aww-ai-in-design-report-2026",
+   "opl-applied-imagination",
+   "opl-the-queue",
+   "opl-artem-taradash",
+   "opl-belgrade-architecture"
+  ],
+  "allow": []
+ },
+ "hero": {
+  "id": "void-then-statement-on-axis",
+  "name": "Void, then statement on axis",
+  "archetype": "bottom-anchored-type",
+  "directions": [
+   "type-only-statement",
+   "editorial-report"
+  ],
+  "needs": [],
+  "blueprint": "A deliberate void: the upper 60% of the viewport holds nothing but the top row. That row, 44px from the top on 48px margins, has the wordmark at the left margin, two text links starting exactly on a vertical axis at 42% of the width, and the single action at the right margin as a text link. Everything else hangs from the same axis in the bottom third. The statement starts on the 42% line: two lines at clamp(56px, 6.6vw, 104px), regular or medium weight, tracking -0.04em, leading 0.95, running towards the right margin, with its last baseline 72px above the bottom edge. Left of the axis, in columns 1-4, one supporting sentence at 18px in the soft ink, max 32ch, is bottom-aligned to the statement's last baseline. Nothing sits in the left zone above it. No image and no shape; the ground is one flat tone and the ink one colour. The emptiness is composed: three elements share the axis, so the blank area reads as intended and not as a page that failed to load.",
+  "mobile": "The axis collapses to the 20px left margin. The top 48% of the screen stays empty under the wordmark row. The statement sets at 12.5vw on two lines, flush left, followed by the sentence at 17px and the action as a text link, the whole block ending 28px above the bottom edge. The two links fold behind a menu word.",
+  "headline": "A 3-6 word statement, at most 30 characters over two lines, about 15 per line at 6.6vw from the axis.",
+  "motion": "masked-headline",
+  "seenIn": [
+   "opl-lovably",
+   "aww-ai-in-design-report-2026",
+   "opl-tiny-computer-co",
+   "aww-cerebrium"
+  ]
+ },
+ "type": {
+  "id": "young-source",
+  "name": "Young Serif / Source Serif 4",
+  "class": "serif-text",
+  "display": {
+   "family": "Young Serif",
+   "source": "google",
+   "weights": [
+    400
+   ],
+   "italic": false,
+   "settings": "weight 400 (single heavy cut) · tracking -0.02em · leading 0.95 · sentence case",
+   "css": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap\" rel=\"stylesheet\">"
+  },
+  "text": {
+   "family": "Source Serif 4",
+   "source": "google",
+   "weights": [
+    400,
+    600
+   ],
+   "italic": true,
+   "settings": "400 for body, 600 for emphasis, italic for quotations · leading 1.55 · tracking 0",
+   "css": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap\" rel=\"stylesheet\">"
+  },
+  "standsInFor": [
+   "FS Kim",
+   "Recoleta",
+   "Gelica"
+  ],
+  "note": "A heavy, round old-style headline face with soft bracketed serifs over a clear transitional text serif. Suits essays, food, independent publishers and personal sites that want warmth with weight.",
+  "seenIn": [
+   "opl-applied-imagination",
+   "opl-flowjam-2",
+   "opl-marina-rachello"
+  ],
+  "links": [
+   "https://fonts.googleapis.com/css2?family=Young+Serif:wght@400&family=Source+Serif+4:ital,wght@0,400;0,600;1,400;1,600&display=swap"
+  ],
+  "scale": {
+   "step-small": "clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem)",
+   "step-body": "clamp(1.125rem, 1.05rem + 0.3vw, 1.3125rem)",
+   "step-lead": "clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)",
+   "step-head": "clamp(2rem, 1.3rem + 3.2vw, 4rem)"
+  }
+ },
+ "palette": null,
+ "photos": {
+  "set": "people",
+  "title": "People",
+  "note": "figures, silhouettes and portraits, mostly unposed",
+  "treatment": "Give all photographs in a mosaic one treatment: greyscale via `filter: grayscale(1) contrast(1.05)`, or all full colour. Do not mix.",
+  "others": [
+   "mountain",
+   "forest",
+   "field-and-farm",
+   "sky-and-space"
+  ],
+  "photos": [
+   {
+    "id": 338,
+    "alt": "Person in a hooded coat seen from behind facing a misty sea",
+    "tone": "mid",
+    "colours": [
+     "slate blue",
+     "grey",
+     "charcoal"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 5,
+    "ratio": 1.5,
+    "by": "Patryk Sobczak",
+    "page": "https://unsplash.com/photos/9VPtNW84vGI"
+   },
+   {
+    "id": 669,
+    "alt": "Person in a mustard jacket and grey beanie seen from behind in fog",
+    "tone": "light",
+    "colours": [
+     "mustard",
+     "pale grey",
+     "white"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 5,
+    "ratio": 1.41,
+    "by": "Luke Pamer",
+    "page": "https://unsplash.com/photos/oUhr-qMTJoc"
+   },
+   {
+    "id": 685,
+    "alt": "Man sitting on a rock looking over a sea of clouds",
+    "tone": "mid",
+    "colours": [
+     "pale gold",
+     "grey",
+     "dark brown"
+    ],
+    "mono": false,
+    "calm": "right",
+    "quality": 5,
+    "ratio": 1.5,
+    "by": "Joshua Earle",
+    "page": "https://unsplash.com/photos/Dwheufds6kQ"
+   },
+   {
+    "id": 177,
+    "alt": "Hiker with a backpack looking over a hazy mountain valley",
+    "tone": "mid",
+    "colours": [
+     "warm tan",
+     "hazy gold",
+     "olive"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 5,
+    "ratio": 1.37,
+    "by": "Danka & Peter",
+    "page": "https://unsplash.com/photos/tvicgTdh7Fg"
+   },
+   {
+    "id": 1014,
+    "alt": "Woman seen from behind facing a misty sea, a ribbon across her head",
+    "tone": "light",
+    "colours": [
+     "pale teal",
+     "soft grey",
+     "black"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "Oscar Keys",
+    "page": "https://unsplash.com/photos/AmPRUnRb6N0"
+   },
+   {
+    "id": 726,
+    "alt": "Person in a red jacket standing in a snowy, misty landscape",
+    "tone": "light",
+    "colours": [
+     "white",
+     "pale grey",
+     "red"
+    ],
+    "mono": false,
+    "calm": "bottom",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "Caleb George",
+    "page": "https://unsplash.com/photos/BrXiun04yr4"
+   },
+   {
+    "id": 22,
+    "alt": "Man in a dark suit walking across painted road markings",
+    "tone": "mid",
+    "colours": [
+     "warm grey",
+     "charcoal"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 4,
+    "ratio": 1.19,
+    "by": "Alejandro Escamilla",
+    "page": "https://unsplash.com/photos/du_OrQAA4r0"
+   },
+   {
+    "id": 447,
+    "alt": "Man standing on a wall facing a blue lake and distant mountains",
+    "tone": "mid",
+    "colours": [
+     "blue",
+     "slate",
+     "white"
+    ],
+    "mono": false,
+    "calm": "left",
+    "quality": 4,
+    "ratio": 1.5,
+    "by": "Joshua Earle",
+    "page": "https://unsplash.com/photos/YxJ5AfKFgFE"
+   }
+  ]
+ },
+ "motion": {
+  "id": "masked-headline",
+  "name": "Masked headline",
+  "description": "On load, each line of the headline rises from behind its own baseline, about 900ms with a strong ease-out, the second line 110ms after the first; the supporting sentence and the action then fade up together. Nothing else on the page performs. Because headlines are two lines at most, you author the line breaks and wrap each line yourself. Recipe: 'Masked line reveal' in references/motion.md."
+ },
+ "sections": [
+  {
+   "id": "stats-one-figure-owns-the-screen",
+   "role": "stats",
+   "name": "One figure owns the screen",
+   "shape": "statement",
+   "tags": [
+    "type-led",
+    "poster"
+   ],
+   "directions": [
+    "type-only-statement",
+    "editorial-report",
+    "colour-chapters",
+    "loud-flat-poster",
+    "borrowed-category",
+    "pinned-poster"
+   ],
+   "needs": [],
+   "blueprint": "One number, one screen. A flat field at least 90svh tall. At the top-left, starting on the page's main axis, a one-line claim of two to five words at 36–44px: this is the heading. Then a long gap of 22–28vh. At the bottom-left on the same edge, a single figure at clamp(180px, 23vw, 380px), leading 0.8, tight tracking, with its unit (a percent sign, 'x', 'hrs') set as a superscript one third of the figure's size and aligned to the figure's cap height. Directly beneath, flush with the figure's left edge, a caption of three lines at 16–17px, 32ch wide, saying exactly what was measured and when. The right half of the field stays empty; resist filling it. The figure is static text in lining numerals and does not animate. A source line, if needed, sits at the bottom-right at 15px.",
+   "mobile": "The claim sits at the top at 28px. The figure is 46vw, flush left, with its superscript unit; if it has four characters or more, drop it to 34vw so it stays on one line. The caption follows at 16px across 80% of the width. Minimum height 80svh.",
+   "seenIn": [
+    "opl-the-state-of-software-delivery-in-health",
+    "opl-the-content-architecture"
+   ]
+  },
+  {
+   "id": "list-day-tabs-banded-agenda",
+   "role": "list",
+   "name": "Day tabs, banded agenda",
+   "shape": "list",
+   "tags": [
+    "dense",
+    "type-led",
+    "colour-field"
+   ],
+   "directions": [
+    "editorial-report",
+    "product-performs",
+    "dense-tiles",
+    "colour-chapters"
+   ],
+   "needs": [],
+   "blueprint": "A two-line heading at clamp(36px, 4vw, 60px), first line in the soft ink and second in full ink, with the booking button on the same row at the far right. 56px below, left: a 150px column of stacked day tabs, each a filled block 150 by 64px with 6px gaps showing the weekday at 16px and the date at 13px; the active tab takes the darkest fill with inverted text. Right, from 190px to the right margin: the day's sessions as alternating tone bands, each 76px tall with an 8px radius and 4px gaps, the two tones one step apart. Inside a band, on fixed column starts: the time at 20px with tabular figures, 20px from the left; the title at 18px in medium weight at 22%, with a one-line note at 13px in the soft ink under it; speaker names right-aligned at 14px beside up to three overlapping 32px round portraits.",
+   "mobile": "The heading stacks above a full-width button. Day tabs become a horizontal row of equal filled blocks, sticky under the top edge. Each band stacks time over title over speakers with 16px padding and grows to fit; portraits sit at the band's top-right corner.",
+   "seenIn": [
+    "opl-builders-table",
+    "opl-select26"
+   ]
+  },
+  {
+   "id": "work-oversized-visual-small-cluster",
+   "role": "work",
+   "name": "Oversized visual, small cluster",
+   "shape": "split",
+   "tags": [
+    "object-led",
+    "photo-led"
+   ],
+   "directions": [
+    "hero-object",
+    "specimen-catalogue",
+    "borrowed-category",
+    "editorial-report"
+   ],
+   "needs": [],
+   "blueprint": "One project per block, three or four blocks, 140px apart. In each, one oversized visual fills columns 1–7 and bleeds off the left viewport edge: an object photograph scaled to 120% of its box and cropped by `overflow: hidden` on the section, 80svh tall, sitting on the page ground (use `mix-blend-mode: multiply` on a light ground so a white studio background disappears). The right third, columns 9–12, holds a small cluster bottom-aligned with the visual: a landscape image at 16:10 with 6px corners, then 28px below it a two-column row with the project title at clamp(28px, 3vw, 44px) on two lines at the left and a five-line description at 13–14px at the right. Column 8 stays empty. Blocks do not mirror; the second visual is 60svh tall and the third 90svh, so the rhythm changes while the structure holds. No section heading: each title leads its block.",
+   "mobile": "The visual comes first at 110% of the width, bleeding off the left edge in a 4:5 crop. Beneath it the title at 8vw, then the description at 15px, then the small landscape image at 70% width against the right margin. 88px between blocks.",
+   "seenIn": [
+    "opl-artem-taradash",
+    "aww-normal-is-boring"
+   ]
+  },
+  {
+   "id": "about-portrait-drop-cap",
+   "role": "about",
+   "name": "Portrait as drop cap",
+   "shape": "statement",
+   "tags": [
+    "type-led",
+    "photo-led"
+   ],
+   "directions": [
+    "sentence-as-layout",
+    "name-as-monument",
+    "dark-room",
+    "editorial-report",
+    "contact-sheet"
+   ],
+   "needs": [],
+   "blueprint": "No heading. One biography paragraph of 50–80 words is set large at clamp(24px, 2.5vw, 38px), regular weight, leading 1.2, across columns 3–12 of the grid. A square portrait is floated at the paragraph's start with `float: left`: its side equals three lines of text (3.6em), with 0.5em of space to its right, so the first three lines wrap beside it and the fourth returns to the paragraph's left edge, like a drop capital. Square corners. The person's name, the first words of the paragraph, is in full ink; the rest may be in a softer ink with linked names in full ink and underlined. A second paragraph follows after one blank line in the soft ink at the same size. Columns 1–2 hold three short facts (place, since when, how to reach) at 14px, top-aligned with the portrait. Section padding 140px.",
+   "mobile": "Text at 22px with leading 1.25, full width. The portrait keeps its float but grows to four lines tall, about 110px square. The three facts move below the second paragraph as a single row of three small blocks at 13px.",
+   "seenIn": [
+    "aww-haoqi-design",
+    "aww-coffeetech-r",
+    "aww-monolog"
+   ]
+  },
+  {
+   "id": "cta-photo-strip-then-field",
+   "role": "cta",
+   "name": "Three photographs, then a field",
+   "shape": "strip",
+   "tags": [
+    "photo-led",
+    "colour-field"
+   ],
+   "directions": [
+    "contact-sheet",
+    "editorial-report",
+    "uneven-photographs",
+    "place-carries-it",
+    "specimen-catalogue"
+   ],
+   "needs": [],
+   "blueprint": "Two parts with no gap between them. First, a strip of three photographs butted edge to edge across the full viewport, each one third wide and 40svh tall, `object-fit: cover`, no gutters and no captions; give all three the same treatment. Directly beneath, a band in one flat palette colour, about 44svh tall. In the band, columns 1–7: the closing statement at 26–30px over three lines in the band's assigned ink, with exactly one phrase underlined by a 4px bar (`text-decoration-thickness: 4px; text-underline-offset: 6px`), and that phrase is the link; two lines at 16px follow 32px lower. In the lower-right corner, columns 11–12, a small portrait photograph (4:5, about 150px wide) sits 40px from the band's edges: the person who will answer. There is no button; the underlined phrase is the action.",
+   "mobile": "The strip becomes one full-width photograph at 4:3 with the other two side by side beneath it at half width each, still gutterless. The band follows: statement at 22px, the two small lines, and the portrait at 96px wide in the bottom-right corner.",
+   "seenIn": [
+    "opl-nia-creative"
+   ]
+  },
+  {
+   "id": "footer-wordmark-first-places-below",
+   "role": "footer",
+   "name": "Name first, places under it",
+   "shape": "list",
+   "tags": [
+    "type-led"
+   ],
+   "directions": [
+    "name-as-monument",
+    "editorial-report",
+    "type-only-statement",
+    "colour-chapters",
+    "pinned-poster",
+    "uneven-photographs"
+   ],
+   "needs": [],
+   "blueprint": "The wordmark opens the footer instead of closing it. On a full-bleed field in the page's inverse or final chapter colour, the name spans the full content width as the first thing, its cap line pushed 8% above the footer's top edge so the tops of the letters are sliced off by the section (`overflow: hidden` and a negative top margin in `em`). 72px beneath, a two-part row: columns 1–5 list the places or ways to reach the studio (cities, or email and telephone), one per line at 32–36px in the accent ink, each a link; columns 7–12 hold three columns of small links at 15px, top-aligned with the first place. A final row 96px lower carries the legal line at the left and a back-to-top text link at the right, both 13px. The field is about 90svh tall, and nothing sits between the wordmark and the row but space.",
+   "mobile": "The sliced wordmark stays at the top, fitted to the width. Places follow as a list at 26px, then the link columns two across at 15px. Legal line and back-to-top link share the last row at 12px, at opposite margins.",
+   "seenIn": [
+    "aww-alethia",
+    "aww-hilden-kaira",
+    "aww-px-push",
+    "aww-pensatori-irrazionali"
+   ]
+  }
+ ],
+ "references": [
+  {
+   "id": "opl-artem-taradash",
+   "name": "Artem Taradash",
+   "url": "https://taradash.me/",
+   "source": "One Page Love",
+   "kind": "personal-portfolio",
+   "score": 7.1,
+   "idea": "A designer's CV compressed into one newspaper-like band at the top, after which oversized product renders and project artefacts speak at full scale.",
+   "mood": [
+    "matter-of-fact",
+    "editorial",
+    "dense",
+    "confident"
+   ],
+   "archetype": "editorial-masthead",
+   "hero": "White page with 20px margins. Top-left are three small black rectangular tags with white text (name and two links). Below them a three-line statement at about 3vw in regular-weight grotesk fills the first third, left-aligned. To its right, starting at the very top edge, run two narrow columns of 12px text, then a third column listing clients one per line, and in the far top-right a circular portrait about 200px wide with a white hand-lettered word across the face. This text band ends by a quarter of the height. Below it a huge cut-out vehicle render bleeds off the bottom, with a project card at right.",
+   "type": "One family, Diatype, in regular weight throughout. Three sizes: about 43px for statements and project titles, 12.4px for all running text, about 11px for tags. Tight leading, sentence case, no bold and no capitals; hierarchy comes from size alone.",
+   "colour": "#ffffff #111111 #f7f9fb #1c4fd8 #f0a23a — Strictly black on white for the frame. All colour arrives with project material: an orange-to-blue gradient, a cobalt zigzag pattern, warm photography.",
+   "imagery": "Product renders cut out on white and shown very large, interface screenshots with a small corner radius, a full-width studio photo with a circular logo overlaid, and textile-pattern fields running margin to margin. Scale varies sharply between projects.",
+   "layout": "A loose six-column grid with 20px margins; small text blocks hang from column lines beside very large images. Each project is arranged differently, and there are no dividers or section backgrounds, only white space and jumps in scale. The tag nav stays fixed top-left.",
+   "sections": [
+    {
+     "role": "work",
+     "description": "Each project pairs one oversized visual with a small caption cluster. In the first, a cut-out product render fills the left 60% and bleeds off the edge. The right third stacks a landscape screenshot with slightly rounded corners, then a row holding a tiny label and two-line title at about 3vw on the left and a five-line 12px description on the right."
+    },
+    {
+     "role": "work",
+     "description": "A row of three: a round black watch-face mock-up about a quarter of the width, a wide rectangle filled with a horizontal blue, violet, orange, blue gradient with a tiny tick scale beneath it, and a narrow text column at far right with label, three-line title and two short paragraphs. Circle, rectangle and text share a top line."
+    },
+    {
+     "role": "gallery",
+     "description": "A cobalt-and-white zigzag textile pattern runs margin to margin for more than a full viewport height with only a two-line caption beneath it at left. Before it, a black-backed mosaic of pattern samples and report-cover mock-ups sits beside two narrow text columns. The pattern is given a section to itself with no mock-up frame."
+    },
+    {
+     "role": "contact",
+     "description": "Closing row on white: a tiny label, then a four-line sentence at about 3vw in the left third; a small square portrait at the two-thirds mark; to its right a short question with two underlined links below. All three hang from the same top line with empty space between them."
+    }
+   ],
+   "steal": [
+    "Put bio, client list and portrait in one compact multi-column band at the top so the first scroll is already work.",
+    "Use solid black rectangular tags with white text as the only navigation chrome.",
+    "Let one project artefact (a pattern, a gradient) run full width for a whole screen with a two-line caption instead of framing it in a mock-up."
+   ]
+  },
+  {
+   "id": "opl-belgrade-architecture",
+   "name": "Architecture of Socialist-Era Belgrade",
+   "url": "https://belgrade.klmln.com",
+   "source": "One Page Love",
+   "kind": "culture",
+   "score": 7.6,
+   "idea": "A two-colour printed guidebook on screen: signal-red type over greyscale concrete, with one modular display face as the only ornament.",
+   "mood": [
+    "austere",
+    "graphic",
+    "archival",
+    "bold"
+   ],
+   "archetype": "fullbleed-media-overlay",
+   "hero": "Full-bleed greyscale photograph of brutalist housing towers; pale sky fills the top half, concrete the bottom. The title is set over the sky, flush left at a 32px margin, three lines in a wide modular display face at 102px (7.1vw) in flat red, the longest line reaching 92% of the width, leading so tight that the lines almost touch. Under it, one row at 24px: a red one-line descriptor at left, and two paler-red facts right-aligned (an object count and a date range). Top-right, the word 'Index' with a diagonal arrow. No logo, no button, nothing else. Red and grey only.",
+   "type": "IntraNet, a wide modular display face with rounded, notched corners, used only for the title and its footer repeat. Funnel Sans carries the rest: about 50px for the long intro, 40px bold uppercase entry titles, 24px meta, 13px credits. Four sizes, two faces.",
+   "colour": "#f53843 #d1d1d1 #c7c7c7 #777777 #f1a7ab — Strictly red and grey: red text on grey photo or grey paper, then pale grey text on a solid red field for the essay and footer. Photographs are desaturated so nothing breaks the pair.",
+   "imagery": "Contemporary black-and-white architectural photographs of concrete towers and complexes, frontal or looking up, with big skies and visible grain; full-bleed in the hero, full column width and square-cornered in entries.",
+   "layout": "16 to 32px margins, everything flush left. A long red essay block in very large text, then twenty repeated entry blocks on grey: a two-column header split by a vertical red hairline, a meta row, then a wide photo. 81 screens of the same rhythm.",
+   "sections": [
+    {
+     "role": "intro",
+     "description": "Immediately under the hero photo a solid red field begins with no gap. The essay runs as one full-width column in pale grey sans at roughly 50px with tight leading, about 50 characters per line, paragraphs separated by one blank line, with no headings, pull-quotes or images for several screens. The photo's bottom edge butts straight against the red."
+    },
+    {
+     "role": "list",
+     "description": "Each building entry sits on light grey paper: a thin red rule across the top, then two columns divided by a vertical red hairline at the 50% mark. Left: the building's name in red bold uppercase at 40px over two lines. Right: its dates in pale red at the same size. Below, a small meta row with 'Credits' and 'Address' labels and values in 13px red, then a full-width greyscale photograph."
+    },
+    {
+     "role": "footer",
+     "description": "Solid red. At the top, two short 13px notes side by side in pale grey occupy the left 60%, a back-to-top link sits far right, and a third note runs beneath. A tall empty red gap follows. Then the full title is repeated in the display face at hero size but in pale grey, flush left, above a single row of small meta: sources link left, font credits centre, city and year right."
+    }
+   ],
+   "steal": [
+    "Limit the page to one saturated colour and one grey, desaturate all photos, and invert the pair (grey on red) for long reading blocks.",
+    "Set the title in a distinctive modular display face directly on the sky area of a photo and repeat it in the footer in the inverse colour.",
+    "Put facts in the hero as a right-aligned row of paler-tint figures (count, date range) on the same baseline as the subtitle."
+   ]
+  }
+ ]
+}
