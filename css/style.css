@@ -408,7 +408,7 @@ p + p { margin-top: 0.85em; }
 .cat-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 2rem; }
 .cat-row .tab { width: auto; min-height: 2.6rem; }
 .empty-state { padding: 3rem 0; color: var(--muted); }
-.month-block + .month-block { margin-top: 3.5rem; }
+.month-block + .month-block, .field-block + .field-block { margin-top: 3.5rem; }
 .month-h { font-size: var(--step-lead); line-height: 1.2; margin-bottom: 1rem; display: flex; align-items: baseline; gap: .75rem; flex-wrap: wrap; }
 .month-h span { color: var(--muted); font-family: var(--font-text); font-size: var(--step-small); }
 .month-block .band { grid-template-columns: 8.5rem minmax(0, 1fr) auto; }

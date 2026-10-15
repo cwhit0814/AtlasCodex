@@ -8,6 +8,7 @@
   // Escape a sentence and make sure it ends with terminal punctuation, so content reads consistently.
   const sent = (s) => { const t = String(s ?? "").trim(); return esc(t && !/[.!?]$/.test(t) ? t + "." : t); };
   const cat = (id) => A.categories.find((c) => c.id === id) || { id, name: id };
+  const byName = (a, b) => a.name.localeCompare(b.name, "en", { numeric: true, sensitivity: "base" });
   const bySlug = (s) => A.entries.find((e) => e.slug === s);
   const fmtDate = (d) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
   const entryUrl = (e) => "entry.html?slug=" + encodeURIComponent(e.slug);
@@ -430,12 +431,12 @@
 
     codex() {
       const params = new URLSearchParams(location.search);
-      const state = { q: params.get("q") || "", cat: params.get("cat") || "all", status: "all", sort: "name" };
+      const state = { q: params.get("q") || "", cat: params.get("cat") || "all", status: "all", sort: "field" };
       const statuses = [...new Set(A.entries.map((e) => e.status))];
       $("#codex-filters").innerHTML = `
         <label><span class="sr-only">Filter entries</span><input class="field" id="codex-q" type="search" placeholder="Filter by name, alias or tag"></label>
         ${selectBox("status-filter", "Filter by status", `<option value="all">Any status</option>` + statuses.map((s) => `<option value="${esc(s)}">${esc(cap(s))}</option>`).join(""))}
-        ${selectBox("sort", "Sort", `<option value="name">A to Z</option><option value="updated">Recently updated</option>`)}
+        ${selectBox("sort", "Sort", `<option value="field">By field, A to Z</option><option value="name">A to Z</option><option value="updated">Recently updated</option>`)}
         <p class="count nums" id="codex-count" aria-live="polite"></p>
         ${supportCard()}`;
       const q = $("#codex-q");
@@ -446,9 +447,20 @@
         $$("#cat-chips .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.cat === state.cat));
         const list = A.entries
           .filter((e) => (state.cat === "all" || e.category === state.cat) && (state.status === "all" || e.status === state.status) && matches(e, state.q))
-          .sort((a, b) => state.sort === "updated" ? b.updated.localeCompare(a.updated) : a.name.localeCompare(b.name));
+          .sort((a, b) => state.sort === "updated" ? b.updated.localeCompare(a.updated) : byName(a, b));
         $("#codex-count").textContent = `${list.length} ${list.length === 1 ? "entry" : "entries"}`;
-        $("#codex-list").innerHTML = list.length ? list.map((e, i) => band(e, i % 8) + (i === Math.min(5, list.length - 1) ? affRow() : "")).join("") : `<p class="empty-state">No entries match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`;
+        // Under "All", the default sort sections the list by field, in the field order of the chips.
+        const grouped = state.sort === "field" && state.cat === "all";
+        const affAt = Math.min(5, list.length - 1);
+        let n = 0;
+        const rows = (items) => items.map((e) => band(e, n % 8) + (n++ === affAt ? affRow() : "")).join("");
+        $("#codex-list").innerHTML = !list.length ? `<p class="empty-state">No entries match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`
+          : !grouped ? rows(list)
+          : cats.map((c) => [c, list.filter((e) => e.category === c.id)]).filter(([, items]) => items.length).map(([c, items]) => `
+          <section class="field-block" aria-label="${esc(c.name)}">
+            <h2 class="month-h" data-reveal>${esc(c.name)} <span class="nums">${items.length} ${items.length === 1 ? "entry" : "entries"}</span></h2>
+            <div class="bands">${rows(items)}</div>
+          </section>`).join("");
         const cf = $("#clear-filters");
         if (cf) cf.onclick = () => { state.q = ""; state.cat = "all"; state.status = "all"; q.value = ""; $("#status-filter").value = "all"; render(); };
         reveal($("#codex-list"));
