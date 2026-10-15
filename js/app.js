@@ -558,11 +558,11 @@
       if (e.profile) {
         const mine = store.get("atlas-rate-" + e.slug) || {};
         const hasMine = Object.keys(mine).length > 0;
-        out.push(sec("Profile", `Editorial scores from 1 to 5, relative to similar compounds. Rows in red are ones where higher is worse.`, `
+        out.push(sec("Profile", `Editorial scores from 1 to 5, relative to similar compounds. Risk rows, where higher is worse, run from green at 1 to red at 5.`, `
           <div class="sheet profile" id="profile">
             ${e.profile.rows.map((r) => `
               <div class="p-wrap">
-                <div class="p-row${r.neg ? " neg" : ""}"><span class="p-label">${esc(r.label)}</span>${meter(r.score, r.neg ? "red" : "")}<span class="p-score nums">${r.score} of 5</span></div>
+                <div class="p-row${r.neg ? " neg" : ""}"${r.neg ? ` style="--rk: var(--risk-${Math.min(5, Math.max(1, r.score))})"` : ""}><span class="p-label">${esc(r.label)}</span>${meter(r.score, r.neg ? "graded" : "")}<span class="p-score nums">${r.score} of 5</span></div>
                 <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span>Your score</span>${meter(mine[r.label] || 0, "mine")}<span class="p-score nums">${mine[r.label] ? mine[r.label] + " of 5" : "Not set"}</span></div>
               </div>`).join("")}
             ${e.profile.note ? `<p class="soft small" style="margin-top:1rem">${sent(e.profile.note)}</p>` : ""}

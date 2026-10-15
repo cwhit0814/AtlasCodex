@@ -64,6 +64,11 @@
 }
 
 :root {
+  --risk-1: var(--good);
+  --risk-2: color-mix(in oklch, var(--good) 50%, var(--weak));
+  --risk-3: var(--weak);
+  --risk-4: color-mix(in oklch, var(--weak) 50%, var(--bad));
+  --risk-5: var(--bad);
   --font-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
   --font-text: "EB Garamond", Georgia, "Times New Roman", serif;
 
@@ -518,13 +523,14 @@ body.sbar-on .ask-panel { bottom: calc(5.75rem + 4.25rem); }
 /* profile */
 .p-row { display: grid; grid-template-columns: minmax(0, 1fr) auto 3.5rem; gap: 1rem; align-items: center; padding: .85rem 0; }
 .p-row + .p-row { margin-top: 0; }
-.p-row.neg .p-label { color: var(--bad); }
+/* Risk rows: one step per score, from the evidence palette's green through amber to red. */
+.p-row.neg .p-label, .p-row.neg .p-score { color: var(--rk, var(--bad)); }
 .p-mine { display: grid; grid-template-columns: minmax(0, 1fr) auto 3.5rem; gap: 1rem; align-items: center; padding: 0 0 .85rem; color: var(--accent); font-size: var(--step-small); }
 .p-score { text-align: right; color: var(--muted); font-size: var(--step-small); }
 .meter { display: inline-flex; gap: 4px; }
 .meter i { width: 14px; height: 14px; background: var(--surface-2); display: block; }
 .meter i.on { background: var(--ink); }
-.meter.red i.on { background: var(--bad); }
+.meter.graded i.on { background: var(--rk, var(--bad)); }
 .meter.mine i { background: color-mix(in srgb, var(--accent) 22%, transparent); }
 .meter.mine i.on { background: var(--accent); }
 .profile.editing .p-mine .meter i { cursor: pointer; width: 20px; height: 20px; }
