@@ -1,0 +1,10 @@
+# Machine-local settings and caches
+.claude/settings.local.json
+.impeccable/config.local.json
+.impeccable/hook.cache.json
+
+# Skill engine binaries: the launcher downloads them on first run
+**/scripts/bin/
+
+# Symlink to an absolute path on one machine; reinstall from skills-lock.json
+.claude/skills/design-taste-frontend
