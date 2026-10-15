@@ -22,6 +22,40 @@
     set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (_) {} }
   };
   const isMac = /Mac|iPhone|iPad/.test(navigator.platform);
+  // The referral code is added to any source link that does not already carry one.
+  const withRef = (href, code) => {
+    try { const u = new URL(href); if (code && !u.searchParams.has("ref")) u.searchParams.set("ref", code); return u.href; } catch (_) { return href; }
+  };
+  const mainSource = () => ((A.support && A.support.sources) || [])[0];
+  const copyCode = (b) => b.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(b.dataset.code); } catch (_) { return; }
+    const html = b.innerHTML;
+    b.textContent = "Copied";
+    setTimeout(() => (b.innerHTML = html), 1400);
+  });
+  // The gold support band: large on the home page, compact at the end of every entry.
+  function supportBand(compact) {
+    const s = mainSource();
+    if (!s) return "";
+    const shop = withRef(s.href, s.code);
+    const actions = `<div class="gilt-actions">
+        <a class="button ink" href="${esc(shop)}" target="_blank" rel="noopener sponsored">Shop ${esc(s.name)}</a>
+        ${s.code ? `<button class="code-btn on-gilt" type="button" data-code="${esc(s.code)}">Copy code <b>${esc(s.code)}</b></button>` : ""}
+      </div>`;
+    if (compact) return `<div class="support-sheet">
+        <div><h3>Keep the codex free</h3><p>Use code <b>${esc(s.code)}</b> at ${esc(s.name)}. It costs you nothing extra, and the codex earns a commission. A listing is not an endorsement.</p></div>
+        ${actions}
+      </div>`;
+    return `<div class="gilt-band">
+        <div class="gilt-copy">
+          <h2 class="statement big" data-reveal>Keep the codex free.</h2>
+          <p class="small-lines" data-reveal style="--i:1">Every entry here is free to read, with no account and no ads. If it has been useful, use code <b>${esc(s.code)}</b> at ${esc(s.name)}: it costs you nothing extra and keeps new entries coming.</p>
+          <div data-reveal style="--i:2">${actions}</div>
+          <p class="fine" data-reveal style="--i:3">${esc(A.support.disclosure)} <a href="support.html">See every source</a>.</p>
+        </div>
+        <a class="gilt-logo" href="${esc(shop)}" target="_blank" rel="noopener sponsored" data-reveal style="--i:1;${s.logoBg ? `background:${esc(s.logoBg)}` : ""}">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo" width="600" height="400">` : `<span class="head">${esc(s.name)}</span>`}</a>
+      </div>`;
+  }
 
   const icons = {
     search: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
@@ -84,26 +118,29 @@
     const header = $("#site-header");
     header.innerHTML = `
       <div class="top" id="top">
-        <a class="wordmark" href="index.html">${esc(S.title)}</a>
+        <a class="wordmark" href="index.html">${esc(S.wordmark[0])} <span>${esc(S.wordmark[1])}</span></a>
         <nav class="top-nav" id="top-nav" aria-label="Main">
           <a class="link" href="codex.html"${here("codex")}>Codex</a>
           <a class="link" href="archive.html"${here("archive")}>Archive</a>
           <a class="link" href="codex.html?cat=guides">Guides</a>
           <a class="link" href="credits.html"${here("credits")}>Credits</a>
-          <a class="link" href="support.html"${here("support")}>Support</a>
+          <button class="link nav-theme" id="theme-toggle-2" type="button">Switch theme</button>
         </nav>
         <div class="top-tools">
           <button class="icon-btn" id="theme-toggle" type="button" aria-label="${root.dataset.theme === "dark" ? "Switch to the light theme" : "Switch to the dark theme"}">${root.dataset.theme === "dark" ? icons.sun : icons.moon}</button>
           <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="top-nav">Menu</button>
-          <button class="button" id="search-open" type="button" title="Search (${isMac ? "⌘K" : "Ctrl K"} or /)">${icons.search}<span>Search</span></button>
+          <button class="button quiet" id="search-open" type="button" title="Search (${isMac ? "⌘K" : "Ctrl K"} or /)" aria-label="Search">${icons.search}<span class="wide">Search</span></button>
+          <a class="button" href="support.html"${page === "support" ? ' aria-current="page"' : ""}>Support me</a>
         </div>
-      </div>`;
+      </div>${(() => {
+        const s = mainSource();
+        return s && s.code ? `<div class="notice"><span>Support the codex: use code <b>${esc(s.code)}</b> at ${esc(s.name)}. It costs you nothing extra. <small>The codex earns a commission.</small></span><a class="go link" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">Shop ${esc(s.name)} →</a></div>` : "";
+      })()}`;
 
-    const credits = (A.pictureCredits || []).map((c) => `<a href="${esc(c.href)}">“${esc(c.title)}”</a>${c.by ? ` by ${esc(c.by)}` : ""}, ${esc(c.licence)}`).join("; ");
     const footer = $("#site-footer");
     footer.className = "foot";
     footer.innerHTML = `
-      <p class="foot-name" aria-hidden="true">${esc(S.title)}</p>
+      <p class="foot-name" aria-hidden="true">${esc(S.wordmark[0])} <span>${esc(S.wordmark[1])}</span></p>
       <div class="foot-row">
         <div class="foot-places">
           <button type="button" class="link" data-act="search">Search the codex</button>
@@ -117,7 +154,7 @@
         </div>
       </div>
       <p class="foot-disclaimer">${esc(S.disclaimer)}</p>
-      <p class="foot-credits muted">${credits ? `Pictures: ${credits}. ` : ""}Structure drawings from <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a>, US National Library of Medicine, public domain.</p>
+      <p class="foot-credits muted">Structure drawings from <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a>, US National Library of Medicine, public domain.</p>
       <div class="foot-legal muted"><span>© ${new Date().getFullYear()} ${esc(S.title)} · <span class="nums">${A.entries.length}</span> entries</span><a class="link" href="#top">Back to top</a></div>`;
 
     const fab = document.createElement("button");
@@ -129,6 +166,7 @@
     document.body.appendChild(fab);
 
     $("#theme-toggle").addEventListener("click", toggleTheme);
+    $("#theme-toggle-2").addEventListener("click", toggleTheme);
     $("#search-open").addEventListener("click", () => openSearch());
     $("#menu-btn").addEventListener("click", (ev) => {
       const open = $("#top").classList.toggle("open");
@@ -244,14 +282,11 @@
 
   /* ---------- the banded row used everywhere ---------- */
   function band(e, i = 0, opts = {}) {
-    const thumb = opts.thumbs !== false && e.pubchem
-      ? `<span class="band-thumb"><img src="${plateUrl(e.pubchem, 120)}" alt="" loading="${i < 10 ? "eager" : "lazy"}" width="52" height="52" onerror="this.parentNode.className='band-thumb empty';this.remove()"></span>`
-      : `<span class="band-thumb empty"></span>`;
     const note = opts.note ?? (e.class || e.summary);
     return `<a class="band" href="${entryUrl(e)}" data-reveal style="--i:${Math.min(i, 6)}">
       ${opts.lead ?? statusTag(e.status)}
       <span class="band-text"><span class="band-name">${esc(e.name)}</span><span class="band-note">${esc(note)}</span></span>
-      ${opts.tail ?? thumb}
+      ${opts.tail ?? ""}
     </a>`;
   }
 
@@ -303,34 +338,30 @@
           : A.entries.filter((e) => e.category === id).sort((a, b) => a.name.localeCompare(b.name));
         const shown = list.slice(0, 10);
         $("#bands").innerHTML = shown.map((e, i) => band(e, i, id === "recent" ? { note: `Updated ${fmtDate(e.updated)} · ${e.class || cat(e.category).name}` } : {})).join("") +
-          (list.length > shown.length ? `<a class="band" href="codex.html?cat=${id}" data-reveal style="--i:6"><span></span><span class="band-text"><span class="band-name go">See all ${list.length} in ${esc(cat(id).name)}</span></span><span></span></a>` : "");
+          (list.length > shown.length ? `<a class="band" href="codex.html?cat=${id}" data-reveal style="--i:6"><span></span><span class="band-text"><span class="band-name go">See all ${list.length} in ${esc(cat(id).name)}</span></span></a>` : "");
         reveal($("#bands"));
       };
       $("#tabs").addEventListener("click", (ev) => { const b = ev.target.closest(".tab"); if (b) fill(b.dataset.id); });
       fill("recent");
 
-      // Three entries that show the range of the record.
-      const featured = [["semaglutide", "img/plates/semaglutide.png"], ["bpc-157", "img/plates/bpc-157.png"], ["clenbuterol", "img/plates/clenbuterol.png"]];
-      $("#features").innerHTML = featured.map(([slug, img]) => {
-        const e = bySlug(slug);
-        if (!e) return "";
-        const hl = e.pk && e.pk.rows.find(([k]) => /half-life/i.test(k));
-        const trials = (e.trials || []).length;
-        return `<article class="feature">
-          <figure class="feature-plate shutter" data-reveal><img src="${img}" width="600" height="600" alt="Structure drawing of ${esc(e.name)}" loading="lazy"></figure>
-          <div class="feature-cluster">
-            <dl class="feature-facts" data-reveal style="--i:1">
-              <div><dt>Status</dt><dd>${esc(cap(e.status))}</dd></div>
-              <div><dt>Human trials in the record</dt><dd class="nums">${trials ? trials : "None"}</dd></div>
-              ${hl ? `<div><dt>Half-life</dt><dd>${esc(hl[1].replace(/\s*\(.*\)/, ""))}</dd></div>` : ""}
-            </dl>
-            <div class="feature-text" data-reveal style="--i:2">
-              <h3>${esc(e.name)}</h3>
-              <div><p>${sent(e.summary)}</p><a class="link" href="${entryUrl(e)}">Read the entry</a></div>
-            </div>
-          </div>
-        </article>`;
-      }).join("");
+      // The range of the record: one table, from large outcome trials to none.
+      const rows = ["semaglutide", "clenbuterol", "bpc-157"].map(bySlug).filter(Boolean);
+      $("#range").innerHTML = `<caption class="sr-only">Three entries compared</caption>
+        <thead><tr><th scope="col">Entry</th><th scope="col">Status</th><th scope="col">Human trials</th><th scope="col">Half-life</th><th scope="col">In short</th></tr></thead>
+        <tbody>${rows.map((e) => {
+          const hl = e.pk && e.pk.rows.find(([k]) => /half-life/i.test(k));
+          const n = (e.trials || []).length;
+          return `<tr>
+            <th scope="row"><a class="link" href="${entryUrl(e)}">${esc(e.name)}</a><small class="muted">${esc(e.class || "")}</small></th>
+            <td data-label="Status">${statusTag(e.status)}</td>
+            <td data-label="Human trials" class="nums">${n ? n : "None"}</td>
+            <td data-label="Half-life">${hl ? esc(hl[1].replace(/\s*\(.*\)/, "")) : "Not published"}</td>
+            <td class="sum">${sent(e.summary)}</td>
+          </tr>`;
+        }).join("")}</tbody>`;
+
+      $("#support-band").innerHTML = supportBand(false);
+      $$("#support-band .code-btn").forEach(copyCode);
     },
 
     codex() {
@@ -545,14 +576,17 @@
       [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         const sorted = [...ids].sort((a, b) => a - b);
+        out.push(`<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`);
         out.push(sec("References", "Linked to a PubMed search where the source is a paper.", `<div class="sheet"><ol class="refs-list nums">${sorted.map((id) => `
           <li id="ref-${id}" value="${id}">${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(A.references[id]) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div>`));
       }
 
       const related = (e.related || []).map(bySlug).filter(Boolean);
       if (related.length) out.push(sec("Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`));
+      if (mainSource()) out.push(sec("Support", "", supportBand(true)));
       out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(e.added)}. Last updated ${fmtDate(e.updated)}.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
       host.innerHTML = out.join("");
+      $(".code-btn", host).forEach(copyCode);
 
       // interactions
       $$(".risk .plus").forEach((b) => b.addEventListener("click", () => {
@@ -614,12 +648,7 @@
             ${s.popular && s.popular.length ? `<div class="tag-group"><h3>Popular, with the codex entry</h3><div class="chips">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="chip go" href="entry.html?slug=${encodeURIComponent(p.slug)}">${esc(p.name)}</a>` : `<span class="chip">${esc(p.name)}</span>`).join("")}</div></div>` : ""}
           </div>
         </article>`).join("");
-      $$(".code-btn").forEach((b) => b.addEventListener("click", async () => {
-        try { await navigator.clipboard.writeText(b.dataset.code); } catch (_) { return; }
-        const html = b.innerHTML;
-        b.textContent = "Copied";
-        setTimeout(() => (b.innerHTML = html), 1400);
-      }));
+      $(".code-btn").forEach(copyCode);
     },
 
     credits() {
@@ -659,13 +688,17 @@
     const items = ((A.buy || {})[e.slug] || [])
       .map((b) => ({ ...b, src: sources.find((s) => s.id === b.source) }))
       .filter((b) => b.src && b.href);
-    if (!items.length) return `<div class="buy" data-rise style="--i:2"><span class="buy-title">Buy from</span><span class="buy-none">No current stock</span></div>`;
-    const withRef = (href, code) => {
-      try { const u = new URL(href); if (code && !u.searchParams.has("ref")) u.searchParams.set("ref", code); return u.href; } catch (_) { return href; }
-    };
+    if (!items.length) {
+      const s = mainSource();
+      if (!s) return `<div class="buy" data-rise style="--i:2"><span class="buy-title">Buy from</span><span class="buy-none">No current listing</span></div>`;
+      return `<div class="buy" data-rise style="--i:2">
+        <span class="buy-title">No product listing for this compound yet.</span>
+        <a class="buy-support" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored"><strong>Support the codex at ${esc(s.name)}</strong><span>Use code <b>${esc(s.code)}</b>. The codex earns a commission.</span></a>
+      </div>`;
+    }
     const codes = [...new Set(items.map((b) => b.src.code).filter(Boolean))];
     return `<div class="buy" data-rise style="--i:2">
-      <span class="buy-title">Buy from${codes.length ? `, code <b>${codes.map(esc).join(", ")}</b>` : ""}</span>
+      <span class="buy-title">Buy from${codes.length ? `, code <b>${codes.map(esc).join(", ")}</b>` : ""}. The codex earns a commission.</span>
       ${items.map((b) => `
         <a class="buy-btn" href="${esc(withRef(b.href, b.src.code))}" target="_blank" rel="noopener sponsored">
           <span class="buy-logo" style="${b.src.logoBg ? `background:${esc(b.src.logoBg)}` : ""}">${b.src.logo ? `<img src="${esc(b.src.logo)}" alt="">` : esc(b.src.name.slice(0, 2).toUpperCase())}</span>

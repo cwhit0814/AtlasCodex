@@ -4,7 +4,7 @@ An open reference library of peptides and research compounds, built as a static,
 
 ## Pages
 
-- `index.html`: home page with a masthead of structure plates and archival engravings, the statement and search, a live figure (how many compounds have a randomized human trial, recounted per field), browse by field, three featured entries, the codex's standards and a link to the guides
+- `index.html`: home page with the support notice, the statement and search beside the compass rose, a live figure (how many compounds have a randomized human trial, recounted per field), browse by field, the range of the record as one table, the codex's standards and the support band
 - `codex.html`: the database, with filters by category, status and sort order
 - `archive.html`: chronological archive grouped by month
 - `entry.html?slug=…`: compound page with these sections:
@@ -25,9 +25,9 @@ An open reference library of peptides and research compounds, built as a static,
 
 ## Design
 
-The identity is a two-colour printed annual: ink ground, parchment ink and one antique gold action colour, all taken from the brand mark (`#17181d`, `#eee8d2`, `#b8874f`). Every page hangs from one vertical line at 42% of the viewport: headings start on it, text hangs from it, and the zone to its left holds notes, filters and the structure plate. Display type is Young Serif and everything read is Source Serif 4. Surfaces are separated by steps of tone rather than lines, corners are square, and evidence grades and statuses are written as words on a tint of their meaning colour. Every colour is a token in the `:root` block of `css/style.css`; dark is the default and the light theme is parchment. `DESIGN.md` records the full system.
+The identity is a two-colour printed annual: ink ground, parchment ink and one antique gold action colour, all taken from the brand mark (`#17181d`, `#eee8d2`, `#b8874f`). Every page hangs from one vertical line at 42% of the viewport: headings start on it, text hangs from it, and the zone to its left holds notes, filters and the structure plate. Display type is Cormorant Garamond and everything read is EB Garamond, under the ATLAS CODEX wordmark, with a laid-paper texture, gold drop caps and a compass rose. Surfaces are separated by steps of tone rather than lines, corners are square, and evidence grades and statuses are written as words on a tint of their meaning colour. Every colour is a token in the `:root` block of `css/style.css`; dark is the default and the light theme is parchment. `DESIGN.md` records the full system.
 
-Pictures are PubChem structure drawings (public domain, in `img/plates/`) and archival images from open collections (in `img/archive/`, with sources and licences in `img/archive/credits.json` and `pictureCredits` in `js/data.js`). They are credited in every page footer.
+The only pictures are PubChem structure drawings on entry pages (public domain, loaded from PubChem). Support for the codex is promoted on every page through the referral code in `support.sources` (`js/data.js`): a notice strip, the header button, the home support band, a support sheet on each entry, and the Buy from block. Add product URLs to `js/buy.js` to turn an entry's support link into a direct product button.
 
 Other features:
 - Press `⌘K`, `Ctrl+K` or `/` to search.

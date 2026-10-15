@@ -823,14 +823,3 @@ window.ATLAS = {
   }
 };
 
-/*
- * Archival pictures used on the site, credited in the footer of every page.
- * Sources and licences are also recorded in img/archive/credits.json.
- */
-window.ATLAS.pictureCredits = [
-  { title: "The Great Library of Alexandria", by: "O. Von Corven, colorized by K. Vail Abdelhamid", licence: "CC0, via Wikimedia Commons", href: "https://commons.wikimedia.org/w/index.php?curid=56759094" },
-  { title: "Title page of Cellarius, Harmonia Macrocosmica, 1708", by: "Rijksmuseum", licence: "CC0, via Wikimedia Commons", href: "https://commons.wikimedia.org/w/index.php?curid=85472804" },
-  { title: "Farnese Atlas, Museo Archeologico Nazionale, Naples", by: "Paolo Villa", licence: "CC BY 4.0, via Wikimedia Commons", href: "https://commons.wikimedia.org/w/index.php?curid=154845023" },
-  { title: "An apothecary drawing liquid from a primitive distillation", by: "Wellcome Collection", licence: "CC BY 4.0, via Wikimedia Commons", href: "https://commons.wikimedia.org/w/index.php?curid=36372524" },
-  { title: "An apothecary, John Simmonds, and his boy apprentice", by: "Wellcome Collection", licence: "CC BY 4.0, via Wikimedia Commons", href: "https://commons.wikimedia.org/w/index.php?curid=35950085" }
-];

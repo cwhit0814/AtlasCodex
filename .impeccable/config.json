@@ -11,6 +11,15 @@
         ],
         "createdAt": "2026-10-15T02:32:52.286Z",
         "reason": "Claude: field-page and gilt-band inset their text 48px+ via padding on their inner wrappers (verified in 1440/768/390 screenshots); detector does not count child padding"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "css/style.css"
+        ],
+        "createdAt": "2026-10-15T02:48:23.112Z",
+        "reason": "User asked for the brand feel back (2026-10-14); the laid-paper hatch and chain lines on body are the documented Atlas Codex texture"
       }
     ]
   }

@@ -1,6 +1,6 @@
 ---
 name: Atlas Codex
-description: An open reference library of peptides and research compounds, set as a two-colour printed annual.
+description: An open reference library of peptides and research compounds, set as a two-colour printed annual in the house faces.
 colors:
   ink-ground: "#17181d"
   surface: "#1f2027"
@@ -24,45 +24,49 @@ colors:
   light-gold: "#7d571c"
 typography:
   display:
-    fontFamily: "Young Serif, Georgia, serif"
-    fontSize: "clamp(3.25rem, 1rem + 6.6vw, 6.5rem)"
-    fontWeight: 400
-    lineHeight: 0.95
-    letterSpacing: "-0.035em"
-  headline:
-    fontFamily: "Young Serif, Georgia, serif"
-    fontSize: "clamp(2rem, 1.4rem + 2.2vw, 2.75rem)"
-    fontWeight: 400
+    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
+    fontSize: "clamp(2.875rem, 1.2rem + 4.4vw, 5rem)"
+    fontWeight: 600
     lineHeight: 1
-    letterSpacing: "-0.02em"
+    letterSpacing: "-0.01em"
+  headline:
+    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
+    fontSize: "clamp(1.875rem, 1.35rem + 1.6vw, 2.625rem)"
+    fontWeight: 600
+    lineHeight: 1.05
   lead:
-    fontFamily: "Young Serif, Georgia, serif"
-    fontSize: "clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem)"
-    fontWeight: 400
+    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
+    fontSize: "clamp(1.375rem, 1.2rem + 0.6vw, 1.75rem)"
+    fontWeight: 600
     lineHeight: 1.3
   body:
-    fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "clamp(1.0625rem, 1.02rem + 0.25vw, 1.25rem)"
+    fontFamily: "EB Garamond, Georgia, serif"
+    fontSize: "clamp(1.125rem, 1.06rem + 0.25vw, 1.3125rem)"
     fontWeight: 400
     lineHeight: 1.55
   small:
-    fontFamily: "Source Serif 4, Georgia, serif"
-    fontSize: "1rem"
+    fontFamily: "EB Garamond, Georgia, serif"
+    fontSize: "1.0625rem"
     fontWeight: 400
     lineHeight: 1.45
+  wordmark:
+    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
+    fontSize: "1.3rem"
+    fontWeight: 600
+    letterSpacing: "0.2em"
   figure:
-    fontFamily: "Young Serif, Georgia, serif"
-    fontSize: "clamp(9rem, 23vw, 23.75rem)"
-    fontWeight: 400
+    fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
+    fontSize: "clamp(7rem, 15vw, 14rem)"
+    fontWeight: 600
     lineHeight: 0.8
-    letterSpacing: "-0.05em"
+    letterSpacing: "-0.03em"
 rounded:
   none: "0px"
 spacing:
   band-gap: "4px"
   margin: "clamp(1.25rem, 3.3vw, 3rem)"
   gutter: "clamp(1rem, 2vw, 2rem)"
-  section: "clamp(6rem, 11vw, 11rem)"
+  section: "clamp(4rem, 7vw, 7rem)"
 components:
   button-primary:
     backgroundColor: "{colors.lamp-gold}"
@@ -89,6 +93,15 @@ components:
     textColor: "{colors.parchment-ink}"
     rounded: "{rounded.none}"
     height: "48px"
+  button-on-gilt:
+    backgroundColor: "{colors.ink-ground}"
+    textColor: "{colors.parchment-ink}"
+    rounded: "{rounded.none}"
+    height: "48px"
+  support-band:
+    backgroundColor: "{colors.gilt-field}"
+    textColor: "{colors.ink-ground}"
+    rounded: "{rounded.none}"
 ---
 
 # Design System: Atlas Codex
@@ -101,12 +114,13 @@ Atlas Codex is laid out like a well-edited printed report: a masthead plate, a t
 
 Everything hangs from one vertical line at 42% of the viewport. Headings start on it, body text hangs from it, and the zone to its left carries side notes, figures, filters and the structure plate. On a phone the line collapses to the left margin and side notes move inline above their content.
 
-The pictures come from the codex's own world: PubChem structure drawings (public domain) on parchment tiles, and archival engravings and photographs from open collections, all in greyscale. No ornament stands in for content.
+The brand carries the atmosphere instead of pictures: the ATLAS CODEX wordmark with CODEX in gold, Cormorant Garamond and EB Garamond, a laid-paper texture on the ink ground, a gold drop cap on ledes, a compass rose beside the home statement and a compass mark for true breaks. The only pictures are PubChem structure drawings on entry pages, where they carry information.
 
 **Key Characteristics:**
 - One axis at 42% of the viewport, reused on every page
 - Ink ground, parchment ink, one gold action colour; parchment and gilt as whole field colours
-- Young Serif for display, Source Serif 4 for everything read; no monospace anywhere
+- Cormorant Garamond for display, EB Garamond for everything read; no monospace anywhere
+- The ATLAS CODEX wordmark, laid-paper texture, gold drop caps and the compass rose
 - Surfaces separated by 4px gaps and steps of tone, never by lines or shadows (tables excepted)
 - Square corners everywhere
 - Evidence and status written as words on a tint of their meaning colour
@@ -140,29 +154,30 @@ Two print colours on an ink ground, with four meaning colours kept for evidence 
 
 ## Typography
 
-**Display Font:** Young Serif (with Georgia)
-**Body Font:** Source Serif 4 (with Georgia)
+**Display Font:** Cormorant Garamond 600 (with EB Garamond, Georgia)
+**Body Font:** EB Garamond (with Georgia)
 
-**Character:** a heavy, round old-style headline face over a clear transitional text serif. Warmth with weight, and an editor's voice.
+**Character:** a high-contrast engraver's display serif over a bookish text serif, the house faces of the brand.
 
 ### Hierarchy
-- **Display** (400, 52–104px, leading 0.95, -0.035em): page titles and the home statement. Two lines at most, each line set by hand and revealed from its baseline.
-- **Headline** (400, 32–44px): section claims, featured entry names.
-- **Lead** (400, 20–26px, Young Serif): side-zone section titles, statements, entry ledes, the footer's ways in.
-- **Body** (400, 17–20px, leading 1.55): everything read. Measure 45–75 characters.
-- **Small** (16px): notes, band notes, filters, legal lines. Nothing is smaller.
-- **Figure** (up to 23vw): the single live figure on the home page.
+- **Display** (600, 46–80px, leading 1): page titles and the home statement. Two lines at most, each line set by hand and revealed from its baseline.
+- **Headline** (600, 30–42px): section claims, the support band.
+- **Lead** (600, 22–28px, Cormorant): side-zone section titles, statements, the footer's ways in.
+- **Body** (400, 18–21px, leading 1.55): everything read. Entry ledes sit one step up (20–24px). Measure 45–75 characters.
+- **Small** (17px): notes, band notes, filters, legal lines. Nothing is smaller.
+- **Wordmark** (600, tracked 0.2em, capitals): ATLAS in ink, CODEX in gold, in the header and at the head of the footer.
+- **Figure** (up to 15vw): the single live figure on the home page.
 
 ### Named Rules
 **The Two Line Rule.** Every heading fits in two lines at every width. Cut words before shrinking type.
 
-**The No Costume Rule.** No monospace, no tiny tracked capitals, no eyebrow labels above headings, no index numbers. Data uses tabular lining figures in the text face.
+**The No Costume Rule.** No monospace, no tiny tracked capitals, no eyebrow labels above headings, no index numbers. Data uses tabular lining figures in the text face. The wordmark is the one tracked capital setting, because it is the logo.
 
 ## Layout
 
-Tight side margins (20–48px), the axis at 42vw, and 96–176px between sections. Pages alternate between text spreads (title on the axis, body to its right, notes to its left) and full-bleed field pages. Lists are banded: rows of alternating tone, 4px apart, with fixed column starts (status, name and note, structure thumbnail).
+Tight side margins (20–48px), the axis at 42vw, and 64–112px between sections. Pages alternate between text spreads (title on the axis, body to its right, notes to its left) and full-bleed field pages. Lists are banded: rows of alternating tone, 4px apart, with fixed column starts (status, name and note, structure thumbnail).
 
-The home page runs: masthead mosaic, statement, the live figure, browse by field (tabs and bands), three featured entries with oversized plates bleeding off the left edge, the standards paragraph with the Farnese Atlas as its drop cap, three archival pictures over the gilt band, and the footer with the name first.
+The home page runs: the support notice, the statement beside the compass rose, the live figure, browse by field (tabs and bands), the range of the record as one comparison table, the standards paragraph with a gold drop cap, the gold support band, and the footer with the wordmark first.
 
 Below 56rem the axis collapses, tabs wrap into rows, bands stack status under name, and side zones move inline.
 
@@ -190,6 +205,14 @@ Filled blocks, never outlined. Selected is inverted (parchment block, ink text).
 ### Evidence and status
 Words in sentence case on a 13–15% tint of their meaning colour, such as "Human RCT" or "Research only". Square, 16px, weight 600.
 
+### Support surfaces
+Visitors are steered toward the affiliate source and the Support page on every page, always with the commission disclosure beside the link and never as a recommendation of a compound:
+- **Notice strip** under the header: "use code ATLAS at Half Nattys", with a shop link.
+- **Support me** is the gold primary button in the header; Search is quiet beside it.
+- **Support band** (gilt field) on the home page: "Keep the codex free.", the source's logo, an ink Shop button, Copy code, and the disclosure.
+- **Buy from** on each entry: a product button when `js/buy.js` has a listing, otherwise a gold-tinted "Support the codex at Half Nattys" link with the code.
+- **Support sheet**, a compact gilt band near the end of every entry.
+
 ### Entry spreads
 Each section is a spread: its title and a one-line note in the side zone (sticky on desktop), the content on the axis in sheets of `surface`. Tables carry the data, the activity list pairs with a sticky detail panel, and trials are sheets with an amber editor's note.
 
@@ -202,7 +225,7 @@ On the home page, one number owns a parchment field: the share of compounds with
 - **Do** start every heading on the axis and hang the content from it.
 - **Do** separate surfaces with a 4px gap or a tone step.
 - **Do** set every paragraph in the full ink at 16px or more.
-- **Do** use real pictures of the codex's world (structure plates, archival engravings) and credit each one in the footer.
+- **Do** keep the commission disclosure next to every affiliate link and code.
 - **Do** give every entrance a reduced-motion fallback that keeps the content visible.
 
 ### Don't:
@@ -210,4 +233,5 @@ On the home page, one number owns a parchment field: the share of compounds with
 - **Don't** round a corner.
 - **Don't** use the meaning colours for decoration.
 - **Don't** let a heading run to three lines.
-- **Don't** let the Buy from block or shop buttons outweigh the evidence on a compound page.
+- **Don't** add decorative pictures; the brand marks carry the atmosphere.
+- **Don't** word any support surface as a recommendation of a compound or product.

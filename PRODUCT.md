@@ -35,7 +35,7 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 - Content lives in JS data files (`js/data.js`, `js/entries-*.js`, `js/builder.js` short form, `js/dosing.js`, `js/pk.js`, `js/monitoring.js`, `js/buy.js`). Each page is rendered from them.
 - Evidence vocabulary: `human rct`, `human obs`, `established`, `animal`, `in vitro`, `anecdotal`, `contested`, `unknown`. Status labels include Research only, Never approved, Banned, Veterinary, Discontinued, Supplement, Cosmetic and Compounded.
 - Compounds with no label or trial dose show an honest "no established human dose" panel, with per-compound wording in `site.noDoseBySlug`. Never fill that gap with a number.
-- Commerce: Half Nattys referrals (code `ATLAS`) appear in the ticker, on the support page and in each compound's "Buy from" block, with "No current stock" when no link exists. **Referrals stay present but secondary.** They must never outrank the evidence or read as a recommendation of the compound.
+- Commerce: Half Nattys referrals (code `ATLAS`) fund the codex. **Support is actively promoted** (owner's decision, 2026-10-14): a notice strip on every page, a gold Support me button in the header, a support band on the home page and at the end of every entry, and a support link on every compound page. Two lines hold regardless: the commission disclosure sits beside every affiliate link, and no support surface reads as a recommendation of a compound or product.
 - Undecided: the contact and requests channel. `about.html#contact` is a placeholder, and the home cards "Join the Community" and "Request an Entry" have no real destination yet.
 
 ## Brand Commitments
@@ -57,4 +57,4 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 2. **Grade every claim.** Show how strong the evidence is right where the claim is made, not in a footnote.
 3. **Say "unknown" honestly.** A missing dose, trial or range is shown plainly and never filled in.
 4. **Same shape, every compound.** Consistent structure is what makes comparison and quick lookups possible.
-5. **Inform, never steer.** Harm-relevant information is easy to find, and nothing pushes the reader toward using or buying.
+5. **Inform about compounds; ask openly for support.** Harm-relevant information is easy to find and nothing pushes the reader toward using a compound. Asking readers to support the codex through the referral code is open, frequent and always disclosed.
