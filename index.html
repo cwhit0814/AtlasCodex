@@ -31,20 +31,20 @@
   <header id="site-header"></header>
   <main>
     <section class="wrap spread hero">
-      <div class="side">
+      <div class="side" aria-hidden="true">
         <svg class="rose" viewBox="0 0 120 120" fill="none" stroke="currentColor" aria-hidden="true">
           <circle cx="60" cy="60" r="52" stroke-width=".8"/><circle cx="60" cy="60" r="44" stroke-width=".5"/><circle cx="60" cy="60" r="19" stroke-width=".5"/>
           <path d="M60 8v104M8 60h104" stroke-width=".8"/><path d="M23 23l74 74M97 23l-74 74" stroke-width=".5" opacity=".75"/>
           <path d="M60 14 66 54 106 60 66 66 60 106 54 66 14 60 54 54Z" stroke-width=".9"/>
           <path d="M60 16v6M60 98v6M16 60h6M98 60h6M31 31l4 4M85 85l4 4M89 31l-4 4M35 85l-4 4" stroke-width=".5" opacity=".6"/>
         </svg>
-        <p data-rise style="--i:0">An open reference library of peptides and research compounds. Dosing comes only from approved labels and published trials.</p>
       </div>
       <div class="main">
         <h1 class="display lines">
           <span class="line"><span data-line style="--i:0">Every claim</span></span>
           <span class="line"><span data-line style="--i:1">carries a grade.</span></span>
         </h1>
+        <p class="lede" data-rise style="--i:0">An open reference library of peptides and research compounds. Dosing comes only from approved labels and published trials.</p>
         <div class="hero-actions" data-rise style="--i:1">
           <button class="button" id="hero-search" type="button">Search the codex</button>
           <a class="link go" href="codex.html">Browse all <span data-count="entries">180</span> entries</a>
@@ -52,25 +52,21 @@
       </div>
     </section>
 
-    <!-- One figure owns the screen; the field list recounts it from the entries (the page's live thing). -->
-    <section class="field-page" id="tested" aria-labelledby="tested-title">
+    <!-- The live figure: how many compounds have a randomized human trial, recounted for the chosen field. -->
+    <section class="ledger" id="tested" aria-labelledby="tested-title">
       <div class="wrap spread">
-        <div class="side field-picker" style="align-self:end;padding-bottom:clamp(3rem,6vw,5rem)">
-          <p data-reveal>Count again for one field.</p>
-          <div class="row" id="picker" role="group" aria-label="Choose a field" data-reveal style="--i:1"></div>
-        </div>
-        <div class="main figure-page">
-          <h2 class="figure-claim" id="tested-title" data-reveal>Most were never tested in people.</h2>
-          <div class="figure-body">
-            <p class="figure-num nums" data-reveal style="--i:1" aria-live="polite"><span class="v" id="fig-v">27</span><sup>%</sup></p>
-            <p class="figure-caption" id="fig-cap" data-reveal style="--i:2">Of 175 compounds in the codex, 48 have at least one randomized controlled trial in people. 127 have no human trial on record at all.</p>
-          </div>
-          <p class="figure-source small muted" data-reveal style="--i:3">Counted from the entries as they stand today. A compound counts once the codex records a randomized controlled trial in people.</p>
+        <p class="ledger-num nums" aria-live="polite" data-reveal><span class="v" id="fig-v">27</span><sup>%</sup></p>
+        <div data-reveal style="--i:1">
+          <h2 id="tested-title">Most have no randomized human trial.</h2>
+          <p class="ledger-cap" id="fig-cap">48 of 175 compounds have a randomized controlled trial in people. 127 have no human trial on record.</p>
+          <label class="ledger-pick">Counted live for
+            <span class="select"><select class="field" id="picker" aria-label="Field to count"></select><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span>
+          </label>
         </div>
       </div>
     </section>
 
-    <section class="section wrap" id="browse" style="padding-top:var(--section)">
+    <section class="section wrap" id="browse">
       <div class="list-head">
         <h2 class="head" data-reveal><span class="soft" id="field-count">Seventeen fields,</span>one standard.</h2>
         <a class="button quiet" href="codex.html" data-reveal style="--i:1">Open the full codex</a>

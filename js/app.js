@@ -33,6 +33,68 @@
     b.textContent = "Copied";
     setTimeout(() => (b.innerHTML = html), 1400);
   });
+  // Is this compound named in the source's own "popular" list? Banned compounds never get a shop prompt.
+  const listedAt = (e) => {
+    const s = mainSource();
+    if (!s || !e || e.type !== "compound" || String(e.status).toLowerCase() === "banned") return null;
+    return (s.popular || []).some((p) => p.slug === e.slug) ? s : null;
+  };
+  // A compact gold card for side zones (codex and archive filters).
+  function supportCard() {
+    const s = mainSource();
+    if (!s) return "";
+    return `<aside class="side-support" aria-label="Support the codex">
+        <p><b>Keep the codex free.</b> Use code <b class="code">${esc(s.code)}</b> at ${esc(s.name)}.</p>
+        <a class="button ink" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">Shop ${esc(s.name)}</a>
+        <p class="fine">Affiliate link: the codex earns a commission at no extra cost to you.</p>
+      </aside>`;
+  }
+  // One clearly labelled affiliate row for banded lists.
+  function affRow() {
+    const s = mainSource();
+    if (!s) return "";
+    return `<a class="band aff" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">
+        <span class="st aff-tag">Affiliate</span>
+        <span class="band-text"><span class="band-name">${esc(s.name)}: code ${esc(s.code)}</span><span class="band-note">${esc(s.blurb || "")} The codex earns a commission.</span></span>
+        <span class="aff-go">Shop →</span>
+      </a>`;
+  }
+  // The slim bar that rises once the reader is past the first screen. Dismissed bars stay away for the session.
+  function supportBar() {
+    const s = mainSource();
+    const page = document.body.dataset.page;
+    if (!s || page === "support") return;
+    let off = false;
+    try { off = sessionStorage.getItem("atlas-bar-off") === "1"; } catch (_) {}
+    if (off) return;
+    const e = page === "entry" ? bySlug(new URLSearchParams(location.search).get("slug")) : null;
+    const hit = listedAt(e);
+    const text = hit
+      ? `${esc(s.name)} lists ${esc(e.name)}. Use code <b>${esc(s.code)}</b>.`
+      : `Support the codex: code <b>${esc(s.code)}</b> at ${esc(s.name)}.`;
+    const bar = document.createElement("div");
+    bar.className = "sbar";
+    bar.setAttribute("role", "region");
+    bar.setAttribute("aria-label", "Support the codex");
+    bar.innerHTML = `<p>${text} <span class="fine">Affiliate; no extra cost to you.</span></p>
+      <a class="button ink" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">Shop</a>
+      <button class="sbar-x" type="button" aria-label="Hide for this visit">${icons.close}</button>`;
+    document.body.appendChild(bar);
+    let shown = false, ticking = false;
+    const check = () => {
+      ticking = false;
+      const want = scrollY > Math.min(600, innerHeight * 0.7);
+      if (want !== shown) { shown = want; bar.classList.toggle("show", want); document.body.classList.toggle("sbar-on", want); }
+    };
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+    check();
+    $(".sbar-x", bar).addEventListener("click", () => {
+      try { sessionStorage.setItem("atlas-bar-off", "1"); } catch (_) {}
+      bar.remove();
+      document.body.classList.remove("sbar-on");
+    });
+  }
+
   // The gold support band: large on the home page, compact at the end of every entry.
   function supportBand(compact) {
     const s = mainSource();
@@ -134,7 +196,7 @@
         </div>
       </div>${(() => {
         const s = mainSource();
-        return s && s.code ? `<div class="notice"><span>Support the codex: use code <b>${esc(s.code)}</b> at ${esc(s.name)}. It costs you nothing extra. <small>The codex earns a commission.</small></span><a class="go link" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">Shop ${esc(s.name)} →</a></div>` : "";
+        return s && s.code ? `<div class="notice"><span><span class="long">Support the codex with code <b>${esc(s.code)}</b> at ${esc(s.name)}. <span class="muted">No extra cost to you; the codex earns a commission.</span></span><span class="short">Code <b>${esc(s.code)}</b> at ${esc(s.name)} supports the codex. <span class="muted">Affiliate.</span></span></span><a class="go link" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">Shop →</a></div>` : "";
       })()}`;
 
     const footer = $("#site-footer");
@@ -164,6 +226,9 @@
     fab.innerHTML = `${icons.sparkle}<span>Ask the archive</span>`;
     fab.addEventListener("click", () => openAsk());
     document.body.appendChild(fab);
+    supportBar();
+    const band = $("#support-band");
+    if (band) { band.innerHTML = supportBand(false); $$(".code-btn", band).forEach(copyCode); }
 
     $("#theme-toggle").addEventListener("click", toggleTheme);
     $("#theme-toggle-2").addEventListener("click", toggleTheme);
@@ -203,6 +268,8 @@
         const hits = (q ? A.entries.filter((e) => matches(e, q)) : A.entries).slice(0, 9);
         $("#search-results").innerHTML = hits.map((e) => `<li><a href="${entryUrl(e)}"><span class="r-name">${esc(e.name)}</span><span class="r-class">${esc(e.class || e.summary)}</span><span class="r-cat">${esc(cat(e.category).name)}</span></a></li>`).join("") ||
           `<li class="empty">No matches for “${esc(q)}”. Try <button class="text-btn" id="ask-instead" type="button">asking the archive</button> instead.</li>`;
+        const src = mainSource();
+        if (src) $("#search-results").insertAdjacentHTML("beforeend", `<li class="r-aff"><a href="${esc(withRef(src.href, src.code))}" target="_blank" rel="noopener sponsored"><span class="r-name">Shop ${esc(src.name)} with code ${esc(src.code)}</span><span class="r-class">Affiliate link. The codex earns a commission.</span><span class="r-cat">Support</span></a></li>`);
         const ai = $("#ask-instead");
         if (ai) ai.onclick = () => { closeSearch(); openAsk(q); };
       };
@@ -299,19 +366,19 @@
       const all = compounds();
       const fields = A.categories.filter((c) => all.some((e) => e.category === c.id));
       const picker = $("#picker");
-      picker.innerHTML = [`<button class="pick" type="button" data-cat="all" aria-pressed="true">All fields<span class="n nums">${all.length}</span></button>`,
-        ...fields.map((c) => `<button class="pick" type="button" data-cat="${c.id}" aria-pressed="false">${esc(c.name)}<span class="n nums">${all.filter((e) => e.category === c.id).length}</span></button>`)].join("");
+      picker.innerHTML = [`<option value="all">all ${all.length} compounds</option>`,
+        ...fields.map((c) => `<option value="${c.id}">${esc(c.name)} (${all.filter((e) => e.category === c.id).length})</option>`)].join("");
       const count = (id) => {
         const set = id === "all" ? all : all.filter((e) => e.category === id);
         const r = set.filter(hasRct).length, none = set.filter((e) => !(e.trials || []).length).length;
         const pct = set.length ? Math.round((r / set.length) * 100) : 0;
-        const where = id === "all" ? "in the codex" : `in ${cat(id).name}`;
+        const where = id === "all" ? "" : ` in ${cat(id).name}`;
         const claim = pct === 50 ? "Half have a randomized human trial." : pct > 50 ? "Most have a randomized human trial." : "Most have no randomized human trial.";
         const n = set.length;
-        const rest = none === 0 ? "Every one has at least some human trial on record."
-          : none === n ? (n === 1 ? "It has no human trial on record at all." : "None of them has a human trial on record at all.")
-          : `${none} ${none === 1 ? "has" : "have"} no human trial on record at all.`;
-        return { pct, claim, caption: `Of ${n} ${n === 1 ? "compound" : "compounds"} ${where}, ${r} ${r === 1 ? "has" : "have"} at least one randomized controlled trial in people. ${rest}` };
+        const rest = none === 0 ? "Every one has some human trial on record."
+          : none === n ? (n === 1 ? "It has no human trial on record." : "None has a human trial on record.")
+          : `${none} ${none === 1 ? "has" : "have"} no human trial on record.`;
+        return { pct, claim, caption: `${r} of ${n} ${n === 1 ? "compound" : "compounds"}${where} ${r === 1 ? "has" : "have"} a randomized controlled trial in people. ${rest}` };
       };
       const show = (id) => {
         const c = count(id);
@@ -320,9 +387,8 @@
         v.classList.remove("swap"); void v.offsetWidth; v.classList.add("swap");
         $("#fig-cap").textContent = c.caption;
         $("#tested-title").textContent = c.claim;
-        $$(".pick", picker).forEach((b) => b.setAttribute("aria-pressed", b.dataset.cat === id));
       };
-      picker.addEventListener("click", (ev) => { const b = ev.target.closest(".pick"); if (b) show(b.dataset.cat); });
+      picker.addEventListener("change", () => show(picker.value));
       show("all");
 
       // Browse by field: tabs on the left, the field's entries as bands on the right.
@@ -360,8 +426,6 @@
           </tr>`;
         }).join("")}</tbody>`;
 
-      $("#support-band").innerHTML = supportBand(false);
-      $$("#support-band .code-btn").forEach(copyCode);
     },
 
     codex() {
@@ -372,7 +436,8 @@
         <label><span class="sr-only">Filter entries</span><input class="field" id="codex-q" type="search" placeholder="Filter by name, alias or tag"></label>
         ${selectBox("status-filter", "Filter by status", `<option value="all">Any status</option>` + statuses.map((s) => `<option value="${esc(s)}">${esc(cap(s))}</option>`).join(""))}
         ${selectBox("sort", "Sort", `<option value="name">A to Z</option><option value="updated">Recently updated</option>`)}
-        <p class="count nums" id="codex-count" aria-live="polite"></p>`;
+        <p class="count nums" id="codex-count" aria-live="polite"></p>
+        ${supportCard()}`;
       const q = $("#codex-q");
       q.value = state.q;
       const cats = A.categories.filter((c) => A.entries.some((e) => e.category === c.id));
@@ -383,7 +448,7 @@
           .filter((e) => (state.cat === "all" || e.category === state.cat) && (state.status === "all" || e.status === state.status) && matches(e, state.q))
           .sort((a, b) => state.sort === "updated" ? b.updated.localeCompare(a.updated) : a.name.localeCompare(b.name));
         $("#codex-count").textContent = `${list.length} ${list.length === 1 ? "entry" : "entries"}`;
-        $("#codex-list").innerHTML = list.length ? list.map((e, i) => band(e, i % 8)).join("") : `<p class="empty-state">No entries match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`;
+        $("#codex-list").innerHTML = list.length ? list.map((e, i) => band(e, i % 8) + (i === Math.min(5, list.length - 1) ? affRow() : "")).join("") : `<p class="empty-state">No entries match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`;
         const cf = $("#clear-filters");
         if (cf) cf.onclick = () => { state.q = ""; state.cat = "all"; state.status = "all"; q.value = ""; $("#status-filter").value = "all"; render(); };
         reveal($("#codex-list"));
@@ -406,7 +471,8 @@
         ${selectBox("archive-type", "Type", `<option value="all">All types</option><option value="compound">Compounds</option><option value="article">Guides</option>`)}
         ${selectBox("archive-field", "Date", `<option value="updated">By last updated</option><option value="added">By date added</option>`)}
         <button class="button quiet" id="archive-sort" type="button">Newest first</button>
-        <p class="count nums" id="archive-count" aria-live="polite"></p>`;
+        <p class="count nums" id="archive-count" aria-live="polite"></p>
+        ${supportCard()}`;
       function render() {
         const list = A.entries
           .filter((e) => (state.type === "all" || e.type === state.type) && matches(e, state.q))
@@ -586,7 +652,7 @@
       if (mainSource()) out.push(sec("Support", "", supportBand(true)));
       out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(e.added)}. Last updated ${fmtDate(e.updated)}.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
       host.innerHTML = out.join("");
-      $(".code-btn", host).forEach(copyCode);
+      $$(".code-btn", host).forEach(copyCode);
 
       // interactions
       $$(".risk .plus").forEach((b) => b.addEventListener("click", () => {
@@ -648,7 +714,7 @@
             ${s.popular && s.popular.length ? `<div class="tag-group"><h3>Popular, with the codex entry</h3><div class="chips">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="chip go" href="entry.html?slug=${encodeURIComponent(p.slug)}">${esc(p.name)}</a>` : `<span class="chip">${esc(p.name)}</span>`).join("")}</div></div>` : ""}
           </div>
         </article>`).join("");
-      $(".code-btn").forEach(copyCode);
+      $$(".code-btn").forEach(copyCode);
     },
 
     credits() {
@@ -688,11 +754,21 @@
     const items = ((A.buy || {})[e.slug] || [])
       .map((b) => ({ ...b, src: sources.find((s) => s.id === b.source) }))
       .filter((b) => b.src && b.href);
+    const hit = !items.length && listedAt(e);
+    if (hit) {
+      return `<div class="buy" data-rise style="--i:2">
+        <span class="buy-title">Listed at ${esc(hit.name)}. Code <b>${esc(hit.code)}</b>. The codex earns a commission.</span>
+        <a class="buy-btn" href="${esc(withRef(hit.href, hit.code))}" target="_blank" rel="noopener sponsored">
+          <span class="buy-logo" style="${hit.logoBg ? `background:${esc(hit.logoBg)}` : ""}">${hit.logo ? `<img src="${esc(hit.logo)}" alt="">` : esc(hit.name.slice(0, 2).toUpperCase())}</span>
+          <span>Shop ${esc(e.name)} at ${esc(hit.name)}</span>
+        </a>
+      </div>`;
+    }
     if (!items.length) {
       const s = mainSource();
       if (!s) return `<div class="buy" data-rise style="--i:2"><span class="buy-title">Buy from</span><span class="buy-none">No current listing</span></div>`;
       return `<div class="buy" data-rise style="--i:2">
-        <span class="buy-title">No product listing for this compound yet.</span>
+        <span class="buy-title">${String(e.status).toLowerCase() === "banned" ? "Banned for human use. No source is linked for this compound." : "No product listing for this compound yet."}</span>
         <a class="buy-support" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored"><strong>Support the codex at ${esc(s.name)}</strong><span>Use code <b>${esc(s.code)}</b>. The codex earns a commission.</span></a>
       </div>`;
     }
