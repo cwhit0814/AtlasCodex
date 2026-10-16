@@ -196,7 +196,7 @@
           <button class="icon-btn" id="theme-toggle" type="button" aria-label="${root.dataset.theme === "dark" ? "Switch to the light theme" : "Switch to the dark theme"}">${root.dataset.theme === "dark" ? icons.sun : icons.moon}</button>
           <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="top-nav">Menu</button>
           <button class="button quiet" id="search-open" type="button" title="Search (${isMac ? "⌘K" : "Ctrl K"} or /)" aria-label="Search">${icons.search}<span class="wide">Search</span></button>
-          <a class="button" href="support.html"${page === "support" ? ' aria-current="page"' : ""}>Support me</a>
+          <a class="button" href="support.html"${page === "support" ? ' aria-current="page"' : ""}><span>Support<span class="me"> me</span></span></a>
         </div>
       </div>${(() => {
         const s = mainSource();
@@ -481,44 +481,40 @@
     },
 
     archive() {
-      const state = { q: "", type: "all", sort: "desc", field: "updated" };
+      const state = { q: "", type: "all" };
       $("#archive-filters").innerHTML = `
         <label><span class="sr-only">Search the archive</span><input class="field" id="archive-q" type="search" placeholder="Search the archive"></label>
         ${selectBox("archive-type", "Type", `<option value="all">All types</option><option value="compound">Compounds</option><option value="article">Guides</option>`)}
-        ${selectBox("archive-field", "Date", `<option value="updated">By last updated</option><option value="added">By date added</option>`)}
-        <button class="button quiet" id="archive-sort" type="button">Newest first</button>
         <p class="count nums" id="archive-count" aria-live="polite"></p>
         ${supportCard()}`;
+      // The archive is an index: A to Z, one section per letter. Names that open on a digit or a Greek letter file under #.
+      const letterOf = (e) => { const c = e.name.normalize("NFD").charAt(0).toUpperCase(); return /[A-Z]/.test(c) ? c : "#"; };
+      const ALPHA = ["#", ..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
       function render() {
         const list = A.entries
           .filter((e) => (state.type === "all" || e.type === state.type) && matches(e, state.q))
-          .sort((a, b) => (state.sort === "desc" ? -1 : 1) * a[state.field].localeCompare(b[state.field]));
+          .sort(byName);
         $("#archive-count").textContent = `${list.length} ${list.length === 1 ? "record" : "records"}`;
-        const groups = new Map();
-        list.forEach((e) => {
-          const key = new Date(e[state.field] + "T00:00:00").toLocaleDateString("en-US", { month: "long", year: "numeric" });
-          if (!groups.has(key)) groups.set(key, []);
-          groups.get(key).push(e);
-        });
-        $("#archive-list").innerHTML = list.length ? [...groups].map(([month, items]) => `
-          <section class="month-block">
-            <h2 class="month-h" data-reveal>${month} <span class="nums">${items.length} ${items.length === 1 ? "record" : "records"}</span></h2>
+        const groups = new Map(ALPHA.map((l) => [l, []]));
+        list.forEach((e) => groups.get(letterOf(e)).push(e));
+        const filled = ALPHA.filter((l) => groups.get(l).length);
+        const id = (l) => "letter-" + (l === "#" ? "num" : l);
+        const jump = `<nav class="az" aria-label="Jump to a letter">${ALPHA.map((l) => groups.get(l).length
+          ? `<a href="#${id(l)}">${l}</a>` : `<span aria-hidden="true">${l}</span>`).join("")}</nav>`;
+        $("#archive-list").innerHTML = list.length ? jump + filled.map((l) => {
+          const items = groups.get(l);
+          return `
+          <section class="letter-block" id="${id(l)}" aria-label="${l === "#" ? "Numbers and symbols" : "Letter " + l}">
+            <h2 class="letter-h" data-reveal>${l} <span class="nums">${items.length}</span></h2>
             <div class="bands">${items.map((e, i) => band(e, i % 8, {
-              lead: `<time class="nums" datetime="${e[state.field]}">${fmtDate(e[state.field])}</time>`,
-              note: `${e.type === "article" ? "Guide" : "Compound"} · ${cat(e.category).name}`,
-              tail: statusTag(e.status)
+              note: `${e.type === "article" ? "Guide" : e.class || "Compound"} · ${cat(e.category).name}`
             })).join("")}</div>
-          </section>`).join("") : `<p class="empty-state">Nothing in the archive matches.</p>`;
+          </section>`;
+        }).join("") : `<p class="empty-state">Nothing in the archive matches.</p>`;
         reveal($("#archive-list"));
       }
       $("#archive-q").addEventListener("input", (e) => { state.q = e.target.value.trim(); render(); });
       $("#archive-type").addEventListener("change", (e) => { state.type = e.target.value; render(); });
-      $("#archive-field").addEventListener("change", (e) => { state.field = e.target.value; render(); });
-      $("#archive-sort").addEventListener("click", (e) => {
-        state.sort = state.sort === "desc" ? "asc" : "desc";
-        e.currentTarget.textContent = state.sort === "desc" ? "Newest first" : "Oldest first";
-        render();
-      });
       render();
     },
 

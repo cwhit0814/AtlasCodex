@@ -199,6 +199,9 @@ Square corners on everything: buttons, bands, tabs, fields, tiles, pictures. Lin
 ### Bands
 The codex's list unit: a full-width row in one of two alternating tones, 4px apart. Status word at the left, name (600) with a one-line note, and a parchment thumbnail of the structure at the right on desktop. Hover tints the row with gold.
 
+### The archive index
+The archive is an A to Z index. A row of filled letter blocks jumps to each letter (letters with no records sit faded), and each letter opens its own section under a gold display initial, with ordinary bands beneath. Names that open on a digit or a Greek letter file under #.
+
 ### Tabs and pickers
 Filled blocks, never outlined. Selected is inverted (parchment block, ink text). Counts sit beside each name in tabular figures.
 
