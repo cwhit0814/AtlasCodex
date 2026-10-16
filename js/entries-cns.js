@@ -83,7 +83,7 @@
     class: "α4β2 nicotinic receptor partial agonist", developer: "Sopharma, Bulgaria (marketed 1964); Achieve Life Sciences (US development as cytisinicline)",
     tags: ["smoking cessation", "α4β2", "partial agonist", "plant alkaloid", "nicotine"],
     summary: "A plant alkaloid that works the same way as varenicline and was its template. It has been used to quit smoking in Eastern Europe since the 1960s, costs a fraction of varenicline, and performed at least as well as nicotine replacement in a head-to-head trial.",
-    names: "Sold as Tabex and Desmoxan in Central and Eastern Europe, and approved in Canada and several other countries. In the US it is in development as cytisinicline; a new drug application was filed in 2025, so check its current FDA status. The \"Approved\" status refers to approval outside the US.",
+    names: "Sold as Tabex and Desmoxan in Central and Eastern Europe, as cytisinicline 1.5 mg tablets in the UK, and approved in Canada and several other countries. In the US it is in development as cytisinicline; a new drug application was filed in 2025, so check its current FDA status. The \"Approved\" status refers to approval outside the US.",
     structure: "C<sub>11</sub>H<sub>14</sub>N<sub>2</sub>O, about 190.2 g/mol. Extracted from the seeds of the golden rain tree (<i>Laburnum anagyroides</i>), which is poisonous because of it.",
     pubchem: "cytisine",
     pnote: cessNote,
@@ -334,7 +334,7 @@
     139: "Battleday RM, Brem AK. Modafinil for cognitive neuroenhancement in healthy non-sleep-deprived subjects: a systematic review. Eur Neuropsychopharmacol 2015;25:1865–1881.",
     140: "Wilens TE et al. A controlled clinical trial of bupropion for attention deficit hyperactivity disorder in adults. Am J Psychiatry 2001;158:282–288.",
     141: "Mayer B. How much nicotine kills a human? Tracing back the generally accepted lethal dose to dubious self-experiments in the nineteenth century. Arch Toxicol 2014;88:5–7.",
-    142: "Cytisine (Tabex) summary of product characteristics. Sopharma.",
+    142: "Cytisinicline 1.5 mg tablets summary of product characteristics. Bonteque Consulting (UK), revised October 2025.",
     143: "Ilieva IP, Hook CJ, Farah MJ. Prescription stimulants' effects on healthy inhibitory control, working memory, and episodic memory: a meta-analysis. J Cogn Neurosci 2015;27:1069–1089."
   });
 })(window.ATLAS);

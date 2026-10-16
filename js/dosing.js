@@ -182,12 +182,13 @@ window.ATLAS.dosing = {
   ondansetron: { source: "FDA label", evidence: "established", rows: [
     ["Nausea and vomiting", "4 to 8 mg per dose, with frequency set by indication"],
     ["Cardiac caution", "Higher doses prolong the QT interval; the 32 mg single IV dose was withdrawn for this reason"]] },
-  tropisetron: { source: "EU label (Navoban) and published trials", evidence: "established", refs: [105, 101, 102], rows: [
+  tropisetron: { source: "European labels (Navoban: France, Italy, Germany) and published trials", evidence: "established", refs: [105, 101, 102], rows: [
     ["Chemotherapy nausea (label)", "5 mg once daily for up to 6 days: intravenously on the day of chemotherapy, then by mouth on the days after"],
-    ["Postoperative nausea (label)", "2 mg intravenously as a single dose"],
+    ["Children over 2 (label)", "0.2 mg/kg once daily, up to 5 mg a day, for up to 6 days"],
+    ["Postoperative nausea (label)", "2 mg intravenously, by slow injection or infusion, shortly before anaesthesia is induced"],
     ["Schizophrenia trials (off-label)", "5, 10 or 20 mg daily by mouth, for 10 days to 8 weeks"],
     ["Quitting nicotine", "No trial has given tropisetron for this, so there is no dose for it"]],
-    note: "Poor CYP2D6 metabolizers, and anyone taking a CYP2D6 inhibitor such as bupropion, reach much higher blood levels from the same dose." },
+    note: "Poor CYP2D6 metabolizers, and anyone taking a CYP2D6 inhibitor such as bupropion, reach much higher blood levels from the same dose. The labels set no reduction for the single 2 mg dose, and the French capsule label restricts use to adults from 15." },
   /* ---------------------------------------------------------- dependence and cessation */
   nicotine: { source: "FDA over-the-counter label (replacement therapy)", evidence: "established", refs: [135], rows: [
     ["Patch, more than 10 cigarettes a day", "21 mg/24 h for 6 weeks, then 14 mg for 2 weeks, then 7 mg for 2 weeks"],
@@ -203,11 +204,13 @@ window.ATLAS.dosing = {
     ["Gradual approach", "For people unwilling to quit abruptly: start varenicline, cut smoking by half within 4 weeks and by half again over the next 4, aiming to stop by week 12, then continue to 24 weeks"],
     ["Severe kidney impairment", "Start 0.5 mg once daily, up to 0.5 mg twice daily; no more than 0.5 mg a day on hemodialysis"]],
     note: "Taken after food with a full glass of water to reduce nausea." },
-  cytisine: { source: "Tabex label (EU) and ORCA-2 trial", evidence: "established", refs: [142, 111], rows: [
+  cytisine: { source: "UK label (cytisinicline 1.5 mg, the Tabex schedule) and ORCA-2 trial", evidence: "established", refs: [142, 111], rows: [
     ["Days 1–3 (Tabex, 1.5 mg tablets)", "One tablet every 2 hours, six a day"],
     ["Days 4–12", "One every 2.5 hours, five a day"], ["Days 13–16", "One every 3 hours, four a day"],
     ["Days 17–20", "One every 5 hours, three a day"], ["Days 21–25", "One or two a day"],
     ["Quit date", "No later than day 5"],
+    ["Course", "25 days, one pack of 100 tablets"],
+    ["Not recommended (UK label)", "Over 65, under 18, or with kidney or liver impairment, for lack of data"],
     ["Cytisinicline (ORCA-2 trial)", "3 mg three times daily for 6 or 12 weeks"]] },
   bupropion: { source: "FDA label", evidence: "established", refs: [132], rows: [
     ["Quitting smoking (Zyban, SR)", "150 mg once daily for 3 days, then 150 mg twice daily at least 8 hours apart. Start about a week before the quit date, setting the date within the first 2 weeks, and continue for 7–12 weeks"],

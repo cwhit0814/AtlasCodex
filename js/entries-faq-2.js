@@ -811,7 +811,7 @@
     102: "Zhang XY et al. Short-term tropisetron treatment and cognitive and P50 auditory gating deficits in schizophrenia. Am J Psychiatry 2012;169:974–981.",
     103: "Noroozian M et al. A placebo-controlled study of tropisetron added to risperidone for the treatment of negative symptoms in chronic and stable schizophrenia. Psychopharmacology 2013;228:595–602.",
     104: "Koike K et al. Tropisetron improves deficits in auditory P50 suppression in schizophrenia. Schizophr Res 2005;76:67–72.",
-    105: "Navoban (tropisetron) summary of product characteristics. Novartis.",
+    105: "Navoban (tropisetron) summaries of product characteristics and package leaflet: 5 mg capsules (ANSM, France, revised 2013); 2 mg/2 ml solution (Novartis Farma, Italy, revised 2009); 5 mg/5 ml solution (Novartis Pharma, Germany, leaflet revised 2008).",
     106: "de Bruijn KM. Tropisetron. A review of the clinical experience. Drugs 1992;43 Suppl 3:11–22."
   });
 })(window.ATLAS);
