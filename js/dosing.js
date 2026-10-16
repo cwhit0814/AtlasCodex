@@ -200,7 +200,8 @@ window.ATLAS.dosing = {
     ["Days 1–3", "0.5 mg once daily"], ["Days 4–7", "0.5 mg twice daily"], ["Day 8 onward", "1 mg twice daily"],
     ["Quit date", "Set about one week after starting, or flexibly between days 8 and 35"],
     ["Duration", "12 weeks, with a further 12 weeks for people who have quit"],
-    ["Severe kidney impairment", "No more than 0.5 mg twice daily"]],
+    ["Gradual approach", "For people unwilling to quit abruptly: start varenicline, cut smoking by half within 4 weeks and by half again over the next 4, aiming to stop by week 12, then continue to 24 weeks"],
+    ["Severe kidney impairment", "Start 0.5 mg once daily, up to 0.5 mg twice daily; no more than 0.5 mg a day on hemodialysis"]],
     note: "Taken after food with a full glass of water to reduce nausea." },
   cytisine: { source: "Tabex label (EU) and ORCA-2 trial", evidence: "established", refs: [142, 111], rows: [
     ["Days 1–3 (Tabex, 1.5 mg tablets)", "One tablet every 2 hours, six a day"],
@@ -209,22 +210,23 @@ window.ATLAS.dosing = {
     ["Quit date", "No later than day 5"],
     ["Cytisinicline (ORCA-2 trial)", "3 mg three times daily for 6 or 12 weeks"]] },
   bupropion: { source: "FDA label", evidence: "established", refs: [132], rows: [
-    ["Quitting smoking (Zyban, SR)", "150 mg once daily for 3 days, then 150 mg twice daily, starting 1–2 weeks before the quit date, for 7–12 weeks"],
+    ["Quitting smoking (Zyban, SR)", "150 mg once daily for 3 days, then 150 mg twice daily at least 8 hours apart. Start about a week before the quit date, setting the date within the first 2 weeks, and continue for 7–12 weeks"],
     ["Depression (XL)", "150 mg once each morning, increased to 300 mg after at least 4 days; maximum 450 mg"],
     ["ADHD (off-label trial)", "SR up to 200 mg twice daily in the controlled adult trial"],
-    ["Seizure ceiling", "Do not exceed 450 mg a day; seizure risk rises steeply above it"]],
+    ["Seizure ceiling", "No more than 300 mg a day for quitting smoking (SR) and 450 mg a day for depression (XL). The label reports seizures in about 0.1% at up to 300 mg a day of SR, and about 0.4% at up to 400 mg"]],
     note: "Doses are spaced at least 8 hours apart with the SR form, and the last dose is taken well before bed to limit insomnia." },
   /* ---------------------------------------------------------- ADHD and wakefulness */
   amphetamine: { source: "FDA label", evidence: "established", refs: [125], rows: [
-    ["ADHD, IR (Adderall), age 6 and up", "Start 5 mg once or twice daily; increase by 5 mg weekly. Doses above 40 mg a day are rarely needed"],
+    ["ADHD, IR (Adderall), age 6 and up", "Start 5 mg once or twice daily; increase by 5 mg weekly. Only rarely is more than 40 mg a day needed. First dose on waking, further doses 4–6 hours apart"],
     ["ADHD, XR (Adderall XR), adults", "20 mg once each morning"],
     ["Narcolepsy", "5–60 mg a day in divided doses"],
-    ["With a strong CYP2D6 inhibitor", "Start lower and titrate cautiously (for example alongside bupropion)"]] },
+    ["With a CYP2D6 inhibitor (for example bupropion)", "The Adderall XR label warns this can raise amphetamine exposure and serotonin syndrome risk, and advises considering an alternative drug that does not inhibit CYP2D6"]] },
   lisdexamfetamine: { source: "FDA label", evidence: "established", refs: [126], rows: [
     ["ADHD", "30 mg once each morning; increase by 10–20 mg weekly; maximum 70 mg"],
-    ["Binge eating disorder", "Start 30 mg; titrate to 50–70 mg"]] },
+    ["Binge eating disorder", "Start 30 mg; increase by 20 mg weekly to 50–70 mg"],
+    ["Kidney impairment", "Maximum 50 mg a day if severe; 30 mg a day in end-stage disease"]] },
   methylphenidate: { source: "FDA label", evidence: "established", refs: [127], rows: [
-    ["IR (Ritalin), adults", "20–30 mg a day in 2–3 doses, 30–45 minutes before meals; range 10–60 mg"],
+    ["IR (Ritalin), adults", "Average 20–30 mg a day in 2–3 doses, 30–45 minutes before meals; maximum 60 mg"],
     ["Extended-release (Concerta), adults", "Start 18 or 36 mg once each morning; maximum 72 mg"],
     ["Dexmethylphenidate (Focalin)", "Half the methylphenidate dose, because it is the active isomer alone"]] },
   atomoxetine: { source: "FDA label", evidence: "established", refs: [128], rows: [
@@ -235,7 +237,7 @@ window.ATLAS.dosing = {
     ["Age 6–11", "100 mg once daily; up to 400 mg"], ["Age 12–17", "200 mg once daily; up to 400 mg"], ["Adults", "200 mg once daily; up to 600 mg"]] },
   guanfacine: { source: "FDA label (Intuniv)", evidence: "established", refs: [130], rows: [
     ["Age 6–17", "Start 1 mg once daily; increase by no more than 1 mg a week. Target 0.05–0.12 mg/kg a day"],
-    ["Maximum", "4 mg (age 6–12) or 7 mg (age 13–17)"],
+    ["Highest doses evaluated", "4 mg a day at age 6–12 and 7 mg a day at age 13–17; higher doses have not been studied"],
     ["Stopping", "Taper by no more than 1 mg every 3–7 days to avoid rebound high blood pressure"]] },
   modafinil: { source: "FDA label", evidence: "established", refs: [131], rows: [
     ["Narcolepsy or sleep apnea", "200 mg once each morning"],
