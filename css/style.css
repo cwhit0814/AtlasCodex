@@ -666,6 +666,146 @@ a.chip.go { color: var(--accent); }
 .page-note { color: var(--muted); max-width: 62ch; }
 @media (max-width: 56rem) { .person .side { margin-bottom: 1.5rem; } .person-pic { width: 9rem; } .source-logo { width: 12rem; } }
 
+/* ---------- compare: two plates printed in register ----------
+   The plate is a parchment proof in both themes, like the structure plates on entries. The reference is
+   printed in ink, the comparison in gold; where the skeletons coincide the gold shows as a band behind
+   the ink line, the way an overprint shows a second colour. */
+.plate-link { margin-top: -.75rem; font-size: var(--step-small); color: var(--muted); }
+.cmp { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); align-items: start; }
+.cmp > .side { position: sticky; top: 1rem; }
+.cmp-controls { display: flex; flex-direction: column; gap: 1.75rem; max-width: 24rem; }
+.cmp-label { display: block; margin-bottom: .4rem; font-family: var(--font-text); font-weight: 600; font-size: var(--step-small); color: var(--muted); }
+.cmp-pick { display: grid; gap: .25rem; }
+.cmp-pick-row { display: grid; grid-template-columns: .5rem minmax(0, 1fr); gap: .85rem; align-items: stretch; }
+.cmp-pick-row .select { display: block; }
+.cmp-key { display: inline-block; width: .5rem; background: var(--ink); }
+.cmp-key.b { background: var(--gilt); }
+.cmp-pick-row .cmp-key { align-self: end; height: 3rem; }
+.cmp-swap { justify-self: start; margin-left: 1.35rem; width: 2.75rem; height: 2.75rem; color: var(--muted); }
+@media (hover: hover) and (pointer: fine) { .cmp-swap:hover { color: var(--ink); } }
+.cmp-mode { margin: 0; padding: 0; border: 0; min-width: 0; }
+.cmp-mode legend { padding: 0; }
+.cmp-mode-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.cmp-mode .tab { width: auto; flex: 1 1 auto; justify-content: center; cursor: pointer; }
+.cmp-mode .tab:has(input:checked) { background: var(--ink); color: var(--bg); }
+.cmp-mode .tab:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+.cmp-mode-note { margin-top: .75rem; color: var(--muted); font-size: var(--step-small); max-width: 36ch; }
+.cmp-near .chips { margin-top: 0; }
+.cmp-near .chip { font-family: inherit; text-align: left; }
+.cmp-near .chip .soft { margin-left: .2rem; }
+.cmp-near .chip.on { background: color-mix(in srgb, var(--gilt) 30%, var(--surface)); }
+
+.cmp-plate {
+  --pp: #eee8d2; --ink-a: #17181d; --ink-b: #84591f; --band-b: #cfa565;
+  position: relative; aspect-ratio: 4 / 3; background: var(--pp); color: var(--ink-a); overflow: hidden;
+}
+#cmp-svg { position: absolute; inset: 0 0 2.75rem; width: 100%; height: calc(100% - 2.75rem); max-width: none; }
+.cmp-plate .bd, .cmp-plate .band { fill: none; stroke-linecap: round; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.cmp-plate .pl-a .bd { stroke: var(--ink-a); stroke-width: 1.5; }
+.cmp-plate .pl-a .bd.core { stroke-width: 2.6; }
+.cmp-plate .pl-a .wd { fill: var(--ink-a); }
+.cmp-plate .pl-b .bd { stroke: var(--ink-b); stroke-width: 1.5; }
+.cmp-plate .pl-b .bd.core { stroke-width: 2.6; }
+.cmp-plate .pl-b .wd { fill: var(--ink-b); }
+.cmp-plate .pl-a .band { display: none; }
+.cmp-plate .pl-b .band { stroke: var(--band-b); stroke-width: var(--band, 0); }
+.cmp-plate text { font-family: var(--font-text); font-size: 14.4px; font-weight: 600; paint-order: stroke; stroke: var(--pp); stroke-width: 4px; stroke-linejoin: round; }
+.cmp-plate .pl-a text { fill: var(--ink-a); }
+.cmp-plate .pl-b text { fill: var(--ink-b); }
+.cmp-plate .sub, .cmp-plate .sup { font-size: 10px; }
+.cmp-plate.hide-a #gA, .cmp-plate.hide-b #gB { display: none; }
+/* shared skeleton switched off: no gold band, and the shared bonds drop to the ordinary weight */
+.cmp-plate.no-core .pl-b .band { display: none; }
+.cmp-plate.no-core .bd.core { stroke-width: 1.5; }
+.cmp-plate.busy svg { opacity: .25; transition: opacity 200ms ease; }
+
+/* the printer's register mark: ink fixed, gold slipping out of register as the plates part */
+.cmp-regmark { position: absolute; top: .9rem; right: .9rem; width: 22px; height: 22px; pointer-events: none; }
+.cmp-regmark span { position: absolute; inset: 0; }
+.cmp-regmark .k { color: var(--ink-a); opacity: .55; }
+.cmp-regmark .g { color: var(--ink-b); transform: translateX(var(--slip, 0px)); }
+
+/* the colour bar along the foot of the proof, doubling as the plate toggles */
+.cmp-strip { position: absolute; left: 0; right: 0; bottom: 0; min-height: 2.75rem; display: flex; flex-wrap: wrap; align-items: center; gap: .25rem 1.25rem; padding: .35rem .9rem; background: color-mix(in srgb, var(--ink-a) 7%, var(--pp)); font-size: var(--step-small); line-height: 1.2; }
+.cmp-sw { display: inline-flex; align-items: center; gap: .5rem; min-height: 2rem; color: var(--ink-a); }
+.cmp-sw.b { color: var(--ink-b); }
+.cmp-sw svg { flex: none; overflow: visible; }
+.cmp-sw .band, .cmp-sw .ln { fill: none; stroke-linecap: round; }
+.sw-shared .band { stroke: var(--band-b); stroke-width: 7; }
+.sw-shared .ln { stroke: var(--ink-a); stroke-width: 2.6; }
+.sw-a .band, .sw-b .band { display: none; }
+.sw-a .ln { stroke: var(--ink-a); stroke-width: 1.5; }
+.sw-b .ln { stroke: var(--ink-b); stroke-width: 1.5; }
+button.cmp-sw { font-weight: 600; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: .22em; transition: opacity var(--t-hover) ease, text-decoration-color var(--t-hover) ease; }
+button.cmp-sw[aria-pressed="false"] { opacity: .45; text-decoration: line-through; }
+button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; }
+@media (hover: hover) and (pointer: fine) { button.cmp-sw:hover { text-decoration-color: currentColor; } }
+
+/* states laid over the proof */
+.cmp-msg { position: absolute; inset: 0 0 2.75rem; display: grid; place-content: center; justify-items: center; gap: 1rem; padding: 1.5rem; text-align: center; color: var(--ink-a); font-size: var(--step-small); }
+.cmp-msg p { max-width: 34ch; }
+.cmp-msg .text-btn { color: var(--ink-b); font-weight: 600; }
+.cmp-load { display: block; width: 7rem; height: 2px; background: color-mix(in srgb, var(--ink-a) 14%, transparent); position: relative; overflow: hidden; }
+.cmp-load::after { content: ""; position: absolute; inset: 0; width: 40%; background: var(--ink-b); }
+@media (prefers-reduced-motion: no-preference) { .cmp-load::after { animation: cmp-feed 1.3s var(--ease-in-out) infinite; } }
+@keyframes cmp-feed { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+.cmp-msg.error { background: var(--pp); align-content: center; }
+.cmp-fallback { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; width: min(100%, 30rem); }
+.cmp-fallback img { width: 100%; height: auto; aspect-ratio: 1; object-fit: contain; mix-blend-mode: multiply; }
+.cmp-fallback figcaption { margin-top: .25rem; font-weight: 600; }
+
+/* the separation slider */
+.cmp-slide { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 1rem; margin-top: 1rem; color: var(--muted); font-size: var(--step-small); }
+.cmp-slide input { -webkit-appearance: none; appearance: none; width: 100%; height: 2.75rem; background: transparent; cursor: pointer; }
+.cmp-slide input:disabled { cursor: not-allowed; opacity: .4; }
+.cmp-slide input::-webkit-slider-runnable-track { height: 2px; background: color-mix(in srgb, var(--ink) 30%, transparent); }
+.cmp-slide input::-moz-range-track { height: 2px; background: color-mix(in srgb, var(--ink) 30%, transparent); }
+.cmp-slide input::-webkit-slider-thumb { -webkit-appearance: none; width: 1.1rem; height: 1.1rem; margin-top: calc(-.55rem + 1px); background: var(--gilt); border: 0; border-radius: 0; transition: transform var(--t-press) var(--ease-out); }
+.cmp-slide input::-moz-range-thumb { width: 1.1rem; height: 1.1rem; background: var(--gilt); border: 0; border-radius: 0; }
+.cmp-slide input:active::-webkit-slider-thumb { transform: scale(1.15); }
+.cmp-slide input:focus-visible { outline: none; }
+.cmp-slide input:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--accent); outline-offset: 3px; }
+.cmp-slide input:focus-visible::-moz-range-thumb { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* the reading under the proof */
+.cmp-read { margin-top: 1.75rem; }
+.cmp-sentence { font-size: var(--step-lead); line-height: 1.35; max-width: 40ch; }
+.cmp-sentence b { font-weight: 600; color: var(--accent); }
+.cmp-note { margin-top: .9rem; max-width: 56ch; }
+.cmp-table { margin-top: 1.5rem; max-width: 46rem; }
+.cmp-table th { width: 40%; }
+.cmp-table .cmp-key { width: .5rem; height: .85em; margin-right: .55rem; vertical-align: -.05em; }
+.cmp-caveat { margin-top: 1.5rem; padding: .85rem 1rem; max-width: 62ch; background: color-mix(in srgb, var(--weak) var(--tint), transparent); font-size: var(--step-small); }
+.cmp-links { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin-top: 1.25rem; font-weight: 600; }
+.cmp-credit { margin-top: 1.25rem; color: var(--muted); font-size: var(--step-small); }
+
+/* presets: banded rows, the pair named in its two inks */
+.cmp-group + .cmp-group { margin-top: 2.75rem; }
+.band.cmp-preset { width: 100%; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr) 3rem; gap: 1.5rem; text-align: left; padding-block: .8rem; }
+.cmp-pair { display: flex; flex-direction: column; font-weight: 600; line-height: 1.25; }
+.cmp-pair .kb { color: var(--accent); }
+.cmp-preset .band-note { margin-top: 0; }
+.cmp-sim { justify-self: end; color: var(--muted); font-size: var(--step-small); }
+.band.cmp-preset.on { background: color-mix(in srgb, var(--gilt) 26%, var(--surface)); }
+.band.cmp-preset:active { transform: scale(.995); }
+
+@media (max-width: 56rem) {
+  .cmp > .side { position: static; margin-bottom: 1.75rem; }
+  .cmp-controls { max-width: none; }
+  .cmp-plate { aspect-ratio: 1; }
+  .band.cmp-preset { grid-template-columns: minmax(0, 1fr) auto; gap: .35rem 1rem; }
+  .cmp-preset .cmp-pair { grid-column: 1; }
+  .cmp-preset .cmp-sim { grid-column: 2; grid-row: 1; align-self: start; }
+  .cmp-preset .band-note { grid-column: 1 / -1; }
+}
+@media (max-width: 40rem) {
+  .cmp-plate { aspect-ratio: 4 / 5; }
+  .cmp-slide { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 1rem; }
+  .cmp-slide input { grid-column: 1 / -1; grid-row: 1; }
+  .cmp-slide span { justify-self: end; }
+  .cmp-table th { width: auto; }
+}
+
 /* ---------- search and ask: the two things that truly float ---------- */
 .overlay { position: fixed; inset: 0; z-index: 60; background: rgba(10, 10, 12, .62); display: flex; justify-content: center; align-items: flex-start; padding: 12vh var(--margin) 0; }
 .search-panel { width: 100%; max-width: 44rem; background: var(--surface); box-shadow: 0 30px 80px rgba(0, 0, 0, .45); /* taste-skill-ignore: floats above the page */ }

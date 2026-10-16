@@ -214,7 +214,7 @@
           <a class="link" href="support.html">Support the codex</a>
         </div>
         <div class="foot-cols">
-          <div><h3>Browse</h3><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li></ul></div>
+          <div><h3>Browse</h3><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li><li><a class="link" href="compare.html">Compare structures</a></li></ul></div>
           <div><h3>The codex</h3><ul class="plain"><li><a class="link" href="about.html">About</a></li><li><a class="link" href="about.html#grades">Evidence grades</a></li><li><a class="link" href="credits.html">Credits</a></li></ul></div>
           <div><h3>Elsewhere</h3><ul class="plain"><li><a class="link" href="support.html">Support me</a></li><li><a class="link" href="about.html#contact">Request an entry</a></li></ul></div>
         </div>
@@ -530,7 +530,8 @@
       const out = [];
       
       // head: the plate and the facts in the side zone, the name and the lede on the axis
-      const plate = e.pubchem ? `<figure class="plate-card" data-rise style="--i:0"><img alt="Structure drawing of ${esc(e.name)}" src="${plateUrl(e.pubchem, 500)}" width="500" height="500" onerror="this.closest('figure').remove()"></figure>` : "";
+      const comparable = A.structures && A.structures.smiles[e.slug];
+      const plate = e.pubchem ? `<figure class="plate-card" data-rise style="--i:0"><img alt="Structure drawing of ${esc(e.name)}" src="${plateUrl(e.pubchem, 500)}" width="500" height="500" onerror="this.closest('figure').remove()"></figure>${comparable ? `<a class="link plate-link" data-rise style="--i:0" href="compare.html?a=${encodeURIComponent(e.slug)}">Compare this structure</a>` : ""}` : "";
       const intro = e.type === "article"
         ? `<div class="entry-intro" data-rise style="--i:2"><p>${esc(e.summary)}</p></div>`
         : `<div class="entry-intro" data-rise style="--i:2">
