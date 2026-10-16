@@ -651,7 +651,7 @@
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         const sorted = [...ids].sort((a, b) => a - b);
         out.push(`<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`);

@@ -182,6 +182,66 @@ window.ATLAS.dosing = {
   ondansetron: { source: "FDA label", evidence: "established", rows: [
     ["Nausea and vomiting", "4 to 8 mg per dose, with frequency set by indication"],
     ["Cardiac caution", "Higher doses prolong the QT interval; the 32 mg single IV dose was withdrawn for this reason"]] },
+  tropisetron: { source: "EU label (Navoban) and published trials", evidence: "established", refs: [105, 101, 102], rows: [
+    ["Chemotherapy nausea (label)", "5 mg once daily for up to 6 days: intravenously on the day of chemotherapy, then by mouth on the days after"],
+    ["Postoperative nausea (label)", "2 mg intravenously as a single dose"],
+    ["Schizophrenia trials (off-label)", "5, 10 or 20 mg daily by mouth, for 10 days to 8 weeks"],
+    ["Quitting nicotine", "No trial has given tropisetron for this, so there is no dose for it"]],
+    note: "Poor CYP2D6 metabolizers, and anyone taking a CYP2D6 inhibitor such as bupropion, reach much higher blood levels from the same dose." },
+  /* ---------------------------------------------------------- dependence and cessation */
+  nicotine: { source: "FDA over-the-counter label (replacement therapy)", evidence: "established", refs: [135], rows: [
+    ["Patch, more than 10 cigarettes a day", "21 mg/24 h for 6 weeks, then 14 mg for 2 weeks, then 7 mg for 2 weeks"],
+    ["Patch, 10 or fewer a day", "14 mg/24 h for 6 weeks, then 7 mg for 2 weeks"],
+    ["Gum or lozenge strength", "4 mg if the first cigarette comes within 30 minutes of waking; otherwise 2 mg"],
+    ["Gum or lozenge schedule", "One every 1–2 hours in weeks 1–6, every 2–4 hours in weeks 7–9, every 4–8 hours in weeks 10–12. No more than 24 pieces of gum or 20 lozenges a day"],
+    ["Pouches and e-liquids", "Consumer products with no dosing label"]],
+    note: "The label schedule tapers on purpose. Replacement exists to step the dose and frequency down to zero, not to hold them steady." },
+  varenicline: { source: "FDA label", evidence: "established", refs: [112], rows: [
+    ["Days 1–3", "0.5 mg once daily"], ["Days 4–7", "0.5 mg twice daily"], ["Day 8 onward", "1 mg twice daily"],
+    ["Quit date", "Set about one week after starting, or flexibly between days 8 and 35"],
+    ["Duration", "12 weeks, with a further 12 weeks for people who have quit"],
+    ["Severe kidney impairment", "No more than 0.5 mg twice daily"]],
+    note: "Taken after food with a full glass of water to reduce nausea." },
+  cytisine: { source: "Tabex label (EU) and ORCA-2 trial", evidence: "established", refs: [142, 111], rows: [
+    ["Days 1–3 (Tabex, 1.5 mg tablets)", "One tablet every 2 hours, six a day"],
+    ["Days 4–12", "One every 2.5 hours, five a day"], ["Days 13–16", "One every 3 hours, four a day"],
+    ["Days 17–20", "One every 5 hours, three a day"], ["Days 21–25", "One or two a day"],
+    ["Quit date", "No later than day 5"],
+    ["Cytisinicline (ORCA-2 trial)", "3 mg three times daily for 6 or 12 weeks"]] },
+  bupropion: { source: "FDA label", evidence: "established", refs: [132], rows: [
+    ["Quitting smoking (Zyban, SR)", "150 mg once daily for 3 days, then 150 mg twice daily, starting 1–2 weeks before the quit date, for 7–12 weeks"],
+    ["Depression (XL)", "150 mg once each morning, increased to 300 mg after at least 4 days; maximum 450 mg"],
+    ["ADHD (off-label trial)", "SR up to 200 mg twice daily in the controlled adult trial"],
+    ["Seizure ceiling", "Do not exceed 450 mg a day; seizure risk rises steeply above it"]],
+    note: "Doses are spaced at least 8 hours apart with the SR form, and the last dose is taken well before bed to limit insomnia." },
+  /* ---------------------------------------------------------- ADHD and wakefulness */
+  amphetamine: { source: "FDA label", evidence: "established", refs: [125], rows: [
+    ["ADHD, IR (Adderall), age 6 and up", "Start 5 mg once or twice daily; increase by 5 mg weekly. Doses above 40 mg a day are rarely needed"],
+    ["ADHD, XR (Adderall XR), adults", "20 mg once each morning"],
+    ["Narcolepsy", "5–60 mg a day in divided doses"],
+    ["With a strong CYP2D6 inhibitor", "Start lower and titrate cautiously (for example alongside bupropion)"]] },
+  lisdexamfetamine: { source: "FDA label", evidence: "established", refs: [126], rows: [
+    ["ADHD", "30 mg once each morning; increase by 10–20 mg weekly; maximum 70 mg"],
+    ["Binge eating disorder", "Start 30 mg; titrate to 50–70 mg"]] },
+  methylphenidate: { source: "FDA label", evidence: "established", refs: [127], rows: [
+    ["IR (Ritalin), adults", "20–30 mg a day in 2–3 doses, 30–45 minutes before meals; range 10–60 mg"],
+    ["Extended-release (Concerta), adults", "Start 18 or 36 mg once each morning; maximum 72 mg"],
+    ["Dexmethylphenidate (Focalin)", "Half the methylphenidate dose, because it is the active isomer alone"]] },
+  atomoxetine: { source: "FDA label", evidence: "established", refs: [128], rows: [
+    ["Adults and children over 70 kg", "40 mg a day, increased after at least 3 days to 80 mg; maximum 100 mg"],
+    ["With a strong CYP2D6 inhibitor, or poor metabolizers", "Start 40 mg; increase to 80 mg only after 4 weeks if needed"],
+    ["Onset", "Full effect can take 4 weeks or more"]] },
+  viloxazine: { source: "FDA label", evidence: "established", refs: [129], rows: [
+    ["Age 6–11", "100 mg once daily; up to 400 mg"], ["Age 12–17", "200 mg once daily; up to 400 mg"], ["Adults", "200 mg once daily; up to 600 mg"]] },
+  guanfacine: { source: "FDA label (Intuniv)", evidence: "established", refs: [130], rows: [
+    ["Age 6–17", "Start 1 mg once daily; increase by no more than 1 mg a week. Target 0.05–0.12 mg/kg a day"],
+    ["Maximum", "4 mg (age 6–12) or 7 mg (age 13–17)"],
+    ["Stopping", "Taper by no more than 1 mg every 3–7 days to avoid rebound high blood pressure"]] },
+  modafinil: { source: "FDA label", evidence: "established", refs: [131], rows: [
+    ["Narcolepsy or sleep apnea", "200 mg once each morning"],
+    ["Shift-work sleepiness", "200 mg about 1 hour before the shift"],
+    ["Higher doses", "400 mg a day was tested and gave no consistent extra benefit"],
+    ["Armodafinil (Nuvigil)", "150–250 mg once daily"]] },
   naltrexone: { source: "FDA label", evidence: "established", rows: [
     ["Alcohol or opioid dependence", "50 mg once daily by mouth, or a monthly 380 mg intramuscular injection"],
     ["Low-dose naltrexone", "Compounded off-label at a small fraction of the approved dose; evidence is small and mixed"],

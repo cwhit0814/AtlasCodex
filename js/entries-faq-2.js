@@ -664,7 +664,38 @@
     a: [["5-HT3 receptor", "established", "Blocks serotonin signaling in the gut and brainstem vomiting center"]],
     t: [], noTrials: "Approval rests on chemotherapy and postoperative nausea trials.",
     k: [["Route", "Oral, dissolving tablet or intravenous"], ["Bioavailability", "About 60%"], ["Half-life", "About 3–6 hours"], ["Metabolism", "Liver, CYP3A4/1A2/2D6"], ["Excretion", "Urine as metabolites"]], ke: "established",
-    related: ["semaglutide", "tirzepatide"] });
+    related: ["semaglutide", "tirzepatide", "tropisetron"] });
+
+  A.add({ slug: "tropisetron", name: "Tropisetron", aliases: ["Navoban", "ICS 205-930"], category: "health", status: "Approved",
+    class: "5-HT3 receptor antagonist / α7 nicotinic partial agonist", developer: "Sandoz (now Novartis), 1980s",
+    added: "2026-10-16", updated: "2026-10-16",
+    tags: ["nausea", "antiemetic", "α7 nAChR", "nicotinic", "sensory gating", "nicotine"],
+    summary: "An anti-nausea drug in the same class as ondansetron that also partly activates the α7 nicotinic receptor. That second action has interested people trying to quit nicotine. But α7 is not the receptor nicotine addiction mainly works through, and no trial has tested tropisetron for quitting.",
+    names: "Sold as Navoban for nausea from chemotherapy and surgery in Europe, parts of Asia, Australia and elsewhere. The brand has since been withdrawn from several markets. It has never been approved in the US. The \"Approved\" status refers to approval outside the US for nausea only. Interest in it as a nicotine aid comes from self-experimenter communities, not from any label or trial. The <a href=\"entry.html?slug=quitting-nicotine-tropisetron\">quitting nicotine guide</a> covers that use in full.",
+    structure: "An indole-3-carboxylic acid ester of tropine. C<sub>17</sub>H<sub>20</sub>N<sub>2</sub>O<sub>2</sub>, about 284.4 g/mol, usually supplied as the hydrochloride salt. It shares the tropane ring of atropine and cocaine but has the activity of neither.",
+    pubchem: "tropisetron",
+    pnote: "Scored against the other approved support medicines in the codex. The nicotine score reflects the absence of any cessation trial.",
+    p: [["Nausea control", 4], ["α7 / sensory gating signal", 2], ["Nicotine cessation evidence", 1], ["Risk load", 2, 1], ["Evidence quality", 3]],
+    r: [["QT prolongation", "moderate", "Prolongs the QT interval, as every 5-HT3 antagonist does. The risk adds up with other QT-prolonging drugs and with low potassium or magnesium", "established",
+          "The effect grows with blood level, and blood levels run highest in CYP2D6 poor metabolizers and in anyone taking a CYP2D6 inhibitor."],
+        ["CYP2D6 interactions", "moderate", "Cleared mainly by CYP2D6. Bupropion, fluoxetine and paroxetine are strong inhibitors and can raise exposure several-fold", "established",
+          "Bupropion is itself an approved quit-smoking drug, so this is the interaction most likely to happen in someone using tropisetron to quit. Roughly 7% of people of European descent are poor metabolizers by genetics, and in them the half-life is several times longer."],
+        ["Constipation, headache, dizziness", "low", "The common side effects of the class", "established"],
+        ["Serotonin syndrome", "low", "Reported when 5-HT3 antagonists are combined with other serotonergic drugs", "established"],
+        ["Product quality", "moderate", "Outside the nausea label it is usually bought as research powder. Purity and identity are unverified", "established"]],
+    a: [["5-HT3 receptor", "established", "Potent competitive antagonist at the serotonin 5-HT3 receptor in the gut and brainstem, which is how it prevents nausea"],
+        ["α7 nicotinic receptor", "in vitro", "Partial agonist with nanomolar affinity. It opens the α7 channel, but less fully than acetylcholine does",
+          "This was discovered in 2001, long after the drug was marketed. It is the action behind current interest in tropisetron for attention, sensory gating and inflammation."],
+        ["α4β2 nicotinic receptor", "in vitro", "Little activity at α4β2, the high-affinity subtype through which nicotine produces reward and dependence",
+          "This is the key point for anyone considering it as a nicotine aid. It neither occupies nor blocks the receptor that varenicline and cytisine target."],
+        ["Sensory gating (P50)", "human rct", "Improved P50 auditory gating in small trials in schizophrenia. P50 gating is a measure linked to α7 function"]],
+    t: [
+      { title: "P50 gating and cognition in schizophrenia", evidence: "human rct", meta: ["40 non-smoking patients with schizophrenia on stable antipsychotics", "tropisetron 5, 10 or 20 mg daily by mouth, or placebo", "10 days", "randomized, double-blind, placebo-controlled"], body: "Tropisetron improved P50 sensory gating and some cognitive scores, mainly attention and immediate memory, compared with placebo.", note: "The investigators enrolled only non-smokers because nicotine itself changes P50 gating. The trial says nothing about nicotine dependence.", refs: [102] },
+      { title: "Tropisetron added to antipsychotics in schizophrenia", evidence: "human rct", meta: ["patients with chronic schizophrenia", "tropisetron 10 mg daily or placebo, added to existing treatment", "8 weeks", "randomized, double-blind, placebo-controlled"], body: "P50 gating and some measures of sustained attention improved, and the drug was well tolerated. The trial was small.", refs: [101] },
+      { title: "Negative symptoms of schizophrenia", evidence: "human rct", meta: ["patients with chronic schizophrenia taking risperidone", "tropisetron 5 mg daily or placebo, added to risperidone", "8 weeks", "randomized, double-blind, placebo-controlled"], body: "Negative symptoms, such as flat emotion and social withdrawal, improved more with tropisetron than with placebo.", note: "Small, from a single centre, and not repeated at a larger scale.", refs: [103] }
+    ],
+    k: [["Route", "Oral capsule or intravenous"], ["Oral bioavailability", "About 60% at 5 mg, rising at higher doses as first-pass metabolism saturates"], ["Time to peak", "About 2–3 hours (oral)"], ["Half-life", "About 8 hours in extensive CYP2D6 metabolizers; about 30–45 hours in poor metabolizers"], ["Protein binding", "About 70%"], ["Metabolism", "Liver, mainly CYP2D6 hydroxylation"], ["Excretion", "Mostly urine, as inactive metabolites"]], ke: "established", kr: [105, 106],
+    related: ["ondansetron", "quitting-nicotine-tropisetron", "varenicline", "bupropion"] });
 
   A.add({ slug: "naltrexone", name: "Naltrexone", aliases: ["LDN", "Low-dose naltrexone", "Revia", "Vivitrol"], category: "health", status: "Approved",
     class: "Opioid receptor antagonist", developer: "Endo Laboratories", tags: ["opioid antagonist", "LDN", "alcohol"],
@@ -773,4 +804,14 @@
     t: [], noTrials: "Small trials for skin lightening and other uses have inconsistent results.",
     k: [["Route", "Oral, intravenous or inhaled"], ["Oral bioavailability", "Low; mostly broken down in the gut"], ["Half-life", "Minutes in blood"]], ke: "human obs",
     related: ["nad-plus", "vitamin-b12"] });
+
+  Object.assign(A.references, {
+    100: "Macor JE et al. The 5-HT3 antagonist tropisetron (ICS 205-930) is a potent and selective α7 nicotinic receptor partial agonist. Bioorg Med Chem Lett 2001;11:319–321.",
+    101: "Shiina A et al. A randomised, double-blind, placebo-controlled trial of tropisetron in patients with schizophrenia. Ann Gen Psychiatry 2010;9:27.",
+    102: "Zhang XY et al. Short-term tropisetron treatment and cognitive and P50 auditory gating deficits in schizophrenia. Am J Psychiatry 2012;169:974–981.",
+    103: "Noroozian M et al. Tropisetron for treatment of negative symptoms in patients with chronic schizophrenia: a randomized, double-blind, placebo-controlled study. Psychopharmacology 2013;228:595–602.",
+    104: "Koike K et al. Tropisetron improves deficits in auditory P50 suppression in schizophrenia. Schizophr Res 2005;76:67–72.",
+    105: "Navoban (tropisetron) summary of product characteristics. Novartis.",
+    106: "de Bruijn KM. Tropisetron. A review of the clinical experience. Drugs 1992;43 Suppl 3:11–22."
+  });
 })(window.ATLAS);
