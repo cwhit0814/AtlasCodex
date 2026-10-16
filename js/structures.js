@@ -255,7 +255,14 @@ window.ATLAS.structures = {
       { a: "proviron", b: "masteron", sim: 0.6, note: "Both are DHT with one added methyl: at C1 in mesterolone, at C2 in drostanolone." },
       { a: "anavar", b: "winstrol", sim: 0.5, note: "Both are 17α-methylated DHT derivatives with a rebuilt A ring: an oxygen in the ring of oxandrolone, a fused pyrazole in stanozolol." },
       { a: "testosterone", b: "exemestane", sim: 0.29, note: "Exemestane, a steroidal aromatase inhibitor, keeps the androgen skeleton." },
-      { a: "finasteride", b: "dutasteride", sim: 0.64, note: "Both are 4-azasteroids; they differ in the amide at C17." }
+      { a: "finasteride", b: "dutasteride", sim: 0.64, note: "Both are 4-azasteroids; they differ in the amide at C17." },
+      { a: "testosterone", b: "equipoise", sim: 0.36, note: "Boldenone is testosterone with a 1,2 double bond; Equipoise carries it as a long undecylenate ester at C17." },
+      { a: "testosterone", b: "halotestin", sim: 0.41, note: "Fluoxymesterone adds a 17α-methyl group, a 9α-fluorine and an 11β-hydroxyl group to testosterone." },
+      { a: "testosterone", b: "anadrol", sim: 0.27, note: "Oxymetholone is a DHT derivative: no 4,5 double bond, a 17α-methyl group and a hydroxymethylene group at C2." },
+      { a: "proviron", b: "primobolan", sim: 0.54, note: "Both carry a methyl group at C1 of DHT; methenolone adds a 1,2 double bond." },
+      { a: "testosterone", b: "finasteride", sim: 0.29, note: "Finasteride swaps a carbon of the steroid A ring for nitrogen, mimicking the testosterone that 5α-reductase acts on." },
+      { a: "testosterone", b: "clascoterone", sim: 0.49, note: "Clascoterone, a topical androgen receptor blocker, is built on the same four-ring steroid nucleus." },
+      { a: "testosterone", b: "ecdysterone", sim: 0.19, note: "Ecdysterone, an insect and plant hormone, shares the four-ring nucleus but carries six hydroxyl groups and a long side chain." }
     ] },
     { group: "Shared scaffolds", items: [
       { a: "anastrozole", b: "letrozole", sim: 0.26, note: "Both carry the 1,2,4-triazole that binds the iron at the centre of aromatase." },
@@ -265,7 +272,12 @@ window.ATLAS.structures = {
       { a: "t3", b: "gc-1", sim: 0.25, note: "Sobetirome keeps the two-ring core of T3, with methyl and isopropyl groups in place of the iodines and a methylene in place of the ether bridge." },
       { a: "rosuvastatin", b: "pitavastatin", sim: 0.45, note: "Different ring systems carrying the same dihydroxyheptenoic acid side chain, the part that mimics HMG-CoA." },
       { a: "ondansetron", b: "tropisetron", sim: 0.19, note: "Two 5-HT3 antagonists. Only tropisetron also activates the α7 nicotinic receptor." },
-      { a: "sildenafil", b: "tadalafil", sim: 0.12, note: "Both block PDE5, yet they share very little skeleton. Shared effect does not need shared structure." }
+      { a: "sildenafil", b: "tadalafil", sim: 0.12, note: "Both block PDE5, yet they share very little skeleton. Shared effect does not need shared structure." },
+      { a: "ostarine", b: "ru-58841", sim: 0.33, note: "RU-58841 carries the same 4-cyano-3-(trifluoromethyl)phenyl group as ostarine, a hallmark of nonsteroidal androgen receptor ligands." },
+      { a: "tamoxifen", b: "raloxifene", sim: 0.21, note: "Both are SERMs with a basic side chain on an aryl ether, but raloxifene's core is a benzothiophene, not a triphenylethylene." },
+      { a: "t3", b: "resmetirom", sim: 0.1, note: "Resmetirom keeps the diaryl ether bridge of T3; chlorines take the place of the inner ring's iodines and the outer ring becomes a pyridazinone." },
+      { a: "yohimbine", b: "9-me-bc", sim: 0.13, note: "Yohimbine's ring system contains a β-carboline, the tricyclic core of 9-methyl-β-carboline." },
+      { a: "atomoxetine", b: "viloxazine", sim: 0.2, note: "Both block the noradrenaline transporter and both are aryl ethers with an amine; in viloxazine the amine sits in a morpholine ring." }
     ] },
     { group: "Stimulants and nicotinic", items: [
       { a: "amphetamine", b: "ephedrine", sim: 0.28, note: "Ephedrine is amphetamine with a β-hydroxyl group and an N-methyl group." },
@@ -275,14 +287,21 @@ window.ATLAS.structures = {
       { a: "1-3-dmaa", b: "1-4-dmaa", sim: 0.33, note: "Two aliphatic amines that differ only in where one methyl group sits." },
       { a: "atomoxetine", b: "dapoxetine", sim: 0.29, note: "Both are aryloxy-phenylpropylamines, the scaffold fluoxetine also belongs to." },
       { a: "nicotine", b: "cytisine", sim: 0.13, note: "Two plant alkaloids that bind α4β2 receptors: nicotine with a pyridine ring, cytisine with a pyridone." },
-      { a: "cytisine", b: "varenicline", sim: 0.24, note: "Varenicline was designed using cytisine as its template." }
+      { a: "cytisine", b: "varenicline", sim: 0.24, note: "Varenicline was designed using cytisine as its template." },
+      { a: "amphetamine", b: "1-3-dmaa", sim: 0.26, note: "1,3-DMAA has no ring at all; it shares only amphetamine's short amine chain." }
     ] },
     { group: "Racetams, GABA and wakefulness", items: [
       { a: "piracetam", b: "oxiracetam", sim: 0.47, note: "Oxiracetam is piracetam with a hydroxyl group on the ring." },
       { a: "piracetam", b: "phenylpiracetam", sim: 0.39, note: "Phenylpiracetam adds a phenyl ring to piracetam's pyrrolidone." },
       { a: "piracetam", b: "pramiracetam", sim: 0.45, note: "Pramiracetam swaps piracetam's simple amide for a diisopropylaminoethyl amide." },
       { a: "phenibut", b: "picamilon", sim: 0.21, note: "Both are built on GABA: phenibut adds a phenyl ring, picamilon joins GABA to niacin." },
-      { a: "modafinil", b: "fladrafinil", sim: 0.44, note: "Fladrafinil is modafinil with two fluorines and a hydroxamic acid in place of the amide." }
+      { a: "modafinil", b: "fladrafinil", sim: 0.44, note: "Fladrafinil is modafinil with two fluorines and a hydroxamic acid in place of the amide." },
+      { a: "piracetam", b: "aniracetam", sim: 0.3, note: "Aniracetam keeps piracetam's pyrrolidone ring but replaces the acetamide with a 4-methoxybenzoyl group." },
+      { a: "piracetam", b: "nefiracetam", sim: 0.46, note: "Nefiracetam keeps piracetam's pyrrolidone acetamide and adds a 2,6-dimethylphenyl group to the amide." },
+      { a: "piracetam", b: "noopept", sim: 0.15, note: "Often grouped with the racetams, noopept is a proline dipeptide: it shares the five-membered nitrogen ring, without the ring ketone." }
+    ] },
+    { group: "Peptides", items: [
+      { a: "ghrp-6", b: "hexarelin", sim: 0.88, note: "Hexarelin is GHRP-6 with a methyl group added to the D-tryptophan." }
     ] }
   ]
 };

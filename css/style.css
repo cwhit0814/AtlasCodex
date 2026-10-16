@@ -696,7 +696,7 @@ a.chip.go { color: var(--accent); }
 .cmp-near .chip.on { background: color-mix(in srgb, var(--gilt) 30%, var(--surface)); }
 
 .cmp-plate {
-  --pp: #eee8d2; --ink-a: #17181d; --ink-b: #84591f; --band-b: #cfa565;
+  --pp: #eee8d2; --ink-a: #17181d; --ink-b: #84591f; --band-b: #dcbd85;
   position: relative; aspect-ratio: 4 / 3; background: var(--pp); color: var(--ink-a); overflow: hidden;
 }
 #cmp-svg { position: absolute; inset: 0 0 2.75rem; width: 100%; height: calc(100% - 2.75rem); max-width: none; }
@@ -707,15 +707,15 @@ a.chip.go { color: var(--accent); }
 .cmp-plate .pl-b .bd { stroke: var(--ink-b); stroke-width: 1.5; }
 .cmp-plate .pl-b .bd.core { stroke-width: 2.6; }
 .cmp-plate .pl-b .wd { fill: var(--ink-b); }
-.cmp-plate .pl-a .band { display: none; }
-.cmp-plate .pl-b .band { stroke: var(--band-b); stroke-width: var(--band, 0); }
+/* the shared-skeleton highlight: one layer per compound, both beneath both drawings */
+.cmp-plate .hl .band { stroke: var(--band-b); stroke-width: 10px; }
 .cmp-plate text { font-family: var(--font-text); font-size: 14.4px; font-weight: 600; paint-order: stroke; stroke: var(--pp); stroke-width: 4px; stroke-linejoin: round; }
 .cmp-plate .pl-a text { fill: var(--ink-a); }
 .cmp-plate .pl-b text { fill: var(--ink-b); }
 .cmp-plate .sub, .cmp-plate .sup { font-size: 10px; }
-.cmp-plate.hide-a #gA, .cmp-plate.hide-b #gB { display: none; }
-/* shared skeleton switched off: no gold band, and the shared bonds drop to the ordinary weight */
-.cmp-plate.no-core .pl-b .band { display: none; }
+.cmp-plate.hide-a #gA, .cmp-plate.hide-a #bA, .cmp-plate.hide-b #gB, .cmp-plate.hide-b #bB { display: none; }
+/* shared skeleton switched off: no highlight under either compound, and the shared bonds drop to the ordinary weight */
+.cmp-plate.no-core .hl { display: none; }
 .cmp-plate.no-core .bd.core { stroke-width: 1.5; }
 .cmp-plate.busy svg { opacity: .25; transition: opacity 200ms ease; }
 
@@ -731,7 +731,7 @@ a.chip.go { color: var(--accent); }
 .cmp-sw.b { color: var(--ink-b); }
 .cmp-sw svg { flex: none; overflow: visible; }
 .cmp-sw .band, .cmp-sw .ln { fill: none; stroke-linecap: round; }
-.sw-shared .band { stroke: var(--band-b); stroke-width: 7; }
+.sw-shared .band { stroke: var(--band-b); stroke-width: 8; }
 .sw-shared .ln { stroke: var(--ink-a); stroke-width: 2.6; }
 .sw-a .band, .sw-b .band { display: none; }
 .sw-a .ln { stroke: var(--ink-a); stroke-width: 1.5; }

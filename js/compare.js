@@ -103,7 +103,8 @@
     const ta = labels[b.a] ? TRIM : 0, tb = labels[b.b] ? TRIM : 0;
     const at = (t, off) => ({ x: p.x + ux * t + nx * off, y: p.y + uy * t + ny * off });
     const line = (s, e, off) => seg(at(s, off), at(len - e, off));
-    const out = { d: "", band: seg(p, q), wedge: "" };
+    // the highlight follows the bond but stops short of atom labels, like the bond itself
+    const out = { d: "", band: line(ta, tb, 0), wedge: "" };
     if (b.o === 1 && b.st === 1) {
       const w = 0.13 * L, s = at(ta, 0), e1 = at(len - tb, w), e2 = at(len - tb, -w);
       out.wedge = `M${f1(s.x)} ${f1(s.y)}L${f1(e1.x)} ${f1(e1.y)}L${f1(e2.x)} ${f1(e2.y)}Z`;
@@ -152,12 +153,13 @@
       if (isCore) { strong += s.d; strongW += s.wedge; band += s.band; } else { rest += s.d; wedges += s.wedge; }
     });
     const labs = M.P.atoms.map((_, i) => labelSvg(M, i)).join("");
-    return `<g class="pl ${cls}">
-      <path class="band" d="${band}"/>
+    // The highlight is returned separately: both compounds' highlights are drawn beneath both drawings,
+    // so one switch governs them alike, whichever drawings are showing.
+    return { band: `<path class="band" d="${band}"/>`, body: `<g class="pl ${cls}">
       <path class="bd" d="${rest}"/><path class="wd" d="${wedges}"/>
       <path class="bd core" d="${strong}"/><path class="wd core" d="${strongW}"/>
       <g class="lab">${labs}</g>
-    </g>`;
+    </g>` };
   }
 
   function box(M) {
@@ -185,9 +187,7 @@
       x0 -= (W - w) / 2; y0 -= (H - h) / 2; w = W; h = H;
     }
     svg.setAttribute("viewBox", `${f1(x0)} ${f1(y0)} ${f1(w)} ${f1(h)}`);
-    $("#gB").setAttribute("transform", `translate(${f1(ox)} ${f1(oy)})`);
-    const ease = 1 - Math.min(1, t * 2.2);
-    svg.style.setProperty("--band", (9 * Math.max(0, ease)).toFixed(2) + "px");
+    for (const g of ["#gB", "#bB"]) $(g).setAttribute("transform", `translate(${f1(ox)} ${f1(oy)})`);
     $("#cmp-plate").style.setProperty("--slip", (t * 14).toFixed(1) + "px");
     // The slider always reports the drawing, except under the reader's finger while they drag it.
     const r = $("#cmp-reg"); if (r && !dragging) r.value = Math.round(t * 100);
@@ -245,7 +245,7 @@
         <div class="main" data-rise style="--i:1">
           <figure class="cmp-plate" id="cmp-plate">
             <span class="cmp-regmark" aria-hidden="true"><span class="k">${icons.reg}</span><span class="g">${icons.reg}</span></span>
-            <svg id="cmp-svg" role="img" aria-labelledby="cmp-cap" preserveAspectRatio="xMidYMid meet"><g id="gB"></g><g id="gA"></g></svg>
+            <svg id="cmp-svg" role="img" aria-labelledby="cmp-cap" preserveAspectRatio="xMidYMid meet"><g id="bB" class="hl"></g><g id="bA" class="hl"></g><g id="gB"></g><g id="gA"></g></svg>
             <div class="cmp-msg" id="cmp-msg" role="status" aria-live="polite"></div>
             <div class="cmp-strip" id="cmp-strip"></div>
             <figcaption class="sr-only" id="cmp-cap"></figcaption>
@@ -328,7 +328,7 @@
 
   function fallback() {
     const ea = bySlug(state.a), eb = bySlug(state.b);
-    $("#gA").innerHTML = ""; $("#gB").innerHTML = ""; view = null;
+    for (const g of ["#gA", "#gB", "#bA", "#bB"]) $(g).innerHTML = ""; view = null;
     message(`<div class="cmp-fallback">
         <figure><img src="${plateUrl(ea.pubchem)}" alt="Structure of ${esc(ea.name)}" width="400" height="400"><figcaption>${esc(ea.name)}</figcaption></figure>
         <figure><img src="${plateUrl(eb.pubchem)}" alt="Structure of ${esc(eb.name)}" width="400" height="400"><figcaption>${esc(eb.name)}</figcaption></figure>
@@ -364,8 +364,9 @@
 
   function draw(r) {
     const MA = prepare(r.A), MB = prepare(r.B);
-    $("#gA").innerHTML = plateSvg(MA, r.A.core, r.A.coreBonds, "pl-a");
-    $("#gB").innerHTML = plateSvg(MB, r.B.core, r.B.coreBonds, "pl-b");
+    const pa = plateSvg(MA, r.A.core, r.A.coreBonds, "pl-a"), pb = plateSvg(MB, r.B.core, r.B.coreBonds, "pl-b");
+    $("#gA").innerHTML = pa.body; $("#gB").innerHTML = pb.body;
+    $("#bA").innerHTML = pa.band; $("#bB").innerHTML = pb.band;
     const bA = box(MA), bB = box(MB);
     view = { bA, bB, aligned: r.aligned, D: bA.x1 - bB.x0 + 0.6 * L, dy: (bA.y0 + bA.y1) / 2 - (bB.y0 + bB.y1) / 2 };
     const nA = nameOf(state.a), nB = nameOf(state.b);
