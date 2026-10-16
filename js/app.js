@@ -84,13 +84,16 @@
     let shown = false, ticking = false;
     const check = () => {
       ticking = false;
+      if (!bar.isConnected) return;
       const want = scrollY > 16;
       if (want !== shown) { shown = want; bar.classList.toggle("show", want); document.body.classList.toggle("sbar-on", want); }
     };
-    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } }, { passive: true });
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(check); } };
+    addEventListener("scroll", onScroll, { passive: true });
     check();
     $(".sbar-x", bar).addEventListener("click", () => {
       try { sessionStorage.setItem("atlas-bar-off", "1"); } catch (_) {}
+      removeEventListener("scroll", onScroll);
       bar.remove();
       document.body.classList.remove("sbar-on");
     });
@@ -451,7 +454,8 @@
         $("#codex-count").textContent = `${list.length} ${list.length === 1 ? "entry" : "entries"}`;
         // Under "All", the default sort sections the list by field, in the field order of the chips.
         const grouped = state.sort === "field" && state.cat === "all";
-        const affAt = Math.min(5, list.length - 1);
+        // The affiliate row only sits in the unsectioned list of every field, never inside a field.
+        const affAt = grouped || state.cat !== "all" ? -1 : Math.min(5, list.length - 1);
         let n = 0;
         const rows = (items) => items.map((e) => band(e, n % 8) + (n++ === affAt ? affRow() : "")).join("");
         $("#codex-list").innerHTML = !list.length ? `<p class="empty-state">No entries match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`

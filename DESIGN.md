@@ -212,8 +212,8 @@ Visitors are steered toward the affiliate source and the Support page on every p
 - **Support band** (gilt field) on the home page: "Keep the codex free.", the source's logo, an ink Shop button, Copy code, and the disclosure.
 - **Buy from** on each entry: a product button when `js/buy.js` has a listing, otherwise a gold-tinted "Support the codex at Half Nattys" link with the code.
 - **Support sheet**, a compact gilt band near the end of every entry.
-- **Support bar**, a slim gilt bar that rises after the first screen on every page except Support, naming the compound when the source lists it. It can be dismissed for the session, and the Ask button lifts above it.
-- **Side card** under the filters on Codex and Archive, and one labelled **Affiliate row** in the codex list.
+- **Support bar**, a slim gilt bar that rises after the first screen on every page except Support, naming the compound when the source lists it. It can be dismissed for the browser session, and the Ask button lifts above it.
+- **Side card** under the filters on Codex and Archive, and one labelled **Affiliate row** in the codex list, shown only when the list isn't split into fields, so it never sits inside a field.
 - **Search** results end with a shop row.
 - **Listed compounds** (the source's own popular list) get a direct "Shop {compound}" button. Banned compounds never get a compound-specific shop prompt.
 
