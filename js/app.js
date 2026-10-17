@@ -188,7 +188,7 @@
         <nav class="top-nav" id="top-nav" aria-label="Main">
           <a class="link" href="codex.html"${here("codex")}>Codex</a>
           <a class="link" href="archive.html"${here("archive")}>Archive</a>
-          <a class="link" href="stacks.html"${here("stacks")}>Stacks</a>
+          <a class="link" href="stacks.html"${page === "stack" ? here("stack") : here("stacks")}>Stacks</a>
           <a class="link" href="codex.html?cat=guides">Guides</a>
           <a class="link" href="credits.html"${here("credits")}>Credits</a>
           <button class="link nav-theme" id="theme-toggle-2" type="button">Switch theme</button>
@@ -273,6 +273,8 @@
         const hits = (q ? A.entries.filter((e) => matches(e, q)) : A.entries).slice(0, 9);
         $("#search-results").innerHTML = hits.map((e) => `<li><a href="${entryUrl(e)}"><span class="r-name">${esc(e.name)}</span><span class="r-class">${esc(e.class || e.summary)}</span><span class="r-cat">${esc(cat(e.category).name)}</span></a></li>`).join("") ||
           `<li class="empty">No matches for “${esc(q)}”. Try <button class="text-btn" id="ask-instead" type="button">asking the archive</button> instead.</li>`;
+        const stackHits = q ? STK.items.filter((x) => stackMatches(x, q)).slice(0, 3) : [];
+        if (stackHits.length) $("#search-results").insertAdjacentHTML("beforeend", stackHits.map((x) => `<li><a href="${stackUrl(x)}"><span class="r-name">${esc(x.name)}</span><span class="r-class">${x.parts.map((p) => esc(partName(p))).join(" + ")}</span><span class="r-cat">Stack</span></a></li>`).join(""));
         const src = mainSource();
         if (src) $("#search-results").insertAdjacentHTML("beforeend", `<li class="r-aff"><a href="${esc(withRef(src.href, src.code))}" target="_blank" rel="noopener sponsored"><span class="r-name">Shop ${esc(src.name)} with code ${esc(src.code)}</span><span class="r-class">Affiliate link. The codex earns a commission.</span><span class="r-cat">Support</span></a></li>`);
         const ai = $("#ask-instead");
@@ -362,6 +364,54 @@
     </a>`;
   }
 
+  /* ---------- use cases (js/uses.js) and stacks (js/stacks.js) ---------- */
+  const USES = A.uses || [];
+  const useOf = (id) => USES.find((u) => u.id === id);
+  const usesFor = (slug) => USES.filter((u) => u.slugs.includes(slug));
+  const STK = A.stacks || { groups: [], items: [] };
+  const stackUrl = (s) => "stack.html?id=" + encodeURIComponent(s.id);
+  const stackById = (id) => STK.items.find((s) => s.id === id);
+  const groupOf = (id) => STK.groups.find((g) => g.id === id) || { id, name: id, note: "" };
+  const useName = (id) => (useOf(id) || { name: id }).name;
+  const pairNote = {
+    "human rct": "Tested as a pair in a controlled human trial", "human obs": "Seen as a pair only in observational data",
+    established: "Established as a pair", animal: "Tested as a pair only in animals",
+    contested: "Trials of the pair disagree", unknown: "Never tested as a pair"
+  };
+  const partName = (p) => { const e = p.slug && bySlug(p.slug); return p.name || (e && e.name) || p.slug; };
+  const stackHay = (s) => [s.name, s.aka, groupOf(s.group).name, ...s.parts.map(partName), ...(s.uses || []).map(useName)].join(" ").toLowerCase();
+  const stackMatches = (s, q) => !q || q.toLowerCase().split(/\s+/).every((w) => stackHay(s).includes(w));
+  // A row in a list of stacks: the grade of the pair, its name, its parts, and its use cases at the right.
+  function stackBand(s, i = 0) {
+    return `<a class="band stack-band" href="${stackUrl(s)}" data-reveal style="--i:${Math.min(i, 6)}">
+      ${badge(s.together)}
+      <span class="band-text"><span class="band-name">${esc(s.name)}</span><span class="band-note">${s.parts.map((p) => esc(partName(p))).join(" + ")}</span></span>
+      <span class="band-uses">${(s.uses || []).map((u) => esc(useName(u))).join(", ")}</span>
+    </a>`;
+  }
+  // The account: each part with its own grade, any class finding the pair borrows from, then the pair's own grade.
+  function stackLedger(s) {
+    const part = (p) => {
+      const e = p.slug && bySlug(p.slug);
+      return `<tr>
+        <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(partName(p))}</a> ${statusTag(e.status)}` : `<span>${esc(partName(p))}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
+        <td>${sent(p.role)}</td>
+        <td class="grade">${badge(p.ev)}</td>
+      </tr>`;
+    };
+    return `<table class="stack-ledger">
+      <caption class="sr-only">The parts of ${esc(s.name)}, with the evidence for each part and for the pair</caption>
+      <thead class="sr-only"><tr><th scope="col">Part</th><th scope="col">What it adds</th><th scope="col">Evidence</th></tr></thead>
+      <tbody>
+        ${s.parts.map(part).join("")}
+        ${(s.basis || []).map((b) => `<tr class="basis"><th scope="row"><span>${esc(b.name)}</span></th><td>The class finding the pair borrows from.</td><td class="grade">${badge(b.ev)}</td></tr>`).join("")}
+      </tbody>
+      <tfoot><tr class="sum"><th scope="row">Together</th><td>${sent(pairNote[s.together] || "")}</td><td class="grade">${badge(s.together)}</td></tr></tfoot>
+    </table>`;
+  }
+  const refItem = (n, t) => `<li id="ref-${n}" value="${n}">${esc(t)}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(t) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(t.split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`;
+  const ornament = `<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`;
+
   /* ---------- pages ---------- */
   const pages = {
     home() {
@@ -435,24 +485,36 @@
 
     codex() {
       const params = new URLSearchParams(location.search);
-      const state = { q: params.get("q") || "", cat: params.get("cat") || "all", status: "all", sort: "field" };
+      const state = { q: params.get("q") || "", cat: params.get("cat") || "all", use: useOf(params.get("use")) ? params.get("use") : "all", status: "all", sort: "field" };
       const statuses = [...new Set(A.entries.map((e) => e.status))];
       $("#codex-filters").innerHTML = `
         <label><span class="sr-only">Filter entries</span><input class="field" id="codex-q" type="search" placeholder="Filter by name, alias or tag"></label>
         ${selectBox("status-filter", "Filter by status", `<option value="all">Any status</option>` + statuses.map((s) => `<option value="${esc(s)}">${esc(cap(s))}</option>`).join(""))}
         ${selectBox("sort", "Sort", `<option value="field">By field, A to Z</option><option value="name">A to Z</option><option value="updated">Recently updated</option>`)}
         <p class="count nums" id="codex-count" aria-live="polite"></p>
+        <p class="filter-note" id="use-note" hidden></p>
         ${supportCard()}`;
       const q = $("#codex-q");
       q.value = state.q;
       const cats = A.categories.filter((c) => A.entries.some((e) => e.category === c.id));
+      // Use cases: what a compound is studied or used for. An entry can sit under several.
+      const useCount = (u) => u.slugs.filter(bySlug).length;
+      $("#use-chips").innerHTML = [`<button class="tab" type="button" data-use="all"><b>Any</b></button>`, ...USES.filter(useCount).map((u) => `<button class="tab" type="button" data-use="${u.id}"><b>${esc(u.name)}</b><span class="n nums">${useCount(u)}</span></button>`)].join("");
       $("#cat-chips").innerHTML = [`<button class="tab" type="button" data-cat="all"><b>All</b><span class="n nums">${A.entries.length}</span></button>`, ...cats.map((c) => `<button class="tab" type="button" data-cat="${c.id}"><b>${esc(c.name)}</b><span class="n nums">${A.entries.filter((e) => e.category === c.id).length}</span></button>`)].join("");
       function render() {
         $$("#cat-chips .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.cat === state.cat));
+        $$("#use-chips .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.use === state.use));
         const list = A.entries
-          .filter((e) => (state.cat === "all" || e.category === state.cat) && (state.status === "all" || e.status === state.status) && matches(e, state.q))
+          .filter((e) => (state.cat === "all" || e.category === state.cat) && (state.use === "all" || useOf(state.use).slugs.includes(e.slug)) && (state.status === "all" || e.status === state.status) && matches(e, state.q))
           .sort((a, b) => state.sort === "updated" ? b.updated.localeCompare(a.updated) : byName(a, b));
         $("#codex-count").textContent = `${list.length} ${list.length === 1 ? "entry" : "entries"}`;
+        // A chosen use case says what it covers and links across to the stacks for it.
+        const u = useOf(state.use), un = $("#use-note");
+        if (un) {
+          const ns = u ? STK.items.filter((x) => (x.uses || []).includes(u.id)).length : 0;
+          un.hidden = !u;
+          un.innerHTML = u ? `${esc(u.note)} Filed by what a compound is studied or used for, not by whether it works.${ns ? ` <a class="link go" href="stacks.html?use=${u.id}">${ns} ${ns === 1 ? "stack" : "stacks"} for ${esc(u.name.toLowerCase())}</a>` : ""}` : "";
+        }
         // Under "All", the default sort sections the list by field, in the field order of the chips.
         const grouped = state.sort === "field" && state.cat === "all";
         // The affiliate row only sits in the unsectioned list of every field, never inside a field.
@@ -467,16 +529,18 @@
             <div class="bands">${rows(items)}</div>
           </section>`).join("");
         const cf = $("#clear-filters");
-        if (cf) cf.onclick = () => { state.q = ""; state.cat = "all"; state.status = "all"; q.value = ""; $("#status-filter").value = "all"; render(); };
+        if (cf) cf.onclick = () => { state.q = ""; state.cat = "all"; state.use = "all"; state.status = "all"; q.value = ""; $("#status-filter").value = "all"; render(); };
         reveal($("#codex-list"));
         const url = new URL(location);
         state.q ? url.searchParams.set("q", state.q) : url.searchParams.delete("q");
         state.cat !== "all" ? url.searchParams.set("cat", state.cat) : url.searchParams.delete("cat");
+        state.use !== "all" ? url.searchParams.set("use", state.use) : url.searchParams.delete("use");
         history.replaceState(null, "", url);
       }
       q.addEventListener("input", () => { state.q = q.value.trim(); render(); });
       $("#cat-chips").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { state.cat = b.dataset.cat; render(); } });
       $("#status-filter").addEventListener("change", (e) => { state.status = e.target.value; render(); });
+      $("#use-chips").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { state.use = b.dataset.use; render(); } });
       $("#sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
       render();
     },
@@ -547,6 +611,7 @@
             ${e.type === "compound" ? `<span>${statusTag(e.status)}</span>` : ""}
             ${e.class ? `<span>${esc(e.class)}</span>` : ""}
             <span>Filed under <a class="link-plain" href="codex.html?cat=${e.category}">${esc(cat(e.category).name)}</a></span>
+            ${usesFor(e.slug).length ? `<span>Use case ${usesFor(e.slug).map((u) => `<a class="link-plain" href="codex.html?use=${u.id}">${esc(u.name)}</a>`).join(", ")}</span>` : ""}
           </div>
           ${e.type === "compound" ? buyBlock(e) : ""}
         </div>
@@ -661,13 +726,9 @@
           <li id="ref-${id}" value="${id}">${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(A.references[id]) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div>`));
       }
 
-      // Stacks this compound is part of, where the page loads js/stacks.js.
-      const inStacks = ((A.stacks && A.stacks.items) || []).filter((s) => s.parts.some((p) => p.slug === e.slug));
-      if (inStacks.length) out.push(sec("In stacks", "Combinations that include this compound, graded on the pair itself.", `<div class="bands">${inStacks.map((s, i) => `
-        <a class="band" href="stacks.html#stack-${esc(s.id)}" data-reveal style="--i:${Math.min(i, 6)}">
-          ${badge(s.together)}
-          <span class="band-text"><span class="band-name">${esc(s.name)}</span><span class="band-note">${esc((A.stacks.groups.find((g) => g.id === s.group) || {}).name || "")}</span></span>
-        </a>`).join("")}</div>`));
+      // Stacks this compound is part of.
+      const inStacks = STK.items.filter((x) => x.parts.some((p) => p.slug === e.slug)).sort(byName);
+      if (inStacks.length) out.push(sec("In stacks", "Combinations that include this compound, graded on the pair itself.", `<div class="bands">${inStacks.map((x, i) => stackBand(x, i)).join("")}</div>`));
 
       const related = (e.related || []).map(bySlug).filter(Boolean);
       if (related.length) out.push(sec("Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`));
@@ -767,126 +828,131 @@
         </article>`).join("");
     },
 
+    // The stacks index: every combination as a band, filtered by use case, by how far the record goes, or by name.
     stacks() {
-      const S = A.stacks;
-      if (!S) return;
-      const goalOf = (id) => S.goals.find((g) => g.id === id) || { id, name: id };
       const params = new URLSearchParams(location.search);
-      const state = { goal: S.goals.some((g) => g.id === params.get("goal")) ? params.get("goal") : "all" };
-
-      // One reference list for the page, numbered in reading order. Numbers in the data point into ATLAS.references.
-      const refText = [], refNo = new Map();
-      const refOf = (r) => {
-        const t = typeof r === "number" ? A.references[r] : r;
-        if (!t) return 0;
-        if (!refNo.has(t)) { refText.push(t); refNo.set(t, refText.length); }
-        return refNo.get(t);
+      const usable = USES.filter((u) => STK.items.some((s) => (s.uses || []).includes(u.id)));
+      const state = {
+        q: params.get("q") || "",
+        use: usable.some((u) => u.id === params.get("use")) ? params.get("use") : "all",
+        group: STK.groups.some((g) => g.id === params.get("group")) ? params.get("group") : "all",
+        sort: ["group", "name", "updated"].includes(params.get("sort")) ? params.get("sort") : "group"
       };
-      const refsOf = new Map(S.items.map((s) => [s.id, (s.refs || []).map(refOf).filter(Boolean)]));
-
-      const sumNote = {
-        "human rct": "Tested as a pair in a controlled human trial", "human obs": "Seen as a pair only in observational data",
-        established: "Established as a pair", animal: "Tested as a pair only in animals",
-        contested: "Trials of the pair disagree", unknown: "Never tested as a pair"
-      };
-      const part = (p) => {
-        const e = p.slug && bySlug(p.slug);
-        const label = p.name || (e && e.name) || p.slug;
-        return `<tr>
-          <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(label)}</a> ${statusTag(e.status)}` : `<span>${esc(label)}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
-          <td>${sent(p.role)}</td>
-          <td class="grade">${badge(p.ev)}</td>
-        </tr>`;
-      };
-      const stack = (s, i) => {
-        const refs = refsOf.get(s.id);
-        return `
-        <article class="sheet stack" id="stack-${esc(s.id)}" data-goal="${esc(s.goal)}" data-reveal style="--i:${Math.min(i, 3)}">
-          <header class="stack-head">
-            <h3>${esc(s.name)}</h3>
-            <p class="stack-sub">${s.aka ? `Also known as ${esc(s.aka)} · ` : ""}<a class="link-plain" href="?goal=${esc(s.goal)}" data-goal-link="${esc(s.goal)}">${esc(goalOf(s.goal).name)}</a></p>
-          </header>
-          <table class="stack-ledger">
-            <caption class="sr-only">The parts of ${esc(s.name)}, with the evidence for each part and for the pair</caption>
-            <thead class="sr-only"><tr><th scope="col">Part</th><th scope="col">What it adds</th><th scope="col">Evidence</th></tr></thead>
-            <tbody>
-              ${s.parts.map(part).join("")}
-              ${(s.basis || []).map((b) => `<tr class="basis"><th scope="row"><span>${esc(b.name)}</span></th><td>The class finding the pair borrows from.</td><td class="grade">${badge(b.ev)}</td></tr>`).join("")}
-            </tbody>
-            <tfoot><tr class="sum"><th scope="row">Together</th><td>${sent(sumNote[s.together] || "")}</td><td class="grade">${badge(s.together)}</td></tr></tfoot>
-          </table>
-          <dl class="stack-read">
-            <div><dt>The theory</dt><dd>${s.theory}</dd></div>
-            <div><dt>The record</dt><dd>${s.record}</dd></div>
-            <div><dt>As studied</dt>${s.studied
-              ? `<dd>${sent(s.studied)} <span class="soft">Given in a published trial and recorded for reference, not as a recommendation.</span></dd>`
-              : `<dd class="soft">No trial has given this combination a dose, so none is listed.</dd>`}</div>
-          </dl>
-          ${s.watch && s.watch.length ? `<div class="watch"><h3>What to watch</h3><ul>${s.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>` : ""}
-          ${s.note ? `<p class="editor-note"><b>Editor's reading.</b> ${sent(s.note)}</p>` : ""}
-          ${refs.length ? `<p class="refs-line">References ${refs.map((n) => `<a href="#sref-${n}">${n}</a>`).join(", ")}</p>` : ""}
-        </article>`;
-      };
-
-      const host = $("#stacks");
-      const count = (g) => S.items.filter((s) => g === "all" || s.goal === g).length;
-      const goals = S.goals.filter((g) => count(g.id));
-      const ornament = `<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`;
-      host.innerHTML = `
-        <div class="wrap spread stacks-intro">
-          <div class="side" data-rise style="--i:1">
-            <p class="note">A pair is graded on what the pair has been shown to do, never on the strength of its parts. Two well-studied compounds that have never been tested together are graded Unknown.</p>
-            <p class="note"><a class="link go" href="entry.html?slug=why-compounds-get-combined">Why compounds get combined</a></p>
-            ${supportCard()}
-          </div>
-          <div class="main" data-rise style="--i:2">
-            <div class="cat-row" id="goal-tabs" role="group" aria-label="Filter by goal">${[{ id: "all", name: "All" }, ...goals].map((g) => `<button class="tab" type="button" data-goal="${g.id}"><b>${esc(g.name)}</b><span class="n nums">${count(g.id)}</span></button>`).join("")}</div>
-            <nav class="stack-jump" aria-label="Jump to a group">${S.groups.map((g) => `<a href="#group-${g.id}"><b>${esc(g.name)}</b><span class="nums" data-group-count="${g.id}"></span></a>`).join("")}</nav>
-          </div>
-        </div>
-        ${S.groups.map((g) => `
-        <section class="wrap spread entry-sec stack-group" id="group-${g.id}" aria-labelledby="gh-${g.id}">
-          <div class="side"><h2 id="gh-${g.id}" data-reveal>${esc(g.name)}</h2><p class="note" data-reveal style="--i:1">${esc(g.note)}</p></div>
-          <div class="main">${S.items.filter((s) => s.group === g.id).map(stack).join("")}</div>
-        </section>`).join("")}
-        ${ornament}
-        <section class="wrap spread entry-sec"><div class="side"><h2>References</h2><p class="note">Linked to a PubMed search where the source is a paper.</p></div><div class="main"><div class="sheet"><ol class="refs-list nums">${refText.map((t, i) => `
-          <li id="sref-${i + 1}" value="${i + 1}">${esc(t)}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(t) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(t.split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div></div></section>
-        <section class="wrap spread entry-sec"><div class="side"><h2>Record</h2></div><div class="main"><p class="disclaimer">Doses appear only where a published trial gave them to the combination. Forum, vendor and coaching protocols are left out on purpose. A stack listed here describes the record; it is not a recommendation to run it.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p></div></section>`;
+      $("#stack-filters").innerHTML = `
+        <label><span class="sr-only">Filter stacks</span><input class="field" id="stack-q" type="search" placeholder="Filter by name or compound"></label>
+        ${selectBox("group-filter", "Filter by how far the record goes", `<option value="all">Any record</option>` + STK.groups.map((g) => `<option value="${g.id}">${esc(g.name)}</option>`).join(""))}
+        ${selectBox("stack-sort", "Sort", `<option value="group">By record, A to Z</option><option value="name">A to Z</option><option value="updated">Recently updated</option>`)}
+        <p class="count nums" id="stack-count" aria-live="polite"></p>
+        <p class="filter-note"><a class="link go" href="entry.html?slug=why-compounds-get-combined">Why compounds get combined</a></p>
+        ${supportCard()}`;
+      const q = $("#stack-q");
+      q.value = state.q;
+      $("#group-filter").value = state.group;
+      $("#stack-sort").value = state.sort;
+      const inUse = (s, u) => u === "all" || (s.uses || []).includes(u);
+      $("#use-tabs").innerHTML = [{ id: "all", name: "All" }, ...usable].map((u) => `<button class="tab" type="button" data-use="${u.id}"><b>${esc(u.name)}</b><span class="n nums">${STK.items.filter((s) => inUse(s, u.id)).length}</span></button>`).join("");
 
       function render() {
-        $$("#goal-tabs .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.goal === state.goal));
-        $$(".stack", host).forEach((a) => (a.hidden = state.goal !== "all" && a.dataset.goal !== state.goal));
-        S.groups.forEach((g) => {
-          const n = $$(`#group-${g.id} .stack:not([hidden])`, host).length;
-          $(`#group-${g.id}`).hidden = !n;
-          const c = $(`[data-group-count="${g.id}"]`);
-          c.textContent = n;
-          c.parentElement.classList.toggle("off", !n);
-        });
+        $$("#use-tabs .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.use === state.use));
+        const list = STK.items
+          .filter((s) => inUse(s, state.use) && (state.group === "all" || s.group === state.group) && stackMatches(s, state.q))
+          .sort((a, b) => state.sort === "updated" ? b.updated.localeCompare(a.updated) || byName(a, b) : byName(a, b));
+        $("#stack-count").textContent = `${list.length} ${list.length === 1 ? "stack" : "stacks"}`;
+        // A chosen use case links across to the compounds filed under it.
+        const u = useOf(state.use);
+        const n = u ? u.slugs.filter(bySlug).length : 0;
+        $("#use-line").innerHTML = u
+          ? `<p>${esc(u.note)} <a class="link go" href="codex.html?use=${u.id}">${n === 1 ? "The one compound" : `All ${n} compounds`} filed under ${esc(u.name.toLowerCase())}</a></p>`
+          : `<p>Pick a use case to narrow the list. Every stack is graded on what the pair has been shown to do, never on the strength of its parts.</p>`;
+        const grouped = state.sort === "group";
+        $("#stack-list").innerHTML = !list.length
+          ? `<p class="empty-state">No stacks match these filters. <button class="text-btn" type="button" id="clear-filters">Clear them</button>.</p>`
+          : !grouped ? `<div class="bands">${list.map((s, i) => stackBand(s, i % 8)).join("")}</div>`
+          : STK.groups.map((g) => [g, list.filter((s) => s.group === g.id)]).filter(([, items]) => items.length).map(([g, items]) => `
+            <section class="field-block" aria-labelledby="g-${g.id}">
+              <h2 class="month-h" id="g-${g.id}" data-reveal>${esc(g.name)} <span class="nums">${items.length} ${items.length === 1 ? "stack" : "stacks"}</span></h2>
+              <p class="group-note" data-reveal>${esc(g.note)}</p>
+              <div class="bands">${items.map((s, i) => stackBand(s, i % 8)).join("")}</div>
+            </section>`).join("");
+        const cf = $("#clear-filters");
+        if (cf) cf.onclick = () => { Object.assign(state, { q: "", use: "all", group: "all" }); q.value = ""; $("#group-filter").value = "all"; render(); };
+        reveal($("#stack-list"));
         const url = new URL(location);
-        state.goal !== "all" ? url.searchParams.set("goal", state.goal) : url.searchParams.delete("goal");
+        const set = (k, v, d) => (v !== d ? url.searchParams.set(k, v) : url.searchParams.delete(k));
+        set("q", state.q, ""); set("use", state.use, "all"); set("group", state.group, "all"); set("sort", state.sort, "group");
         history.replaceState(null, "", url);
-        reveal(host);
       }
-      $("#goal-tabs").addEventListener("click", (ev) => { const b = ev.target.closest(".tab"); if (b) { state.goal = b.dataset.goal; render(); } });
-      host.addEventListener("click", (ev) => {
-        const l = ev.target.closest("[data-goal-link]");
-        if (!l) return;
-        ev.preventDefault();
-        state.goal = l.dataset.goalLink;
-        render();
-        $("#goal-tabs").scrollIntoView({ behavior: "smooth", block: "center" });
-      });
-      // A link to one stack (from an entry page) shows it even under a filter, then scrolls to it:
-      // the page is drawn after load, so the browser cannot follow the anchor by itself.
-      const target = location.hash.startsWith("#stack-") && document.getElementById(location.hash.slice(1));
-      if (target && state.goal !== "all" && target.dataset.goal !== state.goal) state.goal = "all";
+      q.addEventListener("input", () => { state.q = q.value.trim(); render(); });
+      $("#use-tabs").addEventListener("click", (e) => { const b = e.target.closest(".tab"); if (b) { state.use = b.dataset.use; render(); } });
+      $("#group-filter").addEventListener("change", (e) => { state.group = e.target.value; render(); });
+      $("#stack-sort").addEventListener("change", (e) => { state.sort = e.target.value; render(); });
+      // Links into the old single-page layout (stacks.html#stack-id) now go to the stack's own page.
+      const old = location.hash.match(/^#stack-(.+)$/);
+      if (old && stackById(old[1])) { location.replace(stackUrl(stackById(old[1]))); return; }
       render();
-      if (location.hash) {
-        const t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
-        if (t) requestAnimationFrame(() => { t.classList.add("is-in"); t.scrollIntoView({ block: "start" }); });
+    },
+
+    // One stack on its own page, laid out like a compound entry.
+    stack() {
+      const s = stackById(new URLSearchParams(location.search).get("id"));
+      const host = $("#stack");
+      if (!s) {
+        host.innerHTML = `<div class="wrap spread page-title"><div class="side"><p>That stack isn't in the codex.</p></div><div class="main"><h1>Stack not found</h1><p style="margin-top:1.5rem"><a class="button" href="stacks.html">Browse every stack</a></p></div></div>`;
+        return;
       }
+      document.title = `${s.name} · Stacks · ${A.site.title}`;
+      const sec = (title, note, body) => `<section class="wrap spread entry-sec"><div class="side"><h2 data-reveal>${esc(title)}</h2>${note ? `<p class="note" data-reveal style="--i:1">${note}</p>` : ""}</div><div class="main" data-reveal style="--i:1">${body}</div></section>`;
+      const g = groupOf(s.group);
+      const refs = (s.refs || []).map((r) => (typeof r === "number" ? A.references[r] : r)).filter(Boolean);
+      const allRefs = refs.map((_, i) => i + 1);
+      const out = [];
+
+      // head: the formula plate and the facts in the side zone, the name and the theory on the axis
+      out.push(`<header class="wrap spread entry-head" style="padding-top:clamp(2rem,5vw,4rem)">
+        <div class="side entry-side">
+          <figure class="formula" data-rise style="--i:0" aria-label="${esc(s.parts.map(partName).join(" with "))}, graded ${esc((EV[s.together] || [s.together])[0])} as a pair">
+            ${s.parts.map((p, i) => `<span class="f-part">${i ? `<span class="f-plus" aria-hidden="true">+</span>` : ""}${esc(partName(p))}</span>`).join("")}
+            <figcaption>${badge(s.together)}<span>${esc(pairNote[s.together] || "")}</span></figcaption>
+          </figure>
+          <div class="meta-list" data-rise style="--i:1">
+            <span>Filed under <a class="link-plain" href="stacks.html?group=${g.id}">${esc(g.name)}</a></span>
+            ${(s.uses || []).length ? `<span>Use case ${s.uses.map((u) => `<a class="link-plain" href="stacks.html?use=${esc(u)}">${esc(useName(u))}</a>`).join(", ")}</span>` : ""}
+            <a class="link-plain" href="stacks.html">Every stack</a>
+          </div>
+        </div>
+        <div class="main">
+          <h1 class="lines"><span class="line"><span data-line>${esc(s.name)}</span></span></h1>
+          <div class="entry-intro" data-rise style="--i:2">
+            ${s.aka ? `<p class="aka">Also known as ${esc(s.aka)}</p>` : ""}
+            <div><h2>The theory</h2><p>${s.theory}</p></div>
+          </div>
+        </div>
+      </header>`);
+
+      out.push(sec("The parts", "Each part's own record for this purpose, then the grade of the pair itself.", `<div class="sheet">${stackLedger(s)}</div>`));
+      out.push(sec("The record", `${esc(g.name)}. ${esc(g.note)}`, `
+        <div class="sheet"><p>${s.record}</p>${s.note ? `<p class="editor-note"><b>Editor's reading.</b> ${sent(s.note)}</p>` : ""}${refsLine(allRefs)}</div>`));
+      out.push(sec("Dosing in trials", "Only doses a published trial gave this combination are recorded.", s.studied
+        ? `<div class="sheet"><p>${sent(s.studied)}</p><p class="soft" style="margin-top:1rem;font-size:1rem">These are the amounts studied, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.</p></div>`
+        : `<div class="sheet no-dose"><p><strong>No combination dose.</strong> No published trial has given this combination, so no dose is listed. Doses on each part's own entry come from that part's labels and trials, not from the pair.</p></div>`));
+      const linked = s.parts.map((p) => p.slug && bySlug(p.slug)).filter(Boolean);
+      if ((s.watch || []).length) out.push(sec("What to watch", "Signs and markers this combination makes worth watching. Target ranges are left out on purpose.", `
+        <div class="sheet"><div class="watch" style="margin-top:0"><h3>Warning signs and markers</h3><ul>${s.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>
+        ${linked.length ? `<p class="soft" style="margin-top:1rem;font-size:1rem">Each part's full monitoring list is on its entry: ${linked.map((e) => `<a class="link-plain" href="${entryUrl(e)}">${esc(e.name)}</a>`).join(", ")}. Take results to a clinician.</p>` : ""}</div>`));
+      if (refs.length) {
+        out.push(ornament);
+        out.push(sec("References", "Linked to a PubMed search where the source is a paper.", `<div class="sheet"><ol class="refs-list nums">${refs.map((t, i) => refItem(i + 1, t)).join("")}</ol></div>`));
+      }
+      // More stacks for the same use cases, nearest first, then the compounds filed there.
+      const more = STK.items.filter((x) => x !== s && (x.uses || []).some((u) => (s.uses || []).includes(u))).sort(byName).slice(0, 6);
+      const u0 = useOf((s.uses || [])[0]);
+      if (more.length || u0) out.push(sec(u0 ? `More for ${u0.name.toLowerCase()}` : "More stacks", "", `
+        ${more.length ? `<div class="bands">${more.map((x, i) => stackBand(x, i)).join("")}</div>` : ""}
+        <p class="more-links">${u0 ? `<a class="link go" href="stacks.html?use=${u0.id}">Every stack for ${esc(u0.name.toLowerCase())}</a><a class="link go" href="codex.html?use=${u0.id}">Every compound for ${esc(u0.name.toLowerCase())}</a>` : `<a class="link go" href="stacks.html">Every stack</a>`}</p>`));
+      if (mainSource()) out.push(sec("Support", "", supportBand(true)));
+      out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(s.added)}. Last updated ${fmtDate(s.updated)}.</p><p class="disclaimer" style="margin-top:1rem">A stack in the codex describes the record. It is not a recommendation to run it. Forum, vendor and coaching protocols are left out on purpose.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
+      host.innerHTML = out.join("");
+      $$(".code-btn", host).forEach(copyCode);
     },
 
     about() {}

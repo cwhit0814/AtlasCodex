@@ -4,7 +4,8 @@
  * Each stack:
  *   id        anchor on stacks.html (#stack-id) and the link target from entry pages
  *   group     "together" | "parts" | "pushback"  (see groups below)
- *   goal      id from goals below, used by the filter
+ *   uses      use-case ids from js/uses.js, used by the filters
+ *   added, updated  dates; the list can sort by them
  *   parts     [{ slug, name, role, ev }]  slug links to the entry; name is used when there is no entry.
  *             ev grades that part's own record for this purpose.
  *   basis     optional extra ledger rows: [{ name, ev }] for a class-level finding the pair borrows from
@@ -16,6 +17,7 @@
  *   refs      strings, or numbers that point into ATLAS.references
  */
 (function (A) {
+  const today = "2026-10-17";
   const WADA = "World Anti-Doping Agency. Prohibited List.";
   A.stacks = {
     groups: [
@@ -23,21 +25,9 @@
       { id: "parts", name: "Tested only in parts", note: "Each part has some record. The pair has never been studied as a pair." },
       { id: "pushback", name: "Where the record pushes back", note: "A popular theory, where trials found a cost or a cancellation." }
     ],
-    goals: [
-      { id: "weight", name: "Weight" },
-      { id: "lipids", name: "Cholesterol" },
-      { id: "hormones", name: "Hormones" },
-      { id: "gh", name: "Growth hormone" },
-      { id: "repair", name: "Repair" },
-      { id: "cognition", name: "Focus and memory" },
-      { id: "performance", name: "Performance" },
-      { id: "hair", name: "Hair" },
-      { id: "nicotine", name: "Quitting nicotine" },
-      { id: "longevity", name: "NAD and ageing" }
-    ],
     items: [
       {
-        id: "cagrisema", name: "Semaglutide with cagrilintide", aka: "CagriSema", group: "together", goal: "weight",
+        id: "cagrisema", name: "Semaglutide with cagrilintide", aka: "CagriSema", group: "together", uses: ["fatloss", "sugar"],
         parts: [
           { slug: "semaglutide", role: "GLP-1 agonist. Slows the stomach and cuts appetite", ev: "human rct" },
           { slug: "cagrilintide", role: "Long-acting amylin analog. Signals fullness by a separate route", ev: "human rct" }
@@ -55,7 +45,7 @@
         refs: ["Garvey WT et al. Coadministered Cagrilintide and Semaglutide in Adults with Overweight or Obesity. N Engl J Med 2025."]
       },
       {
-        id: "statin-ezetimibe", name: "A statin with ezetimibe", group: "together", goal: "lipids",
+        id: "statin-ezetimibe", name: "A statin with ezetimibe", group: "together", uses: ["heart"],
         parts: [
           { slug: "rosuvastatin", role: "Or another statin. Blocks cholesterol synthesis in the liver", ev: "human rct" },
           { slug: "ezetimibe", role: "Blocks cholesterol absorption in the gut", ev: "human rct" }
@@ -75,7 +65,7 @@
         ]
       },
       {
-        id: "naltrexone-bupropion", name: "Naltrexone with bupropion", aka: "Contrave, Mysimba", group: "together", goal: "weight",
+        id: "naltrexone-bupropion", name: "Naltrexone with bupropion", aka: "Contrave, Mysimba", group: "together", uses: ["fatloss"],
         parts: [
           { slug: "bupropion", role: "Dopamine and noradrenaline reuptake inhibitor. Switches on appetite-reducing POMC neurons", ev: "human rct" },
           { slug: "naltrexone", role: "Opioid antagonist. Removes the brake those neurons put on themselves", ev: "human rct" }
@@ -97,7 +87,7 @@
         ]
       },
       {
-        id: "varenicline-nrt", name: "Varenicline with a nicotine patch", group: "together", goal: "nicotine",
+        id: "varenicline-nrt", name: "Varenicline with a nicotine patch", group: "together", uses: ["quitting"],
         parts: [
           { slug: "varenicline", role: "α4β2 partial agonist. Dulls craving and the reward of a cigarette", ev: "human rct" },
           { slug: "nicotine", name: "Nicotine replacement", role: "Steady nicotine from a patch. Covers withdrawal", ev: "human rct" }
@@ -118,7 +108,7 @@
         ]
       },
       {
-        id: "finasteride-minoxidil", name: "Finasteride with minoxidil", group: "together", goal: "hair",
+        id: "finasteride-minoxidil", name: "Finasteride with minoxidil", group: "together", uses: ["hair"],
         parts: [
           { slug: "finasteride", role: "5α-reductase inhibitor. Lowers the DHT that shrinks follicles", ev: "human rct" },
           { slug: "minoxidil", role: "Lengthens the growth phase of the follicle", ev: "human rct" }
@@ -136,7 +126,7 @@
         refs: ["Hu R et al. Combined treatment with oral finasteride and topical minoxidil in male androgenetic alopecia: a randomized and comparative study in Chinese patients. Dermatol Ther 2015;28:303–308."]
       },
       {
-        id: "caffeine-theanine", name: "Caffeine with L-theanine", group: "together", goal: "cognition",
+        id: "caffeine-theanine", name: "Caffeine with L-theanine", group: "together", uses: ["cognition"],
         parts: [
           { name: "Caffeine", role: "Adenosine receptor antagonist. Alertness and reaction time", ev: "human rct" },
           { name: "L-theanine", role: "An amino acid from tea, said to smooth caffeine's edge", ev: "human rct" }
@@ -155,7 +145,7 @@
         ]
       },
       {
-        id: "testosterone-hcg", name: "Testosterone with hCG", group: "together", goal: "hormones",
+        id: "testosterone-hcg", name: "Testosterone with hCG", group: "together", uses: ["hormones"],
         parts: [
           { slug: "testosterone", role: "Suppresses LH and FSH, which shuts down the testes", ev: "human rct" },
           { slug: "hcg", role: "Acts on the LH receptor, standing in for the missing signal", ev: "human rct" }
@@ -173,7 +163,7 @@
         refs: ["Coviello AD et al. Low-dose human chorionic gonadotropin maintains intratesticular testosterone in normal men with testosterone-induced gonadotropin suppression. J Clin Endocrinol Metab 2005;90:2595–2602."]
       },
       {
-        id: "nr-pterostilbene", name: "Nicotinamide riboside with pterostilbene", aka: "NRPT", group: "together", goal: "longevity",
+        id: "nr-pterostilbene", name: "Nicotinamide riboside with pterostilbene", aka: "NRPT", group: "together", uses: ["longevity"],
         parts: [
           { slug: "nad-plus", name: "Nicotinamide riboside", role: "A precursor that raises NAD+", ev: "human rct" },
           { name: "Pterostilbene", role: "A resveratrol relative, said to activate sirtuins", ev: "animal" }
@@ -193,7 +183,7 @@
       },
 
       {
-        id: "ipamorelin-cjc", name: "Ipamorelin with CJC-1295", group: "parts", goal: "gh",
+        id: "ipamorelin-cjc", name: "Ipamorelin with CJC-1295", group: "parts", uses: ["muscle"],
         parts: [
           { slug: "cjc-1295", role: "GHRH analog. Raises the signal to release growth hormone", ev: "human rct" },
           { slug: "ipamorelin", role: "Ghrelin receptor agonist. Lowers somatostatin, the brake on that signal", ev: "human rct" }
@@ -217,7 +207,7 @@
         ]
       },
       {
-        id: "bpc-tb500", name: "BPC-157 with TB-500", group: "parts", goal: "repair",
+        id: "bpc-tb500", name: "BPC-157 with TB-500", group: "parts", uses: ["healing"],
         parts: [
           { slug: "bpc-157", role: "Said to promote new blood vessels and tendon repair", ev: "animal" },
           { slug: "tb-500", role: "A thymosin β4 fragment, said to help cells move into an injury", ev: "animal" }
@@ -235,7 +225,7 @@
         refs: [10, 11, WADA]
       },
       {
-        id: "piracetam-choline", name: "Piracetam with choline", group: "parts", goal: "cognition",
+        id: "piracetam-choline", name: "Piracetam with choline", group: "parts", uses: ["cognition"],
         parts: [
           { slug: "piracetam", role: "Racetam. Thought to increase acetylcholine use in the brain", ev: "contested" },
           { name: "A choline source", role: "Alpha-GPC, citicoline or choline bitartrate, added to keep supply up", ev: "anecdotal" }
@@ -252,7 +242,7 @@
       },
 
       {
-        id: "testosterone-ai", name: "Testosterone with an aromatase inhibitor", group: "pushback", goal: "hormones",
+        id: "testosterone-ai", name: "Testosterone with an aromatase inhibitor", group: "pushback", uses: ["hormones", "muscle"],
         parts: [
           { slug: "testosterone", role: "Converts partly to estradiol through aromatase", ev: "human rct" },
           { slug: "anastrozole", role: "Blocks aromatase, lowering estradiol", ev: "human rct" }
@@ -274,7 +264,7 @@
         ]
       },
       {
-        id: "ephedrine-caffeine", name: "Ephedrine with caffeine", aka: "EC", group: "pushback", goal: "weight",
+        id: "ephedrine-caffeine", name: "Ephedrine with caffeine", aka: "EC", group: "pushback", uses: ["fatloss"],
         parts: [
           { slug: "ephedrine", role: "Releases noradrenaline and raises energy expenditure", ev: "human rct" },
           { name: "Caffeine", role: "Blocks adenosine, so ephedrine's signal lasts longer", ev: "human rct" }
@@ -296,7 +286,7 @@
         ]
       },
       {
-        id: "creatine-caffeine", name: "Creatine with caffeine", group: "pushback", goal: "performance",
+        id: "creatine-caffeine", name: "Creatine with caffeine", group: "pushback", uses: ["performance", "muscle"],
         parts: [
           { name: "Creatine", role: "Tops up muscle phosphocreatine for repeated sprints", ev: "human rct" },
           { name: "Caffeine", role: "Alertness and endurance", ev: "human rct" }
@@ -316,4 +306,5 @@
       }
     ]
   };
+  A.stacks.items.forEach((s) => { s.added = s.added || today; s.updated = s.updated || s.added; });
 })(window.ATLAS);

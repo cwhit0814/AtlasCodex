@@ -6,7 +6,9 @@ An open reference library of peptides and research compounds, built as a static,
 
 - `index.html`: home page with the support notice, the statement and search beside the compass rose, a live figure (how many compounds have a randomized human trial, recounted per field), browse by field, the range of the record as one table, the codex's standards and the support band
 - `codex.html`: the database, with filters by category, status and sort order
-- `stacks.html`: combinations of compounds from `js/stacks.js`, sorted into three groups: tested together, tested only in parts, and where the record pushes back. Each stack is a ledger of its parts with their own evidence grades, summed to one grade for the pair itself, which is never higher than what the pair has been shown to do. Doses appear only where a published trial gave them to the combination. Compound pages list the stacks they appear in
+- `stacks.html`: the list of stacks from `js/stacks.js`, filtered by use case, by how far the record goes (tested together, tested only in parts, where the record pushes back) or by name, and sortable A to Z or by last update
+- `stack.html?id=…`: one stack, laid out like a compound entry: the parts as a formula plate, the theory, a ledger of each part's evidence summed to one grade for the pair (never higher than what the pair has been shown to do), the record, dosing only where a trial gave the combination, what to watch, references, and more stacks for the same use. Compound pages list the stacks they appear in
+- Use cases (`js/uses.js`): healing and recovery, muscle building, fat loss and the rest, each a curated list of entry slugs. They filter the codex and the stacks, and appear on each entry. A use case says what a compound is studied or used for, not that it works
 - `archive.html`: chronological archive grouped by month
 - `entry.html?slug=…`: compound page with these sections:
   - names and origin, and structure (with a PubChem structure image)
