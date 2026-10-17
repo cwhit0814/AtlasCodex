@@ -6,6 +6,7 @@ An open reference library of peptides and research compounds, built as a static,
 
 - `index.html`: home page with the support notice, the statement and search beside the compass rose, a live figure (how many compounds have a randomized human trial, recounted per field), browse by field, the range of the record as one table, the codex's standards and the support band
 - `codex.html`: the database, with filters by category, status and sort order
+- `stacks.html`: combinations of compounds from `js/stacks.js`, sorted into three groups: tested together, tested only in parts, and where the record pushes back. Each stack is a ledger of its parts with their own evidence grades, summed to one grade for the pair itself, which is never higher than what the pair has been shown to do. Doses appear only where a published trial gave them to the combination. Compound pages list the stacks they appear in
 - `archive.html`: chronological archive grouped by month
 - `entry.html?slug=…`: compound page with these sections:
   - names and origin, and structure (with a PubChem structure image)

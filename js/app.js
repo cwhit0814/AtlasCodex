@@ -188,6 +188,7 @@
         <nav class="top-nav" id="top-nav" aria-label="Main">
           <a class="link" href="codex.html"${here("codex")}>Codex</a>
           <a class="link" href="archive.html"${here("archive")}>Archive</a>
+          <a class="link" href="stacks.html"${here("stacks")}>Stacks</a>
           <a class="link" href="codex.html?cat=guides">Guides</a>
           <a class="link" href="credits.html"${here("credits")}>Credits</a>
           <button class="link nav-theme" id="theme-toggle-2" type="button">Switch theme</button>
@@ -214,7 +215,7 @@
           <a class="link" href="support.html">Support the codex</a>
         </div>
         <div class="foot-cols">
-          <div><h3>Browse</h3><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li><li><a class="link" href="compare.html">Compare structures</a></li></ul></div>
+          <div><h3>Browse</h3><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="stacks.html">Stacks</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li><li><a class="link" href="compare.html">Compare structures</a></li></ul></div>
           <div><h3>The codex</h3><ul class="plain"><li><a class="link" href="about.html">About</a></li><li><a class="link" href="about.html#grades">Evidence grades</a></li><li><a class="link" href="credits.html">Credits</a></li></ul></div>
           <div><h3>Elsewhere</h3><ul class="plain"><li><a class="link" href="support.html">Support me</a></li><li><a class="link" href="about.html#contact">Request an entry</a></li></ul></div>
         </div>
@@ -660,6 +661,14 @@
           <li id="ref-${id}" value="${id}">${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(A.references[id]) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div>`));
       }
 
+      // Stacks this compound is part of, where the page loads js/stacks.js.
+      const inStacks = ((A.stacks && A.stacks.items) || []).filter((s) => s.parts.some((p) => p.slug === e.slug));
+      if (inStacks.length) out.push(sec("In stacks", "Combinations that include this compound, graded on the pair itself.", `<div class="bands">${inStacks.map((s, i) => `
+        <a class="band" href="stacks.html#stack-${esc(s.id)}" data-reveal style="--i:${Math.min(i, 6)}">
+          ${badge(s.together)}
+          <span class="band-text"><span class="band-name">${esc(s.name)}</span><span class="band-note">${esc((A.stacks.groups.find((g) => g.id === s.group) || {}).name || "")}</span></span>
+        </a>`).join("")}</div>`));
+
       const related = (e.related || []).map(bySlug).filter(Boolean);
       if (related.length) out.push(sec("Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`));
       if (mainSource()) out.push(sec("Support", "", supportBand(true)));
@@ -756,6 +765,128 @@
             <div class="person-actions"><a class="link go" href="${esc(p.href)}" target="_blank" rel="noopener">${esc(p.linkLabel || "Visit")} ↗</a></div>
           </div>
         </article>`).join("");
+    },
+
+    stacks() {
+      const S = A.stacks;
+      if (!S) return;
+      const goalOf = (id) => S.goals.find((g) => g.id === id) || { id, name: id };
+      const params = new URLSearchParams(location.search);
+      const state = { goal: S.goals.some((g) => g.id === params.get("goal")) ? params.get("goal") : "all" };
+
+      // One reference list for the page, numbered in reading order. Numbers in the data point into ATLAS.references.
+      const refText = [], refNo = new Map();
+      const refOf = (r) => {
+        const t = typeof r === "number" ? A.references[r] : r;
+        if (!t) return 0;
+        if (!refNo.has(t)) { refText.push(t); refNo.set(t, refText.length); }
+        return refNo.get(t);
+      };
+      const refsOf = new Map(S.items.map((s) => [s.id, (s.refs || []).map(refOf).filter(Boolean)]));
+
+      const sumNote = {
+        "human rct": "Tested as a pair in a controlled human trial", "human obs": "Seen as a pair only in observational data",
+        established: "Established as a pair", animal: "Tested as a pair only in animals",
+        contested: "Trials of the pair disagree", unknown: "Never tested as a pair"
+      };
+      const part = (p) => {
+        const e = p.slug && bySlug(p.slug);
+        const label = p.name || (e && e.name) || p.slug;
+        return `<tr>
+          <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(label)}</a> ${statusTag(e.status)}` : `<span>${esc(label)}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
+          <td>${sent(p.role)}</td>
+          <td class="grade">${badge(p.ev)}</td>
+        </tr>`;
+      };
+      const stack = (s, i) => {
+        const refs = refsOf.get(s.id);
+        return `
+        <article class="sheet stack" id="stack-${esc(s.id)}" data-goal="${esc(s.goal)}" data-reveal style="--i:${Math.min(i, 3)}">
+          <header class="stack-head">
+            <h3>${esc(s.name)}</h3>
+            <p class="stack-sub">${s.aka ? `Also known as ${esc(s.aka)} · ` : ""}<a class="link-plain" href="?goal=${esc(s.goal)}" data-goal-link="${esc(s.goal)}">${esc(goalOf(s.goal).name)}</a></p>
+          </header>
+          <table class="stack-ledger">
+            <caption class="sr-only">The parts of ${esc(s.name)}, with the evidence for each part and for the pair</caption>
+            <thead class="sr-only"><tr><th scope="col">Part</th><th scope="col">What it adds</th><th scope="col">Evidence</th></tr></thead>
+            <tbody>
+              ${s.parts.map(part).join("")}
+              ${(s.basis || []).map((b) => `<tr class="basis"><th scope="row"><span>${esc(b.name)}</span></th><td>The class finding the pair borrows from.</td><td class="grade">${badge(b.ev)}</td></tr>`).join("")}
+            </tbody>
+            <tfoot><tr class="sum"><th scope="row">Together</th><td>${sent(sumNote[s.together] || "")}</td><td class="grade">${badge(s.together)}</td></tr></tfoot>
+          </table>
+          <dl class="stack-read">
+            <div><dt>The theory</dt><dd>${s.theory}</dd></div>
+            <div><dt>The record</dt><dd>${s.record}</dd></div>
+            <div><dt>As studied</dt>${s.studied
+              ? `<dd>${sent(s.studied)} <span class="soft">Given in a published trial and recorded for reference, not as a recommendation.</span></dd>`
+              : `<dd class="soft">No trial has given this combination a dose, so none is listed.</dd>`}</div>
+          </dl>
+          ${s.watch && s.watch.length ? `<div class="watch"><h3>What to watch</h3><ul>${s.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>` : ""}
+          ${s.note ? `<p class="editor-note"><b>Editor's reading.</b> ${sent(s.note)}</p>` : ""}
+          ${refs.length ? `<p class="refs-line">References ${refs.map((n) => `<a href="#sref-${n}">${n}</a>`).join(", ")}</p>` : ""}
+        </article>`;
+      };
+
+      const host = $("#stacks");
+      const count = (g) => S.items.filter((s) => g === "all" || s.goal === g).length;
+      const goals = S.goals.filter((g) => count(g.id));
+      const ornament = `<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`;
+      host.innerHTML = `
+        <div class="wrap spread stacks-intro">
+          <div class="side" data-rise style="--i:1">
+            <p class="note">A pair is graded on what the pair has been shown to do, never on the strength of its parts. Two well-studied compounds that have never been tested together are graded Unknown.</p>
+            <p class="note"><a class="link go" href="entry.html?slug=why-compounds-get-combined">Why compounds get combined</a></p>
+            ${supportCard()}
+          </div>
+          <div class="main" data-rise style="--i:2">
+            <div class="cat-row" id="goal-tabs" role="group" aria-label="Filter by goal">${[{ id: "all", name: "All" }, ...goals].map((g) => `<button class="tab" type="button" data-goal="${g.id}"><b>${esc(g.name)}</b><span class="n nums">${count(g.id)}</span></button>`).join("")}</div>
+            <nav class="stack-jump" aria-label="Jump to a group">${S.groups.map((g) => `<a href="#group-${g.id}"><b>${esc(g.name)}</b><span class="nums" data-group-count="${g.id}"></span></a>`).join("")}</nav>
+          </div>
+        </div>
+        ${S.groups.map((g) => `
+        <section class="wrap spread entry-sec stack-group" id="group-${g.id}" aria-labelledby="gh-${g.id}">
+          <div class="side"><h2 id="gh-${g.id}" data-reveal>${esc(g.name)}</h2><p class="note" data-reveal style="--i:1">${esc(g.note)}</p></div>
+          <div class="main">${S.items.filter((s) => s.group === g.id).map(stack).join("")}</div>
+        </section>`).join("")}
+        ${ornament}
+        <section class="wrap spread entry-sec"><div class="side"><h2>References</h2><p class="note">Linked to a PubMed search where the source is a paper.</p></div><div class="main"><div class="sheet"><ol class="refs-list nums">${refText.map((t, i) => `
+          <li id="sref-${i + 1}" value="${i + 1}">${esc(t)}${/announcement|prescribing information|federal register|product characteristics|prohibited list/i.test(t) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(t.split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div></div></section>
+        <section class="wrap spread entry-sec"><div class="side"><h2>Record</h2></div><div class="main"><p class="disclaimer">Doses appear only where a published trial gave them to the combination. Forum, vendor and coaching protocols are left out on purpose. A stack listed here describes the record; it is not a recommendation to run it.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p></div></section>`;
+
+      function render() {
+        $$("#goal-tabs .tab").forEach((b) => b.setAttribute("aria-selected", b.dataset.goal === state.goal));
+        $$(".stack", host).forEach((a) => (a.hidden = state.goal !== "all" && a.dataset.goal !== state.goal));
+        S.groups.forEach((g) => {
+          const n = $$(`#group-${g.id} .stack:not([hidden])`, host).length;
+          $(`#group-${g.id}`).hidden = !n;
+          const c = $(`[data-group-count="${g.id}"]`);
+          c.textContent = n;
+          c.parentElement.classList.toggle("off", !n);
+        });
+        const url = new URL(location);
+        state.goal !== "all" ? url.searchParams.set("goal", state.goal) : url.searchParams.delete("goal");
+        history.replaceState(null, "", url);
+        reveal(host);
+      }
+      $("#goal-tabs").addEventListener("click", (ev) => { const b = ev.target.closest(".tab"); if (b) { state.goal = b.dataset.goal; render(); } });
+      host.addEventListener("click", (ev) => {
+        const l = ev.target.closest("[data-goal-link]");
+        if (!l) return;
+        ev.preventDefault();
+        state.goal = l.dataset.goalLink;
+        render();
+        $("#goal-tabs").scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+      // A link to one stack (from an entry page) shows it even under a filter, then scrolls to it:
+      // the page is drawn after load, so the browser cannot follow the anchor by itself.
+      const target = location.hash.startsWith("#stack-") && document.getElementById(location.hash.slice(1));
+      if (target && state.goal !== "all" && target.dataset.goal !== state.goal) state.goal = "all";
+      render();
+      if (location.hash) {
+        const t = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+        if (t) requestAnimationFrame(() => { t.classList.add("is-in"); t.scrollIntoView({ block: "start" }); });
+      }
     },
 
     about() {}

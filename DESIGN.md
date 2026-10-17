@@ -202,6 +202,9 @@ The codex's list unit: a full-width row in one of two alternating tones, 4px apa
 ### The archive index
 The archive is an A to Z index. A row of filled letter blocks jumps to each letter (letters with no records sit faded), and each letter opens its own section under a gold display initial, with ordinary bands beneath. Names that open on a digit or a Greek letter file under #.
 
+### The stack ledger
+On the Stacks page each combination is a sheet laid out like an account. Its parts are table rows (name with status, what it adds, its own evidence grade), any class-level finding the pair borrows from is an italic row, and a heavier rule leads to the **Together** line, set in Cormorant, carrying the grade of the pair itself. Below it, The theory, The record and As studied sit as labelled rows, then What to watch and the amber editor's reading. Goal tabs filter the sheets, and filled blocks jump to the three groups.
+
 ### Tabs and pickers
 Filled blocks, never outlined. Selected is inverted (parchment block, ink text). Counts sit beside each name in tabular figures.
 
