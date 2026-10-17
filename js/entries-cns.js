@@ -161,7 +161,7 @@
     related: ["lisdexamfetamine", "methylphenidate", "bupropion", "atomoxetine", "modafinil"] });
 
   /* ------------------------------------------------------------ lisdexamfetamine */
-  add({ slug: "lisdexamfetamine", name: "Lisdexamfetamine", aliases: ["Vyvanse", "Elvanse", "Tyvense"], category: "adhd", status: "Approved",
+  add({ slug: "lisdexamfetamine", name: "Lisdexamfetamine", aliases: ["Vyvanse", "Elvanse", "Tyvense"], category: "adhd", status: "Approved", updated: "2026-10-17",
     class: "Stimulant prodrug of dextroamphetamine", developer: "New River Pharmaceuticals / Shire (approved 2007)",
     tags: ["ADHD", "stimulant", "prodrug", "Schedule II", "binge eating disorder"],
     summary: "Dextroamphetamine bound to the amino acid lysine. It is inactive until enzymes in red blood cells cut it free, which gives a smooth, long effect and makes snorting or injecting it pointless. It is also the only drug approved for binge eating disorder.",
@@ -177,7 +177,11 @@
     a: [["Prodrug conversion", "established", "Hydrolyzed by enzymes in red blood cells into dextroamphetamine and lysine. Conversion speed, not the gut, sets the rate, so the effect starts gradually and is the same whether swallowed or not"],
         ["Dopamine and noradrenaline release", "established", "Identical to dextroamphetamine once released"],
         ["Abuse deterrence", "human rct", "Snorting or injecting produced no faster or stronger effect than swallowing, unlike immediate-release amphetamine. Oral overdose still produces stimulant effects"]],
-    t: [], noTrials: "Approval rests on randomized controlled trials in children, adolescents and adults with ADHD, and in adults with binge eating disorder. Its efficacy in network meta-analyses matches that of other amphetamines.", noTrialsRefs: [133],
+    t: [
+      { title: "Lisdexamfetamine in moderate to severe binge-eating disorder (dose-finding)", evidence: "human rct", meta: ["259 adults with binge-eating disorder", "30, 50 or 70 mg a day, or placebo", "3-week titration plus 8 weeks of maintenance", "randomized, double-blind, placebo-controlled, 30 sites (NCT01291173)"], body: "50 and 70 mg reduced binge days and raised 4-week binge cessation (42% and 50% against 21% on placebo). 30 mg did not separate from placebo. Weight fell about 3–5 kg against 0.1 kg on placebo, and adverse events affected 85% against 59%.", refs: [557] },
+      { title: "Lisdexamfetamine maintenance in binge-eating disorder (randomized withdrawal)", evidence: "human rct", meta: ["418 adults entered open-label; 275 responders randomized", "50 or 70 mg a day, then continued drug or switched to placebo", "12 weeks open-label plus 26 weeks double-blind", "phase 3 randomized withdrawal, 49 sites (NCT02009163)"], body: "Relapse occurred in 3.7% who stayed on lisdexamfetamine against 32.1% switched to placebo (hazard ratio 0.09).", note: "A withdrawal design among people who had already responded. It shows maintenance of effect, not the response rate in all comers.", refs: [558] },
+      { title: "Lisdexamfetamine in adults with ADHD", evidence: "human rct", meta: ["420 adults aged 18–55 with moderate to severe ADHD", "30, 50 or 70 mg a day, or placebo", "4 weeks", "multicentre, randomized, double-blind, placebo-controlled, forced titration"], body: "ADHD-RS scores fell by 16–19 points on lisdexamfetamine against 8.2 on placebo (all p < .0001), with no difference between doses and separation from week 1. Dry mouth, reduced appetite and insomnia were the main adverse events.", note: "Its efficacy in network meta-analyses of ADHD medicines matches that of other amphetamines.", refs: [559, 133] }
+    ],
     k: [["Route", "Oral capsule or chewable tablet"], ["Bioavailability", "About 96% as dextroamphetamine"], ["Time to peak", "About 1 hour (lisdexamfetamine); about 3.5 hours (dextroamphetamine)"], ["Half-life", "Under 1 hour (prodrug); about 10–12 hours (dextroamphetamine)"], ["Duration of effect", "About 12–14 hours"], ["Metabolism", "Red blood cell hydrolysis; dextroamphetamine then as for amphetamine"], ["Excretion", "Urine"]], ke: "established", kr: [126],
     related: ["amphetamine", "methylphenidate", "atomoxetine"] });
 
@@ -206,7 +210,7 @@
     related: ["amphetamine", "lisdexamfetamine", "atomoxetine", "modafinil"] });
 
   /* ------------------------------------------------------------ atomoxetine */
-  add({ slug: "atomoxetine", name: "Atomoxetine", aliases: ["Strattera"], category: "adhd", status: "Approved",
+  add({ slug: "atomoxetine", name: "Atomoxetine", aliases: ["Strattera"], category: "adhd", status: "Approved", updated: "2026-10-17",
     class: "Non-stimulant: selective noradrenaline reuptake inhibitor", developer: "Eli Lilly (approved 2002)",
     tags: ["ADHD", "non-stimulant", "NET", "CYP2D6", "not controlled"],
     summary: "The first non-stimulant approved for ADHD. It is not a controlled substance and has essentially no misuse potential, but it takes several weeks to work fully and is less effective on average than stimulants. Its levels depend heavily on CYP2D6, which makes bupropion a significant interaction.",
@@ -215,19 +219,23 @@
     pubchem: "atomoxetine",
     pnote: adhdNote,
     p: [["ADHD symptom control", 3], ["Dependence potential", 1, 1], ["Risk load", 2, 1], ["Evidence quality", 5]],
-    r: [["Suicidal thinking", "moderate", "Boxed warning for suicidal ideation in children and adolescents, seen in about 0.4% against none with placebo in pooled trials", "human rct"],
+    r: [["Suicidal thinking", "moderate", "Boxed warning for suicidal ideation in children and adolescents, seen in about 0.4% against none with placebo in the original pooled trials", "human rct",
+         "A larger 2014 pooled analysis of 23 paediatric trials found suicidal behaviour or ideation in 0.37% on atomoxetine against 0.07% on placebo, a difference that was not statistically significant. Adult trials showed no signal (0.11% against 0.12%).", [561]],
         ["CYP2D6", "moderate", "Poor CYP2D6 metabolizers, and people taking strong inhibitors such as bupropion, fluoxetine or paroxetine, reach about 5 to 10 times the exposure. The label sets a slower titration for them", "established"],
         ["Liver", "low", "Rare severe liver injury has been reported", "established"],
         ["Heart rate and blood pressure", "low", "Small increases, similar to stimulants", "human rct"],
         ["Stomach, appetite, sedation", "moderate", "Nausea, reduced appetite and tiredness are common early", "human rct"],
         ["Sexual and urinary", "low", "Erectile problems and urinary hesitancy in adults", "human rct"]],
     a: [["Noradrenaline transporter", "established", "Selective NET blocker. In the prefrontal cortex, where dopamine is also cleared by NET, it raises dopamine too, but not in the reward circuit, which is why it is not addictive"]],
-    t: [], noTrials: "Approval rests on placebo-controlled trials in children and adults. In network meta-analysis it was effective, below amphetamines in adults and about level with methylphenidate.", noTrialsRefs: [133],
+    t: [
+      { title: "Atomoxetine in adults with ADHD: two identical trials", evidence: "human rct", meta: ["536 adults with DSM-IV ADHD (studies of 280 and 256)", "atomoxetine or placebo (doses not reported)", "10 weeks", "two multicentre, randomized, double-blind, placebo-controlled trials"], body: "In each trial atomoxetine beat placebo on inattentive and hyperactive-impulsive symptoms (Conners' Adult ADHD Rating Scale). Under 10% of atomoxetine patients stopped for adverse events.", note: "In network meta-analysis it was effective, below amphetamines in adults and about level with methylphenidate.", refs: [560, 133] },
+      { title: "Pooled analysis of suicidal thinking and behaviour on atomoxetine", evidence: "human rct", meta: ["3,883 children and adolescents and 3,365 adults from 23 paediatric and 9 adult trials", "atomoxetine or placebo", "acute double-blind phases, 1998–2011", "sponsor meta-analysis of placebo-controlled trials"], body: "There were no completed suicides and one attempt (paediatric, on atomoxetine). Suicidal behaviour or ideation occurred in 0.37% of children on atomoxetine against 0.07% on placebo (not significant, MHRR 1.57) and 0.11% against 0.12% in adults.", note: "Done by the manufacturer. The paediatric excess is the basis of the boxed warning. The adult data show no signal.", refs: [561] }
+    ],
     k: [["Route", "Oral capsule"], ["Bioavailability", "About 63% (extensive metabolizers); 94% (poor metabolizers)"], ["Time to peak", "About 1–2 hours"], ["Half-life", "About 5 hours (extensive CYP2D6 metabolizers); about 22 hours (poor metabolizers)"], ["Onset of full effect", "Several weeks"], ["Metabolism", "Liver, CYP2D6"], ["Excretion", "Urine"]], ke: "established", kr: [128],
     related: ["viloxazine", "guanfacine", "methylphenidate", "bupropion"] });
 
   /* ------------------------------------------------------------ viloxazine */
-  add({ slug: "viloxazine", name: "Viloxazine", aliases: ["Qelbree", "Vivalan"], category: "adhd", status: "Approved",
+  add({ slug: "viloxazine", name: "Viloxazine", aliases: ["Qelbree", "Vivalan"], category: "adhd", status: "Approved", updated: "2026-10-17",
     class: "Non-stimulant: noradrenaline reuptake inhibitor with serotonergic activity", developer: "ICI (antidepressant, 1970s); Supernus (ADHD, approved 2021)",
     tags: ["ADHD", "non-stimulant", "NET", "CYP1A2 inhibitor", "not controlled"],
     summary: "An old European antidepressant revived as a once-daily non-stimulant for ADHD. It works faster than atomoxetine in some patients and is not controlled, but it strongly blocks CYP1A2, which raises caffeine and several other drugs.",
@@ -241,12 +249,15 @@
         ["Sleepiness, appetite, nausea", "moderate", "The most common side effects", "human rct"],
         ["Heart rate and blood pressure", "low", "Small increases", "human rct"]],
     a: [["Noradrenaline transporter", "established", "Moderate NET inhibitor"], ["Serotonin receptors", "in vitro", "5-HT2B antagonist and 5-HT2C agonist activity, which may contribute to its effect"]],
-    t: [], noTrials: "Approval rests on four phase 3 placebo-controlled trials in children and adolescents and one in adults.",
+    t: [
+      { title: "Viloxazine ER in children aged 6–11 with ADHD", evidence: "human rct", meta: ["477 children randomized (460 analysed)", "viloxazine ER 100 mg or 200 mg once daily, or placebo", "6 weeks", "randomized, double-blind, placebo-controlled phase 3 (NCT03247530)"], body: "Both doses improved ADHD-RS-5 total scores from week 1 through the end of the study (P = 0.0004 and P < 0.0001). Sleepiness, reduced appetite and headache were the common treatment-related events, and fewer than 5% stopped for adverse events.", note: "One of four phase 3 placebo-controlled trials in children and adolescents behind its approval.", refs: [562] },
+      { title: "Viloxazine ER in adults with ADHD", evidence: "human rct", meta: ["374 adults aged 18–65", "viloxazine ER 200–600 mg a day, flexible (mean final dose 504 mg), or placebo", "6 weeks", "randomized, double-blind, placebo-controlled phase 3 (NCT04016779)"], body: "AISRS scores fell 15.5 points against 11.7 on placebo (p = 0.004), with effects by week 2. Insomnia (14.8%), fatigue (11.6%), nausea and reduced appetite (10.1% each) were most common. 9.0% stopped for adverse events against 4.9% on placebo.", note: "A modest difference of about 4 points over a large placebo response. Sponsor-run.", refs: [563] }
+    ],
     k: [["Route", "Oral extended-release capsule (can be sprinkled)"], ["Time to peak", "About 5 hours"], ["Half-life", "About 7 hours"], ["Metabolism", "Liver, CYP2D6, UGT1A9 and UGT2B15"], ["Excretion", "Urine"]], ke: "established", kr: [129],
     related: ["atomoxetine", "guanfacine"] });
 
   /* ------------------------------------------------------------ guanfacine */
-  add({ slug: "guanfacine", name: "Guanfacine", aliases: ["Intuniv", "Tenex"], category: "adhd", status: "Approved",
+  add({ slug: "guanfacine", name: "Guanfacine", aliases: ["Intuniv", "Tenex"], category: "adhd", status: "Approved", updated: "2026-10-17",
     class: "Non-stimulant: α2A-adrenergic receptor agonist", developer: "Sandoz (Tenex, for hypertension, 1986); Shire (Intuniv, 2009)",
     tags: ["ADHD", "non-stimulant", "α2A", "blood pressure", "not controlled"],
     summary: "A blood pressure drug that strengthens prefrontal signaling through α2A receptors. The extended-release form is approved for ADHD in children and adolescents, alone or added to a stimulant. It sedates rather than stimulates, and it must not be stopped suddenly.",
@@ -260,7 +271,9 @@
         ["Sedation", "moderate", "Sleepiness and tiredness are the most common side effects, mostly early", "human rct"],
         ["CYP3A4", "low", "Strong CYP3A4 inhibitors raise its levels and inducers lower them", "established"]],
     a: [["α2A-adrenergic receptor", "established", "Selective agonist. In the prefrontal cortex it strengthens network signaling involved in working memory and impulse control"]],
-    t: [], noTrials: "Approval rests on placebo-controlled trials in children and adolescents, alone and added to stimulants. Adult evidence is limited.", noTrialsRefs: [133],
+    t: [
+      { title: "Guanfacine extended release in children and adolescents with ADHD", evidence: "human rct", meta: ["345 patients aged 6–17", "guanfacine ER 2, 3 or 4 mg a day, or placebo", "8 weeks", "multicentre, randomized, double-blind, placebo-controlled, fixed-dose escalation"], body: "ADHD-RS-IV scores fell 16.2, 16.4 and 18.9 points on 2, 3 and 4 mg against 8.5 on placebo, with gains on both symptom domains and parent and teacher ratings. Headache, sleepiness, fatigue, upper abdominal pain and sedation were the commonest events.", note: "Approval also drew on trials of guanfacine added to stimulants. Adult evidence is limited.", refs: [564, 133] }
+    ],
     k: [["Route", "Oral (IR or extended-release tablet)"], ["Time to peak", "About 5 hours (extended-release)"], ["Half-life", "About 17 hours"], ["Metabolism", "Liver, CYP3A4"], ["Excretion", "Urine"]], ke: "established", kr: [130],
     related: ["atomoxetine", "viloxazine", "methylphenidate"] });
 

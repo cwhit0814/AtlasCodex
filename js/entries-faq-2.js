@@ -11,7 +11,7 @@
   const hairNote = "Scored relative to other hair loss treatments in the codex.";
 
   /* ================================================================ Nootropics */
-  A.add({ slug: "noopept", name: "Noopept", aliases: ["Omberacetam", "GVS-111"], category: "nootropic", status: "Approved",
+  A.add({ slug: "noopept", updated: "2026-10-17", name: "Noopept", aliases: ["Omberacetam", "GVS-111"], category: "nootropic", status: "Approved",
     class: "Dipeptide nootropic (racetam-like)", developer: "Russian Academy of Medical Sciences", tags: ["racetam-like", "cognition", "BDNF"],
     summary: "A Russian prescription nootropic that is potent per milligram. Its effects may come mainly from its metabolite, cycloprolylglycine.",
     names: "Sold in Russia as Noopept for cognitive impairment. Not approved in the US, where the FDA does not consider it a lawful supplement ingredient.",
@@ -19,11 +19,13 @@
     pubchem: "omberacetam", pnote: nootNote, p: [["Cognitive effect", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Tolerability", "low", "Headache, irritability and sleep disturbance", "anecdotal"], vendor],
     a: [["Cycloprolylglycine", "animal", "Converted to cycloprolylglycine, an endogenous neuropeptide that may modulate AMPA receptors"], ["BDNF / NGF", "animal", "Increased BDNF and NGF expression in rat hippocampus"]],
-    t: [], noTrials: "Russian clinical studies in mild cognitive impairment are small.",
+    t: [
+      { title: "Noopept for mild cognitive impairment after stroke", evidence: "human obs", meta: ["60 patients with stroke and mild cognitive impairment, with a control group", "noopept 20 mg a day", "2 months of treatment within a 12-month study", "open, prospective, non-blinded"], body: "MMSE scores and verbal fluency improved significantly after 2 months in the noopept group compared with controls. Global efficacy was rated as mild improvement.", note: "Open and unblinded, with no placebo, so expectation effects cannot be excluded.", refs: [520] },
+    ],
     k: [["Route", "Oral"], ["Time to peak", "About 15–20 minutes"], ["Half-life", "Under an hour for the parent drug"], ["Metabolism", "Converted to cycloprolylglycine"], ["Excretion", "Urine as metabolites"]], ke: "human obs",
     related: ["piracetam", "semax"] });
 
-  A.add({ slug: "bromantane", name: "Bromantane", aliases: ["Ladasten", "Bromantan"], category: "nootropic", status: "Approved",
+  A.add({ slug: "bromantane", updated: "2026-10-17", name: "Bromantane", aliases: ["Ladasten", "Bromantan"], category: "nootropic", status: "Approved",
     class: "Adamantane derivative (actoprotector)", developer: "Russian Academy of Medical Sciences", tags: ["dopamine", "fatigue", "WADA prohibited"],
     summary: "A Russian drug for fatigue and low motivation that increases dopamine production rather than release. It is banned in sport after positive tests at the 1996 Olympics.",
     names: "Sold in Russia as Ladasten for neurasthenia and fatigue. Not approved elsewhere. WADA lists it as a prohibited stimulant.",
@@ -31,23 +33,29 @@
     pubchem: "bromantane", pnote: nootNote, p: [["Drive / motivation", 3], ["Risk load", 2, 1], ["Evidence quality", 2]],
     r: [["Sleep", "low", "Insomnia if taken late", "anecdotal"], ["Sport", "high", "Prohibited by WADA", "established"], vendor],
     a: [["Dopamine synthesis", "animal", "Increases tyrosine hydroxylase expression, raising dopamine production"], ["Anxiolytic", "human obs", "Reduced anxiety and fatigue in Russian clinical studies"]],
-    t: [], noTrials: "Russian clinical studies in asthenia exist but are not widely available in English.",
+    t: [
+      { title: "Ladasten (bromantane) for asthenic disorders: Russian multicentre study", evidence: "human obs", meta: ["728 analysed patients with asthenic disorders and psychoautonomic syndrome, at 28 centres", "bromantane 50–100 mg a day", "28 days, with follow-up 1 month after stopping", "open, uncontrolled multicentre study"], body: "Responder rates were 76% on CGI-S and 91% on CGI-I, with effects reported from day 3 and lasting a month after stopping. Adverse effects occurred in 3% and led to stopping in 0.8%. No serious adverse effects were reported.", note: "Large but without a control group, so the responder rates cannot be separated from placebo response or natural recovery.", refs: [522] },
+      { title: "Ladasten against placebo in neurasthenia", evidence: "human rct", meta: ["patients with neurasthenia (number not reported)", "single test doses of bromantane 15 mg or placebo, followed by course treatment", "course length not reported", "randomized, placebo-controlled; two reports from one research group"], body: "Patients rated tolerability of single 15 mg doses as comparable to placebo. Self-rated effects of both drug and placebo were stronger in patients with low EEG alpha activity, and course treatment effects matched objective measures in that group.", note: "These reports analyse who perceives a drug effect. They do not give a clear drug-versus-placebo efficacy result.", refs: [523, 524] },
+    ],
     k: [["Route", "Oral"], ["Half-life", "About 11 hours"], ["Metabolism", "Liver, hydroxylation"], ["Excretion", "Urine"]], ke: "human obs",
     related: ["phenylpiracetam", "semax"] });
 
-  A.add({ slug: "cerebroprotein-hydrolysate", name: "Cerebroprotein Hydrolysate", aliases: ["Cerebrolysin"], category: "nootropic", status: "Approved",
+  A.add({ slug: "cerebroprotein-hydrolysate", updated: "2026-10-17", name: "Cerebroprotein Hydrolysate", aliases: ["Cerebrolysin"], category: "nootropic", status: "Approved",
     class: "Porcine brain peptide mixture", developer: "EVER Pharma (Cerebrolysin); various Chinese manufacturers", tags: ["neurotrophic", "stroke", "dementia"],
     summary: "A mixture of peptides derived from pig brain, given by injection after stroke and for dementia in parts of Europe, Russia and Asia. A Cochrane review found no clear benefit after stroke.",
     names: "Sold as Cerebrolysin in over 40 countries and as cerebroprotein hydrolysate in China. Not approved in the US. It must be injected or infused.",
     structure: "A standardized mix of low-molecular-weight peptides and free amino acids from purified pig brain proteins.",
     pubchem: false, pnote: nootNote, p: [["Cognitive effect", 1], ["Risk load", 2, 1], ["Evidence quality", 3]],
-    r: [["Serious adverse events", "moderate", "A Cochrane review found a possible increase in non-fatal serious adverse events after stroke", "human rct"], ["Administration", "moderate", "Requires injection or infusion; allergic reactions possible", "established"]],
+    r: [["Serious adverse events", "moderate", "Non-fatal serious adverse events were more common with Cerebrolysin after stroke", "human rct", "Cochrane 2023: RR 2.39 (95% CI 1.10–5.23; 3 trials, 1,335 people). The rise was larger with 30 mL a day for 10 days (RR 2.87). All-cause death did not differ (RR 0.96).", [525]], ["Administration", "moderate", "Requires injection or infusion; allergic reactions possible", "established"]],
     a: [["Neurotrophic activity", "animal", "Mimics neurotrophic factor effects in animal models"]],
-    t: [{ title: "Cochrane review: acute ischemic stroke", evidence: "human rct", meta: ["randomized trials of Cerebrolysin after acute ischemic stroke", "systematic review"], body: "Cerebrolysin did not reduce death and probably did not improve functional outcome. There may have been more non-fatal serious adverse events." }],
+    t: [
+      { title: "Cochrane review: acute ischemic stroke", evidence: "human rct", meta: ["randomized trials of Cerebrolysin after acute ischemic stroke", "systematic review"], body: "Cerebrolysin did not reduce death and probably did not improve functional outcome. There may have been more non-fatal serious adverse events.", refs: [525] },
+      { title: "Cochrane review: vascular dementia", evidence: "human rct", meta: ["6 RCTs, 597 participants with mostly mild to moderate vascular dementia", "courses of intravenous Cerebrolysin at varying doses", "15 days to 3 years", "systematic review and meta-analysis (2019 update)"], body: "Pooled cognitive scores favoured Cerebrolysin (SMD 0.36), and global function response was more common (RR 2.69). Both results were graded very low certainty. Adverse event rates did not differ.", note: "All trials with known funding were industry-supported and at high risk of bias. The reviewers say any benefit may be too small to matter clinically.", refs: [526] },
+    ],
     k: [["Route", "Intravenous or intramuscular"], ["Bioavailability", "Not applicable orally"], ["Half-life", "Not defined (peptide mixture)"]], ke: "human rct",
     related: ["semax", "noopept"] });
 
-  A.add({ slug: "emoxypine", name: "Emoxypine", aliases: ["Mexidol", "Emoxypine succinate", "Mexicor"], category: "nootropic", status: "Approved",
+  A.add({ slug: "emoxypine", updated: "2026-10-17", name: "Emoxypine", aliases: ["Mexidol", "Emoxypine succinate", "Mexicor"], category: "nootropic", status: "Approved",
     class: "3-hydroxypyridine antioxidant", developer: "Russian research (1980s)", tags: ["antioxidant", "anxiolytic", "neuroprotection"],
     summary: "A Russian antioxidant drug prescribed for anxiety, stroke and alcohol withdrawal. It is widely used there but barely known or studied elsewhere.",
     names: "Sold in Russia and neighboring countries as Mexidol (succinate salt). Not approved in the US or the EU.",
@@ -55,19 +63,22 @@
     pubchem: "emoxipine", pnote: nootNote, p: [["Anxiolytic signal", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Tolerability", "low", "Nausea and drowsiness", "human obs"], vendor],
     a: [["Antioxidant", "animal", "Reduces lipid peroxidation"], ["Membrane effects", "in vitro", "Modulates membrane-bound enzymes and GABA-A receptor function"]],
-    t: [], noTrials: "Clinical evidence comes mostly from Russian studies of variable quality.",
+    t: [
+      { title: "EPICA: Mexidol in acute and early recovery ischemic stroke", evidence: "human rct", meta: ["150 patients aged 40–79 with hemispheric ischemic stroke", "emoxypine succinate 500 mg a day by IV infusion for 10 days, then 125 mg three times a day by mouth for 8 weeks, or placebo on the same schedule", "about 10 weeks", "randomized, double-blind, multicentre, placebo-controlled"], body: "At the end of treatment, modified Rankin and NIHSS scores were lower with Mexidol (p = 0.04 and p = 0.035), and more patients scored 0–2 on the Rankin scale. Side effect rates did not differ.", note: "Russian-language, small for a stroke trial, and with modest p-values on several outcomes. It has not been replicated outside Russia.", refs: [527] },
+    ],
     k: [["Route", "Oral or injection"], ["Half-life", "About 2–3 hours"], ["Metabolism", "Liver, glucuronidation"], ["Excretion", "Urine"]], ke: "human obs",
     related: ["semax", "selank"] });
 
-  A.add({ slug: "fladrafinil", name: "Fladrafinil", aliases: ["CRL-40,941", "Fluorafinil"], category: "nootropic", status: "Research only",
+  A.add({ slug: "fladrafinil", updated: "2026-10-17", name: "Fladrafinil", aliases: ["CRL-40,941", "Fluorafinil"], category: "nootropic", status: "Research only",
     class: "Modafinil analog (eugeroic)", developer: "Laboratoire L. Lafon (1970s)", tags: ["eugeroic", "wakefulness", "modafinil analog"],
-    summary: "A bis-fluorinated analog of adrafinil, related to modafinil. It was never developed as a drug and has no human data.",
+    summary: "A bis-fluorinated analog of adrafinil, related to modafinil. It was never developed as a drug. The only human data come from an anti-doping excretion study, with no safety or efficacy testing.",
     names: "Synthesized by Lafon alongside adrafinil and modafinil. Never developed. Sold online as a research chemical.",
     structure: "A bis(4-fluorophenyl) analog of adrafinil, a hydroxamic acid.",
     pubchem: "fladrafinil", pnote: nootNote, p: [["Wakefulness", 3], ["Human evidence", 0], ["Risk load", 3, 1], ["Evidence quality", 1]],
-    r: [noHuman, ["Liver", "unknown", "Adrafinil, its parent, is metabolized by the liver and raises liver enzymes; fladrafinil likely shares this", "contested"], vendor],
+    r: [noHuman, ["Liver", "unknown", "Adrafinil, its parent, is metabolized by the liver and raises liver enzymes; fladrafinil likely shares this", "contested"],
+      ["Sport", "high", "Prohibited in competition by WADA as a class S6 stimulant", "established", "Anti-doping labs have published urine and blood detection methods after controlled human dosing.", [528]], vendor],
     a: [["Wakefulness", "animal", "Wake-promoting in animals; may be partly a prodrug like adrafinil"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested for safety or effect in humans. The only human data are from an anti-doping excretion study, which showed it is converted to flmodafinil.", noTrialsRefs: [528],
     k: [["Route", "Oral"], ["Half-life", NE], ["Metabolism", NE]], ke: "unknown",
     related: ["phenylpiracetam", "bromantane"] });
 
@@ -83,7 +94,7 @@
     k: [["Route", "Intranasal or injection (informal)"], ["Half-life", NE]], ke: "unknown",
     related: ["semax", "selank"] });
 
-  A.add({ slug: "p-21", name: "P-21", aliases: ["P021", "Peptide 021"], category: "nootropic", status: "Research only",
+  A.add({ slug: "p-21", updated: "2026-10-17", name: "P-21", aliases: ["P021", "Peptide 021"], category: "nootropic", status: "Research only",
     class: "CNTF-derived peptidergic compound", developer: "New York State Institute for Basic Research (Iqbal lab)", tags: ["neurogenesis", "Alzheimer's", "CNTF"],
     summary: "A small, brain-penetrant compound based on ciliary neurotrophic factor. It improved memory and neurogenesis in Alzheimer's mouse models. There are no human studies.",
     names: "Developed by Khalid Iqbal's group as an orally active neurotrophic compound. Not in clinical development.",
@@ -91,11 +102,11 @@
     pubchem: false, pnote: nootNote, p: [["Preclinical signal", 3], ["Human evidence", 0], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["Neurogenesis", "animal", "Increased hippocampal neurogenesis and synaptic markers in mice"], ["Alzheimer's models", "animal", "Reduced cognitive deficits and tau pathology in mouse models"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans. In animal studies of the published compound P021, 12 months of oral treatment reduced tau pathology and rescued cognition in Alzheimer's model mice, and aged rats showed less decline in learning and memory, with more neurogenesis and higher BDNF. Whether vendor \"P21\" is the same molecule is unverified.", noTrialsRefs: [529, 530],
     k: [["Route", "Oral in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["dihexa", "semax"] });
 
-  A.add({ slug: "pe-22-28", name: "PE-22-28", aliases: ["Spadin analog"], category: "nootropic", status: "Research only",
+  A.add({ slug: "pe-22-28", updated: "2026-10-17", name: "PE-22-28", aliases: ["Spadin analog"], category: "nootropic", status: "Research only",
     class: "TREK-1 channel inhibitor (spadin analog)", developer: "Academic research (France)", tags: ["TREK-1", "depression", "peptide"],
     summary: "A short analog of spadin, a peptide that blocks the TREK-1 potassium channel. It produced fast antidepressant-like effects in mice. There are no human studies.",
     names: "Derived from spadin research in France. Not in clinical development. Sold as a research peptide.",
@@ -103,11 +114,11 @@
     pubchem: false, pnote: nootNote, p: [["Preclinical signal", 2], ["Human evidence", 0], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["TREK-1", "animal", "Blocks TREK-1 channels, a target linked to depression resistance in knockout mice"], ["Neurogenesis", "animal", "Increased hippocampal neurogenesis within days in mice"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans. In cells it blocked the TREK-1 channel far more potently than spadin, and in mice it reduced immobility in the forced-swim test and induced neurogenesis after 4 days.", noTrialsRefs: [531],
     k: [["Route", "Injection or intranasal in animal studies"], ["Half-life", "Longer than spadin in mice; not established in humans"]], ke: "animal",
     related: ["nemifitide", "selank"] });
 
-  A.add({ slug: "nemifitide", name: "Nemifitide", aliases: ["INN 00835"], category: "nootropic", status: "Research only",
+  A.add({ slug: "nemifitide", updated: "2026-10-17", name: "Nemifitide", aliases: ["INN 00835"], category: "nootropic", status: "Research only",
     class: "Pentapeptide antidepressant", developer: "Innapharma", tags: ["depression", "peptide", "MSH-related"],
     summary: "A small peptide antidepressant that reached phase 2 trials in the 2000s. Results were mixed and development stopped.",
     names: "Developed by Innapharma as an injectable antidepressant with a reportedly fast onset. Development was discontinued.",
@@ -115,11 +126,13 @@
     pubchem: "nemifitide", pnote: nootNote, p: [["Antidepressant signal", 1], ["Risk load", 2, 1], ["Evidence quality", 2]],
     r: [["Efficacy", "moderate", "Phase 2 results did not lead to further development", "human rct"], vendor],
     a: [["Mechanism", "contested", "Not fully characterized; proposed to act on serotonin and melanocortin systems"]],
-    t: [], noTrials: "Phase 2 trials in major depression were run but not fully published.",
+    t: [
+      { title: "Nemifitide (INN 00835) pilot trial in major depression", evidence: "human rct", meta: ["52 patients with major depression (26 drug, 26 placebo)", "nemifitide 0.2 mg/kg subcutaneously, or placebo", "5 consecutive days, with 4 weeks of follow-up", "double-blind, placebo-controlled pilot"], body: "Response tracked plasma concentration. Patients above about 5 ng/mL improved significantly more than placebo, and the effect lasted through follow-up. The published report does not give a positive whole-group drug-versus-placebo result.", note: "Positive only in a concentration-defined subgroup, with a large placebo response. Written by the developer. Later phase 2 trials were not fully published.", refs: [532] },
+    ],
     k: [["Route", "Subcutaneous injection"], ["Half-life", "Short"]], ke: "human obs",
     related: ["pe-22-28", "nsi-189"] });
 
-  A.add({ slug: "dnsp-11", name: "DNSP-11", aliases: ["Dopamine neuron stimulating peptide-11"], category: "nootropic", status: "Research only",
+  A.add({ slug: "dnsp-11", updated: "2026-10-17", name: "DNSP-11", aliases: ["Dopamine neuron stimulating peptide-11"], category: "nootropic", status: "Research only",
     class: "GDNF prodomain peptide", developer: "University of Kentucky (Gerhardt lab)", tags: ["dopamine", "Parkinson's", "GDNF"],
     summary: "An 11-amino-acid peptide from the precursor of GDNF, a growth factor for dopamine neurons. It protected dopamine neurons in rodents. There are no human studies.",
     names: "Discovered in academic Parkinson's research. Not in clinical development.",
@@ -127,23 +140,26 @@
     pubchem: false, pnote: nootNote, p: [["Preclinical signal", 2], ["Human evidence", 0], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["Dopamine neurons", "animal", "Increased dopamine function and protected neurons in rodent Parkinson's models"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans. In a rat Parkinson's model, a single injection into the substantia nigra raised dopamine for up to 28 days, and in rhesus macaques repeated intranasal dosing over 10 weeks engaged striatal dopamine with no observed adverse behaviour.", noTrialsRefs: [534, 535],
     k: [["Route", "Direct brain or intranasal delivery in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["9-me-bc", "semax"] });
 
-  A.add({ slug: "fgl", name: "FGL", aliases: ["FG loop peptide", "NCAM mimetic"], category: "nootropic", status: "Research only",
+  A.add({ slug: "fgl", updated: "2026-10-17", name: "FGL", aliases: ["FG loop peptide", "NCAM mimetic"], category: "nootropic", status: "Research only",
     class: "NCAM-derived FGF receptor agonist peptide", developer: "University of Copenhagen / Enkam Pharmaceuticals", tags: ["synaptic plasticity", "NCAM", "FGFR"],
     summary: "A 15-amino-acid peptide copied from the NCAM adhesion molecule. It activates FGF receptors and improved memory and plasticity in rodents.",
     names: "Developed by Danish researchers and Enkam as a neuroprotective and memory peptide. It reached early clinical testing but has no approval.",
     structure: "A 15-amino-acid peptide from the FG loop of the second fibronectin domain of NCAM.",
     pubchem: false, pnote: nootNote, p: [["Preclinical signal", 2], ["Human evidence", 1], ["Risk load", 2, 1], ["Evidence quality", 1]],
-    r: [["Human safety", "unknown", "Very limited human data", "unknown"], vendor],
+    r: [["Human safety", "unknown", "Human data are limited to one single-dose phase 1 study in 24 healthy men", "human obs", undefined, [536]],
+      ["Nasal irritation", "low", "Brief nasal burning and watery eyes after intranasal doses", "human obs", "Seen in 3 of 24 volunteers in a single-dose phase 1 study.", [536]], vendor],
     a: [["FGF receptor", "in vitro", "Activates FGFR1, promoting neurite outgrowth and synapse formation"], ["Memory", "animal", "Improved memory and reduced inflammation in rodent models"]],
-    t: [], noTrials: "No published efficacy trials in humans.",
+    t: [
+      { title: "First-in-human safety study of intranasal FGL(L)", evidence: "human obs", meta: ["24 healthy men aged 24–55", "single intranasal doses of 25, 100 or 200 mg in ascending cohorts", "8 days", "open-label phase 1"], body: "All doses were well tolerated, with no notable changes in ECG, vital signs or laboratory tests. Brief nasal burning at 200 mg and watery eyes were the only drug-related events. Plasma levels were measurable only at 100 and 200 mg.", note: "A safety and pharmacokinetic study only, with no efficacy measure. The planned Alzheimer's trials have not been published.", refs: [536] },
+    ], noTrials: "No published efficacy trials in humans.",
     k: [["Route", "Subcutaneous or intranasal in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["dihexa", "p-21"] });
 
-  A.add({ slug: "epobis", name: "Epobis", aliases: ["EPO-derived peptide"], category: "nootropic", status: "Research only",
+  A.add({ slug: "epobis", updated: "2026-10-17", name: "Epobis", aliases: ["EPO-derived peptide"], category: "nootropic", status: "Research only",
     class: "Erythropoietin-mimetic peptide", developer: "University of Copenhagen", tags: ["EPO", "neuroprotection", "anti-inflammatory"],
     summary: "A small EPO-derived peptide designed to keep EPO's protective effects on nerves without raising red blood cells. It has only been studied in animals.",
     names: "Developed in Danish academic research. Not in clinical development.",
@@ -151,11 +167,11 @@
     pubchem: false, pnote: nootNote, p: [["Preclinical signal", 2], ["Human evidence", 0], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["EPO receptor", "animal", "Neuroprotective and anti-inflammatory in rodent models, without increasing red blood cells"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans. In cell culture it bound the EPO receptor and promoted neurite outgrowth and neuron survival. In rats it reached the cerebrospinal fluid without raising red cell counts, delayed experimental autoimmune encephalomyelitis and improved social memory.", noTrialsRefs: [537, 538],
     k: [["Route", "Injection in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["ara-290", "fgl"] });
 
-  A.add({ slug: "taltirelin", name: "Taltirelin", aliases: ["Ceredist", "TA-0910"], category: "nootropic", status: "Approved",
+  A.add({ slug: "taltirelin", updated: "2026-10-17", name: "Taltirelin", aliases: ["Ceredist", "TA-0910"], category: "nootropic", status: "Approved",
     class: "TRH analog", developer: "Tanabe Seiyaku", tags: ["TRH", "spinocerebellar ataxia", "neuroprotection"],
     summary: "A longer-acting analog of thyrotropin-releasing hormone, approved in Japan for spinocerebellar degeneration. It acts mainly on the brain with less effect on the thyroid than TRH.",
     names: "Sold in Japan as Ceredist for ataxia in spinocerebellar degeneration. Not approved elsewhere.",
@@ -163,24 +179,31 @@
     pubchem: "taltirelin", pnote: nootNote, p: [["Clinical effect (ataxia)", 2], ["Risk load", 2, 1], ["Evidence quality", 3]],
     r: [["Thyroid", "low", "Can raise TSH, though less than TRH", "established"], vendor],
     a: [["TRH receptor", "established", "Central TRH receptor agonist that raises acetylcholine and dopamine release"]],
-    t: [], noTrials: "Approval in Japan rests on clinical trials in spinocerebellar degeneration.",
+    t: [
+      { title: "Taltirelin for ataxia in spinocerebellar degeneration (Korea)", evidence: "human rct", meta: ["149 patients with hereditary (86) or non-hereditary (63) spinocerebellar degeneration, at 8 centres", "taltirelin hydrate 5 mg twice daily after meals, or placebo", "24 weeks", "randomized, double-blind, placebo-controlled phase 4"], body: "K-SARA ataxia scores changed by −0.51 on taltirelin against +0.36 on placebo (p = 0.032), with gains in stance and speech. No other secondary outcome differed at 24 weeks. Adverse events affected 28.6% against 22.5% (p = 0.38).", note: "A small difference of under one point on a 40-point scale. Approval in Japan rests on 1990s Japanese placebo-controlled trials, which are cited in this paper but not indexed on PubMed. An erratum was published in 2026.", refs: [539] },
+    ],
     k: [["Route", "Oral"], ["Half-life", "Longer than TRH"], ["Excretion", "Urine"]], ke: "established",
     related: ["semax"] });
 
-  A.add({ slug: "phenibut", name: "Phenibut", aliases: ["β-Phenyl-GABA", "Anvifen", "Noofen"], category: "nootropic", status: "Approved",
+  A.add({ slug: "phenibut", updated: "2026-10-17", name: "Phenibut", aliases: ["β-Phenyl-GABA", "Anvifen", "Noofen"], category: "nootropic", status: "Approved",
     class: "GABA-B agonist (GABA analog)", developer: "Soviet research (1960s)", tags: ["GABA-B", "anxiety", "dependence"],
     summary: "A Soviet-era anxiety and sleep drug that acts like baclofen. Tolerance and dependence develop quickly, and withdrawal can be severe.",
     names: "Prescribed in Russia and some Eastern European countries for anxiety and insomnia. It is sold as a supplement in the US despite FDA warnings, and is a controlled substance in Australia and several European countries.",
     structure: "4-amino-3-phenylbutanoic acid. C<sub>10</sub>H<sub>13</sub>NO<sub>2</sub>, about 179.2 g/mol. The phenyl ring helps it cross the blood–brain barrier, which GABA does not.",
     pubchem: "phenibut", pnote: nootNote, p: [["Anxiolytic effect", 3], ["Dependence risk", 5, 1], ["Risk load", 4, 1], ["Evidence quality", 2]],
-    r: [["Dependence and withdrawal", "high", "Withdrawal can include rebound anxiety, insomnia, agitation, hallucinations and psychosis, sometimes needing hospital care", "human obs"],
-      ["Overdose", "high", "Sedation and reduced consciousness, especially with alcohol or other depressants", "human obs"], ["Product quality", "moderate", "Supplement products vary in dose", "human obs"]],
+    r: [["Dependence and withdrawal", "high", "Withdrawal can include rebound anxiety, insomnia, agitation, hallucinations and psychosis, sometimes needing hospital care", "human obs", undefined, [540, 543, 542]],
+      ["Overdose", "high", "Sedation and reduced consciousness, especially with alcohol or other depressants", "human obs", undefined, [541, 542, 540]], ["Product quality", "moderate", "Supplement products vary in dose", "human obs"],
+      ["Respiratory depression and coma", "high", "Overdose can depress breathing enough to need intubation", "human obs", "Coma occurred in 6.2% of US poison-centre exposures, and 19.6% of Minnesota cases were intubated. Co-ingestion of alcohol or benzodiazepines was common.", [541, 542, 540]]],
     a: [["GABA-B receptor", "established", "Agonist, like baclofen but weaker"], ["α2δ calcium channel subunit", "in vitro", "Also binds α2δ, like gabapentin"]],
-    t: [], noTrials: "Clinical evidence is from older Russian studies. Poison center reports document withdrawal and toxicity.",
+    t: [
+      { title: "Phenibut exposures reported to US poison centres, 2009–2019", evidence: "human obs", meta: ["1,320 exposure calls from all 50 states; 75.5% male, mean age 31.7", "phenibut alone or with co-ingestants (co-ingestion in 40.2% of adults)", "11 years", "retrospective national poison-centre data (NPDS)"], body: "Calls rose sharply from 2015. Common effects were agitation (30.4%), drowsiness (29.0%), tachycardia (21.9%) and confusion (21.3%), and coma occurred in 6.2%. Major effects occurred in 12.6% and three people died. Where phenibut was the only agent, 10.2% had major effects, including one death.", note: "Poison-centre calls are skewed toward severe cases and are not rates in users. Part of the rise reflects better coding from 2015.", refs: [541] },
+      { title: "Systematic review of phenibut toxicity and withdrawal cases", evidence: "human obs", meta: ["62 cases from 36 reports; 80.7% male, mean age 30.9", "phenibut, mostly bought online (86.8%), often with other drugs (63.2%)", "case reports to early 2022", "systematic review of case reports"], body: "Of the toxicity cases, 48.7% needed intubation. Withdrawal cases (95.7% daily users) showed anxiety, agitation, insomnia and psychosis, and 69.6% needed several medicines. Mean hospital stay was 5.0 days for toxicity and 7.7 days for withdrawal.", note: "Case reports select for severe presentations. A separate review of 22 withdrawal cases found that signs can mimic serotonin or neuroleptic malignant syndrome.", refs: [540, 543] },
+      { title: "Phenibut calls to a regional poison centre (Minnesota)", evidence: "human obs", meta: ["56 exposure calls, 85.7% in the last 5 years", "phenibut, with co-ingestants in 35.7%", "2000–2018", "retrospective poison-centre series"], body: "Over half had CNS effects and 10.7% had withdrawal concerns. 48% used it recreationally and 23% for anxiety. 11 patients (19.6%) were intubated, and no deaths were attributed to phenibut.", refs: [542] },
+    ],
     k: [["Route", "Oral"], ["Onset", "Slow; peak effects after several hours"], ["Half-life", "About 5 hours"], ["Excretion", "Mostly unchanged in urine"]], ke: "human obs",
     related: ["picamilon", "selank"] });
 
-  A.add({ slug: "picamilon", name: "Picamilon", aliases: ["Nicotinoyl-GABA", "Pikamilon"], category: "nootropic", status: "Approved",
+  A.add({ slug: "picamilon", updated: "2026-10-17", name: "Picamilon", aliases: ["Nicotinoyl-GABA", "Pikamilon"], category: "nootropic", status: "Approved",
     class: "GABA–niacin conjugate", developer: "Soviet research (1960s–70s)", tags: ["GABA", "niacin", "anxiety"],
     summary: "GABA bonded to niacin, designed to cross into the brain and release GABA. Prescribed in Russia; the FDA says it is not a lawful supplement ingredient.",
     names: "Prescribed in Russia for anxiety, migraine and cerebrovascular conditions. In 2015 the FDA said it does not qualify as a dietary ingredient.",
@@ -188,50 +211,65 @@
     pubchem: "picamilon", pnote: nootNote, p: [["Anxiolytic effect", 1], ["Risk load", 1, 1], ["Evidence quality", 1]],
     r: [["Flushing", "low", "Niacin-related flushing", "established"], vendor],
     a: [["GABA delivery", "animal", "Proposed to cross the blood–brain barrier and release GABA and niacin; evidence is limited"], ["Cerebral blood flow", "animal", "Vasodilation through its niacin component"]],
-    t: [], noTrials: "Evidence comes from Russian studies with limited availability.",
+    t: [
+      { title: "Picamilon in chronic cerebral ischemia, two regimens", evidence: "human obs", meta: ["44 patients aged 46–67 with stage I chronic cerebral ischemia", "picamilon 50 mg three times a day by mouth for 60 days, or 100 mg IM for 10 days then 50 mg three times a day for 50 days", "60 days, with follow-up 1.5 months later", "open-label randomized comparison of two picamilon regimens; no placebo"], body: "MoCA scores, neurological scale scores and sleep improved over time in both groups. Tolerability was rated good in 98% and adverse events were under 8.6%.", note: "There was no placebo or untreated control, so the improvements cannot be credited to the drug. 'Chronic cerebral ischemia' is a diagnosis used mainly in Russian practice.", refs: [544] },
+    ],
     k: [["Route", "Oral"], ["Half-life", NE], ["Metabolism", "Hydrolyzed to GABA and niacin"]], ke: "human obs",
     related: ["phenibut"] });
 
-  A.add({ slug: "methylene-blue", name: "Methylene Blue", aliases: ["Methylthioninium chloride", "ProvayBlue"], category: "nootropic", status: "Approved",
+  A.add({ slug: "methylene-blue", updated: "2026-10-17", name: "Methylene Blue", aliases: ["Methylthioninium chloride", "ProvayBlue"], category: "nootropic", status: "Approved",
     class: "Phenothiazine dye (redox agent)", developer: "Heinrich Caro (1876)", tags: ["mitochondria", "MAO inhibitor", "methemoglobinemia"],
     summary: "A 19th-century dye approved as an antidote for methemoglobinemia. It is popular for energy and cognition, but it is a potent MAO-A inhibitor and can cause dangerous serotonin syndrome with antidepressants.",
     names: "Sold as ProvayBlue for drug-induced methemoglobinemia. The FDA has warned about serious serotonin syndrome when it is combined with serotonergic drugs.",
     structure: "C<sub>16</sub>H<sub>18</sub>ClN<sub>3</sub>S, about 319.9 g/mol. It cycles between a blue oxidized form and a colorless reduced form, which lets it shuttle electrons.",
     pubchem: "methylene blue", pnote: nootNote, p: [["Cognitive signal", 2], ["Interaction risk", 4, 1], ["Risk load", 3, 1], ["Evidence quality", 3]],
-    r: [["Serotonin syndrome", "high", "Potent MAO-A inhibitor; dangerous with SSRIs, SNRIs and other serotonergic drugs", "established"],
+    r: [["Serotonin syndrome", "high", "Boxed warning: serious or fatal serotonin syndrome with SSRIs, SNRIs, MAOIs and opioids", "established", "The FDA label for IV methylene blue advises avoiding serotonergic drugs within 72 hours of the last dose. It is a potent, tight-binding inhibitor of MAO-A at clinically reached concentrations.", [549, 550]],
       ["G6PD deficiency", "high", "Can cause hemolysis in people with G6PD deficiency", "established"], ["Blue urine", "low", "Turns urine blue-green", "established"],
-      ["Product quality", "moderate", "Aquarium or industrial grades may contain heavy metals; pharmaceutical grade is what's used clinically", "established"]],
+      ["Product quality", "moderate", "Aquarium or industrial grades may contain heavy metals; pharmaceutical grade is what's used clinically", "established"],
+      ["Pulse oximetry", "low", "Interferes with pulse oximeters, so oxygen readings can be falsely low", "established", "The label advises measuring oxygen saturation by another method after dosing.", [550]],
+      ["Allergy", "low", "Anaphylaxis has been reported with methylene blue products", "established", undefined, [550]]],
     a: [["Mitochondrial electron transport", "in vitro", "Can bypass blocks in the electron transport chain"], ["MAO-A", "established", "Potent inhibitor at clinically relevant doses"], ["Memory", "human rct", "Small studies report memory effects at low doses"]],
-    t: [], noTrials: "Approved use rests on methemoglobinemia experience. Cognitive studies are small.",
+    t: [
+      { title: "Methylene blue for residual symptoms of bipolar disorder", evidence: "human rct", meta: ["37 adults with bipolar disorder on lamotrigine", "methylene blue 195 mg a day against 15 mg a day as an active placebo (the low dose keeps urine coloured so blinding holds)", "6 months", "randomized, double-blind, crossover (NCT00214877)"], body: "The 195 mg dose improved depression (MADRS P = 0.02, HAM-D P = 0.05) and anxiety (HAM-A P = 0.02). Mania stayed low. Effects on cognition were not significant, and side effects were mild and transient.", note: "Small, with modest p-values from a last-observation-carried-forward analysis. Patients were on lamotrigine, not serotonergic antidepressants.", refs: [546] },
+      { title: "Low-dose methylene blue and brain activity during memory tasks", evidence: "human rct", meta: ["26 healthy adults aged 22–62", "single low oral dose of methylene blue or placebo", "fMRI before and 1 hour after dosing", "randomized, double-blind, placebo-controlled"], body: "Methylene blue increased fMRI responses in the insula during a vigilance task and in prefrontal, parietal and occipital cortex during short-term memory. Correct responses in memory retrieval rose 7%.", note: "A single-dose imaging study with a small behavioural effect. It does not show lasting cognitive benefit.", refs: [547] },
+      { title: "Methylene blue after exposure therapy for claustrophobia", evidence: "human rct", meta: ["42 adults with marked claustrophobic fear (23 drug, 19 placebo)", "single 260 mg dose of methylene blue or placebo, straight after six 5-minute extinction trials", "1-month follow-up", "randomized, double-blind, placebo-controlled"], body: "People who ended the session with low fear had less fear a month later on methylene blue. People who ended with moderate or high fear tended to do worse on methylene blue. It improved contextual memory regardless of fear.", note: "This suggests it strengthens whatever was just learned, good or bad, not that it reduces fear.", refs: [548] },
+    ],
     k: [["Route", "Intravenous (approved); oral in informal use"], ["Bioavailability", "About 70–80% oral"], ["Half-life", "About 5–24 hours"], ["Metabolism", "Reduced to leukomethylene blue"], ["Excretion", "Urine, colored blue-green"]], ke: "established",
     related: ["nad-plus", "ss-31"] });
 
-  A.add({ slug: "oxytocin", name: "Oxytocin", aliases: ["Pitocin", "Syntocinon"], category: "nootropic", status: "Approved",
+  A.add({ slug: "oxytocin", updated: "2026-10-17", name: "Oxytocin", aliases: ["Pitocin", "Syntocinon"], category: "nootropic", status: "Approved",
     class: "Neuropeptide hormone", developer: "Endogenous hormone; synthesized by Vincent du Vigneaud (1953)", tags: ["social bonding", "intranasal", "labor"],
     summary: "The hormone of labor and bonding. It is approved to induce labor. Intranasal use for social and anxiety effects has produced inconsistent results.",
     names: "Sold as Pitocin (injection) to induce or augment labor. A nasal spray (Syntocinon) was used for milk letdown in some countries.",
     structure: "A cyclic nonapeptide (9 amino acids) with a disulfide bridge. Molecular weight about 1007 g/mol.",
     pubchem: "oxytocin", pnote: nootNote, p: [["Social / mood effect", 2], ["Risk load", 1, 1], ["Evidence quality", 3]],
-    r: [["Water retention", "moderate", "Antidiuretic effect can cause low sodium at high doses", "established"], ["Inconsistent effect", "moderate", "Intranasal effects on social behavior have often failed to replicate", "human rct"]],
+    r: [["Water retention", "moderate", "Antidiuretic effect can cause low sodium at high doses", "established"], ["Inconsistent effect", "moderate", "Intranasal effects on social behavior have often failed to replicate", "human rct", undefined, [551, 552]]],
     a: [["Oxytocin receptor", "established", "Uterine contraction and milk ejection"], ["Social cognition", "contested", "Early intranasal studies reported increased trust; later larger studies were mixed"]],
-    t: [], noTrials: "Intranasal trials in autism, anxiety and social cognition have produced mixed or negative results.",
+    t: [
+      { title: "Intranasal oxytocin in children and adolescents with autism (SOARS-B)", evidence: "human rct", meta: ["290 children aged 3–17 with autism spectrum disorder", "intranasal oxytocin up to a target of 48 IU a day, or placebo", "24 weeks", "multicentre, randomized, double-blind, placebo-controlled phase 2 (NCT01944046)"], body: "Social withdrawal scores improved similarly in both groups (−3.7 against −3.5; difference −0.2, 95% CI −1.5 to 1.0, P = 0.61). Secondary social and IQ outcomes did not differ, and adverse events were similar.", note: "The largest and most rigorous trial to date, and clearly negative. It outweighs the earlier small positive trials.", refs: [551] },
+      { title: "Meta-analysis: intranasal oxytocin and social cognition in neurodevelopmental disorders", evidence: "human rct", meta: ["17 RCTs, 466 participants with neurodevelopmental disorders", "intranasal oxytocin against placebo", "single and repeated dosing", "meta-analysis of RCTs to July 2017"], body: "Oxytocin had no significant effect on emotion recognition (g = 0.08) and a non-significant effect on empathy (g = 0.49). It had a small significant effect on theory of mind (g = 0.21). Dose, frequency, age and diagnosis did not moderate the effect.", note: "The authors call any promise tentative. A 2021 multilevel meta-analysis that pooled uncontrolled studies reported benefits on social functioning [553], but it predates and does not include SOARS-B.", refs: [552, 553] },
+      { title: "Meta-analysis of adverse events with long-term intranasal oxytocin in autism", evidence: "human rct", meta: ["5 RCTs, 223 participants (123 oxytocin, 100 placebo)", "repeated intranasal oxytocin", "long-term (weeks to months)", "systematic review and meta-analysis"], body: "The commonest events were nasal discomfort (14.3%), irritability (9.0%) and tiredness (7.2%). None was linked to treatment allocation. Severe events were aggression (2 on oxytocin, 1 on placebo) and seizures (1 in each group).", refs: [554] },
+    ],
     k: [["Route", "Intravenous or intramuscular (approved); intranasal in research"], ["Half-life", "About 3–5 minutes in blood"], ["Metabolism", "Oxytocinase (liver, kidney, placenta)"], ["Excretion", "Urine"]], ke: "established",
     related: ["kisspeptin", "bremelanotide"] });
 
-  A.add({ slug: "dsip", name: "DSIP", aliases: ["Delta sleep-inducing peptide", "Emideltide"], category: "nootropic", status: "Research only",
+  A.add({ slug: "dsip", updated: "2026-10-17", name: "DSIP", aliases: ["Delta sleep-inducing peptide", "Emideltide"], category: "nootropic", status: "Research only",
     class: "Neuropeptide", developer: "Discovered in rabbit brain (1977)", tags: ["sleep", "peptide"],
     summary: "A nonapeptide named for inducing deep sleep in rabbits in 1977. Human sleep studies were inconsistent, and its natural role is still unclear.",
     names: "Isolated by Swiss researchers from the blood of sleeping rabbits. Never developed as a drug.",
     structure: "Trp-Ala-Gly-Gly-Asp-Ala-Ser-Gly-Glu. Molecular weight about 849 g/mol. No specific receptor or gene has been identified.",
     pubchem: "delta sleep-inducing peptide", pnote: nootNote, p: [["Sleep effect", 1], ["Risk load", 1, 1], ["Evidence quality", 2]],
-    r: [["Efficacy", "moderate", "Human sleep studies have been inconsistent", "human rct"], vendor],
+    r: [["Efficacy", "moderate", "Human sleep studies have been inconsistent", "human rct", undefined, [555, 556]], vendor],
     a: [["Sleep architecture", "contested", "Some small human studies reported more slow-wave sleep; others found no effect"]],
-    t: [], noTrials: "Small human sleep studies from the 1980s gave mixed results.",
+    t: [
+      { title: "DSIP in chronic insomnia (Netherlands)", evidence: "human rct", meta: ["16 patients with chronic insomnia", "DSIP 25 nmol/kg IV in the afternoon on 3 nights, or glucose placebo", "5 laboratory nights", "double-blind, matched-pairs, parallel-group"], body: "Sleep efficiency was higher and sleep latency shorter with DSIP, but the effects were weak and partly due to a change in the placebo group. Subjective sleep quality did not change.", note: "The authors concluded that short-term DSIP is unlikely to be of major benefit in insomnia.", refs: [555] },
+      { title: "DSIP in chronic insomnia (Uruguay)", evidence: "human rct", meta: ["patients with chronic insomnia (number not reported)", "DSIP 25 nmol/kg IV or placebo", "4 nights", "double-blind crossover with polysomnography"], body: "Total sleep and NREM sleep time rose, but only through stage 2. Slow-wave and REM sleep did not change, and differences from placebo were already present at baseline.", note: "The authors judged the improvement of little clinical significance. Neither trial supports the 'deep sleep' claim the peptide is named for.", refs: [556] },
+    ],
     k: [["Route", "Intravenous or subcutaneous"], ["Half-life", "Minutes in blood"]], ke: "human obs",
     related: ["pinealon", "epitalon"] });
 
   /* ================================================================ Longevity */
-  A.add({ slug: "foxo4-dri", name: "FOXO4-DRI", aliases: ["Proxofim", "FOX04-DRI"], category: "longevity", status: "Research only",
+  A.add({ slug: "foxo4-dri", updated: "2026-10-17", name: "FOXO4-DRI", aliases: ["Proxofim", "FOX04-DRI"], category: "longevity", status: "Research only",
     class: "Senolytic peptide (D-retro-inverso)", developer: "Erasmus University Medical Center (de Keizer lab)", tags: ["senolytic", "senescence", "aging"],
     summary: "A peptide that pushes senescent \"zombie\" cells into self-destruction by disrupting FOXO4's hold on p53. It restored fitness, fur and kidney function in aged mice. There are no human data.",
     names: "Described in a 2017 Cell paper by Baar et al. Not in clinical development. Expensive and widely counterfeited.",
@@ -239,11 +277,11 @@
     pubchem: false, p: [["Preclinical signal", 3], ["Human evidence", 0], ["Risk load", 3, 1], ["Evidence quality", 1]],
     r: [noHuman, ["Off-target cell death", "unknown", "Interfering with p53 in normal cells is a theoretical risk", "contested"], vendor],
     a: [["FOXO4–p53 interaction", "animal", "Frees p53 in senescent cells, causing them to die by apoptosis"], ["Aging models", "animal", "Improved fitness, hair coat and kidney function in aged and accelerated-aging mice"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans, and no human study is registered. In the founding mouse study it made senescent cells die by apoptosis and restored fitness, fur density and kidney function in fast-aging and naturally aged mice.", noTrialsRefs: [625],
     k: [["Route", "Injection in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["humanin", "epitalon"] });
 
-  A.add({ slug: "humanin", name: "Humanin", aliases: ["HN", "HNG (S14G analog)"], category: "longevity", status: "Research only",
+  A.add({ slug: "humanin", updated: "2026-10-17", name: "Humanin", aliases: ["HN", "HNG (S14G analog)"], category: "longevity", status: "Research only",
     class: "Mitochondrial-derived peptide", developer: "Discovered by Hashimoto et al. (2001)", tags: ["mitochondria", "neuroprotection", "aging"],
     summary: "A small peptide encoded in mitochondrial DNA that protects cells from stress. Its levels fall with age, and it has protective effects in animal models. Human studies are observational.",
     names: "Discovered in 2001 while screening for factors that protect neurons against Alzheimer's-related damage. Not in clinical development.",
@@ -251,36 +289,51 @@
     pubchem: false, p: [["Preclinical signal", 3], ["Human evidence", 1], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["Cytoprotection", "in vitro", "Blocks cell death signaling, including through Bax and IGFBP3"], ["Metabolism", "animal", "Improved insulin sensitivity in rodents"], ["Longevity association", "human obs", "Higher circulating levels found in children of centenarians"]],
-    t: [], noTrials: "No human intervention studies.",
+    t: [], noTrials: "No human intervention studies. In animals, humanin overexpression extended lifespan in worms, and the analogue HNG improved metabolic markers in middle-aged mice and prevented amyloid-induced memory loss. In people only blood levels have been measured: higher in children of centenarians, lower in Alzheimer's disease.", noTrialsRefs: [626, 627],
     k: [["Route", "Injection in animal studies"], ["Half-life", NE], ["Endogenous levels", "Circulates naturally and declines with age"]], ke: "animal",
     related: ["mots-c", "ss-31"] });
 
-  A.add({ slug: "ss-31", name: "SS-31", aliases: ["Elamipretide", "MTP-131", "Bendavia", "Forzinity"], category: "longevity", status: "Approved",
+  A.add({ slug: "ss-31", updated: "2026-10-17", name: "SS-31", aliases: ["Elamipretide", "MTP-131", "Bendavia", "Forzinity"], category: "longevity", status: "Approved",
     class: "Mitochondria-targeted tetrapeptide", developer: "Stealth BioTherapeutics", tags: ["mitochondria", "cardiolipin", "Barth syndrome"],
     summary: "A peptide that concentrates in the inner mitochondrial membrane and stabilizes cardiolipin. It received FDA accelerated approval for Barth syndrome in 2025 after failing trials in other conditions.",
     names: "Developed by Stealth BioTherapeutics as elamipretide. It received FDA accelerated approval in 2025 for Barth syndrome, a rare mitochondrial disease. A phase 3 trial in primary mitochondrial myopathy did not meet its primary endpoint.",
     structure: "D-Arg-Dmt-Lys-Phe-NH<sub>2</sub>, an aromatic-cationic tetrapeptide that crosses cell membranes and targets mitochondria.",
     pubchem: "elamipretide", p: [["Mitochondrial effect", 3], ["Risk load", 1, 1], ["Evidence quality", 3]],
-    r: [["Injection site", "moderate", "Injection-site reactions are the most common adverse effect", "human rct"], ["Efficacy", "moderate", "Failed primary endpoints in several trials outside Barth syndrome", "human rct"]],
+    r: [["Injection site", "moderate", "Injection-site reactions are the most common adverse effect", "human rct", undefined, [629]], ["Efficacy", "moderate", "Failed primary endpoints in several trials outside Barth syndrome", "human rct", undefined, [630, 631]],
+      ["Hypersensitivity", "moderate", "Serious allergic reactions requiring emergency treatment have been reported, including rash, eczematous dermatitis and cough", "established", "The FDA label says these reactions can appear within minutes or only months after starting.", [633]],
+      ["Excipient", "low", "Contains benzyl alcohol (20 mg/mL), which can be fatal to premature and low-birth-weight neonates", "established", "Not approved for neonates or for intravenous use.", [633]],
+      ["Kidney function", "moderate", "The label reduces the dose in severe kidney impairment and gives no dose for people on dialysis", "established", undefined, [633]]],
     a: [["Cardiolipin", "in vitro", "Binds cardiolipin and stabilizes the inner mitochondrial membrane, improving electron transport efficiency"]],
-    t: [], noTrials: "Trials in mitochondrial myopathy, heart failure and other conditions were mostly negative on primary endpoints. Its approval rests on Barth syndrome data.",
+    t: [
+      { title: "TAZPOWER: Barth syndrome crossover and extension", evidence: "human rct", meta: ["12 patients with Barth syndrome (males aged 12–35 per the FDA label)", "elamipretide 40 mg subcutaneously once daily, or placebo", "12-week crossover periods with a 4-week washout, then open-label extension", "randomized, double-blind, placebo-controlled crossover, phase 2/3"], body: "Neither primary endpoint (6-minute walk, symptom score) was met in the randomized part. At 36 weeks open-label, 6-minute walk distance improved by 95.9 m and the symptom score by 2.1 points, with gains in knee extensor strength.", note: "The positive results come from the uncontrolled extension in 8–10 patients. FDA granted accelerated approval on knee extensor strength, an intermediate endpoint, so continued approval depends on a confirmatory trial.", refs: [628, 633] },
+      { title: "TAZPOWER: 168-week open-label extension", evidence: "human obs", meta: ["8 patients with Barth syndrome reaching 168 weeks", "elamipretide 40 mg daily", "168 weeks", "open-label extension"], body: "The authors report sustained improvements in function and symptoms. Injection-site reactions remained the most common adverse effect.", note: "Uncontrolled, with a very small group.", refs: [629, 633] },
+      { title: "MMPOWER-3: primary mitochondrial myopathy", evidence: "human rct", meta: ["218 adults with genetically confirmed primary mitochondrial myopathy", "elamipretide 40 mg/day subcutaneously or placebo", "24 weeks", "randomized, double-blind, placebo-controlled, phase 3"], body: "It missed both primary endpoints. The 6-minute walk difference was −3.2 m (95% CI −18.7 to 12.3), and fatigue scores did not differ. Elamipretide was well tolerated, and most adverse events were mild to moderate.", refs: [630] },
+      { title: "PROGRESS-HF: heart failure with reduced ejection fraction", evidence: "human rct", meta: ["71 patients with HFrEF (LVEF ≤40%)", "elamipretide 4 mg or 40 mg subcutaneously once daily, or placebo", "28 days", "randomized, double-blind, placebo-controlled, phase 2"], body: "Neither dose changed left ventricular end-systolic volume or ejection fraction on cardiac MRI compared with placebo. Adverse event rates were similar across groups.", refs: [631] },
+    ],
     k: [["Route", "Subcutaneous injection"], ["Half-life", "Short, a few hours"], ["Excretion", "Urine"]], ke: "human rct",
     related: ["mots-c", "humanin", "nad-plus"] });
 
-  A.add({ slug: "nad-plus", name: "NAD+", aliases: ["Nicotinamide adenine dinucleotide", "NMN", "NR"], category: "longevity", status: "Supplement",
+  A.add({ slug: "nad-plus", updated: "2026-10-17", name: "NAD+", aliases: ["Nicotinamide adenine dinucleotide", "NMN", "NR"], category: "longevity", status: "Supplement",
     class: "Coenzyme", developer: "Endogenous molecule", tags: ["NAD+", "sirtuins", "aging", "IV therapy"],
     summary: "A coenzyme essential to energy metabolism whose levels fall with age. Boosting it with infusions, injections or precursors (NMN, NR) raises levels, but clear health benefits in people haven't been shown.",
     names: "Sold as IV and injectable NAD+ at wellness clinics and as precursors NMN and NR in supplements. Not approved as a drug for any condition.",
     structure: "A dinucleotide of adenine and nicotinamide. Molecular weight about 663.4 g/mol. Large and charged, so cells take it up poorly as an intact molecule.",
     pubchem: "NAD+", p: [["Health benefit (human)", 1], ["Risk load", 1, 1], ["Evidence quality", 2]],
-    r: [["Infusion reactions", "moderate", "Rapid IV infusion causes chest tightness, nausea and cramping", "human obs"], ["Cost vs evidence", "low", "Expensive with little proven benefit", "established"]],
+    r: [["Infusion reactions", "moderate", "Rapid IV infusion causes chest tightness, nausea and cramping", "human obs"], ["Cost vs evidence", "low", "Expensive with little proven benefit", "established"],
+      ["Efficacy", "moderate", "A 2025 meta-analysis of randomized trials found no effect of NMN or NR on muscle mass, grip strength or gait speed in adults over 60", "human rct", undefined, [638]],
+      ["IV NAD+", "unknown", "IV NAD+ has no controlled human trial of benefit or safety", "unknown", "The only published human study measured how it is metabolized.", [637]]],
     a: [["Sirtuins and PARPs", "animal", "Substrate for enzymes involved in DNA repair and aging biology"], ["Precursor supplementation", "human rct", "NR and NMN raise blood NAD+ levels; effects on function have been small or absent"]],
-    t: [], noTrials: "Small precursor trials show raised NAD+ levels with inconsistent functional benefits.",
+    t: [
+      { title: "Nicotinamide riboside in healthy middle-aged and older adults", evidence: "human rct", meta: ["30 healthy middle-aged and older adults", "nicotinamide riboside 1,000 mg/day or placebo", "6 weeks per period", "randomized, double-blind, placebo-controlled crossover"], body: "NR was well tolerated and raised blood NAD+ metabolism. There were no significant functional effects. Blood pressure and arterial stiffness were flagged only as worth testing in future trials.", refs: [634] },
+      { title: "NMN in women with prediabetes", evidence: "human rct", meta: ["25 postmenopausal women with prediabetes and overweight or obesity", "NMN 250 mg/day or placebo", "10 weeks", "randomized, double-blind, placebo-controlled"], body: "Insulin-stimulated glucose uptake by muscle, measured by clamp, increased with NMN and not with placebo. Muscle insulin signaling also increased.", note: "A small trial with a mechanistic endpoint. It did not measure blood glucose control or clinical outcomes.", refs: [635] },
+      { title: "NADPARK: nicotinamide riboside in early Parkinson's disease", evidence: "human rct", meta: ["30 newly diagnosed, untreated patients with Parkinson's disease", "NR 1,000 mg/day or placebo", "30 days", "randomized, double-blind, phase 1"], body: "NR was well tolerated and raised brain NAD levels on MR spectroscopy, though the rise varied between patients. Those with a rise showed altered brain metabolism and mild clinical improvement.", note: "A phase 1 safety and target-engagement study. Clinical benefit needs the larger trial that followed.", refs: [636] },
+      { title: "Intravenous NAD+: plasma and urine metabolism", evidence: "human obs", meta: ["small adult cohort (number not reported)", "IV NAD+ at 3 µmol/min for 6 hours", "6 hours", "uncontrolled pilot"], body: "Plasma NAD+ and its metabolites did not rise for the first 2 hours, meaning infused NAD+ was cleared rapidly and completely. NAD+ and methylnicotinamide appeared in urine by 6 hours.", note: "It is the only published human study of IV NAD+ on PubMed. It measured metabolism, not benefit or safety.", refs: [637] },
+    ],
     k: [["Route", "Intravenous, subcutaneous, or oral precursors"], ["Uptake", "Mostly broken down to precursors before entering cells"], ["Half-life", "Short in blood"]], ke: "human obs",
     related: ["mots-c", "ss-31", "methylene-blue"] });
 
   /* ================================================================ Repair & immune */
-  A.add({ slug: "kpv", name: "KPV", aliases: ["Lys-Pro-Val", "α-MSH (11-13)"], category: "repair", status: "Research only",
+  A.add({ slug: "kpv", updated: "2026-10-17", name: "KPV", aliases: ["Lys-Pro-Val", "α-MSH (11-13)"], category: "repair", status: "Research only",
     class: "α-MSH C-terminal tripeptide", developer: "Derived from α-MSH research", tags: ["anti-inflammatory", "colitis", "peptide"],
     summary: "The last three amino acids of α-MSH, which keep its anti-inflammatory effect. It reduced colitis in mice. There are no human trials.",
     names: "A research peptide derived from α-melanocyte-stimulating hormone. Not in clinical development.",
@@ -288,11 +341,11 @@
     pubchem: "KPV peptide", p: [["Anti-inflammatory signal", 2], ["Human evidence", 0], ["Risk load", 1, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["NF-κB", "animal", "Reduced inflammatory signaling; enters intestinal cells through the PepT1 transporter"], ["Colitis", "animal", "Reduced inflammation in mouse colitis models"]],
-    t: [], noTrials: "It has never been tested in human trials.",
+    t: [], noTrials: "It has never been tested in human trials. The strongest evidence is from mice, where oral KPV, taken up through the PepT1 transporter, reduced chemically induced colitis and inflammatory cytokines.", noTrialsRefs: [639, 640],
     k: [["Route", "Oral or injection in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["bpc-157", "ll-37"] });
 
-  A.add({ slug: "ara-290", name: "ARA-290", aliases: ["Cibinetide"], category: "repair", status: "Investigational",
+  A.add({ slug: "ara-290", updated: "2026-10-17", name: "ARA-290", aliases: ["Cibinetide"], category: "repair", status: "Investigational",
     class: "EPO-derived innate repair receptor agonist", developer: "Araim Pharmaceuticals", tags: ["neuropathy", "EPO", "inflammation"],
     summary: "An 11-amino-acid peptide based on erythropoietin that activates tissue-protective signaling without raising red blood cells. Small trials in sarcoidosis nerve pain were encouraging.",
     names: "Developed by Araim as cibinetide for small fiber neuropathy and diabetic complications. Not approved.",
@@ -300,11 +353,15 @@
     pubchem: "cibinetide", p: [["Neuropathy signal", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Human safety", "low", "Well tolerated in small trials", "human rct"], vendor],
     a: [["Innate repair receptor", "human rct", "Activates the EPO receptor–CD131 complex, which reduces inflammation and supports nerve repair"]],
-    t: [{ title: "Sarcoidosis small fiber neuropathy", evidence: "human rct", meta: ["patients with sarcoidosis and small fiber neuropathy", "cibinetide or placebo", "28 days", "randomized, double-blind, placebo-controlled, phase 2"], body: "Cibinetide improved corneal nerve fiber measures and some neuropathy symptoms compared with placebo." }],
+    t: [
+      { title: "Sarcoidosis small fiber neuropathy: first controlled trial", evidence: "human rct", meta: ["patients with sarcoidosis and small nerve fiber loss", "ARA 290 subcutaneously once daily, or placebo", "28 days", "randomized, blinded, placebo-controlled"], body: "ARA 290 improved neuropathic symptoms and increased corneal small nerve fiber density. Temperature sensitivity and 6-minute walk distance also improved.", refs: [641] },
+      { title: "Sarcoidosis small fiber neuropathy: dose-finding phase 2b", evidence: "human rct", meta: ["64 patients with sarcoid-associated small nerve fiber loss and neuropathic pain", "cibinetide 1, 4 or 8 mg/day subcutaneously, or placebo", "28 days", "randomized, placebo-controlled, phase 2b"], body: "Only the 4 mg dose significantly increased corneal nerve fiber area (placebo-corrected +697 µm², p = 0.012). It also raised regenerating skin nerve fibers. Pain improved in all groups, including placebo.", note: "There was no clear dose-response, since 8 mg did less than 4 mg. The pain benefit did not separate from placebo.", refs: [642] },
+      { title: "Type 2 diabetes with painful neuropathy", evidence: "human rct", meta: ["adults with type 2 diabetes and painful neuropathy", "ARA 290 4 mg subcutaneously once daily, or placebo", "28 days of treatment and 28 days of follow-up", "randomized, placebo-controlled, phase 2"], body: "HbA1c, lipids and neuropathic symptom scores improved with ARA 290. Corneal nerve density rose in the subgroup with the greatest nerve loss. No safety issues were identified.", note: "Short and small. HbA1c changes over 8 weeks are hard to interpret.", refs: [643] },
+    ],
     k: [["Route", "Subcutaneous injection"], ["Half-life", "Minutes in blood, though effects last longer"]], ke: "human rct",
     related: ["epobis", "bpc-157"] });
 
-  A.add({ slug: "b7-33", name: "B7-33", aliases: ["Single-chain relaxin analog"], category: "repair", status: "Research only",
+  A.add({ slug: "b7-33", updated: "2026-10-17", name: "B7-33", aliases: ["Single-chain relaxin analog"], category: "repair", status: "Research only",
     class: "Relaxin-2 mimetic peptide", developer: "University of Melbourne", tags: ["relaxin", "fibrosis", "heart"],
     summary: "A small single-chain version of relaxin-2 that keeps its anti-fibrotic effects. It reduced fibrosis in rodent heart and lung models.",
     names: "Designed by Australian researchers as a simpler, cheaper relaxin mimetic. Not in clinical development.",
@@ -312,47 +369,68 @@
     pubchem: false, p: [["Preclinical signal", 2], ["Human evidence", 0], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["RXFP1", "animal", "Biased agonist of the relaxin receptor favoring anti-fibrotic signaling"], ["Fibrosis", "animal", "Reduced cardiac and lung fibrosis in rodents"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans. In cell assays it activated the relaxin receptor RXFP1, and in rodent models it kept relaxin's anti-fibrotic and cardioprotective effects, reducing heart fibrosis faster than perindopril in one mouse study.", noTrialsRefs: [644, 645],
     k: [["Route", "Injection in animal studies"], ["Half-life", NE]], ke: "animal",
     related: ["bpc-157", "tb-500"] });
 
-  A.add({ slug: "teriparatide", name: "Teriparatide", aliases: ["Forteo", "PTH (1-34)"], category: "repair", status: "Approved",
+  A.add({ slug: "teriparatide", updated: "2026-10-17", name: "Teriparatide", aliases: ["Forteo", "PTH (1-34)"], category: "repair", status: "Approved",
     class: "Parathyroid hormone analog (bone anabolic)", developer: "Eli Lilly", tags: ["osteoporosis", "bone", "PTH"],
     summary: "An approved osteoporosis drug that builds new bone. It is sometimes promoted for height gain, but its label warns against use when growth plates are open.",
     names: "Sold as Forteo and biosimilars for severe osteoporosis. The label advises against use in children and young adults with open growth plates because of an osteosarcoma signal in rats. There is no evidence it increases height.",
     structure: "The first 34 amino acids of human parathyroid hormone, made recombinantly.",
     pubchem: false, p: [["Bone formation", 4], ["Risk load", 2, 1], ["Evidence quality", 5]],
-    r: [["Open growth plates", "high", "Contraindicated with open epiphyses; rats developed osteosarcoma in a dose- and duration-dependent way", "established"], ["Calcium", "moderate", "Can raise blood calcium", "human rct"], ["Dizziness", "low", "Orthostatic dizziness after injection", "human rct"]],
+    r: [["Open growth plates", "high", "Contraindicated with open epiphyses; rats developed osteosarcoma in a dose- and duration-dependent way", "established"], ["Calcium", "moderate", "Can raise blood calcium", "human rct", "In the glucocorticoid osteoporosis trial, more patients on teriparatide than on alendronate had at least one high calcium reading.", [647]], ["Dizziness", "low", "Orthostatic dizziness after injection", "human rct"],
+      ["Osteosarcoma in adults", "low", "Rats developed osteosarcoma, but 15 years of US surveillance found no excess in adults", "human obs", "The label still says to avoid it in people with a higher baseline risk: Paget's disease or other metabolic bone disease, bone metastases or skeletal cancer, prior radiation to the skeleton, or hereditary predisposition. Postmarketing cases have been reported.", [648, 649]],
+      ["Hypersensitivity", "low", "Anaphylaxis, angioedema and urticaria have been reported with PTH analogs", "established", undefined, [649]],
+      ["Kidney stones", "low", "Can worsen active or recent urolithiasis", "established", undefined, [649]],
+      ["Digoxin", "moderate", "Raised calcium can make digoxin toxic", "established", "The label lists digoxin toxicity as a warning.", [649]]],
     a: [["PTH1 receptor", "human rct", "Intermittent dosing stimulates osteoblasts and new bone formation"]],
-    t: [{ title: "Postmenopausal osteoporosis", evidence: "human rct", meta: ["1,637 postmenopausal women with prior vertebral fractures", "teriparatide 20 or 40 µg daily, or placebo", "median 21 months", "randomized, double-blind, placebo-controlled"], body: "Teriparatide reduced new vertebral fractures by about 65–69% and increased spine bone density." }],
+    t: [
+      { title: "Postmenopausal osteoporosis", evidence: "human rct", meta: ["1,637 postmenopausal women with prior vertebral fractures", "teriparatide 20 or 40 µg daily, or placebo", "median 21 months", "randomized, double-blind, placebo-controlled"], body: "Teriparatide reduced new vertebral fractures by about 65–69% and increased spine bone density." },
+      { title: "VERO: teriparatide against risedronate in severe osteoporosis", evidence: "human rct", meta: ["1,360 postmenopausal women with severe osteoporosis and prior vertebral fractures", "teriparatide 20 µg daily injection or risedronate 35 mg weekly by mouth, double-dummy", "24 months", "multicenter, randomized, double-blind, active-controlled"], body: "New vertebral fractures occurred in 5.4% on teriparatide against 12.0% on risedronate (RR 0.44). Clinical fractures were 4.8% against 9.8%. Non-vertebral fractures did not differ significantly (4.0% against 6.1%).", note: "Funded by Lilly. It is the only head-to-head osteoporosis trial with fractures as the primary outcome.", refs: [646] },
+      { title: "Glucocorticoid-induced osteoporosis against alendronate", evidence: "human rct", meta: ["428 men and women on long-term glucocorticoids (≥5 mg prednisone daily)", "teriparatide 20 µg daily or alendronate 10 mg daily", "18 months", "randomized, double-blind, active-controlled"], body: "Spine bone density rose 7.2% on teriparatide against 3.4% on alendronate. New vertebral fractures were 0.6% against 6.1%. More teriparatide patients had at least one high calcium reading.", refs: [647] },
+      { title: "Osteosarcoma surveillance in US adults", evidence: "human obs", meta: ["US cancer registries, osteosarcoma cases 2003–2016", "prior teriparatide exposure by interview", "15 years", "postmarketing surveillance, case series against background rate"], body: "Three osteosarcoma patients had used teriparatide, against 4.17 expected from background rates (standardized incidence ratio 0.72). Incidence was no higher than expected.", note: "Only 24% of patients with osteosarcoma were interviewed, so rare cases could be missed. The rat signal has not appeared in humans.", refs: [648] },
+    ],
     k: [["Route", "Subcutaneous injection"], ["Bioavailability", "About 95%"], ["Half-life", "About 1 hour"], ["Metabolism", "Liver and kidney proteolysis"]], ke: "established",
     related: ["growth-hormone"] });
 
-  A.add({ slug: "ll-37", name: "LL-37", aliases: ["Cathelicidin", "hCAP18 (precursor)"], category: "immune", status: "Research only",
+  A.add({ slug: "ll-37", updated: "2026-10-17", name: "LL-37", aliases: ["Cathelicidin", "hCAP18 (precursor)"], category: "immune", status: "Research only",
     class: "Human antimicrobial peptide", developer: "Endogenous peptide", tags: ["antimicrobial", "innate immunity", "wound healing"],
     summary: "The only human cathelicidin, a natural antimicrobial peptide. It kills microbes and modulates immunity, but it also drives inflammation in psoriasis and rosacea.",
     names: "Made by immune and skin cells from the precursor hCAP18. Topical forms were tested for chronic leg ulcers. Not approved.",
     structure: "A 37-amino-acid amphipathic α-helical peptide beginning with two leucines.",
     pubchem: false, p: [["Antimicrobial signal", 2], ["Risk load", 3, 1], ["Evidence quality", 2]],
-    r: [["Inflammation", "moderate", "Elevated LL-37 drives inflammation in rosacea, psoriasis and some autoimmune diseases", "human obs"], ["Cytotoxicity", "moderate", "Toxic to human cells at higher concentrations", "in vitro"], vendor],
+    r: [["Inflammation", "moderate", "Elevated LL-37 drives inflammation in rosacea, psoriasis and some autoimmune diseases", "human obs"], ["Cytotoxicity", "moderate", "Toxic to human cells at higher concentrations", "in vitro"],
+      ["Efficacy", "moderate", "The larger phase 2b trial in leg ulcers was negative overall", "human rct", "The smaller first trial had found faster healing at the two lower concentrations.", [650, 651]], vendor],
     a: [["Microbial membranes", "in vitro", "Disrupts bacterial membranes and biofilms"], ["Immune modulation", "in vitro", "Recruits immune cells and modulates TLR signaling"]],
-    t: [{ title: "Hard-to-heal venous leg ulcers", evidence: "human rct", meta: ["patients with venous leg ulcers", "topical LL-37 or placebo", "4 weeks", "randomized, double-blind, placebo-controlled, phase 1/2"], body: "Topical LL-37 improved healing rate at lower concentrations compared with placebo." }],
+    t: [
+      { title: "Hard-to-heal venous leg ulcers", evidence: "human rct", meta: ["patients with venous leg ulcers", "topical LL-37 or placebo", "4 weeks", "randomized, double-blind, placebo-controlled, phase 1/2"], body: "Topical LL-37 improved healing rate at lower concentrations compared with placebo.", refs: [650] },
+      { title: "HEAL LL-37: venous leg ulcers, phase 2b", evidence: "human rct", meta: ["148 patients with hard-to-heal venous leg ulcers (median duration 20 months)", "topical LL-37 0.5 or 1.6 mg/mL, or placebo, with compression therapy", "multicenter, randomized, double-blind, placebo-controlled, phase 2b"], body: "Healing did not improve over placebo in the full study population. A post hoc analysis suggested benefit in ulcers of at least 10 cm². Both strengths were well tolerated.", note: "The larger trial did not confirm the positive first-in-human result. The large-ulcer finding is post hoc.", refs: [651] },
+    ],
     k: [["Route", "Topical in trials; injection in informal use"], ["Half-life", "Short; degraded by proteases"]], ke: "human rct",
     related: ["kpv", "thymosin-alpha-1"] });
 
-  A.add({ slug: "vip", name: "VIP", aliases: ["Vasoactive intestinal peptide", "Aviptadil", "Invicorp"], category: "immune", status: "Approved",
+  A.add({ slug: "vip", updated: "2026-10-17", name: "VIP", aliases: ["Vasoactive intestinal peptide", "Aviptadil", "Invicorp"], category: "immune", status: "Approved",
     class: "Neuropeptide", developer: "Endogenous peptide (discovered by Said and Mutt, 1970)", tags: ["vasodilator", "lungs", "erectile dysfunction"],
     summary: "A gut and nerve peptide that relaxes blood vessels and smooth muscle. Combined with phentolamine it is approved for erectile dysfunction in some countries, but trials in lung disease were disappointing.",
     names: "Aviptadil with phentolamine (Invicorp) is approved for erectile dysfunction in some European countries. Inhaled and IV aviptadil was tested for COVID-19 respiratory failure without clear benefit.",
     structure: "A 28-amino-acid peptide of the glucagon/secretin family.",
     pubchem: false, p: [["Vasodilation", 3], ["Risk load", 2, 1], ["Evidence quality", 3]],
-    r: [["Low blood pressure", "moderate", "Flushing, hypotension and rapid heart rate", "human rct"], ["Diarrhea", "moderate", "VIP-secreting tumors cause severe watery diarrhea, showing its effect on the gut", "established"]],
+    r: [["Low blood pressure", "moderate", "Flushing, hypotension and rapid heart rate", "human rct"], ["Diarrhea", "moderate", "VIP-secreting tumors cause severe watery diarrhea, showing its effect on the gut", "established"],
+      ["Flushing", "moderate", "Transient facial flushing accompanied 40% of intracavernosal injections", "human rct", undefined, [655]],
+      ["Efficacy in lung disease", "moderate", "The largest IV trial in COVID-19 respiratory failure was stopped for futility", "human rct", undefined, [652, 653]],
+      ["Priapism", "low", "Prolonged erection is possible with intracavernosal use", "human rct", "One episode in 1,711 injections in the main trial.", [655]]],
     a: [["VPAC1 / VPAC2", "established", "Vasodilation, smooth muscle relaxation and anti-inflammatory effects"]],
-    t: [], noTrials: "Trials in COVID-19 respiratory failure did not show a clear benefit on primary endpoints.",
+    t: [
+      { title: "TESICO: IV aviptadil in COVID-19 respiratory failure", evidence: "human rct", meta: ["461 adults with COVID-19 acute hypoxemic respiratory failure, 94% in intensive care", "aviptadil as 12-hour IV infusions on 3 days (600, 1,200 and 1,800 pmol/kg) or placebo", "90 days", "randomized, placebo-controlled, multicenter"], body: "Stopped for futility. Recovery did not differ (OR 1.11, p = 0.54), and 90-day mortality was 38% against 36%. The day-5 safety composite occurred in 63% on aviptadil against 56% on placebo, which was not significant.", note: "This is the largest and most independent aviptadil trial. It was NIH-funded.", refs: [652] },
+      { title: "IV aviptadil in critical COVID-19: sponsor trial", evidence: "human rct", meta: ["196 patients with COVID-19 respiratory failure at 10 US hospitals", "3 days of IV aviptadil or placebo, randomized 2:1", "60 days", "multicenter, randomized, placebo-controlled"], body: "The primary endpoint (alive and free of respiratory failure at day 60) was not met (OR 1.6, 95% CI 0.86 to 3.11). The authors highlighted a secondary survival result and subgroup findings.", note: "Primary endpoint negative. The positive secondary and subgroup claims were not borne out by TESICO.", refs: [653] },
+      { title: "Inhaled VIP in active sarcoidosis", evidence: "human obs", meta: ["20 patients with biopsy-proven active sarcoidosis", "nebulized VIP", "4 weeks", "open-label phase 2"], body: "Inhaled VIP was well tolerated. It reduced TNF-α production by lung lavage cells and increased regulatory T cells.", note: "Uncontrolled, with immune markers rather than clinical outcomes.", refs: [654] },
+      { title: "Injected VIP with phentolamine for erectile dysfunction", evidence: "human rct", meta: ["236 men with mainly non-psychogenic erectile dysfunction; 171 in the placebo-controlled phase", "intracavernosal VIP 25 µg with phentolamine 1 or 2 mg by auto-injector, or placebo", "up to 12 injections over 6 months", "multicenter, randomized, double-blind, placebo-controlled"], body: "Erections suitable for intercourse occurred in 75% (1 mg phentolamine) and 66% (2 mg) against 12–18% on placebo. Transient facial flushing accompanied 40% of injections. There was one priapism in 1,711 injections.", refs: [655] },
+    ],
     k: [["Route", "Intravenous, inhaled or intracavernosal"], ["Half-life", "About 1–2 minutes in blood"]], ke: "established",
     related: ["thymosin-alpha-1", "ll-37"] });
 
-  A.add({ slug: "pnc-27", name: "PNC-27", aliases: ["p53-derived peptide"], category: "immune", status: "Research only",
+  A.add({ slug: "pnc-27", updated: "2026-10-17", name: "PNC-27", aliases: ["p53-derived peptide"], category: "immune", status: "Research only",
     class: "Anticancer membrane-active peptide", developer: "Academic research (SUNY Downstate)", tags: ["cancer", "p53", "HDM-2"],
     summary: "A peptide that punches holes in cancer cells in lab dishes by binding a protein on their surface. There are no human trials, and claims that it treats cancer are unproven.",
     names: "Developed in academic research. Not in clinical development. Promoted online for cancer, which the evidence does not support.",
@@ -360,52 +438,72 @@
     pubchem: false, p: [["Preclinical signal", 2], ["Human evidence", 0], ["Risk load", 3, 1], ["Evidence quality", 1]],
     r: [["Delayed treatment", "high", "Using unproven peptides instead of proven cancer treatment can be fatal", "established"], noHuman, vendor],
     a: [["Membrane HDM-2", "in vitro", "Binds HDM-2 on cancer cell membranes and forms pores that kill the cell"]],
-    t: [], noTrials: "It has never been tested in human cancer trials.",
+    t: [], noTrials: "It has never been tested in humans. Laboratory work from the developers reports that it binds HDM-2 on cancer cell membranes and kills cancer cells by disrupting their membranes and mitochondria, while sparing normal cells.", noTrialsRefs: [656],
     k: [["Route", "Injection (informal)"], ["Half-life", NE]], ke: "in vitro",
     related: ["ll-37"] });
 
   /* ================================================================ Skin & hair */
-  A.add({ slug: "finasteride", name: "Finasteride", aliases: ["Propecia", "Proscar"], category: "skin", status: "Approved",
+  A.add({ slug: "finasteride", updated: "2026-10-17", name: "Finasteride", aliases: ["Propecia", "Proscar"], category: "skin", status: "Approved",
     class: "Type II 5α-reductase inhibitor", developer: "Merck", tags: ["hair loss", "DHT", "BPH"],
     summary: "The standard hair-loss pill. It lowers DHT by about two-thirds and slows or stops male pattern hair loss in most men.",
     names: "Sold as Propecia (1 mg) for male pattern hair loss and Proscar (5 mg) for benign prostatic hyperplasia. Topical versions are approved in some countries.",
     structure: "A 4-azasteroid. C<sub>23</sub>H<sub>36</sub>N<sub>2</sub>O<sub>2</sub>, about 372.5 g/mol.",
     pubchem: "finasteride", pnote: hairNote, p: [["Hair retention", 4], ["Regrowth", 2], ["Sexual side effects", 2, 1], ["Risk load", 2, 1], ["Evidence quality", 5]],
     r: [["Sexual function", "low", "Sexual side effects in about 2–4% in trials, usually resolving on stopping", "human rct", "In the pivotal trials, 3.8% on finasteride reported sexual adverse events against 2.1% on placebo. Persistent symptoms after stopping are reported but disputed."],
-      ["Mood", "low", "Depression and suicidal ideation are post-marketing label warnings", "contested"], ["Pregnancy", "high", "Can feminize a male fetus; pregnant people should not handle broken tablets", "established"], ["PSA", "low", "Halves PSA readings, which matters for prostate cancer screening", "established"]],
+      ["Mood and self-harm", "low", "Depression and suicidal ideation are label warnings. Pharmacovigilance and cohort data link 5α-reductase inhibitors to depression and self-harm, though not to suicide itself", "human obs", "In WHO VigiBase, reports of suicidality were disproportionately common in men under 45 using it for hair loss (reporting odds ratio 2.06), possibly inflated by publicity after 2012. In 93,197 Ontario men aged 66 or older, suicide was not increased (HR 0.88), but self-harm (HR 1.88, first 18 months) and depression (HR 1.94) were.", [702, 704]], ["Pregnancy", "high", "Can feminize a male fetus; pregnant people should not handle broken tablets", "established"], ["PSA", "low", "Halves PSA readings, which matters for prostate cancer screening", "established"],
+      ["Prostate cancer grade", "low", "On the 5 mg dose, high-grade prostate tumors were more common in a 7-year prevention trial", "human rct", "In PCPT, Gleason 7–10 tumors occurred in 6.4% on finasteride against 5.1% on placebo, while total prostate cancer fell. Whether the excess is real or a detection artifact of a smaller prostate is debated.", [703]],
+      ["Persistent sexual symptoms", "unknown", "Sexual symptoms that continue after stopping are reported. How often this happens, and whether finasteride causes it, is unknown", "contested", "A case series of 71 self-selected men described symptoms lasting a mean 40 months. A records study found recorded persistent erectile dysfunction in 0.8% of young men on low-dose finasteride, with no unexposed comparison group.", [701, 705]]],
     a: [["5α-reductase type II", "human rct", "Lowers scalp and serum DHT, the androgen that miniaturizes susceptible follicles"]],
-    t: [{ title: "Men with male pattern hair loss", evidence: "human rct", meta: ["1,553 men aged 18–41", "finasteride 1 mg daily or placebo", "1 year, extended to 2 years", "two randomized, double-blind, placebo-controlled trials"], body: "Finasteride increased hair counts and halted visible progression in most men; placebo groups continued to lose hair.", refs: [32] }],
+    t: [
+      { title: "Men with male pattern hair loss", evidence: "human rct", meta: ["1,553 men aged 18–41", "finasteride 1 mg daily or placebo", "1 year, extended to 2 years", "two randomized, double-blind, placebo-controlled trials"], body: "Finasteride increased hair counts and halted visible progression in most men; placebo groups continued to lose hair.", refs: [32] },
+      { title: "Five-year follow-up of the pivotal trials", evidence: "human rct", meta: ["1,553 men with male pattern hair loss in two 1-year trials; 1,215 continued", "finasteride 1 mg daily or placebo", "up to 5 years (four 1-year placebo-controlled extensions)", "randomized, double-blind, placebo-controlled with extensions"], body: "The improvement in scalp hair held over five years on finasteride (p ≤ 0.001 against placebo on every endpoint). Men on placebo kept losing hair. No new safety concerns appeared with long-term use.", note: "Industry-run. The men who stayed in the extensions were a self-selected subset of the original trials.", refs: [700] },
+      { title: "Prostate Cancer Prevention Trial (PCPT)", evidence: "human rct", meta: ["18,882 men aged 55 or older with PSA 3.0 ng/mL or lower", "finasteride 5 mg daily or placebo", "7 years", "randomized, double-blind, placebo-controlled"], body: "Prostate cancer was found in 18.4% on finasteride and 24.4% on placebo, a 24.8% relative reduction. But Gleason 7–10 tumors were more common on finasteride (6.4% of men against 5.1%). Sexual side effects were more common on finasteride.", note: "This used the 5 mg prostate dose, not the 1 mg hair dose. It is the source of the label warning about high-grade prostate cancer.", refs: [703] },
+      { title: "Persistent sexual symptoms after stopping (case series)", evidence: "human obs", meta: ["71 otherwise healthy men aged 21–46 reporting sexual symptoms that lasted at least 3 months after stopping", "finasteride for hair loss (dose as used)", "interviews a mean 40 months after stopping", "uncontrolled case series"], body: "Of these men, 94% reported low libido, 92% erectile dysfunction, 92% reduced arousal and 69% orgasm problems. They had taken finasteride for a mean 28 months.", note: "The men were recruited because they had symptoms, so this says nothing about how often persistence happens. The authors list selection bias, recall bias and no hormone measurements as limitations.", refs: [701] },
+      { title: "Persistent erectile dysfunction in a health-records cohort", evidence: "human obs", meta: ["11,909 men exposed to finasteride or dutasteride; subgroup of 4,284 men aged 16–42 on finasteride 1.25 mg/day or less", "5α-reductase inhibitor exposure from records", "persistence measured as at least 90 days after stopping", "single-group electronic health record study"], body: "Erectile dysfunction that persisted after stopping developed in 1.4% of all exposed men and in 0.8% (34 of 4,284) of the young men on low-dose finasteride. In the young men, more than 205 days of exposure carried a 4.9-fold higher risk.", note: "No unexposed comparison group. It describes how often persistence is recorded, not whether the drug causes it.", refs: [705] },
+    ],
     k: [["Route", "Oral (topical in some countries)"], ["Bioavailability", "About 65%"], ["Half-life", "About 5–6 hours; longer in older men"], ["Duration of effect", "DHT suppression lasts longer than its half-life"], ["Metabolism", "Liver, CYP3A4"], ["Excretion", "Feces and urine"]], ke: "established", kr: [82],
     related: ["dutasteride", "minoxidil", "tri-blend-topical"] });
 
-  A.add({ slug: "dutasteride", name: "Dutasteride", aliases: ["Avodart"], category: "skin", status: "Approved",
+  A.add({ slug: "dutasteride", updated: "2026-10-17", name: "Dutasteride", aliases: ["Avodart"], category: "skin", status: "Approved",
     class: "Dual type I and II 5α-reductase inhibitor", developer: "GlaxoSmithKline", tags: ["hair loss", "DHT", "BPH"],
     summary: "A stronger relative of finasteride that blocks both forms of 5α-reductase and lowers DHT by over 90%. It worked better than finasteride in a head-to-head hair trial.",
     names: "Sold as Avodart for benign prostatic hyperplasia. Approved for male pattern hair loss in Japan and South Korea; used off-label for hair elsewhere.",
     structure: "A 4-azasteroid with a bulky fluorinated side group. C<sub>27</sub>H<sub>30</sub>F<sub>6</sub>N<sub>2</sub>O<sub>2</sub>, about 528.5 g/mol.",
     pubchem: "dutasteride", pnote: hairNote, p: [["Hair retention", 5], ["Regrowth", 3], ["Sexual side effects", 2, 1], ["Risk load", 2, 1], ["Evidence quality", 4]],
     r: [["Sexual function", "low", "Sexual side effects similar to finasteride", "human rct"], ["Long half-life", "moderate", "Effects and side effects persist for months after stopping", "established"],
-      ["Pregnancy", "high", "Feminizes a male fetus; men should not donate blood during and for 6 months after use", "established"], ["PSA", "low", "Halves PSA readings", "established"]],
+      ["Pregnancy", "high", "Feminizes a male fetus; men should not donate blood during and for 6 months after use", "established"], ["PSA", "low", "Halves PSA readings", "established"],
+      ["Mood and self-harm", "low", "In older men, starting a 5α-reductase inhibitor was linked to more depression and self-harm, with no difference between finasteride and dutasteride", "human obs", "In an Ontario cohort of 93,197 men aged 66 or older, suicide was not increased, but self-harm and depression were, especially in the first 18 months.", [704]],
+      ["Persistent erectile dysfunction", "unknown", "Erectile dysfunction that continued after stopping was recorded in 1.4% of men exposed to finasteride or dutasteride", "human obs", "Single-group records study with no unexposed comparison group.", [705]]],
     a: [["5α-reductase types I and II", "human rct", "Suppresses serum DHT by more than 90%"]],
-    t: [{ title: "Dutasteride against finasteride in hair loss", evidence: "human rct", meta: ["917 men with male pattern hair loss", "dutasteride 0.02–0.5 mg, finasteride 1 mg, or placebo", "24 weeks", "randomized, double-blind, phase 3"], body: "Dutasteride 0.5 mg increased hair count more than finasteride 1 mg and placebo." }],
+    t: [
+      { title: "Dutasteride against finasteride in hair loss", evidence: "human rct", meta: ["917 men with male pattern hair loss", "dutasteride 0.02–0.5 mg, finasteride 1 mg, or placebo", "24 weeks", "randomized, double-blind, phase 3"], body: "Dutasteride 0.5 mg increased hair count more than finasteride 1 mg and placebo.", refs: [707] },
+      { title: "Dose-ranging trial against finasteride 5 mg", evidence: "human rct", meta: ["416 men aged 21–45 with male pattern hair loss", "dutasteride 0.05, 0.1, 0.5 or 2.5 mg, finasteride 5 mg, or placebo daily", "24 weeks", "randomized, placebo-controlled"], body: "Hair count rose with dutasteride dose, and 2.5 mg beat finasteride 5 mg at 12 and 24 weeks. Scalp and serum DHT fell, and testosterone rose, in step with the dose.", refs: [706] },
+      { title: "Korean phase 3, 0.5 mg against placebo", evidence: "human rct", meta: ["153 men aged 18–49 with male pattern hair loss", "dutasteride 0.5 mg daily or placebo", "6 months", "randomized, double-blind, placebo-controlled, phase 3"], body: "Hair count rose by 12.2/cm² on dutasteride and 4.7/cm² on placebo (P = .0319). Adverse events did not differ much between groups.", note: "The basis for its approval for hair loss in South Korea.", refs: [708] },
+      { title: "REDUCE: prostate cancer prevention", evidence: "human rct", meta: ["men aged 50–75 with PSA 2.5–10 ng/mL and one prior negative biopsy; 6,729 had a biopsy or surgery", "dutasteride 0.5 mg daily or placebo", "4 years", "randomized, double-blind, placebo-controlled"], body: "Prostate cancer was found in 659 of 3,305 men on dutasteride against 858 of 3,424 on placebo, a 22.8% relative reduction. Over years 1–4, Gleason 7–10 tumors did not differ (220 against 233).", refs: [709] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "About 60%"], ["Half-life", "About 5 weeks"], ["Metabolism", "Liver, CYP3A4"], ["Excretion", "Mainly feces"]], ke: "established",
     related: ["finasteride", "minoxidil"] });
 
-  A.add({ slug: "minoxidil", name: "Minoxidil", aliases: ["Rogaine", "Regaine", "Loniten"], category: "skin", status: "Approved",
+  A.add({ slug: "minoxidil", updated: "2026-10-17", name: "Minoxidil", aliases: ["Rogaine", "Regaine", "Loniten"], category: "skin", status: "Approved",
     class: "Potassium channel opener (vasodilator)", developer: "Upjohn", tags: ["hair loss", "beard", "vasodilator"],
     summary: "The standard topical treatment for hair loss, originally an oral blood pressure drug. Low-dose oral minoxidil is now widely prescribed off-label.",
     names: "Topical Rogaine (2% and 5%) is approved over the counter for pattern hair loss. Oral Loniten is approved for severe hypertension; low-dose oral use for hair is off-label.",
     structure: "C<sub>9</sub>H<sub>15</sub>N<sub>5</sub>O, about 209.2 g/mol. A prodrug activated in the follicle by sulfotransferase.",
     pubchem: "minoxidil", pnote: hairNote, p: [["Regrowth", 3], ["Hair retention", 2], ["Risk load", 1, 1], ["Evidence quality", 5]],
     r: [["Scalp irritation", "moderate", "Itching and dermatitis, often from propylene glycol", "human rct", undefined], ["Initial shedding", "moderate", "Temporary shedding in the first months", "established"],
-      ["Cardiovascular (oral)", "moderate", "Oral use can cause fluid retention, fast heart rate and, rarely, pericardial effusion", "human obs"], ["Unwanted hair", "low", "Facial and body hair growth", "human rct"],
-      ["Pets", "high", "Highly toxic to cats, even from residue on skin or bedding", "established"]],
+      ["Cardiovascular (oral)", "moderate", "Oral use can cause fluid retention, fast heart rate and, rarely, pericardial effusion", "human obs", "In a retrospective cohort of 1,404 patients on low-dose oral minoxidil, lightheadedness (1.7%), fluid retention (1.3%) and fast heart rate (0.9%) led 1.2% to stop. No life-threatening events were recorded.", [711]], ["Unwanted hair (topical)", "low", "Facial and body hair growth", "human rct"],
+      ["Pets", "high", "Highly toxic to cats, even from residue on skin or bedding", "established"],
+      ["Unwanted hair (oral)", "moderate", "Body and facial hair growth is the most common effect of oral use", "human rct", "Seen in 49% on 5 mg in a 24-week trial and in 15.1% across a 1,404-patient low-dose cohort.", [710, 711]]],
     a: [["Follicle stimulation", "human rct", "Prolongs the growth phase and enlarges miniaturized follicles", undefined]],
-    t: [{ title: "Topical 5% against 2% and placebo", evidence: "human rct", meta: ["393 men aged 18–49", "5% minoxidil, 2% minoxidil or placebo, twice daily", "48 weeks", "randomized, double-blind, placebo-controlled"], body: "5% minoxidil produced about 45% more regrowth than 2%, with more itching and irritation.", refs: [31] }],
+    t: [
+      { title: "Topical 5% against 2% and placebo", evidence: "human rct", meta: ["393 men aged 18–49", "5% minoxidil, 2% minoxidil or placebo, twice daily", "48 weeks", "randomized, double-blind, placebo-controlled"], body: "5% minoxidil produced about 45% more regrowth than 2%, with more itching and irritation.", refs: [31] },
+      { title: "Oral 5 mg against topical 5% in men", evidence: "human rct", meta: ["90 men aged 18–55 with androgenetic alopecia (Norwood 3V–5V); 68 completed", "oral minoxidil 5 mg daily with topical placebo, or topical 5% 1 mL twice daily with oral placebo", "24 weeks", "randomized, double-blind, double-dummy, single centre (Brazil)"], body: "Terminal hair density did not differ significantly between oral and topical, at the front (difference 3.1 hairs/cm², P = .27) or the vertex (23.4 hairs/cm², P = .09). Photo assessment favored oral at the vertex only. Unwanted hair growth affected 49% and headache 14% on oral.", note: "The trial was small and lost about a quarter of participants. It does not show oral is better; it shows the two were not clearly different.", refs: [710] },
+      { title: "Safety of low-dose oral minoxidil, 1,404 patients", evidence: "human obs", meta: ["1,404 patients (943 women, 461 men) aged 8–86 with any type of alopecia", "low-dose oral minoxidil for at least 3 months, doses as prescribed", "retrospective", "multicenter retrospective cohort"], body: "Unwanted hair growth was the most common side effect (15.1%). Lightheadedness (1.7%), fluid retention (1.3%), fast heart rate (0.9%), headache (0.4%), swelling around the eyes (0.3%) and insomnia (0.2%) led 1.2% to stop. No life-threatening effects were seen.", note: "Retrospective, with no control group, so rarer cardiac events could be missed.", refs: [711] },
+    ],
     k: [["Route", "Topical or oral"], ["Topical absorption", "About 1–2% reaches the bloodstream"], ["Oral bioavailability", "About 90%"], ["Half-life", "About 4 hours (oral)"], ["Metabolism", "Sulfation (active) and glucuronidation"], ["Excretion", "Urine"]], ke: "established",
     related: ["finasteride", "dutasteride", "tri-blend-topical"] });
 
-  A.add({ slug: "ketoconazole", name: "Ketoconazole", aliases: ["Nizoral"], category: "skin", status: "Approved",
+  A.add({ slug: "ketoconazole", updated: "2026-10-17", name: "Ketoconazole", aliases: ["Nizoral"], category: "skin", status: "Approved",
     class: "Imidazole antifungal", developer: "Janssen", tags: ["antifungal", "shampoo", "hair loss"],
     summary: "An antifungal shampoo used for dandruff. Small studies suggest it modestly helps hair density in pattern hair loss, possibly through mild anti-androgen and anti-inflammatory effects.",
     names: "Sold as Nizoral shampoo (1% OTC, 2% prescription) and cream. Oral ketoconazole carries an FDA boxed warning for liver injury and should not be used for hair.",
@@ -413,11 +511,13 @@
     pubchem: "ketoconazole", pnote: hairNote, p: [["Hair density", 1], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Scalp dryness", "low", "Dryness and irritation", "established"], ["Oral use", "high", "Oral ketoconazole can cause severe liver injury and adrenal problems", "established"]],
     a: [["Malassezia", "established", "Antifungal; reduces scalp yeast and inflammation"], ["Androgen pathway", "contested", "Weakly inhibits steroid synthesis; whether topical use has a meaningful anti-androgen effect is uncertain"]],
-    t: [], noTrials: "Small comparative studies suggest a modest benefit on hair density, but there are no large trials for hair loss.",
+    t: [
+      { title: "Ketoconazole shampoo against minoxidil in androgenetic alopecia", evidence: "human rct", meta: ["men with androgenetic alopecia", "2% ketoconazole shampoo, or plain shampoo with or without 2% topical minoxidil", "long-term", "comparative study"], body: "Hair density, hair size and the share of hairs in the growth phase improved about as much with ketoconazole shampoo as with minoxidil. Scalp oil appeared to fall with ketoconazole.", note: "Small and old. The authors called for a larger controlled trial, which has not been done.", refs: [712] },
+    ],
     k: [["Route", "Topical shampoo"], ["Systemic absorption", "Negligible from shampoo"], ["Half-life (oral)", "About 8 hours"]], ke: "established",
     related: ["finasteride", "minoxidil"] });
 
-  A.add({ slug: "clascoterone", name: "Clascoterone", aliases: ["CB-03-01", "Winlevi", "Breezula"], category: "skin", status: "Approved",
+  A.add({ slug: "clascoterone", updated: "2026-10-17", name: "Clascoterone", aliases: ["CB-03-01", "Winlevi", "Breezula"], category: "skin", status: "Approved",
     class: "Topical androgen receptor antagonist", developer: "Cassiopea / Cosmo Pharmaceuticals", tags: ["acne", "hair loss", "anti-androgen"],
     summary: "A topical anti-androgen approved for acne in 2020. It breaks down to inactive cortexolone in the blood, so it acts locally. A higher-strength solution is being developed for hair loss.",
     names: "Sold as Winlevi 1% cream for acne. A solution (Breezula) is in late-stage trials for male pattern hair loss.",
@@ -425,11 +525,15 @@
     pubchem: "clascoterone", pnote: hairNote, p: [["Acne effect", 3], ["Hair effect", 2], ["Risk load", 1, 1], ["Evidence quality", 4]],
     r: [["HPA axis", "low", "HPA axis suppression was seen in some patients under maximal use", "human rct"], ["Local irritation", "low", "Redness and dryness", "human rct"]],
     a: [["Androgen receptor", "human rct", "Competes with DHT in the skin; hydrolyzed systemically to cortexolone"]],
-    t: [], noTrials: "Approval for acne rests on two phase 3 trials. Hair loss phase 3 data are emerging.",
+    t: [
+      { title: "Two phase 3 acne trials (CB-03-01/25 and /26)", evidence: "human rct", meta: ["1,440 patients aged 9 and older with moderate to severe facial acne", "clascoterone 1% cream or vehicle, about 1 g to the face twice daily", "12 weeks", "two identical randomized, double-blind, vehicle-controlled phase 3 trials"], body: "Treatment success was 18.4% and 20.3% on clascoterone against 9.0% and 6.5% on vehicle. Both trials also showed larger falls in inflammatory and noninflammatory lesion counts.", refs: [714] },
+      { title: "Long-term open-label extension in acne", evidence: "human obs", meta: ["609 patients from the phase 3 trials; 347 completed", "clascoterone 1% cream twice daily to face, trunk or both", "up to 9 months", "open-label extension"], body: "18.1% had a treatment-emergent adverse event, most often a cold. 14 patients had 19 events related to the cream, and 9 stopped because of them. None of the 7 serious events was judged treatment related.", refs: [715] },
+      { title: "SCALP 1 and SCALP 2: male pattern hair loss", evidence: "human rct", meta: ["1,465 men with mild to moderate androgenetic alopecia at 51 centres in the US and Europe", "clascoterone 5% topical solution or vehicle", "6 months double-blind, then 6 months with responders re-randomized to continue or switch to vehicle", "two identical randomized, vehicle-controlled phase 3 trials"], body: "The company reports that both trials met their endpoints on target-area hair count at 6 months. Men who stayed on clascoterone for 12 months had a 2.39-fold greater improvement in hair count than those switched to vehicle. Safety was reported as comparable to vehicle, with no significant systemic hormonal effects.", note: "Company-reported (April 2026) and not peer reviewed. The release gives no absolute hair counts or p-values. The company plans an FDA filing in early 2027.", refs: [716] },
+    ],
     k: [["Route", "Topical"], ["Systemic exposure", "Low; rapidly hydrolyzed to cortexolone"], ["Half-life", "Short systemically"]], ke: "established",
     related: ["pyrilutamide", "ru-58841", "finasteride"] });
 
-  A.add({ slug: "pyrilutamide", name: "Pyrilutamide", aliases: ["KX-826"], category: "skin", status: "Investigational",
+  A.add({ slug: "pyrilutamide", updated: "2026-10-17", name: "Pyrilutamide", aliases: ["KX-826"], category: "skin", status: "Investigational",
     class: "Topical androgen receptor antagonist", developer: "Kintor Pharmaceutical", tags: ["hair loss", "anti-androgen", "topical"],
     summary: "A topical androgen receptor blocker developed in China for hair loss and acne. Early trials were encouraging; later-phase results have been mixed.",
     names: "Developed by Kintor in China and the US. Not approved.",
@@ -437,11 +541,14 @@
     pubchem: "pyrilutamide", pnote: hairNote, p: [["Hair effect", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Local irritation", "low", "Scalp irritation", "human rct"], vendor],
     a: [["Androgen receptor", "human rct", "Blocks DHT at the follicle"]],
-    t: [], noTrials: "Phase 2 trials reported improvements in hair count; later-stage trial results were mixed.",
+    t: [
+      { title: "First China phase 3, 0.5%", evidence: "human rct", meta: ["740 adult men with androgenetic alopecia in China", "pyrilutamide 0.5% solution, about 1 mL (7 sprays) twice daily, or placebo", "24 weeks", "multicenter, randomized, double-blind, placebo-controlled"], body: "Hair count rose from baseline (P < 0.0001), but the gain over placebo was not statistically significant at any visit. No serious adverse events were reported.", note: "A failed primary endpoint, by the company's own filing.", refs: [717, 719] },
+      { title: "Pivotal China phase 2/3, 1.0% and 0.5%", evidence: "human rct", meta: ["666 men in the phase 3 stage", "pyrilutamide 1.0% or 0.5% twice daily, or placebo", "24 weeks of treatment, then 14 days of safety follow-up", "randomized, double-blind, vehicle-controlled, seamless phase 2/3"], body: "The company reported that both strengths increased target-area hair count significantly more than placebo at 24 weeks, with no drug-related serious adverse events.", note: "Company-reported topline from March 2026, not peer reviewed. A marketing application in China is reported to be in progress.", refs: [718] },
+    ],
     k: [["Route", "Topical"], ["Systemic exposure", "Low"]], ke: "human rct",
     related: ["clascoterone", "ru-58841", "topilutamide"] });
 
-  A.add({ slug: "topilutamide", name: "Topilutamide", aliases: ["Fluridil", "Eucapil"], category: "skin", status: "Approved",
+  A.add({ slug: "topilutamide", updated: "2026-10-17", name: "Topilutamide", aliases: ["Fluridil", "Eucapil"], category: "skin", status: "Approved",
     class: "Topical androgen receptor antagonist", developer: "Interpharma Praha (Czech Republic)", tags: ["hair loss", "anti-androgen", "topical"],
     summary: "A topical anti-androgen registered as a cosmetic in the Czech Republic. A small trial found more hairs in the growth phase.",
     names: "Sold as Eucapil, registered as a cosmetic in the Czech Republic and some other European countries. Not approved as a drug.",
@@ -449,11 +556,13 @@
     pubchem: "topilutamide", pnote: hairNote, p: [["Hair effect", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Local irritation", "low", "Scalp irritation", "human obs"]],
     a: [["Androgen receptor", "human rct", "Local androgen receptor blockade"]],
-    t: [], noTrials: "Evidence is a small Czech trial showing an increase in growth-phase hairs.",
+    t: [
+      { title: "Fluridil: first clinical experience", evidence: "human rct", meta: ["43 men with androgenetic alopecia (Norwood II–Va); a separate patch test in 20 men", "2% fluridil topical or placebo", "3 months blinded, with phototrichograms continuing to 9 months", "double-blind, placebo-controlled"], body: "The share of growth-phase (anagen) hairs stayed the same on placebo and rose on fluridil, from 76% to 85% at 3 months and 87% at 9 months. Sexual function, blood counts and blood chemistry stayed normal. In the patch test, fluridil caused no sensitization or irritation.", note: "One small trial by the developer. It measured the anagen percentage, not hair counts.", refs: [720] },
+    ],
     k: [["Route", "Topical"], ["Systemic exposure", "Low; hydrolyzed to an inactive form"]], ke: "human obs",
     related: ["pyrilutamide", "ru-58841"] });
 
-  A.add({ slug: "ru-58841", name: "RU-58841", aliases: ["PSK-3841", "HMR-3841"], category: "skin", status: "Research only",
+  A.add({ slug: "ru-58841", updated: "2026-10-17", name: "RU-58841", aliases: ["PSK-3841", "HMR-3841"], category: "skin", status: "Research only",
     class: "Topical nonsteroidal androgen receptor antagonist", developer: "Roussel Uclaf (1990s)", tags: ["hair loss", "anti-androgen", "topical"],
     summary: "A topical anti-androgen that prevented balding in macaques in the 1990s. It never completed human trials, so its human safety and systemic absorption are unknown.",
     names: "Developed by Roussel Uclaf and later licensed, but development stopped before controlled human trials were completed. It is sold as a research chemical, and is one ingredient in the tri-blend topical.",
@@ -461,11 +570,11 @@
     pubchem: "RU58841", pnote: hairNote, p: [["Hair effect", 3], ["Human evidence", 0], ["Risk load", 3, 1], ["Evidence quality", 1]],
     r: [["Human safety", "unknown", "No human safety or pharmacokinetic data", "unknown"], ["Systemic anti-androgen effects", "unknown", "Users report low libido and fatigue; not studied", "anecdotal"], vendor],
     a: [["Androgen receptor", "animal", "Prevented and partly reversed balding in stumptail macaques"]],
-    t: [], noTrials: "It has never completed a controlled human trial.",
+    t: [], noTrials: "It has never completed a controlled human trial. The strongest evidence is a study in bald stumptail macaques, in which topical RU-58841 prevented and partly reversed balding, alongside earlier work on its anti-androgen activity.", noTrialsRefs: [34, 35],
     k: [["Route", "Topical"], ["Systemic absorption", NE], ["Half-life", NE]], ke: "animal", kr: [35],
     related: ["tri-blend-topical", "pyrilutamide", "clascoterone"] });
 
-  A.add({ slug: "pp405", name: "PP405", aliases: ["JXL-069"], category: "skin", status: "Investigational",
+  A.add({ slug: "pp405", updated: "2026-10-17", name: "PP405", aliases: ["JXL-069"], category: "skin", status: "Investigational",
     class: "Topical LDH inhibitor (follicle stem cell activator)", developer: "Pelage Pharmaceuticals (UCLA research)", tags: ["hair loss", "stem cells", "topical"],
     summary: "A topical drug designed to reactivate dormant hair follicle stem cells by inhibiting lactate dehydrogenase. It is in early clinical trials.",
     names: "Developed by Pelage from UCLA research on follicle stem cell metabolism. In phase 2 trials. Not approved.",
@@ -473,23 +582,28 @@
     pubchem: false, pnote: hairNote, p: [["Hair effect", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Long-term safety", "unknown", "Early-stage human data only", "unknown"], vendor],
     a: [["Hair follicle stem cells", "animal", "Shifting stem cell metabolism activated hair growth in mice"]],
-    t: [], noTrials: "Early-phase human trials have been reported by the company; full peer-reviewed results are pending.",
+    t: [
+      { title: "Phase 2a in androgenetic alopecia", evidence: "human rct", meta: ["78 men and women with androgenetic alopecia", "PP405 0.05% topical gel once daily to the scalp, or vehicle gel", "4 weeks of treatment, follow-up to 12 weeks", "randomized, placebo-controlled phase 2 (NCT06393452)"], body: "The primary safety endpoint was met. The company reports that at week 8, 31% of men with more advanced hair loss had a hair-density increase above 20%, against none on placebo, and that no PP405 was detected in blood.", note: "Company-reported (June 2025) and not peer reviewed. The release gives no p-value or group sizes, and the 31% applies to a subgroup. The registry lists the trial as completed in October 2025 with no posted results.", refs: [721, 722] },
+    ],
     k: [["Route", "Topical"], ["Systemic exposure", "Low by design"]], ke: "human rct",
     related: ["sm04554", "ptd-dbm", "minoxidil"] });
 
-  A.add({ slug: "sm04554", name: "SM04554", aliases: ["Dalosirvat"], category: "skin", status: "Investigational",
+  A.add({ slug: "sm04554", updated: "2026-10-17", name: "SM04554", aliases: ["Dalosirvat"], category: "skin", status: "Investigational",
     class: "Topical Wnt pathway activator", developer: "Samumed (now Biosplice)", tags: ["hair loss", "Wnt", "topical"],
-    summary: "A topical Wnt pathway activator tested for male pattern hair loss. Phase 2 results showed modest improvements, and development has since gone quiet.",
+    summary: "A topical Wnt pathway activator tested for male pattern hair loss. Its two registered controlled trials did not beat vehicle or placebo, and development appears to have stopped.",
     names: "Developed by Samumed for androgenetic alopecia. Not approved.",
     structure: "A small-molecule Wnt pathway modulator formulated as a topical solution.",
     pubchem: false, pnote: hairNote, p: [["Hair effect", 2], ["Risk load", 1, 1], ["Evidence quality", 2]],
     r: [["Wnt activation", "unknown", "Wnt signaling is linked to cancer; local, low exposure limits but doesn't rule out risk", "contested"], vendor],
-    a: [["Wnt pathway", "human rct", "Activates Wnt signaling to promote follicle growth"]],
-    t: [], noTrials: "Phase 2 trials reported modest increases in hair count.",
+    a: [["Wnt pathway", "contested", "Designed to activate Wnt signaling to promote follicle growth; controlled human trials showed no hair benefit"]],
+    t: [
+      { title: "Phase 2, 0.15% and 0.25% (registry results)", evidence: "human rct", meta: ["302 men with androgenetic alopecia", "SM04554 0.15% or 0.25% topical solution once daily, or vehicle", "90 days of treatment (primary endpoint), follow-up to day 135", "randomized, double-blind, vehicle-controlled phase 2 (NCT02275351)"], body: "At day 90, non-vellus hair count rose by 4.2 (0.15%) and 3.2 (0.25%) against 6.2 on vehicle. Neither dose beat vehicle (P = 0.43 and 0.16). Self-assessed and investigator-assessed hair growth did not differ either.", refs: [724] },
+      { title: "Phase 2/3, 48 weeks (registry results)", evidence: "human rct", meta: ["675 men with androgenetic alopecia", "SM04554 0.15% or 0.25% topical solution once daily, or placebo", "primary endpoint at week 48", "randomized, triple-blind, placebo-controlled phase 2/3 (NCT03742518)"], body: "Hair count at week 48 did not differ from placebo for either dose (rate ratios 1.02, P = 0.54, and 1.01, P = 0.75). Secondary hair counts at weeks 12–36 were also no different. Serious adverse events were rare and similar across arms.", note: "Both registered controlled trials missed their primary endpoints. Development appears to have stopped.", refs: [725] },
+    ],
     k: [["Route", "Topical"], ["Systemic exposure", "Low"]], ke: "human rct",
     related: ["ptd-dbm", "pp405"] });
 
-  A.add({ slug: "ptd-dbm", name: "PTD-DBM", aliases: ["PTD-DBM peptide"], category: "skin", status: "Research only",
+  A.add({ slug: "ptd-dbm", updated: "2026-10-17", name: "PTD-DBM", aliases: ["PTD-DBM peptide"], category: "skin", status: "Research only",
     class: "Wnt pathway–activating peptide (CXXC5 inhibitor)", developer: "Yonsei University (Korea)", tags: ["hair loss", "Wnt", "peptide"],
     summary: "A peptide that blocks CXXC5, a brake on Wnt signaling in hair follicles. It promoted hair regrowth in mice, especially with valproic acid. There are no human trials.",
     names: "Developed in Korean academic research. Not in clinical development.",
@@ -497,11 +611,11 @@
     pubchem: false, pnote: hairNote, p: [["Preclinical signal", 2], ["Human evidence", 0], ["Risk load", 2, 1], ["Evidence quality", 1]],
     r: [noHuman, vendor],
     a: [["CXXC5–Dishevelled", "animal", "Disrupts CXXC5 binding to Dishevelled, releasing Wnt signaling"], ["Hair regrowth", "animal", "Promoted hair regrowth and wound-induced hair neogenesis in mice"]],
-    t: [], noTrials: "It has never been tested in humans.",
+    t: [], noTrials: "It has never been tested in humans. CXXC5 was raised in miniaturized follicles from human balding scalp, and in mice a peptide that blocks CXXC5 from binding Dishevelled switched on Wnt signaling and sped up hair regrowth.", noTrialsRefs: [726],
     k: [["Route", "Topical in mouse studies"], ["Half-life", NE]], ke: "animal",
     related: ["sm04554", "pp405"] });
 
-  A.add({ slug: "ahk-cu", name: "AHK-Cu", aliases: ["Copper tripeptide AHK"], category: "skin", status: "Approved",
+  A.add({ slug: "ahk-cu", updated: "2026-10-17", name: "AHK-Cu", aliases: ["Copper tripeptide AHK"], category: "skin", status: "Approved",
     class: "Copper-binding tripeptide", developer: "Cosmetic peptide research", tags: ["copper peptide", "hair", "cosmetic"],
     summary: "A copper peptide related to GHK-Cu, used in hair and skin cosmetics. Cell studies suggest it supports hair follicle growth. Human evidence is minimal.",
     names: "Used as a cosmetic ingredient in hair and skin products. The \"Approved\" status refers to cosmetic use only.",
@@ -509,11 +623,11 @@
     pubchem: false, pnote: hairNote, p: [["Hair / skin effect", 1], ["Risk load", 1, 1], ["Evidence quality", 1]],
     r: [["Skin irritation", "low", "Occasional irritation", "anecdotal"], vendor],
     a: [["Dermal papilla cells", "in vitro", "Promoted dermal papilla cell growth and reduced apoptosis in culture"]],
-    t: [], noTrials: "There are no controlled human trials.",
+    t: [], noTrials: "There are no controlled human trials. In the laboratory it lengthened isolated human hair follicles and increased dermal papilla cell growth.", noTrialsRefs: [727],
     k: [["Route", "Topical; injection in informal use"], ["Half-life", NE]], ke: "in vitro",
     related: ["ghk-cu", "minoxidil"] });
 
-  A.add({ slug: "snap-8", name: "SNAP-8", aliases: ["Acetyl octapeptide-3"], category: "skin", status: "Approved",
+  A.add({ slug: "snap-8", updated: "2026-10-17", name: "SNAP-8", aliases: ["Acetyl octapeptide-3"], category: "skin", status: "Approved",
     class: "SNARE-mimicking cosmetic peptide", developer: "Lipotec", tags: ["wrinkles", "cosmetic", "peptide"],
     summary: "A cosmetic peptide that mimics part of the SNAP-25 protein to reduce muscle contraction in expression lines, a \"topical Botox\" claim with modest evidence.",
     names: "Sold by Lipotec as a cosmetic ingredient (INCI: acetyl glutamyl heptapeptide-1 / acetyl octapeptide-3). An extended version of argireline. The \"Approved\" status refers to cosmetic use only.",
@@ -521,12 +635,14 @@
     pubchem: false, p: [["Wrinkle reduction", 1], ["Risk load", 1, 1], ["Evidence quality", 1]],
     r: [["Skin irritation", "low", "Occasional irritation", "anecdotal"]],
     a: [["SNARE complex", "in vitro", "Competes with SNAP-25, reducing neurotransmitter release in cell assays"]],
-    t: [], noTrials: "Evidence comes from manufacturer-sponsored cosmetic studies.",
+    t: [
+      { title: "Microneedle patch combining acetyl octapeptide-3 with other actives", evidence: "human rct", meta: ["24 healthy adults", "dissolving hyaluronic acid microneedle patch with acetyl octapeptide-3, ascorbyl glucoside and cyclic lysophosphatidic acid, against a plain hyaluronic acid patch, overnight under the eyes", "28 days", "split-face, placebo-controlled comparison"], body: "Under-eye wrinkles, skin water loss, elasticity and lift improved more on the active patch side. No adverse effects were reported.", note: "Several actives were delivered by microneedle, so this does not isolate SNAP-8 and does not apply to an ordinary cream.", refs: [728] },
+    ],
     k: [["Route", "Topical"], ["Skin penetration", "Limited"]], ke: "in vitro",
     related: ["ghk-cu", "ahk-cu"] });
 
   /* ================================================================ Melanocortin */
-  A.add({ slug: "melanotan-1", name: "Melanotan I", aliases: ["Afamelanotide", "Scenesse", "MT-1"], category: "melanocortin", status: "Approved",
+  A.add({ slug: "melanotan-1", updated: "2026-10-17", name: "Melanotan I", aliases: ["Afamelanotide", "Scenesse", "MT-1"], category: "melanocortin", status: "Approved",
     class: "α-MSH analog (MC1R agonist)", developer: "University of Arizona; Clinuvel", tags: ["tanning", "MC1R", "photoprotection"],
     summary: "A stable α-MSH analog that darkens skin through MC1R. As the implant Scenesse it is approved for a rare light-sensitivity disorder.",
     names: "Approved as Scenesse, a slow-release implant, for erythropoietic protoporphyria (EU 2014, US 2019). Injectable \"Melanotan I\" sold online is unregulated.",
@@ -534,20 +650,31 @@
     pubchem: "afamelanotide", p: [["Tanning effect", 3], ["Risk load", 2, 1], ["Evidence quality", 4]],
     r: [["Nausea and headache", "low", "Common after dosing", "human rct"], ["Moles", "moderate", "Darkening of moles; skin checks are recommended", "human rct"], vendor],
     a: [["MC1R", "human rct", "Stimulates eumelanin production without UV exposure"]],
-    t: [{ title: "Erythropoietic protoporphyria", evidence: "human rct", meta: ["adults with erythropoietic protoporphyria", "afamelanotide implant or placebo", "6–9 months", "randomized, double-blind, placebo-controlled, phase 3"], body: "Afamelanotide increased the time patients could spend in direct sunlight without pain and improved quality of life." }],
+    t: [
+      { title: "Erythropoietic protoporphyria", evidence: "human rct", meta: ["adults with erythropoietic protoporphyria", "afamelanotide implant or placebo", "6–9 months", "randomized, double-blind, placebo-controlled, phase 3"], body: "Afamelanotide increased the time patients could spend in direct sunlight without pain and improved quality of life.", refs: [730] },
+      { title: "Long-term use in 115 EPP patients", evidence: "human obs", meta: ["115 patients with EPP at centres in Rome and Zurich", "1,023 afamelanotide 16 mg implants", "up to 8 years", "observational cohort"], body: "An EPP-specific quality-of-life score rose from 31% of maximum before treatment to 74% and stayed there. Only 3 patients felt it did not meet their expectations, and adverse effects were minor.", refs: [733] },
+      { title: "Vitiligo, with narrowband UVB", evidence: "human rct", meta: ["55 adults, skin types III–VI, with nonsegmental vitiligo", "afamelanotide 16 mg implant monthly for 4 months plus NB-UVB, or NB-UVB alone", "168 days", "randomized, multicenter"], body: "At day 168, repigmentation was 48.6% with the combination against 33.3% with UVB alone, and it started sooner on the face and arms. The benefit appeared in skin types IV–VI, not type III. Nausea and minor infections occurred with the combination.", note: "Off-label; not an approved use.", refs: [732] },
+      { title: "First human tanning study", evidence: "human rct", meta: ["healthy volunteers, skin types I–IV", "subcutaneous [Nle4, D-Phe7]-α-MSH (NDP) or placebo", "short course", "placebo-controlled"], body: "Skin darkened in a dose-related way in all skin types given the peptide, peaking 1–3 weeks after the course ended. There was no darkening on placebo.", refs: [731] },
+    ],
     k: [["Route", "Subcutaneous implant (approved); injection (informal)"], ["Duration", "Implant releases drug over about 2 months"], ["Half-life", "Short for free peptide"]], ke: "established",
     related: ["melanotan-2", "bremelanotide"] });
 
-  A.add({ slug: "melanotan-2", name: "Melanotan II", aliases: ["MT-2", "MT-II"], category: "melanocortin", status: "Research only",
+  A.add({ slug: "melanotan-2", updated: "2026-10-17", name: "Melanotan II", aliases: ["MT-2", "MT-II"], category: "melanocortin", status: "Research only",
     class: "Nonselective cyclic melanocortin agonist", developer: "University of Arizona (1990s)", tags: ["tanning", "libido", "MC4R"],
     summary: "A cyclic α-MSH analog that tans skin and raises libido. It acts on several melanocortin receptors and was never approved. Moles changing and new moles are a real concern.",
     names: "Developed alongside Melanotan I. Bremelanotide (PT-141) is its metabolite and was developed separately. Melanotan II itself was never approved, and several countries have issued warnings about unlicensed tanning injections.",
     structure: "Ac-Nle-cyclo[Asp-His-D-Phe-Arg-Trp-Lys]-NH<sub>2</sub>, a cyclic heptapeptide. Molecular weight about 1024 g/mol.",
     pubchem: "melanotan II", p: [["Tanning effect", 4], ["Libido effect", 3], ["Risk load", 3, 1], ["Evidence quality", 2]],
-    r: [["Moles and melanoma", "high", "New and changing moles; case reports of melanoma, though causation is unproven", "human obs"], ["Nausea and flushing", "moderate", "Very common after dosing", "human rct"],
-      ["Priapism", "moderate", "Spontaneous erections; rare priapism", "human obs"], ["Blood pressure", "moderate", "Transient rises", "human rct"], vendor],
+    r: [["Moles and melanoma", "high", "New and changing moles; case reports of melanoma, though causation is unproven", "human obs", undefined, [737]], ["Nausea and flushing", "moderate", "Very common after dosing", "human rct", "Severe nausea followed 4 of 19 injections at 0.025 mg/kg in a trial in organic erectile dysfunction.", [736]],
+      ["Priapism", "moderate", "Spontaneous erections; rare priapism", "human obs"], ["Blood pressure", "moderate", "Transient rises", "human rct"],
+      ["Sleepiness and fatigue", "low", "Moderate sleepiness and fatigue at the highest pilot dose", "human rct", "Seen in 1 of 2 men at 0.03 mg/kg.", [734]], vendor],
     a: [["MC1R", "human rct", "Skin darkening"], ["MC4R", "human rct", "Sexual arousal and appetite suppression"]],
-    t: [], noTrials: "Small early human studies showed tanning and erectile effects. There are no large trials.",
+    t: [
+      { title: "Pilot phase 1 in healthy men", evidence: "human rct", meta: ["3 healthy men", "melanotan II 0.01 mg/kg rising to 0.025–0.03 mg/kg subcutaneously, alternating with saline", "2 weeks, weekdays", "single-blind, placebo-controlled, alternating-day"], body: "At 0.03 mg/kg, one of two men had moderate sleepiness and fatigue. Mild nausea was reported at most doses. A stretching and yawning complex came with spontaneous erections.", refs: [734] },
+      { title: "Psychogenic erectile dysfunction", evidence: "human rct", meta: ["10 men with erectile dysfunction of no known organic cause", "melanotan II or vehicle by subcutaneous injection", "6-hour monitoring per dose", "double-blind, placebo-controlled crossover"], body: "8 of 10 men developed erections. Time at more than 80% tip rigidity averaged 38.0 minutes on melanotan II against 3.0 on placebo (p = 0.0045). Nausea, yawning and reduced appetite were more common.", refs: [735] },
+      { title: "Organic erectile dysfunction", evidence: "human rct", meta: ["10 men with organic erectile dysfunction", "melanotan II 0.025 mg/kg or vehicle, each injected twice", "6-hour monitoring per dose", "double-blind, placebo-controlled crossover"], body: "Erections followed 12 of 19 melanotan II injections against 1 of 21 placebo doses. Sexual desire was higher after the drug. 4 of 19 injections caused severe nausea.", refs: [736] },
+      { title: "Melanoma after self-injection (case report)", evidence: "human obs", meta: ["a 20-year-old woman, skin type II", "a 3–4 week self-injected course of melanotan II with sunbed use", "excision 3 months later", "case report"], body: "A new black lesion on the buttock was excised and confirmed as melanoma. Her skin was intensely pigmented all over.", note: "One case with sunbed exposure. It cannot show causation.", refs: [737] },
+    ],
     k: [["Route", "Subcutaneous injection; nasal sprays sold online"], ["Half-life", "About 1 hour or less"]], ke: "human obs",
     related: ["melanotan-1", "bremelanotide"] });
 
@@ -560,53 +687,106 @@
     names: extra.names || `One of the short-peptide \"bioregulators\" developed by Vladimir Khavinson's institute. It is claimed to act selectively on ${target}. Sold as a research peptide and, in Russia, in supplement form.`,
     structure: seq ? `Commonly listed as ${seq}. Peptides this short are claimed to enter the cell nucleus and regulate gene expression, a mechanism that has not been independently confirmed.` : "A polypeptide complex.",
     pubchem: false, pnote: bioNote, p: [["Claimed organ effect", 2], ["Risk load", 1, 1], ["Evidence quality", 1]],
-    r: bioRisks, a: [["Gene expression", "in vitro", `Reported to change gene expression in ${target} cells in culture`], ...(extra.a || [])],
-    t: [], noTrials: "Clinical claims come from Russian studies that are small and mostly not independently replicated.",
+    r: [...bioRisks, ...(extra.r || [])], a: [["Gene expression", "in vitro", `Reported to change gene expression in ${target} cells in culture`], ...(extra.a || [])],
+    t: extra.t || [], noTrials: extra.noTrials || "Clinical claims come from Russian studies that are small and mostly not independently replicated.", noTrialsRefs: extra.noTrialsRefs,
     k: [["Route", extra.route || "Oral capsules, injection or sublingual"], ["Half-life", "Minutes for short peptides; not established"], ["Metabolism", "Peptidase cleavage"]], ke: "unknown",
-    related: ["epitalon", ...(extra.related || [])] });
+    related: ["epitalon", ...(extra.related || [])], ...(extra.updated ? { updated: extra.updated } : {}) });
 
-  bio("bronchogen", "Bronchogen", "the bronchial lining", "Ala-Asp-Glu-Leu (AEDL)", { tags: ["lungs"], summary: "A four-amino-acid bioregulator claimed to support the bronchial lining and reduce lung inflammation.", related: ["chonluten"] });
-  bio("chonluten", "Chonluten", "bronchial and gastric mucosa", "Glu-Asp-Gly (EDG)", { tags: ["lungs"], summary: "A three-amino-acid bioregulator claimed to support lung and stomach lining health.", related: ["bronchogen"] });
-  bio("cardiogen", "Cardiogen", "heart muscle", "Ala-Glu-Asp-Arg (AEDR)", { tags: ["heart"], summary: "A four-amino-acid bioregulator claimed to support heart tissue repair.", related: ["vesugen"] });
-  bio("cortagen", "Cortagen", "the brain cortex", "Ala-Glu-Asp-Pro (AEDP)", { tags: ["brain"], summary: "A four-amino-acid bioregulator claimed to support brain cortex function, stress resilience and memory.", related: ["pinealon"] });
-  bio("crystagen", "Crystagen", "the immune system", "Glu-Asp-Pro (EDP)", { tags: ["immune"], summary: "A three-amino-acid bioregulator claimed to support immune function.", related: ["vilon", "thymalin"] });
-  bio("livagen", "Livagen", "the liver", "Lys-Glu-Asp-Ala (KEDA)", { tags: ["liver"], summary: "A four-amino-acid bioregulator claimed to support liver function and to relax chromatin in aging cells.", related: ["ovagen"] });
-  bio("ovagen", "Ovagen", "the liver and gastrointestinal tract", "Glu-Asp-Leu (EDL)", { tags: ["liver"], summary: "A three-amino-acid bioregulator claimed to support the liver and digestive tract.", related: ["livagen"] });
-  bio("pinealon", "Pinealon", "the brain and pineal gland", "Glu-Asp-Arg (EDR)", { tags: ["brain", "sleep"], summary: "A three-amino-acid bioregulator claimed to protect neurons and normalize circadian rhythm.", related: ["cortagen", "dsip"] });
-  bio("prostamax", "Prostamax", "the prostate", "Lys-Glu-Asp-Pro (KEDP)", { tags: ["prostate"], summary: "A four-amino-acid bioregulator claimed to support prostate health.", related: ["testagen"] });
-  bio("testagen", "Testagen", "the testes", "Lys-Glu-Asp-Gly (KEDG)", { tags: ["testes"], summary: "A four-amino-acid bioregulator claimed to support testicular function. There is no controlled evidence that it raises testosterone.", related: ["prostamax"] });
-  bio("vesugen", "Vesugen", "blood vessel walls", "Lys-Glu-Asp (KED)", { tags: ["blood vessels"], summary: "A three-amino-acid bioregulator claimed to support blood vessel health.", related: ["cardiogen"] });
-  bio("vilon", "Vilon", "the thymus and immune system", "Lys-Glu (KE)", { tags: ["immune", "thymus"], summary: "A two-amino-acid bioregulator, the shortest in the series, claimed to support thymus and immune function.", related: ["thymalin", "crystagen"] });
+  bio("bronchogen", "Bronchogen", "the bronchial lining", "Ala-Asp-Glu-Leu (AEDL)", { tags: ["lungs"], summary: "A four-amino-acid bioregulator claimed to support the bronchial lining and reduce lung inflammation.", related: ["chonluten"],
+    noTrials: "No human trial is indexed in PubMed. The strongest evidence is a rat study from the originating group, in which it reversed bronchial remodeling and reduced inflammation in a model of chronic obstructive lung disease.",
+    noTrialsRefs: [669],
+    updated: "2026-10-17" });
+  bio("chonluten", "Chonluten", "bronchial and gastric mucosa", "Glu-Asp-Gly (EDG)", { tags: ["lungs"], summary: "A three-amino-acid bioregulator claimed to support lung and stomach lining health.", related: ["bronchogen"],
+    noTrials: "No human trial is indexed in PubMed. The strongest evidence is a cell-line study in which it reduced TNF release by human monocytes exposed to bacterial lipopolysaccharide.",
+    noTrialsRefs: [670],
+    updated: "2026-10-17" });
+  bio("cardiogen", "Cardiogen", "heart muscle", "Ala-Glu-Asp-Arg (AEDR)", { tags: ["heart"], summary: "A four-amino-acid bioregulator claimed to support heart tissue repair.", related: ["vesugen"],
+    noTrials: "No human trial is indexed in PubMed. In work from the originating group it stimulated cell growth in rat heart tissue cultures and slowed the growth of transplanted sarcoma in rats.",
+    noTrialsRefs: [671],
+    updated: "2026-10-17" });
+  bio("cortagen", "Cortagen", "the brain cortex", "Ala-Glu-Asp-Pro (AEDP)", { tags: ["brain"], summary: "A four-amino-acid bioregulator claimed to support brain cortex function, stress resilience and memory.", related: ["pinealon"],
+    noTrials: "No human trial is indexed in PubMed. In cultured blood cells from people aged 75–88, it and related short peptides activated ribosomal genes and loosened condensed chromatin. Cortexin, a different brain-extract drug, has Russian clinical studies that do not apply here.",
+    noTrialsRefs: [667],
+    updated: "2026-10-17" });
+  bio("crystagen", "Crystagen", "the immune system", "Glu-Asp-Pro (EDP)", { tags: ["immune"], summary: "A three-amino-acid bioregulator claimed to support immune function.", related: ["vilon", "thymalin"],
+    noTrials: "No study of this peptide in humans is indexed in PubMed, and animal work is limited to a single Russian rodent study.",
+    updated: "2026-10-17" });
+  bio("livagen", "Livagen", "the liver", "Lys-Glu-Asp-Ala (KEDA)", { tags: ["liver"], summary: "A four-amino-acid bioregulator claimed to support liver function and to relax chromatin in aging cells.", related: ["ovagen"],
+    noTrials: "No human trial is indexed in PubMed. In cultured lymphocytes from older donors it activated ribosomal genes and decondensed heterochromatin, which is not evidence of any effect on the liver.",
+    noTrialsRefs: [668, 667],
+    updated: "2026-10-17" });
+  bio("ovagen", "Ovagen", "the liver and gastrointestinal tract", "Glu-Asp-Leu (EDL)", { tags: ["liver"], summary: "A three-amino-acid bioregulator claimed to support the liver and digestive tract.", related: ["livagen"],
+    noTrials: "No study of this peptide in humans or animals is indexed in PubMed.",
+    updated: "2026-10-17" });
+  bio("pinealon", "Pinealon", "the brain and pineal gland", "Glu-Asp-Arg (EDR)", { tags: ["brain", "sleep"], summary: "A three-amino-acid bioregulator claimed to protect neurons and normalize circadian rhythm.", related: ["cortagen", "dsip"],
+    t: [
+      { title: "Small Russian study in older adults with brain syndrome", evidence: "human obs", meta: ["32 adults aged 41–83 with multiple chronic conditions and organic brain syndrome in remission", "Pinealon or Vesugen (dose not reported)", "duration not reported", "clinical study; no comparator described"], body: "The authors report 'anabolic' effects and slower biological aging by their indices. They also found pro-oxidant activity and a fall in CD34+ blood stem cells, which they read as suppressed blood cell production.", note: "No comparator is described, and the outcomes are composite 'biological age' scores. The authors' own data include two unexplained adverse-direction signals.", refs: [666] },
+    ],
+    r: [["Blood stem cells", "unknown", "The only human study reported a fall in CD34+ blood stem cells and pro-oxidant activity", "human obs", "The authors read the CD34+ change as inhibition of blood cell production. It has not been followed up.", [666]]],
+    updated: "2026-10-17" });
+  bio("prostamax", "Prostamax", "the prostate", "Lys-Glu-Asp-Pro (KEDP)", { tags: ["prostate"], summary: "A four-amino-acid bioregulator claimed to support prostate health.", related: ["testagen"],
+    noTrials: "No human trial is indexed in PubMed. In cultured blood cells from people aged 75–88 it decondensed chromatin. Prostatilen, a bovine prostate extract with Russian trials, is a different product, and its data do not apply.",
+    noTrialsRefs: [667, 675],
+    updated: "2026-10-17" });
+  bio("testagen", "Testagen", "the testes", "Lys-Glu-Asp-Gly (KEDG)", { tags: ["testes"], summary: "A four-amino-acid bioregulator claimed to support testicular function. There is no controlled evidence that it raises testosterone.", related: ["prostamax"],
+    noTrials: "No study of this peptide in humans or animals is indexed in PubMed.",
+    updated: "2026-10-17" });
+  bio("vesugen", "Vesugen", "blood vessel walls", "Lys-Glu-Asp (KED)", { tags: ["blood vessels"], summary: "A three-amino-acid bioregulator claimed to support blood vessel health.", related: ["cardiogen"],
+    t: [
+      { title: "Small Russian study in older adults with brain syndrome", evidence: "human obs", meta: ["32 adults aged 41–83 with multiple chronic conditions and organic brain syndrome in remission", "Vesugen or Pinealon (dose not reported)", "duration not reported", "clinical study; no comparator described"], body: "The authors report a stronger effect on 'biological age' indices with Vesugen than with Pinealon. They also found pro-oxidant activity and a fall in CD34+ blood stem cells.", note: "There is no described comparator, and the outcomes are composite scores. It is the only human report on Vesugen.", refs: [666] },
+    ],
+    r: [["Blood stem cells", "unknown", "The only human study reported a fall in CD34+ blood stem cells and pro-oxidant activity", "human obs", "The authors read the CD34+ change as inhibition of blood cell production. It has not been followed up.", [666]]],
+    updated: "2026-10-17" });
+  bio("vilon", "Vilon", "the thymus and immune system", "Lys-Glu (KE)", { tags: ["immune", "thymus"], summary: "A two-amino-acid bioregulator, the shortest in the series, claimed to support thymus and immune function.", related: ["thymalin", "crystagen"],
+    t: [
+      { title: "Vilon in type 1 diabetes: clotting markers", evidence: "contested", meta: ["patients of different ages with destabilized type 1 diabetes (number not reported)", "Vilon (Lys-Glu) added to standard treatment", "duration not reported", "indexed as randomized; design not described"], body: "The authors report that Vilon reduced or abolished laboratory signs of low-grade intravascular clotting, with a weaker effect in older patients with severe disease.", note: "The outcomes are clotting markers, and the report comes from the developer's group with co-authors from the bioregulator institute.", refs: [665] },
+    ],
+    updated: "2026-10-17" });
   bio("thymalin", "Thymalin", "the thymus and immune system", null, { status: "Approved", tags: ["immune", "thymus"], route: "Intramuscular injection",
     summary: "A polypeptide extract of calf thymus, prescribed in Russia as an immune modulator. It is the original product from which Vilon and other short peptides were derived.",
-    names: "Approved in Russia as an immunomodulator since the 1980s. Not approved elsewhere.", related: ["vilon", "thymosin-alpha-1"] });
+    names: "Approved in Russia as an immunomodulator since the 1980s. Not approved elsewhere.", related: ["vilon", "thymosin-alpha-1"],
+    t: [
+      { title: "Thymalin and epithalamin in older adults", evidence: "contested", meta: ["older adults in St Petersburg and Kiev (group sizes not reported)", "thymalin, epithalamin, or both, given during the first 2–3 years", "6–8 years of observation", "reported as randomized and controlled"], body: "The authors report 2.0- to 2.1-fold lower mortality with thymalin, and 2.0- to 2.4-fold fewer acute respiratory infections, against controls.", note: "Implausibly large effects on all-cause mortality, from the originating institutes. They have not been reproduced elsewhere.", refs: [614] },
+      { title: "Thymalin added to standard COVID-19 treatment", evidence: "human obs", meta: ["hospitalized COVID-19 patients (number not reported)", "thymalin added to standard therapy, against standard therapy alone", "hospital stay", "comparative clinical report; randomization not stated"], body: "IL-6, C-reactive protein and D-dimer fell faster with thymalin, and T-cell measures recovered faster.", note: "The outcomes are laboratory markers, not survival or recovery. The authors are the drug's developers.", refs: [664] },
+    ],
+    updated: "2026-10-17" });
 
   /* ================================================================ Health & support */
-  A.add({ slug: "rosuvastatin", name: "Rosuvastatin", aliases: ["Crestor"], category: "health", status: "Approved",
+  A.add({ slug: "rosuvastatin", updated: "2026-10-17", name: "Rosuvastatin", aliases: ["Crestor"], category: "health", status: "Approved",
     class: "HMG-CoA reductase inhibitor (statin)", developer: "Shionogi / AstraZeneca", tags: ["statin", "LDL", "cardiovascular"],
     summary: "A potent statin that lowers LDL cholesterol by up to about half. It cut cardiovascular events in a large trial of people with normal LDL but raised inflammation markers.",
     names: "Sold as Crestor and generics for high cholesterol and cardiovascular prevention.",
     structure: "C<sub>22</sub>H<sub>28</sub>FN<sub>3</sub>O<sub>6</sub>S, about 481.5 g/mol. It is water-soluble and acts mainly in the liver.",
     pubchem: "rosuvastatin", p: [["LDL lowering", 5], ["Risk load", 1, 1], ["Evidence quality", 5]],
-    r: [["Muscle", "low", "Muscle aches; rarely myopathy or rhabdomyolysis", "human rct"], ["Diabetes", "low", "Small increase in new-onset diabetes", "human rct"], ["Liver", "low", "Occasional liver enzyme rises", "established"]],
+    r: [["Muscle", "low", "Muscle aches; rarely myopathy or rhabdomyolysis", "human rct", "In 19 placebo-controlled trials, muscle pain or weakness was reported by 27.1% on statin and 26.6% on placebo. In year 1 the absolute excess was 11 per 1,000 person-years, so only about 1 in 15 such reports on a statin was due to the drug.", [746]], ["Diabetes", "low", "Small increase in new-onset diabetes", "human rct", "A meta-analysis of 13 trials (91,140 people) found a 9% higher risk (OR 1.09). JUPITER found more physician-reported diabetes on rosuvastatin.", [747, 742]], ["Liver", "low", "Occasional liver enzyme rises", "established"],
+      ["Cataract", "low", "More cataract surgery on rosuvastatin in one large trial", "human rct", "3.8% against 3.1% in HOPE-3 (P = 0.02).", [743]]],
     a: [["HMG-CoA reductase", "established", "Blocks cholesterol synthesis, which increases LDL receptor clearance in the liver"]],
-    t: [{ title: "JUPITER", evidence: "human rct", meta: ["17,802 adults with normal LDL and raised hs-CRP", "rosuvastatin 20 mg daily or placebo", "median 1.9 years (stopped early)", "randomized, double-blind, placebo-controlled"], body: "Rosuvastatin reduced the composite of major cardiovascular events by about 44%." }],
+    t: [
+      { title: "JUPITER", evidence: "human rct", meta: ["17,802 adults with normal LDL and raised hs-CRP", "rosuvastatin 20 mg daily or placebo", "median 1.9 years (stopped early)", "randomized, double-blind, placebo-controlled"], body: "Rosuvastatin reduced the composite of major cardiovascular events by about 44%.", refs: [742] },
+      { title: "HOPE-3: intermediate-risk people without heart disease", evidence: "human rct", meta: ["12,705 people in 21 countries at intermediate risk", "rosuvastatin 10 mg daily or placebo", "median 5.6 years", "randomized, double-blind, placebo-controlled (factorial)"], body: "LDL was 26.5% lower. Cardiovascular death, heart attack or stroke occurred in 3.7% against 4.8% (HR 0.76). There was no excess diabetes or cancer, but more cataract surgery (3.8% against 3.1%) and more muscle symptoms.", refs: [743] },
+      { title: "CORONA: older patients with systolic heart failure", evidence: "human rct", meta: ["5,011 patients aged 60 or older with ischemic systolic heart failure", "rosuvastatin 10 mg daily or placebo", "median 32.8 months", "randomized, double-blind, placebo-controlled"], body: "LDL fell 45%, but the primary outcome (HR 0.92, P = 0.12) and death (HR 0.95) did not change. There were fewer cardiovascular hospital admissions.", note: "A neutral trial. Lowering LDL did not help in established heart failure.", refs: [744] },
+      { title: "AURORA: hemodialysis", evidence: "human rct", meta: ["2,776 patients aged 50–80 on maintenance hemodialysis", "rosuvastatin 10 mg daily or placebo", "median 3.8 years", "randomized, double-blind, placebo-controlled"], body: "LDL fell 43%, but the primary outcome (HR 0.96, P = 0.59) and all-cause death did not change.", refs: [745] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "About 20%"], ["Half-life", "About 19 hours"], ["Metabolism", "Minimal, mainly CYP2C9"], ["Excretion", "Mainly feces"]], ke: "established",
     related: ["pitavastatin", "ezetimibe", "telmisartan"] });
 
-  A.add({ slug: "pitavastatin", name: "Pitavastatin", aliases: ["Livalo", "Zypitamag"], category: "health", status: "Approved",
+  A.add({ slug: "pitavastatin", updated: "2026-10-17", name: "Pitavastatin", aliases: ["Livalo", "Zypitamag"], category: "health", status: "Approved",
     class: "HMG-CoA reductase inhibitor (statin)", developer: "Kowa", tags: ["statin", "LDL", "cardiovascular"],
-    summary: "A moderate-intensity statin with few drug interactions and little effect on blood sugar. It reduced cardiovascular events in people with HIV in a large 2023 trial.",
+    summary: "A moderate-intensity statin with few drug interactions. It reduced cardiovascular events in people with HIV in a large 2023 trial, though new diabetes was slightly more common on it.",
     names: "Sold as Livalo and Zypitamag for high cholesterol.",
     structure: "C<sub>25</sub>H<sub>24</sub>FNO<sub>4</sub>, about 421.5 g/mol.",
     pubchem: "pitavastatin", p: [["LDL lowering", 3], ["Risk load", 1, 1], ["Evidence quality", 4]],
-    r: [["Muscle", "low", "Muscle aches; rarely myopathy", "human rct"]],
+    r: [["Muscle", "low", "Muscle aches; rarely myopathy", "human rct"],
+      ["Diabetes", "low", "New diabetes was more common on pitavastatin in a large trial", "human rct", "5.3% against 4.0% in REPRIEVE. This tempers the claim that pitavastatin is neutral on blood sugar.", [748]]],
     a: [["HMG-CoA reductase", "established", "Blocks cholesterol synthesis"]],
-    t: [{ title: "REPRIEVE: people with HIV", evidence: "human rct", meta: ["7,769 adults with HIV at low to moderate cardiovascular risk", "pitavastatin 4 mg daily or placebo", "median 5.1 years", "randomized, double-blind, placebo-controlled"], body: "Pitavastatin reduced major adverse cardiovascular events by about 35%." }],
+    t: [
+      { title: "REPRIEVE: people with HIV", evidence: "human rct", meta: ["7,769 adults with HIV at low to moderate cardiovascular risk", "pitavastatin 4 mg daily or placebo", "median 5.1 years", "randomized, double-blind, placebo-controlled"], body: "Pitavastatin reduced major adverse cardiovascular events by about 35%.", refs: [748] },
+      { title: "REAL-CAD: high against low dose in coronary disease", evidence: "human rct", meta: ["13,054 Japanese patients with stable coronary disease", "pitavastatin 4 mg or 1 mg daily", "median 3.9 years", "randomized, open-label, blinded endpoints"], body: "LDL was 14.7 mg/dL lower on 4 mg. The primary endpoint fell from 5.4% to 4.3% (HR 0.81), and all-cause death also fell.", refs: [749] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "About 50%"], ["Half-life", "About 12 hours"], ["Metabolism", "Mainly glucuronidation; minimal CYP"], ["Excretion", "Mainly feces"]], ke: "established",
     related: ["rosuvastatin", "ezetimibe"] });
 
-  A.add({ slug: "ezetimibe", name: "Ezetimibe", aliases: ["Zetia", "Ezetrol"], category: "health", status: "Approved",
+  A.add({ slug: "ezetimibe", updated: "2026-10-17", name: "Ezetimibe", aliases: ["Zetia", "Ezetrol"], category: "health", status: "Approved",
     class: "Cholesterol absorption inhibitor (NPC1L1)", developer: "Schering-Plough", tags: ["LDL", "cholesterol absorption"],
     summary: "A pill that blocks cholesterol absorption in the gut, lowering LDL by about 20%. It is usually added to a statin.",
     names: "Sold as Zetia and Ezetrol, and combined with simvastatin as Vytorin.",
@@ -614,23 +794,33 @@
     pubchem: "ezetimibe", p: [["LDL lowering", 2], ["Risk load", 1, 1], ["Evidence quality", 5]],
     r: [["Tolerability", "low", "Generally well tolerated", "human rct"]],
     a: [["NPC1L1", "established", "Blocks intestinal uptake of dietary and biliary cholesterol"]],
-    t: [{ title: "IMPROVE-IT", evidence: "human rct", meta: ["18,144 patients after acute coronary syndrome", "simvastatin plus ezetimibe or simvastatin alone", "median 6 years", "randomized, double-blind"], body: "Adding ezetimibe lowered LDL further and modestly reduced cardiovascular events (32.7% vs 34.7%)." }],
+    t: [
+      { title: "IMPROVE-IT", evidence: "human rct", meta: ["18,144 patients after acute coronary syndrome", "simvastatin plus ezetimibe or simvastatin alone", "median 6 years", "randomized, double-blind"], body: "Adding ezetimibe lowered LDL further and modestly reduced cardiovascular events (32.7% vs 34.7%).", refs: [750] },
+      { title: "SHARP: chronic kidney disease", evidence: "human rct", meta: ["9,270 patients with chronic kidney disease", "simvastatin plus ezetimibe or placebo", "median 4.9 years", "randomized, double-blind, placebo-controlled"], body: "Major atherosclerotic events fell 17% (11.3% against 13.4%). Non-hemorrhagic stroke and revascularization also fell.", refs: [753] },
+      { title: "RACING: moderate statin plus ezetimibe against high-intensity statin", evidence: "human rct", meta: ["3,780 patients with atherosclerotic cardiovascular disease", "moderate-intensity statin plus ezetimibe 10 mg, or high-intensity statin alone", "3 years", "randomized, open-label, non-inferiority"], body: "Events were 9.1% against 9.9%, meeting non-inferiority. More patients reached LDL below 70 mg/dL on the combination, and fewer stopped or cut the dose because of intolerance (4.8% against 8.2%).", refs: [752] },
+      { title: "EWTOPIA 75: people aged 75 and older", evidence: "human rct", meta: ["3,796 Japanese patients aged 75 or older with high LDL and no coronary disease", "ezetimibe 10 mg daily with diet counseling, or diet counseling alone", "median 4.1 years", "randomized, open-label, blinded endpoints"], body: "The primary cardiovascular composite fell (HR 0.66). Stroke, death and adverse events did not differ.", note: "Open label, with about 10% of patients excluded after randomization for protocol violations.", refs: [751] },
+    ],
     k: [["Route", "Oral"], ["Half-life", "About 22 hours (with enterohepatic recycling)"], ["Metabolism", "Glucuronidation to an active form"], ["Excretion", "Mainly feces"]], ke: "established",
     related: ["rosuvastatin", "pitavastatin"] });
 
-  A.add({ slug: "telmisartan", name: "Telmisartan", aliases: ["Micardis"], category: "health", status: "Approved",
+  A.add({ slug: "telmisartan", updated: "2026-10-17", name: "Telmisartan", aliases: ["Micardis"], category: "health", status: "Approved",
     class: "Angiotensin II receptor blocker (ARB)", developer: "Boehringer Ingelheim", tags: ["blood pressure", "ARB", "PPAR-γ"],
     summary: "A long-acting blood pressure drug that also partly activates PPAR-γ, which may help insulin sensitivity. It is commonly used to control blood pressure on cycle.",
     names: "Sold as Micardis for hypertension and cardiovascular risk reduction.",
     structure: "C<sub>33</sub>H<sub>30</sub>N<sub>4</sub>O<sub>2</sub>, about 514.6 g/mol.",
     pubchem: "telmisartan", p: [["Blood pressure lowering", 4], ["Risk load", 1, 1], ["Evidence quality", 5]],
-    r: [["Potassium and kidney", "moderate", "Can raise potassium and affect kidney function, especially with dehydration", "established"], ["Pregnancy", "high", "Contraindicated in pregnancy", "established"]],
+    r: [["Potassium and kidney", "moderate", "Can raise potassium and affect kidney function, especially with dehydration", "established"], ["Pregnancy", "high", "Contraindicated in pregnancy", "established"],
+      ["Combining with an ACE inhibitor", "moderate", "Adding telmisartan to ramipril brought more low blood pressure, fainting and kidney problems with no added benefit", "human rct", "From ONTARGET's combination arm.", [754]]],
     a: [["AT1 receptor", "established", "Blocks angiotensin II, lowering blood pressure"], ["PPAR-γ", "in vitro", "Partial agonist, unusual among ARBs"]],
-    t: [], noTrials: "Approval rests on large hypertension and cardiovascular trials, including ONTARGET.",
+    t: [
+      { title: "ONTARGET", evidence: "human rct", meta: ["25,620 patients at high vascular risk", "telmisartan 80 mg, ramipril 10 mg, or both, daily", "median 56 months", "randomized, double-blind"], body: "Telmisartan matched ramipril (16.7% against 16.5%, RR 1.01), with less cough and angioedema but more symptomatic low blood pressure. The combination added no benefit and more low blood pressure, fainting and kidney problems.", refs: [754] },
+      { title: "TRANSCEND: intolerant of ACE inhibitors", evidence: "human rct", meta: ["5,926 high-risk patients who could not take ACE inhibitors", "telmisartan 80 mg daily or placebo", "median 56 months", "randomized, double-blind, placebo-controlled"], body: "The primary outcome did not differ significantly (15.7% against 17.0%, HR 0.92, p = 0.216). Cardiovascular hospital admissions were modestly lower.", refs: [755] },
+      { title: "PRoFESS: after ischemic stroke", evidence: "human rct", meta: ["20,332 patients with a recent ischemic stroke", "telmisartan 80 mg daily or placebo", "mean 2.5 years", "randomized, double-blind, placebo-controlled (factorial)"], body: "Recurrent stroke did not fall (8.7% against 9.2%, HR 0.95), nor did major cardiovascular events. New diabetes was 1.7% against 2.1%, which was not significant.", note: "The PPAR-γ claim predicts less diabetes. In this large trial, that did not reach significance.", refs: [756] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "About 42–58%"], ["Half-life", "About 24 hours"], ["Metabolism", "Glucuronidation"], ["Excretion", "Almost entirely feces"]], ke: "established",
     related: ["nebivolol", "rosuvastatin"] });
 
-  A.add({ slug: "nebivolol", name: "Nebivolol", aliases: ["Bystolic", "Nebilet"], category: "health", status: "Approved",
+  A.add({ slug: "nebivolol", updated: "2026-10-17", name: "Nebivolol", aliases: ["Bystolic", "Nebilet"], category: "health", status: "Approved",
     class: "β1-selective blocker with nitric oxide–mediated vasodilation", developer: "Janssen", tags: ["blood pressure", "beta blocker", "heart rate"],
     summary: "A highly β1-selective beta blocker that also dilates blood vessels through nitric oxide. It lowers heart rate and blood pressure with fewer sexual and metabolic side effects than older beta blockers.",
     names: "Sold as Bystolic (US) and Nebilet (Europe) for hypertension and, in Europe, heart failure.",
@@ -638,11 +828,14 @@
     pubchem: "nebivolol", p: [["Heart rate / BP control", 4], ["Risk load", 1, 1], ["Evidence quality", 4]],
     r: [["Fatigue and slow heart rate", "low", "Fatigue, dizziness and bradycardia", "human rct"], ["Abrupt stopping", "moderate", "Stopping suddenly can cause rebound high heart rate", "established"]],
     a: [["β1 receptor", "established", "Highly selective blockade"], ["Nitric oxide", "human rct", "Vasodilation via β3 / eNOS"]],
-    t: [], noTrials: "Approval rests on hypertension trials.",
+    t: [
+      { title: "SENIORS: older patients with heart failure", evidence: "human rct", meta: ["2,128 patients aged 70 or older with heart failure", "nebivolol titrated from 1.25 to 10 mg daily (mean 7.7 mg), or placebo", "mean 21 months", "randomized, double-blind, placebo-controlled"], body: "Death or cardiovascular hospital admission occurred in 31.1% against 35.3% (HR 0.86). The effect did not depend on age, sex or ejection fraction.", refs: [757] },
+      { title: "Dose-ranging trial in hypertension", evidence: "human rct", meta: ["909 patients with mild to moderate hypertension", "nebivolol 1.25 to 40 mg once daily, or placebo", "up to 84 days", "randomized, double-blind, placebo-controlled"], body: "Trough diastolic pressure fell by 8.0–11.2 mmHg against 2.9 on placebo. Adverse events were similar (46.1% against 40.7%).", refs: [758] },
+    ],
     k: [["Route", "Oral"], ["Half-life", "About 12 hours (extensive CYP2D6 metabolizers); about 19 hours (poor metabolizers)"], ["Metabolism", "Liver, CYP2D6"], ["Excretion", "Urine and feces"]], ke: "established",
     related: ["telmisartan", "propranolol"] });
 
-  A.add({ slug: "propranolol", name: "Propranolol", aliases: ["Inderal"], category: "health", status: "Approved",
+  A.add({ slug: "propranolol", updated: "2026-10-17", name: "Propranolol", aliases: ["Inderal"], category: "health", status: "Approved",
     class: "Nonselective beta blocker", developer: "ICI (James Black, 1960s)", tags: ["beta blocker", "anxiety", "heart rate"],
     summary: "The original beta blocker. It is used for blood pressure, migraine prevention and off-label for performance anxiety. It blocks both β1 and β2, so it can trigger asthma.",
     names: "Sold as Inderal and generics. James Black received a Nobel Prize partly for its development.",
@@ -650,19 +843,28 @@
     pubchem: "propranolol", p: [["Heart rate / anxiety control", 4], ["Risk load", 2, 1], ["Evidence quality", 5]],
     r: [["Asthma", "high", "Can trigger bronchospasm; avoid in asthma", "established"], ["Low blood sugar masking", "moderate", "Hides warning signs of hypoglycemia", "established"], ["Fatigue and vivid dreams", "low", "Common", "established"]],
     a: [["β1 and β2 receptors", "established", "Blocks adrenaline's effects on heart rate, tremor and other physical anxiety symptoms"]],
-    t: [], noTrials: "Decades of trials in hypertension, angina and migraine.",
+    t: [
+      { title: "BHAT: after heart attack", evidence: "human rct", meta: ["3,837 people aged 30–69, 5–21 days after a heart attack", "propranolol 180 or 240 mg/day, or placebo", "average 24 months (stopped early)", "randomized, double-blind, placebo-controlled"], body: "Total mortality was 7.2% against 9.8%, and sudden cardiac death 3.3% against 4.6%. Low blood pressure, gut problems, tiredness, bronchospasm and cold extremities were more common.", refs: [759] },
+      { title: "Migraine prevention (Cochrane review)", evidence: "human rct", meta: ["58 trials, 5,072 participants", "propranolol against placebo or other drugs", "at least 4 weeks", "systematic review"], body: "The 26 placebo-controlled trials showed clear short-term benefit. Comparisons with other preventives showed no clear differences. Most trials were of poor quality.", note: "This review was withdrawn in 2017 for being out of date, not for errors. Propranolol remains on the US label for migraine prevention.", refs: [761] },
+      { title: "Stage fright in musicians", evidence: "human rct", meta: ["29 musicians across two trials", "propranolol (dose not reported), terbutaline, or placebo", "before performances", "double-blind"], body: "Propranolol removed the physical symptoms of stage fright, including dry mouth. Critics rated performance quality higher. Terbutaline, a beta stimulant, made stage fright worse.", note: "A small 1982 study. It is a large part of the controlled evidence for performance anxiety.", refs: [763] },
+      { title: "Anxiety disorders (meta-analysis)", evidence: "human rct", meta: ["8 trials: panic disorder (n = 130), specific phobia (37), social phobia (16), PTSD (19)", "oral propranolol against placebo or other drugs", "short term", "systematic review and meta-analysis"], body: "In panic disorder, propranolol and benzodiazepines did not differ. There was no effect on PTSD symptoms. The authors judged the evidence too weak to support routine use for any anxiety disorder.", refs: [762] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "About 25% (extensive first-pass)"], ["Half-life", "About 3–6 hours"], ["Metabolism", "Liver, CYP2D6 and CYP1A2"], ["Excretion", "Urine"]], ke: "established",
     related: ["nebivolol"] });
 
-  A.add({ slug: "ondansetron", name: "Ondansetron", aliases: ["Zofran"], category: "health", status: "Approved",
+  A.add({ slug: "ondansetron", updated: "2026-10-17", name: "Ondansetron", aliases: ["Zofran"], category: "health", status: "Approved",
     class: "5-HT3 receptor antagonist", developer: "Glaxo", tags: ["nausea", "antiemetic"],
     summary: "A widely used anti-nausea drug. It is often used for nausea from GLP-1 agonists, though that use is off-label. It can prolong the QT interval.",
     names: "Sold as Zofran and generics for chemotherapy, radiation and postoperative nausea.",
     structure: "C<sub>18</sub>H<sub>19</sub>N<sub>3</sub>O, about 293.4 g/mol.",
     pubchem: "ondansetron", p: [["Nausea control", 4], ["Risk load", 1, 1], ["Evidence quality", 5]],
-    r: [["QT prolongation", "moderate", "Dose-dependent QT prolongation; caution with other QT-prolonging drugs", "established"], ["Constipation and headache", "low", "Common", "established"], ["Serotonin syndrome", "low", "Possible with other serotonergic drugs", "established"]],
+    r: [["QT prolongation", "moderate", "Dose-dependent QT prolongation; caution with other QT-prolonging drugs", "established"], ["Constipation and headache", "low", "Common", "established"], ["Serotonin syndrome", "low", "Possible with other serotonergic drugs", "established"],
+      ["Pregnancy", "low", "First-trimester use was linked to a small rise in oral clefts in one large study, but not to heart defects or overall birth defects", "human obs", "In 1.8 million US Medicaid pregnancies, the adjusted relative risk for oral clefts was 1.24, or about 3 extra cases per 10,000 births. Heart and overall malformations were not increased. A Danish cohort of 608,385 pregnancies found no rise in miscarriage, stillbirth or major birth defects.", [767, 766]]],
     a: [["5-HT3 receptor", "established", "Blocks serotonin signaling in the gut and brainstem vomiting center"]],
-    t: [], noTrials: "Approval rests on chemotherapy and postoperative nausea trials.",
+    t: [
+      { title: "Children with gastroenteritis in the emergency department", evidence: "human rct", meta: ["215 children aged 6 months to 10 years with gastroenteritis and dehydration", "orally disintegrating ondansetron or placebo before oral rehydration", "single dose", "randomized, double-blind, placebo-controlled"], body: "Vomiting during rehydration fell from 35% to 14%, and the need for an IV drip from 31% to 14%. Hospital admission and return visits did not change.", refs: [764] },
+      { title: "Postoperative nausea: six-way factorial trial", evidence: "human rct", meta: ["5,199 high-risk surgical patients", "ondansetron 4 mg, dexamethasone 4 mg, droperidol 1.25 mg, and anesthetic choices, in factorial combinations", "24 hours after surgery", "randomized, factorial, blinded outcome"], body: "Ondansetron, dexamethasone and droperidol each cut postoperative nausea and vomiting by about 26%, independently of one another. The absolute benefit depended on the patient's baseline risk.", refs: [765] },
+    ],
     k: [["Route", "Oral, dissolving tablet or intravenous"], ["Bioavailability", "About 60%"], ["Half-life", "About 3–6 hours"], ["Metabolism", "Liver, CYP3A4/1A2/2D6"], ["Excretion", "Urine as metabolites"]], ke: "established",
     related: ["semaglutide", "tirzepatide", "tropisetron"] });
 
@@ -697,31 +899,67 @@
     k: [["Route", "Oral capsule or intravenous"], ["Oral bioavailability", "About 60% at 5 mg, rising at higher doses as first-pass metabolism saturates"], ["Time to peak", "About 2–3 hours (oral)"], ["Half-life", "About 8 hours in extensive CYP2D6 metabolizers; about 30–45 hours in poor metabolizers"], ["Protein binding", "About 70%"], ["Metabolism", "Liver, mainly CYP2D6 hydroxylation"], ["Excretion", "Mostly urine, as inactive metabolites"]], ke: "established", kr: [105, 106],
     related: ["ondansetron", "quitting-nicotine-tropisetron", "varenicline", "bupropion"] });
 
-  A.add({ slug: "naltrexone", name: "Naltrexone", aliases: ["LDN", "Low-dose naltrexone", "Revia", "Vivitrol"], category: "health", status: "Approved",
-    class: "Opioid receptor antagonist", developer: "Endo Laboratories", tags: ["opioid antagonist", "LDN", "alcohol"],
-    summary: "An opioid blocker approved for alcohol and opioid dependence. At very low doses (LDN) it is used off-label for pain and inflammation, with small and mixed evidence.",
-    names: "Sold as Revia (oral) and Vivitrol (monthly injection). Low-dose naltrexone is compounded off-label.",
-    structure: "C<sub>20</sub>H<sub>23</sub>NO<sub>4</sub>, about 341.4 g/mol.",
-    pubchem: "naltrexone", p: [["Approved-use efficacy", 4], ["LDN evidence", 2], ["Risk load", 1, 1], ["Evidence quality", 3]],
-    r: [["Opioid withdrawal", "high", "Triggers immediate withdrawal in anyone taking opioids", "established"], ["Vivid dreams and insomnia", "low", "Common at low doses", "human rct"], ["Liver", "low", "Liver enzyme rises at high doses", "established"]],
-    a: [["μ-opioid receptor", "established", "Blocks opioid effects"], ["Microglia (LDN)", "contested", "Proposed to reduce neuroinflammation via TLR4 at low doses"]],
-    t: [], noTrials: "Approval rests on dependence trials. LDN trials in fibromyalgia and other conditions are small with mixed results.",
-    k: [["Route", "Oral or monthly intramuscular injection"], ["Bioavailability", "5–40% oral"], ["Half-life", "About 4 hours (6β-naltrexol about 13 hours)"], ["Metabolism", "Liver, to 6β-naltrexol"], ["Excretion", "Urine"]], ke: "established",
-    related: ["bremelanotide"] });
+  A.add({ slug: "naltrexone", name: "Naltrexone", aliases: ["LDN", "Low-dose naltrexone", "Revia", "Vivitrol", "ReVia", "Depade"], category: "health", status: "Approved",
+    class: "Opioid receptor antagonist", developer: "Endo Laboratories", tags: ["opioid antagonist", "LDN", "alcohol use disorder", "opioid use disorder", "Contrave", "gambling", "kleptomania", "methamphetamine", "anhedonia", "habits"],
+    updated: "2026-10-17",
+    summary: "An opioid blocker approved for alcohol and opioid dependence, and with bupropion for weight. Off-label it is tried for gambling, kleptomania and stimulant use, and at very low doses (LDN) for pain and low mood, where the trials are small and disagree.",
+    names: "Synthesized in 1963 and approved in the US in 1984. Sold as ReVia and generics (50 mg tablets) and as Vivitrol, a monthly extended-release injection. It is half of Contrave (naltrexone with bupropion) for weight management. Low-dose naltrexone, usually 1.5 to 4.5 mg, is made by compounding pharmacies and is not an approved product.",
+    structure: "C<sub>20</sub>H<sub>23</sub>NO<sub>4</sub>, about 341.4 g/mol. A morphinan like oxymorphone, with a cyclopropylmethyl group on the nitrogen. That one change turns an opioid agonist into an antagonist.",
+    pubchem: "naltrexone", p: [["Approved-use efficacy", 3], ["LDN evidence", 2], ["Risk load", 2, 1], ["Evidence quality", 4]],
+    pnote: "Effective but modest in alcohol dependence, strong in opioid relapse prevention once someone is fully off opioids. The low-dose uses rest on small trials.",
+    r: [
+      ["Opioid withdrawal", "high", "Triggers sudden, severe withdrawal in anyone with opioids on board", "established", "The label requires 7 to 10 days free of short-acting opioids first, and longer after methadone or buprenorphine. A naloxone challenge or urine test is used to confirm it."],
+      ["Overdose after stopping", "high", "Tolerance is lost while on naltrexone, so a usual dose after stopping or missing it can be fatal", "established", "The label warns that trying to overcome the blockade with large opioid doses, or relapsing after it wears off, can cause fatal overdose."],
+      ["Liver", "low", "Liver enzyme rises, mainly at doses above the standard 50 mg", "established", "The hepatotoxicity boxed warning was removed from the label in 2013. Liver tests are still checked, and acute hepatitis or liver failure rule it out."],
+      ["Pain relief", "moderate", "Blocks opioid painkillers, which complicates emergency pain care", "established", "Anyone on naltrexone needs to tell treating clinicians, and carrying a wallet card is advised."],
+      ["Injection site", "moderate", "The monthly injection can cause pain, hardening and, rarely, tissue death that needs surgery", "established"],
+      ["Mood", "low", "Depression and suicidal thoughts are listed label warnings in people treated for dependence", "human obs"],
+      ["Gut and sleep", "low", "Nausea, headache and dizziness at standard doses; vivid dreams and insomnia at low doses", "human rct"]
+    ],
+    a: [
+      ["μ-opioid receptor", "established", "A competitive antagonist that blocks opioid effects for about 24 hours per 50 mg dose", "Its main metabolite, 6β-naltrexol, is also an antagonist and lasts longer, which carries the blockade through the day."],
+      ["Alcohol reward", "human rct", "Blunts the endorphin-driven pleasure of drinking, which reduces heavy drinking more than it produces abstinence", "Alcohol releases endogenous opioids. Blocking them makes drinking less rewarding, the basis of taking it daily or before expected drinking."],
+      ["POMC neurons (with bupropion)", "human rct", "Removes the β-endorphin brake on appetite-reducing POMC neurons that bupropion switches on", "Alone it does little for weight. With bupropion it is approved for weight management; see the stack."],
+      ["Habits and compulsions", "human rct", "Thought to blunt the urge and reward of repeated behaviors, the same way it blunts the reward of drinking", "Small trials in gambling and kleptomania support this at high doses. It has not helped people quit smoking."],
+      ["Mood and anhedonia", "unknown", "Claimed to lift low mood at low doses; at standard doses it can blunt pleasure instead", "Blocking endorphins can make ordinary rewards feel flatter, and the label lists depression as a warning. The only controlled trial of low-dose naltrexone for depression was a small add-on study without a clear overall benefit. No trial has tested it for anhedonia itself."],
+      ["Microglia and TLR4 (LDN)", "contested", "At low doses it is proposed to calm microglia through TLR4 and to cause a rebound rise in endorphins", "Both mechanisms come from cell and animal work and indirect human data. Neither has been shown to explain an effect in people."]
+    ],
+    t: [
+      { title: "Alcohol dependence, the first controlled trial", evidence: "human rct", meta: ["70 men with alcohol dependence", "naltrexone 50 mg daily or placebo with counseling", "12 weeks", "randomized, double-blind, placebo-controlled"], body: "Relapse to heavy drinking was 23% on naltrexone and 54% on placebo, and craving fell. This trial led to US approval for alcohol dependence in 1994.", refs: [144] },
+      { title: "COMBINE", evidence: "human rct", meta: ["1,383 adults with alcohol dependence", "naltrexone 100 mg, acamprosate, both, or placebo, with or without behavioral therapy", "16 weeks", "randomized, double-blind, placebo-controlled"], body: "Naltrexone with medical management increased days abstinent and lowered the risk of a heavy drinking day. Acamprosate showed no effect, and adding it to naltrexone added nothing.", note: "The largest trial behind the alcohol use. The benefit was real and modest, which matches later meta-analyses.", refs: [145] },
+      { title: "Monthly injection for opioid dependence", evidence: "human rct", meta: ["250 adults with opioid dependence in Russia, after detoxification", "extended-release naltrexone 380 mg or placebo injection monthly, with counseling", "24 weeks", "randomized, double-blind, placebo-controlled"], body: "The median share of weeks confirmed opioid-free was 90% on naltrexone against 35% on placebo, and craving fell. This led to approval of the injection for opioid dependence in 2010.", refs: [146] },
+      { title: "X:BOT: injection against buprenorphine", evidence: "human rct", meta: ["570 adults with opioid use disorder starting treatment", "extended-release naltrexone or buprenorphine-naloxone", "24 weeks", "randomized, open-label"], body: "Fewer people managed to start naltrexone, because it needs full detoxification first, and relapse was higher in that arm overall. Among those who did start, relapse was similar between the two.", note: "The practical barrier is the opioid-free start, not how well the drug works once it is in place.", refs: [147] },
+      { title: "Oral naltrexone for opioid dependence, Cochrane review", evidence: "human rct", meta: ["13 randomized trials, 1,158 people with opioid dependence", "oral naltrexone against placebo or no medication", "systematic review"], body: "Overall, oral naltrexone did not keep people in treatment or off opioids better than placebo. The exception was people under legal pressure to take it, such as probation, where it reduced reincarceration.", note: "Oral naltrexone works when it is taken; daily tablets are easy to stop. That is why the monthly injection exists.", refs: [150] },
+      { title: "Methamphetamine use disorder: ADAPT-2", evidence: "human rct", meta: ["403 adults with moderate or severe methamphetamine use disorder", "injectable naltrexone 380 mg every 3 weeks with extended-release bupropion 450 mg daily, or placebo", "12 weeks, two stages", "randomized, double-blind, placebo-controlled"], body: "A response, meaning at least three of four urine tests negative for methamphetamine, came in about 11% on the combination against about 2% on placebo.", note: "A real effect, and a small one: most people on the combination did not respond.", refs: [154] },
+      { title: "Pathological gambling", evidence: "human rct", meta: ["adults with pathological gambling", "naltrexone 50 to 150 mg daily or placebo", "18 weeks", "randomized, double-blind, placebo-controlled, multicenter"], body: "Naltrexone reduced gambling urges and gambling behavior more than placebo. An earlier trial found the same at higher doses, where some people developed raised liver enzymes.", refs: [151, 152] },
+      { title: "Kleptomania", evidence: "human rct", meta: ["25 adults with kleptomania", "naltrexone 50 to 150 mg daily or placebo", "8 weeks", "randomized, double-blind, placebo-controlled"], body: "Stealing urges and stealing behavior fell more on naltrexone than on placebo.", note: "A single small trial.", refs: [153] },
+      { title: "Smoking cessation, Cochrane review", evidence: "human rct", meta: ["randomized trials of naltrexone for quitting smoking", "systematic review"], body: "Naltrexone did not raise long-term quit rates, alone or added to nicotine replacement.", refs: [155] },
+      { title: "Low-dose naltrexone added to antidepressants", evidence: "contested", meta: ["adults with major depression still symptomatic on an antidepressant", "low-dose naltrexone or placebo, added on", "randomized, double-blind, placebo-controlled, proof of concept"], body: "There was no clear overall difference from placebo, with a possible signal in some subgroups that the trial was too small to confirm.", note: "The low-mood and anhedonia claims for LDN rest on this and on anecdote. Treat them as untested.", refs: [156] },
+      { title: "Low-dose naltrexone in fibromyalgia", evidence: "contested", meta: ["31 women with fibromyalgia", "naltrexone 4.5 mg nightly or placebo", "randomized, double-blind, placebo-controlled crossover"], body: "Pain fell by about 29% on naltrexone and 18% on placebo, a significant difference in a small trial. A larger Danish trial in 99 women later found no significant effect on pain.", note: "The low-dose evidence is two small trials pointing in different directions. Nothing here settles it.", refs: [148, 149] }
+    ],
+    k: [["Route", "Oral tablet, or monthly intramuscular injection"], ["Bioavailability", "5–40% oral, because of heavy first-pass metabolism"], ["Half-life", "About 4 hours; 6β-naltrexol about 13 hours; the injection releases over about a month"], ["Metabolism", "Liver, by dihydrodiol dehydrogenase to 6β-naltrexol; not through CYP450"], ["Excretion", "Urine"]], ke: "established",
+    related: ["bupropion", "ondansetron", "bremelanotide"] });
 
-  A.add({ slug: "sildenafil", name: "Sildenafil", aliases: ["Viagra", "Revatio"], category: "health", status: "Approved",
+  A.add({ slug: "sildenafil", updated: "2026-10-17", name: "Sildenafil", aliases: ["Viagra", "Revatio"], category: "health", status: "Approved",
     class: "PDE5 inhibitor", developer: "Pfizer", tags: ["erectile dysfunction", "PDE5", "vasodilator"],
     summary: "The original erectile dysfunction pill. It is also approved for pulmonary hypertension and used as a pre-workout \"pump\" enhancer.",
     names: "Sold as Viagra (erectile dysfunction) and Revatio (pulmonary arterial hypertension).",
     structure: "C<sub>22</sub>H<sub>30</sub>N<sub>6</sub>O<sub>4</sub>S, about 474.6 g/mol.",
     pubchem: "sildenafil", p: [["Erectile effect", 4], ["Risk load", 1, 1], ["Evidence quality", 5]],
-    r: [["Nitrates", "high", "Combining with nitrates can cause a dangerous drop in blood pressure", "established"], ["Headache and flushing", "low", "Common", "human rct"], ["Vision", "low", "Blue tinge to vision; rare NAION", "established"]],
+    r: [["Nitrates", "high", "Combining with nitrates can cause a dangerous drop in blood pressure", "established"], ["Headache and flushing", "low", "Common", "human rct"], ["Vision", "low", "Blue tinge to vision; rare NAION", "established"],
+      ["Melanoma", "unknown", "One cohort linked recent sildenafil use to more melanoma; causation is unproven", "human obs", "In 25,848 US health professionals, recent use carried an adjusted HR of 1.84 for melanoma, with no rise in other skin cancers. Confounding by sun exposure and lifestyle is possible.", [772]],
+      ["Pregnancy", "high", "In a trial for fetal growth restriction, sildenafil was stopped over possible pulmonary hypertension in newborns", "human rct", "Dutch STRIDER.", [771]]],
     a: [["PDE5", "established", "Prolongs cGMP signaling, relaxing smooth muscle in blood vessels"]],
-    t: [], noTrials: "Approval rests on large erectile dysfunction and pulmonary hypertension trials.",
+    t: [
+      { title: "Erectile dysfunction: pivotal trials", evidence: "human rct", meta: ["532 men (dose-response) and 329 men (dose-escalation)", "sildenafil 25, 50 or 100 mg, or placebo, as needed", "24 weeks and 12 weeks, with a 32-week open-label extension", "randomized, double-blind, placebo-controlled"], body: "Erectile function improved with dose. In the escalation study, 69% of intercourse attempts succeeded on sildenafil against 22% on placebo.", refs: [768] },
+      { title: "SUPER-1: pulmonary arterial hypertension", evidence: "human rct", meta: ["278 patients with pulmonary arterial hypertension", "sildenafil 20, 40 or 80 mg three times daily, or placebo", "12 weeks", "randomized, double-blind, placebo-controlled"], body: "Six-minute walk distance improved by 45–50 m over placebo at all doses, and pulmonary artery pressure fell. Clinical worsening did not differ.", refs: [769] },
+      { title: "RELAX: heart failure with preserved ejection fraction", evidence: "human rct", meta: ["patients with heart failure and preserved ejection fraction (median age 69)", "sildenafil or placebo", "24 weeks", "randomized, double-blind, placebo-controlled"], body: "Peak oxygen uptake and clinical status did not improve.", note: "A negative trial.", refs: [770] },
+      { title: "Dutch STRIDER: fetal growth restriction", evidence: "human rct", meta: ["216 pregnant women with severe early-onset fetal growth restriction", "maternal sildenafil or placebo", "from 20–30 weeks of pregnancy to delivery", "randomized, placebo-controlled (stopped early for safety)"], body: "Perinatal death or major newborn illness was 60.2% against 54.2% (RR 1.11, not significant). The trial was stopped because sildenafil may have caused pulmonary hypertension in newborns.", refs: [771] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "About 40%"], ["Time to peak", "About 1 hour (delayed by fatty meals)"], ["Half-life", "About 4 hours"], ["Metabolism", "Liver, CYP3A4"], ["Excretion", "Mainly feces"]], ke: "established",
     related: ["tadalafil", "bremelanotide"] });
 
-  A.add({ slug: "tadalafil", name: "Tadalafil", aliases: ["Cialis", "Adcirca"], category: "health", status: "Approved",
+  A.add({ slug: "tadalafil", updated: "2026-10-17", name: "Tadalafil", aliases: ["Cialis", "Adcirca"], category: "health", status: "Approved",
     class: "PDE5 inhibitor (long-acting)", developer: "ICOS / Eli Lilly", tags: ["erectile dysfunction", "PDE5", "BPH"],
     summary: "A long-acting PDE5 inhibitor (\"the weekend pill\"). It is approved daily for urinary symptoms of an enlarged prostate.",
     names: "Sold as Cialis (erectile dysfunction, BPH) and Adcirca (pulmonary arterial hypertension).",
@@ -729,35 +967,48 @@
     pubchem: "tadalafil", p: [["Erectile effect", 4], ["Risk load", 1, 1], ["Evidence quality", 5]],
     r: [["Nitrates", "high", "Dangerous with nitrates", "established"], ["Back and muscle pain", "low", "More common than with sildenafil", "human rct"], ["Headache", "low", "Common", "human rct"]],
     a: [["PDE5", "established", "Long-lasting smooth muscle relaxation"]],
-    t: [], noTrials: "Approval rests on large trials in erectile dysfunction, BPH and pulmonary hypertension.",
+    t: [
+      { title: "Erectile dysfunction: integrated analysis", evidence: "human rct", meta: ["men with erectile dysfunction across pooled placebo-controlled trials", "tadalafil 10 or 20 mg as needed, or placebo", "12 weeks (typical)", "integrated analysis of randomized trials"], body: "On 20 mg, the erectile function score improved by 7.9 points. 75% of intercourse attempts succeeded, and 81% reported better erections against 35% on placebo. Headache and indigestion were the most common side effects.", refs: [773] },
+      { title: "PHIRST: pulmonary arterial hypertension", evidence: "human rct", meta: ["405 patients, some on bosentan", "tadalafil 2.5, 10, 20 or 40 mg once daily, or placebo", "16 weeks", "randomized, double-blind, placebo-controlled"], body: "Walk distance rose with dose, but only 40 mg met significance (placebo-corrected +33 m). 40 mg also delayed clinical worsening.", refs: [774] },
+      { title: "AMBITION: starting with ambrisentan plus tadalafil", evidence: "human rct", meta: ["500 untreated patients with WHO class II–III pulmonary arterial hypertension", "ambrisentan 10 mg plus tadalafil 40 mg, or either alone", "event-driven", "randomized, double-blind"], body: "Clinical failure occurred in 18% on the combination against 31% on either drug alone (HR 0.50). Swelling, headache, nasal congestion and anemia were more common on the combination.", refs: [775] },
+      { title: "Daily dosing for prostate urinary symptoms", evidence: "human rct", meta: ["1,058 men with BPH urinary symptoms", "tadalafil 2.5, 5, 10 or 20 mg once daily, or placebo", "12 weeks", "randomized, placebo-controlled, dose-finding"], body: "The prostate symptom score fell by 3.9 to 5.2 points against 2.3 on placebo, with a dose-response.", refs: [776] },
+    ],
     k: [["Route", "Oral"], ["Time to peak", "About 2 hours"], ["Half-life", "About 17.5 hours"], ["Metabolism", "Liver, CYP3A4"], ["Excretion", "Mainly feces"]], ke: "established",
     related: ["sildenafil"] });
 
-  A.add({ slug: "dapoxetine", name: "Dapoxetine", aliases: ["Priligy"], category: "health", status: "Approved",
+  A.add({ slug: "dapoxetine", updated: "2026-10-17", name: "Dapoxetine", aliases: ["Priligy"], category: "health", status: "Approved",
     class: "Short-acting SSRI", developer: "Eli Lilly; later Janssen / Menarini", tags: ["premature ejaculation", "SSRI"],
     summary: "A fast-acting, short-lived SSRI designed to be taken on demand for premature ejaculation. It is approved in many countries but not the US.",
     names: "Sold as Priligy in Europe, Asia and Latin America. The FDA did not approve it.",
     structure: "C<sub>21</sub>H<sub>23</sub>NO, about 305.4 g/mol.",
     pubchem: "dapoxetine", p: [["Ejaculation delay", 3], ["Risk load", 2, 1], ["Evidence quality", 4]],
-    r: [["Fainting", "moderate", "Syncope, especially with alcohol or dehydration", "human rct"], ["Nausea and dizziness", "moderate", "Common", "human rct"], ["Interactions", "high", "Avoid with other serotonergic drugs and MAO inhibitors", "established"]],
+    r: [["Fainting", "moderate", "Syncope, especially with alcohol or dehydration", "human rct"], ["Nausea and dizziness", "moderate", "Common; nausea is dose-related", "human rct", "Nausea affected 8.7% on 30 mg and 20.1% on 60 mg in the US phase 3 trials.", [777]], ["Interactions", "high", "Avoid with other serotonergic drugs and MAO inhibitors", "established"]],
     a: [["Serotonin transporter", "human rct", "Briefly raises serotonin, delaying ejaculation by a few minutes on average"]],
-    t: [], noTrials: "Approval rests on phase 3 trials showing roughly a 2.5- to 3-fold increase in time to ejaculation.",
+    t: [
+      { title: "Two US phase 3 trials (integrated analysis)", evidence: "human rct", meta: ["2,614 men with moderate to severe premature ejaculation", "dapoxetine 30 or 60 mg, or placebo, 1–3 hours before sex", "12 weeks", "two randomized, double-blind, placebo-controlled trials"], body: "Time to ejaculation rose from about 0.9 minutes to 1.75 (placebo), 2.78 (30 mg) and 3.32 minutes (60 mg). It worked from the first dose. Nausea affected 8.7% on 30 mg and 20.1% on 60 mg.", refs: [777] },
+      { title: "Phase 3 in 22 countries", evidence: "human rct", meta: ["1,162 men with premature ejaculation; 618 completed", "dapoxetine 30 or 60 mg, or placebo, on demand", "24 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean time to ejaculation rose from 0.9 minutes to 1.9 (placebo), 3.2 (30 mg) and 3.5 minutes (60 mg). Side effects led 1.3%, 3.9% and 8.2% to stop.", refs: [778] },
+      { title: "Phase 3 in the Asia-Pacific region", evidence: "human rct", meta: ["1,067 men; 858 completed", "dapoxetine 30 or 60 mg, or placebo, 1–3 hours before sex", "12 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean time to ejaculation rose from about 1.1 minutes to 2.4 (placebo), 3.9 (30 mg) and 4.2 minutes (60 mg).", refs: [779] },
+    ],
     k: [["Route", "Oral, 1–3 hours before sex"], ["Time to peak", "About 1 hour"], ["Half-life", "About 1.3 hours initially, then about 19 hours terminal"], ["Metabolism", "Liver, CYP2D6 and CYP3A4"], ["Excretion", "Urine"]], ke: "established",
     related: ["tadalafil"] });
 
-  A.add({ slug: "trazodone", name: "Trazodone", aliases: ["Desyrel"], category: "health", status: "Approved",
+  A.add({ slug: "trazodone", updated: "2026-10-17", name: "Trazodone", aliases: ["Desyrel"], category: "health", status: "Approved",
     class: "Serotonin antagonist and reuptake inhibitor (SARI)", developer: "Angelini (Italy)", tags: ["sleep", "antidepressant"],
     summary: "An antidepressant mostly used at low doses as a sleep aid. It is non-habit-forming but can cause morning grogginess and, rarely, priapism.",
     names: "Approved for depression as Desyrel and generics. Low-dose use for insomnia is off-label but very common.",
     structure: "C<sub>19</sub>H<sub>22</sub>ClN<sub>5</sub>O, about 371.9 g/mol.",
     pubchem: "trazodone", p: [["Sleep effect", 3], ["Risk load", 2, 1], ["Evidence quality", 3]],
-    r: [["Priapism", "moderate", "A rare but urgent side effect", "established"], ["Orthostatic hypotension", "moderate", "Dizziness on standing", "established"], ["Next-day grogginess", "low", "Common", "human rct"]],
+    r: [["Priapism", "moderate", "A rare but urgent side effect", "established"], ["Orthostatic hypotension", "moderate", "Dizziness on standing", "established"], ["Next-day grogginess", "low", "Common", "human rct"],
+      ["Falls in older adults", "moderate", "In nursing homes, low-dose trazodone carried about the same fall-injury risk as benzodiazepines", "human obs", "Among 7,791 matched residents aged 66 or older, 90-day fall injury was 5.7% on low-dose trazodone against 6.0% on benzodiazepines (HR 0.94). Trazodone was not safer for falls.", [782]]],
     a: [["5-HT2A and H1 receptors", "established", "Sedation through 5-HT2A and histamine blockade at low doses"]],
-    t: [], noTrials: "Evidence for insomnia comes from small trials; its approval is for depression.",
+    t: [
+      { title: "Sleep in Alzheimer's disease", evidence: "human rct", meta: ["30 patients with Alzheimer's disease and sleep disturbance", "trazodone 50 mg at 10 pm or placebo", "2 weeks", "randomized, double-blind, placebo-controlled"], body: "On actigraphy, trazodone added 42.5 minutes of sleep a night and 8.5 percentage points of nighttime sleep. It did not cause daytime sleepiness or change cognition.", refs: [780] },
+      { title: "Antidepressants for insomnia (Cochrane review)", evidence: "human rct", meta: ["23 randomized trials, 2,806 participants", "antidepressants including trazodone, against placebo or other drugs", "systematic review"], body: "The review included trazodone trials but rated the overall evidence for antidepressants in insomnia as low quality. It found little to support their wide use for sleep.", refs: [781] },
+    ],
     k: [["Route", "Oral"], ["Time to peak", "About 1 hour"], ["Half-life", "About 5–9 hours"], ["Metabolism", "Liver, CYP3A4 (to active mCPP)"], ["Excretion", "Urine"]], ke: "established",
     related: ["doxepin", "dsip"] });
 
-  A.add({ slug: "doxepin", name: "Doxepin", aliases: ["Silenor", "Sinequan"], category: "health", status: "Approved",
+  A.add({ slug: "doxepin", updated: "2026-10-17", name: "Doxepin", aliases: ["Silenor", "Sinequan"], category: "health", status: "Approved",
     class: "Tricyclic (low-dose H1 antagonist)", developer: "Pfizer", tags: ["sleep", "antihistamine"],
     summary: "An old tricyclic antidepressant that at very low doses (3–6 mg) acts almost purely as an antihistamine. At these doses it is approved for staying asleep.",
     names: "Low-dose doxepin is sold as Silenor for insomnia with difficulty staying asleep. Higher doses are used for depression and anxiety.",
@@ -765,48 +1016,81 @@
     pubchem: "doxepin", p: [["Sleep maintenance", 3], ["Risk load", 1, 1], ["Evidence quality", 4]],
     r: [["Next-day drowsiness", "low", "Possible", "human rct"], ["Higher doses", "moderate", "Antidepressant doses bring anticholinergic and cardiac side effects", "established"]],
     a: [["H1 receptor", "human rct", "Highly selective histamine blockade at low doses"]],
-    t: [], noTrials: "Low-dose approval rests on trials in adults and older adults with insomnia.",
+    t: [
+      { title: "Adults with chronic insomnia, 35 days", evidence: "human rct", meta: ["221 adults with primary insomnia", "doxepin 3 mg, 6 mg, or placebo nightly", "35 days, then 2 nights of placebo", "randomized, double-blind, placebo-controlled, sleep laboratory"], body: "Both doses reduced wake time after sleep onset on nights 1, 15 and 29, and improved total sleep time. Effects on falling asleep were smaller and less consistent. There were no signs of rebound on stopping.", refs: [783] },
+      { title: "Older adults with chronic insomnia, 12 weeks", evidence: "human rct", meta: ["240 adults aged 65 or older with primary insomnia", "doxepin 1 mg, 3 mg, or placebo nightly", "12 weeks", "randomized, double-blind, placebo-controlled, sleep laboratory and outpatient"], body: "3 mg improved wake after sleep onset, total sleep time and sleep efficiency, and the gains lasted to night 85. There was no next-day residue, memory impairment, complex sleep behaviour, anticholinergic effect or weight gain.", refs: [784] },
+    ],
     k: [["Route", "Oral"], ["Time to peak", "About 3.5 hours"], ["Half-life", "About 15 hours (metabolite about 31 hours)"], ["Metabolism", "Liver, CYP2C19 and CYP2D6"], ["Excretion", "Urine"]], ke: "established",
     related: ["trazodone"] });
 
-  A.add({ slug: "pramipexole", name: "Pramipexole", aliases: ["Mirapex"], category: "health", status: "Approved",
+  A.add({ slug: "pramipexole", updated: "2026-10-17", name: "Pramipexole", aliases: ["Mirapex"], category: "health", status: "Approved",
     class: "Dopamine D2/D3 agonist", developer: "Boehringer Ingelheim", tags: ["dopamine", "prolactin", "Parkinson's"],
     summary: "A dopamine agonist approved for Parkinson's and restless legs. It lowers prolactin and is used off-label for that on cycle, though cabergoline is the standard prolactin drug.",
     names: "Sold as Mirapex for Parkinson's disease and restless legs syndrome.",
     structure: "C<sub>10</sub>H<sub>17</sub>N<sub>3</sub>S, about 211.3 g/mol.",
     pubchem: "pramipexole", p: [["Prolactin lowering", 2], ["Risk load", 3, 1], ["Evidence quality", 4]],
-    r: [["Impulse control", "high", "Compulsive gambling, shopping, eating and hypersexuality are well documented", "established"], ["Sleep attacks", "moderate", "Sudden sleep onset, a driving risk", "established"], ["Nausea and dizziness", "moderate", "Common at the start", "established"]],
+    r: [["Impulse control", "high", "Compulsive gambling, shopping, eating and hypersexuality are well documented", "established", "In 3,090 patients, an impulse control disorder was found in 17.1% on a dopamine agonist against 6.9% without one (OR 2.72). Rates were similar for pramipexole and ropinirole.", [788]], ["Sleep attacks", "moderate", "Sudden sleep onset, a driving risk", "established"], ["Nausea and dizziness", "moderate", "Common at the start", "established"],
+      ["Stopping because of side effects", "moderate", "In depression, one in five stopped because of side effects", "human rct", "20% against 5% in PAX-D, mainly nausea, headache and sleep problems.", [785]]],
     a: [["D2 / D3 receptors", "established", "Dopamine agonist; D2 activation suppresses prolactin"]],
-    t: [], noTrials: "Approval rests on Parkinson's and restless legs trials.",
+    t: [
+      { title: "PAX-D: treatment-resistant depression", evidence: "human rct", meta: ["151 adults with treatment-resistant major depression in England", "pramipexole titrated to 2.5 mg (mean 2.3 mg at week 12) or placebo, added to an antidepressant", "primary endpoint at 12 weeks, treatment 48 weeks", "randomized, double-blind, placebo-controlled"], body: "Depression scores fell by 6.4 against 2.4 points, a difference of 3.91 (p < 0.0001). Side effects made 20% stop against 5% on placebo, mainly nausea, headache and sleep disturbance or sleepiness.", refs: [785] },
+      { title: "Bipolar depression, two small trials", evidence: "human rct", meta: ["22 and 21 outpatients with bipolar depression on mood stabilizers", "pramipexole (mean maximum 1.7 mg/day in one) or placebo", "6 weeks", "randomized, double-blind, placebo-controlled"], body: "Response was 67% against 20% in one trial and 60% against 9% in the other. One patient on pramipexole and two on placebo developed hypomanic symptoms in the second trial.", refs: [786, 787] },
+      { title: "Restless legs syndrome", evidence: "human rct", meta: ["344 patients with moderate to severe restless legs", "pramipexole 0.25, 0.5 or 0.75 mg/day, or placebo", "12 weeks", "randomized, double-blind, placebo-controlled, fixed-dose"], body: "Symptom scores improved more on all doses (about 12.8 to 14.0 points against 9.3). Nausea (19.0% against 4.7%) and sleepiness (10.1% against 4.7%) were more common.", refs: [789] },
+    ],
     k: [["Route", "Oral"], ["Bioavailability", "Over 90%"], ["Half-life", "About 8–12 hours"], ["Metabolism", "Minimal"], ["Excretion", "Mostly unchanged in urine"]], ke: "established",
     related: ["nandrolone", "trenbolone"] });
 
-  A.add({ slug: "vitamin-b12", name: "Vitamin B12", aliases: ["B12", "Cyanocobalamin", "Methylcobalamin", "B12 injection"], category: "health", status: "Approved",
+  A.add({ slug: "vitamin-b12", updated: "2026-10-17", name: "Vitamin B12", aliases: ["B12", "Cyanocobalamin", "Methylcobalamin", "B12 injection"], category: "health", status: "Approved",
     class: "Vitamin (cobalamin)", developer: "Essential nutrient", tags: ["vitamin", "energy", "deficiency"],
     summary: "An essential vitamin for nerves and red blood cells. Injections fix deficiency, but in people with normal levels they don't boost energy.",
     names: "Cyanocobalamin and hydroxocobalamin injections are approved for B12 deficiency and pernicious anemia. Methylcobalamin is sold as a supplement.",
     structure: "A large cobalt-containing corrinoid. Cyanocobalamin is about 1355 g/mol.",
     pubchem: "cyanocobalamin", p: [["Benefit if deficient", 5], ["Benefit if replete", 1], ["Risk load", 1, 1], ["Evidence quality", 5]],
-    r: [["Acne", "low", "High-dose injections can trigger acne", "human obs"], ["Masking", "low", "High folate or B12 intake can complicate diagnosis of deficiency", "established"]],
+    r: [["Acne", "low", "High-dose injections can trigger acne", "human obs"], ["Masking", "low", "High folate or B12 intake can complicate diagnosis of deficiency", "established"],
+      ["Low potassium", "moderate", "Potassium can fall sharply in the first 48 hours of treating severe megaloblastic anemia, and sudden death has been reported", "established", undefined, [662]],
+      ["Anaphylaxis", "low", "Anaphylactic shock and death have been reported after injected B12", "established", "The label is for cyanocobalamin injection, which is contraindicated with cobalt sensitivity.", [662]],
+      ["Leber's disease", "moderate", "Patients with early Leber's hereditary optic neuropathy given cyanocobalamin developed severe, rapid optic atrophy", "established", undefined, [662]]],
     a: [["Methylation and DNA synthesis", "established", "Required for red blood cell formation and myelin"]],
-    t: [], noTrials: "Its use in deficiency is well established.",
+    t: [
+      { title: "Oral against intramuscular cobalamin in deficiency", evidence: "human rct", meta: ["33 evaluable newly diagnosed patients with cobalamin deficiency (38 randomized)", "cyanocobalamin 2 mg by mouth daily, or 1 mg intramuscularly on days 1, 3, 7, 10, 14, 21, 30, 60 and 90", "4 months", "randomized"], body: "Blood counts and neurological findings improved equally fast in both groups. At 4 months, serum B12 was higher (1,005 against 325 pg/mL) and methylmalonic acid lower on the oral regimen.", refs: [660] },
+      { title: "Cochrane review: oral against intramuscular B12", evidence: "human rct", meta: ["3 trials, 153 participants with deficiency", "oral B12 (1,000 µg/day in two trials) or intramuscular B12", "3–4 months", "systematic review"], body: "Oral 1,000 µg daily was not meaningfully different from intramuscular injection in restoring serum B12. The quality of evidence was low because the trials were few and small.", refs: [661] },
+      { title: "Metformin and B12 deficiency", evidence: "human obs", meta: ["participants in the Diabetes Prevention Program and its outcomes study", "metformin or placebo, then long-term follow-up", "about 12 years", "secondary analysis of a randomized trial cohort"], body: "Long-term metformin use was associated with a higher risk of biochemical B12 deficiency.", note: "This makes metformin users a group for whom B12 testing has a real basis.", refs: [663] },
+    ],
     k: [["Route", "Intramuscular, subcutaneous, oral or sublingual"], ["Oral absorption", "Needs intrinsic factor; about 1% by passive absorption at high doses"], ["Storage", "Stored in the liver for years"], ["Excretion", "Excess cleared in urine"]], ke: "established",
     related: ["metformin", "glutathione"] });
 
-  A.add({ slug: "glutathione", name: "Glutathione", aliases: ["GSH", "L-Glutathione"], category: "health", status: "Supplement",
+  A.add({ slug: "glutathione", updated: "2026-10-17", name: "Glutathione", aliases: ["GSH", "L-Glutathione"], category: "health", status: "Supplement",
     class: "Tripeptide antioxidant", developer: "Endogenous molecule", tags: ["antioxidant", "skin lightening", "detox"],
     summary: "The body's main internal antioxidant. Oral glutathione is poorly absorbed, and IV use for skin lightening has drawn regulatory warnings in several countries.",
     names: "Sold as a supplement and given by IV infusion at wellness clinics. Not approved as a drug for skin lightening or detoxification.",
     structure: "γ-L-glutamyl-L-cysteinylglycine. C<sub>10</sub>H<sub>17</sub>N<sub>3</sub>O<sub>6</sub>S, about 307.3 g/mol.",
     pubchem: "glutathione", p: [["Health benefit (human)", 1], ["Risk load", 2, 1], ["Evidence quality", 2]],
-    r: [["IV use", "moderate", "Infusion risks and unregulated compounding; regulators have warned about IV skin-lightening use", "established"], ["Asthma", "low", "Inhaled glutathione can trigger bronchospasm", "established"]],
+    r: [["IV use", "moderate", "Infusion risks and unregulated compounding; regulators have warned about IV skin-lightening use", "established"], ["Asthma", "low", "Inhaled glutathione can trigger bronchospasm", "established"],
+      ["Long-term safety", "unknown", "Long-term safety of glutathione for skin lightening has not been established", "human rct", "The only placebo-controlled oral trial ran 4 weeks.", [658]]],
     a: [["Redox balance", "established", "Neutralizes reactive oxygen species and supports liver detoxification"], ["Skin pigment", "contested", "May shift melanin toward lighter pheomelanin; small trials are inconsistent"]],
-    t: [], noTrials: "Small trials for skin lightening and other uses have inconsistent results.",
+    t: [
+      { title: "Oral glutathione and body stores", evidence: "human rct", meta: ["54 healthy non-smoking adults", "oral glutathione 250 or 1,000 mg/day, or placebo", "6 months, then a 1-month washout", "randomized, double-blind, placebo-controlled"], body: "Blood glutathione rose at both doses. At 6 months the high dose raised it 30–35% in red cells, plasma and lymphocytes. Levels returned to baseline after the washout. Natural killer cell activity doubled at 3 months on the high dose.", note: "This counters the belief that oral glutathione is not absorbed at all, though raised stores are not a clinical benefit.", refs: [657] },
+      { title: "Oral glutathione for skin lightening", evidence: "human rct", meta: ["60 healthy medical students in Thailand", "oral glutathione 500 mg/day in two doses, or placebo", "4 weeks", "randomized, double-blind, placebo-controlled"], body: "Melanin index fell more than with placebo at 2 of 6 measured sites, the right face and the sun-exposed forearm. Both arms were well tolerated.", note: "A small, short trial with significance at only some sites. The authors noted that long-term safety has not been established.", refs: [658] },
+      { title: "IV glutathione in Parkinson's disease", evidence: "human rct", meta: ["21 patients with Parkinson's disease not adequately controlled on medication", "IV glutathione 1,400 mg or placebo, three times a week", "4 weeks of treatment and 8 weeks of follow-up", "randomized, double-blind, placebo-controlled pilot"], body: "Motor and daily-living scores did not differ from placebo. It was well tolerated, with adverse events similar between groups.", refs: [659] },
+    ],
     k: [["Route", "Oral, intravenous or inhaled"], ["Oral bioavailability", "Low; mostly broken down in the gut"], ["Half-life", "Minutes in blood"]], ke: "human obs",
     related: ["nad-plus", "vitamin-b12"] });
 
   Object.assign(A.references, {
-    100: "Macor JE et al. The 5-HT3 antagonist tropisetron (ICS 205-930) is a potent and selective α7 nicotinic receptor partial agonist. Bioorg Med Chem Lett 2001;11:319–321.",
+    144: "Volpicelli JR et al. Naltrexone in the treatment of alcohol dependence. Arch Gen Psychiatry 1992;49:876–880.",
+    145: "Anton RF et al. Combined pharmacotherapies and behavioral interventions for alcohol dependence: the COMBINE study: a randomized controlled trial. JAMA 2006;295:2003–2017.",
+    146: "Krupitsky E et al. Injectable extended-release naltrexone for opioid dependence: a double-blind, placebo-controlled, multicentre randomised trial. Lancet 2011;377:1506–1513.",
+    147: "Lee JD et al. Comparative effectiveness of extended-release naltrexone versus buprenorphine-naloxone for opioid relapse prevention (X:BOT): a multicentre, open-label, randomised controlled trial. Lancet 2018;391:309–318.",
+    148: "Younger J et al. Low-dose naltrexone for the treatment of fibromyalgia: findings of a small, randomized, double-blind, placebo-controlled, counterbalanced, crossover trial assessing daily pain levels. Arthritis Rheum 2013;65:529–538.",
+    150: "Minozzi S et al. Oral naltrexone maintenance treatment for opioid dependence. Cochrane Database Syst Rev 2011;(4):CD001333.",
+    151: "Kim SW et al. Double-blind naltrexone and placebo comparison study in the treatment of pathological gambling. Biol Psychiatry 2001;49:914–921.",
+    152: "Grant JE, Kim SW, Hartman BK. A double-blind, placebo-controlled study of the opiate antagonist naltrexone in the treatment of pathological gambling urges. J Clin Psychiatry 2008;69:783–789.",
+    153: "Grant JE, Kim SW, Odlaug BL. A double-blind, placebo-controlled study of the opiate antagonist, naltrexone, in the treatment of kleptomania. Biol Psychiatry 2009;65:600–606.",
+    154: "Trivedi MH et al. Bupropion and naltrexone in methamphetamine use disorder. N Engl J Med 2021;384:140–153.",
+    155: "David SP et al. Opioid antagonists for smoking cessation. Cochrane Database Syst Rev 2013;(6):CD003086.",
+    156: "Mischoulon D et al. Randomized, proof-of-concept trial of low dose naltrexone for patients with breakthrough symptoms of major depressive disorder on antidepressants. J Affect Disord 2017;208:6–14.",
+    149: "Bruun KD et al. Low-dose naltrexone for the treatment of fibromyalgia: a randomized clinical trial. JAMA Netw Open 2024;7:e2425465.",
+    100:"Macor JE et al. The 5-HT3 antagonist tropisetron (ICS 205-930) is a potent and selective α7 nicotinic receptor partial agonist. Bioorg Med Chem Lett 2001;11:319–321.",
     101: "Shiina A et al. A randomised, double-blind, placebo-controlled trial of tropisetron in patients with schizophrenia. Ann Gen Psychiatry 2010;9:27.",
     102: "Zhang XY et al. Short-term tropisetron treatment and cognitive and P50 auditory gating deficits in schizophrenia. Am J Psychiatry 2012;169:974–981.",
     103: "Noroozian M et al. A placebo-controlled study of tropisetron added to risperidone for the treatment of negative symptoms in chronic and stable schizophrenia. Psychopharmacology 2013;228:595–602.",

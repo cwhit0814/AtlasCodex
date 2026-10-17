@@ -12,7 +12,7 @@
       slug: "testosterone", type: "compound", name: "Testosterone",
       aliases: ["Testosterone cypionate", "Testosterone enanthate", "Depo-Testosterone", "AndroGel", "TRT"], category: "aas", status: "Approved",
       class: "Endogenous androgen (reference AAS)", developer: "Isolated and synthesized 1935",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-17",
       tags: ["androgen", "AAS", "TRT", "hypogonadism", "Schedule III"],
       summary: "The body's main male sex hormone, and the reference compound that every other anabolic steroid is measured against. It is an approved medicine for low testosterone and a controlled substance.",
       names: "Cypionate is sold as Depo-Testosterone and enanthate as Xyosted (and formerly Delatestryl). Undecanoate is sold as Aveed or Nebido by injection and as Jatenzo, Tlando or Kyzatrex by mouth. Gels include AndroGel and Testim. Ester names such as \"enanthate\" describe how long the injection lasts; they are not brands. In the US testosterone is a Schedule III controlled substance. It is the one compound in this category with large modern outcome trials, which is why its clinical record below is long.",
@@ -24,13 +24,15 @@
         { label: "Liver strain", score: 1, neg: true }, { label: "Risk load", score: 2, neg: true },
         { label: "Evidence quality", score: 5 } ] },
       risks: [
-        hpta,
+        { system: "HPTA / fertility", level: "high", text: "Suppresses the body's own testosterone production and sperm production", evidence: "established", detail: "Exogenous androgens shut down LH and FSH through negative feedback. Testosterone alone was tested as a male contraceptive because it reliably causes azoospermia. Recovery after stopping is usually possible but can take months and is not guaranteed. In the HAARLEM cohort of men running their own cycles, sperm counts took about a year to recover, and one year after starting a cycle a third still had a low sperm count and 11% had low testosterone. Former users years off-drug had lower testosterone and more low-libido and erectile symptoms than non-using lifters.", refs: [40, 200, 204] },
         { system: "Hematocrit", level: "moderate", text: "Raises red blood cell mass in proportion to dose, more in older men", evidence: "human rct", detail: "A hematocrit above about 54% is the usual threshold for stopping or reducing treatment. Higher hematocrit thickens the blood.", refs: [37] },
         { system: "Lipids", level: "moderate", text: "Lowers HDL cholesterol, especially at doses above replacement", evidence: "human rct", refs: [37] },
-        { system: "Cardiac", level: "moderate", text: "Replacement doses were non-inferior to placebo for major cardiac events, but atrial fibrillation and pulmonary embolism were more common", evidence: "human rct", detail: "That result comes from TRAVERSE, in older men with low testosterone at replacement doses. It does not cover doses above replacement, where observational studies of steroid users suggest heart muscle changes and atherosclerosis.", refs: [39] },
+        { system: "Cardiac", level: "moderate", text: "Replacement doses were non-inferior to placebo for major cardiac events, but atrial fibrillation and pulmonary embolism were more common", evidence: "human rct", detail: "That result comes from TRAVERSE, in older men with low testosterone at replacement doses. It does not cover doses above replacement, where observational studies of steroid users suggest heart muscle changes and atherosclerosis. In long-term users above replacement, a cross-sectional imaging study found weaker heart pumping and more coronary plaque, and a Danish registry cohort found higher rates of heart attack, heart failure and cardiomyopathy. These show association, not proof of cause.", refs: [39, 203, 207] },
         { system: "Estrogenic", level: "moderate", text: "Converts to estradiol. Gynecomastia and water retention scale with dose", evidence: "human rct", refs: [38] },
         { system: "Androgenic", level: "moderate", text: "Acne, scalp hair loss (through conversion to DHT) and prostate growth", evidence: "established" },
-        { system: "Liver", level: "low", text: "Injected esters are not meaningfully toxic to the liver", evidence: "established" }
+        { system: "Liver", level: "low", text: "Injected esters are not meaningfully toxic to the liver", evidence: "established" },
+        { system: "Mortality", level: "high", text: "Men caught using AAS had about three times the death rate of matched controls", evidence: "human obs", detail: "Danish matched cohort of men who tested positive in gym doping controls.", refs: [206] },
+        { system: "Blood pressure", level: "moderate", text: "Blood pressure rose about 7/3 mmHg during a cycle and returned to baseline after", evidence: "human obs", refs: [201] }
       ],
       activity: [
         { title: "Androgen receptor", evidence: "human rct", summary: "Binds the androgen receptor directly. Muscle gain rises steadily with dose across the whole range studied", detail: "In the dose-response trial, men had their own testosterone production suppressed, then received fixed weekly doses from 25 to 600 mg of enanthate for 20 weeks. Lean mass, muscle size and strength rose with every dose step, with no plateau. 600 mg weekly is the highest dose tested in a controlled trial, so anything above that is extrapolation.", refs: [37] },
@@ -42,7 +44,14 @@
         { title: "Supraphysiologic testosterone with and without training", evidence: "human rct", meta: ["43 men aged 19–40 with weight-training experience", "600 mg testosterone enanthate weekly or placebo, each with or without supervised training", "10 weeks", "randomized, placebo-controlled, four-arm"], body: "Testosterone plus training increased fat-free mass by about 6.1 kg, more than any other group. Testosterone without training still increased muscle size and strength more than placebo.", note: "This trial is often cited for the claim that the drug alone beat training alone on fat-free mass. The paper does not report that comparison.", refs: [36] },
         { title: "Dose-response with the body's own production suppressed", evidence: "human rct", meta: ["61 healthy men aged 18–35", "GnRH agonist plus testosterone enanthate 25, 50, 125, 300 or 600 mg weekly", "20 weeks", "randomized, dose-response"], body: "Fat-free mass, muscle size, strength and leg power all rose with dose across the five groups, with no plateau. Sexual function did not improve beyond replacement levels.", note: "Claims that a compound is \"X times as anabolic as testosterone\" are implicitly measured against this curve.", refs: [37] },
         { title: "Separating testosterone from estradiol", evidence: "human rct", meta: ["400 healthy men aged 20–50", "goserelin plus placebo gel or testosterone gel 1.25–10 g daily; a second group also received anastrozole", "16 weeks", "randomized, placebo-controlled, factorial"], body: "Lean mass, thigh muscle and leg-press strength tracked testosterone. Fat mass tracked estradiol. Suppressing estradiol worsened sexual function regardless of the testosterone level.", refs: [38] },
-        { title: "TRAVERSE: Cardiovascular safety of replacement", evidence: "human rct", meta: ["5,246 men aged 45–80 with low testosterone and cardiovascular disease or high risk", "testosterone gel or placebo", "mean follow-up about 22 months", "randomized, double-blind, non-inferiority"], body: "Major adverse cardiac events occurred in 7.0% against 7.3% (non-inferior). Atrial fibrillation, acute kidney injury and pulmonary embolism were more frequent with testosterone.", note: "This trial used replacement doses in older men. It says nothing about the doses used for performance.", refs: [39] }
+        { title: "TRAVERSE: Cardiovascular safety of replacement", evidence: "human rct", meta: ["5,246 men aged 45–80 with low testosterone and cardiovascular disease or high risk", "testosterone gel or placebo", "mean follow-up about 22 months", "randomized, double-blind, non-inferiority"], body: "Major adverse cardiac events occurred in 7.0% against 7.3% (non-inferior). Atrial fibrillation, acute kidney injury and pulmonary embolism were more frequent with testosterone.", note: "This trial used replacement doses in older men. It says nothing about the doses used for performance.", refs: [39] },
+        { title: "HAARLEM: Testicular shutdown and recovery after a self-run cycle", evidence: "human obs", meta: ["100 male amateur athletes starting a self-initiated androgen cycle", "self-chosen androgens and doses; no study drug", "1 year from cycle start", "prospective observational cohort"], body: "During the cycle 77% had a total sperm count below 40 million. Testosterone was back to baseline on average 3 months after stopping, but sperm count took about a year. At one year, 11% still had testosterone below normal and 34% still had a sperm count below 40 million.", note: "The best prospective data on real-world recovery. The authors suggest men with heavy past exposure recover least well.", refs: [200] },
+        { title: "HAARLEM: Blood pressure, lipids and hematocrit during and after a cycle", evidence: "human obs", meta: ["100 men performing an androgen cycle", "self-chosen androgens and doses", "1 year from cycle start", "prospective observational cohort"], body: "During use, systolic blood pressure rose about 7 mmHg, LDL rose 0.45 mmol/L and HDL fell 0.40 mmol/L, and hematocrit rose about 0.03 L/L. All returned to baseline by 3 months after the cycle.", note: "One year of follow-up cannot say what repeated cycles do to cardiovascular disease.", refs: [201] },
+        { title: "How much of the gain is kept: Body composition after a real-world cycle", evidence: "human obs", meta: ["79 men, median age 30, planning a cycle", "self-chosen androgens; median 600 mg weekly for a median 10 weeks", "baseline to 3 months after stopping", "prospective observational cohort; bioimpedance"], body: "Fat-free mass rose 4.4 kg during the cycle. Three months after stopping, only 1.2 kg of it remained. Fat mass did not change at any point.", note: "Bioimpedance is a rough measure and partly tracks water. Even so, most of the measured gain was gone within three months.", refs: [202] },
+        { title: "Recovery of sperm after testosterone-based male contraception", evidence: "human obs", meta: ["1,549 healthy men from 30 contraceptive studies, 1990-2005", "testosterone alone or with a progestin", "follow-up until recovery", "integrated individual-participant analysis"], body: "Median time for sperm concentration to recover to 20 million/mL was 3.4 months. The probability of recovery was 67% at 6 months, 90% at 12, 96% at 16 and 100% within 24 months. Recovery was faster with shorter treatment, shorter-acting preparations, older age and higher baseline counts.", note: "These were healthy men on controlled replacement-range regimens for contraception, not high-dose stacks, so recovery here is a best case.", refs: [205] },
+        { title: "Heart function and coronary plaque in long-term users", evidence: "human obs", meta: ["140 experienced male weightlifters aged 34-54: 86 with 2+ years of AAS use, 54 non-users", "self-chosen AAS", "single assessment", "cross-sectional; echocardiography and coronary CT"], body: "Users had lower left ventricular ejection fraction (52% against 63%) and worse diastolic function. Users had more coronary plaque, and plaque rose with cumulative years of use.", refs: [203] },
+        { title: "Cardiovascular disease in sanctioned AAS users: Danish registry", evidence: "human obs", meta: ["1,189 men sanctioned for AAS in Danish gyms and 59,450 matched controls", "AAS use established by doping control", "average 11 years", "registry-based matched cohort"], body: "Users had higher adjusted risks of myocardial infarction (HR 3.0), venous thromboembolism (HR 2.4), arrhythmia (HR 2.3), heart failure (HR 3.6) and cardiomyopathy (HR 8.9).", note: "Observational: users may differ from controls in ways the adjustment missed. The same group earlier reported about three times higher all-cause mortality.", refs: [207, 206] },
+        { title: "Testosterone against stanozolol: lipids", evidence: "human rct", meta: ["11 male weightlifters", "testosterone enanthate 200 mg weekly IM or stanozolol 6 mg daily orally", "6 weeks each", "randomized crossover"], body: "Testosterone lowered HDL by 9%, against 33% for oral stanozolol, and lowered LDL by 16% where stanozolol raised it 29%. Testosterone suppressed gonadotropins more.", refs: [214] }
       ],
       related: ["masteron", "equipoise", "anavar", "anadrol"]
     },
@@ -84,7 +93,7 @@
       slug: "equipoise", type: "compound", name: "Equipoise",
       aliases: ["EQ", "Boldenone undecylenate", "Boldenone"], category: "aas", status: "Veterinary",
       class: "Δ1-testosterone derivative", developer: "Ciba (1950s)",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-17",
       tags: ["boldenone", "AAS", "veterinary", "Schedule III"],
       summary: "A long-acting steroid ester made for horses. Chemically it is testosterone with one added double bond. It has essentially no human clinical data.",
       names: "Equipoise is the veterinary brand of boldenone undecylenate, licensed for horses in some countries. It has never been approved for humans. All human use relies on veterinary diversion or illicit production. It is a Schedule III controlled substance in the US.",
@@ -99,7 +108,8 @@
         hpta,
         { system: "Hematocrit", level: "high", text: "Widely reported to raise red blood cell counts markedly", evidence: "anecdotal", detail: "Like other androgens it stimulates red blood cell production. User reports and clinic experience suggest it does so strongly, but no controlled human data exist." },
         { system: "Estrogenic", level: "low", text: "Aromatizes to estradiol at a lower rate than testosterone", evidence: "in vitro" },
-        { system: "Product quality", level: "high", text: "Veterinary or illicit material, with unverified concentration and sterility", evidence: "established" }
+        { system: "Product quality", level: "high", text: "Veterinary or illicit material, with unverified concentration and sterility", evidence: "established" },
+        { system: "Kidney tests", level: "low", text: "Can raise serum creatinine enough to look like kidney disease when the kidneys are normal", evidence: "human obs", detail: "A single published case: a 37-year-old man referred for abnormal eGFR, attributed to boldenone use. A case report, not a measured rate.", refs: [227] }
       ],
       activity: [
         { title: "Androgen receptor", evidence: "animal", summary: "Androgen receptor agonist with anabolic effects shown in livestock" },
@@ -107,7 +117,8 @@
         { title: "5α-reductase", evidence: "in vitro", summary: "Converts to a 5α-reduced metabolite with low androgenic potency" }
       ],
       trials: [],
-      noTrials: "There are no human clinical trials. Evidence comes from veterinary studies and user reports.",
+      noTrials: "There are no human clinical trials. Evidence comes from veterinary studies, user reports and a single human case report.",
+      noTrialsRefs: [227],
       related: ["testosterone", "masteron"]
     },
 
@@ -116,7 +127,7 @@
       slug: "anavar", type: "compound", name: "Anavar",
       aliases: ["Oxandrolone", "Oxandrin", "Var"], category: "aas", status: "Discontinued",
       class: "17α-alkylated DHT derivative (oral)", developer: "G.D. Searle (1964)",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-17",
       tags: ["oxandrolone", "AAS", "oral", "17α-alkylated", "burns"],
       summary: "An oral steroid used for decades to help patients regain weight after burns, surgery or trauma. It has real human trial data, but the FDA withdrew its approval in 2023.",
       names: "Sold as Anavar and later Oxandrin, for weight regain after surgery, trauma and severe burns, and in some cases for Turner syndrome and HIV wasting. The FDA withdrew approval of all oxandrolone products in 2023, citing liver and lipid risks and too little evidence of benefit. It is a Schedule III controlled substance in the US.",
@@ -129,19 +140,21 @@
         { label: "Evidence quality", score: 4 } ] },
       risks: [
         hpta,
-        { system: "Lipids", level: "high", text: "Lowers HDL cholesterol sharply, a typical effect of oral 17α-alkylated androgens", evidence: "human rct", refs: [44] },
+        { system: "Lipids", level: "high", text: "Lowers HDL cholesterol sharply, a typical effect of oral 17α-alkylated androgens", evidence: "human rct", refs: [224] },
         { system: "Liver", level: "moderate", text: "17α-alkylation brings a risk of cholestasis, peliosis hepatis and liver tumors with prolonged use", evidence: "established", detail: "It is milder than oxymetholone at clinical doses, but the boxed warning applied to the whole class. Liver-enzyme rises were common in the burn trials." },
         { system: "Regulatory", level: "moderate", text: "Approval withdrawn in the US in 2023. Current supply is mostly illicit and often underdosed or substituted", evidence: "established", refs: [43] }
       ],
       activity: [
-        { title: "Androgen receptor", evidence: "human rct", summary: "Gains in lean mass and strength in clinical populations, with relatively mild androgenic effects", refs: [41, 42, 44] },
+        { title: "Androgen receptor", evidence: "human rct", summary: "Gains in lean mass and strength in clinical populations, with relatively mild androgenic effects", refs: [41, 42, 224] },
         { title: "Aromatase", evidence: "established", summary: "Not a substrate. It produces no estrogen" },
         { title: "Protein catabolism", evidence: "human rct", summary: "In severe burns it reduced muscle wasting and sped up wound healing", refs: [41, 42] }
       ],
       trials: [
         { title: "Severe burns in adults", evidence: "human rct", meta: ["81 adults with severe burns", "oxandrolone 10 mg twice daily or placebo", "during acute hospitalization", "multicentre, randomized, double-blind, placebo-controlled"], body: "Oxandrolone shortened length of stay and reduced weight loss compared with placebo.", refs: [41] },
         { title: "Severe burns in children: Five-year follow-up", evidence: "human rct", meta: ["children with burns over 40% of body surface", "oxandrolone 0.1 mg/kg twice daily for one year or placebo", "5 years of follow-up", "randomized"], body: "Oxandrolone improved lean body mass, bone mineral content and height compared with placebo.", refs: [42] },
-        { title: "Older community-dwelling men", evidence: "human rct", meta: ["32 men aged 60–87", "oxandrolone 20 mg daily or placebo", "12 weeks", "randomized, double-blind, placebo-controlled"], body: "Lean mass and strength increased and fat mass fell. HDL cholesterol dropped markedly and recovered after stopping.", refs: [44] }
+        { title: "Older community-dwelling men", evidence: "human rct", meta: ["32 men aged 60–87", "oxandrolone 20 mg daily or placebo", "12 weeks", "randomized, double-blind, placebo-controlled"], body: "Lean mass and strength increased and fat mass fell. HDL cholesterol dropped markedly and recovered after stopping. Twelve weeks after stopping, the lean mass and strength gains were gone, while the fat loss largely remained.", refs: [224] },
+        { title: "Turner syndrome: Final height", evidence: "human rct", meta: ["106 girls with Turner syndrome aged 7-13 on growth hormone", "oxandrolone 0.05 mg/kg daily (maximum 2.5 mg) or placebo from age 9", "to final height", "randomized, double-blind, placebo-controlled, 36 UK centres"], body: "Oxandrolone added 4.6 cm to final height. Late puberty induction gave a similar gain, and the two effects were not additive. No virilization was reported.", refs: [222] },
+        { title: "HIV wasting", evidence: "human rct", meta: ["63 HIV-positive men with more than 10% weight loss", "oxandrolone 5 or 15 mg daily, or placebo", "16 weeks", "randomized, double-blind, multicentre"], body: "The 15 mg group gained weight throughout, the 5 mg group held its weight, and the placebo group kept losing. Muscle strength did not measurably improve.", refs: [223] }
       ],
       related: ["anadrol", "superdrol", "testosterone"]
     },
@@ -151,7 +164,7 @@
       slug: "anadrol", type: "compound", name: "Anadrol",
       aliases: ["Oxymetholone", "Anadrol-50", "Drol"], category: "aas", status: "Approved",
       class: "17α-alkylated DHT derivative (oral)", developer: "Syntex (1959)",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-17",
       tags: ["oxymetholone", "AAS", "oral", "17α-alkylated", "anemia"],
       summary: "A potent oral steroid still approved in the US for some anemias. It produces fast gains in weight and strength and carries some of the heaviest liver risk in the class.",
       names: "Sold as Anadrol-50, approved for anemias caused by poor red blood cell production, such as aplastic anemia and myelofibrosis. It has also been studied for HIV wasting. It is a Schedule III controlled substance in the US.",
@@ -164,8 +177,8 @@
         { label: "Evidence quality", score: 3 } ] },
       risks: [
         hpta,
-        { system: "Liver", level: "high", text: "Carries a boxed warning for peliosis hepatis, liver tumors and cholestatic jaundice", evidence: "established", detail: "Liver-enzyme elevations were common in the HIV wasting trial, especially at higher doses.", refs: [45] },
-        { system: "Lipids", level: "high", text: "Severe HDL reduction", evidence: "human rct" },
+        { system: "Liver", level: "high", text: "Carries a boxed warning for peliosis hepatis, liver tumors and cholestatic jaundice", evidence: "established", detail: "Liver-enzyme elevations were common in the HIV wasting trial, especially at higher doses. Liver enzymes also rose in controlled trials in older men and in dialysis patients, more at the higher dose.", refs: [45, 220, 221] },
+        { system: "Lipids", level: "high", text: "Severe HDL reduction", evidence: "human rct", detail: "HDL fell by about 19-23 mg/dL within 12 weeks in older men.", refs: [220] },
         { system: "Fluid / blood pressure", level: "high", text: "Marked water retention and blood-pressure increases", evidence: "established" },
         { system: "Estrogenic", level: "moderate", text: "Gynecomastia is reported even though it cannot aromatize. Direct estrogen-receptor activity has been proposed but not established", evidence: "contested" }
       ],
@@ -175,7 +188,9 @@
         { title: "Body mass", evidence: "human rct", summary: "Increased body weight and lean mass in a trial of HIV wasting", refs: [45] }
       ],
       trials: [
-        { title: "HIV-associated wasting", evidence: "human rct", meta: ["men and women with HIV-associated wasting", "oxymetholone at two dose levels or placebo", "16 weeks", "randomized, double-blind, placebo-controlled, phase 3"], body: "Oxymetholone increased body weight and body cell mass compared with placebo. Liver-enzyme elevations were frequent, especially at the higher dose.", refs: [45] }
+        { title: "HIV-associated wasting", evidence: "human rct", meta: ["men and women with HIV-associated wasting", "oxymetholone at two dose levels or placebo", "16 weeks", "randomized, double-blind, placebo-controlled, phase 3"], body: "Oxymetholone increased body weight and body cell mass compared with placebo. Liver-enzyme elevations were frequent, especially at the higher dose.", refs: [45] },
+        { title: "Older men: Dose comparison", evidence: "human rct", meta: ["31 men aged 65-80", "oxymetholone 50 or 100 mg daily, or placebo", "12 weeks", "randomized, placebo-controlled"], body: "Lean mass rose 3.3 kg at 50 mg and 4.2 kg at 100 mg, with no change on placebo, and trunk fat fell. HDL fell by 19 and 23 mg/dL, and ALT rose by 72 U/L on average at 100 mg.", refs: [220] },
+        { title: "Hemodialysis patients", evidence: "human rct", meta: ["43 patients on hemodialysis", "oral oxymetholone or placebo", "24 weeks", "randomized, placebo-controlled"], body: "Fat-free mass and handgrip strength rose more, and fat mass fell more, than on placebo. Liver enzymes rose significantly, and the authors concluded the drug caused liver injury.", refs: [221] }
       ],
       related: ["anavar", "superdrol", "testosterone"]
     },
@@ -185,7 +200,7 @@
       slug: "superdrol", type: "compound", name: "Superdrol",
       aliases: ["Methasterone", "Methyldrostanolone"], category: "aas", status: "Never approved",
       class: "17α-alkylated DHT derivative (oral)", developer: "Syntex (1950s research); sold as a supplement in 2005",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-17",
       tags: ["methasterone", "designer steroid", "oral", "17α-alkylated", "Schedule III"],
       summary: "An oral steroid that was never approved as a medicine. In the mid-2000s it was sold legally as a \"supplement\", and it has since been linked to many reported cases of serious liver injury.",
       names: "Methasterone was made in early steroid research but never developed into a medicine. In 2005 it was sold over the counter as Superdrol, a designer \"prohormone\". It was later restricted and is now a Schedule III controlled substance in the US under the Designer Anabolic Steroid Control Act of 2014.",
@@ -198,7 +213,7 @@
         { label: "Evidence quality", score: 1 } ] },
       risks: [
         hpta,
-        { system: "Liver", level: "high", text: "Severe cholestatic liver injury in multiple case reports, sometimes with kidney failure", evidence: "human obs", detail: "Cases typically present with jaundice and intense itching weeks into use. Some required hospitalization, and the evidence base is a series of case reports.", refs: [46] },
+        { system: "Liver", level: "high", text: "Severe cholestatic liver injury in multiple case reports, sometimes with kidney failure", evidence: "human obs", detail: "Cases typically present with jaundice and intense itching weeks into use. Some required hospitalization, and the evidence base is a series of case reports. In the Spanish and Latin American liver-injury registries, deep jaundice with cholestasis from illicit AAS products in general was linked to acute kidney injury, and AAS cases rose from under 1% of registry reports in 2001-2009 to 8% in 2010-2013.", refs: [46, 225] },
         { system: "Lipids", level: "high", text: "Severe HDL suppression, typical of oral 17α-alkylated androgens", evidence: "contested" },
         { system: "Product quality", level: "high", text: "No pharmaceutical-grade source has ever existed", evidence: "established" }
       ],
@@ -217,7 +232,7 @@
       slug: "growth-hormone", type: "compound", name: "Growth Hormone",
       aliases: ["GH", "HGH", "Somatropin", "Genotropin", "Norditropin", "Humatrope"], category: "gh", status: "Approved",
       class: "Recombinant human growth hormone (191-aa protein)", developer: "Genentech (first recombinant GH, 1985)",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-17",
       tags: ["somatropin", "IGF-1", "growth hormone", "GH axis", "anti-aging"],
       summary: "Recombinant human growth hormone, approved for growth hormone deficiency and several growth disorders. In healthy adults it adds lean mass, mostly as water and connective tissue, with little evidence of better strength.",
       names: "Sold as somatropin under brands including Genotropin, Norditropin, Humatrope, Omnitrope and Saizen. Long-acting weekly versions include Skytrofa, Sogroya and Ngenla. Recombinant GH replaced cadaver-derived pituitary GH in 1985 after that was linked to Creutzfeldt-Jakob disease. In the US, distributing GH for off-label uses such as anti-aging or bodybuilding is a federal crime.",
@@ -232,11 +247,15 @@
         ]
       },
       risks: [
-        { system: "Fluid retention", level: "high", text: "Swelling, joint pain and carpal tunnel symptoms are the most common adverse effects", evidence: "human rct", refs: [48] },
-        { system: "Glucose", level: "moderate", text: "Reduces insulin sensitivity and can raise fasting glucose", evidence: "human rct", refs: [48] },
+        { system: "Fluid retention", level: "high", text: "Swelling, joint pain and carpal tunnel symptoms are the most common adverse effects", evidence: "human rct", detail: "In adult GH deficiency trials, peripheral swelling occurred in 17.5% versus 5.1% on placebo, arthralgia in 17.3% versus 4.2% and paresthesia in 9.6% versus 1.9%; carpal tunnel syndrome occurred in 2% in extension studies. These are approved-label figures at replacement doses, so they are a floor rather than a ceiling for higher use.", refs: [48, 305] },
+        { system: "Glucose", level: "moderate", text: "Reduces insulin sensitivity and can raise fasting glucose", evidence: "human rct", detail: "It can unmask diabetes: in a controlled trial of healthy older adults, diabetes or glucose intolerance occurred in 18 GH-treated men versus 7 not given GH. The approved label carries a separate warning for impaired glucose tolerance and diabetes and advises periodic glucose monitoring.", refs: [48, 301, 305] },
         { system: "Acromegalic changes", level: "moderate", text: "Long-term excess can cause the features of acromegaly: soft-tissue and bone overgrowth, organ enlargement and cardiomyopathy", evidence: "established" },
-        { system: "Cancer", level: "unknown", text: "IGF-1 promotes cell growth, and whether long-term supraphysiologic use raises cancer risk is unresolved", evidence: "contested" },
-        { system: "Product quality", level: "high", text: "Gray-market GH is often counterfeit, underdosed or degraded by poor storage", evidence: "established" }
+        { system: "Cancer", level: "unknown", text: "IGF-1 promotes cell growth, and whether long-term supraphysiologic use raises cancer risk is unresolved", evidence: "contested", detail: "The largest cohort of childhood GH recipients found no clear excess in patients without other major disease, but raised bone and bladder cancer incidence and an unexplained dose trend for cancer mortality among those with previous cancer. An older cohort of cadaver-pituitary GH recipients found raised colorectal cancer and Hodgkin's disease mortality on very small numbers. Neither cohort tested supraphysiologic use in healthy adults, so the question is open rather than answered either way.", refs: [302, 303] },
+        { system: "Product quality", level: "high", text: "Gray-market GH is often counterfeit, underdosed or degraded by poor storage", evidence: "established" },
+        { system: "Acute critical illness", level: "high", text: "Higher mortality was seen in critically ill adults given pharmacologic doses, and this is the first warning on the approved label", evidence: "established", refs: [305] },
+        { system: "Endocrine", level: "moderate", text: "Can lower cortisol and unmask central hypoadrenalism, and can reveal or worsen central hypothyroidism", evidence: "established", detail: "Both are separate warnings on the approved label.", refs: [305] },
+        { system: "Intracranial hypertension", level: "low", text: "Papilledema with headache, visual changes, nausea or vomiting, usually early in therapy and reversible on stopping", evidence: "established", refs: [305] },
+        { system: "Mortality", level: "unknown", text: "In 24,232 children treated with GH and followed for over 400,000 patient-years, all-cause mortality tracked the underlying diagnosis rather than the drug, and was not associated with daily or cumulative dose, but mortality from circulatory and haematological causes was raised across all risk groups", evidence: "human obs", refs: [304] }
       ],
       activity: [
         { title: "GH receptor / IGF-1", evidence: "established", summary: "Activates the GH receptor and JAK2–STAT5 signaling, and raises IGF-1 production in the liver and tissues" },
@@ -246,7 +265,11 @@
       trials: [
         { title: "GH in men over 60", evidence: "human rct", meta: ["21 healthy men aged 61–81 with low IGF-1", "GH injections three times weekly or no treatment", "6 months", "randomized, controlled"], body: "Lean body mass rose about 8.8% and fat tissue fell about 14.4% in the GH group.", note: "This small trial started much of the anti-aging interest in GH. Later systematic reviews found side effects common and benefits limited to body composition.", refs: [47, 48] },
         { title: "Systematic review: GH and athletic performance", evidence: "human rct", meta: ["44 articles, 27 study samples, about 300 healthy young participants", "GH against placebo or no treatment", "systematic review of randomized trials"], body: "GH increased lean body mass by about 2 kg but did not improve strength or exercise capacity. Fluid retention and fatigue were more common.", refs: [49] },
-        { title: "Recreational athletes", evidence: "human rct", meta: ["96 recreationally trained men and women", "GH, testosterone (men), both, or placebo", "8 weeks", "randomized, double-blind, placebo-controlled"], body: "GH lowered fat mass and raised lean mass, mostly extracellular water. It improved sprint capacity by a few percent, more when combined with testosterone in men. Strength, power and endurance did not improve.", refs: [50] }
+        { title: "Recreational athletes", evidence: "human rct", meta: ["96 recreationally trained men and women", "GH, testosterone (men), both, or placebo", "8 weeks", "randomized, double-blind, placebo-controlled"], body: "GH lowered fat mass and raised lean mass, mostly extracellular water. It improved sprint capacity by a few percent, more when combined with testosterone in men. Strength, power and endurance did not improve.", refs: [50] },
+        { title: "Meta-analysis: GH and athletic performance in healthy young adults", evidence: "human rct", meta: ["11 placebo-controlled trials, 254 healthy young participants", "GH against placebo", "weeks to months", "systematic review and meta-analysis of placebo-controlled trials"], body: "GH increased lean body mass and decreased fat mass, and raised exercising glycerol and free fatty acids. It did not improve muscle strength or maximum oxygen uptake. Anaerobic capacity rose in the single study that measured it.", note: "A second independent meta-analysis reaching the same conclusion as the 2008 Ann Intern Med review: body composition moves, performance does not.", refs: [300] },
+        { title: "GH with or without sex steroids in healthy older adults", evidence: "human rct", meta: ["57 women and 74 men aged 65-88", "GH 30 µg/kg subcutaneously three times weekly, reduced to 20 µg/kg, with or without sex steroids, or placebo", "26 weeks", "randomized, double-blind, placebo-controlled, 2x2 factorial"], body: "Lean mass rose 3.1 kg in men and 1.0 kg in women on GH alone, and fat mass fell. Strength did not rise significantly except marginally with GH plus testosterone in men. Edema occurred in 39% of women on GH versus 0% on placebo, arthralgia in 41% of men on GH versus 0%, and diabetes or glucose intolerance in 18 GH-treated men versus 7 not given GH.", note: "The authors concluded GH interventions in the elderly should be confined to controlled studies, specifically because of the diabetes and glucose intolerance signal. This is the largest and best-controlled version of the Rudman experiment.", refs: [301] },
+        { title: "Cancer risk after childhood GH treatment (SAGhE)", evidence: "human obs", meta: ["23,984 patients treated with recombinant GH in eight European countries since 1984", "recombinant human GH as prescribed", "follow-up to national cancer registries", "population-based cohort study"], body: "Raised cancer incidence and mortality were largely explained by second primary cancers in patients given GH after cancer treatment. There was no clear raised risk in patients with growth failure and no other major disease; only bone and bladder cancer incidence was significantly raised in previously cancer-free GH-treated patients. Risk was unrelated to duration or cumulative dose.", note: "The authors state the results do not generally support a carcinogenic effect, while flagging an unexplained dose trend for cancer mortality in those with previous cancer. This is the strongest evidence on the cancer question and it is about children given replacement doses, not adults using supraphysiologic doses.", refs: [303] },
+        { title: "Cancer after cadaver-derived pituitary GH in the UK", evidence: "human obs", meta: ["1,848 UK patients treated with human pituitary GH, 1959-85", "cadaver-derived pituitary GH", "cancer incidence to 1995, mortality to 2000", "cohort study, comparison with general population"], body: "Cancer mortality overall was raised (standardised mortality ratio 2.8, 95% CI 1.3-5.1, ten cases), as were colorectal cancer mortality (10.8, 1.3-38.8, two cases) and Hodgkin's disease mortality (11.4, 1.4-41.3, two cases). Colorectal cancer incidence was raised 7.9-fold.", note: "Based on very small numbers, and on the pituitary-derived product withdrawn in 1985, not modern recombinant GH. The authors said explicitly they had no evidence about modern dosing regimens. Useful mainly as the origin of the cancer debate.", refs: [302] }
       ],
       related: ["cjc-1295", "ipamorelin", "testosterone"]
     }

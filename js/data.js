@@ -48,7 +48,7 @@ window.ATLAS = {
       "ghk-cu": "Used as directed on the cosmetic product label. Injectable copper peptides have no established human dose.",
       "ahk-cu": "Used as directed on the cosmetic product label.",
       "snap-8": "A cosmetic ingredient, used at the concentration set by the finished product.",
-      "tak-653": "In clinical trials as an add-on for depression. Trial doses were not published in a peer-reviewed source when this entry was written.",
+      "tak-653": "In clinical trials as an add-on for depression. The depression trial doses have not been published; a healthy-volunteer study gave single doses of 0.5 mg and 6 mg.",
       "gc-1": "Reached phase 1 trials for high cholesterol, but full results and dosing were never published.",
       ment: "Studied as a contraceptive implant rather than at fixed injected doses. The program never reached approval.",
       pyrilutamide: "In trials as a topical solution; concentrations are set by the trial protocol and it is not approved.",
@@ -199,7 +199,7 @@ window.ATLAS = {
       slug: "semaglutide", type: "compound", name: "Semaglutide",
       aliases: ["Ozempic", "Wegovy", "Rybelsus"], category: "metabolic", status: "Approved",
       class: "GLP-1 receptor agonist", developer: "Novo Nordisk",
-      added: "2026-01-12", updated: "2026-09-18",
+      added: "2026-01-12", updated: "2026-10-17",
       tags: ["GLP-1", "obesity", "type 2 diabetes", "incretin"],
       summary: "A long-acting GLP-1 receptor agonist approved for type 2 diabetes and chronic weight management, given as a weekly injection or a daily tablet.",
       names: "Sold as Ozempic (weekly injection for type 2 diabetes), Wegovy (weekly injection for weight management) and Rybelsus (daily tablet for type 2 diabetes). Novo Nordisk developed it as the once-weekly successor to liraglutide. Semaglutide has large outcome trials behind it, so its clinical record below is long; most entries in the codex have little or none.",
@@ -221,7 +221,8 @@ window.ATLAS = {
         { system: "Pancreas", level: "low", text: "Acute pancreatitis has been reported. Events are rare and whether the drug causes them is unsettled.", evidence: "contested", detail: "Large outcome trials did not show a clear excess, but the label carries a warning. Treatment is stopped if pancreatitis is suspected." },
         { system: "Retina", level: "moderate", text: "More diabetic retinopathy complications in people with type 2 diabetes in SUSTAIN-6", evidence: "human rct", detail: "The excess was concentrated in people with pre-existing retinopathy and was linked to rapid HbA1c reduction.", refs: [2] },
         { system: "Thyroid", level: "low", text: "Thyroid C-cell tumors occurred in rodents. Whether this is relevant to humans has not been established.", evidence: "animal", detail: "Carries a boxed warning. It is contraindicated with a personal or family history of medullary thyroid carcinoma or MEN2." },
-        { system: "Lean mass", level: "moderate", text: "A meaningful share of the weight lost is lean mass", evidence: "human rct", detail: "This holds for most large weight losses, whatever the method. Resistance training and adequate protein are the usual countermeasures." }
+        { system: "Lean mass", level: "moderate", text: "A meaningful share of the weight lost is lean mass", evidence: "human rct", detail: "This holds for most large weight losses, whatever the method. Resistance training and adequate protein are the usual countermeasures." },
+        { system: "Eye", level: "unknown", text: "A retrospective record review found a higher rate of non-arteritic anterior ischemic optic neuropathy in people prescribed semaglutide", evidence: "contested", detail: "In a single-centre neuro-ophthalmology population, 17 events occurred among 194 people with type 2 diabetes prescribed semaglutide, against 6 among 516 prescribed other diabetes drugs (HR 4.28). The patients had been referred to a specialist eye hospital, so they are not representative, and no randomized trial has confirmed the finding.", refs: [404] }
       ],
       activity: [
         { title: "GLP-1 receptor", evidence: "human rct", summary: "Full agonist. Increases glucose-dependent insulin secretion and suppresses glucagon", detail: "The receptor response is glucose-dependent, so semaglutide on its own carries a low risk of hypoglycemia. The risk rises when it is combined with insulin or sulfonylureas.", refs: [26] },
@@ -233,7 +234,11 @@ window.ATLAS = {
       trials: [
         { title: "STEP 1: Weight management without diabetes", evidence: "human rct", meta: ["1,961 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "semaglutide 2.4 mg weekly or placebo, plus lifestyle intervention", "68 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean body weight changed by −14.9% with semaglutide against −2.4% with placebo. 86.4% of the semaglutide group lost at least 5% of body weight, against 31.5% on placebo. GI events were the most common adverse effects.", note: "In the off-treatment extension, participants regained about two-thirds of the weight they had lost within a year of stopping. The effect lasts only while the drug is taken.", refs: [1, 4] },
         { title: "SUSTAIN-6: Cardiovascular safety in type 2 diabetes", evidence: "human rct", meta: ["3,297 adults with type 2 diabetes at high cardiovascular risk", "semaglutide 0.5 or 1.0 mg weekly or placebo", "104 weeks", "randomized, double-blind, non-inferiority"], body: "The primary composite of cardiovascular death, non-fatal MI or non-fatal stroke occurred in 6.6% on semaglutide against 8.9% on placebo (HR 0.74). Retinopathy complications were higher: 3.0% against 1.8%.", note: "This trial was designed to show non-inferiority, so the superiority finding was not pre-specified. SELECT later tested superiority directly.", refs: [2] },
-        { title: "SELECT: Cardiovascular outcomes in obesity without diabetes", evidence: "human rct", meta: ["17,604 adults ≥45 years with established cardiovascular disease and BMI ≥27, no diabetes", "semaglutide 2.4 mg weekly or placebo", "mean follow-up 39.8 months", "randomized, double-blind, event-driven"], body: "Major adverse cardiovascular events occurred in 6.5% against 8.0% (HR 0.80). Treatment was stopped because of adverse events in 16.6% against 8.2%.", note: "This is the first trial to show a cardiovascular outcome benefit for an anti-obesity drug in people without diabetes.", refs: [3] }
+        { title: "SELECT: Cardiovascular outcomes in obesity without diabetes", evidence: "human rct", meta: ["17,604 adults ≥45 years with established cardiovascular disease and BMI ≥27, no diabetes", "semaglutide 2.4 mg weekly or placebo", "mean follow-up 39.8 months", "randomized, double-blind, event-driven"], body: "Major adverse cardiovascular events occurred in 6.5% against 8.0% (HR 0.80). Treatment was stopped because of adverse events in 16.6% against 8.2%.", note: "This is the first trial to show a cardiovascular outcome benefit for an anti-obesity drug in people without diabetes.", refs: [3] },
+        { title: "FLOW: Kidney outcomes in type 2 diabetes with chronic kidney disease", evidence: "human rct", meta: ["3,533 adults with type 2 diabetes and chronic kidney disease", "semaglutide 1.0 mg weekly or placebo", "median follow-up 3.4 years", "randomized, double-blind, placebo-controlled"], body: "The risk of the composite kidney outcome was 24% lower with semaglutide (331 against 410 first events; HR 0.76). The annual eGFR slope was less steep by 1.16 mL/min/1.73 m², major cardiovascular events were 18% lower and death from any cause 20% lower.", note: "The trial was stopped early at a prespecified interim analysis because the benefit was clear.", refs: [400] },
+        { title: "STEP-HFpEF: Heart failure with preserved ejection fraction and obesity", evidence: "human rct", meta: ["529 adults with HFpEF and BMI ≥30, no diabetes", "semaglutide 2.4 mg weekly or placebo", "52 weeks", "randomized, double-blind, placebo-controlled"], body: "The symptom score (KCCQ-CSS) rose 16.6 points with semaglutide against 8.7 with placebo. Weight fell 13.3% against 2.6%, and six-minute walk distance improved by 20.3 m more. CRP fell 43.5% against 7.3%.", note: "Serious adverse events were less frequent on semaglutide than on placebo. That is unusual, and it reflects how much of the burden in this population comes from the obesity itself.", refs: [401] },
+        { title: "STEP 4: What happens when it is stopped", evidence: "human rct", meta: ["803 adults who had reached semaglutide 2.4 mg weekly after a 20-week run-in", "continued semaglutide 2.4 mg weekly or switched to placebo", "48 weeks after randomization", "randomized withdrawal, double-blind"], body: "After a mean loss of 10.6% during the run-in, those who continued lost a further 7.9%, while those switched to placebo regained 6.9%.", note: "This is the clearest available evidence that the effect depends on continued dosing rather than on a change that persists after stopping.", refs: [402] },
+        { title: "ESSENCE: Steatohepatitis with fibrosis", evidence: "human rct", meta: ["800 adults with biopsy-confirmed MASH and fibrosis stage 2 or 3", "semaglutide 2.4 mg weekly or placebo", "72 weeks to the biopsy endpoint", "randomized, double-blind, placebo-controlled"], body: "Steatohepatitis resolved without worsening fibrosis in 62.9% on semaglutide against 34.3% on placebo. Fibrosis improved without worsening steatohepatitis in 36.8% against 22.4%. Mean weight change was −10.5% against −2.0%.", refs: [403] }
       ],
       related: ["tirzepatide", "retatrutide"]
     },
@@ -241,7 +246,7 @@ window.ATLAS = {
       slug: "tirzepatide", type: "compound", name: "Tirzepatide",
       aliases: ["Mounjaro", "Zepbound", "LY3298176"], category: "metabolic", status: "Approved",
       class: "Dual GIP / GLP-1 receptor agonist", developer: "Eli Lilly",
-      added: "2026-01-12", updated: "2026-08-30",
+      added: "2026-01-12", updated: "2026-10-17",
       tags: ["GIP", "GLP-1", "obesity", "type 2 diabetes", "incretin"],
       summary: "A once-weekly peptide that activates both the GIP and GLP-1 receptors, approved for type 2 diabetes and chronic weight management.",
       names: "Sold as Mounjaro for type 2 diabetes and Zepbound for weight management, both once-weekly injections. Its development code was LY3298176. It was the first approved drug to activate two incretin receptors.",
@@ -272,7 +277,11 @@ window.ATLAS = {
       trials: [
         { title: "SURPASS-2: Against semaglutide 1 mg in type 2 diabetes", evidence: "human rct", meta: ["1,879 adults with type 2 diabetes on metformin", "tirzepatide 5, 10 or 15 mg weekly or semaglutide 1 mg weekly", "40 weeks", "randomized, open-label, active-controlled"], body: "HbA1c fell by 2.01, 2.24 and 2.30 percentage points with the three tirzepatide doses, against 1.86 with semaglutide 1 mg. Weight reductions were also larger at every tirzepatide dose.", note: "The comparator was semaglutide 1 mg, not the 2.0 mg or 2.4 mg doses used later.", refs: [5] },
         { title: "SURMOUNT-1: Weight management without diabetes", evidence: "human rct", meta: ["2,539 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes", "tirzepatide 5, 10 or 15 mg weekly or placebo", "72 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change was −15.0%, −19.5% and −20.9% across the three doses, against −3.1% with placebo.", refs: [6] },
-        { title: "SURMOUNT-5: Head to head with semaglutide in obesity", evidence: "human rct", meta: ["751 adults with obesity, no diabetes", "tirzepatide at maximum tolerated dose or semaglutide at maximum tolerated dose", "72 weeks", "randomized, open-label"], body: "Mean weight change was −20.2% with tirzepatide against −13.7% with semaglutide.", note: "This is the first direct comparison of the two drugs at their obesity doses.", refs: [7] }
+        { title: "SURMOUNT-5: Head to head with semaglutide in obesity", evidence: "human rct", meta: ["751 adults with obesity, no diabetes", "tirzepatide at maximum tolerated dose or semaglutide at maximum tolerated dose", "72 weeks", "randomized, open-label"], body: "Mean weight change was −20.2% with tirzepatide against −13.7% with semaglutide.", note: "This is the first direct comparison of the two drugs at their obesity doses.", refs: [7] },
+        { title: "SURPASS-CVOT: Cardiovascular outcomes against dulaglutide", evidence: "human rct", meta: ["13,165 adults with type 2 diabetes and atherosclerotic cardiovascular disease", "tirzepatide or dulaglutide 1.5 mg weekly", "event-driven follow-up", "randomized, double-blind, active-controlled non-inferiority"], body: "A primary endpoint event occurred in 12.2% on tirzepatide and 13.1% on dulaglutide (HR 0.92). Non-inferiority was met; superiority was not (p = 0.09).", note: "The comparator was an active drug already shown to reduce events, so this shows tirzepatide is not worse, not that it is better. Gastrointestinal adverse events were more common on tirzepatide; the overall adverse event profile was otherwise similar.", refs: [407] },
+        { title: "SURMOUNT-OSA: Obstructive sleep apnea with obesity", evidence: "human rct", meta: ["469 adults with moderate-to-severe obstructive sleep apnea and obesity, in two trials (without and with PAP therapy)", "tirzepatide at maximum tolerated dose (10 or 15 mg weekly) or placebo", "52 weeks", "two randomized, double-blind, placebo-controlled trials"], body: "From baselines around 50 events per hour, the apnea-hypopnea index fell by 25.3 events per hour against 5.3 with placebo in the trial without PAP, and by 29.3 against 5.5 in the trial with PAP.", refs: [405] },
+        { title: "SUMMIT: Heart failure with preserved ejection fraction and obesity", evidence: "human rct", meta: ["731 adults with HFpEF and BMI ≥30", "tirzepatide up to 15 mg weekly or placebo", "median follow-up 104 weeks", "randomized, double-blind, placebo-controlled"], body: "Cardiovascular death or a worsening heart failure event occurred in 9.9% on tirzepatide against 15.3% on placebo (HR 0.62). The difference came from worsening heart failure events rather than deaths. The symptom score improved 19.5 points against 12.7.", refs: [406] },
+        { title: "SURMOUNT-4: What happens when it is stopped", evidence: "human rct", meta: ["670 adults who had lost a mean 20.9% during a 36-week open-label lead-in", "continued tirzepatide 10 or 15 mg weekly or switched to placebo", "52 weeks after randomization", "randomized withdrawal, double-blind"], body: "Those who continued lost a further 5.5%; those switched to placebo regained 14.0%. Among those who continued, 89.5% kept at least 80% of the weight they had lost.", refs: [408] }
       ],
       related: ["semaglutide", "retatrutide"]
     },
@@ -280,7 +289,7 @@ window.ATLAS = {
       slug: "retatrutide", type: "compound", name: "Retatrutide",
       aliases: ["LY3437943"], category: "metabolic", status: "Investigational",
       class: "Triple GIP / GLP-1 / glucagon receptor agonist", developer: "Eli Lilly",
-      added: "2026-02-03", updated: "2026-09-02",
+      added: "2026-02-03", updated: "2026-10-17",
       tags: ["GIP", "GLP-1", "glucagon", "obesity", "triple agonist"],
       summary: "An investigational once-weekly peptide that activates three receptors (GIP, GLP-1 and glucagon) and is in Phase 3 trials for obesity.",
       names: "Known by its development code LY3437943. It has no brand name and is not approved anywhere. It is available legitimately only inside clinical trials. Material sold online under this name is unregulated and unverified.",
@@ -299,8 +308,10 @@ window.ATLAS = {
       risks: [
         { system: "Gastrointestinal", level: "moderate", text: "Nausea, vomiting and diarrhea, dose-related and mostly early", evidence: "human rct", detail: "Lower starting doses reduced GI events in the phase 2 trial.", refs: [8] },
         { system: "Heart rate", level: "moderate", text: "Resting heart rate rose with dose, peaked around 24 weeks, then declined", evidence: "human rct", refs: [8] },
-        { system: "Long-term safety", level: "unknown", text: "No long-term outcome data. Phase 3 is ongoing", evidence: "unknown" },
-        { system: "Product quality", level: "high", text: "Material sold outside trials is unregulated. Its identity, dose and sterility are unknown", evidence: "established" }
+        { system: "Long-term safety", level: "unknown", text: "No long-term outcome data. The longest published trials ran 80 weeks", evidence: "unknown", refs: [410, 411] },
+        { system: "Product quality", level: "high", text: "Material sold outside trials is unregulated. Its identity, dose and sterility are unknown", evidence: "established" },
+        { system: "Sensory nerves", level: "moderate", text: "Dysesthesia, an abnormal skin sensation, occurred more often than with placebo and more often at higher doses", evidence: "human rct", detail: "Lilly's topline release for TRIUMPH-1 reported dysesthesia in 5.1%, 12.3% and 12.5% at 4, 9 and 12 mg, against 0.9% on placebo, mostly mild to moderate and mostly resolving during treatment. The peer-reviewed NEJM report states only that gastrointestinal events were the most common, so these per-dose figures come from the sponsor, not the paper.", refs: [410, 477] },
+        { system: "Discontinuation", level: "moderate", text: "Stopping because of an adverse event rose with dose", evidence: "human rct", detail: "In the sponsor's TRIUMPH-1 release, 4.1%, 6.9% and 11.3% stopped at 4, 9 and 12 mg, against 4.9% on placebo. These figures are from the sponsor, not a peer-reviewed paper.", refs: [477] }
       ],
       activity: [
         { title: "Glucagon receptor", evidence: "human rct", summary: "Adds glucagon receptor agonism, which is thought to raise energy expenditure and liver fat oxidation", detail: "Glucagon raises blood glucose on its own. In this molecule the incretin activity offsets that effect.", refs: [8] },
@@ -308,8 +319,11 @@ window.ATLAS = {
         { title: "Liver fat", evidence: "human rct", summary: "Large reductions in liver fat in a phase 2 substudy", detail: "Most participants with fatty liver at baseline reached normal liver fat levels at higher doses." }
       ],
       trials: [
-        { title: "Phase 2: Obesity without diabetes", evidence: "human rct", meta: ["338 adults, BMI ≥30 or ≥27 with a comorbidity", "retatrutide 1, 4, 8 or 12 mg weekly or placebo", "48 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change at 48 weeks was −8.7%, −17.1%, −22.8% and −24.2% across the four doses, against −2.1% with placebo. Weight was still falling at 48 weeks in the higher-dose groups.", note: "These are the largest mean reductions reported for a drug in a trial of this length. This is phase 2, with small arms; phase 3 has to confirm them.", refs: [8] },
-        { title: "Phase 2: Type 2 diabetes", evidence: "human rct", meta: ["281 adults with type 2 diabetes", "retatrutide at several doses, placebo, or dulaglutide 1.5 mg", "36 weeks", "randomized, double-blind, active and placebo-controlled"], body: "HbA1c fell by up to about 2 percentage points at 24 weeks. Weight fell by up to about 17% at 36 weeks at the highest dose.", refs: [9] }
+        { title: "Phase 2: Obesity without diabetes", evidence: "human rct", meta: ["338 adults, BMI ≥30 or ≥27 with a comorbidity", "retatrutide 1, 4, 8 or 12 mg weekly or placebo", "48 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change at 48 weeks was −8.7%, −17.1%, −22.8% and −24.2% across the four doses, against −2.1% with placebo. Weight was still falling at 48 weeks in the higher-dose groups.", note: "These are the largest mean reductions reported for a drug in a trial of this length. This was phase 2, with small arms. The phase 3 TRIUMPH-1 trial later reported reductions of a similar size over 80 weeks.", refs: [8] },
+        { title: "Phase 2: Type 2 diabetes", evidence: "human rct", meta: ["281 adults with type 2 diabetes", "retatrutide at several doses, placebo, or dulaglutide 1.5 mg", "36 weeks", "randomized, double-blind, active and placebo-controlled"], body: "HbA1c fell by up to about 2 percentage points at 24 weeks. Weight fell by up to about 17% at 36 weeks at the highest dose.", refs: [9] },
+        { title: "TRIUMPH-1: Obesity without diabetes", evidence: "human rct", meta: ["2,339 adults with obesity, no diabetes", "retatrutide 4, 9 or 12 mg weekly or placebo", "80 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change was −17.6%, −23.7% and −25.0% across the three doses, against −3.9% with placebo. In the 574 participants with knee osteoarthritis, pain scores fell more than with placebo. In the 243 with obstructive sleep apnea, the apnea-hypopnea index fell by 22.9 to 34.3 events per hour against 9.9.", note: "This is the largest weight reduction recorded in a phase 3 obesity trial to date. The most common adverse events were gastrointestinal.", refs: [410] },
+        { title: "TRIUMPH-2: Obesity with type 2 diabetes", evidence: "human rct", meta: ["1,152 adults with BMI ≥27 and type 2 diabetes, 92% on oral glucose-lowering drugs", "retatrutide 4, 9 or 12 mg weekly or placebo", "80 weeks", "randomized, double-blind, placebo-controlled"], body: "Mean weight change was −11.9%, −16.8% and −18.8%, against −5.1% with placebo. Diarrhea occurred in 27% at 4 mg and 34% at 9 mg, against a lower rate on placebo.", note: "Weight loss was smaller than in people without diabetes, the usual pattern across this drug class.", refs: [411] },
+        { title: "Phase 2a in steatotic liver disease", evidence: "human rct", meta: ["98 adults with MASLD and at least 10% liver fat", "retatrutide 1, 4, 8 or 12 mg weekly or placebo", "48 weeks", "randomized, double-blind, placebo-controlled sub-study"], body: "Liver fat measured by MRI-PDFF fell in a dose-dependent way, alongside weight loss.", note: "This was a sub-study of the phase 2 obesity trial rather than a separate trial.", refs: [413] }
       ],
       related: ["tirzepatide", "semaglutide"]
     },
@@ -319,7 +333,7 @@ window.ATLAS = {
       slug: "bpc-157", type: "compound", name: "BPC-157",
       aliases: ["Body Protection Compound-157", "PL 14736", "PL-10", "Bepecin"], category: "repair", status: "Research only",
       class: "Synthetic pentadecapeptide", developer: "University of Zagreb (research origin)",
-      added: "2026-01-20", updated: "2026-07-14",
+      added: "2026-01-20", updated: "2026-10-17",
       tags: ["gut", "tendon", "angiogenesis", "preclinical"],
       summary: "A 15-amino-acid peptide derived from a protein found in gastric juice. It is widely studied in animal models of tissue and gut injury but has very little human clinical data.",
       names: "Also called PL 14736 or PL-10 in development, and sold as BPC 15 or \"Body Protection Compound\". It is not a licensed medicine anywhere. Everything sold under the name comes from research-chemical vendors. Most of the published literature comes from one research group in Zagreb, which is the most important fact about this entry.",
@@ -338,22 +352,28 @@ window.ATLAS = {
         { system: "Human safety", level: "unknown", text: "No controlled human safety data exist", evidence: "unknown", detail: "The absence of reported harm reflects the absence of trials, not evidence of safety." },
         { system: "Angiogenesis", level: "unknown", text: "Pro-angiogenic signaling raises a theoretical concern about tumor growth", evidence: "contested", detail: "No study has shown this effect. The concern is mechanistic: anything that promotes new blood vessels could in principle support existing tumors." },
         { system: "Product quality", level: "high", text: "Vendor material is unregulated. Purity, dose and sterility are unverified", evidence: "established", detail: "The FDA placed BPC-157 on its list of bulk substances that raise significant safety concerns for compounding, citing a lack of human safety data and risks from impurities." },
-        { system: "Sport", level: "moderate", text: "Prohibited by WADA as an unapproved substance (S0)", evidence: "established" }
+        { system: "Sport", level: "moderate", text: "Prohibited by WADA as an unapproved substance (S0)", evidence: "established" },
+        { system: "Evidence base", level: "moderate", text: "The published human record is three uncontrolled studies with 30 people in total, all from one clinic group", evidence: "human obs", detail: "A 2026 systematic review found only these three studies. It judged all of them poor quality and rated the certainty of evidence very low.", refs: [600, 601, 602, 603] },
+        { system: "Unreported trial", level: "unknown", text: "A phase 1 safety trial registered in 2015 has no posted or published results", evidence: "established", detail: "Whatever that trial found about safety or absorption is unknown.", refs: [604] }
       ],
       activity: [
         { title: "Angiogenesis / VEGFR2", evidence: "animal", summary: "Promotes new blood vessel formation in injury models, with VEGFR2 signaling proposed", detail: "Most data come from rodent models of tendon, muscle, gut and vascular injury.", refs: [10] },
         { title: "Nitric oxide system", evidence: "animal", summary: "Reported to modulate nitric oxide pathways and to counteract both NOS blockers and NO donors", refs: [10] },
         { title: "Tendon fibroblasts", evidence: "in vitro", summary: "Increased fibroblast outgrowth, migration and growth hormone receptor expression in cultured tendon cells", detail: "These findings are cell-culture results. They do not by themselves predict an effect on tendon healing in humans." }
       ],
-      trials: [],
-      noTrials: "There are no randomized controlled trials in humans. PL 14736 entered a phase 2 trial for ulcerative colitis in the 2000s, but no peer-reviewed results were published. Human reports are limited to small case series.",
+      trials: [
+        { title: "Pilot: bladder injection for interstitial cystitis", evidence: "human obs", meta: ["12 women aged 39–76 with moderate to severe interstitial cystitis that had not responded to pentosan polysulfate", "BPC-157 10 mg total from a 503A compounding pharmacy, injected around the inflamed area of the bladder during one cystoscopy", "single procedure; follow-up length not reported", "uncontrolled single-clinic pilot"], body: "Ten of 12 reported complete resolution of symptoms. The other two reported about 80% improvement. No adverse events were reported.", note: "There was no control group and no blinding, and the outcome was self-rated at one private clinic. Interstitial cystitis has a large placebo response. A 2026 systematic review graded this study poor quality.", refs: [600, 603] },
+        { title: "Retrospective: knee injection for mixed knee pain", evidence: "human obs", meta: ["16 patients with knee pain from mixed causes at one clinic", "intra-articular BPC-157 alone (12) or with thymosin β4 (4); dose not reported", "most injected 6–12 months before follow-up", "retrospective chart review with a telephone survey"], body: "Eleven of 12 who received BPC-157 alone, and 3 of 4 who received the combination, reported meaningful pain relief. No validated pain, function or imaging measures were used.", note: "This is a recall-based phone survey with no comparison group. It cannot separate any effect of the peptide from placebo or natural recovery.", refs: [601, 603] },
+        { title: "Pilot: intravenous safety in two adults", evidence: "human obs", meta: ["2 adults aged 58 and 68 who had received IV BPC-157 before", "10 mg in 250 mL saline over 1 hour on day 1, then 20 mg on day 2", "3 days", "uncontrolled safety pilot"], body: "Heart, liver, kidney, thyroid and glucose markers did not change. No side effects were reported.", note: "Two people followed for three days cannot establish safety. The study shows only that these two had no acute problem.", refs: [602] },
+        { title: "Registered trials without results", evidence: "unknown", meta: ["42 healthy volunteers planned (PCO-02, PharmaCotherapia, Zagreb)", "oral 1 mg BPC-157 tablets: single doses of 1, 3 or 6 tablets, then 3 tablets every 8 hours for 2 weeks, against placebo", "registered start October 2015; status unknown", "phase 1, placebo-controlled"], body: "No results have been posted or published. A separate randomized, placebo-controlled phase 2 trial of daily subcutaneous BPC-157 for 14 days in grade II hamstring strain (120 planned) began recruiting in 2026. Earlier, PL 14736 entered a phase 2 trial for ulcerative colitis in the 2000s, and no peer-reviewed results were published.", note: "The only formal human safety study on record has never reported, and that gap is itself information. The hamstring trial would be the first randomized test of BPC-157 in an injury.", refs: [604, 605] }
+      ],
       related: ["tb-500", "ghk-cu"]
     },
     {
       slug: "tb-500", type: "compound", name: "TB-500",
       aliases: ["Thymosin beta-4 fragment", "Tβ4 (17–23)"], category: "repair", status: "Research only",
       class: "Synthetic fragment of thymosin β4", developer: "N/A",
-      added: "2026-01-20", updated: "2026-06-21",
+      added: "2026-01-20", updated: "2026-10-17",
       tags: ["actin", "wound healing", "preclinical", "WADA prohibited"],
       summary: "A synthetic peptide based on the active region of thymosin beta-4, a naturally occurring actin-binding protein involved in cell migration and wound repair.",
       names: "TB-500 is a vendor name, not a pharmacological one. It usually refers to a fragment of thymosin β4 (Tβ4), but some products sold under the name are full-length Tβ4. Clinical research on full-length Tβ4 includes eye drops (RGN-259) for dry eye and neurotrophic keratitis. None of that research applies directly to the fragment.",
@@ -370,15 +390,21 @@ window.ATLAS = {
       risks: [
         { system: "Human safety", level: "unknown", text: "No human data for the fragment", evidence: "unknown" },
         { system: "Product identity", level: "high", text: "The same name is used for different molecules", evidence: "established" },
-        { system: "Sport", level: "moderate", text: "Prohibited by WADA, with positive tests in horse racing and human sport", evidence: "established" }
+        { system: "Sport", level: "moderate", text: "Prohibited by WADA, with positive tests in horse racing and human sport", evidence: "established" },
+        { system: "Evidence transfer", level: "moderate", text: "Every human trial used full-length thymosin β4 as eye drops, topical gel or IV infusion. None tested the 17–23 fragment", evidence: "established", detail: "The fragment is a 7-amino-acid piece of a 43-amino-acid protein. Neither the benefits nor the safety findings of those trials can be assumed to carry over.", refs: [606, 608, 609, 610, 611] },
+        { system: "Angiogenesis", level: "unknown", text: "Thymosin β4 promotes blood vessel growth and cell migration, a theoretical concern with existing tumors", evidence: "contested", detail: "No human study has shown this effect. The concern is mechanistic, as for BPC-157.", refs: [11] }
       ],
       activity: [
         { title: "G-actin sequestration", evidence: "established", summary: "Full-length Tβ4 binds monomeric actin and regulates its polymerisation", refs: [11] },
         { title: "Cell migration and angiogenesis", evidence: "animal", summary: "Promotes keratinocyte and endothelial cell migration in wound models", refs: [11] },
         { title: "Anti-inflammatory signaling", evidence: "animal", summary: "Reduced inflammatory signaling in models of cardiac and corneal injury", refs: [11] }
       ],
-      trials: [],
-      noTrials: "There are no human trials of the TB-500 fragment. Full-length Tβ4 has been tested in humans as eye drops and in cardiac studies, with mixed results.",
+      trials: [
+        { title: "Full-length Tβ4 eye drops (RGN-259): severe dry eye", evidence: "human rct", meta: ["9 patients with severe dry eye, including graft-versus-host disease", "RGN-259 (thymosin β4 0.1%) eye drops 6 times daily, or vehicle", "28 days of treatment plus 28 days of follow-up", "randomized, double-masked, placebo-controlled, phase 2"], body: "At day 56 the treated group had 35% less ocular discomfort and 59% less corneal staining than vehicle. The drops were well tolerated. In a larger 72-person phase 2 trial in moderate to severe dry eye, neither primary endpoint differed from placebo.", note: "This is full-length thymosin β4 applied to the eye. It tells us nothing about injected TB-500.", refs: [606, 607] },
+        { title: "Full-length Tβ4 eye drops (RGN-259): neurotrophic keratopathy", evidence: "human rct", meta: ["18 patients with stage 2–3 neurotrophic keratopathy", "RGN-259 0.1% eye drops or placebo", "4 weeks of treatment, follow-up to day 43", "randomized, double-masked, placebo-controlled, phase 3"], body: "At 4 weeks, 6 of 10 treated eyes had completely healed, against 1 of 8 on placebo (p = 0.066), which missed conventional significance. Comfort scores improved and no significant adverse effects were seen.", note: "Very small for a phase 3 trial. Sponsor employees designed it, and the main healing result was a trend, not a significant effect.", refs: [608] },
+        { title: "Full-length Tβ4 topical gel: venous leg ulcers", evidence: "human rct", meta: ["73 patients with venous stasis ulcers at 8 European sites", "topical Tβ4 at escalating concentrations, or placebo", "duration not reported", "randomized, double-blind, placebo-controlled, dose-escalation, phase 2"], body: "Safety was comparable to placebo. The authors reported a possible effect on healing at 0.03%, with about a quarter of patients fully healed within 3 months.", note: "The trial reports efficacy only descriptively, without effect sizes against placebo.", refs: [609] },
+        { title: "Full-length Tβ4 intravenous: healthy volunteers", evidence: "human rct", meta: ["4 cohorts of 10 healthy adults", "single IV doses of 42, 140, 420 or 1260 mg synthetic Tβ4 or placebo, then the same dose daily for 14 days", "14 days", "randomized, placebo-controlled, phase 1"], body: "Adverse events were infrequent and mild or moderate. There were no dose-limiting toxicities or serious adverse events.", note: "This is short-term tolerability of the full protein, given by vein, in 40 people. It is not safety data for the fragment sold as TB-500.", refs: [610] }
+      ],
       related: ["bpc-157", "thymosin-alpha-1"]
     },
 
@@ -387,7 +413,7 @@ window.ATLAS = {
       slug: "ghk-cu", type: "compound", name: "GHK-Cu",
       aliases: ["Copper peptide", "Copper tripeptide-1"], category: "skin", status: "Approved",
       class: "Copper-binding tripeptide", developer: "Discovered by Loren Pickart (1973)",
-      added: "2026-02-10", updated: "2026-08-05",
+      added: "2026-02-10", updated: "2026-10-17",
       tags: ["collagen", "cosmetic", "copper", "skin"],
       summary: "A naturally occurring tripeptide–copper complex found in human plasma. It is widely used in topical cosmetics for its effects on skin remodelling.",
       names: "Listed on cosmetic labels as copper tripeptide-1. It was first isolated from human plasma by Loren Pickart in 1973. The \"Approved\" status here covers cosmetic use only; GHK-Cu is not an approved drug. Injectable products sold by peptide vendors fall outside that cosmetic status.",
@@ -403,15 +429,18 @@ window.ATLAS = {
       },
       risks: [
         { system: "Skin", level: "low", text: "Occasional irritation with topical use", evidence: "anecdotal" },
-        { system: "Injectable use", level: "unknown", text: "Systemic dosing of copper peptides has no human safety data", evidence: "unknown" }
+        { system: "Injectable use", level: "unknown", text: "Systemic dosing of copper peptides has no human safety data", evidence: "unknown" },
+        { system: "Evidence base", level: "moderate", text: "The peer-reviewed human trials are one 1994 ulcer trial and one 13-patient laser study, and the laser study's objective endpoints were negative", evidence: "human rct", detail: "Most cosmetic claims rest on small, manufacturer-linked studies that are not indexed in PubMed.", refs: [612, 613] }
       ],
       activity: [
         { title: "Collagen and GAG synthesis", evidence: "in vitro", summary: "Increases collagen and glycosaminoglycan synthesis in fibroblast cultures", refs: [12, 13] },
         { title: "Wound remodelling", evidence: "animal", summary: "Accelerated wound contraction and healing in animal models", refs: [13] },
         { title: "Gene expression", evidence: "in vitro", summary: "Connectivity-map analyses suggest it shifts the expression of many repair-related genes", detail: "These are computational analyses of expression data, not clinical outcomes.", refs: [13] }
       ],
-      trials: [],
-      noTrials: "There is no large randomized human trial on record. Topical cosmetic studies are small and often sponsored by manufacturers.",
+      trials: [
+        { title: "Topical GHK-Cu gel: diabetic foot ulcers", evidence: "human rct", meta: ["patients with diabetic neuropathic ulcers, mostly plantar; number not reported", "GHK-Cu gel (Iamin Gel) at a metered daily dose, or vehicle, alongside standardized wound care", "duration not reported", "multicenter, randomized, evaluator-blinded, vehicle-controlled"], body: "Median closure of plantar ulcers was 98.5% with the gel against 60.8% with vehicle. Ulcer infections were less common (7% against 34%). The effect was largest in ulcers over 100 mm².", note: "This is a single trial from 1994, and no published replication was found. It tested a wound gel on open ulcers, not a cosmetic product on intact skin.", refs: [612] },
+        { title: "Topical GHK-Cu after CO2 laser resurfacing", evidence: "human rct", meta: ["13 patients after circumoral CO2 laser resurfacing", "skin care regimen with or without GHK-Cu", "12 weeks", "randomized, blinded-evaluator"], body: "There was no difference in redness, wrinkles or overall skin quality on objective or blinded assessment. Patient-rated satisfaction was higher with GHK-Cu (p = 0.04).", note: "The objective endpoints were negative. Only the unblinded patient questionnaire favored the copper peptide. There is still no large randomized trial, and most topical cosmetic studies are small and manufacturer-sponsored.", refs: [613] }
+      ],
       related: ["bpc-157"]
     },
 
@@ -420,7 +449,7 @@ window.ATLAS = {
       slug: "ipamorelin", type: "compound", name: "Ipamorelin",
       aliases: ["NNC 26-0161"], category: "gh", status: "Research only",
       class: "Growth hormone secretagogue (ghrelin receptor agonist)", developer: "Novo Nordisk (1990s)",
-      added: "2026-03-01", updated: "2026-07-28",
+      added: "2026-03-01", updated: "2026-10-17",
       tags: ["GHS-R1a", "growth hormone", "pentapeptide"],
       summary: "A selective pentapeptide agonist of the ghrelin receptor. It triggers growth hormone release with little effect on cortisol or prolactin.",
       names: "Developed by Novo Nordisk in the 1990s as NNC 26-0161. Helsinn later licensed it for postoperative ileus. It never received approval, and today it is sold only as a research chemical.",
@@ -436,13 +465,16 @@ window.ATLAS = {
       },
       risks: [
         { system: "Glucose", level: "low", text: "Raising GH can reduce insulin sensitivity", evidence: "contested", detail: "This is a class effect of raising growth hormone. It has not been quantified for ipamorelin in long-term human use." },
-        { system: "Sport", level: "moderate", text: "Prohibited by WADA as a GH secretagogue", evidence: "established" }
+        { system: "Sport", level: "moderate", text: "Prohibited by WADA as a GH secretagogue", evidence: "established" },
+        { system: "Long-term safety", level: "unknown", text: "No human study has run longer than 7 days of repeated dosing, so nothing is known about effects beyond a week", evidence: "unknown", detail: "The 2014 ileus trial dosed for up to 7 days. The only other human data are single infusions.", refs: [15, 306] },
+        { system: "Product quality", level: "moderate", text: "Sold only as a research chemical or through compounding. In 2023 the FDA placed ipamorelin acetate on its Category 2 list of bulk substances with significant safety risks, citing immunogenicity and impurities. The nomination was later withdrawn", evidence: "established", detail: "The regulatory status of compounded peptides has changed more than once. The current FDA 503A bulks list is the reliable source, not any snapshot.", refs: [352] }
       ],
       activity: [
         { title: "Ghrelin receptor (GHS-R1a)", evidence: "animal", summary: "Agonist that triggers GH release from the pituitary", refs: [14] },
         { title: "Selectivity", evidence: "animal", summary: "Did not raise ACTH or cortisol at doses well above those that release GH", detail: "This set it apart from GHRP-6 and GHRP-2, which raise cortisol and prolactin. The data come mainly from studies in swine.", refs: [14] }
       ],
       trials: [
+        { title: "Dose-escalation pharmacokinetics and GH response in healthy men", evidence: "human rct", meta: ["40 healthy men, eight per dose level", "ipamorelin infused intravenously at 4.21, 14.02, 42.13, 84.27 or 140.45 nmol/kg over 15 minutes", "single doses", "dose-escalation pharmacokinetic and pharmacodynamic study"], body: "Kinetics were dose-proportional, with a terminal half-life of about 2 hours, clearance of 0.078 L/h/kg and a steady-state volume of distribution of 0.22 L/kg. Every dose level triggered a single episode of GH release that peaked at about 0.67 hours and then fell to negligible levels.", note: "This is the only published human dose-ranging work on ipamorelin, and it measured GH release, not any clinical outcome. The single-pulse pattern is the key finding: the pituitary response is self-limiting.", refs: [306] },
         { title: "Postoperative ileus after bowel resection", evidence: "human rct", meta: ["about 114 adults undergoing bowel resection", "ipamorelin 0.03 mg/kg IV twice daily or placebo, for up to 7 days", "proof of concept", "randomized, double-blind, placebo-controlled"], body: "There was no significant difference between groups in time to the first tolerated meal. The drug was well tolerated.", note: "This is the only published efficacy trial. It was negative on its primary endpoint, and development for the indication did not continue.", refs: [15] }
       ],
       related: ["cjc-1295"]
@@ -451,7 +483,7 @@ window.ATLAS = {
       slug: "cjc-1295", type: "compound", name: "CJC-1295",
       aliases: ["CJC-1295 with DAC", "DAC:GRF"], category: "gh", status: "Research only",
       class: "GHRH analog", developer: "ConjuChem",
-      added: "2026-03-01", updated: "2026-07-28",
+      added: "2026-03-01", updated: "2026-10-17",
       tags: ["GHRH", "growth hormone", "albumin binding"],
       summary: "A synthetic analog of growth-hormone-releasing hormone (GHRH). The DAC version binds albumin and stays in the body for days rather than minutes.",
       names: "Developed by ConjuChem. Clinical development stopped in 2006. Vendors often sell \"CJC-1295 without DAC\"; that compound is more accurately called Modified GRF (1-29), a different molecule with a half-life of about 30 minutes.",
@@ -467,14 +499,17 @@ window.ATLAS = {
       risks: [
         { system: "Injection site", level: "moderate", text: "Injection-site reactions were the most common adverse effect", evidence: "human rct", refs: [16] },
         { system: "Vasodilation", level: "low", text: "Transient flushing and headache", evidence: "human rct", refs: [16] },
-        { system: "GH excess", level: "moderate", text: "Elevated IGF-1 lasting weeks brings the class risks of GH excess, such as fluid retention and insulin resistance", evidence: "contested" }
+        { system: "GH excess", level: "moderate", text: "Elevated IGF-1 lasting weeks brings the class risks of GH excess, such as fluid retention and insulin resistance", evidence: "contested", detail: "A single dose raises IGF-1 for 9 to 11 days, and repeated dosing keeps it raised for at least 28 days, so exposure cannot be dialled back quickly once it is on.", refs: [16] },
+        { system: "Development status", level: "moderate", text: "Clinical development stopped in 2006 and no phase 2 efficacy trial was ever published, so no human outcome beyond hormone levels has been measured", evidence: "established", refs: [16] },
+        { system: "Product quality", level: "moderate", text: "In 2023 the FDA placed CJC-1295 on its Category 2 list of bulk substances with significant safety risks, citing immunogenicity. The nomination was later withdrawn. Vendors also often sell Modified GRF (1-29) under this name", evidence: "established", refs: [352] }
       ],
       activity: [
         { title: "GHRH receptor", evidence: "human rct", summary: "Agonist that increases GH secretion from the pituitary", refs: [16] },
         { title: "Pulsatility", evidence: "human rct", summary: "GH pulses persisted, with a large rise in trough GH levels", detail: "Continuous GHRH stimulation did not abolish the natural pulsatile pattern of GH release.", refs: [17] }
       ],
       trials: [
-        { title: "Single and repeated dosing in healthy adults", evidence: "human rct", meta: ["healthy adults aged 21–61", "single subcutaneous doses of 30–250 µg/kg, or repeated doses, or placebo", "up to 28 days of follow-up", "randomized, double-blind, placebo-controlled"], body: "After a single dose, GH rose 2- to 10-fold for 6 days or more, and IGF-1 rose 1.5- to 3-fold for 9 to 11 days. The estimated half-life was 5.8 to 8.1 days. Repeated dosing kept IGF-1 raised for up to 28 days.", refs: [16] }
+        { title: "Single and repeated dosing in healthy adults", evidence: "human rct", meta: ["healthy adults aged 21–61", "single subcutaneous doses of 30–250 µg/kg, or repeated doses, or placebo", "up to 28 days of follow-up", "randomized, double-blind, placebo-controlled"], body: "After a single dose, GH rose 2- to 10-fold for 6 days or more, and IGF-1 rose 1.5- to 3-fold for 9 to 11 days. The estimated half-life was 5.8 to 8.1 days. Repeated dosing kept IGF-1 raised for up to 28 days.", refs: [16] },
+        { title: "Whether pulsatility survives continuous stimulation", evidence: "human rct", meta: ["healthy young men", "CJC-1295 as a single subcutaneous dose, with frequent blood sampling", "sampling over days after dosing", "controlled pharmacodynamic study"], body: "GH secretion stayed pulsatile during continuous GHRH-receptor stimulation. Pulse frequency was unchanged and trough GH levels rose markedly.", note: "This is the direct test of the claim that CJC-1295 preserves the natural GH rhythm. It does, but by lifting the troughs rather than leaving the pattern untouched.", refs: [308] }
       ],
       related: ["ipamorelin"]
     },
@@ -484,7 +519,7 @@ window.ATLAS = {
       slug: "epitalon", type: "compound", name: "Epitalon",
       aliases: ["Epithalon", "AEDG peptide"], category: "longevity", status: "Research only",
       class: "Synthetic tetrapeptide", developer: "V. Khavinson, St. Petersburg Institute of Bioregulation",
-      added: "2026-04-14", updated: "2026-08-11",
+      added: "2026-04-14", updated: "2026-10-17",
       tags: ["telomerase", "pineal", "aging"],
       summary: "A four-amino-acid peptide modeled on a pineal gland extract, studied mainly in Russia for effects on aging markers.",
       names: "A synthetic version of the claimed active component of epithalamin, a bovine pineal extract. Almost all published work comes from Vladimir Khavinson's institute.",
@@ -499,21 +534,27 @@ window.ATLAS = {
       },
       risks: [
         { system: "Human safety", level: "unknown", text: "No independent controlled human safety data", evidence: "unknown" },
-        { system: "Telomerase", level: "unknown", text: "Activating telomerase is a theoretical cancer concern", evidence: "contested" }
+        { system: "Telomerase", level: "unknown", text: "Activating telomerase is a theoretical cancer concern", evidence: "contested" },
+        { system: "Evidence transfer", level: "moderate", text: "Most human claims come from epithalamin, a bovine pineal extract, not the synthetic tetrapeptide", evidence: "established", detail: "A 2026 review treats the two as chemically distinct. It found no adequately powered randomized trial of epitalon itself and no adequate pharmacokinetic or long-term safety data.", refs: [619] },
+        { system: "Product identity", level: "moderate", text: "Epitalon has been found in illegal pharmaceutical preparations seized by regulators", evidence: "established", detail: "Belgian public health scientists identified it in two illegal products marketed for cancer, aging and retinitis pigmentosa.", refs: [618] }
       ],
       activity: [
         { title: "Telomerase", evidence: "in vitro", summary: "Reported to induce telomerase activity and telomere elongation in human somatic cells", refs: [18] },
         { title: "Lifespan", evidence: "animal", summary: "Lifespan extension reported in rodents and fruit flies, mostly from a single group" }
       ],
-      trials: [],
-      noTrials: "There are no randomized human trials from independent groups.",
+      trials: [
+        { title: "Epitalon in retinitis pigmentosa", evidence: "human obs", meta: ["patients with degenerative retinal disease; number not reported", "epitalon; dose and route not reported", "duration not given", "described as controlled; design details not reported"], body: "The authors report a positive clinical effect in 90% of cases. The paper also includes rat data.", note: "This is the only human study of the synthetic tetrapeptide on PubMed with a clinical outcome. It comes from the originating institute, and the report gives no group sizes, comparator or measured outcome. There are no randomized human trials from independent groups.", refs: [616] },
+        { title: "Epithalamin (pineal extract) and thymalin in older adults", evidence: "contested", meta: ["older adults in St Petersburg and Kiev; group sizes not reported", "epithalamin, thymalin, or both, given during the first 2–3 years", "6–8 years of observation", "reported as randomized and controlled"], body: "The authors report 1.6- to 1.8-fold lower mortality with epithalamin and 2.5-fold lower with both combined, against controls. A group treated annually for 6 years had 4.1-fold lower mortality.", note: "Epithalamin is a bovine pineal extract, not epitalon. Effects this large on all-cause mortality are implausible for any intervention. Nobody outside the originating institutes has reproduced them.", refs: [614] },
+        { title: "Epithalamin in older adults with coronary disease", evidence: "contested", meta: ["older adults with coronary disease and 'accelerated aging'; number not reported", "epithalamin with usual care, or usual care alone", "12 years", "reported as randomized"], body: "Deaths were 28% lower, and cardiovascular deaths 2-fold lower, in the epithalamin group.", note: "Same research group and the same extract, not the tetrapeptide. Neither this study nor any other has been independently replicated.", refs: [615] },
+        { title: "Animal: lifespan and tumors in mice", evidence: "animal", meta: ["female SHR mice, 54 per group", "epitalon 1 µg per mouse subcutaneously, 5 days a month from 3 months of age", "lifelong", "controlled animal study"], body: "Mean lifespan did not change. Survival of the longest-lived 10% rose by 13%. Total tumor incidence was unchanged, and leukemia was less frequent.", refs: [617] }
+      ],
       related: ["mots-c"]
     },
     {
       slug: "mots-c", type: "compound", name: "MOTS-c",
       aliases: ["Mitochondrial ORF of the 12S rRNA type-c"], category: "longevity", status: "Research only",
       class: "Mitochondrial-derived peptide", developer: "Discovered by Lee et al., 2015",
-      added: "2026-05-09", updated: "2026-09-10",
+      added: "2026-05-09", updated: "2026-10-17",
       tags: ["mitochondria", "AMPK", "exercise mimetic", "metabolism"],
       summary: "A 16-amino-acid peptide encoded in the mitochondrial genome. It regulates metabolism and is studied as an exercise mimetic.",
       names: "Described in <em>Cell Metabolism</em> in 2015. CohBar developed an analog, CB4211, which entered early clinical trials for fatty liver disease and obesity. MOTS-c itself has not been through clinical development.",
@@ -527,15 +568,18 @@ window.ATLAS = {
         ]
       },
       risks: [
-        { system: "Human safety", level: "unknown", text: "No published human safety data for MOTS-c itself", evidence: "unknown" }
+        { system: "Human safety", level: "unknown", text: "No published human safety data for MOTS-c itself", evidence: "unknown" },
+        { system: "Human evidence", level: "unknown", text: "Everything claimed for it rests on mouse studies plus measurements of the body's own peptide during exercise", evidence: "animal", detail: "No trial has given MOTS-c to a human and published the result.", refs: [437, 438] }
       ],
       activity: [
         { title: "AMPK activation", evidence: "animal", summary: "Activated AMPK through the folate cycle and AICAR accumulation, which improved insulin sensitivity in mice", refs: [20] },
         { title: "Nuclear translocation", evidence: "in vitro", summary: "Moves to the nucleus under metabolic stress and regulates stress-response genes", refs: [27] },
         { title: "Physical capacity", evidence: "animal", summary: "Improved physical performance in young and old mice. Levels rise with exercise in humans", refs: [21] }
       ],
-      trials: [],
-      noTrials: "There are no human efficacy trials of MOTS-c. Human data are observational measurements of circulating levels.",
+      trials: [
+        { title: "The paper that identified it", evidence: "animal", meta: ["mice, and human cell lines", "MOTS-c by injection in mice", "weeks", "preclinical"], body: "MOTS-c injection improved insulin sensitivity and prevented diet-induced obesity in mice, acting through a folate-AICAR-AMPK pathway.", note: "This is the origin of every claim made for the peptide, and it is a mouse paper. There are no human trials of MOTS-c.", refs: [437] },
+        { title: "Exercise and age in mice, with human exercise measurements", evidence: "animal", meta: ["mice, plus skeletal muscle and plasma from exercising humans", "MOTS-c injection in mice; measurement only in humans", "mice treated over weeks", "preclinical, with human observational measurement"], body: "MOTS-c levels rose in human skeletal muscle and plasma with acute exercise, and MOTS-c treatment in mice improved physical capacity in young, middle-aged and old animals.", note: "The human part of this paper measured a naturally occurring peptide during exercise. It did not give MOTS-c to anyone.", refs: [438] }
+      ],
       related: ["epitalon"]
     },
 
@@ -544,7 +588,7 @@ window.ATLAS = {
       slug: "selank", type: "compound", name: "Selank",
       aliases: ["TP-7"], category: "nootropic", status: "Approved",
       class: "Synthetic analog of tuftsin", developer: "Institute of Molecular Genetics, Russian Academy of Sciences",
-      added: "2026-04-02", updated: "2026-06-30",
+      added: "2026-04-02", updated: "2026-10-17",
       tags: ["anxiolytic", "tuftsin", "intranasal"],
       summary: "A heptapeptide derived from the immunomodulatory peptide tuftsin. It is registered in Russia as an anxiolytic nasal spray.",
       names: "Registered in Russia as an anxiolytic nasal spray. It is not approved by the FDA or EMA, so the \"Approved\" status here applies to Russia only.",
@@ -564,15 +608,17 @@ window.ATLAS = {
         { title: "GABA-A modulation", evidence: "animal", summary: "Proposed allosteric modulation of GABA-A receptors" },
         { title: "Enkephalin degradation", evidence: "in vitro", summary: "Inhibits enzymes that break down enkephalins" }
       ],
-      trials: [],
-      noTrials: "Russian clinical studies exist but are small, often unblinded, and mostly untranslated. None meet the bar for this record.",
+      trials: [
+        { title: "Selank added to phenazepam in anxiety disorders", evidence: "human rct", meta: ["70 patients with anxiety-phobic, hypochondriac or somatoform disorders (ICD-10 F40–F45)", "phenazepam alone (30) or phenazepam plus selank (40); selank dose not reported", "course length not reported", "randomized comparative trial, open design as far as the report shows"], body: "Adding selank brought the phenazepam response on the Hamilton scale forward. It also reduced benzodiazepine side effects such as sedation, memory and attention problems and asthenia, during treatment and after withdrawal.", note: "Small, Russian-language, and from the developer's institute. It tests selank as an add-on to a benzodiazepine, not on its own, and there was no placebo arm.", refs: [500] },
+        { title: "Selank compared with medazepam in generalized anxiety and neurasthenia", evidence: "human rct", meta: ["62 patients with generalized anxiety disorder or neurasthenia", "selank (30) or medazepam (32); doses not reported", "course length not reported", "randomized comparative trial against a benzodiazepine; no placebo"], body: "Both drugs reduced anxiety to a similar degree. The authors reported extra anti-asthenic and stimulant effects with selank, and a rise in the serum half-life of leu-enkephalin that tracked anxiety scores.", note: "With no placebo arm, 'similar to medazepam' cannot separate a drug effect from natural improvement. The trial was run by the developer group.", refs: [501] }
+      ],
       related: ["semax"]
     },
     {
       slug: "semax", type: "compound", name: "Semax",
       aliases: ["ACTH(4-7)-Pro-Gly-Pro"], category: "nootropic", status: "Approved",
       class: "Synthetic ACTH(4-10) analog", developer: "Institute of Molecular Genetics, Russian Academy of Sciences",
-      added: "2026-04-02", updated: "2026-06-30",
+      added: "2026-04-02", updated: "2026-10-17",
       tags: ["neuroprotection", "BDNF", "stroke", "intranasal"],
       summary: "A heptapeptide based on a fragment of adrenocorticotropic hormone, without hormonal activity. It is used in Russia for stroke and cognitive disorders.",
       names: "On Russia's list of essential medicines as a nasal spray. It is not approved by the FDA or EMA, so the \"Approved\" status here applies to Russia only.",
@@ -592,8 +638,10 @@ window.ATLAS = {
         { title: "BDNF", evidence: "animal", summary: "Increased BDNF and TrkB expression in rat hippocampus", refs: [19] },
         { title: "Melanocortin receptors", evidence: "in vitro", summary: "Interacts with melanocortin receptors without stimulating the adrenal cortex" }
       ],
-      trials: [],
-      noTrials: "Russian stroke studies exist but are small and of limited quality.",
+      trials: [
+        { title: "Semax in acute hemispheric ischemic stroke", evidence: "human obs", meta: ["110 patients with acute ischemic stroke: 30 given semax, 80 conventionally treated controls", "intranasal semax 12 mg a day (moderate stroke) or 18 mg a day (severe stroke) added to standard care", "5- or 10-day course", "non-randomized controlled comparison"], body: "The authors reported faster recovery of general and focal deficits, especially motor deficits, with semax added. Evoked potentials and EEG mapping were used as supporting measures.", note: "Controls were matched for severity, not randomized, and the groups were very different in size. This cannot establish efficacy.", refs: [503] },
+        { title: "Semax, BDNF and recovery at different stages of ischemic stroke", evidence: "human obs", meta: ["110 patients after ischemic stroke, split into semax and no-semax subgroups by timing of rehabilitation", "two 10-day courses of semax 6,000 mcg a day, 20 days apart", "about 2 months", "clinical study; the report does not describe randomization or blinding"], body: "Plasma BDNF rose with semax and stayed raised through the study. Barthel index scores improved faster and ended higher with semax, and BDNF levels correlated with Barthel scores.", note: "Plasma BDNF is a surrogate marker. Without randomization, the functional result is weak evidence.", refs: [502] }
+      ],
       related: ["selank"]
     },
 
@@ -602,7 +650,7 @@ window.ATLAS = {
       slug: "bremelanotide", type: "compound", name: "Bremelanotide",
       aliases: ["PT-141", "Vyleesi"], category: "melanocortin", status: "Approved",
       class: "Melanocortin receptor agonist", developer: "Palatin Technologies",
-      added: "2026-05-22", updated: "2026-08-19",
+      added: "2026-05-22", updated: "2026-10-17",
       tags: ["MC4R", "melanocortin", "HSDD"],
       summary: "A cyclic melanocortin agonist approved in the US for hypoactive sexual desire disorder (HSDD) in premenopausal women.",
       names: "Sold as Vyleesi, an on-demand subcutaneous autoinjector, after FDA approval in 2019. It was developed from melanotan II, which is why it was known as PT-141.",
@@ -627,7 +675,10 @@ window.ATLAS = {
         { title: "MC1 receptor", evidence: "human rct", summary: "Activity at MC1R explains the hyperpigmentation", refs: [24] }
       ],
       trials: [
-        { title: "RECONNECT: Two phase 3 trials in HSDD", evidence: "human rct", meta: ["about 1,250 premenopausal women with HSDD across two trials", "bremelanotide 1.75 mg subcutaneous as needed, or placebo", "24 weeks", "randomized, double-blind, placebo-controlled"], body: "Both trials showed significant improvement in desire and reduced distress about low desire compared with placebo. The number of satisfying sexual events did not differ significantly.", note: "The effect sizes were modest. Nausea was common, and few users continue the drug long term.", refs: [22] }
+        { title: "RECONNECT: Two phase 3 trials in HSDD", evidence: "human rct", meta: ["about 1,250 premenopausal women with HSDD across two trials", "bremelanotide 1.75 mg subcutaneous as needed, or placebo", "24 weeks", "randomized, double-blind, placebo-controlled"], body: "Both trials showed significant improvement in desire and reduced distress about low desire compared with placebo. The number of satisfying sexual events did not differ significantly.", note: "The effect sizes were modest. Nausea was common, and few users continue the drug long term.", refs: [22] },
+        { title: "Phase 2b dose-finding in premenopausal women", evidence: "human rct", meta: ["327 premenopausal women with female sexual dysfunction (efficacy population)", "bremelanotide 0.75, 1.25 or 1.75 mg subcutaneously as desired, or placebo", "12 weeks", "randomized, placebo-controlled"], body: "Pooled 1.25 and 1.75 mg raised satisfying sexual events by 0.7 a month, against 0.2 on placebo (p = 0.018), and improved sexual function and distress scores. Nausea, flushing and headache were the main side effects.", refs: [738] },
+        { title: "RECONNECT 52-week open-label extension", evidence: "human obs", meta: ["684 women from the RECONNECT trials; 272 completed", "bremelanotide 1.75 mg as needed", "52 weeks", "open-label extension"], body: "Desire and distress scores improved further. Nausea (40.4%), flushing (20.6%) and headache (12.0%) were the most common drug-related events. Fewer than half finished the year.", refs: [739] },
+        { title: "Intranasal PT-141 with low-dose sildenafil in men", evidence: "human rct", meta: ["19 men with erectile dysfunction who responded to PDE5 inhibitors", "sildenafil 25 mg plus PT-141 7.5 mg intranasal, sildenafil plus placebo spray, or double placebo", "single doses, 6-hour monitoring", "randomized crossover"], body: "The combination produced a larger erectile response than sildenafil alone, with no new or worse side effects.", note: "Intranasal development was dropped. The approved product is a subcutaneous injection for women.", refs: [741] }
       ],
       related: []
     },
@@ -637,7 +688,7 @@ window.ATLAS = {
       slug: "thymosin-alpha-1", type: "compound", name: "Thymosin Alpha-1",
       aliases: ["Thymalfasin", "Zadaxin", "Tα1"], category: "immune", status: "Approved",
       class: "Thymic peptide", developer: "SciClone Pharmaceuticals (Zadaxin)",
-      added: "2026-06-03", updated: "2026-09-01",
+      added: "2026-06-03", updated: "2026-10-17",
       tags: ["T-cell", "hepatitis B", "immunomodulator", "sepsis"],
       summary: "A 28-amino-acid peptide originally isolated from thymus tissue. As thymalfasin it is approved in a number of countries as an immunomodulator.",
       names: "Sold as Zadaxin (thymalfasin) and approved in several countries outside the US and EU, mainly for chronic hepatitis B and as a vaccine adjuvant. It is not FDA approved, so the \"Approved\" status here does not apply to the US.",
@@ -651,14 +702,21 @@ window.ATLAS = {
         ]
       },
       risks: [
-        { system: "Tolerability", level: "low", text: "Generally well tolerated in clinical trials", evidence: "human rct", refs: [23] }
+        { system: "Tolerability", level: "low", text: "Generally well tolerated in clinical trials", evidence: "human rct", refs: [23] },
+        { system: "Efficacy", level: "moderate", text: "Benefit in chronic hepatitis B is uncertain: trials conflict, and a 2026 Cochrane review rated the evidence low to very low", evidence: "human rct", detail: "The positive Taiwanese trial was not confirmed by the placebo-controlled phase 3 trial.", refs: [621, 622, 623] },
+        { system: "Sepsis subgroup", level: "unknown", text: "In the TESTS sepsis trial, patients under 60 had higher 28-day mortality on thymosin α1 than on placebo in a prespecified subgroup", evidence: "human rct", detail: "Hazard ratio 1.67 (95% CI 1.04 to 2.67) under 60, against 0.81 at 60 or over. Overall mortality did not differ (HR 0.99). Subgroup findings generate hypotheses and do not prove harm.", refs: [23] },
+        { system: "Product quality", level: "moderate", text: "Research-peptide material is not Zadaxin. Its identity, dose and sterility are unverified", evidence: "established" }
       ],
       activity: [
         { title: "Toll-like receptors", evidence: "in vitro", summary: "Signals through TLR2 and TLR9 on dendritic cells" },
         { title: "T-cell maturation", evidence: "animal", summary: "Promotes T-cell differentiation and function" }
       ],
       trials: [
-        { title: "TESTS: Thymosin alpha 1 in sepsis", evidence: "human rct", meta: ["about 1,100 adults with sepsis", "thymosin α1 subcutaneous or placebo, for 7 days", "28-day follow-up", "multicentre, randomized, double-blind, placebo-controlled"], body: "There was no significant difference in 28-day all-cause mortality between groups.", note: "This was a large, well-run trial that overturned earlier optimism from smaller studies.", refs: [23] }
+        { title: "TESTS: Thymosin alpha 1 in sepsis", evidence: "human rct", meta: ["1,106 adults with sepsis randomized, 1,089 analyzed", "thymosin α1 subcutaneous every 12 hours or placebo, for 7 days", "28-day follow-up", "multicentre, randomized, double-blind, placebo-controlled"], body: "There was no significant difference in 28-day all-cause mortality between groups (HR 0.99).", note: "This was a large, well-run trial that overturned earlier optimism from smaller studies.", refs: [23] },
+        { title: "Chronic hepatitis B: 26 versus 52 weeks against no treatment", evidence: "human rct", meta: ["98 adults with chronic hepatitis B in Taiwan", "thymalfasin 1.6 mg subcutaneously twice weekly for 26 or 52 weeks, or no treatment", "18 months of follow-up", "randomized, controlled, open (untreated control)"], body: "At 18 months, 40.6% of the 26-week group had cleared HBV DNA and HBeAg, against 9.4% of controls. The 52-week group reached 26.5%, which was not significant. Responses built up after treatment ended, and no one lost HBsAg.", refs: [621] },
+        { title: "Chronic hepatitis B: phase 3 against placebo", evidence: "human rct", meta: ["97 adults with HBV DNA- and HBeAg-positive chronic hepatitis B", "thymalfasin 1.6 mg or placebo, twice weekly for 6 months", "12 months, with later follow-up", "multicenter, randomized, double-blind, placebo-controlled, phase 3"], body: "Complete response occurred in 14% on thymalfasin against 4% on placebo (p = 0.084). The authors concluded that their results did not confirm earlier reports of efficacy.", refs: [622] },
+        { title: "Cochrane review: chronic hepatitis B", evidence: "human rct", meta: ["10 trials, 1,349 adults, published 1991–2018", "thymosin α1 alone or added to interferon, lamivudine, entecavir or tenofovir", "follow-up 6 months to 5 years", "systematic review and meta-analysis"], body: "Pooled data suggested fewer deaths (RR 0.53) and fewer serious adverse events (RR 0.72), with little effect on quality of life or liver histology. The certainty of evidence was very low for every outcome except serious adverse events, where it was low.", note: "The reviewers concluded they are not sure whether it changes any outcome.", refs: [623] },
+        { title: "Metastatic melanoma with chemotherapy", evidence: "human rct", meta: ["488 patients with metastatic melanoma", "thymosin α1 1.6, 3.2 or 6.4 mg added to dacarbazine with or without interferon alfa, against dacarbazine plus interferon", "12-month primary endpoint, follow-up to 24 months", "multicenter, randomized"], body: "More tumors responded in two of the 3.2 mg arms than in controls. Median overall survival was 9.4 against 6.6 months (HR 0.80, p = 0.08), which was not significant. No added toxicity was seen.", note: "A response signal of the kind phase 2 trials produce, not proof of survival benefit. No confirmatory trial is on PubMed.", refs: [624] }
       ],
       related: ["tb-500"]
     },

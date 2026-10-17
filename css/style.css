@@ -272,9 +272,9 @@ p + p { margin-top: 0.85em; }
 .tab b { font-weight: 600; font-size: var(--step-small); }
 .tab .n { color: var(--muted); }
 .tab:active { transform: scale(0.98); }
-.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); }
-.tab[aria-selected="true"] .n { color: inherit; opacity: .75; }
-@media (hover: hover) and (pointer: fine) { .tab:hover:not([aria-selected="true"]) { background: var(--surface-2); } }
+.tab[aria-selected="true"], .tab[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.tab[aria-selected="true"] .n, .tab[aria-pressed="true"] .n { color: inherit; opacity: .75; }
+@media (hover: hover) and (pointer: fine) { .tab:hover:not([aria-selected="true"]):not([aria-pressed="true"]) { background: var(--surface-2); } }
 
 .bands { display: flex; flex-direction: column; gap: 4px; }
 .band {
@@ -856,12 +856,20 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
 .use-line .link { color: var(--accent); margin-left: .15rem; white-space: nowrap; }
 .group-note { color: var(--muted); font-size: var(--step-small); margin: -0.5rem 0 1rem; }
 /* a stack's band: the pair's grade, its name over its parts, and its use cases at the right */
-.band.stack-band { grid-template-columns: 9.5rem minmax(0, 1fr) minmax(0, 13rem); }
+.band.stack-band, .band.with-uses { grid-template-columns: 9.5rem minmax(0, 1fr) minmax(0, 13.5rem); }
 .band.stack-band .ev { justify-self: start; }
-.band-uses { color: var(--muted); font-size: var(--step-small); line-height: 1.35; text-align: right; }
-@media (hover: hover) and (pointer: fine) { .band.stack-band:hover .band-uses { color: var(--ink); } }
+/* use cases at the right of a band: one per line, quiet, and the picked ones in full ink */
+.band-uses { display: flex; flex-direction: column; align-items: flex-end; gap: .1rem; color: var(--muted); font-size: var(--step-small); line-height: 1.3; text-align: right; }
+.band-uses span { transition: color var(--t-hover) ease; }
+.band-uses.many { font-size: .9375rem; line-height: 1.2; gap: .05rem; }
+.band-uses .on { color: var(--ink); font-weight: 600; }
+.band-uses .on::before { content: ""; display: inline-block; width: .42em; height: .42em; margin-right: .45em; vertical-align: .14em; background: var(--accent); }
+@media (hover: hover) and (pointer: fine) { .band:hover .band-uses { color: var(--ink); } }
 @media (max-width: 56rem) {
-  .band.stack-band { grid-template-columns: minmax(0, 1fr); row-gap: .35rem; }
+  .band.stack-band, .band.with-uses { grid-template-columns: minmax(0, 1fr); row-gap: .35rem; }
+  .band.with-uses .band-uses { grid-row: 3; }
+  .band-uses, .band-uses.many { flex-direction: row; flex-wrap: wrap; align-items: baseline; justify-content: flex-start; gap: .1rem .9rem; text-align: left; }
+  .band-uses:empty { display: none; }
   .band.stack-band .ev { grid-row: 2; }
   .band.stack-band .band-uses { grid-row: 3; text-align: left; }
 }

@@ -206,7 +206,7 @@ The archive is an A to Z index. A row of filled letter blocks jumps to each lett
 The Stacks page is a banded list like the codex: each band leads with the grade of the pair, then the name over its parts joined with +, and its use cases at the right. Each stack has its own page in the entry layout. Its side zone carries the **formula plate**, a parchment block where the parts are set as a sum in Cormorant with a gilt + and the pair's grade under a heavier rule. **The parts** section is the ledger: one table row per part (name with status, what it adds, its own grade), any class finding as an italic row, then a heavier rule and the **Together** line in Cormorant with the grade that counts.
 
 ### Use-case rows
-The codex and the stacks filter by use case with a row of tabs under a small sentence-case label (Use case, Field), the one place a label sits above a control row.
+The codex and the stacks filter by use case with a row of tabs under a small sentence-case label (Use case, Field), the one place a label sits above a control row. Tabs are toggles: several can be pressed at once (any of the picked fields, and any of the picked use cases), a second click releases one, and All or Any clears the row. Every codex and stack band lists its use cases at the right, one per line in soft ink, stepping down to 15px when a band carries more than two (the owner's call, and the one setting below the 17px floor); the ones being filtered on move to the top in full ink with a small gold square.
 
 ### Tabs and pickers
 Filled blocks, never outlined. Selected is inverted (parchment block, ink text). Counts sit beside each name in tabular figures.
