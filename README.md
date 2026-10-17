@@ -12,11 +12,15 @@ An open reference library of peptides and research compounds, built as a static,
 - `archive.html`: chronological archive grouped by month
 - `entry.html?slug=…`: compound page with these sections:
   - names and origin, and structure (with a PubChem structure image)
-  - **profile**: editorial 1–5 scores; red rows are ones where higher is worse. Visitors can add their own scores, which are saved in their browser
-  - **risk and monitoring**: a grid graded by evidence, with expandable detail
-  - **mechanism and receptor activity**: a list with a detail panel
+  - an **On this page** list of the sections, in the side zone under the facts
+  - **profile**: editorial 1–5 scores; red rows are ones where higher is worse. A low risk score on a thin human record is drawn without colour and labelled. Visitors can add their own scores, which are saved in their browser
+  - **risk**: a grid of how serious each risk is and how strong its evidence is, with a key and expandable detail
+  - **interactions**: rows from `js/interactions.js`, plus any risk row whose system names an interaction. An entry with none shows an honest "none recorded" panel
+  - **monitoring** (always shown; "none recorded" when `js/monitoring.js` has nothing for the entry)
   - **human clinical record**: trials with design meta lines and editor's notes
+  - **dosing**, then **pharmacokinetics**, then **mechanism and receptor activity** (a list with a detail panel)
   - **references**, with links to PubMed
+  - **record**: dates, a citation to copy, Print or save as PDF (a print stylesheet), and a prefilled "Report an error in this entry" link to the issue tracker
 - `credits.html`: "Creators I Learned From" page. Cards come from `credits.people` in `js/data.js` and use generated monogram avatars; set `image` on a person to use a real photo or logo you have permission to use
 - `support.html`: "support me" page with source cards (logo, copy-to-clipboard code, attributes, what they sell, shop button). Sources are set in `support.sources` in `js/data.js`
 - Compound pages carry a **Monitoring** section from `js/monitoring.js`: which markers that compound makes worth watching, why, and warning signs. Target ranges are deliberately omitted, since interpreting a result is a clinical decision
@@ -24,7 +28,8 @@ An open reference library of peptides and research compounds, built as a static,
 - Every compound page has a **Dosing in Labels and Trials** panel. `js/dosing.js` holds only two kinds of numbers: dosing from an approved regulator-reviewed label, and dosing a published trial actually administered. Protocols from forums, vendors or coaching documents are deliberately excluded. Compounds with neither source show an honest "no established human dose" panel instead, with per-compound wording in `site.noDoseBySlug` for drugs approved abroad or sold as cosmetics
 - Every compound page also has a **Pharmacokinetics** panel (route, bioavailability, half-life, metabolism, excretion). The data live in `js/pk.js`, keyed by entry slug
 - Every compound page has a **Buy from** block under the title. Add product links in `js/buy.js` (keyed by entry slug, pointing at a source `id` from `support.sources`). The `?ref=` code is added automatically. Compounds with no link show "No current stock"
-- `about.html`: evidence grades, status labels and disclaimer
+- `about.html`: how an entry is made, evidence grades, risk levels, profile scores, status labels, what gets an entry, who writes it, money and independence, corrections and requests, a glossary, and the disclaimer
+- Corrections and entry requests go to the public GitHub issue tracker, set in `site.contact` (`js/data.js`). `site.approvedWhere` names where an "Approved" status applies when that is not the US or only as a cosmetic
 
 ## Design
 
@@ -34,7 +39,7 @@ The only pictures are PubChem structure drawings on entry pages (public domain, 
 
 Other features:
 - Press `⌘K`, `Ctrl+K` or `/` to search.
-- The ✦ button opens "ask the archive", which pulls answers from the text of codex entries. It is a keyword search, not an AI model.
+- The open-book button opens "ask the archive", which pulls answers from the text of codex entries. It is a keyword search, not an AI model.
 - A sun/moon button switches between dark and light themes.
 
 ## Editing content

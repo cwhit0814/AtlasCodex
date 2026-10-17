@@ -25,7 +25,7 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 ## Operating Context
 
 - People mostly read one compound page at a time, reaching it through ⌘K / Ctrl+K / `/` search, the codex filters (category, status, sort), the archive, or links between entries.
-- The ✦ "ask the archive" button runs a keyword search over entry text. It is not an AI model and must never be presented as one.
+- The open-book "ask the archive" button runs a keyword search over entry text. It is not an AI model and must never be presented as one.
 - Visitors can add their own 1–5 profile scores, which are saved only in their browser.
 - Readers come with lab results and blood-work routines in mind. The monitoring sections deliberately leave out target ranges, because interpreting a result is a clinical decision.
 
@@ -36,7 +36,7 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 - Evidence vocabulary: `human rct`, `human obs`, `established`, `animal`, `in vitro`, `anecdotal`, `contested`, `unknown`. Status labels include Research only, Never approved, Banned, Veterinary, Discontinued, Supplement, Cosmetic and Compounded.
 - Compounds with no label or trial dose show an honest "no established human dose" panel, with per-compound wording in `site.noDoseBySlug`. Never fill that gap with a number.
 - Commerce: Half Nattys referrals (code `ATLAS`) fund the codex. **Support is actively promoted** (owner's decision, 2026-10-14): a notice strip on every page, a gold Support me button in the header, a support band on the home page and at the end of every entry, and a support link on every compound page. Every page is built to lead the reader to the affiliate source (owner's goal, 2026-10-14): notice strip, header button, a rising support bar, side cards and an affiliate row on list pages, a shop row in search, and direct shop buttons for compounds the source lists. Three lines hold regardless: the commission disclosure sits beside every affiliate link, no support surface reads as a recommendation of a compound, and banned compounds never get a compound-specific shop prompt.
-- Undecided: the contact and requests channel. `about.html#contact` is a placeholder, and the home cards "Join the Community" and "Request an Entry" have no real destination yet.
+- Contact and requests (interim, set 2026-10-17): corrections and entry requests go to the public GitHub issue tracker (`site.contact` in `js/data.js`). Every entry has a prefilled "Report an error in this entry" link, and About explains the process. A community channel is still undecided.
 
 ## Brand Commitments
 

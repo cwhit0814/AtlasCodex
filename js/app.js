@@ -77,7 +77,8 @@
     bar.className = "sbar";
     bar.setAttribute("role", "region");
     bar.setAttribute("aria-label", "Support the codex");
-    bar.innerHTML = `<p>${text} <span class="fine">Affiliate; no extra cost to you.</span></p>
+    // The disclosure stays at every width; phones get the short form.
+    bar.innerHTML = `<p>${text} <span class="fine"><span class="long">Affiliate; no extra cost to you.</span><span class="short">Affiliate link.</span></span></p>
       <a class="button ink" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored">Shop</a>
       <button class="sbar-x" type="button" aria-label="Hide for this visit">${icons.close}</button>`;
     document.body.appendChild(bar);
@@ -127,7 +128,8 @@
     search: '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>',
     sun: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
     moon: '<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
-    sparkle: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg>',
+    // An open book for "ask the archive": it searches the codex's own pages, so it gets a reference mark, not an AI one.
+    book: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M3 5.5c3-1.2 6-1 9 .8 3-1.8 6-2 9-.8v13.2c-3-1.2-6-1-9 .8-3-1.8-6-2-9-.8Z"/><path d="M12 6.3v13.4"/></svg>',
     close: '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>',
     chev: '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>'
   };
@@ -143,7 +145,20 @@
     "never approved": "t-bad", banned: "t-solid-bad", supplement: "t-weak", compounded: "t-obs", cosmetic: "t-plain"
   };
   const badge = (ev) => { if (!ev) return ""; const [label, tone] = EV[ev] || [cap(ev), "t-plain"]; return `<span class="ev ${tone}">${esc(label)}</span>`; };
-  const statusTag = (s) => `<span class="st ${ST[String(s).toLowerCase()] || "t-plain"}">${esc(cap(String(s)))}</span>`;
+  // "Approved" names where, when that is not the US or not as a drug (site.approvedWhere).
+  const statusTag = (s, slug) => {
+    const where = slug && String(s).toLowerCase() === "approved" && (A.site.approvedWhere || {})[slug];
+    return `<span class="st ${ST[String(s).toLowerCase()] || "t-plain"}">${esc(cap(String(s)))}${where ? `<small class="st-where">${esc(where)}</small>` : ""}</span>`;
+  };
+  // A link that opens a prefilled report on the codex's issue tracker.
+  const reportUrl = (title, body = "") => {
+    const c = A.site.contact;
+    if (!c || !c.href) return "about.html#contact";
+    const u = new URL(c.href);
+    u.searchParams.set("title", title);
+    if (body) u.searchParams.set("body", body);
+    return u.href;
+  };
   const meter = (n, cls = "") => `<span class="meter ${cls}" aria-hidden="true">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? "on" : ""}" data-v="${i}"></i>`).join("")}</span>`;
   const refsLine = (refs) => refs && refs.length ? `<p class="refs-line">References ${refs.map((r) => `<a href="#ref-${r}">${r}</a>`).join(", ")}</p>` : "";
   const selectBox = (id, label, options) => `<label class="select"><span class="sr-only">${label}</span><select class="field" id="${id}">${options}</select>${icons.chev}</label>`;
@@ -182,6 +197,10 @@
     const S = A.site;
     const here = (p) => (p === page ? ' aria-current="page"' : "");
     const header = $("#site-header");
+    // Skip link: the first stop for keyboard readers, straight past the header and the support line.
+    const main = $("main");
+    if (main) { main.id = main.id || "main"; main.tabIndex = -1; }
+    header.insertAdjacentHTML("beforebegin", `<a class="skip button" href="#${main ? main.id : "top"}">Skip to content</a>`);
     header.innerHTML = `
       <div class="top" id="top">
         <a class="wordmark" href="index.html">${esc(S.wordmark[0])} <span>${esc(S.wordmark[1])}</span></a>
@@ -215,9 +234,9 @@
           <a class="link" href="support.html">Support the codex</a>
         </div>
         <div class="foot-cols">
-          <div><h3>Browse</h3><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="stacks.html">Stacks</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li><li><a class="link" href="compare.html">Compare structures</a></li></ul></div>
-          <div><h3>The codex</h3><ul class="plain"><li><a class="link" href="about.html">About</a></li><li><a class="link" href="about.html#grades">Evidence grades</a></li><li><a class="link" href="credits.html">Credits</a></li></ul></div>
-          <div><h3>Elsewhere</h3><ul class="plain"><li><a class="link" href="support.html">Support me</a></li><li><a class="link" href="about.html#contact">Request an entry</a></li></ul></div>
+          <div><h2>Browse</h2><ul class="plain"><li><a class="link" href="codex.html">Every entry</a></li><li><a class="link" href="archive.html">Archive</a></li><li><a class="link" href="stacks.html">Stacks</a></li><li><a class="link" href="codex.html?cat=guides">Guides</a></li><li><a class="link" href="compare.html">Compare structures</a></li></ul></div>
+          <div><h2>The codex</h2><ul class="plain"><li><a class="link" href="about.html">About</a></li><li><a class="link" href="about.html#method">How entries are made</a></li><li><a class="link" href="about.html#grades">Evidence grades</a></li><li><a class="link" href="about.html#glossary">Glossary</a></li><li><a class="link" href="credits.html">Credits</a></li></ul></div>
+          <div><h2>Elsewhere</h2><ul class="plain"><li><a class="link" href="support.html">Support me</a></li><li><a class="link" href="about.html#contact">Request an entry</a></li><li><a class="link" href="about.html#contact">Report an error</a></li></ul></div>
         </div>
       </div>
       <p class="foot-disclaimer">${esc(S.disclaimer)}</p>
@@ -228,7 +247,7 @@
     fab.className = "ask-fab";
     fab.type = "button";
     fab.setAttribute("aria-label", "Ask the archive");
-    fab.innerHTML = `${icons.sparkle}<span>Ask the archive</span>`;
+    fab.innerHTML = `${icons.book}<span>Ask the archive</span>`;
     fab.addEventListener("click", () => openAsk());
     document.body.appendChild(fab);
     supportBar();
@@ -250,6 +269,7 @@
       if (e.key === "Escape") { closeSearch(); closeAsk(); }
     });
     $$("[data-count='entries']").forEach((n) => (n.textContent = A.entries.length));
+    $$("[data-count='guides']").forEach((n) => (n.textContent = word(A.entries.filter((e) => e.type === "article").length)));
   }
 
   /* ---------- search ---------- */
@@ -301,6 +321,7 @@
     (e.trials || []).forEach((t) => parts.push(`${t.title}. ${t.body} ${t.note || ""}`));
     (e.sections || []).forEach((s) => parts.push(`${s.heading}. ${s.body}`));
     if (e.noTrials) parts.push(e.noTrials);
+    ((A.interactions || {})[e.slug] || []).forEach((r) => parts.push(`Interaction with ${r.with}: ${r.text}. ${r.detail || ""}`));
     const m = (A.monitoring || {})[e.slug];
     if (m) parts.push("Monitoring. " + (m.markers || []).map(([k, v]) => `${k}: ${v}.`).join(" ") + " " + (m.watch || []).join(" "));
     const d = (A.dosing || {})[e.slug];
@@ -342,7 +363,7 @@
         const body = $("#ask-body");
         body.insertAdjacentHTML("beforeend", `<div class="ask-q">${esc(q)}</div>` + (res.length
           ? `<div class="ask-a">${res.map((r) => `<div class="ask-hit"><a class="link" href="${entryUrl(r.e)}">${esc(r.e.name)}</a>${r.best.map((s) => `<p>${esc(s)}</p>`).join("") || `<p>${esc(r.e.summary)}</p>`}</div>`).join("")}</div>`
-          : `<div class="ask-a"><p>Nothing in the codex covers that yet. <a class="link-plain" href="about.html#contact">Request an entry</a>.</p></div>`));
+          : `<div class="ask-a"><p>Nothing in the codex covers that yet. <a class="link-plain" href="${esc(reportUrl("Entry request: " + q))}" target="_blank" rel="noopener">Request an entry</a>.</p></div>`));
         body.scrollTop = body.scrollHeight;
         $("#ask-input").value = "";
       });
@@ -358,7 +379,7 @@
   function band(e, i = 0, opts = {}) {
     const note = opts.note ?? (e.class || e.summary);
     return `<a class="band${opts.cls ? " " + opts.cls : ""}" href="${entryUrl(e)}" data-reveal style="--i:${Math.min(i, 6)}">
-      ${opts.lead ?? statusTag(e.status)}
+      ${opts.lead ?? statusTag(e.status, e.slug)}
       <span class="band-text"><span class="band-name">${esc(e.name)}</span><span class="band-note">${esc(note)}</span></span>
       ${opts.tail ?? ""}
     </a>`;
@@ -389,9 +410,11 @@
   const stackHay = (s) => [s.name, s.aka, groupOf(s.group).name, ...s.parts.map(partName), ...(s.uses || []).map(useName)].join(" ").toLowerCase();
   const stackMatches = (s, q) => !q || q.toLowerCase().split(/\s+/).every((w) => stackHay(s).includes(w));
   // A row in a list of stacks: the grade of the pair, its name, its parts, and its use cases at the right.
+  // Where the record pushes back, a strong grade is strong evidence of a cost, so the band says so under it.
   function stackBand(s, i = 0, on) {
+    const lead = s.group === "pushback" ? `<span class="band-lead">${badge(s.together)}<span class="against">Cost found</span></span>` : badge(s.together);
     return `<a class="band stack-band" href="${stackUrl(s)}" data-reveal style="--i:${Math.min(i, 6)}">
-      ${badge(s.together)}
+      ${lead}
       <span class="band-text"><span class="band-name">${esc(s.name)}</span><span class="band-note">${s.parts.map((p) => esc(partName(p))).join(" + ")}</span></span>
       ${usesCol(s.uses || [], on)}
     </a>`;
@@ -401,7 +424,7 @@
     const part = (p) => {
       const e = p.slug && bySlug(p.slug);
       return `<tr>
-        <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(partName(p))}</a> ${statusTag(e.status)}` : `<span>${esc(partName(p))}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
+        <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(partName(p))}</a> ${statusTag(e.status, e.slug)}` : `<span>${esc(partName(p))}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
         <td>${sent(p.role)}</td>
         <td class="grade">${badge(p.ev)}</td>
       </tr>`;
@@ -481,7 +504,7 @@
           const n = (e.trials || []).length;
           return `<tr>
             <th scope="row"><a class="link" href="${entryUrl(e)}">${esc(e.name)}</a><small class="muted">${esc(e.class || "")}</small></th>
-            <td data-label="Status">${statusTag(e.status)}</td>
+            <td data-label="Status">${statusTag(e.status, e.slug)}</td>
             <td data-label="Human trials" class="nums">${n ? n : "None"}</td>
             <td data-label="Half-life">${hl ? esc(hl[1].replace(/\s*\(.*\)/, "")) : "Not published"}</td>
             <td class="sum">${sent(e.summary)}</td>
@@ -521,9 +544,16 @@
         b.setAttribute("aria-pressed", id === "all" ? !set.size : set.has(id));
       });
 
+      // On phones the two tab rows fold behind one line that counts the picks, so the list starts on the first screen.
+      const fold = $("#filter-fold");
+      const narrow = matchMedia("(max-width: 56rem)");
+      if (fold) { fold.open = !narrow.matches; narrow.addEventListener("change", () => (fold.open = !narrow.matches)); }
+
       function render() {
         pick("#cat-chips", state.cats);
         pick("#use-chips", state.uses);
+        const picks = state.cats.size + state.uses.size;
+        if (fold) $("#fold-count").textContent = picks ? `${picks} picked` : "";
         const list = A.entries
           .filter((e) => (!state.cats.size || state.cats.has(e.category))
             && (!state.uses.size || usesOfEntry(e).some((u) => state.uses.has(u)))
@@ -606,124 +636,101 @@
     },
 
     entry() {
-      const e = bySlug(new URLSearchParams(location.search).get("slug"));
+      const slug = new URLSearchParams(location.search).get("slug") || "";
+      const e = bySlug(slug);
       const host = $("#entry");
       if (!e) {
-        host.innerHTML = `<div class="wrap spread page-title"><div class="side"><p>That page isn't in the codex.</p></div><div class="main"><h1>Entry not found</h1><p style="margin-top:1.5rem"><a class="button" href="codex.html">Browse every entry</a></p></div></div>`;
+        document.title = `Entry not found · ${A.site.title}`;
+        // The closest entries: any that share a word with the name that was asked for.
+        const terms = slug.toLowerCase().split(/[^a-z0-9]+/).filter((w) => w.length > 1);
+        const near = A.entries.map((x) => ({ x, n: terms.filter((w) => (x.slug + " " + haystack(x)).includes(w)).length }))
+          .filter((r) => r.n).sort((a, b) => b.n - a.n || byName(a.x, b.x)).slice(0, 5).map((r) => r.x);
+        host.innerHTML = `<div class="wrap spread page-title">
+            <div class="side"><p>${slug ? `Nothing in the codex is filed under “${esc(slug)}”.` : "This link doesn't name an entry."}</p></div>
+            <div class="main"><h1>Entry not found</h1>
+              <div class="hero-actions"><button class="button" type="button" id="nf-search">Search the codex</button><a class="link go" href="codex.html">Browse every entry</a><a class="link go" href="${esc(reportUrl("Entry request: " + slug))}" target="_blank" rel="noopener">Request this entry</a></div>
+            </div>
+          </div>
+          ${near.length ? `<section class="wrap spread entry-sec"><div class="side"><h2>Closest entries</h2></div><div class="main"><div class="bands">${near.map((x, i) => band(x, i)).join("")}</div></div></section>` : ""}`;
+        $("#nf-search").addEventListener("click", () => openSearch(terms.join(" ")));
         return;
       }
       document.title = `${e.name} · ${A.site.title}`;
-      const sec = (title, note, body) => `<section class="wrap spread entry-sec"><div class="side"><h2 data-reveal>${esc(title)}</h2>${note ? `<p class="note" data-reveal style="--i:1">${note}</p>` : ""}</div><div class="main" data-reveal style="--i:1">${body}</div></section>`;
+      const md = $('meta[name="description"]');
+      if (md && e.summary) md.setAttribute("content", strip(e.summary));
+      const isCompound = e.type === "compound";
+      // Every section is a spread with an id, and joins the contents list in the head.
+      const toc = [];
+      const sec = (id, title, note, body, listed = true) => {
+        if (listed) toc.push([id, title]);
+        return `<section class="wrap spread entry-sec" id="${id}" aria-labelledby="${id}-h"><div class="side"><h2 id="${id}-h" data-reveal>${esc(title)}</h2>${note ? `<p class="note" data-reveal style="--i:1">${note}</p>` : ""}</div><div class="main" data-reveal style="--i:1">${body}</div></section>`;
+      };
       const out = [];
-      
-      // head: the plate and the facts in the side zone, the name and the lede on the axis
-      const comparable = A.structures && A.structures.smiles[e.slug];
-      const plate = e.pubchem ? `<figure class="plate-card" data-rise style="--i:0"><img alt="Structure drawing of ${esc(e.name)}" src="${plateUrl(e.pubchem, 500)}" width="500" height="500" onerror="this.closest('figure').remove()"></figure>${comparable ? `<a class="link plate-link" data-rise style="--i:0" href="compare.html?a=${encodeURIComponent(e.slug)}">Compare this structure</a>` : ""}` : "";
-      const intro = e.type === "article"
-        ? `<div class="entry-intro" data-rise style="--i:2"><p>${esc(e.summary)}</p></div>`
-        : `<div class="entry-intro" data-rise style="--i:2">
-            ${e.names ? `<div><h2>Names and origin</h2><p>${e.names}</p></div>` : ""}
-            ${e.structure ? `<div><h2>Structure</h2><p>${e.structure}</p></div>` : ""}
-            ${!e.names && !e.structure ? `<p>${esc(e.summary)}</p>` : ""}
+      // One risk row, used by the risk grid and the interactions list alike.
+      const riskRow = (r, name) => `
+          <div class="risk lv-${esc(r.level || "unknown")}">
+            <div class="risk-top"><span class="risk-sys">${esc(name)}<span class="lv">${esc(cap(r.level || "unknown"))} risk</span></span>${r.detail ? `<button class="plus" type="button" aria-expanded="false" aria-label="More about ${esc(name)}">+</button>` : ""}</div>
+            <p>${sent(r.text)}</p>
+            ${badge(r.evidence)}
+            ${r.detail ? `<div class="risk-detail" hidden><p>${sent(r.detail)}</p>${refsLine(r.refs)}</div>` : ""}
           </div>`;
-      out.push(`<header class="wrap spread entry-head" style="padding-top:clamp(2rem,5vw,4rem)">
-        <div class="side entry-side">
-          ${plate}
-          <div class="meta-list" data-rise style="--i:1">
-            ${e.type === "compound" ? `<span>${statusTag(e.status)}</span>` : ""}
-            ${e.class ? `<span>${esc(e.class)}</span>` : ""}
-            <span>Filed under <a class="link-plain" href="codex.html?cat=${e.category}">${esc(cat(e.category).name)}</a></span>
-            ${usesFor(e.slug).length ? `<span>Use case ${usesFor(e.slug).map((u) => `<a class="link-plain" href="codex.html?use=${u.id}">${esc(u.name)}</a>`).join(", ")}</span>` : ""}
-          </div>
-          ${e.type === "compound" ? buyBlock(e) : ""}
-        </div>
-        <div class="main">
-          <h1 class="lines"><span class="line"><span data-line>${esc(e.name)}</span></span></h1>
-          ${intro}
-        </div>
-      </header>`);
+      const riskKey = `<div class="risk-key" aria-hidden="true"><span>Risk, and how serious</span><span>What the record shows, and how strong the evidence is</span></div>`;
+      const isInter = (r) => /interact/i.test(r.system || "");
+      const inter = isCompound ? [...((A.interactions || {})[e.slug] || []), ...(e.risks || []).filter(isInter)] : [];
+      const risks = (e.risks || []).filter((r) => !isInter(r));
 
-      // profile
+      // profile: editorial scores. A low risk score on a thin human record is drawn without colour and says so.
       if (e.profile) {
         const mine = store.get("atlas-rate-" + e.slug) || {};
         const hasMine = Object.keys(mine).length > 0;
-        out.push(sec("Profile", `Editorial scores from 1 to 5, relative to similar compounds. Risk rows, where higher is worse, run from green at 1 to red at 5.`, `
+        const thinRecord = !hasRct(e) && (!(e.trials || []).some((t) => /human/.test(t.evidence)) || (e.risks || []).filter((r) => r.level === "unknown").length >= 2);
+        const thin = (r) => thinRecord && r.neg && /risk/i.test(r.label) && r.score <= 2;
+        const anyThin = e.profile.rows.some(thin);
+        const tone = (r) => (thin(r) ? "var(--muted)" : `var(--risk-${Math.min(5, Math.max(1, r.score))})`);
+        out.push(sec("profile", "Profile", `Editorial scores from 1 to 5, relative to similar compounds. Risk rows, where higher is worse, run from green at 1 to red at 5. <a class="link-plain" href="about.html#profile">How scores are set</a>.`, `
           <div class="sheet profile" id="profile">
             ${e.profile.rows.map((r) => `
               <div class="p-wrap">
-                <div class="p-row${r.neg ? " neg" : ""}"${r.neg ? ` style="--rk: var(--risk-${Math.min(5, Math.max(1, r.score))})"` : ""}><span class="p-label">${esc(r.label)}</span>${meter(r.score, r.neg ? "graded" : "")}<span class="p-score nums">${r.score} of 5</span></div>
+                <div class="p-row${r.neg ? " neg" : ""}${thin(r) ? " thin" : ""}"${r.neg ? ` style="--rk: ${tone(r)}"` : ""}><span class="p-label">${esc(r.label)}${thin(r) ? `<span class="p-flag">Thin human record</span>` : ""}</span>${meter(r.score, r.neg ? "graded" : "")}<span class="p-score nums">${r.score} of 5</span></div>
                 <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span>Your score</span>${meter(mine[r.label] || 0, "mine")}<span class="p-score nums">${mine[r.label] ? mine[r.label] + " of 5" : "Not set"}</span></div>
               </div>`).join("")}
-            ${e.profile.note ? `<p class="soft small" style="margin-top:1rem">${sent(e.profile.note)}</p>` : ""}
+            ${e.profile.note || anyThin ? `<p class="soft small" style="margin-top:1rem">${e.profile.note ? sent(e.profile.note) + " " : ""}${anyThin ? "A low risk score on a thin human record means little is known, not that little is risky, so it is drawn without colour." : ""}</p>` : ""}
           </div>
           <div class="sheet rate-bar"><span>${hasMine ? "You have scored this compound. Your scores stay in this browser and are not part of the codex's assessment." : "Score it yourself. Your scores stay in this browser and are not part of the codex's assessment."}</span><button class="button quiet" id="rate-btn" type="button">${hasMine ? "Edit my scores" : "Add my scores"}</button></div>`));
       }
 
-      // pharmacokinetics
-      if (e.pk) {
-        out.push(sec("Pharmacokinetics", `Source quality ${badge(e.pk.evidence)}`, `
-          <div class="sheet">
-            <table class="table"><tbody>${e.pk.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
-            ${e.pk.note ? `<p class="soft" style="margin-top:1rem;font-size:1rem">${sent(e.pk.note)}</p>` : ""}${refsLine(e.pk.refs)}
-          </div>`));
+      // risks: how serious, then how strong the evidence
+      if (risks.length) {
+        out.push(sec("risk", "Risk", `How serious each risk is, then how strong the evidence behind it is. Open one for the detail. <a class="link-plain" href="about.html#risk-levels">How risk is rated</a>.`,
+          `<div class="risks">${riskKey}${risks.map((r) => riskRow(r, r.system)).join("")}</div>`));
       }
 
-      // dosing (from approved labels and published trials only)
-      if (e.type === "compound") {
-        const d = (A.dosing || {})[e.slug];
-        const fixed = "These are the amounts studied or approved, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.";
-        if (d) {
-          out.push(sec("Dosing in labels and trials", `${esc(d.source || "Source")} ${badge(d.evidence)}`, `
-            <div class="sheet">
-              <table class="table"><tbody>${d.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
-              <p class="soft" style="margin-top:1rem;font-size:1rem">${d.note ? sent(d.note) + " " : ""}${fixed}</p>${refsLine(d.refs)}
-            </div>`));
-        } else {
-          const special = (A.site.noDoseBySlug || {})[e.slug];
-          out.push(sec("Dosing in labels and trials", "Only regulator labels and doses a published trial gave are recorded here.", `
-            <div class="sheet no-dose"><p><strong>${special ? "No dose listed here." : "No established human dose."}</strong> ${esc(special || A.site.noDose[e.status] || A.site.noDose.default)}</p></div>`));
-        }
-      }
-
-      // risks
-      if (e.risks && e.risks.length) {
-        out.push(sec("Risk and monitoring", "Each risk is graded by the evidence behind it. Open one for the detail.", `<div class="risks">${e.risks.map((r) => `
-          <div class="risk lv-${esc(r.level)}">
-            <div class="risk-top"><span class="risk-sys">${esc(r.system)}<span class="lv">${esc(cap(r.level))} risk</span></span>${r.detail ? `<button class="plus" type="button" aria-expanded="false" aria-label="More about ${esc(r.system)}">+</button>` : ""}</div>
-            <p>${sent(r.text)}</p>
-            ${badge(r.evidence)}
-            ${r.detail ? `<div class="risk-detail" hidden><p>${sent(r.detail)}</p>${refsLine(r.refs)}</div>` : ""}
-          </div>`).join("")}</div>`));
+      // interactions and cautions (js/interactions.js, plus any interaction rows from the risk grid)
+      if (isCompound) {
+        out.push(sec("interactions", "Interactions", "Other drugs, supplements and conditions that change this compound's risk.", inter.length
+          ? `<div class="risks">${riskKey}${inter.map((r) => riskRow(r, r.with || r.system)).join("")}</div>`
+          : `<div class="sheet no-dose"><p><strong>No interactions recorded.</strong> This entry doesn't list any yet. That is a gap in the codex, not evidence that none exist. For an approved medicine, the label's interactions section is the place to look, and a pharmacist can check everything you take together.</p></div>`));
       }
 
       // monitoring
       const mon = (A.monitoring || {})[e.slug];
+      const monNote = "Which markers this compound makes worth watching. Target ranges are left out on purpose.";
       if (mon && ((mon.markers && mon.markers.length) || (mon.watch && mon.watch.length))) {
-        out.push(sec("Monitoring", "Which markers this compound makes worth watching. Target ranges are left out on purpose.", `
+        out.push(sec("monitoring", "Monitoring", monNote, `
           <div class="sheet">
             ${mon.markers && mon.markers.length ? `<table class="table"><tbody>${mon.markers.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>` : ""}
             ${mon.watch && mon.watch.length ? `<div class="watch"><h3>Warning signs</h3><ul>${mon.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>` : ""}
-            <p class="soft" style="margin-top:1rem;font-size:1rem">${mon.note ? sent(mon.note) + " " : ""}What a result means depends on the person, the lab and the assay. Take results to a clinician.</p>
+            <p class="caveat">${mon.note ? sent(mon.note) + " " : ""}What a result means depends on the person, the lab and the assay. Take results to a clinician.</p>
           </div>`));
-      }
-
-      // activity
-      if (e.activity && e.activity.length) {
-        out.push(sec("Mechanism and receptor activity", "Choose a mechanism to read the detail beside it.", `
-          <div class="act">
-            <div class="act-list">${e.activity.map((a, i) => `
-              <button class="act-item${i === 0 ? " sel" : ""}" type="button" data-i="${i}" aria-pressed="${i === 0}">
-                <span class="act-top"><span>${esc(a.title)}</span>${badge(a.evidence)}</span>
-                <span class="act-sum">${sent(a.summary)}</span>
-              </button>`).join("")}</div>
-            <div class="act-detail" id="act-detail" aria-live="polite"></div>
-          </div>`));
+      } else if (isCompound) {
+        out.push(sec("monitoring", "Monitoring", monNote,
+          `<div class="sheet no-dose"><p><strong>No markers recorded.</strong> This entry doesn't list compound-specific markers yet. That is a gap in the codex, not a sign that nothing needs watching. A clinician can say which tests fit your situation.</p></div>`));
       }
 
       // trials
-      if (e.type === "compound") {
+      if (isCompound) {
         const n = (e.trials || []).length;
-        out.push(sec("Human clinical record", n ? `${cap(word(n))} ${n === 1 ? "trial" : "trials"} recorded, each with the editor's reading.` : "", n
+        out.push(sec("trials", "Human clinical record", n ? `${cap(word(n))} ${n === 1 ? "trial" : "trials"} recorded, each with the editor's reading.` : "", n
           ? e.trials.map((t) => `
               <article class="sheet trial">
                 <h3>${esc(t.title)} ${badge(t.evidence)}</h3>
@@ -735,31 +742,109 @@
           : `<div class="sheet"><p>${sent(e.noTrials || "No controlled human trials are recorded for this compound.")}</p>${refsLine(e.noTrialsRefs)}</div>`));
       }
 
+      // dosing (from approved labels and published trials only), after the record it comes from
+      if (isCompound) {
+        const d = (A.dosing || {})[e.slug];
+        const fixed = "These are the amounts studied or approved, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.";
+        if (d) {
+          out.push(sec("dosing", "Dosing in labels and trials", `${esc(d.source || "Source")} ${badge(d.evidence)}`, `
+            <div class="sheet">
+              <table class="table"><tbody>${d.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
+              <p class="caveat">${d.note ? sent(d.note) + " " : ""}${fixed}</p>${refsLine(d.refs)}
+            </div>`));
+        } else {
+          const special = (A.site.noDoseBySlug || {})[e.slug];
+          out.push(sec("dosing", "Dosing in labels and trials", "Only regulator labels and doses a published trial gave are recorded here.", `
+            <div class="sheet no-dose"><p><strong>${special ? "No dose listed here." : "No established human dose."}</strong> ${esc(special || A.site.noDose[e.status] || A.site.noDose.default)}</p></div>`));
+        }
+      }
+
+      // pharmacokinetics
+      if (e.pk) {
+        out.push(sec("pk", "Pharmacokinetics", `Source quality ${badge(e.pk.evidence)}`, `
+          <div class="sheet">
+            <table class="table"><tbody>${e.pk.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
+            ${e.pk.note ? `<p class="soft" style="margin-top:1rem;font-size:1rem">${sent(e.pk.note)}</p>` : ""}${refsLine(e.pk.refs)}
+          </div>`));
+      }
+
+      // activity
+      if (e.activity && e.activity.length) {
+        out.push(sec("mechanism", "Mechanism and receptor activity", "Choose a mechanism to read the detail beside it.", `
+          <div class="act">
+            <div class="act-list">${e.activity.map((a, i) => `
+              <button class="act-item${i === 0 ? " sel" : ""}" type="button" data-i="${i}" aria-pressed="${i === 0}">
+                <span class="act-top"><span>${esc(a.title)}</span>${badge(a.evidence)}</span>
+                <span class="act-sum">${sent(a.summary)}</span>
+              </button>`).join("")}</div>
+            <div class="act-detail" id="act-detail" aria-live="polite"></div>
+          </div>`));
+      }
+
       // article sections
-      if (e.sections) e.sections.forEach((s) => out.push(sec(s.heading, "", `<div class="sheet prose">${s.body}</div>`)));
+      if (e.sections) e.sections.forEach((s, i) => out.push(sec("part-" + (i + 1), s.heading, "", `<div class="sheet prose">${s.body}</div>`)));
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...inter, ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         const sorted = [...ids].sort((a, b) => a - b);
-        out.push(`<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`);
-        out.push(sec("References", "Linked to a PubMed search where the source is a paper.", `<div class="sheet"><ol class="refs-list nums">${sorted.map((id) => `
-          <li id="ref-${id}" value="${id}">${esc(A.references[id])}${/announcement|prescribing information|federal register|product characteristics|prohibited list|clinicaltrials.gov|healio/i.test(A.references[id]) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(A.references[id].split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`).join("")}</ol></div>`));
+        out.push(ornament);
+        out.push(sec("references", "References", "Linked to a PubMed search where the source is a paper.", `<div class="sheet"><ol class="refs-list nums">${sorted.map((id) => refItem(id, A.references[id])).join("")}</ol></div>`));
       }
 
       // Stacks this compound is part of.
       const inStacks = STK.items.filter((x) => x.parts.some((p) => p.slug === e.slug)).sort(byName);
-      if (inStacks.length) out.push(sec("In stacks", "Combinations that include this compound, graded on the pair itself.", `<div class="bands">${inStacks.map((x, i) => stackBand(x, i)).join("")}</div>`));
+      if (inStacks.length) out.push(sec("stacks", "In stacks", "Combinations that include this compound, graded on the pair itself.", `<div class="bands">${inStacks.map((x, i) => stackBand(x, i)).join("")}</div>`));
 
       const related = (e.related || []).map(bySlug).filter(Boolean);
-      if (related.length) out.push(sec("Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`));
-      if (mainSource()) out.push(sec("Support", "", supportBand(true)));
-      out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(e.added)}. Last updated ${fmtDate(e.updated)}.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
-      host.innerHTML = out.join("");
-      $$(".code-btn", host).forEach(copyCode);
+      if (related.length) out.push(sec("related", "Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`, false));
+      if (mainSource()) out.push(sec("support", "Support", "", supportBand(true), false));
+      // The record: dates, a citation to copy, a printable copy to take to a clinician, and the way to report an error.
+      const here = /^https?:/.test(location.protocol) ? `${location.origin}${location.pathname}?slug=${encodeURIComponent(e.slug)}` : "";
+      const cite = `Atlas Codex. “${e.name}.” Last updated ${fmtDate(e.updated)}.${here ? " " + here : ""}`;
+      out.push(sec("record", "Record", "", `<p class="updated nums">Added ${fmtDate(e.added)}. Last updated ${fmtDate(e.updated)}.</p>
+        <p class="cite">${esc(cite)}</p>
+        <div class="record-actions">
+          <button class="button quiet" type="button" id="print-btn">Print or save as PDF</button>
+          <button class="code-btn" type="button" data-code="${esc(cite)}">Copy citation</button>
+          <a class="link go" href="${esc(reportUrl("Correction: " + e.name, "Entry: " + (here || e.slug) + "\n\nWhat is wrong, and the source that shows it:\n"))}" target="_blank" rel="noopener">Report an error in this entry</a>
+        </div>
+        <p class="disclaimer" style="margin-top:1.5rem">${esc(A.site.disclaimer)}</p>`, false));
 
-      // interactions
+      // head: the plate and the facts in the side zone, the name and the lede on the axis, then the contents
+      const comparable = A.structures && A.structures.smiles[e.slug];
+      const plate = e.pubchem ? `<figure class="plate-card" data-rise style="--i:0"><img alt="Structure drawing of ${esc(e.name)}" src="${plateUrl(e.pubchem, 500)}" width="500" height="500" onerror="this.closest('figure').remove()"></figure>${comparable ? `<a class="link plate-link" data-rise style="--i:0" href="compare.html?a=${encodeURIComponent(e.slug)}">Compare this structure</a>` : ""}` : "";
+      const intro = e.type === "article"
+        ? `<div class="entry-intro" data-rise style="--i:2"><p>${esc(e.summary)}</p></div>`
+        : `<div class="entry-intro" data-rise style="--i:2">
+            ${e.names ? `<div><h2>Names and origin</h2><p>${e.names}</p></div>` : ""}
+            ${e.structure ? `<div><h2>Structure</h2><p>${e.structure}</p></div>` : ""}
+            ${!e.names && !e.structure ? `<p>${esc(e.summary)}</p>` : ""}
+          </div>`;
+      const contents = toc.length > 3 ? `<nav class="toc" aria-label="On this page" data-rise style="--i:3"><p class="toc-h">On this page</p><ol>${toc.map(([id, t]) => `<li><a href="#${id}">${esc(t)}</a></li>`).join("")}</ol></nav>` : "";
+      const head = `<header class="wrap spread entry-head" style="padding-top:clamp(2rem,5vw,4rem)">
+        <div class="side entry-side">
+          ${plate}
+          <div class="meta-list" data-rise style="--i:1">
+            ${isCompound ? `<span>${statusTag(e.status, e.slug)}</span>` : ""}
+            ${e.class ? `<span>${esc(e.class)}</span>` : ""}
+            <span>Filed under <a class="link-plain" href="codex.html?cat=${e.category}">${esc(cat(e.category).name)}</a></span>
+            ${usesFor(e.slug).length ? `<span>Use case ${usesFor(e.slug).map((u) => `<a class="link-plain" href="codex.html?use=${u.id}">${esc(u.name)}</a>`).join(", ")}</span>` : ""}
+          </div>
+          ${isCompound ? buyBlock(e) : ""}
+          ${contents}
+        </div>
+        <div class="main">
+          <h1 class="lines"><span class="line"><span data-line>${esc(e.name)}</span></span></h1>
+          ${intro}
+        </div>
+      </header>`;
+      host.innerHTML = head + out.join("");
+      $$(".code-btn", host).forEach(copyCode);
+      $("#print-btn").addEventListener("click", () => print());
+
+      // risk rows open for their detail
       $$(".risk .plus").forEach((b) => b.addEventListener("click", () => {
         const d = b.closest(".risk").querySelector(".risk-detail");
         d.hidden = !d.hidden;
@@ -816,7 +901,7 @@
             </div>
             ${tags("Attributes", s.attributes)}
             ${tags("What they sell", s.sells)}
-            ${s.popular && s.popular.length ? `<div class="tag-group"><h3>Popular, with the codex entry</h3><div class="chips">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="chip go" href="entry.html?slug=${encodeURIComponent(p.slug)}">${esc(p.name)}</a>` : `<span class="chip">${esc(p.name)}</span>`).join("")}</div></div>` : ""}
+            ${s.popular && s.popular.length ? `<div class="tag-group"><h3>Listed by the source, with the codex entry</h3><div class="chips">${s.popular.map((p) => p.slug && bySlug(p.slug) ? `<a class="chip go" href="entry.html?slug=${encodeURIComponent(p.slug)}">${esc(p.name)}</a>` : `<span class="chip">${esc(p.name)}</span>`).join("")}</div></div>` : ""}
           </div>
         </article>`).join("");
       $$(".code-btn").forEach(copyCode);
@@ -920,6 +1005,7 @@
       const s = stackById(new URLSearchParams(location.search).get("id"));
       const host = $("#stack");
       if (!s) {
+        document.title = `Stack not found · ${A.site.title}`;
         host.innerHTML = `<div class="wrap spread page-title"><div class="side"><p>That stack isn't in the codex.</p></div><div class="main"><h1>Stack not found</h1><p style="margin-top:1.5rem"><a class="button" href="stacks.html">Browse every stack</a></p></div></div>`;
         return;
       }
@@ -1001,7 +1087,7 @@
       const s = mainSource();
       if (!s) return `<div class="buy" data-rise style="--i:2"><span class="buy-title">Buy from</span><span class="buy-none">No current listing</span></div>`;
       return `<div class="buy" data-rise style="--i:2">
-        <span class="buy-title">${String(e.status).toLowerCase() === "banned" ? "Banned for human use. No source is linked for this compound." : "No product listing for this compound yet."}</span>
+        <span class="buy-title">${String(e.status).toLowerCase() === "banned" ? "Banned for human use. No source is linked for this compound." : "No product listing for this compound."}</span>
         <a class="buy-support" href="${esc(withRef(s.href, s.code))}" target="_blank" rel="noopener sponsored"><strong>Support the codex at ${esc(s.name)}</strong><span>Use code <b>${esc(s.code)}</b>. The codex earns a commission.</span></a>
       </div>`;
     }

@@ -16,7 +16,7 @@ colors:
   laurel: "#9fc48f"
   verdigris: "#7ab3a4"
   amber: "#deae5f"
-  crimson: "#e27e8a"
+  crimson: "#ec909b"
   light-ground: "#f3eee1"
   light-surface: "#e9e2cf"
   light-surface-raised: "#ddd5be"
@@ -133,7 +133,7 @@ Two print colours on an ink ground, with four meaning colours kept for evidence 
 - **Lamp Gold** (`lamp-gold`): the one action colour. Primary buttons, link accents, the active nav item, focus outlines, the reader's own scores. It deepens to `light-gold` in the parchment theme.
 
 ### Secondary
-- **Paper Field** (`paper-field`): a whole section in parchment with ink text, used for the live figure page and the footer. In the light theme this field inverts to ink.
+- **Paper Field** (`paper-field`): a whole section in parchment with ink text, used for the footer and the stack formula plate. In the light theme this field inverts to ink. Gold set on this field uses the deeper `--paper-gilt` (#7d571c in the dark theme), so the footer's CODEX reads at more than 5:1.
 - **Gilt Field** (`gilt-field`): the closing band on the home page, with ink text and one underlined link.
 
 ### Tertiary
@@ -164,7 +164,7 @@ Two print colours on an ink ground, with four meaning colours kept for evidence 
 - **Headline** (600, 30–42px): section claims, the support band.
 - **Lead** (600, 22–28px, Cormorant): side-zone section titles, statements, the footer's ways in.
 - **Body** (400, 18–21px, leading 1.55): everything read. Entry ledes sit one step up (20–24px). Measure 45–75 characters.
-- **Small** (17px): notes, band notes, filters, legal lines. Nothing is smaller.
+- **Small** (17px): notes, band notes, filters, legal lines. Nothing is smaller, with three recorded exceptions: the 15px use-case column on crowded bands, the atom labels inside the compare proof (14.4px, with 10px sub- and superscripts), and the 0.8rem monogram in a Buy from logo tile. Display sizes outside the ramp (the ledger figure, the footer wordmark, the archive's letter initials, the formula plate) are each set once, where they are used.
 - **Wordmark** (600, tracked 0.2em, capitals): ATLAS in ink, CODEX in gold, in the header and at the head of the footer.
 - **Figure** (up to 15vw): the single live figure on the home page.
 
@@ -229,8 +229,26 @@ Visitors are steered toward the affiliate source and the Support page on every p
 ### Entry spreads
 Each section is a spread: its title and a one-line note in the side zone (sticky on desktop), the content on the axis in sheets of `surface`. Tables carry the data, the activity list pairs with a sticky detail panel, and trials are sheets with an amber editor's note.
 
+Compound entries run in one order, so the record comes before the numbers drawn from it: profile, risk, interactions, monitoring, human clinical record, dosing, pharmacokinetics, mechanism, references, then stacks, related, support and the record. Interactions and monitoring always appear. When an entry has nothing for them, they show the same honest "none recorded" sheet the dosing panel uses. The head's side zone ends with **On this page**, a plain list of the sections on desktop and a wrap of filled blocks on phones.
+
+- **Risk key:** a soft-ink line above each risk grid names the two columns: the risk and how serious it is, then what the record shows and how strong the evidence is.
+- **Thin human record:** a profile risk row scored 2 or lower, on a compound with no randomized human trial and little other human data, drops its colour: hatched squares in soft ink and the label "Thin human record". Green never stands for "little is known".
+- **The record:** the dates, a citation in full ink, then Print or save as PDF, Copy citation and Report an error in this entry. A print stylesheet drops the header, support surfaces and side tools, opens every risk detail and sets the entry in black on white.
+
+### Status where it applies
+An "Approved" tag names where, on a second line in the same tint, when the approval is outside the US or only as a cosmetic ("China", "Outside the US", "As a cosmetic"). The places come from each entry's own text, in `site.approvedWhere`.
+
+### Stacks that cost
+On the stacks list, a stack filed under "Where the record pushes back" carries a crimson "Cost found" line under its grade, so a strong grade there reads as strong evidence of a cost.
+
+### Ask the archive
+A flat square with an open-book mark, never a sparkle, because it is a keyword search and not an AI model. On desktop it sits in the right page margin, clear of the content column, and its name slides out to the left on hover or focus. On phones it is the same square at the screen edge, above the support bar.
+
+### Access
+A skip link is the first stop on every page. Where the pointer is a finger, every control and every link outside running text is at least 44px tall. On phones the codex's two tab rows fold behind one "Use case and field" line that counts the picks.
+
 ### The live figure
-On the home page, one number owns a parchment field: the share of compounds with a randomized human trial, recounted from the entry data for whichever field the visitor picks. The claim above it rewrites itself to stay true.
+On the home page, one number owns a surface band: the share of compounds with a randomized human trial, recounted from the entry data for whichever field the visitor picks. The claim above it rewrites itself to stay true.
 
 ## Do's and Don'ts
 

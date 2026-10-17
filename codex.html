@@ -25,6 +25,7 @@
   <script src="js/pk.js"></script>
   <script src="js/dosing.js"></script>
   <script src="js/monitoring.js"></script>
+  <script src="js/interactions.js"></script>
   <script src="js/entries-new.js"></script>
   <script src="js/refs-research.js"></script>
   <script src="js/buy.js"></script>
@@ -42,8 +43,11 @@
     <div class="wrap spread" style="padding-bottom:var(--section)">
       <div class="side"><div class="filters" id="codex-filters" data-rise style="--i:1"></div></div>
       <div class="main">
-        <div class="frow" data-rise style="--i:2"><h2 class="frow-label" id="use-label">Use case</h2><div class="cat-row" id="use-chips" role="group" aria-labelledby="use-label"></div></div>
-        <div class="frow" data-rise style="--i:3"><h2 class="frow-label" id="field-label">Field</h2><div class="cat-row" id="cat-chips" role="group" aria-labelledby="field-label"></div></div>
+        <details class="filter-fold" id="filter-fold" open data-rise style="--i:2">
+          <summary><span>Use case and field</span><span class="fold-count nums" id="fold-count"></span></summary>
+          <div class="frow"><h2 class="frow-label" id="use-label">Use case <span>what it is studied or used for</span></h2><div class="cat-row" id="use-chips" role="group" aria-labelledby="use-label"></div></div>
+          <div class="frow"><h2 class="frow-label" id="field-label">Field <span>what kind of compound it is</span></h2><div class="cat-row" id="cat-chips" role="group" aria-labelledby="field-label"></div></div>
+        </details>
         <div class="bands" id="codex-list"></div>
       </div>
     </div>

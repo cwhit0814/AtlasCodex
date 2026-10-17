@@ -66,6 +66,23 @@ window.ATLAS = {
       "Compounded": "Strength is set per prescription by the compounding pharmacy and prescriber, so there is no standard dose.",
       default: "No dose-finding study or approved label establishes a human dose for this compound."
     },
+    // Where an "Approved" status applies, for entries not approved in the US or approved only as a cosmetic.
+    // Each comes from the entry's own text; the tag shows it under the word "Approved".
+    approvedWhere: {
+      mazdutide: "China", oxiracetam: "China",
+      selank: "Russia", semax: "Russia", thymalin: "Russia", phenibut: "Russia", picamilon: "Russia", bromantane: "Russia",
+      emoxypine: "Russia", noopept: "Russia", phenylpiracetam: "Russia",
+      taltirelin: "Japan", "ghrp-2": "Japan, as a diagnostic", meldonium: "Eastern Europe", piracetam: "Europe",
+      cytisine: "UK, Canada and others", vip: "Some EU countries",
+      clenbuterol: "Outside the US", dapoxetine: "Outside the US", tropisetron: "Outside the US", proviron: "Outside the US",
+      "cerebroprotein-hydrolysate": "Outside the US", "thymosin-alpha-1": "Outside the US and EU",
+      "ghk-cu": "As a cosmetic", "ahk-cu": "As a cosmetic", "snap-8": "As a cosmetic", topilutamide: "As a cosmetic, Czechia"
+    },
+    // Corrections and requests go to the public issue tracker.
+    contact: {
+      label: "the codex's public issue tracker on GitHub",
+      href: "https://github.com/cwhit0814/AtlasCodex/issues/new"
+    },
     disclaimer:
       "Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.",
     ticker: [
@@ -157,8 +174,8 @@ window.ATLAS = {
    */
   support: {
     eyebrow: "Trusted sources",
-    title: "Support Me",
-    intro: "Using my code at the sources below supports Atlas Codex at no extra cost to you. Thank you for keeping the archive running.",
+    title: "Support me",
+    intro: "Using my code at the source below supports Atlas Codex at no extra cost to you. Thank you for keeping the archive running.",
     disclosure: "Atlas Codex earns a commission on purchases made with these codes. A listing here is not an endorsement of any product, and nothing on this page is medical advice.",
     sources: [
       {
@@ -168,8 +185,8 @@ window.ATLAS = {
         code: "ATLAS",
         logo: "img/halfnattys.png",
         logoBg: "#000",
-        blurb: "Research-market products across peptides, capsules, sprays and topicals, with a public COA library.",
-        attributes: ["COA Library", "Research Market"],
+        blurb: "Research-market products across peptides, capsules, sprays and topicals. The source says it publishes a COA library; the codex has not checked it.",
+        attributes: ["COA library (the source's claim)", "Research market"],
         sells: ["Peptides", "Capsules", "Sprays", "Topicals", "Aminos", "Liquids", "Lab Supplies"],
         popular: [
           { name: "GHK-Cu", slug: "ghk-cu" },

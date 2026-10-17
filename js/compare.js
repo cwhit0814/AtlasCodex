@@ -218,7 +218,7 @@
     return `
       <section class="wrap spread page-title">
         <div class="side"><p>Two skeletal drawings printed one over the other, locked in register on the skeleton they share.</p></div>
-        <div class="main"><h1 class="lines"><span class="line"><span data-line>Compare Structures</span></span></h1></div>
+        <div class="main"><h1 class="lines"><span class="line"><span data-line>Compare structures</span></span></h1></div>
       </section>
       <section class="wrap spread cmp" aria-label="Comparison">
         <div class="side">

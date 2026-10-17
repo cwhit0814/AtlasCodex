@@ -25,6 +25,7 @@
   <script src="js/pk.js"></script>
   <script src="js/dosing.js"></script>
   <script src="js/monitoring.js"></script>
+  <script src="js/interactions.js"></script>
   <script src="js/entries-new.js"></script>
   <script src="js/refs-research.js"></script>
   <script src="js/buy.js"></script>
@@ -36,7 +37,7 @@
   <header id="site-header"></header>
   <main style="padding-bottom:var(--section)">
     <header class="wrap spread page-title">
-      <div class="side"><p data-rise style="--i:0">A plain-language atlas of the compounds people are talking about, and the rules it is written by.</p></div>
+      <div class="side"><p data-rise style="--i:0">A plain-language atlas of the compounds people are talking about, the rules it is written by, and who writes it.</p></div>
       <div class="main"><h1 class="lines"><span class="line"><span data-line style="--i:0">About</span></span><span class="line"><span data-line style="--i:1">the codex</span></span></h1></div>
     </header>
     
@@ -44,24 +45,56 @@
       <div class="side"><h2 data-reveal>What this is</h2></div>
       <div class="main" data-reveal style="--i:1"><p class="lead">Atlas Codex is a reference library. Each entry covers what a compound is, its structure, how it acts on the body, its risks, and the human clinical record behind it. Every claim carries a grade for the evidence behind it.</p></div>
     </section>
-    
+
+    <section class="wrap spread about-sec" id="method">
+      <div class="side"><h2 data-reveal>How an entry is made</h2></div>
+      <div class="main" data-reveal style="--i:1">
+        <p>Every compound entry has the same sections in the same order, so two entries can be read side by side: risk, interactions, monitoring, the human clinical record, dosing, pharmacokinetics, mechanism and references. Where a section has nothing in it, the entry says so instead of leaving it out.</p>
+        <p>Entries are written from primary sources: regulator labels, published trial reports, systematic reviews and the papers they cite. Forums, vendor pages and coaching protocols are left out on purpose. Where a creator's view and the published record disagree, the codex follows the record.</p>
+        <p><strong>Dosing</strong> holds only two kinds of number: the dose on an approved regulator label, and the dose a published trial actually gave. If neither exists, the panel says there is no established human dose and leaves the gap open.</p>
+        <p><strong>Monitoring</strong> lists which markers a compound makes worth watching, and why. It leaves out target ranges, because reading a result is a clinical decision.</p>
+      </div>
+    </section>
+
     <section class="wrap spread about-sec" id="grades">
-      <div class="side"><h2 data-reveal>Evidence grades</h2></div>
+      <div class="side"><h2 data-reveal>Evidence grades</h2><p class="note" data-reveal style="--i:1">How strong the evidence behind a claim is. The grade sits beside the claim, not in a footnote.</p></div>
       <div class="main" data-reveal style="--i:1"><ul class="legend">
       <li><span><span class="ev t-good">Human RCT</span></span>Randomized controlled trials in people.</li>
-      <li><span><span class="ev t-good">Established</span></span>Settled pharmacology.</li>
-      <li><span><span class="ev t-obs">Human observational</span></span>Observational human data.</li>
-      <li><span><span class="ev t-weak">Animal</span><span class="ev t-weak">In vitro</span></span>Preclinical only.</li>
-      <li><span><span class="ev t-weak">Anecdotal</span></span>User reports.</li>
-      <li><span><span class="ev t-weak">Contested</span></span>Evidence points both ways.</li>
-      <li><span><span class="ev t-plain">Unknown</span></span>No data.</li>
+      <li><span><span class="ev t-good">Established</span></span>Settled facts: a regulator's label, well-replicated pharmacology, or a matter of record, such as a trial never having been published.</li>
+      <li><span><span class="ev t-obs">Human observational</span></span>Cohort studies, case series and case reports in people, without randomization.</li>
+      <li><span><span class="ev t-weak">Animal</span><span class="ev t-weak">In vitro</span></span>Preclinical only: animal studies, or cells and tissue in a dish.</li>
+      <li><span><span class="ev t-weak">Anecdotal</span></span>User reports, with no controlled data.</li>
+      <li><span><span class="ev t-weak">Contested</span></span>Published evidence points both ways.</li>
+      <li><span><span class="ev t-plain">Unknown</span></span>No usable data.</li>
     </ul></div>
     </section>
-    
-    <section class="wrap spread about-sec">
+
+    <section class="wrap spread about-sec" id="risk-levels">
+      <div class="side"><h2 data-reveal>Risk levels</h2><p class="note" data-reveal style="--i:1">How serious a risk is. Read it together with the grade beside it.</p></div>
+      <div class="main" data-reveal style="--i:1">
+        <ul class="legend levels">
+          <li><span class="risk-sys lv-high"><span class="lv">High risk</span></span>Serious harm, or harm common enough that it should shape the decision, is on record.</li>
+          <li><span class="risk-sys lv-moderate"><span class="lv">Moderate risk</span></span>A real harm that is usually uncommon, dose-related or manageable with monitoring.</li>
+          <li><span class="risk-sys lv-low"><span class="lv">Low risk</span></span>Minor, rare or reversible on the record so far.</li>
+          <li><span class="risk-sys lv-unknown"><span class="lv">Unknown risk</span></span>The record is too thin to rate it.</li>
+        </ul>
+        <p style="margin-top:1.5rem">The level says how serious a risk is. The badge beside it says how strong the evidence for it is. A high risk graded Animal is a warning from animal work, not a measured rate in people. An unknown risk is a gap, not a reassurance.</p>
+      </div>
+    </section>
+
+    <section class="wrap spread about-sec" id="profile">
+      <div class="side"><h2 data-reveal>Profile scores</h2></div>
+      <div class="main" data-reveal style="--i:1">
+        <p>Profile bars are my editorial judgements on a 1 to 5 scale, relative to similar compounds. Red rows are attributes where a higher score is worse. Risk load is an overall reading of how much harm is on record at the doses studied.</p>
+        <p>Where a compound has no randomized human trial and little other human data, a low risk score is drawn without colour and marked "Thin human record". Little is known, which is not the same as little risk.</p>
+        <p>Visitors can add their own scores. These are stored only in their own browser and never change the codex's scores.</p>
+      </div>
+    </section>
+
+    <section class="wrap spread about-sec" id="status">
       <div class="side"><h2 data-reveal>Status labels</h2></div>
       <div class="main" data-reveal style="--i:1"><ul class="legend">
-      <li><span><span class="st t-good">Approved</span></span>Approved as a medicine, or as a cosmetic ingredient, in at least one jurisdiction. Each entry says which.</li>
+      <li><span><span class="st t-good">Approved</span></span>Approved as a medicine, or as a cosmetic ingredient, in at least one jurisdiction. Where that is not the US, or only as a cosmetic, the label says where.</li>
       <li><span><span class="st t-weak">Investigational</span></span>In formal clinical development.</li>
       <li><span><span class="st t-bad">Research only</span></span>Not approved for human use. Evidence is mostly preclinical.</li>
       <li><span><span class="st t-plain">Discontinued</span></span>Was once an approved medicine but has been withdrawn or is no longer marketed.</li>
@@ -73,22 +106,62 @@
       <li><span><span class="st t-plain">Cosmetic</span></span>Sold as a cosmetic or personal care product, not as a drug.</li>
     </ul></div>
     </section>
-    
-    <section class="wrap spread about-sec">
-      <div class="side"><h2 data-reveal>Profile scores</h2></div>
-      <div class="main" data-reveal style="--i:1"><p>Profile bars are editorial judgements on a 1 to 5 scale, relative to similar compounds. Red rows are attributes where a higher score is worse. Visitors can add their own scores; these are stored only in their own browser.</p></div>
+
+    <section class="wrap spread about-sec" id="scope">
+      <div class="side"><h2 data-reveal>What gets an entry</h2></div>
+      <div class="main" data-reveal style="--i:1"><p>A compound gets an entry when people who experiment on themselves are using it or asking about it, or when an approved medicine is commonly used alongside those compounds. Guides cover how to read the evidence. Being in the codex means a compound is discussed. It does not mean it works, and it is not a recommendation.</p></div>
     </section>
-    
-    <section class="wrap spread about-sec" id="support">
-      <div class="side"><h2 data-reveal>Support</h2></div>
-      <div class="main" data-reveal style="--i:1"><p>Atlas Codex is free. You can support it by using my code at the sources on the <a class="link-plain" href="support.html">Support Me</a> page.</p></div>
+
+    <section class="wrap spread about-sec" id="editor">
+      <div class="side"><h2 data-reveal>Who writes it</h2></div>
+      <div class="main" data-reveal style="--i:1"><p>The codex is written and edited by one person, the site's owner. No entry has been reviewed by a clinician or an outside expert. That is why every claim carries its grade and its reference: so you can check the source instead of taking my word for it.</p></div>
     </section>
-    
+
+    <section class="wrap spread about-sec" id="independence">
+      <div class="side"><h2 data-reveal>Money and independence</h2></div>
+      <div class="main" data-reveal style="--i:1">
+        <p>The codex earns a commission when readers use code ATLAS at Half Nattys, and the disclosure sits beside every affiliate link. You can support it on the <a class="link-plain" href="support.html">Support me</a> page.</p>
+        <p>Whether the source sells a compound has no bearing on its entry. Risks, grades and dosing are written from the record, and the record outranks the codex's own revenue. A listing is never a recommendation, and banned compounds never get a shop prompt.</p>
+      </div>
+    </section>
+
     <section class="wrap spread about-sec" id="contact">
-      <div class="side"><h2 data-reveal>Contact and requests</h2></div>
-      <div class="main" data-reveal style="--i:1"><p>To request an entry or report an error, add your contact link or form here.</p></div>
+      <div class="side"><h2 data-reveal>Corrections and requests</h2></div>
+      <div class="main" data-reveal style="--i:1">
+        <p>Corrections and entry requests go to the codex's public issue tracker on GitHub. Every entry has a "Report an error in this entry" link that opens a report for that entry. A correction is most useful with the source that shows it: a label, a trial report or a PubMed link. Opening a report needs a free GitHub account.</p>
+        <p class="about-actions"><a class="button" href="https://github.com/cwhit0814/AtlasCodex/issues/new?title=Correction%3A%20" target="_blank" rel="noopener">Report an error</a><a class="button quiet" href="https://github.com/cwhit0814/AtlasCodex/issues/new?title=Entry%20request%3A%20" target="_blank" rel="noopener">Request an entry</a></p>
+      </div>
     </section>
-    
+
+    <section class="wrap spread about-sec" id="glossary">
+      <div class="side"><h2 data-reveal>Glossary</h2><p class="note" data-reveal style="--i:1">Terms the entries use, in plain words.</p></div>
+      <div class="main" data-reveal style="--i:1"><dl class="glossary">
+        <div><dt>Randomized controlled trial (RCT)</dt><dd>A trial that assigns people to a treatment or a comparison by chance, so the groups differ only in what they were given.</dd></div>
+        <div><dt>Placebo</dt><dd>An inactive comparison treatment made to look like the real one.</dd></div>
+        <div><dt>Double-blind, open-label</dt><dd>In a double-blind trial neither the participants nor the researchers know who got what until the end. In an open-label trial everyone knows, which makes subjective results less reliable.</dd></div>
+        <div><dt>Endpoint</dt><dd>The outcome a trial was designed to measure. A surrogate endpoint, such as a lab value, can move without the outcome that matters changing.</dd></div>
+        <div><dt>Phase 1, 2 and 3</dt><dd>Phase 1 tests safety and dosing in small groups. Phase 2 looks for an effect and the right dose. Phase 3 tests the effect in large groups and is usually what approval rests on.</dd></div>
+        <div><dt>Observational study</dt><dd>A study that follows people who chose or were given a treatment, without assigning it. It can show an association, not a cause.</dd></div>
+        <div><dt>Systematic review, meta-analysis</dt><dd>A review that gathers every trial on one question, and often pools their results. Cochrane reviews are one widely used series.</dd></div>
+        <div><dt>Half-life</dt><dd>The time it takes for the amount in the blood to fall by half.</dd></div>
+        <div><dt>Bioavailability</dt><dd>The share of a dose that reaches the bloodstream.</dd></div>
+        <div><dt>Cmax, Tmax</dt><dd>The peak blood level after a dose, and how long it takes to get there.</dd></div>
+        <div><dt>SC, IM, IV</dt><dd>Subcutaneous (under the skin), intramuscular (into a muscle) and intravenous (into a vein).</dd></div>
+        <div><dt>CYP enzymes</dt><dd>Liver enzymes, such as CYP3A4 and CYP2D6, that break down many drugs. A compound that blocks or speeds one up can change the levels of others.</dd></div>
+        <div><dt>Label</dt><dd>A medicine's regulator-approved prescribing information: its uses, doses, warnings and interactions.</dd></div>
+        <div><dt>503A, 503B</dt><dd>The two sections of US law that cover compounding pharmacies. 503A pharmacies compound for individual prescriptions. 503B outsourcing facilities make larger batches under closer FDA oversight.</dd></div>
+        <div><dt>WADA</dt><dd>The World Anti-Doping Agency, which publishes the list of substances prohibited in sport.</dd></div>
+        <div><dt>COA</dt><dd>Certificate of analysis: a lab report on one batch of a product. It is only as good as the lab, the tests run and the batch it covers. <a class="link-plain" href="entry.html?slug=reading-a-coa">Reading a COA</a>.</dd></div>
+        <div><dt>HPLC</dt><dd>High-performance liquid chromatography, the usual purity test. It measures how much of a sample is the main compound. On its own it is weak evidence of which compound that is.</dd></div>
+        <div><dt>Mass spectrometry</dt><dd>A test that identifies a molecule by its mass. Paired with HPLC it can confirm identity as well as purity.</dd></div>
+        <div><dt>Endotoxin</dt><dd>Fragments of bacterial cell walls. Injected, they can cause fever and shock. A purity test does not detect them.</dd></div>
+        <div><dt>SERM, aromatase inhibitor</dt><dd>Drugs that block estrogen's effect at its receptor (a SERM), or block its production from testosterone (an aromatase inhibitor).</dd></div>
+        <div><dt>PCT</dt><dd>Post-cycle therapy: drugs used after anabolic steroids to restart the body's own testosterone production.</dd></div>
+        <div><dt>HPG axis</dt><dd>The hypothalamic–pituitary–gonadal axis, the hormone chain that controls testosterone production and that outside androgens suppress.</dd></div>
+        <div><dt>Tanimoto similarity</dt><dd>A score from 0 to 1 for how many structural features two molecules share. The <a class="link-plain" href="compare.html">compare page</a> uses it.</dd></div>
+      </dl></div>
+    </section>
+
     <section class="wrap spread about-sec">
       <div class="side"><h2 data-reveal>Disclaimer</h2></div>
       <div class="main" data-reveal style="--i:1"><p>Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.</p></div>
