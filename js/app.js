@@ -815,7 +815,13 @@
       const inStacks = STK.items.filter((x) => x.parts.some((p) => p.slug === e.slug)).sort(byName);
       if (inStacks.length) out.push(sec("stacks", "In stacks", "Combinations that include this compound, graded on the pair itself.", `<div class="bands">${inStacks.map((x, i) => stackBand(x, i)).join("")}</div>`));
 
-      const related = (e.related || []).map(bySlug).filter(Boolean);
+      // A blend lists what is in it; an ingredient lists the blends it is sold in. Neither repeats under Related.
+      const parts = (e.parts || []).map(bySlug).filter(Boolean);
+      const inBlends = A.entries.filter((x) => (x.parts || []).includes(e.slug)).sort(byName);
+      if (parts.length) out.push(sec("ingredients", "Ingredients", "Each ingredient's own record. The blend is no better studied than its weakest part.", `<div class="bands">${parts.map((r, i) => band(r, i)).join("")}</div>`));
+      if (inBlends.length) out.push(sec("in-blends", "Sold in blends", "Blends that contain this compound. None has been studied as a combination.", `<div class="bands">${inBlends.map((r, i) => band(r, i)).join("")}</div>`));
+      const shown = new Set([...parts, ...inBlends]);
+      const related = (e.related || []).map(bySlug).filter((r) => r && !shown.has(r));
       if (related.length) out.push(sec("related", "Related", "", `<div class="bands">${related.map((r, i) => band(r, i)).join("")}</div>`, false));
       if (mainSource()) out.push(sec("support", "Support", "", supportBand(true), false));
       // The record: dates, a citation to copy, a printable copy to take to a clinician, and the way to report an error.

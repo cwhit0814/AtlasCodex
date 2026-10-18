@@ -690,7 +690,7 @@
     r: [...bioRisks, ...(extra.r || [])], a: [["Gene expression", "in vitro", `Reported to change gene expression in ${target} cells in culture`], ...(extra.a || [])],
     t: extra.t || [], noTrials: extra.noTrials || "Clinical claims come from Russian studies that are small and mostly not independently replicated.", noTrialsRefs: extra.noTrialsRefs,
     k: [["Route", extra.route || "Oral capsules, injection or sublingual"], ["Half-life", "Minutes for short peptides; not established"], ["Metabolism", "Peptidase cleavage"]], ke: "unknown",
-    related: ["epitalon", ...(extra.related || [])], ...(extra.updated ? { updated: extra.updated } : {}) });
+    related: ["epitalon", ...(extra.related || [])], ...(extra.added ? { added: extra.added } : {}), ...(extra.updated ? { updated: extra.updated } : {}) });
 
   bio("bronchogen", "Bronchogen", "the bronchial lining", "Ala-Asp-Glu-Leu (AEDL)", { tags: ["lungs"], summary: "A four-amino-acid bioregulator claimed to support the bronchial lining and reduce lung inflammation.", related: ["chonluten"],
     noTrials: "No human trial is indexed in PubMed. The strongest evidence is a rat study from the originating group, in which it reversed bronchial remodeling and reduced inflammation in a model of chronic obstructive lung disease.",
@@ -724,6 +724,12 @@
     ],
     r: [["Blood stem cells", "unknown", "The only human study reported a fall in CD34+ blood stem cells and pro-oxidant activity", "human obs", "The authors read the CD34+ change as inhibition of blood cell production. It has not been followed up.", [666]]],
     updated: "2026-10-17" });
+  bio("cartalax", "Cartalax", "cartilage", "Ala-Glu-Asp (AED)", { tags: ["joints", "cartilage"], summary: "A three-amino-acid bioregulator claimed to support cartilage and slow joint aging.", related: ["chonluten"],
+    r: [["Identity", "moderate", "Some sellers list it as Ala-Glu-Asp-Gly, which is the sequence of epitalon, not the Ala-Glu-Asp studied as cartalax", "established", "Half Nattys lists Ala-Glu-Asp-Gly. The published cartilage work uses the three-amino-acid AED peptide.", [885, 886]]],
+    a: [["Chondrocyte aging", "in vitro", "In human chondrocyte cultures it normalized markers of the aging secretory phenotype, including p16, p21, p53, TNF-α and IL-1α"], ["Cartilage gene expression", "in vitro", "Raised SOX9, aggrecan, type II collagen and COMP in aging human mesenchymal stem cells"]],
+    noTrials: "No human trial is indexed in PubMed. The strongest evidence is two cell studies from the originating group, in which AED normalized aging markers in human chondrocytes and stimulated cartilage-forming genes in aging stem cells.",
+    noTrialsRefs: [885, 886],
+    added: "2026-10-18", updated: "2026-10-18" });
   bio("prostamax", "Prostamax", "the prostate", "Lys-Glu-Asp-Pro (KEDP)", { tags: ["prostate"], summary: "A four-amino-acid bioregulator claimed to support prostate health.", related: ["testagen"],
     noTrials: "No human trial is indexed in PubMed. In cultured blood cells from people aged 75–88 it decondensed chromatin. Prostatilen, a bovine prostate extract with Russian trials, is a different product, and its data do not apply.",
     noTrialsRefs: [667, 675],
@@ -1077,7 +1083,9 @@
     related: ["nad-plus", "vitamin-b12"] });
 
   Object.assign(A.references, {
-    144: "Volpicelli JR et al. Naltrexone in the treatment of alcohol dependence. Arch Gen Psychiatry 1992;49:876–880.",
+    885: "Myakisheva SN et al. Peptides prevent the forming of secretory phenotype of chondrocytes associated with the aging. Adv Gerontol 2023;36:234-238.",
+    886: "Myakisheva SN et al. The influence of peptides on the chondrogenic differentiation of human mesenchymal stem cells during replicative aging. Adv Gerontol 2023;36:383-390.",
+    144:"Volpicelli JR et al. Naltrexone in the treatment of alcohol dependence. Arch Gen Psychiatry 1992;49:876–880.",
     145: "Anton RF et al. Combined pharmacotherapies and behavioral interventions for alcohol dependence: the COMBINE study: a randomized controlled trial. JAMA 2006;295:2003–2017.",
     146: "Krupitsky E et al. Injectable extended-release naltrexone for opioid dependence: a double-blind, placebo-controlled, multicentre randomised trial. Lancet 2011;377:1506–1513.",
     147: "Lee JD et al. Comparative effectiveness of extended-release naltrexone versus buprenorphine-naloxone for opioid relapse prevention (X:BOT): a multicentre, open-label, randomised controlled trial. Lancet 2018;391:309–318.",

@@ -21,6 +21,7 @@ for (const e of A.entries) {
   if (!cats.has(e.category)) out.push(`${e.slug}: unknown category ${e.category}`);
   for (const k of ["added", "updated"]) if (!date.test(e[k] || "")) out.push(`${e.slug}: ${k} is "${e[k]}", not YYYY-MM-DD`);
   (e.related || []).forEach((r) => has(r) || out.push(`${e.slug}: related ${r} has no entry`));
+  (e.parts || []).forEach((r) => has(r) || out.push(`${e.slug}: ingredient ${r} has no entry`));
   (e.trials || []).forEach((t, i) => Array.isArray(t.meta) || out.push(`${e.slug}: trial ${i + 1} has no meta list`));
   [...(e.risks || []), ...(e.activity || []), ...(e.trials || []), e.pk || {}].forEach((x) => refs(x.refs, e.slug));
   refs(e.noTrialsRefs, e.slug); refs(e.refs, e.slug);

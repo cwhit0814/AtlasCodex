@@ -613,6 +613,98 @@
     updated: "2026-10-18"
   });
 
+  const unverified = ["Product quality","moderate","Sold as an unregulated research product; identity, purity and sterility are unverified","established"];
+
+  A.add({
+    slug: "mod-grf-1-29",
+    name: "Mod GRF 1-29",
+    aliases: ["CJC-1295 without DAC","CJC-1295 no DAC","Modified GRF (1-29)","Tetrasubstituted GRF(1-29)"],
+    category: "gh",
+    status: "Research only",
+    class: "GHRH analog (short-acting)",
+    developer: "ConjuChem, as the peptide core of CJC-1295",
+    tags: ["GHRH","growth hormone","CJC-1295","peptide"],
+    summary: "The peptide part of CJC-1295 without its albumin-binding DAC group: GHRH(1-29) with four amino acid substitutions. Without DAC it lacks CJC-1295's multi-day half-life, and it has no published human study.",
+    names: "Sold as CJC-1295 without DAC or Mod GRF 1-29. It was described only as the core of CJC-1295, never developed as a drug in its own right, and a 2026 review lists it among the unregulated GH-axis peptides people self-administer.",
+    structure: "Human GRF(1-29) with four substitutions that resist breakdown by the enzyme DPP-IV. CJC-1295 is the same peptide with a lysine carrying a maleimidopropionamide (DAC) group added at the C terminus, which binds it to albumin.",
+    p: [["GH signal",2],["Human evidence",0],["Risk load",2,1],["Evidence quality",1]],
+    r: [
+      ["Human evidence","unknown","Never given to humans in a published study","unknown","",[888]],
+      ["Glucose","moderate","Raising GH lowers insulin sensitivity and can raise fasting glucose","human rct","Shown for GH itself and for oral secretagogues that raise it.",[48,321]],
+      unverified
+    ],
+    a: [
+      ["GHRH receptor","animal","Releases GH from the pituitary as native GHRH does","In the parent paper, substituted GRF(1-29) derivatives were stable against DPP-IV and released GH from rat pituitary cells and in rats. Adding DAC kept CJC-1295 in rat plasma beyond 72 hours."]
+    ],
+    noTrials: "No human study of the peptide without DAC is indexed in PubMed. The parent paper tested it only as the core of CJC-1295, in rat pituitary cells and rats; the human studies on the CJC-1295 entry all used the DAC form.",
+    noTrialsRefs: [887,888],
+    refs: [887],
+    related: ["cjc-1295","sermorelin","ipamorelin","tesamorelin","ipamorelin-cjc"],
+    added: "2026-10-18",
+    updated: "2026-10-18"
+  });
+
+  A.add({
+    slug: "ghk",
+    name: "GHK",
+    aliases: ["Gly-His-Lys","Glycyl-histidyl-lysine","Copper-free GHK"],
+    category: "skin",
+    status: "Research only",
+    class: "Naturally occurring tripeptide (without copper)",
+    tags: ["peptide","skin","copper","wound healing","nasal spray"],
+    summary: "The tripeptide behind GHK-Cu, sold without the copper. It binds copper readily, so most of its reported effects are described for the two forms together, and the controlled human data are for topical GHK-Cu.",
+    names: "A natural human peptide, also sold as a research product. Half Nattys sells it as a nasal spray giving 1 mg per spray.",
+    structure: "Gly-His-Lys. C<sub>14</sub>H<sub>24</sub>N<sub>6</sub>O<sub>4</sub>, about 340.4 g/mol. Its copper affinity is similar to the copper transport site on albumin, so it forms GHK-Cu when copper is available.",
+    pubchem: "Glycyl-histidyl-lysine",
+    p: [["Skin signal",2],["Human evidence",1],["Risk load",1,1],["Evidence quality",1]],
+    r: [
+      ["Evidence base","moderate","No human trial of copper-free GHK; the human trials used topical GHK-Cu","established","",[612,613]],
+      ["Route","unknown","Its effects as a nasal spray have never been studied","unknown"],
+      unverified
+    ],
+    a: [
+      ["Copper binding","in vitro","Binds copper with an affinity similar to albumin's copper transport site, forming GHK-Cu"],
+      ["Tissue remodeling","in vitro","GHK and GHK-Cu are reported to attract repair cells, damp inflammation and raise collagen and elastin synthesis","These are summarized from cell and animal work in a review by the peptide's discoverer."]
+    ],
+    noTrials: "No human trial of copper-free GHK is indexed in PubMed. The human evidence for the peptide comes from topical GHK-Cu trials in wound healing and laser resurfacing, summarized on the GHK-Cu entry.",
+    noTrialsRefs: [889,612],
+    refs: [889],
+    related: ["ghk-cu","ahk-cu","snap-8","glow-3"],
+    added: "2026-10-18",
+    updated: "2026-10-18"
+  });
+
+  A.add({
+    slug: "mk-777",
+    name: "MK-777",
+    aliases: ["MK 777"],
+    category: "gh",
+    status: "Research only",
+    class: "Ghrelin receptor agonist, sold as a capromorelin analog",
+    developer: "Unknown; sold by research-chemical vendors",
+    tags: ["growth hormone","ghrelin","capromorelin","oral","appetite"],
+    summary: "An oral capsule sold as an analog of capromorelin. No compound by this name is indexed in PubMed, so its identity is unverified. Capromorelin itself raised GH, IGF-1 and lean mass in a one-year trial in older adults, with small rises in glucose.",
+    names: "Half Nattys sells it as 12.5 mg capsules described as a capromorelin analog. The name is not a registered drug code, and no structure has been published. Capromorelin, the compound it is said to resemble, is used in veterinary medicine as an appetite stimulant for dogs.",
+    structure: "Not published. The seller describes it only as a capromorelin analog.",
+    p: [["GH signal",3],["Human evidence",0],["Risk load",3,1],["Evidence quality",1]],
+    r: [
+      ["Identity","high","What is in the capsule is unverified; no study, structure or registry entry exists for MK-777","established"],
+      ["Glucose","moderate","Capromorelin caused small rises in fasting glucose, HbA1c and insulin resistance","human rct","Measured for capromorelin, not MK-777.",[890]],
+      ["Sleep and energy","low","Fatigue and insomnia were reported with capromorelin","human rct","Measured for capromorelin, not MK-777.",[890]],
+      unverified
+    ],
+    a: [
+      ["Ghrelin receptor","unknown","Said to release GH through the ghrelin receptor, as capromorelin does","Capromorelin is an oral ghrelin receptor agonist that raises GH and appetite."]
+    ],
+    t: [
+      { title: "Capromorelin, the parent compound, in older adults", evidence: "human rct", meta: ["395 adults aged 65–84 with mild functional limitation","capromorelin 10 mg three times a week, 3 mg twice daily, 10 mg nightly or 10 mg twice daily, or placebo","intended 2 years, stopped early; 315 completed 6 months","randomized, double-masked, placebo-controlled, multicenter"], body: "IGF-1 rose in every dose group. At 6 months, body weight rose 1.4 kg against a 0.2 kg fall on placebo, and lean mass 1.4 kg against 0.3 kg; tandem walking improved, and stair climbing by 12 months. Adverse events included fatigue, insomnia and small rises in fasting glucose, HbA1c and insulin resistance.", note: "This trial used capromorelin, not MK-777. Whether MK-777 acts the same way is unknown.", refs: [890] }
+    ],
+    refs: [891],
+    related: ["mk-677","ipamorelin","ghrp-6","growth-hormone"],
+    added: "2026-10-18",
+    updated: "2026-10-18"
+  });
+
   A.dosing = A.dosing || {};
   Object.assign(A.dosing, {
     liraglutide: { source: "FDA label (Saxenda)", evidence: "established", rows: [["Weight management (Saxenda)","0.6 mg daily in week 1, rising by 0.6 mg each week to 3 mg daily from week 5"],["If 3 mg is not tolerated","The label says to stop; efficacy was not established at 0.6 to 2.4 mg"],["Response check","Stop at 16 weeks if at least 4% of baseline body weight has not been lost"],["Missed doses","If more than 3 days have passed, restart at 0.6 mg and escalate again"]], note: "When starting alongside insulin or a sulfonylurea, the label suggests lowering those doses to reduce low blood sugar.", refs: [804] },
@@ -734,6 +826,12 @@
     879: "Li J et al. Trends in use of melatonin supplements among US adults, 1999-2018. JAMA 2022;327:483-485.",
     881: "Starcevic B et al. Detection of the selective androgen receptor modulator S-4 (andarine) in a doping control sample. Drug Test Anal 2013;5:377-9.",
     882: "Dahleh MMM et al. YK11 induces oxidative stress and mitochondrial dysfunction in hippocampus: the interplay between a selective androgen receptor modulator (SARM) and exercise. J Steroid Biochem Mol Biol 2023;233:106364.",
+    892: "Hospira. Bacteriostatic Water for Injection, USP: prescribing information. DailyMed, US National Library of Medicine 2026.",
+    887: "Jetté L et al. Human growth hormone-releasing factor (hGRF)1-29-albumin bioconjugates activate the GRF receptor on the anterior pituitary in rats: identification of CJC-1295 as a long-lasting GRF analog. Endocrinology 2005;146:3052-8.",
+    888: "Dominikowski A et al. The emerging landscape of performance-enhancing peptides modulating GH-IGF1 axis: bridging the gap between clinical evidence and patient self-administration. Front Endocrinol (Lausanne) 2026;17:1822475.",
+    889: "Pickart L. The human tri-peptide GHK and tissue remodeling. J Biomater Sci Polym Ed 2008;19:969-88.",
+    890: "White HK et al. Effects of an oral growth hormone secretagogue in older adults. J Clin Endocrinol Metab 2009;94:1198-206.",
+    891: "Rhodes L et al. Capromorelin: a ghrelin receptor agonist and novel therapy for stimulation of appetite in dogs. Vet Med Sci 2018;4:3-16.",
     884: "Cal K et al. A nitroalkene derivative of salicylate, SANA, induces creatine-dependent thermogenesis and promotes weight loss. Nat Metab 2025;7:1550-1569.",
     883: "Yatsu T et al. Selective androgen receptor modulator, YK11, up-regulates osteoblastic proliferation and differentiation in MC3T3-E1 cells. Biol Pharm Bull 2018;41:394-398."
   });

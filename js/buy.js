@@ -42,6 +42,7 @@ window.ATLAS.buy = {
   ],
   "kpv": [
     { source: "halfnattys", href: "https://halfnattys.is/product/kpv-peptide/", label: "Half Nattys · Vial" },
+    { source: "halfnattys", href: "https://halfnattys.is/product/kpv-10mg-peptide/", label: "Half Nattys · Vial, 10 mg" },
     { source: "halfnattys", href: "https://halfnattys.is/product/kpv-10mg/", label: "Half Nattys · Spray, 10 mg" },
     { source: "halfnattys", href: "https://halfnattys.is/product/kpv-capsules/", label: "Half Nattys · Capsules" }
   ],
@@ -148,7 +149,8 @@ window.ATLAS.buy = {
     { source: "halfnattys", href: "https://halfnattys.is/product/snap-8-peptide/", label: "Half Nattys · Vial" }
   ],
   "klow": [
-    { source: "halfnattys", href: "https://halfnattys.is/product/klow-peptide/", label: "Half Nattys · Vial" }
+    { source: "halfnattys", href: "https://halfnattys.is/product/klow-peptide/", label: "Half Nattys · Vial" },
+    { source: "halfnattys", href: "https://halfnattys.is/product/klow-caps/", label: "Half Nattys · Capsules" }
   ],
   "glow": [
     { source: "halfnattys", href: "https://halfnattys.is/product/glow-blend-peptide/", label: "Half Nattys · Vial" }
@@ -174,7 +176,8 @@ window.ATLAS.buy = {
   ],
   "bpc-157": [
     { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-10mg/", label: "Half Nattys · Vial, 10 mg" },
-    { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-spray/", label: "Half Nattys · Spray" }
+    { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-spray/", label: "Half Nattys · Spray" },
+    { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-capsules/", label: "Half Nattys · Capsules" }
   ],
   "semax": [
     { source: "halfnattys", href: "https://halfnattys.is/product/semax-peptide/", label: "Half Nattys · Vial" },
@@ -203,5 +206,70 @@ window.ATLAS.buy = {
   ],
   "mots-c": [
     { source: "halfnattys", href: "https://halfnattys.is/product/mots-c/", label: "Half Nattys · Vial" }
+  ],
+  "grow": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/grow-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "glow-3": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/glow-3-0-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "ipamorelin-cjc": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/ipamorelin-cjc-w-dac-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "ipamorelin-tesamorelin": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/ipamorelin-tesamorelin-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "cag-mots-c": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/cag-mots-c-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "wolverine": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/wolverine-stack-10mg-10mg/", label: "Half Nattys · Vial, 10 mg" },
+    { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-tb-500-spray/", label: "Half Nattys · Spray" }
+  ],
+  "semax-selank": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/semax-selank-spray-blend/", label: "Half Nattys · Spray" }
+  ],
+  "selank-semax-dihexa": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/tri-blend-selank-semax-dihexa-spray/", label: "Half Nattys · Spray" }
+  ],
+  "oxy-pt": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/oxy-pt-5-10mg/", label: "Half Nattys · Spray" }
+  ],
+  "cartalax": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/cartalax-20mg/", label: "Half Nattys · Vial, 20 mg" }
+  ],
+  "mod-grf-1-29": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/cjc-no-dac-peptide-5mg/", label: "Half Nattys · Vial, 5 mg" }
+  ],
+  "ghk": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/ghk-100mg/", label: "Half Nattys · Spray, 100 mg" }
+  ],
+  "mk-777": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/mk-777-capsules/", label: "Half Nattys · Capsules" }
+  ],
+  "ll-37": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/ll-37-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "9-me-bc": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/9-me-bc-1mg/", label: "Half Nattys · Capsules, 1 mg" }
+  ],
+  "telmisartan": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/telmisartan-capsules/", label: "Half Nattys · Capsules" }
+  ],
+  "phenibut": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/phenibut-capsules/", label: "Half Nattys · Capsules" }
+  ],
+  "igf-1-lr3": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/igf-1-lr3-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "glutathione": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/glutathione-spray/", label: "Half Nattys · Spray" },
+    { source: "halfnattys", href: "https://halfnattys.is/product/l-glutathione-amino/", label: "Half Nattys · Injectable" }
+  ],
+  "bac-water": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/bac-water-30ml/", label: "Half Nattys · 30 mL" }
+  ],
+  "hcg": [
+    { source: "halfnattys", href: "https://halfnattys.is/product/hcg-peptide/", label: "Half Nattys · Vial" }
   ]
 };
