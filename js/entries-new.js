@@ -579,6 +579,40 @@
     updated: "2026-10-17"
   });
 
+  A.add({
+    slug: "sana",
+    name: "SANA (MVD1)",
+    aliases: ["MVD1","5-(2-nitroethenyl)salicylic acid","Nitroalkene salicylate"],
+    category: "metabolic",
+    status: "Investigational",
+    class: "Activator of creatine-dependent thermogenesis",
+    developer: "Institut Pasteur Montevideo and EOLO USA",
+    tags: ["thermogenesis","futile creatine cycle","energy expenditure","fat loss","insulin resistance","salicylate"],
+    summary: "An oral salicylate derivative that raised energy expenditure in mouse fat through the creatine cycle rather than by uncoupling mitochondria. Its only human study is a 15-day phase 1 safety trial, in which the top multiple dose was followed by about 3% weight loss and single doses of 800 mg caused reversible kidney damage.",
+    names: "Developed at Institut Pasteur Montevideo, Uruguay, and run in the clinic as MVD1 by EOLO USA, in which several of the authors hold shares. It has completed one phase 1 trial (ACTRN12622001519741) and is approved nowhere. Material sold online is unregulated.",
+    structure: "5-(2-nitroethenyl)salicylic acid. C<sub>9</sub>H<sub>7</sub>NO<sub>5</sub>, about 209.2 g/mol. Salicylic acid carrying a nitroalkene group, which reacts with proteins as an electrophile.",
+    p: [["Weight effect",2],["Glucose effect",2],["Risk load",2,1],["Evidence quality",1]],
+    pnote: "Scored from one 15-day phase 1 trial with six people per dose group, run by the developer.",
+    r: [
+      ["Kidney","moderate","Single 800 mg doses caused reversible kidney tubular damage","human rct","Two of the three people given 800 mg had protein and glucose in their urine, judged definitely caused by the drug, and the safety committee stopped dose escalation there. At up to 400 mg a day for 15 days no drug-related kidney injury was reported; one person was withdrawn for mild proteinuria judged unrelated and most likely due to undiagnosed kidney disease.",[884]],
+      ["Tolerability","low","Mild side effects were common at every multiple dose","human rct","Most people on 100 to 200 mg twice daily had an adverse event judged possibly related, such as diarrhea, headache or tiredness. No moderate or severe gut effects were reported.",[884]],
+      ["Long-term safety","unknown","Nothing is known past 15 days of use","unknown","Human exposure totals 29 people in one trial. In mice, 8 weeks at high doses showed no signs of liver or kidney toxicity, which says little about people.",[884]]
+    ],
+    a: [
+      ["Creatine-dependent thermogenesis","animal","Raised energy expenditure in mouse fat by driving the futile creatine cycle, a heat-producing pathway separate from UCP1","The effect did not need UCP1 or AMPK and disappeared when creatine was depleted. Treated mice had warmer skin over their fat on thermal imaging."],
+      ["Not a direct uncoupler","in vitro","Did not uncouple isolated mitochondria, unlike DNP and BAM15","It raised respiration in intact fat cells only, which is the paper's main evidence that it works by a different route from the classic uncouplers."],
+      ["Obesity models","animal","Reduced weight gain, liver fat and insulin resistance in mice on a high-fat diet, including at thermoneutral temperature","Thermoneutral housing is closer to how humans live, which matters because many thermogenic drugs lose their effect there."]
+    ],
+    t: [
+      { title: "Phase 1A: single ascending doses", evidence: "human rct", meta: ["17 healthy lean adults, 11 given SANA","one oral dose of 200, 400 or 800 mg, or placebo","single dose","randomized, double-blind, placebo-controlled, phase 1A"], body: "Single doses up to 400 mg were well tolerated. At 800 mg, two of three people developed reversible kidney tubular damage judged definitely drug-related, and the safety committee ended dose escalation at that level.", refs: [884] },
+      { title: "Phase 1B: 15 days in overweight and obesity", evidence: "human rct", meta: ["24 adults with overweight or obesity, 18 given SANA","100, 150 or 200 mg twice daily, or placebo","15 days","randomized, double-blind, placebo-controlled, phase 1B"], body: "At 200 mg twice daily, body weight fell by about 3% over 15 days with no significant change on placebo, alongside lower insulin resistance (HOMA-IR) and fructosamine; one person in that group had higher fasting glucose. The trial was designed for safety, not weight loss, and body weight was not recorded for six people in the lowest dose group because of a protocol error.", note: "Six people per dose group, run by the developer, over two weeks. The weight and glucose results are exploratory.", refs: [884] }
+    ],
+    refs: [884],
+    related: ["bam15","atx-304","dnp","creatine","slu-pp-332"],
+    added: "2026-10-18",
+    updated: "2026-10-18"
+  });
+
   A.dosing = A.dosing || {};
   Object.assign(A.dosing, {
     liraglutide: { source: "FDA label (Saxenda)", evidence: "established", rows: [["Weight management (Saxenda)","0.6 mg daily in week 1, rising by 0.6 mg each week to 3 mg daily from week 5"],["If 3 mg is not tolerated","The label says to stop; efficacy was not established at 0.6 to 2.4 mg"],["Response check","Stop at 16 weeks if at least 4% of baseline body weight has not been lost"],["Missed doses","If more than 3 days have passed, restart at 0.6 mg and escalate again"]], note: "When starting alongside insulin or a sulfonylurea, the label suggests lowering those doses to reduce low blood sugar.", refs: [804] },
@@ -612,6 +646,7 @@
     andarine: { markers: [["Liver enzymes and bilirubin","Liver injury is reported across SARMs"],["Lipid panel","Androgen receptor agonists lower HDL"],["Total testosterone, LH and FSH","Suppressed in animals"]], watch: ["A yellow tint to vision or poor night vision","Yellowing of the skin or eyes, dark urine or itching","Low libido or erectile problems after stopping"] },
     dhea: { markers: [["DHEA-S","Shows the level reached"],["Total testosterone and estradiol","Both rise from conversion"],["Lipid panel","HDL fell in one trial"],["PSA (men)","Androgen exposure"]], watch: ["Acne, oily skin or new facial or body hair (women)","Breast tenderness or swelling (men)","Marked mood change"] },
     melatonin: { markers: [["Nothing specific is established","No routine blood test applies"]], watch: ["Daytime sleepiness","Headache or dizziness"] },
+    sana: { markers: [["Urine protein and glucose","Both appeared with the kidney tubular damage seen at 800 mg in the phase 1 trial"]] },
     caffeine: { markers: [["Blood pressure","Rises acutely, more in people not used to caffeine"]], watch: ["Palpitations or a racing heart","Tremor, agitation or anxiety","Trouble falling or staying asleep","Chest pain or fainting, which need urgent care"] }
   });
 
@@ -699,6 +734,7 @@
     879: "Li J et al. Trends in use of melatonin supplements among US adults, 1999-2018. JAMA 2022;327:483-485.",
     881: "Starcevic B et al. Detection of the selective androgen receptor modulator S-4 (andarine) in a doping control sample. Drug Test Anal 2013;5:377-9.",
     882: "Dahleh MMM et al. YK11 induces oxidative stress and mitochondrial dysfunction in hippocampus: the interplay between a selective androgen receptor modulator (SARM) and exercise. J Steroid Biochem Mol Biol 2023;233:106364.",
+    884: "Cal K et al. A nitroalkene derivative of salicylate, SANA, induces creatine-dependent thermogenesis and promotes weight loss. Nat Metab 2025;7:1550-1569.",
     883: "Yatsu T et al. Selective androgen receptor modulator, YK11, up-regulates osteoblastic proliferation and differentiation in MC3T3-E1 cells. Biol Pharm Bull 2018;41:394-398."
   });
 })(window.ATLAS);

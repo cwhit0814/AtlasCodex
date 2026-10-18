@@ -28,6 +28,21 @@
     try { const u = new URL(href); if (code && !u.searchParams.has("ref")) u.searchParams.set("ref", code); return u.href; } catch (_) { return href; }
   };
   const mainSource = () => ((A.support && A.support.sources) || [])[0];
+  // A compound's product links from js/buy.js, each with its source and the referral code added. Banned compounds get none.
+  const buyFor = (e) => {
+    if (!e || String(e.status).toLowerCase() === "banned") return [];
+    const sources = (A.support && A.support.sources) || [];
+    return ((A.buy || {})[e.slug] || [])
+      .map((b) => ({ ...b, src: sources.find((s) => s.id === b.source) }))
+      .filter((b) => b.src && b.href)
+      .map((b) => ({ ...b, href: withRef(b.href, b.src.code) }));
+  };
+  A.buyFor = buyFor; // compare.js reads it too
+  // A small sponsored "Buy" link for lists that name a compound; empty when nothing is listed.
+  const buyLink = (e) => {
+    const b = buyFor(e)[0];
+    return b ? `<a class="buy-mini" href="${esc(b.href)}" target="_blank" rel="noopener sponsored" aria-label="Buy ${esc(e.name)} at ${esc(b.src.name)} (affiliate link)">Buy</a>` : "";
+  };
   const copyCode = (b) => b.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(b.dataset.code); } catch (_) { return; }
     const html = b.innerHTML;
@@ -299,14 +314,12 @@
           `<li class="empty">No matches for “${esc(q)}”. Try <button class="text-btn" id="ask-instead" type="button">asking the archive</button> instead.</li>`;
         const stackHits = q ? STK.items.filter((x) => stackMatches(x, q)).slice(0, 3) : [];
         if (stackHits.length) $("#search-results").insertAdjacentHTML("beforeend", stackHits.map((x) => `<li><a href="${stackUrl(x)}"><span class="r-name">${esc(x.name)}</span><span class="r-class">${x.parts.map((p) => esc(partName(p))).join(" + ")}</span><span class="r-cat">Stack</span></a></li>`).join(""));
-        const src = mainSource();
-        if (src) $("#search-results").insertAdjacentHTML("beforeend", `<li class="r-aff"><a href="${esc(withRef(src.href, src.code))}" target="_blank" rel="noopener sponsored"><span class="r-name">Shop ${esc(src.name)} with code ${esc(src.code)}</span><span class="r-class">Affiliate link. The codex earns a commission.</span><span class="r-cat">Support</span></a></li>`);
         const ai = $("#ask-instead");
         if (ai) ai.onclick = () => { closeSearch(); openAsk(q); };
       };
       input.addEventListener("input", render);
       // Enter opens the first real result, never the affiliate row.
-      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { const a = $("#search-results li:not(.r-aff) a"); if (a) location.href = a.href; } });
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { const a = $("#search-results li a"); if (a) location.href = a.href; } });
       d._render = render;
     }
     if (!d.open) d.showModal();
@@ -429,7 +442,7 @@
     const part = (p) => {
       const e = p.slug && bySlug(p.slug);
       return `<tr>
-        <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(partName(p))}</a> ${statusTag(e.status, e.slug)}` : `<span>${esc(partName(p))}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
+        <th scope="row">${e ? `<a class="link" href="${entryUrl(e)}">${esc(partName(p))}</a> ${statusTag(e.status, e.slug)} ${buyLink(e)}` : `<span>${esc(partName(p))}</span> <span class="st t-plain">Not in the codex yet</span>`}</th>
         <td>${sent(p.role)}</td>
         <td class="grade">${badge(p.ev)}</td>
       </tr>`;
@@ -1075,10 +1088,7 @@
 
   // "Buy from" block on compound pages. Links live in js/buy.js; sources in support.sources.
   function buyBlock(e) {
-    const sources = (A.support && A.support.sources) || [];
-    const items = ((A.buy || {})[e.slug] || [])
-      .map((b) => ({ ...b, src: sources.find((s) => s.id === b.source) }))
-      .filter((b) => b.src && b.href);
+    const items = buyFor(e);
     const hit = !items.length && listedAt(e);
     if (hit) {
       return `<div class="buy" data-rise style="--i:2">
@@ -1101,7 +1111,7 @@
     return `<div class="buy" data-rise style="--i:2">
       <span class="buy-title">Buy from${codes.length ? `, code <b>${codes.map(esc).join(", ")}</b>` : ""}. The codex earns a commission.</span>
       ${items.map((b) => `
-        <a class="buy-btn" href="${esc(withRef(b.href, b.src.code))}" target="_blank" rel="noopener sponsored">
+        <a class="buy-btn" href="${esc(b.href)}" target="_blank" rel="noopener sponsored">
           <span class="buy-logo" style="${b.src.logoBg ? `background:${esc(b.src.logoBg)}` : ""}">${b.src.logo ? `<img src="${esc(b.src.logo)}" alt="">` : esc(b.src.name.slice(0, 2).toUpperCase())}</span>
           <span>${esc(b.label || b.src.name)}</span>
         </a>`).join("")}

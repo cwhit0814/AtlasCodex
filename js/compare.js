@@ -338,6 +338,12 @@
     $("#cmp-retry").addEventListener("click", compareNow);
   }
 
+  // Product links for the two compounds (js/buy.js through app.js); nothing when neither is listed.
+  function buyHtml() {
+    const rows = [state.a, state.b].flatMap((s) => (A.buyFor ? A.buyFor(bySlug(s)) : []).slice(0, 1).map((b) => ({ b, n: nameOf(s) })));
+    return rows.length ? `<p class="cmp-links">${rows.map(({ b, n }) => `<a class="link go" href="${esc(b.href)}" target="_blank" rel="noopener sponsored">Buy ${esc(n)} at ${esc(b.src.name)}, code ${esc(b.src.code)} →</a>`).join("")}<span class="soft">Affiliate links. The codex earns a commission.</span></p>` : "";
+  }
+
   function readHtml(r) {
     const nA = nameOf(state.a), nB = nameOf(state.b), n = r.mcs.atoms;
     const pa = Math.round((n / r.counts.a) * 100), pb = Math.round((n / r.counts.b) * 100);
@@ -359,6 +365,7 @@
       </table>
       <p class="cmp-caveat">A shared structure is not a shared effect. One methyl group separates compounds with different risks, and drugs with almost nothing in common can act on the same target. Read each entry before drawing a conclusion.</p>
       <p class="cmp-links"><a class="link go" href="entry.html?slug=${encodeURIComponent(state.a)}">Read ${esc(nA)} →</a><a class="link go" href="entry.html?slug=${encodeURIComponent(state.b)}">Read ${esc(nB)} →</a></p>
+      ${buyHtml()}
       <p class="cmp-credit">Shared skeletons and fingerprints are computed in your browser with <a class="link-plain" href="https://www.rdkit.org/" target="_blank" rel="noopener">RDKit</a>, an open-source chemistry toolkit. Structures come from PubChem.</p>`;
   }
 

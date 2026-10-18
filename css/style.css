@@ -490,6 +490,8 @@ p + p { margin-top: 0.85em; }
 .buy-logo { flex: 0 0 2.25rem; height: 2.25rem; display: grid; place-items: center; overflow: hidden; background: var(--surface); font-size: .8rem; }
 .buy-logo img { width: 100%; height: 100%; object-fit: contain; }
 .buy-none { font-size: var(--step-small); color: var(--muted); }
+.buy-mini { display: inline-block; margin-left: .35rem; padding: .05rem .45rem; font-size: var(--step-small); font-weight: 600; color: var(--accent); text-decoration: none; border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent); vertical-align: middle; transition: background-color var(--t-hover) ease; }
+@media (hover: hover) and (pointer: fine) { .buy-mini:hover { background: color-mix(in srgb, var(--accent) 16%, transparent); } }
 .buy-support { display: flex; flex-direction: column; gap: .2rem; padding: .75rem .9rem; background: color-mix(in srgb, var(--accent) 18%, var(--surface)); text-decoration: none; transition: background-color var(--t-hover) ease, transform var(--t-press) var(--ease-out); }
 .buy-support strong { font-weight: 600; }
 .buy-support span { font-size: var(--step-small); color: var(--muted); }
@@ -518,8 +520,6 @@ p + p { margin-top: 0.85em; }
 @media (max-width: 56rem) { .band.aff { grid-template-columns: minmax(0, 1fr); } .band.aff .aff-go { grid-row: 3; } }
 
 /* search: the closing shop row */
-#search-results .r-aff a { background: color-mix(in srgb, var(--accent) 14%, transparent); }
-#search-results .r-aff .r-name { color: var(--accent); }
 
 /* the bar that rises after the first screen */
 .sbar { position: fixed; left: var(--margin); right: var(--margin); bottom: 1rem; z-index: 35; display: flex; align-items: center; gap: .75rem 1.25rem; padding: .55rem .6rem .55rem 1.1rem; background: var(--gilt); color: var(--gilt-ink); transform: translateY(calc(100% + 2rem)); visibility: hidden; transition: transform 420ms var(--ease-out), visibility 0s linear 420ms; }
@@ -1036,7 +1036,7 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
 @media print {
   :root, :root[data-theme] { --bg: #fff; --surface: #fff; --surface-2: #fff; --ink: #000; --muted: #333; --accent: #000; --table-line: #999; }
   body { background: #fff; color: #000; font-size: 11pt; }
-  #site-header, .skip, .ask-fab, .ask-panel, .sbar, .overlay, .buy, .toc, #support, .support-sheet, .gilt-band, #support-band, .rate-bar, .record-actions, .plate-link, .ornament { display: none !important; }
+  #site-header, .skip, .ask-fab, .ask-panel, .sbar, .overlay, .buy, .buy-mini, .toc, #support, .support-sheet, .gilt-band, #support-band, .rate-bar, .record-actions, .plate-link, .ornament { display: none !important; }
   .foot { background: #fff; color: #000; padding: 1rem 0 0; }
   .foot-name, .foot-row, .foot-legal, .foot-credits { display: none; }
   .js [data-reveal], .js [data-rise], .js .lines [data-line] { opacity: 1 !important; transform: none !important; animation: none !important; }

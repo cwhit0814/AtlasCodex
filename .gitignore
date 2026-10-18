@@ -12,3 +12,4 @@
 # Taste-skill inspector screenshots (regenerated on every run)
 .taste-skill/inspect/
 research_notes/
+.playwright-mcp/

@@ -31,7 +31,7 @@
         "clenbuterol", "albuterol", "mirabegron", "t3", "ephedrine", "yohimbine", "dnp", "bam15", "1-3-dmaa", "1-4-dmaa",
         "aod-9604", "hgh-frag-176-191", "tesamorelin", "5-amino-1mq", "l-carnitine",
         "metformin", "berberine", "gw501516", "slu-pp-332", "mots-c", "growth-hormone", "amphetamine", "anavar",
-        "liraglutide", "andarine"]
+        "liraglutide", "andarine", "sana"]
     },
     {
       id: "performance", name: "Endurance and performance",
@@ -82,7 +82,7 @@
       note: "Insulin sensitivity and glucose control.",
       slugs: ["metformin", "berberine", "semaglutide", "tirzepatide", "orforglipron", "atx-304",
         "retatrutide", "mazdutide",
-        "liraglutide", "acarbose", "nmn"]
+        "liraglutide", "acarbose", "nmn", "sana"]
     },
     {
       id: "longevity", name: "Longevity",
