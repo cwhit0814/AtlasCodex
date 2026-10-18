@@ -696,9 +696,9 @@
     a: [
       ["Ghrelin receptor","unknown","Said to release GH through the ghrelin receptor, as capromorelin does","Capromorelin is an oral ghrelin receptor agonist that raises GH and appetite."]
     ],
-    t: [
-      { title: "Capromorelin, the parent compound, in older adults", evidence: "human rct", meta: ["395 adults aged 65–84 with mild functional limitation","capromorelin 10 mg three times a week, 3 mg twice daily, 10 mg nightly or 10 mg twice daily, or placebo","intended 2 years, stopped early; 315 completed 6 months","randomized, double-masked, placebo-controlled, multicenter"], body: "IGF-1 rose in every dose group. At 6 months, body weight rose 1.4 kg against a 0.2 kg fall on placebo, and lean mass 1.4 kg against 0.3 kg; tandem walking improved, and stair climbing by 12 months. Adverse events included fatigue, insomnia and small rises in fasting glucose, HbA1c and insulin resistance.", note: "This trial used capromorelin, not MK-777. Whether MK-777 acts the same way is unknown.", refs: [890] }
-    ],
+    // The capromorelin trial stays out of t: a trial card would count as MK-777's own human evidence.
+    noTrials: "MK-777 has never been tested in a published study. The closest human data are for capromorelin, the compound it is sold as an analog of: in a randomized trial of 395 adults aged 65 to 84, capromorelin raised IGF-1, and at 6 months body weight rose 1.4 kg against a 0.2 kg fall on placebo, with lean mass up 1.4 kg against 0.3 kg. Adverse events included fatigue, insomnia and small rises in fasting glucose, HbA1c and insulin resistance. Whether MK-777 acts the same way is unknown.",
+    noTrialsRefs: [890],
     refs: [891],
     related: ["mk-677","ipamorelin","ghrp-6","growth-hormone"],
     added: "2026-10-18",
