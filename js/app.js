@@ -160,6 +160,8 @@
     return u.href;
   };
   const meter = (n, cls = "") => `<span class="meter ${cls}" aria-hidden="true">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= n ? "on" : ""}" data-v="${i}"></i>`).join("")}</span>`;
+  // The reader's own score: real buttons, so it can be set from the keyboard. Enabled only while editing.
+  const mineMeter = (n, label) => `<span class="meter mine">${[1, 2, 3, 4, 5].map((i) => `<button type="button" class="${i <= n ? "on" : ""}" data-v="${i}" aria-label="Set ${esc(label)} to ${i} of 5" disabled></button>`).join("")}</span>`;
   const refsLine = (refs) => refs && refs.length ? `<p class="refs-line">References ${refs.map((r) => `<a href="#ref-${r}">${r}</a>`).join(", ")}</p>` : "";
   const selectBox = (id, label, options) => `<label class="select"><span class="sr-only">${label}</span><select class="field" id="${id}">${options}</select>${icons.chev}</label>`;
 
@@ -279,10 +281,12 @@
   function openSearch(initial = "") {
     let d = $("#search-dialog");
     if (!d) {
-      d = document.createElement("div");
+      // A native modal dialog keeps focus inside, closes on Escape and hands focus back on close.
+      d = document.createElement("dialog");
       d.id = "search-dialog";
       d.className = "overlay";
-      d.innerHTML = `<div class="search-panel" role="dialog" aria-modal="true" aria-label="Search the codex">
+      d.setAttribute("aria-label", "Search the codex");
+      d.innerHTML = `<div class="search-panel">
         <div class="search-row">${icons.search}<input id="search-input" type="search" placeholder="Search compounds, aliases, tags" autocomplete="off" aria-label="Search the codex"><kbd>Esc</kbd></div>
         <ul id="search-results"></ul></div>`;
       document.body.appendChild(d);
@@ -301,16 +305,17 @@
         if (ai) ai.onclick = () => { closeSearch(); openAsk(q); };
       };
       input.addEventListener("input", render);
-      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { const a = $("#search-results a"); if (a) location.href = a.href; } });
+      // Enter opens the first real result, never the affiliate row.
+      input.addEventListener("keydown", (e) => { if (e.key === "Enter") { const a = $("#search-results li:not(.r-aff) a"); if (a) location.href = a.href; } });
       d._render = render;
     }
-    d.hidden = false;
+    if (!d.open) d.showModal();
     const input = $("#search-input");
     input.value = initial;
     d._render();
     input.focus();
   }
-  function closeSearch() { const d = $("#search-dialog"); if (d) d.hidden = true; }
+  function closeSearch() { const d = $("#search-dialog"); if (d && d.open) d.close(); }
 
   /* ---------- ask the archive (local keyword retrieval over entry text; not an AI model) ---------- */
   const STOP = new Set("a an and are as at be but by can do does for from has have how i if in is it its me my of on or should so than that the their them then there these they this to was what when where which who why will with would you your about any much many does did".split(" "));
@@ -692,7 +697,7 @@
             ${e.profile.rows.map((r) => `
               <div class="p-wrap">
                 <div class="p-row${r.neg ? " neg" : ""}${thin(r) ? " thin" : ""}"${r.neg ? ` style="--rk: ${tone(r)}"` : ""}><span class="p-label">${esc(r.label)}${thin(r) ? `<span class="p-flag">Thin human record</span>` : ""}</span>${meter(r.score, r.neg ? "graded" : "")}<span class="p-score nums">${r.score} of 5</span></div>
-                <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span>Your score</span>${meter(mine[r.label] || 0, "mine")}<span class="p-score nums">${mine[r.label] ? mine[r.label] + " of 5" : "Not set"}</span></div>
+                <div class="p-mine" data-label="${esc(r.label)}" ${hasMine ? "" : "hidden"}><span>Your score</span>${mineMeter(mine[r.label] || 0, r.label)}<span class="p-score nums">${mine[r.label] ? mine[r.label] + " of 5" : "Not set"}</span></div>
               </div>`).join("")}
             ${e.profile.note || anyThin ? `<p class="soft small" style="margin-top:1rem">${e.profile.note ? sent(e.profile.note) + " " : ""}${anyThin ? "A low risk score on a thin human record means little is known, not that little is risky, so it is drawn without colour." : ""}</p>` : ""}
           </div>
@@ -868,16 +873,17 @@
         const prof = $("#profile");
         const editing = prof.classList.toggle("editing");
         $$(".p-mine", prof).forEach((m) => (m.hidden = false));
+        $$(".p-mine .meter button", prof).forEach((x) => (x.disabled = !editing));
         rb.textContent = editing ? "Done" : "Edit my scores";
+        if (editing) { const f = $(".p-mine .meter button", prof); if (f) f.focus(); }
         if (!editing) $(".rate-bar span").textContent = "You have scored this compound. Your scores stay in this browser and are not part of the codex's assessment.";
       });
-      $$(".p-mine .meter i").forEach((sq) => sq.addEventListener("click", () => {
-        if (!$("#profile").classList.contains("editing")) return;
+      $$(".p-mine .meter button").forEach((sq) => sq.addEventListener("click", () => {
         const row = sq.closest(".p-mine"), v = +sq.dataset.v;
         const mine = store.get("atlas-rate-" + e.slug) || {};
         mine[row.dataset.label] = v;
         store.set("atlas-rate-" + e.slug, mine);
-        $$(".meter i", row).forEach((x) => x.classList.toggle("on", +x.dataset.v <= v));
+        $$(".meter button", row).forEach((x) => x.classList.toggle("on", +x.dataset.v <= v));
         row.lastElementChild.textContent = v + " of 5";
       }));
     },

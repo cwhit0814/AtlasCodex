@@ -552,9 +552,9 @@ body.sbar-on .ask-panel { bottom: calc(5.75rem + 4.25rem); }
 .meter i { width: 14px; height: 14px; background: var(--surface-2); display: block; }
 .meter i.on { background: var(--ink); }
 .meter.graded i.on { background: var(--rk, var(--bad)); }
-.meter.mine i { background: color-mix(in srgb, var(--accent) 22%, transparent); }
-.meter.mine i.on { background: var(--accent); }
-.profile.editing .p-mine .meter i { cursor: pointer; width: 20px; height: 20px; }
+.meter.mine button { border: 0; padding: 0; width: 14px; height: 14px; display: block; background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.meter.mine button.on { background: var(--accent); }
+.editing .p-mine .meter button { cursor: pointer; width: 20px; height: 20px; }
 .rate-bar { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 4px; }
 .rate-bar span { color: var(--muted); }
 
@@ -823,7 +823,10 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
 }
 
 /* ---------- search and ask: the two things that truly float ---------- */
-.overlay { position: fixed; inset: 0; z-index: 60; background: rgba(10, 10, 12, .62); display: flex; justify-content: center; align-items: flex-start; padding: 12vh var(--margin) 0; }
+/* The search <dialog> fills the screen itself, so its own background is the dim layer. */
+.overlay { position: fixed; inset: 0; z-index: 60; width: auto; height: auto; max-width: none; max-height: none; margin: 0; border: 0; color: inherit; background: rgba(10, 10, 12, .62); justify-content: center; align-items: flex-start; padding: 12vh var(--margin) 0; }
+.overlay[open] { display: flex; }
+.overlay::backdrop { background: none; }
 .search-panel { width: 100%; max-width: 44rem; background: var(--surface); box-shadow: 0 30px 80px rgba(0, 0, 0, .45); /* taste-skill-ignore: floats above the page */ }
 .search-row { display: flex; align-items: center; gap: .75rem; padding: 0 1.25rem; background: var(--surface-2); color: var(--muted); }
 .search-row input { flex: 1; min-width: 0; background: none; border: 0; color: var(--ink); font-size: var(--step-lead); padding: 1.1rem 0; }

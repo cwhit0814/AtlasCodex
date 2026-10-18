@@ -46,6 +46,10 @@ Other features:
 
 Site settings and the original entries live in `js/data.js`. Compounds added in the October 2026 research pass live in `js/entries-new.js` (which also sets their dosing and monitoring), and the references that pass gathered (ids 200–799) live in `js/refs-research.js`. Use cases are curated slug lists in `js/uses.js`; stacks are in `js/stacks.js`. More entries live in `js/entries-aas.js` (steroids and GH), `js/entries-noots.js` (racetams and other nootropics) and `js/entries-metabolic.js` (exercise mimetics) and `js/entries-fatloss.js` (fat loss agents, plus TAK-653). `js/entries-faq-1.js` and `js/entries-faq-2.js` hold the larger batch added later, written in a shorter format using `ATLAS.add()` from `js/builder.js` (the short forms are documented at the top of that file). `js/entries-products.js` holds blends and branded products. Each extra file adds to the same list, so you can put a new entry in any of them. That file sets the ticker text, header buttons, home cards, categories, entries and references. The comment at the top of the file documents the entry schema.
 
+Every page loads its scripts through `js/load.js`, which holds the one ordered list. A new data file goes there, not into each HTML page.
+
+Before committing a content change, run `node tools/check.js`. It loads the data the way the pages do and fails on anything that would break a page: a reference id that doesn't exist, a slug with no entry, a trial without `meta`, a date not in `YYYY-MM-DD` form.
+
 ## Running locally
 
 ```sh
