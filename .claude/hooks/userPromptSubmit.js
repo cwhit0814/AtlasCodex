@@ -8,7 +8,7 @@
  *   heavy    -> no output, the main model handles it as usual
  * Each routed prompt also gets an effort level, passed as the Agent tool's `effort` (it overrides the agent
  * file's default), so the cheapest jobs think the least:
- *   low    -> lookups, counts, git/checker runs, cosmetic edits (typo, spacing, colour, link)
+ *   low    -> lookups, counts, git/checker runs, cosmetic edits (typo, spacing, colour, link), commit/push chores
  *   medium -> file summaries, other short edits, read-only questions about doses/legal/trials (exact figures)
  * The main session's own effort cannot be set from a hook; change it with /effort or /model.
  * Anything unclear is heavy. The codex is a medical reference where a wrong dose or statute is the worst
@@ -29,6 +29,9 @@ const BROAD = /\b(all|every|each|everything|across|whole|entire|site-?wide|globa
 const WRITE = /\b(fix|change|edit|update|replace|rename|move|delete|remove|add|insert|append|set|swap|correct|adjust|tweak|bump|reword|rephrase|shorten|lengthen|capitali[sz]e|format|align|make|turn|switch|write|commit|push|stage|install)\b/;
 // Only counts as read-only when the prompt is clearly a lookup.
 const LOOKUP = /\b(where|which files?|find|locate|list|show me|how many|count|grep|search for|look up|what files?|what (does|is) .{0,60}(in|inside) |summari[sz]e|status|git (log|status|diff|show)|run (the )?(check|checker|tests?)|tools\/check)\b/;
+// Git chores: committing, staging or pushing work already on disk. History rewrites and force pushes are never chores.
+const GIT_CHORE = /\b(commit|push|stage|git add)\b/;
+const GIT_RISKY = /(--force|\bforce\b|\s-f\b|\bamend\b|\breset\b|\brevert\b|\bsquash\b|\bcherry-?pick\b|\bstash\b|\btag\b|\bpr\b|pull request|\bbranch\b|\bmain\b|\bmaster\b)/;
 const SMALL_EDIT = /\b(typo|spelling|wording|punctuation|whitespace|comma|capitali[sz]ation|link|url|href|colou?r|padding|margin|font-?size|label text|title|heading text|alt text|copy|text)\b/;
 
 function listProject() {
@@ -82,6 +85,11 @@ function classify(raw) {
   if (files.length) reasons.push(`names ${files.length} file(s): ${files.slice(0, 4).join(", ")}`);
 
   if (HEAVY_WORDS.test(words)) return heavy("design, judgement or open-ended work");
+  // A prompt that only asks to commit/stage/push (no other edit) is a chore, whatever the changes it commits.
+  if (GIT_CHORE.test(words) && text.length < 220 && !WRITE.test(words.replace(/\b(commit|push|stage|git add)\b/g, " "))) {
+    if (GIT_RISKY.test(words)) return heavy("git operation beyond a plain commit or push");
+    return { tier: "git", effort: "low", why: [...reasons, "git chore: commit or push work already on disk"] };
+  }
   if (BROAD.test(words) && writes) return heavy("broad change");
   if (files.length > 3) return heavy("touches more than three files");
   if (writes && sensitive) return heavy("writes to sourced data (doses, legal, trials, risks) stay on the main model");
@@ -106,6 +114,9 @@ function classify(raw) {
 function advice(tier, effort, why) {
   const reason = why.join("; ");
   const eff = " with effort \"" + effort + "\" (pass it as the Agent tool's effort parameter; the user asked for effort to follow the type of work)";
+  if (tier === "git") {
+    return "Model routing (Atlas Codex hook): this prompt is a git chore (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-worker\" (Sonnet)" + eff + ". The worker cannot see this conversation, so write the commit message yourself (subject plus a short body describing what changed, in the repo's style) and put it in the brief verbatim, including any attribution trailer the system asks for. Tell it which branch is checked out and to stage, commit and push only that. Then confirm the pushed commit hash from its report.";
+  }
   if (tier === "light") {
     return "Model routing (Atlas Codex hook): this prompt is a cheap read-only lookup (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-scout\" (Haiku)" + eff + ". Give it a complete, self-contained brief, then relay its answer, quoting figures exactly. If the lookup turns out to need judgement or an edit, do it yourself instead.";
   }
@@ -116,7 +127,7 @@ function run(raw, payload) {
   if ((process.env.ATLAS_ROUTER || "").toLowerCase() === "off") return null;
   if (payload && (payload.agent_id || payload.agent_type)) return null; // already inside a subagent
   const r = classify(raw);
-  if (r.tier !== "light" && r.tier !== "standard") return null;
+  if (r.tier !== "light" && r.tier !== "standard" && r.tier !== "git") return null;
   return { hookSpecificOutput: { hookEventName: "UserPromptSubmit", additionalContext: advice(r.tier, r.effort || "medium", r.why) } };
 }
 
