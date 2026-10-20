@@ -8,6 +8,7 @@
  *   "https://halfnattys.is/product/dihexa-capsules/?ref=ATLAS"
  *
  * A compound with no entry here shows "No current stock".
+ * Throne (madebythrone.com) has no referral code, so its links go out unchanged and earn nothing.
  * Optional per item: `label` to override the button text (e.g. "Half Nattys · 30 mL").
  */
 window.ATLAS.buy = {
@@ -113,7 +114,8 @@ window.ATLAS.buy = {
   ],
   "ghk-cu": [
     { source: "halfnattys", href: "https://halfnattys.is/product/ghk-cu-peptide/", label: "Half Nattys · Vial" },
-    { source: "halfnattys", href: "https://halfnattys.is/product/ghk-cu-capsules/", label: "Half Nattys · Capsules" }
+    { source: "halfnattys", href: "https://halfnattys.is/product/ghk-cu-capsules/", label: "Half Nattys · Capsules" },
+    { source: "throne", href: "https://www.madebythrone.com/products/new-ghk-cu", label: "Throne · 1% serum, 30 mL" }
   ],
   "slu-pp-332": [
     { source: "halfnattys", href: "https://halfnattys.is/product/slu-pp-332-1mg-capsules/", label: "Half Nattys · Capsules, 1 mg" }
@@ -177,7 +179,8 @@ window.ATLAS.buy = {
   "bpc-157": [
     { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-10mg/", label: "Half Nattys · Vial, 10 mg" },
     { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-spray/", label: "Half Nattys · Spray" },
-    { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-capsules/", label: "Half Nattys · Capsules" }
+    { source: "halfnattys", href: "https://halfnattys.is/product/bpc-157-capsules/", label: "Half Nattys · Capsules" },
+    { source: "throne", href: "https://www.madebythrone.com/products/throne-bpc", label: "Throne · Capsules, 500 mcg" }
   ],
   "semax": [
     { source: "halfnattys", href: "https://halfnattys.is/product/semax-peptide/", label: "Half Nattys · Vial" },
@@ -193,7 +196,8 @@ window.ATLAS.buy = {
     { source: "halfnattys", href: "https://halfnattys.is/product/tri-blend-topical/", label: "Half Nattys · Topical" }
   ],
   "minoxidil": [
-    { source: "halfnattys", href: "https://halfnattys.is/product/minoxidil-topical/", label: "Half Nattys · Topical" }
+    { source: "halfnattys", href: "https://halfnattys.is/product/minoxidil-topical/", label: "Half Nattys · Topical" },
+    { source: "throne", href: "https://www.madebythrone.com/products/new-minoxidil-hair-serum", label: "Throne · 5% solution, 60 mL" }
   ],
   "finasteride": [
     { source: "halfnattys", href: "https://halfnattys.is/product/finasteride-topical/", label: "Half Nattys · Topical" }
@@ -271,5 +275,42 @@ window.ATLAS.buy = {
   ],
   "hcg": [
     { source: "halfnattys", href: "https://halfnattys.is/product/hcg-peptide/", label: "Half Nattys · Vial" }
+  ],
+  "throne-ghk-soap": [
+    { source: "throne", href: "https://www.madebythrone.com/products/ghk-cu-soap-bar", label: "Throne · Cleansing bar, 6 oz" }
+  ],
+  "throne-thr001": [
+    { source: "throne", href: "https://www.madebythrone.com/products/thr-001", label: "Throne · Face wash" },
+    { source: "throne", href: "https://www.madebythrone.com/products/thr-complete-routine", label: "Throne · Complete Routine (THR001, THR002, THR004)" }
+  ],
+  "throne-thr002": [
+    { source: "throne", href: "https://www.madebythrone.com/products/thr-002", label: "Throne · Under-eye cream" },
+    { source: "throne", href: "https://www.madebythrone.com/products/thr-complete-routine", label: "Throne · Complete Routine (THR001, THR002, THR004)" }
+  ],
+  "throne-thr004": [
+    { source: "throne", href: "https://www.madebythrone.com/products/thr-004", label: "Throne · Moisturizer" },
+    { source: "throne", href: "https://www.madebythrone.com/products/thr-complete-routine", label: "Throne · Complete Routine (THR001, THR002, THR004)" }
+  ],
+  "throne-ghk-serum": [
+    { source: "throne", href: "https://www.madebythrone.com/products/new-ghk-cu", label: "Throne · Serum, 30 mL" }
+  ],
+  "throne-ghk-hair-serum": [
+    { source: "throne", href: "https://www.madebythrone.com/products/ghk-hair", label: "Throne · Hair serum" }
+  ],
+  "throne-ptd-dbm-serum": [
+    { source: "throne", href: "https://www.madebythrone.com/products/throne-ptd-bdm-hair-serum", label: "Throne · Hair serum, 25 mL (sold out when checked)" }
+  ],
+  "throne-bpc": [
+    { source: "throne", href: "https://www.madebythrone.com/products/throne-bpc", label: "Throne · Capsules, 30 × 500 mcg" }
+  ],
+  "throne-one": [
+    { source: "throne", href: "https://www.madebythrone.com/products/micro-needle-pen", label: "Throne · Microneedling pen" },
+    { source: "throne", href: "https://www.madebythrone.com/products/throne-one-sterile-needle-cartridges-10-pack", label: "Throne · Replacement cartridges, 10 pack" }
+  ],
+  "ketoconazole": [
+    { source: "throne", href: "https://www.madebythrone.com/products/ketoconazole-1-percent-shampoo", label: "Throne · 1% shampoo, 280 mL" }
+  ],
+  "ptd-dbm": [
+    { source: "throne", href: "https://www.madebythrone.com/products/throne-ptd-bdm-hair-serum", label: "Throne · Hair serum with methyl vanillate (sold out when checked)" }
   ]
 };

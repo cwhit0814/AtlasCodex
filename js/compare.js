@@ -341,7 +341,7 @@
   // Product links for the two compounds (js/buy.js through app.js); nothing when neither is listed.
   function buyHtml() {
     const rows = [state.a, state.b].flatMap((s) => (A.buyFor ? A.buyFor(bySlug(s)) : []).slice(0, 1).map((b) => ({ b, n: nameOf(s) })));
-    return rows.length ? `<p class="cmp-links">${rows.map(({ b, n }) => `<a class="link go" href="${esc(b.href)}" target="_blank" rel="noopener sponsored">Buy ${esc(n)} at ${esc(b.src.name)}, code ${esc(b.src.code)} →</a>`).join("")}<span class="soft">Affiliate links. The codex earns a commission.</span></p>` : "";
+    return rows.length ? `<p class="cmp-links">${rows.map(({ b, n }) => `<a class="link go" href="${esc(b.href)}" target="_blank" rel="noopener${b.src.code ? " sponsored" : ""}">Buy ${esc(n)} at ${esc(b.src.name)}${b.src.code ? `, code ${esc(b.src.code)}` : ""} →</a>`).join("")}${rows.some(({ b }) => b.src.code) ? `<span class="soft">Affiliate links. The codex earns a commission.</span>` : ""}</p>` : "";
   }
 
   function readHtml(r) {

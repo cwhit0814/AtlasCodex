@@ -110,7 +110,8 @@
       id: "hair", name: "Hair and skin",
       note: "Hair loss, skin, tanning and cosmetics.",
       slugs: ["finasteride", "dutasteride", "minoxidil", "ketoconazole", "clascoterone", "pyrilutamide", "topilutamide", "ru-58841", "pp405", "sm04554", "ptd-dbm",
-        "tri-blend-topical", "ghk-cu", "ahk-cu", "snap-8", "melanotan-1", "melanotan-2", "glutathione", "glow", "throne-ghk-soap", "throne-thr001", "throne-thr002", "throne-thr004", "glow-3", "ghk"]
+        "tri-blend-topical", "ghk-cu", "ahk-cu", "snap-8", "melanotan-1", "melanotan-2", "glutathione", "glow", "throne-ghk-soap", "throne-thr001", "throne-thr002", "throne-thr004", "glow-3", "ghk",
+        "throne-ghk-serum", "throne-ghk-hair-serum", "throne-ptd-dbm-serum", "throne-one"]
     },
     {
       id: "pain", name: "Pain and migraine",

@@ -64,6 +64,7 @@ window.ATLAS = {
       "Supplement": "Sold as a supplement, so amounts are set by manufacturers rather than established by dose-finding trials.",
       "Cosmetic": "A cosmetic or personal care product, used as directed on the label rather than dosed.",
       "Compounded": "Strength is set per prescription by the compounding pharmacy and prescriber, so there is no standard dose.",
+      "Device": "A device, used according to its instructions rather than dosed.",
       default: "No dose-finding study or approved label establishes a human dose for this compound."
     },
     // Where an "Approved" status applies, for entries not approved in the US or approved only as a cosmetic.
@@ -171,6 +172,8 @@ window.ATLAS = {
    *   sells:      gray tags under "what they sell"
    *   logoBg:     background color behind the logo (default light gray)
    *   popular:    [{ name, slug }]; items with a slug link to that codex entry
+   *   code:       the referral code. A source without one is not an affiliate: it stays off this page and its
+   *               product links carry no commission note. The first source is the one promoted site-wide.
    */
   support: {
     eyebrow: "Trusted sources",
@@ -194,6 +197,14 @@ window.ATLAS = {
           { name: "Dihexa", slug: "dihexa" },
           { name: "Tri-Blend Hair Loss Topical", slug: "tri-blend-topical" }
         ]
+      },
+      {
+        // Linked for its own products only; no referral code, so the codex earns nothing from it.
+        id: "throne",
+        name: "Throne",
+        href: "https://www.madebythrone.com/",
+        blurb: "Peptide skincare, hair care and a microneedling pen. Publishes full ingredient lists; strengths only for some products.",
+        sells: ["Skincare", "Hair care", "Supplements", "Devices"]
       }
     ]
   },

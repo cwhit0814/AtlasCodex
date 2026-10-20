@@ -215,47 +215,137 @@
     k: [["Route", "Topical"], ["Betamethasone absorption", "Low through intact skin, higher on thin skin, under occlusion or over large areas"], ["Lidocaine absorption", "Low on small areas of intact skin"]], ke: "established",
     related: ["ghk-cu", "throne-thr004"], updated: "2026-10-17" });
 
-  /* ================================================================ Throne personal care */
-  const listed = (x) => `The brand lists ${x} as key ingredients but does not publish a full ingredient list or any concentrations. Check the product label for the complete formula.`;
-  const throne = (slug, name, aliases, kind, summary, purpose, extraRisk, o = {}) => A.add({ slug, name, aliases, category: "products", status: "Cosmetic",
-    class: kind, developer: "Throne", tags: ["Throne", "skincare", "cosmetic"],
-    summary,
-    names: `A Throne personal care product, marketed for ${purpose}. Throne markets its line to people using anabolic steroids and peptides. The \"Cosmetic\" status means it is sold as a cosmetic, not a drug.`,
-    structure: o.structure || "A full ingredient list was not available when this entry was written. Check the product label or the brand's website for ingredients and concentrations.",
-    pubchem: false, p: [["Independent evidence", 0], ["Risk load", 1, 1], ["Evidence quality", 0]],
-    r: [o.structure ? ["Unknown formula", "unknown", "Without a full ingredient list or concentrations, the effect and irritation risk can't be assessed", "unknown"]
-      : ["Unknown formula", "unknown", "Without a published ingredient list, the effect and irritation risk can't be assessed", "unknown"],
-      ["Skin irritation", "low", "Any skincare product can irritate sensitive skin; patch-test first", "established"], ...(extraRisk || [])],
-    a: [["Claimed effect", "unknown", `Marketed for ${purpose}; there are no independent studies of this product`]],
-    t: o.t || [], noTrials: o.noTrials || "There are no independent studies of this product.", noTrialsRefs: o.noTrialsRefs,
-    k: [["Route", "Topical"], ["Systemic absorption", "Not applicable for typical cosmetic use"]], ke: "unknown",
-    related: ["ghk-cu", "throne-thr001", "throne-thr004"].filter((s) => s !== slug), ...(o.updated ? { updated: o.updated } : {}) });
 
-  throne("throne-ghk-soap", "Throne GHK Charcoal Soap", ["THR Soap Bar", "GHK charcoal soap"], "Cleansing bar (GHK-Cu + activated charcoal)",
-    "A face and body soap bar marketed as containing GHK-Cu and charcoal. Copper peptides have some evidence in leave-on products, but a rinse-off soap leaves little time for them to act.",
+  /* ================================================================ Throne personal care */
+  // Formulas are as published on madebythrone.com, checked 2026-10-20. Throne publishes full ingredient lists
+  // but, except for the GHK-Cu serum, no strengths.
+  const checked = "2026-10-20";
+  const noPreservative = ["No preservative listed", "unknown", "The published ingredient list names no preservative, which a water-based product opened every day normally needs", "unknown",
+    "Either the published list is incomplete or the product can grow microbes after opening. Keep it closed and stop using it if it changes color or smell."];
+  const throne = (slug, name, aliases, kind, summary, purpose, extraRisk, o = {}) => A.add({ slug, name, aliases, category: "products", status: o.status || "Cosmetic",
+    class: kind, developer: "Throne", tags: ["Throne", ...(o.tags || ["skincare", "cosmetic"])],
+    summary,
+    names: o.names || `A Throne personal care product, marketed for ${purpose}. Throne markets its line to people using anabolic steroids and peptides. The \"Cosmetic\" status means it is sold as a cosmetic, not a drug.`,
+    structure: `Throne publishes this full ingredient list: ${o.formula}.` + (o.strengths ? "" : " It does not give the amount of any ingredient."),
+    pubchem: false, p: o.p || [["Independent evidence", 0], ["Risk load", 1, 1], ["Evidence quality", 0]],
+    r: [...(o.strengths ? [] : [["Undisclosed strengths", "unknown", "The ingredients are listed but not their amounts, so the product can't be compared with the studies of its ingredients", "unknown"]]),
+      ...(o.skinRisk === false ? [] : [["Skin irritation", "low", "Any skincare product can irritate sensitive skin; patch-test first", "established"]]), ...(extraRisk || [])],
+    a: o.a || [["Claimed effect", "unknown", `Marketed for ${purpose}; there are no independent studies of this product`]],
+    t: o.t || [], noTrials: o.noTrials || "There are no independent studies of this product.", noTrialsRefs: o.noTrialsRefs,
+    k: o.k || [["Route", "Topical"], ["Systemic absorption", "Not applicable for typical cosmetic use"]], ke: o.ke || "unknown",
+    related: o.related || ["ghk-cu", "throne-thr001", "throne-thr004"].filter((s) => s !== slug), ...(o.added ? { added: o.added } : {}), updated: checked });
+
+  const niacinamideAging = (note) => ({ title: "Ingredient evidence: niacinamide 5% for facial aging", evidence: "human rct", meta: ["50 white women with facial photoaging", "5% niacinamide on one half of the face, vehicle on the other, twice daily", "12 weeks", "double-blind, split-face, randomized"], body: "Fine lines, wrinkles, dark spots, red blotchiness and sallowness improved, and elasticity increased on the niacinamide side.", note, refs: [791] });
+  const ghkLaser = (note) => ({ title: "Ingredient evidence: topical GHK-Cu after CO2 laser resurfacing", evidence: "human rct", meta: ["13 patients after circumoral CO2 laser resurfacing", "skin care regimen with or without GHK-Cu", "12 weeks", "randomized, blinded-evaluator"], body: "There was no difference in redness, wrinkles or overall skin quality on objective or blinded assessment. Patient-rated satisfaction was higher with GHK-Cu (p = 0.04).", note, refs: [613] });
+
+  throne("throne-ghk-soap", "Throne GHK Charcoal Soap", ["THRONE GHK-Cu Charcoal Cleansing Bar", "THR Soap Bar", "GHK charcoal soap"], "Cleansing bar (GHK-Cu + activated charcoal)",
+    "A face and body soap bar with GHK-Cu and charcoal. Copper peptides have some evidence in leave-on products, but a rinse-off soap leaves little time for them to act.",
     "skin cleansing, acne and skin aging",
-    [["Rinse-off limits", "low", "Active ingredients in rinse-off products have limited contact time with skin", "established"]],
-    { updated: "2026-10-17", structure: listed("activated charcoal and GHK-Cu"),
+    [["Rinse-off limits", "low", "Active ingredients in rinse-off products have limited contact time with skin", "established"],
+      ["Fragrance", "low", "Contains an unnamed essential oil blend; essential oils are a common cause of contact allergy", "established"]],
+    { formula: "distilled water, activated charcoal, GHK-Cu, ascorbic acid, amino acids, hyaluronic acid, lauric acid, castor oil, an essential oil blend, glycerin and sucrose",
       noTrials: "There are no studies of this soap. The peer-reviewed human trials of GHK-Cu are one wound-gel trial in diabetic ulcers and one 13-patient laser-resurfacing study, both with leave-on products. No controlled human data were found for charcoal in cleansers.", noTrialsRefs: [612, 613] });
-  throne("throne-thr001", "Throne THR001", ["THR001", "Throne cleanser"], "Facial cleanser",
-    "A facial cleanser, the first step of Throne's three-product routine.",
-    "skin cleansing, acne and skin aging", null,
-    { updated: "2026-10-17", structure: listed("a beta hydroxy acid (BHA), a polyhydroxy acid (PHA), niacinamide, zinc PCA and a small amount of GHK-Cu"),
+
+  throne("throne-thr001", "Throne THR001", ["THR001 BHA + Copper Clarity Face Wash", "THR001", "Throne cleanser"], "Facial cleanser (salicylic acid + gluconolactone + niacinamide)",
+    "A facial cleanser, the first step of Throne's three-product routine, with salicylic acid, gluconolactone, niacinamide, zinc PCA and a small amount of GHK-Cu.",
+    "skin cleansing, acne and skin aging",
+    [["Exfoliant acids", "low", "Salicylic acid and gluconolactone can dry or sting, more so with other acids or retinoids", "established"]],
+    { formula: "deionized water, glycerin, propanediol, sodium cocoyl isethionate, cocamidopropyl betaine, decyl glucoside, sodium lauroyl lactylate, salicylic acid, gluconolactone, niacinamide, zinc PCA, copper tripeptide-1 (GHK-Cu), panthenol, allantoin, disodium EDTA, phenoxyethanol, ethylhexylglycerin, sodium chloride, citric acid and sodium hydroxide. Salicylic acid is the beta hydroxy acid (BHA) and gluconolactone the polyhydroxy acid (PHA) the brand names",
       noTrials: "There are no independent studies of this product. The only human evidence is for single ingredients in other formulations.",
       t: [{ title: "Ingredient evidence: topical niacinamide in acne", evidence: "human rct", meta: ["76 patients with moderate inflammatory acne", "4% nicotinamide gel or 1% clindamycin gel, twice daily", "8 weeks", "randomized, double-blind, active-controlled"], body: "82% improved on nicotinamide and 68% on clindamycin, a difference that was not significant. Lesion counts fell similarly.", note: "This is evidence for one ingredient, not for this product. It was a leave-on 4% gel; a rinse-off wash with an undisclosed amount of niacinamide cannot borrow the result.", refs: [792] }] });
-  throne("throne-thr002", "Throne THR002", ["THR002", "Throne eye cream"], "Under-eye treatment",
-    "An under-eye product marketed to reduce dark circles and puffiness.",
-    "under-eye discoloration and puffiness",
+
+  throne("throne-thr002", "Throne THR002", ["THR002 Under-Eye Peptide Cream", "THR002", "Throne eye cream"], "Under-eye cream (peptides + caffeine)",
+    "An under-eye cream marketed for puffiness, fine lines and tired-looking eyes, combining six cosmetic peptides with caffeine.",
+    "under-eye puffiness, fine lines and loss of firmness",
     [["Eye area", "low", "Skin around the eyes is thin and more prone to irritation", "established"]],
-    { updated: "2026-10-17", structure: listed("acetyl hexapeptide-8 (Argireline), acetyl octapeptide-3 (SNAP-8), GHK-Cu, caffeine, dipeptide-2 and hyaluronic acid"),
+    { formula: "deionized water, glycerin, betaine, panthenol, sodium hyaluronate, squalane, polyglyceryl-6 distearate, pullulan, caffeine, acetyl hexapeptide-8 (Argireline), acetyl octapeptide-3 (SNAP-8), copper tripeptide-1 (GHK-Cu), palmitoyl tripeptide-1, palmitoyl tetrapeptide-7, dipeptide-2, allantoin, phenoxyethanol, ethylhexylglycerin, citric acid and sodium hydroxide. Palmitoyl tripeptide-1 and palmitoyl tetrapeptide-7 are the pair sold as Matrixyl 3000",
       noTrials: "There are no independent studies of this product. The only human evidence is for single ingredients in other formulations.",
       t: [{ title: "Ingredient evidence: Argireline around the eyes", evidence: "human rct", meta: ["60 Chinese adults with periorbital wrinkles", "Argireline or placebo, randomized 3:1, twice daily", "4 weeks", "multicenter, placebo-controlled"], body: "The authors report an overall anti-wrinkle efficacy of 48.9% in the Argireline group and a significant reduction in wrinkle depth.", note: "This is evidence for one ingredient, not for this product. It was small and short, and the placebo response rate is not reported.", refs: [790] },
-        { title: "Ingredient evidence: SNAP-8 in a combination microneedle patch", evidence: "human rct", meta: ["24 healthy adults", "microneedle patch with acetyl octapeptide-3 and other actives, against a plain patch, overnight under the eyes", "28 days", "split-face, placebo-controlled"], body: "Wrinkles, elasticity and lift improved more on the active side.", note: "Microneedles delivered several actives together, so the result cannot be attributed to SNAP-8 and does not apply to an eye cream.", refs: [728] }] });
-  throne("throne-thr004", "Throne THR004", ["THR004", "Throne moisturizer"], "Facial moisturizer",
-    "A facial moisturizer, the final step of Throne's routine, marketed for hydration and skin aging.",
+        { title: "Ingredient evidence: SNAP-8 in a combination microneedle patch", evidence: "human rct", meta: ["24 healthy adults", "microneedle patch with acetyl octapeptide-3 and other actives, against a plain patch, overnight under the eyes", "28 days", "split-face, placebo-controlled"], body: "Wrinkles, elasticity and lift improved more on the active side.", note: "Microneedles delivered several actives together, so the result cannot be attributed to SNAP-8 and does not apply to an eye cream.", refs: [728] }],
+      related: ["snap-8", "ghk-cu", "throne-thr001", "throne-thr004"] });
+
+  throne("throne-thr004", "Throne THR004", ["THR004 Peptide Moisturizer", "THR004", "Throne moisturizer"], "Facial moisturizer (peptides + niacinamide + ceramides)",
+    "A facial moisturizer, the final step of Throne's routine, marketed for hydration and skin aging. It combines Matrixyl 3000, GHK-Cu, acetyl heptapeptide-9, niacinamide, carnosine and ceramides.",
     "hydration and signs of skin aging", null,
-    { updated: "2026-10-17", structure: listed("palmitoyl tripeptide-1 and palmitoyl tetrapeptide-7 (sold together as Matrixyl 3000), GHK-Cu, niacinamide and a ceramide"),
+    { formula: "deionized water, glycerin, betaine, panthenol, niacinamide, carnosine, Matrixyl 3000 (palmitoyl tripeptide-1 and palmitoyl tetrapeptide-7), acetyl heptapeptide-9, copper tripeptide-1 (GHK-Cu), a ceramide complex, sodium hyaluronate, squalane, caprylic/capric triglyceride, cetearyl alcohol, glyceryl stearate citrate, xanthan gum, disodium EDTA, phenoxyethanol, ethylhexylglycerin, citric acid and sodium hydroxide",
       noTrials: "There are no independent studies of this product. The only human evidence is for single ingredients, or a related peptide, in other formulations.",
-      t: [{ title: "Ingredient evidence: niacinamide 5% for facial aging", evidence: "human rct", meta: ["50 white women with facial photoaging", "5% niacinamide on one half of the face, vehicle on the other, twice daily", "12 weeks", "double-blind, split-face, randomized"], body: "Fine lines, wrinkles, dark spots, red blotchiness and sallowness improved, and elasticity increased on the niacinamide side.", note: "This is evidence for one ingredient, not for this product. The trial was sponsor-run (Procter & Gamble), and the amount of niacinamide in THR004 is not disclosed.", refs: [791] },
+      t: [niacinamideAging("This is evidence for one ingredient, not for this product. The trial was sponsor-run (Procter & Gamble), and the amount of niacinamide in THR004 is not disclosed."),
         { title: "Related peptide, not in this product: palmitoyl pentapeptide-4", evidence: "human rct", meta: ["93 white women aged 35–55", "moisturizer with 3 ppm pal-KTTKS against the same moisturizer without it", "12 weeks", "double-blind, split-face, placebo-controlled"], body: "Wrinkles and fine lines improved more on the peptide side, and it was well tolerated.", note: "This is the original Matrixyl peptide, not the Matrixyl 3000 peptides in THR004. No controlled trial of Matrixyl 3000 itself was found.", refs: [793] }] });
+
+  // Added 2026-10-20 from the rest of the Throne catalogue.
+  throne("throne-ghk-serum", "Throne GHK-Cu Serum", ["THRONE GHK-Cu Skin Rejuvenation Serum", "Throne copper peptide serum"], "Facial serum (GHK-Cu 1% + niacinamide 5%)",
+    "A leave-on facial serum with 1% GHK-Cu and 5% niacinamide, the only Throne skincare product with published strengths. Its niacinamide matches the strength of a controlled facial-aging trial; GHK-Cu's human evidence is two small leave-on studies in wounds and after laser resurfacing.",
+    "skin texture, firmness and hydration",
+    [noPreservative, ["Copper peptide", "low", "1% GHK-Cu is a high cosmetic strength; copper peptides can irritate, and the trials used them on healing skin rather than daily on intact skin", "unknown", "", [612, 613]]],
+    { formula: "water, glycerin 20%, niacinamide 5%, copper tripeptide-1 (GHK-Cu) 1%, hyaluronic acid 0.2% and pullulan 0.2%", strengths: true, added: checked,
+      p: [["Independent evidence", 1], ["Risk load", 1, 1], ["Evidence quality", 1]],
+      a: [["GHK-Cu", "in vitro", "Stimulates collagen and glycosaminoglycan synthesis in skin cells"], ["Niacinamide 5%", "human rct", "Improved fine lines, blotchiness and elasticity in a split-face trial at the same strength"], ["Pullulan", "unknown", "A film-former that tightens as it dries, giving a temporary smoothing feel"]],
+      noTrials: "There are no independent studies of this product. The human evidence is for its ingredients in other formulations.",
+      t: [niacinamideAging("This is evidence for niacinamide alone, at the same 5% strength as this serum. The trial was sponsor-run (Procter & Gamble), and its vehicle was not this formula."),
+        ghkLaser("The objective endpoints were negative; only the unblinded patient questionnaire favored GHK-Cu. It was healing skin after laser, not daily use on intact skin.")],
+      related: ["ghk-cu", "throne-thr004", "throne-ghk-hair-serum"] });
+
+  throne("throne-ghk-hair-serum", "Throne GHK-Cu Hair Serum", ["GHK-Cu + Zinc Thymulin Hair Serum", "Throne scalp serum"], "Leave-in scalp serum (GHK-Cu)",
+    "A leave-in scalp serum sold as \"GHK-Cu + Zinc Thymulin\", though zinc thymulin is not in its published ingredient list. Evidence that copper peptides help hair comes from cultured follicles; no human trial of GHK-Cu for hair loss was found.",
+    "thicker, fuller-looking hair",
+    [["Name and label disagree", "moderate", "The product name promises zinc thymulin, but the published full ingredient list is only water, GHK-Cu, glycerin and hyaluronic acid", "established"], noPreservative],
+    { formula: "water, GHK-Cu, glycerin and hyaluronic acid", tags: ["hair loss", "scalp", "cosmetic"], added: checked,
+      a: [["GHK-Cu", "in vitro", "Lengthened human hair follicles in culture and raised dermal papilla cell growth", "The study used isolated follicles and cells; no scalp trial has followed."]],
+      noTrials: "There are no studies of this product, and the codex found no controlled human trial of topical GHK-Cu for hair loss. The evidence is one laboratory study of human hair follicles and dermal papilla cells.", noTrialsRefs: [727],
+      related: ["ghk-cu", "throne-ptd-dbm-serum", "minoxidil"] });
+
+  throne("throne-ptd-dbm-serum", "Throne PTD-DBM Serum", ["THRONE PTD-DBM Hair Serum", "PTD-BDM hair serum"], "Scalp serum (PTD-DBM + methyl vanillate)",
+    "A scalp serum pairing PTD-DBM, a peptide that regrew hair only in mice, with methyl vanillate, which raised hair counts in one small uncontrolled study in women. The product itself has never been studied. It was sold out when checked.",
+    "stronger, fuller-looking hair",
+    [["No human data for PTD-DBM", "unknown", "PTD-DBM has only been tested in mice and cells", "established", "", [726]], noPreservative],
+    { formula: "water, PTD-DBM peptide (spelled PTD-BDM on the page) and methyl vanillate", tags: ["hair loss", "scalp", "cosmetic"], added: checked,
+      p: [["Independent evidence", 1], ["Risk load", 1, 1], ["Evidence quality", 1]],
+      a: [["PTD-DBM", "animal", "Blocks CXXC5 from binding Dishevelled, releasing Wnt signaling; sped up hair regrowth in mice"], ["Methyl vanillate", "human obs", "A plant-derived Wnt activator; raised WNT10B expression in scalp biopsies of women with pattern hair loss"]],
+      noTrials: "There are no independent studies of this product. PTD-DBM has never been tested in humans.", noTrialsRefs: [726],
+      t: [{ title: "Ingredient evidence: methyl vanillate spray in female pattern hair loss", evidence: "human obs", meta: ["20 white women aged 25–57 with Sinclair grade 1–2 pattern hair loss", "alcohol-free spray with 0.2% methyl vanillate", "6 months", "open-label, uncontrolled pilot"], body: "Hair count rose 6% and hair mass index 12% from baseline, and WNT10B expression in scalp biopsies rose 32%. No one stopped because of side effects.", note: "There was no placebo group, so the change can't be separated from chance or seasonal shedding. It tested methyl vanillate alone, and Throne doesn't publish how much its serum contains.", refs: [901] }],
+      related: ["ptd-dbm", "throne-ghk-hair-serum", "minoxidil"] });
+
+  throne("throne-bpc", "Throne BPC", ["THRONE BPC (30 caps)", "BPC-157 arginate capsules"], "Oral capsule (BPC-157 arginate, 500 mcg)",
+    "A once-daily capsule sold as a supplement, containing 500 mcg of \"BPC arginate salt\". BPC-157 has animal evidence, including by mouth, but no published controlled human trial, and it is prohibited in sport.",
+    "a daily wellness routine",
+    [["Evidence base", "high", "BPC-157's human record is three uncontrolled studies totaling 30 people; none tested this capsule", "established", "", [603]],
+      ["Unreported trial", "unknown", "The one registered human trial of oral BPC-157 tablets, started in 2015, has never reported results", "established", "", [604]],
+      ["Angiogenesis", "unknown", "BPC-157 promotes blood vessel growth in animals, a theoretical concern with existing tumors", "contested"],
+      ["Sport", "high", "BPC-157 is prohibited at all times under WADA's S0 class", "established", "", [1800]],
+      ["Product quality", "moderate", "Sold as a supplement, so identity and content are not checked by a regulator before sale", "established"]],
+    { status: "Research only", tags: ["BPC-157", "oral", "capsule"], skinRisk: false, added: checked,
+      names: "Sold by Throne as a dietary supplement, one capsule a day. The label lists 500 mcg of \"BPC arginate salt\" per capsule with sodium bicarbonate, silicon dioxide and a hypromellose shell. It does not say \"157\"; the codex takes it to mean the arginate salt of BPC-157. BPC-157 has no approved product in the US, and Australia and New Zealand treat it as a prescription medicine.",
+      formula: "BPC arginate salt 500 mcg per capsule, sodium bicarbonate, silicon dioxide and a vegetable capsule (hypromellose)", strengths: true,
+      p: [["Preclinical signal", 3], ["Human evidence", 1], ["Risk load", 2, 1], ["Evidence quality", 1]],
+      a: [["BPC-157", "animal", "Tissue repair and angiogenesis in rodent injury models, including when given by mouth"], ["Arginate salt", "unknown", "Sold as a more stable salt form for oral use; no human comparison with other forms has been published"]],
+      noTrials: "There are no studies of this product. BPC-157's published human record is three uncontrolled studies totaling 30 people.", noTrialsRefs: [603],
+      t: [{ title: "Registered trial without results: oral BPC-157 tablets", evidence: "unknown", meta: ["42 healthy volunteers planned (PCO-02, PharmaCotherapia, Zagreb)", "oral 1 mg BPC-157 tablets: single doses of 1, 3 or 6 tablets, then 3 tablets every 8 hours for 2 weeks, against placebo", "registered start October 2015; status unknown", "phase 1, placebo-controlled"], body: "No results have been posted or published.", note: "This is the only registered human study of oral BPC-157, and it is the closest thing to this capsule. Its safety and absorption findings are unknown.", refs: [604] }],
+      k: [["Route", "Oral"], ["Human absorption", "Not published; the only oral human trial never reported"], ["Half-life", NE]], ke: "unknown",
+      related: ["bpc-157", "glow"] });
+
+  throne("throne-one", "Throne One Microneedling Pen", ["THRONE ONE Advanced Microneedling System", "Throne microneedling pen"], "Home microneedling pen (motorized, adjustable depth)",
+    "A motorized microneedling pen for home use, with adjustable depth and speed and single-use sterile cartridges. Microneedling done in clinics has trial evidence for acne scars and, with minoxidil, for pattern hair loss; home use adds infection and depth risks.",
+    "skin texture, fine lines and scars",
+    [["Infection", "moderate", "Needles that reach living skin can carry bacteria in; reusing or sharing a cartridge raises the risk", "established", "", [903]],
+      ["Depth", "moderate", "Too deep a setting can damage nerves and blood vessels and cause scarring or pigment changes, especially on darker skin", "established", "FDA lists these among the identified risks of microneedling devices.", [903]],
+      ["Products applied after", "unknown", "Open micro-channels let creams and serums reach deeper skin than they were formulated for", "unknown"],
+      ["Regulatory status", "unknown", "Throne does not say whether the pen is FDA-cleared", "unknown", "Under FDA guidance a microneedling pen whose needles reach living skin is a medical device, and one sold for aesthetic use needs 510(k) clearance.", [903]]],
+    { status: "Device", tags: ["microneedling", "device", "scars", "hair loss"], skinRisk: false, added: checked,
+      names: "Sold by Throne with single-use sterile needle cartridges, also sold separately in packs of 10. The pen stamps vertically rather than rolling, with adjustable depth and speed and a digital display. The \"Device\" status means it is a tool, not a drug or cosmetic.",
+      formula: "none; it is a device. Throne lists adjustable depth, multiple speeds, a digital display, sterile single-use cartridges and a USB-C rechargeable body", strengths: true,
+      p: [["Clinical evidence (in clinics)", 3], ["Evidence for home use", 1], ["Risk load", 2, 1], ["Evidence quality", 2]],
+      a: [["Collagen induction", "human rct", "Controlled needle injury triggers wound healing and new collagen, which is how microneedling softens atrophic scars"], ["Hair follicles", "human rct", "Microneedling with minoxidil grew more hair than minoxidil alone in a randomized trial"]],
+      noTrials: "There are no studies of this pen. The trials below used clinic microneedling, mostly with rollers, and do not show that home use is equally safe or effective.",
+      t: [{ title: "Microneedling for atrophic acne scars", evidence: "human rct", meta: ["9 randomized trials", "dermaroller or fractional radiofrequency microneedling, alone or combined with other treatments", "varied", "systematic review"], body: "Every included trial found microneedling effective for atrophic acne scars, alone or combined, with no serious adverse effects.", note: "The reviewers called for larger trials with longer follow-up. These were clinic treatments, not home devices.", refs: [902] },
+        { title: "Microneedling with minoxidil in male pattern hair loss", evidence: "human rct", meta: ["100 men with androgenetic alopecia", "5% minoxidil twice daily, with or without weekly 1.5 mm dermaroller microneedling", "12 weeks", "randomized, evaluator-blinded pilot"], body: "Mean hair count rose by 91.4 in the microneedling group against 22.2 with minoxidil alone, and the combination was better on all three primary measures.", note: "Microneedling was done weekly by the investigators with a roller, not at home with a pen.", refs: [900] }],
+      k: [["Route", "Not applicable; a device"], ["Session spacing", "Throne describes it as an occasional step, not daily; the trials used weekly or longer intervals"]], ke: "unknown",
+      related: ["minoxidil", "throne-ghk-serum", "throne-ghk-hair-serum"] });
+
+  A.references = A.references || {};
+  Object.assign(A.references, {
+    900: "Dhurat R et al. A randomized evaluator blinded study of effect of microneedling in androgenetic alopecia: a pilot study. Int J Trichology 2013;5:6–11.",
+    901: "Tosti A et al. Topical application of the Wnt/β-catenin activator methyl vanillate increases hair count and hair mass index in women with androgenetic alopecia. J Cosmet Dermatol 2016;15(4).",
+    902: "Sitohang IBS, Sirait SAP, Suryanegara J. Microneedling in the treatment of atrophic scars: a systematic review of randomised controlled trials. Int Wound J 2021;18(5).",
+    903: "US Food and Drug Administration. Regulatory considerations for microneedling products: guidance for industry and FDA staff. https://www.fda.gov/regulatory-information/search-fda-guidance-documents/regulatory-considerations-microneedling-products"
+  });
 })(window.ATLAS);

@@ -41,7 +41,7 @@
   // A small sponsored "Buy" link for lists that name a compound; empty when nothing is listed.
   const buyLink = (e) => {
     const b = buyFor(e)[0];
-    return b ? `<a class="buy-mini" href="${esc(b.href)}" target="_blank" rel="noopener sponsored" aria-label="Buy ${esc(e.name)} at ${esc(b.src.name)} (affiliate link)">Buy</a>` : "";
+    return b ? `<a class="buy-mini" href="${esc(b.href)}" target="_blank" rel="noopener${b.src.code ? " sponsored" : ""}" aria-label="Buy ${esc(e.name)} at ${esc(b.src.name)}${b.src.code ? " (affiliate link)" : ""}">Buy</a>` : "";
   };
   const copyCode = (b) => b.addEventListener("click", async () => {
     try { await navigator.clipboard.writeText(b.dataset.code); } catch (_) { return; }
@@ -157,7 +157,7 @@
   };
   const ST = {
     approved: "t-good", investigational: "t-weak", "research only": "t-bad", discontinued: "t-plain", veterinary: "t-obs",
-    "never approved": "t-bad", banned: "t-solid-bad", supplement: "t-weak", compounded: "t-obs", cosmetic: "t-plain"
+    "never approved": "t-bad", banned: "t-solid-bad", supplement: "t-weak", compounded: "t-obs", cosmetic: "t-plain", device: "t-plain"
   };
   // Jurisdictions for the legal status table, in display order, and the tone of each kind of status.
   const JUR = { US: "United States", UK: "United Kingdom", EU: "European Union", CA: "Canada", AU: "Australia", NZ: "New Zealand", JP: "Japan", CN: "China", RU: "Russia", WADA: "Sport (WADA)" };
@@ -938,7 +938,7 @@
       $("#support-disclosure").textContent = S.disclosure;
       const initials = (n) => n.split(/\s+/).map((w) => w[0]).join("").slice(0, 2).toUpperCase();
       const tags = (label, list) => list && list.length ? `<div class="tag-group"><h3>${label}</h3><div class="chips">${list.map((t) => `<span class="chip">${esc(t)}</span>`).join("")}</div></div>` : "";
-      $("#sources").innerHTML = S.sources.map((s) => `
+      $("#sources").innerHTML = S.sources.filter((s) => s.code).map((s) => `
         <article class="wrap spread person">
           <div class="side"><a class="source-logo" data-reveal style="${s.logoBg ? `background:${esc(s.logoBg)}` : ""}" href="${esc(s.href)}" target="_blank" rel="noopener sponsored">${s.logo ? `<img src="${esc(s.logo)}" alt="${esc(s.name)} logo">` : `<span class="head">${esc(initials(s.name))}</span>`}</a></div>
           <div class="main" data-reveal style="--i:1">
@@ -1139,9 +1139,9 @@
     }
     const codes = [...new Set(items.map((b) => b.src.code).filter(Boolean))];
     return `<div class="buy" data-rise style="--i:2">
-      <span class="buy-title">Buy from${codes.length ? `, code <b>${codes.map(esc).join(", ")}</b>` : ""}. The codex earns a commission.</span>
+      <span class="buy-title">Buy from${codes.length ? `, code <b>${codes.map(esc).join(", ")}</b>. The codex earns a commission${items.some((b) => !b.src.code) ? ` on coded links only` : ""}` : ". These links earn the codex nothing"}.</span>
       ${items.map((b) => `
-        <a class="buy-btn" href="${esc(b.href)}" target="_blank" rel="noopener sponsored">
+        <a class="buy-btn" href="${esc(b.href)}" target="_blank" rel="noopener${b.src.code ? " sponsored" : ""}">
           <span class="buy-logo" style="${b.src.logoBg ? `background:${esc(b.src.logoBg)}` : ""}">${b.src.logo ? `<img src="${esc(b.src.logo)}" alt="">` : esc(b.src.name.slice(0, 2).toUpperCase())}</span>
           <span>${esc(b.label || b.src.name)}</span>
         </a>`).join("")}
