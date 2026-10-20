@@ -6,6 +6,11 @@
  *   light    -> atlas-scout  (Haiku, read-only: lookups, listing, counting, running the checker)
  *   standard -> atlas-worker (Sonnet: small specified edits, record questions)
  *   heavy    -> no output, the main model handles it as usual
+ * Each routed prompt also gets an effort level, passed as the Agent tool's `effort` (it overrides the agent
+ * file's default), so the cheapest jobs think the least:
+ *   low    -> lookups, counts, git/checker runs, cosmetic edits (typo, spacing, colour, link)
+ *   medium -> file summaries, other short edits, read-only questions about doses/legal/trials (exact figures)
+ * The main session's own effort cannot be set from a hook; change it with /effort or /model.
  * Anything unclear is heavy. The codex is a medical reference where a wrong dose or statute is the worst
  * failure, so the router only ever moves work down when the prompt is clearly small and clearly scoped.
  *
@@ -84,23 +89,27 @@ function classify(raw) {
 
   // Read-only work.
   if (!writes) {
-    if (lookup && !sensitive) return { tier: "light", why: [...reasons, "read-only lookup"] };
-    if (sensitive && (lookup || files.length)) return { tier: "standard", why: [...reasons, "read-only question about the record; needs care with exact figures"] };
+    if (lookup && !sensitive) {
+      if (/\bsummari[sz]e\b/.test(lower)) return { tier: "light", effort: "medium", why: [...reasons, "read-only summary"] };
+      return { tier: "light", effort: "low", why: [...reasons, "read-only lookup"] };
+    }
+    if (sensitive && (lookup || files.length)) return { tier: "standard", effort: "medium", why: [...reasons, "read-only question about the record; needs care with exact figures"] };
     return heavy("plain question the main model can answer directly");
   }
 
   // Writes, not sensitive, small and named.
-  if (files.length >= 1 && SMALL_EDIT.test(words)) return { tier: "standard", why: [...reasons, "small edit in named file(s)"] };
-  if (files.length >= 1 && text.length < 220) return { tier: "standard", why: [...reasons, "short edit in named file(s)"] };
+  if (files.length >= 1 && SMALL_EDIT.test(words)) return { tier: "standard", effort: "low", why: [...reasons, "small edit in named file(s)"] };
+  if (files.length >= 1 && text.length < 220) return { tier: "standard", effort: "medium", why: [...reasons, "short edit in named file(s)"] };
   return heavy("edit is not clearly scoped to named files");
 }
 
-function advice(tier, why) {
+function advice(tier, effort, why) {
   const reason = why.join("; ");
+  const eff = " with effort \"" + effort + "\" (pass it as the Agent tool's effort parameter; the user asked for effort to follow the type of work)";
   if (tier === "light") {
-    return "Model routing (Atlas Codex hook): this prompt is a cheap read-only lookup (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-scout\" (Haiku). Give it a complete, self-contained brief, then relay its answer, quoting figures exactly. If the lookup turns out to need judgement or an edit, do it yourself instead.";
+    return "Model routing (Atlas Codex hook): this prompt is a cheap read-only lookup (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-scout\" (Haiku)" + eff + ". Give it a complete, self-contained brief, then relay its answer, quoting figures exactly. If the lookup turns out to need judgement or an edit, do it yourself instead.";
   }
-  return "Model routing (Atlas Codex hook): this prompt is small and scoped (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-worker\" (Sonnet). Give it the exact files, the exact change, and any source it must use; for a read-only question tell it not to edit. Then check its report and the diff before answering. If the work turns out to involve new medical or legal facts, design choices, or more than three files, do it yourself instead.";
+  return "Model routing (Atlas Codex hook): this prompt is small and scoped (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-worker\" (Sonnet)" + eff + ". Give it the exact files, the exact change, and any source it must use; for a read-only question tell it not to edit. Then check its report and the diff before answering. If the work turns out to involve new medical or legal facts, design choices, or more than three files, do it yourself instead.";
 }
 
 function run(raw, payload) {
@@ -108,14 +117,14 @@ function run(raw, payload) {
   if (payload && (payload.agent_id || payload.agent_type)) return null; // already inside a subagent
   const r = classify(raw);
   if (r.tier !== "light" && r.tier !== "standard") return null;
-  return { hookSpecificOutput: { hookEventName: "UserPromptSubmit", additionalContext: advice(r.tier, r.why) } };
+  return { hookSpecificOutput: { hookEventName: "UserPromptSubmit", additionalContext: advice(r.tier, r.effort || "medium", r.why) } };
 }
 
 function main() {
   const args = process.argv.slice(2);
   if (args[0] === "--explain") {
     const r = classify(args.slice(1).join(" "));
-    process.stdout.write(r.tier + " | " + r.why.join("; ") + "\n");
+    process.stdout.write(r.tier + (r.effort ? " @ " + r.effort : "") + " | " + r.why.join("; ") + "\n");
     return;
   }
   let data = "", done = false;
