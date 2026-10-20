@@ -351,6 +351,7 @@
     const d = (A.dosing || {})[e.slug];
     if (d) parts.push("Dosing. " + d.rows.map(([k, v]) => `${k}: ${v}.`).join(" "));
     if (e.pk) parts.push("Pharmacokinetics. " + e.pk.rows.map(([k, v]) => `${k}: ${v}.`).join(" ") + " " + (e.pk.note || ""));
+    [...((A.anecdotes || {})[e.slug] || []), ...((A.readerReports || {})[e.slug] || [])].forEach((a) => parts.push(`Reported: ${a.text}.`));
     return strip(parts.filter(Boolean).join(" \n "));
   }
   function ask(q) {
@@ -784,6 +785,71 @@
           : `<div class="sheet"><p>${sent(e.noTrials || "No controlled human trials are recorded for this compound.")}</p>${refsLine(e.noTrialsRefs)}</div>`));
       }
 
+      // anecdotes (js/anecdotes.js): the editor's collection, then readers' own reports. Below the record, and never a dose.
+      if (isCompound) {
+        const KIND = { effect: "Effect", side: "Side effect", none: "No effect noticed" };
+        const OFTEN = { often: [3, "Often reported"], some: [2, "Sometimes reported"], single: [1, "One report"] };
+        const REC = { agrees: "The record backs this up.", silent: "The record has nothing on this yet.", disagrees: "The record points the other way." };
+        const said = (a) => `<p class="anec-said">${a.verbatim ? `“${esc(String(a.text).trim())}”` : sent(a.text)}</p>`;
+        const recordLine = (a) => a.record ? `<p class="anec-record rec-${esc(a.record)}"><b>${REC[a.record] || ""}</b> ${a.recordNote ? sent(a.recordNote) : ""}</p>${refsLine(a.refs)}` : "";
+        const anecKey = `<div class="risk-key anec-key" aria-hidden="true"><span>What was reported, and how often</span><span>What people say, where they said it, and how it sits against the record</span></div>`;
+
+        const ane = (A.anecdotes || {})[e.slug] || [];
+        out.push(sec("anecdotes", "Anecdotal reports", `What people say they noticed, collected by the editor and set against the record. Anecdote is the weakest grade there is. <a class="link-plain" href="about.html#anecdotes">How anecdotes are collected</a>.`, ane.length
+          ? `<div class="risks anecs">${anecKey}${ane.map((a) => {
+              const [n, often] = OFTEN[a.often] || OFTEN.single;
+              const src = a.source || {};
+              const where = src.name ? (src.href ? `<a class="link-plain" href="${esc(src.href)}" target="_blank" rel="noopener">${esc(src.name)}</a>` : esc(src.name)) : "";
+              return `
+              <article class="anec">
+                <p class="anec-kind">${esc(KIND[a.kind] || "Reported")}<span class="anec-often"><span class="meter often" aria-hidden="true">${[1, 2, 3].map((i) => `<i class="${i <= n ? "on" : ""}"></i>`).join("")}</span>${often}</span></p>
+                <div class="anec-body">
+                  ${said(a)}
+                  <p class="anec-src">${badge("anecdotal")}${where ? `<span>${where}${src.year ? `, <span class="nums">${esc(src.year)}</span>` : ""}</span>` : ""}</p>
+                  ${recordLine(a)}
+                </div>
+              </article>`;
+            }).join("")}</div>`
+          : `<div class="sheet no-dose"><p><strong>No anecdotes collected yet.</strong> The editor hasn't gathered reports for this compound. That is a gap in the collection, not a sign that nobody has reported anything.</p></div>`));
+
+        const rep = (A.readerReports || {})[e.slug] || [];
+        const tracker = A.site.contact && A.site.contact.href ? A.site.contact.href.replace(/\/new$/, "/") : "";
+        const month = (d) => new Date(d + "T00:00:00").toLocaleDateString("en-US", { year: "numeric", month: "long" });
+        const withName = (w) => { const x = bySlug(w); return x ? `<a class="link-plain" href="${entryUrl(x)}">${esc(x.name)}</a>` : esc(w); };
+        const reportBody = `Compound: ${e.name}\n\n` +
+          `What you noticed (a change, a side effect, or nothing at all):\n\n\n` +
+          `Roughly how many weeks in you noticed it:\n\n` +
+          `Anything else you were taking at the same time:\n\n` +
+          `What happened when you stopped, if you did:\n\n` +
+          `Anything else that may have played a part (sleep, diet, training, illness):\n\n` +
+          `---\nPlease leave out doses, vendors, product names and anything that identifies you. This tracker is public. Reports are read before they appear in the codex, and doses, vendors and identifying details are removed.`;
+        out.push(sec("reader-reports", "Reader reports", `Sent in by readers and read by the editor before they go up. Each is one person's account, unverified, and not part of the codex's assessment.`, `
+          ${rep.length ? `<div class="risks anecs">${rep.map((r) => {
+            const facts = [
+              r.weeks ? `Noticed after <span class="nums">${esc(r.weeks)}</span> ${+r.weeks === 1 ? "week" : "weeks"}` : "",
+              (r.with || []).length ? `Alongside ${r.with.map(withName).join(", ")}` : "",
+              r.stopped ? `On stopping: ${esc(String(r.stopped).trim().replace(/\.$/, ""))}` : ""
+            ].filter(Boolean);
+            return `
+            <article class="anec reader">
+              <p class="anec-kind">${esc(KIND[r.kind] || "Reported")}<span class="anec-often">${r.sent ? `Sent <span class="nums">${esc(month(r.sent))}</span>` : "Reader report"}</span></p>
+              <div class="anec-body">
+                ${said(r)}
+                ${facts.length ? `<p class="anec-facts">${facts.join("<span aria-hidden=\"true\"> · </span>")}</p>` : ""}
+                <p class="anec-src">${badge("anecdotal")}<span class="ev t-plain">Unverified</span>${r.issue && tracker ? `<span><a class="link-plain" href="${esc(tracker + r.issue)}" target="_blank" rel="noopener">Report <span class="nums">#${esc(r.issue)}</span></a></span>` : ""}</p>
+                ${r.note ? `<p class="anec-record rec-note"><b>Editor's note.</b> ${sent(r.note)}</p>` : ""}
+              </div>
+            </article>`;
+          }).join("")}</div>` : `<div class="sheet no-dose"><p><strong>No reader reports yet.</strong> Nobody has sent one in for this compound. If you have used it, yours can be the first.</p></div>`}
+          <div class="sheet anec-send">
+            <div>
+              <h3>Send your own report</h3>
+              <p>Say what you noticed, good, bad or nothing, and leave out doses, vendors and your name. The tracker is public, so anything you write there can be read by anyone. Reports are read before they appear here, and opening one needs a free GitHub account.</p>
+            </div>
+            <a class="button" href="${esc(reportUrl("Reader report: " + e.name, reportBody))}" target="_blank" rel="noopener">Send a report</a>
+          </div>`));
+      }
+
       // dosing (from approved labels and published trials only), after the record it comes from
       if (isCompound) {
         const d = (A.dosing || {})[e.slug];
@@ -828,7 +894,7 @@
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...inter, ...legal, ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...inter, ...legal, ...(e.activity || []), ...(e.trials || []), ...((A.anecdotes || {})[e.slug] || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         const sorted = [...ids].sort((a, b) => a - b);
         out.push(ornament);

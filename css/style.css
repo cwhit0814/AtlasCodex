@@ -996,6 +996,34 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
 .p-flag { display: block; margin-top: .1rem; font-size: var(--step-small); font-weight: 400; color: var(--muted); }
 .p-row.thin .meter.graded i.on { background: repeating-linear-gradient(135deg, var(--muted) 0 2px, transparent 2px 4px); outline: 1px solid var(--muted); outline-offset: -1px; }
 
+/* anecdotes: the editor's collection and readers' reports. Banded like the risk grid, the reported words in italic,
+   because they are someone else's voice, and the record's answer on a tint step beneath. */
+.anec { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: .5rem 1.5rem; align-items: start; background: var(--surface); padding: 1.1rem 1.25rem; }
+.anecs > .anec:nth-child(even) { background: var(--surface-2); }
+.anec-kind { font-weight: 600; line-height: 1.35; }
+.anec-often { display: flex; align-items: center; gap: .45rem; margin-top: .2rem; font-weight: 400; color: var(--muted); font-size: var(--step-small); }
+.meter.often { gap: 3px; }
+.meter.often i { width: 9px; height: 9px; background: color-mix(in srgb, var(--ink) 16%, transparent); }
+.meter.often i.on { background: var(--muted); }
+.anec-said { font-style: italic; font-size: var(--step-body); line-height: 1.5; max-width: 60ch; }
+.anec-facts { margin-top: .5rem; color: var(--muted); font-size: var(--step-small); }
+.anec-facts a, .anec-src a { color: var(--ink); }
+.anec-src { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .75rem; margin-top: .7rem; color: var(--muted); font-size: var(--step-small); }
+.anec-record { margin-top: .9rem; padding: .75rem .95rem; max-width: 62ch; background: color-mix(in srgb, var(--ink) 6%, transparent); font-size: var(--step-small); }
+.anec-record b { font-weight: 600; }
+.anec-record.rec-disagrees, .anec-record.rec-note { background: color-mix(in srgb, var(--weak) var(--tint), transparent); }
+.anec-record.rec-disagrees b, .anec-record.rec-note b { color: var(--weak); }
+.anec .refs-line { margin-top: .6rem; }
+.anec-send { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 1rem 2rem; align-items: center; margin-top: 4px; background: color-mix(in srgb, var(--accent) 12%, var(--surface)); }
+.anec-send h3 { font-size: var(--step-lead); line-height: 1.15; }
+.anec-send p { margin-top: .4rem; font-size: var(--step-small); max-width: 60ch; }
+@media (max-width: 40rem) {
+  .anec { grid-template-columns: minmax(0, 1fr); padding: 1rem; }
+  .anec-kind { display: flex; flex-wrap: wrap; align-items: baseline; gap: .1rem .75rem; }
+  .anec-send { grid-template-columns: minmax(0, 1fr); }
+  .anec-send .button { justify-self: start; }
+}
+
 /* a caveat the reader came for stays in the full ink */
 .caveat { margin-top: 1rem; color: var(--ink); font-size: var(--step-small); }
 
@@ -1058,7 +1086,9 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
   .plus, .act-detail { display: none; }
   .act { grid-template-columns: 1fr; }
   .ev, .st { border: 1px solid #000; background: none; color: #000; }
-  .editor-note { background: none; border: 1px solid #999; }
+  .editor-note, .anec-record { background: none; border: 1px solid #999; }
+  .anec { background: none !important; padding: .5rem 0; break-inside: avoid; }
+  .anec-send { display: none; }
   a { text-decoration: none; }
   .refs-list a { display: none; }
 }

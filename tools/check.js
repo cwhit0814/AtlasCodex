@@ -40,6 +40,27 @@ for (const [s, rows] of Object.entries(A.legal || {})) rows.forEach((r) => {
   if (!(r.refs || []).length) out.push(`legal ${s} ${r.where}: no reference`);
   refs(r.refs, "legal " + s);
 });
+// Anecdotes: never a dose, and every editor's anecdote names where it was said.
+const DOSE = /\d\s*(mg|mcg|µg|ug|iu|ml|cc|units?|g)\b/i;
+for (const [k, label] of [["anecdotes", "anecdote"], ["readerReports", "reader report"]]) for (const [s, rows] of Object.entries(A[k] || {})) {
+  has(s) || out.push(`${k}: ${s} has no entry`);
+  rows.forEach((r, i) => {
+    const at = `${label} ${s} ${i + 1}`;
+    if (!["effect", "side", "none"].includes(r.kind)) out.push(`${at}: unknown kind ${r.kind}`);
+    if (!r.text) out.push(`${at}: no text`);
+    if (DOSE.test([r.text, r.recordNote, r.stopped, r.note].join(" "))) out.push(`${at}: looks like it carries a dose`);
+    if (k === "anecdotes") {
+      if (!["often", "some", "single"].includes(r.often)) out.push(`${at}: unknown often ${r.often}`);
+      if (!["agrees", "silent", "disagrees"].includes(r.record)) out.push(`${at}: unknown record ${r.record}`);
+      if (!(r.source && r.source.name)) out.push(`${at}: no source name`);
+      if (r.added && !date.test(r.added)) out.push(`${at}: added is "${r.added}", not YYYY-MM-DD`);
+      refs(r.refs, at);
+    } else {
+      if (!date.test(r.sent || "")) out.push(`${at}: sent is "${r.sent}", not YYYY-MM-DD`);
+      if (!Number.isInteger(r.issue)) out.push(`${at}: no issue number`);
+    }
+  });
+}
 for (const u of A.uses || []) u.slugs.forEach((s) => has(s) || out.push(`use ${u.id}: ${s} has no entry`));
 
 const uses = new Set((A.uses || []).map((u) => u.id)), groups = new Set(A.stacks.groups.map((g) => g.id));
