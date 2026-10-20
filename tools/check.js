@@ -27,9 +27,19 @@ for (const e of A.entries) {
   refs(e.noTrialsRefs, e.slug); refs(e.refs, e.slug);
   (e.profile ? e.profile.rows : []).forEach((r) => (typeof r.score !== "number" || r.score < 0 || r.score > 5) && out.push(`${e.slug}: profile score ${r.score} outside 0-5`));
 }
-for (const k of ["dosing", "monitoring", "interactions", "buy"]) for (const s of Object.keys(A[k] || {})) has(s) || out.push(`${k}: ${s} has no entry`);
+for (const k of ["dosing", "monitoring", "interactions", "legal", "buy"]) for (const s of Object.keys(A[k] || {})) has(s) || out.push(`${k}: ${s} has no entry`);
 for (const [s, d] of Object.entries(A.dosing || {})) { Array.isArray(d.rows) || out.push(`dosing ${s}: no rows`); refs(d.refs, "dosing " + s); }
 for (const [s, rows] of Object.entries(A.interactions || {})) rows.forEach((r) => refs(r.refs, "interactions " + s));
+const JUR = new Set(["US", "UK", "EU", "CA", "AU", "NZ", "JP", "CN", "RU", "WADA"]);
+const KIND = new Set(["rx", "otc", "controlled", "supplement", "cosmetic", "unapproved", "prohibited", "vet", "sport-banned", "sport-in-comp", "sport-monitored", "sport-allowed"]);
+const LEVEL = new Set(["low", "moderate", "high", "unknown"]);
+for (const [s, rows] of Object.entries(A.interactions || {})) rows.forEach((r) => LEVEL.has(r.level) || out.push(`interactions ${s}: unknown level ${r.level}`));
+for (const [s, rows] of Object.entries(A.legal || {})) rows.forEach((r) => {
+  if (!JUR.has(r.where)) out.push(`legal ${s}: unknown jurisdiction ${r.where}`);
+  if (!KIND.has(r.kind)) out.push(`legal ${s} ${r.where}: unknown kind ${r.kind}`);
+  if (!(r.refs || []).length) out.push(`legal ${s} ${r.where}: no reference`);
+  refs(r.refs, "legal " + s);
+});
 for (const u of A.uses || []) u.slugs.forEach((s) => has(s) || out.push(`use ${u.id}: ${s} has no entry`));
 
 const uses = new Set((A.uses || []).map((u) => u.id)), groups = new Set(A.stacks.groups.map((g) => g.id));

@@ -988,7 +988,7 @@
     names: "Sold as Priligy in Europe, Asia and Latin America. The FDA did not approve it.",
     structure: "C<sub>21</sub>H<sub>23</sub>NO, about 305.4 g/mol.",
     pubchem: "dapoxetine", p: [["Ejaculation delay", 3], ["Risk load", 2, 1], ["Evidence quality", 4]],
-    r: [["Fainting", "moderate", "Syncope, especially with alcohol or dehydration", "human rct"], ["Nausea and dizziness", "moderate", "Common; nausea is dose-related", "human rct", "Nausea affected 8.7% on 30 mg and 20.1% on 60 mg in the US phase 3 trials.", [777]], ["Interactions", "high", "Avoid with other serotonergic drugs and MAO inhibitors", "established"]],
+    r: [["Fainting", "moderate", "Syncope, especially with alcohol or dehydration", "human rct"], ["Nausea and dizziness", "moderate", "Common; nausea is dose-related", "human rct", "Nausea affected 8.7% on 30 mg and 20.1% on 60 mg in the US phase 3 trials.", [777]]],
     a: [["Serotonin transporter", "human rct", "Briefly raises serotonin, delaying ejaculation by a few minutes on average"]],
     t: [
       { title: "Two US phase 3 trials (integrated analysis)", evidence: "human rct", meta: ["2,614 men with moderate to severe premature ejaculation", "dapoxetine 30 or 60 mg, or placebo, 1–3 hours before sex", "12 weeks", "two randomized, double-blind, placebo-controlled trials"], body: "Time to ejaculation rose from about 0.9 minutes to 1.75 (placebo), 2.78 (30 mg) and 3.32 minutes (60 mg). It worked from the first dose. Nausea affected 8.7% on 30 mg and 20.1% on 60 mg.", refs: [777] },

@@ -16,10 +16,11 @@ An open reference library of peptides and research compounds, built as a static,
   - **profile**: editorial 1–5 scores; red rows are ones where higher is worse. A low risk score on a thin human record is drawn without colour and labelled. Visitors can add their own scores, which are saved in their browser
   - **risk**: a grid of how serious each risk is and how strong its evidence is, with a key and expandable detail
   - **interactions**: rows from `js/interactions.js`, plus any risk row whose system names an interaction. An entry with none shows an honest "none recorded" panel
+  - **legal status**: a row per jurisdiction (US, UK, EU, CA, AU, NZ, JP, CN, RU and WADA) from `js/legal.js`, each citing the statute, register or list; unchecked jurisdictions are named as not yet checked
   - **monitoring** (always shown; "none recorded" when `js/monitoring.js` has nothing for the entry)
   - **human clinical record**: trials with design meta lines and editor's notes
   - **dosing**, then **pharmacokinetics**, then **mechanism and receptor activity** (a list with a detail panel)
-  - **references**, with links to PubMed
+  - **references**, with links to PubMed, or to the source page when a reference carries its own URL (statutes, registers, labels)
   - **record**: dates, a citation to copy, Print or save as PDF (a print stylesheet), and a prefilled "Report an error in this entry" link to the issue tracker
 - `credits.html`: "Creators I Learned From" page. Cards come from `credits.people` in `js/data.js` and use generated monogram avatars; set `image` on a person to use a real photo or logo you have permission to use
 - `support.html`: "support me" page with source cards (logo, copy-to-clipboard code, attributes, what they sell, shop button). Sources are set in `support.sources` in `js/data.js`

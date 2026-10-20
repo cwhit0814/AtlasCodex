@@ -159,6 +159,12 @@
     approved: "t-good", investigational: "t-weak", "research only": "t-bad", discontinued: "t-plain", veterinary: "t-obs",
     "never approved": "t-bad", banned: "t-solid-bad", supplement: "t-weak", compounded: "t-obs", cosmetic: "t-plain"
   };
+  // Jurisdictions for the legal status table, in display order, and the tone of each kind of status.
+  const JUR = { US: "United States", UK: "United Kingdom", EU: "European Union", CA: "Canada", AU: "Australia", NZ: "New Zealand", JP: "Japan", CN: "China", RU: "Russia", WADA: "Sport (WADA)" };
+  const LK = {
+    rx: "t-good", otc: "t-good", controlled: "t-obs", supplement: "t-weak", cosmetic: "t-plain", unapproved: "t-bad", prohibited: "t-solid-bad", vet: "t-obs",
+    "sport-banned": "t-solid-bad", "sport-in-comp": "t-bad", "sport-monitored": "t-weak", "sport-allowed": "t-good"
+  };
   const badge = (ev) => { if (!ev) return ""; const [label, tone] = EV[ev] || [cap(ev), "t-plain"]; return `<span class="ev ${tone}">${esc(label)}</span>`; };
   // "Approved" names where, when that is not the US or not as a drug (site.approvedWhere).
   const statusTag = (s, slug) => {
@@ -457,7 +463,11 @@
       <tfoot><tr class="sum"><th scope="row">Together</th><td>${sent(pairNote[s.together] || "")}</td><td class="grade">${badge(s.together)}</td></tr></tfoot>
     </table>`;
   }
-  const refItem = (n, t) => `<li id="ref-${n}" value="${n}">${esc(t)}${/announcement|prescribing information|federal register|product characteristics|prohibited list|clinicaltrials.gov|healio/i.test(t) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(t.split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`;
+  // A reference that carries its own URL (a statute, register or regulator page) links there instead of PubMed.
+  const refItem = (n, t) => { const url = (String(t).match(/https?:\/\/\S+[^\s.,;)]/) || [])[0]; return url
+    ? `<li id="ref-${n}" value="${n}">${esc(t.replace(url, "").replace(/[\s:]+$/, "").replace(/\s+\./, "."))} <a class="link-plain" href="${esc(url)}" target="_blank" rel="noopener">Source</a></li>`
+    : refItemPaper(n, t); };
+  const refItemPaper = (n, t) => `<li id="ref-${n}" value="${n}">${esc(t)}${/announcement|prescribing information|federal register|product characteristics|prohibited list|clinicaltrials.gov|healio/i.test(t) ? "" : ` <a class="link-plain" href="https://pubmed.ncbi.nlm.nih.gov/?term=${encodeURIComponent(t.split(". ").slice(1, 2).join(""))}" target="_blank" rel="noopener">PubMed</a>`}</li>`;
   const ornament = `<div class="ornament" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1"><path d="M12 1.5 13.6 10.4 22.5 12 13.6 13.6 12 22.5 10.4 13.6 1.5 12 10.4 10.4Z"/><circle cx="12" cy="12" r="10.2" stroke-width=".55"/></svg></div>`;
 
   /* ---------- pages ---------- */
@@ -730,6 +740,20 @@
           : `<div class="sheet no-dose"><p><strong>No interactions recorded.</strong> This entry doesn't list any yet. That is a gap in the codex, not evidence that none exist. For an approved medicine, the label's interactions section is the place to look, and a pharmacist can check everything you take together.</p></div>`));
       }
 
+      // legal status by jurisdiction (js/legal.js). A jurisdiction with no row is "not yet checked", never "unregulated".
+      const legal = isCompound ? (A.legal || {})[e.slug] || [] : [];
+      if (isCompound && !(e.parts || []).length) {
+        const seen = new Set(legal.map((r) => r.where));
+        const unchecked = Object.keys(JUR).filter((k) => !seen.has(k)).map((k) => JUR[k]);
+        const legalNote = `Where it is a prescription medicine, controlled, or banned, from each regulator's own schedule or register.${A.legalChecked ? ` Checked ${fmtDate(A.legalChecked)}.` : ""}`;
+        out.push(sec("legal", "Legal status", legalNote, `
+          <div class="sheet">
+            ${legal.length ? `<table class="table legal"><tbody>${legal.map((r) => `<tr><th scope="row">${esc(JUR[r.where] || r.where)}</th><td><span class="st ${LK[r.kind] || "t-plain"}">${esc(r.status)}</span><p>${sent(r.text)}</p>${refsLine(r.refs)}</td></tr>`).join("")}</tbody></table>` : `<p><strong>No legal status recorded.</strong> This entry doesn't list any jurisdiction yet.</p>`}
+            ${legal.length && unchecked.length ? `<p class="soft small" style="margin-top:1rem">Not yet checked: ${esc(unchecked.join(", "))}. A gap here is not a sign the compound is unregulated there.</p>` : ""}
+            <p class="caveat">Law changes, and possession, import and sale are often treated differently. This is a summary of the record, not legal advice.</p>
+          </div>`));
+      }
+
       // monitoring
       const mon = (A.monitoring || {})[e.slug];
       const monNote = "Which markers this compound makes worth watching. Target ranges are left out on purpose.";
@@ -804,7 +828,7 @@
 
       // references
       const ids = new Set();
-      [...(e.risks || []), ...inter, ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
+      [...(e.risks || []), ...inter, ...legal, ...(e.activity || []), ...(e.trials || []), { refs: e.noTrialsRefs }, { refs: e.refs }, e.pk || {}, (A.dosing || {})[e.slug] || {}].forEach((x) => (x.refs || []).forEach((r) => ids.add(r)));
       if (ids.size) {
         const sorted = [...ids].sort((a, b) => a - b);
         out.push(ornament);
