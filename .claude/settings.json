@@ -5,12 +5,14 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node",
-            "args": ["${CLAUDE_PROJECT_DIR}/.claude/hooks/userPromptSubmit.js"],
+            "command": "node \"$CLAUDE_PROJECT_DIR/.claude/hooks/userPromptSubmit.js\"",
             "timeout": 10
           }
         ]
       }
     ]
+  },
+  "enabledPlugins": {
+    "ponytail@ponytail": true
   }
 }

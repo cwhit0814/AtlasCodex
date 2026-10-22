@@ -5,6 +5,7 @@
  * this project and, when the job is cheap, tells Claude to hand it to a cheaper subagent (see .claude/agents).
  *   light    -> atlas-scout  (Haiku, read-only: lookups, listing, counting, running the checker)
  *   standard -> atlas-worker (Sonnet: small specified edits, record questions)
+ *   research -> main model judges and edits, but Sonnet subagents fetch sources and return only quotes
  *   heavy    -> no output, the main model handles it as usual
  * Each routed prompt also gets an effort level, passed as the Agent tool's `effort` (it overrides the agent
  * file's default), so the cheapest jobs think the least:
@@ -30,7 +31,9 @@ const WRITE = /\b(fix|change|edit|update|replace|rename|move|delete|remove|add|i
 // Only counts as read-only when the prompt is clearly a lookup.
 const LOOKUP = /\b(where|which files?|find|locate|list|show me|how many|count|grep|search for|look up|what files?|what (does|is) .{0,60}(in|inside) |summari[sz]e|status|git (log|status|diff|show)|run (the )?(check|checker|tests?)|tools\/check)\b/;
 // Git chores: committing, staging or pushing work already on disk. History rewrites and force pushes are never chores.
-const GIT_CHORE = /\b(commit|push|stage|git add)\b/;
+const GIT_CHORE = /\b(comm?it|push|stage|git add)\b/;
+// Source research: judgement stays on the main model, but fetching pages is handed off so their dumps stay out of its context.
+const RESEARCH = /\b(research\w*|pubmed|studies|citations?)\b/;
 const GIT_RISKY = /(--force|\bforce\b|\s-f\b|\bamend\b|\breset\b|\brevert\b|\bsquash\b|\bcherry-?pick\b|\bstash\b|\btag\b|\bpr\b|pull request|\bbranch\b|\bmain\b|\bmaster\b)/;
 const SMALL_EDIT = /\b(typo|spelling|wording|punctuation|whitespace|comma|capitali[sz]ation|link|url|href|colou?r|padding|margin|font-?size|label text|title|heading text|alt text|copy|text)\b/;
 
@@ -84,9 +87,10 @@ function classify(raw) {
   const lookup = LOOKUP.test(lower);
   if (files.length) reasons.push(`names ${files.length} file(s): ${files.slice(0, 4).join(", ")}`);
 
+  if (RESEARCH.test(words) && !/\b(design|redesign|refactor\w*|debug\w*)\b/.test(words)) return { tier: "research", why: [...reasons, "source research"] };
   if (HEAVY_WORDS.test(words)) return heavy("design, judgement or open-ended work");
   // A prompt that only asks to commit/stage/push (no other edit) is a chore, whatever the changes it commits.
-  if (GIT_CHORE.test(words) && text.length < 220 && !WRITE.test(words.replace(/\b(commit|push|stage|git add)\b/g, " "))) {
+  if (GIT_CHORE.test(words) && text.length < 220 && !WRITE.test(words.replace(/\b(comm?it|push|stage|git add)\b/g, " "))) {
     if (GIT_RISKY.test(words)) return heavy("git operation beyond a plain commit or push");
     return { tier: "git", effort: "low", why: [...reasons, "git chore: commit or push work already on disk"] };
   }
@@ -117,6 +121,9 @@ function advice(tier, effort, why) {
   if (tier === "git") {
     return "Model routing (Atlas Codex hook): this prompt is a git chore (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-worker\" (Sonnet)" + eff + ". The worker cannot see this conversation, so write the commit message yourself (subject plus a short body describing what changed, in the repo's style) and put it in the brief verbatim, including any attribution trailer the system asks for. Tell it which branch is checked out and to stage, commit and push only that. Then confirm the pushed commit hash from its report.";
   }
+  if (tier === "research") {
+    return "Model routing (Atlas Codex hook): this prompt is source research (" + reason + "). Keep the judgement and every edit on the main model, but to save usage hand the reading off: for each compound or question, start an Agent with subagent_type \"general-purpose\" and model \"sonnet\" that searches and reads the sources and returns only the PMID, DOI or label URL with verbatim quotes of each figure it found. Never paste whole pages into this conversation. Check each PMID and quote before it goes into an entry, as the sourcing rules require.";
+  }
   if (tier === "light") {
     return "Model routing (Atlas Codex hook): this prompt is a cheap read-only lookup (" + reason + "). To save usage, delegate it with the Agent tool: subagent_type \"atlas-scout\" (Haiku)" + eff + ". Give it a complete, self-contained brief, then relay its answer, quoting figures exactly. If the lookup turns out to need judgement or an edit, do it yourself instead.";
   }
@@ -127,7 +134,7 @@ function run(raw, payload) {
   if ((process.env.ATLAS_ROUTER || "").toLowerCase() === "off") return null;
   if (payload && (payload.agent_id || payload.agent_type)) return null; // already inside a subagent
   const r = classify(raw);
-  if (r.tier !== "light" && r.tier !== "standard" && r.tier !== "git") return null;
+  if (!["light", "standard", "git", "research"].includes(r.tier)) return null;
   return { hookSpecificOutput: { hookEventName: "UserPromptSubmit", additionalContext: advice(r.tier, r.effort || "medium", r.why) } };
 }
 
@@ -157,4 +164,5 @@ function main() {
   setTimeout(finish, 5000).unref();
 }
 
-try { main(); } catch (e) { process.exit(0); }
+if (require.main === module) { try { main(); } catch (e) { process.exit(0); } }
+module.exports = { classify };
