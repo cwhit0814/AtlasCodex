@@ -193,7 +193,7 @@
       slug: "prl-8-53", type: "compound", name: "PRL-8-53",
       aliases: ["Methyl 3-[2-[benzyl(methyl)amino]ethyl]benzoate"], category: "nootropic", status: "Research only",
       class: "Phenethylamine-derived memory compound", developer: "Nikolaus Hansl, Creighton University (1970s)",
-      added: "2026-10-06", updated: "2026-10-06",
+      added: "2026-10-06", updated: "2026-10-21",
       tags: ["memory", "single study", "phenethylamine"],
       summary: "A compound tested once in humans, in 1978, where a single dose improved word-list recall. That study has never been replicated, and nothing is known about its long-term safety.",
       names: "Named after its inventor's lab code. It was patented by Nikolaus Hansl at Creighton University and never commercially developed. All current supply is gray-market powder.",
@@ -203,14 +203,14 @@
         { label: "Memory effect (claimed)", score: 3 }, { label: "Human evidence", score: 1 },
         { label: "Risk load", score: 2, neg: true }, { label: "Evidence quality", score: 1 } ] },
       risks: [
-        { system: "Human safety", level: "unknown", text: "No safety data beyond a single-dose study", evidence: "unknown" },
+        { system: "Human safety", level: "unknown", text: "No safety data beyond a single-dose study", evidence: "unknown", detail: "No adverse reactions were reported in that study, which only asked volunteers after single 5 mg doses.", refs: [58] },
         greyMarket
       ],
       activity: [
-        { title: "Mechanism", evidence: "animal", summary: "Unclear. Early animal work suggested cholinergic potentiation and partial dopamine enhancement, with some serotonin inhibition" }
+        { title: "Mechanism", evidence: "animal", summary: "Unclear. The inventor reported a cholinergic response, dopamine potentiation and partial serotonin inhibition in animals, and reversal of reserpine-induced catatonia in rodents", refs: [58] }
       ],
       trials: [
-        { title: "Word-list learning in healthy volunteers", evidence: "human rct", meta: ["47 healthy adults", "a single 5 mg oral dose or placebo before learning", "recall tested at 24 hours and one week", "double-blind, placebo-controlled"], body: "Recall of a 12-word list improved with PRL-8-53, and the effect was larger in people whose baseline recall was poor. Volunteers aged 30 and over appeared to benefit more.", note: "This is the only human study. It was run by the compound's inventor, has never been independently replicated, and is now more than 45 years old.", refs: [58] }
+        { title: "Word-list learning in healthy volunteers", evidence: "human rct", meta: ["47 healthy university faculty and students", "a 5 mg oral dose or placebo 2 to 2.5 hours before learning, each person tested on both", "recall tested at 24 hours and one week", "double-blind, placebo-controlled"], body: "Learning of a 12-word list improved only slightly, but recall at 24 hours and one week was clearly better on PRL-8-53. The effect was larger in people whose recall on placebo was poor, and in the 17 volunteers over 30. People with near-perfect recall on placebo showed no clear gain. Reaction time and hand steadiness did not change.", note: "This is the only human study. It was run by the compound's inventor, has never been independently replicated, and is now more than 45 years old.", refs: [58] }
       ],
       related: ["piracetam", "nsi-189"]
     },
@@ -285,7 +285,7 @@
     55: "Pugsley TA et al. Some neurochemical properties of pramiracetam (CI-879), a new cognition-enhancing agent. Drug Dev Res 1983;3:407–420.",
     56: "Zvejniece L et al. Investigation into stereoselective pharmacological activity of phenotropil. Basic Clin Pharmacol Toxicol 2011;109:407–412.",
     57: "Yoshii M, Watabe S. Enhancement of neuronal calcium channel currents by the nootropic agent, nefiracetam (DM-9384), in NG108-15 cells. Brain Res 1994;642:123–131.",
-    58: "Hansl NR, Mead BT. PRL-8-53: Enhanced learning and subsequent retention in humans as a result of low oral doses of new psychotropic agent. Drug Dev Res 1978;3:245–256.",
+    58: "Hansl NR, Mead BT. PRL-8-53: Enhanced learning and subsequent retention in humans as a result of low oral doses of new psychotropic agent. Psychopharmacology (Berl) 1978;56:249–253.",
     59: "Hamann J et al. 9-Methyl-β-carboline up-regulates the appearance of differentiated dopaminergic neurones in primary mesencephalic culture. Neurochem Int 2008;52:688–700.",
     60: "Wernicke C et al. 9-Methyl-β-carboline has restorative effects in an animal model of Parkinson's disease. Pharmacol Rep 2010;62:35–53.",
     61: "Gruss M et al. 9-Methyl-β-carboline-induced cognitive enhancement is associated with elevated hippocampal dopamine levels and dendritic and synaptic proliferation. J Neurochem 2012;121:924–931.",
