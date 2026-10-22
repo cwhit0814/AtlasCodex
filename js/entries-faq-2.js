@@ -75,7 +75,7 @@
     names: "Synthesized by Lafon alongside adrafinil and modafinil. Never developed. Sold online as a research chemical.",
     structure: "A bis(4-fluorophenyl) analog of adrafinil, a hydroxamic acid.",
     pubchem: "fladrafinil", pnote: nootNote, p: [["Wakefulness", 3], ["Human evidence", 0], ["Risk load", 3, 1], ["Evidence quality", 1]],
-    r: [noHuman, ["Liver", "unknown", "Adrafinil, its parent, is metabolized by the liver and raises liver enzymes; fladrafinil likely shares this", "contested"],
+    r: [noHuman,
       ["Sport", "high", "Prohibited in competition by WADA as a class S6 stimulant", "established", "Anti-doping labs have published urine and blood detection methods after controlled human dosing.", [528]], vendor],
     a: [["Wakefulness", "animal", "Wake-promoting in animals; may be partly a prodrug like adrafinil"]],
     t: [], noTrials: "It has never been tested for safety or effect in humans. The only human data are from an anti-doping excretion study, which showed it is converted to flmodafinil.", noTrialsRefs: [528],

@@ -756,3 +756,53 @@
   });
 })(window.ATLAS);
 
+
+/* batch e */
+(function (A) {
+  A.entries.push(
+    /* ------------------------------------------------------------ adrafinil */
+    {
+      slug: "adrafinil", type: "compound", name: "Adrafinil",
+      aliases: ["CRL-40028", "Olmifon"], category: "nootropic", status: "Research only",
+      class: "Wakefulness-promoting agent (modafinil prodrug)", developer: "Laboratoire L. Lafon (France, 1970s)",
+      added: "2026-10-21", updated: "2026-10-21",
+      tags: ["eugeroic", "wakefulness", "prodrug", "modafinil", "WADA prohibited", "withdrawn"],
+      summary: "The parent of modafinil. The body converts it to modafinil, which is thought to do the work. It was sold only in France as Olmifon, for sleepiness and poor attention in older adults, until regulators judged its benefit unproven in 2011.",
+      names: "Olmifon (300 mg tablets) was authorised in France in 1981 and sold only there from 1985. In 2011 the French regulator said the trial data could not show a benefit in older people, and its marketing commission proposed withdrawing the licence. The maker stopped selling it that year. It is not approved for sale as a drug today. \"Research only\" reflects that. WADA lists it as a prohibited stimulant.",
+      structure: "2-(diphenylmethylsulfinyl)-N-hydroxyacetamide, a hydroxamic acid. It is modafinil with an N-hydroxy group on the amide. Fladrafinil and flmodafinil are its fluorinated relatives.",
+      pubchem: "adrafinil",
+      profile: { note: "There are no published controlled trials in people, so every score is low on evidence. The wakefulness score is borrowed from modafinil, its metabolite.", rows: [
+        { label: "Wakefulness (via modafinil)", score: 2 }, { label: "Human evidence", score: 0 },
+        { label: "Risk load", score: 2, neg: true }, { label: "Evidence quality", score: 1 } ] },
+      risks: [
+        { system: "Regulatory", level: "moderate", text: "French regulator judged the benefit-risk balance unfavourable", evidence: "established", detail: "In 2011 the regulator reviewed the drug. The trial results from the maker could not show a benefit for alertness problems in older adults. Given the known side effects, the marketing commission proposed withdrawing the licence. The text does not name the side effects.", refs: [3408] },
+        { system: "Movement", level: "unknown", text: "A single case report of lasting mouth and face movements after use", evidence: "human obs", detail: "An older man developed orofacial dyskinesia on adrafinil. It did not clear in the four months after stopping, and improved only after tetrabenazine. One case cannot give a rate or show cause.", refs: [3403] },
+        { system: "Sport", level: "high", text: "Prohibited in competition by WADA (S6.A, non-specified stimulants)", evidence: "established", detail: "Adrafinil is named on the 2026 Prohibited List. Its metabolite modafinil is also tested for.", refs: [1800, 3400] },
+        { system: "Product quality", level: "moderate", text: "Sold online as an unregulated supplement or chemical. Identity and purity are unverified", evidence: "established" }
+      ],
+      activity: [
+        { title: "Conversion to modafinil", evidence: "human obs", summary: "Metabolised mainly to modafinil. After a single 200 mg dose in one volunteer, both adrafinil and modafinil were found in hair", detail: "The same lab group noted adrafinil is primarily metabolised in the body to modafinil. This is a forensic, one-person study, not a full pharmacokinetic study.", refs: [3400] },
+        { title: "Urinary metabolites", evidence: "human obs", summary: "Anti-doping labs test urine for adrafinil together with its metabolites modafinil and modafinil acid", refs: [3401] },
+        { title: "Discovery", evidence: "animal", summary: "Raised motor activity in mice without peripheral sympathomimetic effects. Studying its kinetics led to the discovery of modafinil as an active metabolite", refs: [3402] },
+        { title: "Activity in aged dogs", evidence: "animal", summary: "Raised locomotion over 14 days of dosing in aged dogs, though some dogs did not respond", refs: [3406] },
+        { title: "Learning in aged dogs", evidence: "animal", summary: "Improved learning of a discrimination task in aged beagles at one dose", refs: [3404, 3405] },
+        { title: "Working memory in aged dogs", evidence: "animal", summary: "At 20 mg/kg it worsened performance on a working-memory task in aged beagles", detail: "The authors suggested raised noradrenergic signalling in the prefrontal cortex as a cause.", refs: [3407] }
+      ],
+      trials: [],
+      noTrials: "No human trial of adrafinil appears in PubMed. The French regulator reviewed the maker's clinical studies in older adults and found they could not show a benefit. Its other evidence comes from dogs and mice.",
+      noTrialsRefs: [3408],
+      related: ["modafinil", "fladrafinil", "flmodafinil"]
+    }
+  );
+  Object.assign(A.references, {
+    3400: "Ameline A et al. Identification of adrafinil and its main metabolite modafinil in human hair. Self-administration study and interpretation of an authentic case. Forensic Sci Res 2020;5:322-326.",
+    3401: "Lu J et al. Doping control analysis for adrafinil and its major metabolites in human urine. Rapid Commun Mass Spectrom 2009;23:1592-1600.",
+    3402: "Billiard M, Broughton R. Modafinil: its discovery, the early European and North American experience in the treatment of narcolepsy and idiopathic hypersomnia, and its subsequent use in other medical conditions. Sleep Med 2018;49:69-72.",
+    3403: "Thobois S et al. Adrafinil-induced orofacial dyskinesia. Mov Disord 2004;19:965-966.",
+    3404: "Siwak CT, Callahan H, Milgram NW. Adrafinil: effects on behavior and cognition in aged canines. Prog Neuropsychopharmacol Biol Psychiatry 2000;24:709-726.",
+    3405: "Milgram NW et al. Oral administration of adrafinil improves discrimination learning in aged beagle dogs. Pharmacol Biochem Behav 2000;66:301-305.",
+    3406: "Siwak CT et al. Behavioral activating effects of adrafinil in aged canines. Pharmacol Biochem Behav 2000;66:293-300.",
+    3407: "Siwak CT, Tapp PD, Milgram NW. Adrafinil disrupts performance on a delayed nonmatching-to-position task in aged beagle dogs. Pharmacol Biochem Behav 2003;76:161-168.",
+    3408: "Afssaps (now ANSM). Point d'information sur les dossiers discutés en commission d'AMM, séance du jeudi 1er décembre 2011 (communiqué, 2 December 2011). archive.ansm.sante.fr."
+  });
+})(window.ATLAS);

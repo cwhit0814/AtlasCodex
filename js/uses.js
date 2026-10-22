@@ -48,7 +48,7 @@
         "amphetamine", "lisdexamfetamine", "methylphenidate", "atomoxetine", "viloxazine", "guanfacine", "nicotine",
         "bromantane", "tropisetron", "picamilon", "cortagen", "pinealon", "epobis",
         "coluracetam", "fasoracetam", "sunifiram", "unifiram", "rgpu-95", "flmodafinil", "cyclazodone", "thozalinone", "bpap", "ce-123", "kw-6356",
-        "alpha-gpc", "bemethyl", "nooglutyl", "neboglamine", "isrib", "j-147", "cms-121", "acd856",
+        "alpha-gpc", "bemethyl", "nooglutyl", "neboglamine", "isrib", "j-147", "cms-121", "acd856", "adrafinil",
         "creatine", "caffeine", "semax-selank", "selank-semax-dihexa", "pe-22-28", "tranylcypromine"]
     },
     {
