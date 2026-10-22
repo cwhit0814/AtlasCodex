@@ -38,7 +38,7 @@
       note: "Exercise mimetics, stimulants and endurance aids.",
       slugs: ["gw501516", "slu-pp-332", "aicar", "sr-9009", "mots-c", "atx-304", "meldonium", "bromantane", "1-3-dmaa", "clenbuterol", "tri-amino",
         "ephedrine", "amphetamine", "modafinil", "albuterol", "propranolol", "l-carnitine", "ecdysterone", "turinabol",
-        "creatine", "caffeine", "vitamin-b12", "phenylpiracetam", "bemethyl"]
+        "creatine", "caffeine", "vitamin-b12", "phenylpiracetam", "bemethyl", "rgpu-95", "kw-6356"]
     },
     {
       id: "cognition", name: "Focus and memory",
@@ -49,7 +49,7 @@
         "bromantane", "tropisetron", "picamilon", "cortagen", "pinealon", "epobis",
         "coluracetam", "fasoracetam", "sunifiram", "unifiram", "rgpu-95", "flmodafinil", "cyclazodone", "thozalinone", "bpap", "ce-123", "kw-6356",
         "alpha-gpc", "bemethyl", "nooglutyl", "neboglamine", "isrib", "j-147", "cms-121", "acd856",
-        "creatine", "caffeine", "semax-selank", "selank-semax-dihexa"]
+        "creatine", "caffeine", "semax-selank", "selank-semax-dihexa", "pe-22-28", "tranylcypromine"]
     },
     {
       id: "mood", name: "Mood and anxiety",
@@ -57,14 +57,14 @@
       slugs: ["selank", "emoxypine", "naltrexone", "phenibut", "picamilon", "pe-22-28", "nemifitide", "oxytocin", "propranolol", "bupropion", "tak-653", "nsi-189",
         "bromantane", "trazodone", "doxepin", "methylene-blue", "pramipexole",
         "tranylcypromine", "gb-115",
-        "ashwagandha", "tongkat-ali", "semax-selank", "selank-semax-dihexa", "oxy-pt", "nefiracetam"]
+        "ashwagandha", "tongkat-ali", "semax-selank", "selank-semax-dihexa", "oxy-pt", "nefiracetam", "aniracetam", "coluracetam", "fasoracetam"]
     },
     {
       id: "sleep", name: "Sleep",
       note: "Sleep aids and sleep-related peptides.",
       slugs: ["dsip", "trazodone", "doxepin", "pinealon",
         "epitalon", "mk-677", "phenibut",
-        "ashwagandha", "melatonin"]
+        "ashwagandha", "melatonin", "picamilon"]
     },
     {
       id: "hormones", name: "Hormones and fertility",
@@ -78,7 +78,7 @@
       note: "Lipids, blood pressure and the heart.",
       slugs: ["rosuvastatin", "pitavastatin", "ezetimibe", "telmisartan", "nebivolol", "gc-1", "resmetirom", "cardiogen", "vesugen", "b7-33",
         "semaglutide", "tirzepatide", "propranolol", "ss-31", "hexarelin", "berberine", "sildenafil", "tadalafil",
-        "liraglutide"]
+        "liraglutide", "emoxypine"]
     },
     {
       id: "sugar", name: "Blood sugar",
@@ -123,9 +123,9 @@
     },
     {
       id: "quitting", name: "Quitting and dependence",
-      note: "Cessation medicines for nicotine, alcohol and opioids, and nicotine itself.",
+      note: "Cessation and withdrawal aids for nicotine, alcohol, opioids and GABA-acting drugs such as phenibut, and nicotine itself.",
       slugs: ["naltrexone", "nicotine", "varenicline", "cytisine", "bupropion", "tropisetron", "quitting-nicotine-tropisetron",
-        "ondansetron", "semaglutide"]
+        "ondansetron", "semaglutide", "fasoracetam", "emoxypine"]
     }
   ];
 })(window.ATLAS);
