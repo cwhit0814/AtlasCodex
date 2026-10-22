@@ -592,5 +592,49 @@ window.ATLAS.dosing = {
     ["First-in-human trial", "0.5, 1.6 or 3.2 mg/mL applied to the ulcer twice weekly for 4 weeks"],
     ["Phase 2b trial", "0.5 or 1.6 mg/mL with compression therapy"],
     ["Finding", "Lower concentrations improved healing; the highest did not. Neither strength beat placebo overall in the phase 2b trial"]],
-    note: "Topical use on wounds only. No injected dose has been studied in humans." }
+    note: "Topical use on wounds only. No injected dose has been studied in humans." },
+
+  /* ---------------------------------------------------------- nootropics added 2026-10-21 */
+  tranylcypromine: { source: "FDA label (Parnate)", evidence: "established", refs: [3200], rows: [
+    ["Major depressive disorder (adults)", "Recommended dosage is 30 mg a day in divided doses"],
+    ["Increasing", "If response is inadequate, the label allows increases of 10 mg a day every 1 to 3 weeks, to a maximum of 30 mg twice daily (60 mg a day). Increases are made more gradually in people at risk of low blood pressure, such as older adults"],
+    ["Tablet strength", "10 mg"],
+    ["Stopping", "The label advises slow, gradual dose reduction because abrupt stopping has caused withdrawal effects, including delirium"],
+    ["Switching", "At least one week should pass after stopping before starting another MAOI or a contraindicated antidepressant"],
+    ["Before starting", "The label calls for screening for a history of mania and measuring blood pressure"]],
+    note: "Approved for adults whose depression has not responded to other antidepressants. It is not approved as a nootropic, and the label lists many contraindicated drugs and a boxed warning for hypertensive crisis." },
+  "alpha-gpc": { source: "Italian label (AIFA summary of product characteristics, Gliatilin)", evidence: "established", refs: [3900], rows: [
+    ["Indication", "Cognitive and behavioral disorders of older adults from degenerative or cerebrovascular causes, such as memory loss, confusion and reduced attention"],
+    ["600 mg capsules or oral vials", "One capsule or one vial twice a day"],
+    ["400 mg capsules", "One capsule two or three times a day"],
+    ["Injection (1,000 mg in 4 mL)", "One vial a day by intramuscular or intravenous injection, given slowly when intravenous"],
+    ["Adjustment", "The label says these doses may be increased at the prescribing doctor's discretion"]],
+    note: "Italy's label is the only national label opened for this entry. Supplement products carry their own, unreviewed amounts, which are not reproduced here." },
+  fasoracetam: { source: "Published trials (adolescent ADHD study and a pharmacokinetic study)", evidence: "human obs", refs: [3010, 3011], rows: [
+    ["ADHD study, pharmacokinetic phase", "Single doses from 50 mg to 800 mg"],
+    ["ADHD study, treatment phase", "Doses advanced according to symptoms, up to 400 mg twice a day for 4 weeks, in 30 adolescents aged 12 to 17"],
+    ["Elderly and young men", "One 100 mg tablet after breakfast, in 14 healthy men"]],
+    note: "No label exists. The ADHD study was open-label with a single-blind placebo week and no randomization, and the other study tested one dose." },
+  "kw-6356": { source: "Phase 1 trials and a randomized Parkinson's trial", evidence: "human rct", refs: [3126, 3130], rows: [
+    ["Parkinson's trial arms", "3 mg or 6 mg once daily by mouth, against placebo"],
+    ["Parkinson's trial duration", "12 weeks, in 168 patients with early untreated disease"],
+    ["Phase 1 single doses", "1 to 60 mg, in healthy volunteers"],
+    ["Phase 1 repeated doses", "Up to 24 mg once daily for 14 days"]],
+    note: "No label exists. It is in trials for Parkinson's disease, and no dose has been studied for cognition." },
+  acd856: { source: "Two phase 1 trials in healthy volunteers", evidence: "human rct", refs: [3333, 3334], rows: [
+    ["Single doses", "1 to 150 mg by mouth, or placebo, in a first-in-human ascending-dose study"],
+    ["Microdose", "0.100 mg intravenously in six healthy men"],
+    ["Repeated doses", "10 mg to 90 mg once daily for 7 days, as an oral solution, in 24 healthy adults"]],
+    note: "No label exists, and no study has tested a dose for benefit in patients." },
+  bemethyl: { source: "Russian-language report", evidence: "human obs", refs: [3210], rows: [
+    ["Long sea voyages", "0.25 to 0.5 g within 24 hours, given to operators on long voyages"]],
+    note: "The abstract does not give the number of people, the duration or the control group. No label dosing was opened, and approval status was not confirmed. The World Anti-Doping Agency has monitored it since 2018." },
+  "gb-115": { source: "Russian clinical study", evidence: "human obs", refs: [3217], rows: [
+    ["Dose form", "1 mg tablets"],
+    ["Dose the authors reported as effective", "6 mg a day"],
+    ["Duration studied", "21 days, in 31 adults with generalized anxiety disorder"]],
+    note: "The abstract does not describe the dosing schedule or a placebo group. It is not an approved drug." },
+  flmodafinil: { source: "Anti-doping excretion study", evidence: "human obs", refs: [3100], rows: [
+    ["Dose studied", "20 mg by mouth, taken by six volunteers as either flmodafinil or fladrafinil"]],
+    note: "The study measured urine and blood levels for sports drug testing, not effect or safety. No dose has been tested for wakefulness or cognition. WADA prohibits it in competition." }
 };

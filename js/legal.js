@@ -15,7 +15,7 @@
  * Same sourcing rules as the rest of the codex. Law changes, so legalChecked records when the rows were last checked.
  */
 (function (A) {
-  A.legalChecked = "2026-10-20";
+  A.legalChecked = "2026-10-21";
   A.legal = {
     "1-3-dmaa": [
       {
@@ -222,6 +222,27 @@
         ]
       }
     ],
+    "acd856": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved ACD856 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no ACD856 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "ace-031": [
       {
         "where": "US",
@@ -266,6 +287,73 @@
         "kind": "sport-banned",
         "status": "S4.3 activin receptor agent, banned at all times",
         "text": "ACE-031 is named as a decoy activin receptor under S4.3, prohibited in and out of competition.",
+        "refs": [
+          1800
+        ]
+      }
+    ],
+    "adrafinil": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved adrafinil product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no adrafinil product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      },
+      {
+        "where": "AU",
+        "kind": "controlled",
+        "status": "Prescription only (Schedule 4)",
+        "text": "Listed by name in Schedule 4 of the Poisons Standard.",
+        "refs": [
+          3600
+        ]
+      },
+      {
+        "where": "NZ",
+        "kind": "controlled",
+        "status": "Prescription medicine",
+        "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
+        "refs": [
+          1402
+        ]
+      },
+      {
+        "where": "CN",
+        "kind": "controlled",
+        "status": "Doping list: stimulant",
+        "text": "Listed by name (adrafinil) in the stimulants section of China’s 2026 doping list; the Anti-Doping Regulations place listed substances under strict control, so unlawful production, sale, import or export is barred, and substances outside the anabolic and peptide classes are managed as prescription drugs.",
+        "refs": [
+          1600,
+          1601
+        ]
+      },
+      {
+        "where": "RU",
+        "kind": "controlled",
+        "status": "List II psychotropic (Decree No. 681)",
+        "text": "Adrafinil is named on List II of Russia's drug-control list: its trade is restricted and placed under state control.",
+        "refs": [
+          1701
+        ]
+      },
+      {
+        "where": "WADA",
+        "kind": "sport-in-comp",
+        "status": "S6.A stimulant, banned in competition",
+        "text": "Adrafinil is named as a non-specified stimulant under S6.A, prohibited in competition only.",
         "refs": [
           1800
         ]
@@ -430,6 +518,26 @@
         "kind": "sport-banned",
         "status": "S3 beta-2 agonist; inhaled use allowed within limits",
         "text": "Salbutamol is a prohibited beta-2 agonist except when inhaled up to 1600 micrograms in 24 hours (no more than 600 micrograms in 8 hours), and urine above 1000 ng/mL counts as a positive unless a controlled study shows a therapeutic inhaled dose.",
+        "refs": [
+          1800
+        ]
+      }
+    ],
+    "alpha-gpc": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved choline alfoscerate (alpha-GPC) product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "WADA",
+        "kind": "sport-allowed",
+        "status": "Not on the 2026 List",
+        "text": "Not named on the 2026 Prohibited List, and no prohibited class covers it.",
         "refs": [
           1800
         ]
@@ -1150,6 +1258,27 @@
         ]
       }
     ],
+    "bemethyl": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved bemethyl product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no bemethyl product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "berberine": [
       {
         "where": "EU",
@@ -1187,6 +1316,27 @@
           1500,
           1525,
           1526
+        ]
+      }
+    ],
+    "bpap": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved BPAP product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no BPAP product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
         ]
       }
     ],
@@ -1563,6 +1713,27 @@
         ]
       }
     ],
+    "ce-123": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved CE-123 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no CE-123 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "cerebroprotein-hydrolysate": [
       {
         "where": "US",
@@ -1883,6 +2054,66 @@
         ]
       }
     ],
+    "cms-121": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved CMS121 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no CMS121 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
+    "coluracetam": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved coluracetam product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no coluracetam product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      },
+      {
+        "where": "AU",
+        "kind": "controlled",
+        "status": "Prescription only (Schedule 4)",
+        "text": "Listed by name in Schedule 4 of the Poisons Standard. It is also cross-referenced to the racetams group.",
+        "refs": [
+          3600
+        ]
+      },
+      {
+        "where": "NZ",
+        "kind": "controlled",
+        "status": "Prescription medicine",
+        "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
+        "refs": [
+          1402
+        ]
+      }
+    ],
     "creatine": [
       {
         "where": "CA",
@@ -1900,6 +2131,27 @@
         "text": "Not named on the 2026 Prohibited List, and no prohibited class covers it.",
         "refs": [
           1800
+        ]
+      }
+    ],
+    "cyclazodone": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved cyclazodone product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no cyclazodone product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
         ]
       }
     ],
@@ -2947,6 +3199,45 @@
         ]
       }
     ],
+    "fasoracetam": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved fasoracetam product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no fasoracetam product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      },
+      {
+        "where": "AU",
+        "kind": "controlled",
+        "status": "Prescription only (Schedule 4)",
+        "text": "Listed by name in Schedule 4 of the Poisons Standard. It is also cross-referenced to the racetams group.",
+        "refs": [
+          3600
+        ]
+      },
+      {
+        "where": "NZ",
+        "kind": "controlled",
+        "status": "Prescription medicine",
+        "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
+        "refs": [
+          1402
+        ]
+      }
+    ],
     "fgl": [
       {
         "where": "US",
@@ -3092,6 +3383,46 @@
         ]
       }
     ],
+    "flmodafinil": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved flmodafinil product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no flmodafinil product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      },
+      {
+        "where": "CN",
+        "kind": "controlled",
+        "status": "Doping list: stimulant",
+        "text": "Listed by name (flmodafinil) in the stimulants section of China’s 2026 doping list; the Anti-Doping Regulations place listed substances under strict control, so unlawful production, sale, import or export is barred, and substances outside the anabolic and peptide classes are managed as prescription drugs.",
+        "refs": [
+          1600,
+          1601
+        ]
+      },
+      {
+        "where": "WADA",
+        "kind": "sport-in-comp",
+        "status": "S6.A stimulant, banned in competition",
+        "text": "Flmodafinil is named as a non-specified stimulant under S6.A, prohibited in competition only.",
+        "refs": [
+          1800
+        ]
+      }
+    ],
     "foxo4-dri": [
       {
         "where": "CA",
@@ -3110,6 +3441,27 @@
         "text": "Not named, but S0 prohibits at all times any pharmacological substance with no current approval for human therapeutic use that no other section covers, and this one is covered by S0 as a non-approved substance.",
         "refs": [
           1800
+        ]
+      }
+    ],
+    "gb-115": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved GB-115 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no GB-115 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
         ]
       }
     ],
@@ -4146,6 +4498,48 @@
         ]
       }
     ],
+    "isrib": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved ISRIB product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no ISRIB product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
+    "j-147": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved J-147 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no J-147 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "ketoconazole": [
       {
         "where": "US",
@@ -4311,6 +4705,27 @@
         "text": "Not named, but S0 prohibits at all times any pharmacological substance with no current approval for human therapeutic use that no other section covers, and this one is covered by S0 as a non-approved substance.",
         "refs": [
           1800
+        ]
+      }
+    ],
+    "kw-6356": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved KW-6356 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no KW-6356 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
         ]
       }
     ],
@@ -6148,6 +6563,27 @@
         ]
       }
     ],
+    "neboglamine": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved neboglamine product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no neboglamine product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "nefiracetam": [
       {
         "where": "US",
@@ -6377,6 +6813,27 @@
         "text": "On MHLW's list of ingredients not treated as medicines unless sold with drug claims, so it can be sold as a food.",
         "refs": [
           1504
+        ]
+      }
+    ],
+    "nooglutyl": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved nooglutyl product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no nooglutyl product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
         ]
       }
     ],
@@ -7786,6 +8243,27 @@
         ]
       }
     ],
+    "rgpu-95": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved RGPU-95 product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no RGPU-95 product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "rosuvastatin": [
       {
         "where": "US",
@@ -8443,6 +8921,45 @@
       {
         "where": "NZ",
         "kind": "rx",
+        "status": "Prescription medicine",
+        "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
+        "refs": [
+          1402
+        ]
+      }
+    ],
+    "sunifiram": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved sunifiram product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no sunifiram product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      },
+      {
+        "where": "AU",
+        "kind": "controlled",
+        "status": "Prescription only (Schedule 4)",
+        "text": "Listed by name in Schedule 4 of the Poisons Standard. It is also cross-referenced to the racetams group.",
+        "refs": [
+          3600
+        ]
+      },
+      {
+        "where": "NZ",
+        "kind": "controlled",
         "status": "Prescription medicine",
         "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
         "refs": [
@@ -9285,6 +9802,27 @@
         ]
       }
     ],
+    "thozalinone": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved thozalinone product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no thozalinone product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      }
+    ],
     "thymalin": [
       {
         "where": "RU",
@@ -9460,6 +9998,53 @@
         "refs": [
           1303,
           1304
+        ]
+      }
+    ],
+    "tranylcypromine": [
+      {
+        "where": "US",
+        "kind": "rx",
+        "status": "Prescription only",
+        "text": "FDA-approved and sold by prescription (Parnate and generics).",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "UK",
+        "kind": "rx",
+        "status": "Prescription only medicine (POM)",
+        "text": "Tranylcypromine tablets are listed by the electronic Medicines Compendium as prescription only medicines.",
+        "refs": [
+          3601
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "rx",
+        "status": "Prescription only",
+        "text": "Marketed in Canada as Parnate and M-Tranylcypromine, both in the Drug Product Database under the prescription schedule.",
+        "refs": [
+          1303
+        ]
+      },
+      {
+        "where": "AU",
+        "kind": "rx",
+        "status": "Prescription only (Schedule 4)",
+        "text": "Listed by name in Schedule 4 of the Poisons Standard, so it is a prescription-only medicine.",
+        "refs": [
+          3600
+        ]
+      },
+      {
+        "where": "NZ",
+        "kind": "rx",
+        "status": "Prescription medicine",
+        "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
+        "refs": [
+          1402
         ]
       }
     ],
@@ -9730,6 +10315,45 @@
         "text": "Dehydrochlormethyltestosterone is named under S1.1 anabolic androgenic steroids, prohibited in and out of competition, and the List covers their esters too.",
         "refs": [
           1800
+        ]
+      }
+    ],
+    "unifiram": [
+      {
+        "where": "US",
+        "kind": "unapproved",
+        "status": "Not FDA approved",
+        "text": "No approved unifiram product in Drugs@FDA.",
+        "refs": [
+          1000
+        ]
+      },
+      {
+        "where": "CA",
+        "kind": "unapproved",
+        "status": "No authorized product",
+        "text": "The Drug Product Database has no unifiram product in any status. A manufacturer cannot sell a drug in dosage form in Canada without a drug identification number.",
+        "refs": [
+          1303,
+          1304
+        ]
+      },
+      {
+        "where": "AU",
+        "kind": "controlled",
+        "status": "Prescription only (Schedule 4)",
+        "text": "Listed by name in Schedule 4 of the Poisons Standard. It is also cross-referenced to the racetams group.",
+        "refs": [
+          3600
+        ]
+      },
+      {
+        "where": "NZ",
+        "kind": "controlled",
+        "status": "Prescription medicine",
+        "text": "Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.",
+        "refs": [
+          1402
         ]
       }
     ],

@@ -2825,6 +2825,98 @@
         ]
       }
     ],
+    "tranylcypromine": [
+      {
+        "with": "Other MAOIs, linezolid and intravenous methylene blue",
+        "level": "high",
+        "text": "Contraindicated, with a risk of hypertensive crisis and serotonin syndrome",
+        "evidence": "established",
+        "detail": "The US label lists other MAO inhibitors as contraindicated and says to wait at least 1 week, or 4 to 5 half-lives of the other drug if longer, before switching. It names linezolid and intravenous methylene blue as contraindicated, to be used only in an emergency after stopping this drug as soon as possible.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Bupropion and other antidepressants (trazodone, nefazodone, mirtazapine, vortioxetine, vilazodone, amoxapine, maprotiline)",
+        "level": "high",
+        "text": "Contraindicated because of serotonin syndrome",
+        "evidence": "established",
+        "detail": "The US label lists these in its table of contraindicated products, along with SSRIs, SNRIs and tricyclics. It advises a medication-free gap between this drug and the other one.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Amphetamines, methylphenidate and sympathomimetic decongestants or supplements",
+        "level": "high",
+        "text": "Contraindicated because of hypertensive crisis",
+        "evidence": "established",
+        "detail": "The US label contraindicates amphetamines, methylphenidate and sympathomimetics such as pseudoephedrine, phenylephrine and ephedrine, including cold, hay fever and weight-loss products and supplements that contain them. It notes a risk of bleeding inside the brain.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Meperidine, tapentadol and dextromethorphan",
+        "level": "high",
+        "text": "Contraindicated because of serotonin syndrome or hypertensive crisis",
+        "evidence": "established",
+        "detail": "The US label lists all three as contraindicated. For dextromethorphan it also names psychosis and bizarre behavior. It advises caution with tramadol, fentanyl and methadone, which carry a serotonin syndrome risk.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Levodopa, dopamine, buspirone, methyldopa, reserpine, tetrabenazine and rasagiline",
+        "level": "high",
+        "text": "Contraindicated because of hypertensive crisis",
+        "evidence": "established",
+        "detail": "The US label lists each of these individually as contraindicated. Tolcapone and entacapone are marked use with caution for the same risk.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Alcohol, opioids, sedatives and other CNS depressants",
+        "level": "moderate",
+        "text": "Can add to drowsiness and slowed thinking",
+        "evidence": "established",
+        "detail": "The US label says to use these with caution and consider avoiding them. It also says alcohol is not recommended during treatment.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Blood glucose-lowering drugs",
+        "level": "moderate",
+        "text": "Can drop blood sugar too far",
+        "evidence": "established",
+        "detail": "The US label says the dose of the glucose-lowering drug may need to be reduced and that blood glucose should be monitored.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Blood pressure-lowering drugs and beta-blockers",
+        "level": "moderate",
+        "text": "Can cause low blood pressure, fainting or a slow heart rate",
+        "evidence": "established",
+        "detail": "The US label says to use these with caution. It names more pronounced slow heart rate and postural hypotension with beta-blockers.",
+        "refs": [
+          3200
+        ]
+      },
+      {
+        "with": "Anesthesia and surgery, including vasoconstrictors in local anesthetics",
+        "level": "moderate",
+        "text": "Can cause sharp swings in blood pressure",
+        "evidence": "established",
+        "detail": "The US label recommends stopping this drug at least 10 days before elective surgery. If that is not possible, it says to avoid agents that are contraindicated with it and to weigh techniques such as epidural or spinal anesthesia and local anesthetics with vasoconstrictors.",
+        "refs": [
+          3200
+        ]
+      }
+    ],
     "trazodone": [
       {
         "with": "MAO inhibitors (including linezolid and IV methylene blue)",

@@ -282,7 +282,7 @@
       summary: "A compound from Joseph Knoll's research group that increases impulse-driven release of dopamine, noradrenaline and serotonin in rat brain without acting as a releaser. Rats given it lived longer in the group's studies. There are no human data, and almost all the work comes from one research network.",
       names: "Knoll's group calls this class \"catecholaminergic activity enhancers\" and describes BPAP as the most potent known example. The same group created selegiline (deprenyl). The \"(-)\" form is the R enantiomer. It has not been developed as a drug.",
       structure: "(2R)-1-(1-benzofuran-2-yl)-N-propylpentan-2-amine. The active (-) form has R configuration, confirmed by X-ray crystallography.",
-      pubchem: "bpap",
+      pubchem: "1-(benzofuran-2-yl)-2-propylaminopentane",
       profile: { note: "All evidence is from rodents and cell culture, and nearly all of it from one lab group.", rows: [
         { label: "Preclinical signal", score: 3 }, { label: "Human evidence", score: 0 },
         { label: "Risk load", score: 2, neg: true }, { label: "Evidence quality", score: 1 } ] },
@@ -316,7 +316,7 @@
       summary: "A modafinil analog with a thiazole ring, designed to block the dopamine transporter more selectively. It improved memory and cognitive flexibility in rats. It has not been tested in people.",
       names: "A research compound from an academic program on modafinil analogues, chosen as the most promising of its series. The S enantiomer, (S)-CE-123, is the form studied in most recent work.",
       structure: "5-((benzhydrylsulfinyl)methyl)thiazole. A modafinil analog in which a thiazole ring replaces modafinil's acetamide group.",
-      pubchem: false,
+      pubchem: "ce-123",
       profile: { note: "All evidence is from rats and cells.", rows: [
         { label: "Preclinical signal", score: 3 }, { label: "Human evidence", score: 0 },
         { label: "Risk load", score: 1, neg: true }, { label: "Evidence quality", score: 1 } ] },
@@ -348,7 +348,7 @@
       summary: "An adenosine A2A receptor blocker in clinical testing for Parkinson's disease. In a 12-week randomized trial in early untreated patients, motor scores improved more than on placebo. It is not a cognitive enhancer and is not approved.",
       names: "It both blocks the receptor and reduces its baseline activity, which is why it is called an inverse agonist. It was compared in the lab with istradefylline, an approved A2A antagonist for Parkinson's disease. The codex lists it here because A2A blockers are discussed alongside wakefulness and stimulant compounds.",
       structure: "A small-molecule A2A antagonist and inverse agonist. Crystal structures of the receptor bound to it and to istradefylline have been solved.",
-      pubchem: false,
+      pubchem: "kw-6356",
       profile: { note: "Scored on its Parkinson's record. There are no studies of cognition in healthy people.", rows: [
         { label: "Clinical effect (Parkinson's)", score: 2 }, { label: "Human evidence", score: 2 },
         { label: "Risk load", score: 1, neg: true }, { label: "Evidence quality", score: 2 } ] },
@@ -513,6 +513,7 @@
       summary: "A Russian nootropic made from glutamic acid and hydroxynicotinic acid. Rodent studies report better memory and some protection after brain injury. No human trial was found.",
       names: "Described in Russian papers as a nootropic with glutamatergic effects. One paper calls it a positive modulator of AMPA receptors. Regulatory approval was not confirmed from a primary source for this entry.",
       structure: "N-5-hydroxy(nicotinoyl)-L-glutamic acid, a derivative of L-glutamic acid and hydroxynicotinic acid.",
+      pubchem: "nooglutyl",
       profile: { note: "Scored relative to other nootropics in the codex. All evidence is from animals.", rows: [
         { label: "Preclinical signal", score: 2 }, { label: "Human evidence", score: 0 },
         { label: "Risk load", score: 1, neg: true }, { label: "Evidence quality", score: 1 } ] },
@@ -569,6 +570,7 @@
       summary: "An experimental drug that boosts NMDA receptor activity through the glycine site. Rat studies suggested possible use in schizophrenia and memory. No human trial results were found.",
       names: "Described in 1997 as a putative cognition enhancer under the code (S)CR 2249, and in 2010 as neboglamine, a possible treatment for schizophrenia. It is not approved anywhere.",
       structure: "(S)-4-amino-5-[(4,4-dimethylcyclohexyl)amino]-5-oxo-pentanoic acid, a derivative of glutamic acid. In tissue it appears to act at a separate site from glycine and make glycine more effective.",
+      pubchem: "neboglamine",
       profile: { note: "Scored relative to other nootropics in the codex. All evidence is from animals and tissue.", rows: [
         { label: "Preclinical signal", score: 2 }, { label: "Human evidence", score: 0 },
         { label: "Risk load", score: 2, neg: true }, { label: "Evidence quality", score: 1 } ] },
@@ -686,7 +688,7 @@
       summary: "A chemically modified form of the plant flavonol fisetin, made to be more potent and better absorbed. It protected cognition in several Alzheimer's mouse models and slowed disease in Huntington's mice. A phase 1 safety study in healthy adults exists only as an unreviewed preprint.",
       names: "One of about 160 fisetin derivatives made by the lab; CMS121 was picked for its pharmacology and for how it did in Alzheimer's mouse models. Its toxicology testing led to an approved IND, which allows human trials in the US. It is not approved for any use.",
       structure: "A synthetic derivative of fisetin, which is a flavonol found in fruit and vegetables. The changes were made to raise potency and improve fisetin's low fat solubility and poor absorption. Fatty acid synthase is reported as a key target.",
-      pubchem: false,
+      pubchem: "cms-121",
       profile: { note: "There are no peer-reviewed human data, so scores rest on animal studies.", rows: [
         { label: "Preclinical signal", score: 3 }, { label: "Human evidence", score: 1 },
         { label: "Risk load", score: 1, neg: true }, { label: "Evidence quality", score: 1 } ] },
@@ -804,5 +806,12 @@
     3406: "Siwak CT et al. Behavioral activating effects of adrafinil in aged canines. Pharmacol Biochem Behav 2000;66:293-300.",
     3407: "Siwak CT, Tapp PD, Milgram NW. Adrafinil disrupts performance on a delayed nonmatching-to-position task in aged beagle dogs. Pharmacol Biochem Behav 2003;76:161-168.",
     3408: "Afssaps (now ANSM). Point d'information sur les dossiers discutés en commission d'AMM, séance du jeudi 1er décembre 2011 (communiqué, 2 December 2011). archive.ansm.sante.fr."
+  });
+})(window.ATLAS);
+
+/* references for dosing, pharmacokinetics and monitoring */
+(function (A) {
+  Object.assign(A.references, {
+    3900: "Gliatilin (colina alfoscerato) 400 mg capsule, 600 mg capsule and oral vial, and 1000 mg/4 mL injection: riassunto delle caratteristiche del prodotto. Agenzia Italiana del Farmaco (AIFA), document made available 20/08/2026: https://api.aifa.gov.it/aifa-bdf-eif-be/1.0.0/organizzazione/68/farmaci/25937/stampati?ts=RCP"
   });
 })(window.ATLAS);

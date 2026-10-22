@@ -183,7 +183,41 @@
     trazodone: { watch: ["A persistent erection, which requires immediate care", "Dizziness on standing"] },
     doxepin: { watch: ["Next-day drowsiness, especially if taken close to a meal", "Eye pain or difficulty passing urine"] },
     "vitamin-b12": { markers: [["B12, and folate alongside it", "High folate can mask B12 deficiency, and treating the wrong one allows nerve damage to progress"], ["Serum potassium early in treatment of pernicious anemia", "The label warns potassium can fall as new blood cells are made"], ["Hematocrit and reticulocyte count", "The label uses these to confirm the marrow is responding"], ["Iron, before treatment", "Iron deficiency can blunt the response or obscure the diagnosis"]], watch: ["Swelling, breathlessness or wheeze early in treatment, since the label lists pulmonary edema and heart failure", "Hives or difficulty breathing after an injection"] },
-    glutathione: { watch: ["Wheeze, if inhaled"] }
+    glutathione: { watch: ["Wheeze, if inhaled"] },
+
+    /* nootropics added 2026-10-21. Where no human data exist, the row says so rather than inventing a marker. */
+    coluracetam: { markers: [["Nothing specific is established", "No human trial exists, so no marker has been tied to it"]] },
+    fasoracetam: { markers: [["Kidney function (creatinine, eGFR)", "Clearance is mainly renal, and blood levels were higher in elderly men whose kidneys cleared less of the drug"]] },
+    sunifiram: { markers: [["Nothing specific is established", "No human trial exists, so no marker has been tied to it"]] },
+    unifiram: { markers: [["Nothing specific is established", "No human trial exists, so no marker has been tied to it"]] },
+    "rgpu-95": { markers: [["Nothing specific is established", "It has never been given to humans in a published study"]] },
+    flmodafinil: { markers: [["Nothing specific is established", "The only human data are six volunteers in an anti-doping excretion study"]], note: "WADA prohibits it in competition, and the authors describe the drug and its metabolites as detectable for a relatively long time." },
+    cyclazodone: { markers: [["Liver enzymes (ALT, AST) and bilirubin", "Pemoline, the drug it is related to, caused fatal liver failure; whether cyclazodone shares this is unknown"]], watch: ["Yellowing of the eyes or skin, or dark urine, given the liver failure seen with pemoline"] },
+    thozalinone: { markers: [["Liver enzymes (ALT, AST) and bilirubin", "Pemoline, a related stimulant, caused fatal liver failure; no liver finding specific to thozalinone was found"]], watch: ["Yellowing of the eyes or skin, or dark urine, given the liver failure seen with pemoline"] },
+    bpap: { markers: [["Nothing specific is established", "All evidence is from rodents, and the dose response in rats was two-peaked"]] },
+    "ce-123": { markers: [["Nothing specific is established", "No human data exist"]], watch: ["Increased impulsive behavior, which rose mildly in aged rats"] },
+    "kw-6356": { watch: ["Constipation, the most common adverse event in the 12-week trial, together with nasopharyngitis", "Involuntary jerking or writhing movements if taken with levodopa, given the marmoset finding"] },
+    tranylcypromine: { markers: [
+      ["Blood pressure, including standing readings", "The label calls for close monitoring, warns that full reliance should not be placed on readings, and lists postural hypotension as a major reaction above 30 mg a day"],
+      ["Liver enzymes", "The label reports hepatitis and raised aminotransferases"],
+      ["Blood glucose, in people with diabetes on insulin or other glucose-lowering drugs", "The label notes some MAOIs have contributed to hypoglycemia"]],
+      watch: ["Headache at the back of the head, palpitations, neck stiffness, nausea or vomiting, sweating, dilated pupils, light sensitivity or confusion, which are signs of hypertensive crisis and need emergency care",
+        "Agitation, hallucinations, fast heartbeat, unstable blood pressure, sweating or fever, which are signs of serotonin syndrome and need emergency care",
+        "New or worsening suicidal thoughts, especially early in treatment and after dose changes",
+        "Activation of mania or hypomania, which the label warns of in people with bipolar disorder",
+        "Dizziness, nausea, headache, irritability, insomnia, anxiety or abnormal dreams after a dose reduction or stopping",
+        "Reactions to foods or other drugs in the 10 days after the last dose, since enzyme inhibition can persist that long"],
+      note: "Tyramine-rich foods and a long list of drugs are the central hazard; the label's contraindication table is the authority." },
+    "alpha-gpc": { watch: ["Sudden facial droop, arm weakness or trouble speaking, since a large Korean cohort linked prescriptions to more strokes", "Nausea, which the Italian label attributes to a dopaminergic effect"] },
+    bemethyl: { markers: [["Nothing specific is established", "No modern human safety trial was found"]], watch: ["Changed effects of other medicines, since it induced liver cytochrome P-450 enzymes in rats; this has not been shown in people"], note: "It has been on the WADA monitoring program since 2018." },
+    nooglutyl: { markers: [["Nothing specific is established", "No human data were found"]] },
+    "gb-115": { markers: [["Nothing specific is established", "Human data are one small, uncontrolled 21-day study"]], watch: ["Rebound anxiety or withdrawal symptoms on stopping, which rats did not show but people have not been tested for"] },
+    neboglamine: { markers: [["Nothing specific is established", "No human data were found"]] },
+    isrib: { markers: [["Nothing specific is established", "No human data exist, and the stress pathway it switches off protects cells in some settings"]] },
+    "j-147": { markers: [["Nothing specific is established", "No human results are published; a phase 1 trial is registered"]] },
+    "cms-121": { markers: [["Nothing specific is established", "The only human data are an unreviewed preprint"]] },
+    acd856: { markers: [["Nothing specific is established", "In 7-day dosing up to 90 mg a day the trial tracked adverse events, laboratory tests, vital signs, ECG, stool frequency and mood questionnaires, including suicidal thoughts, and found no dose-related trends. Nothing is known beyond 7 days"]] },
+    adrafinil: { markers: [["Nothing specific is established", "No human trial exists, and the French regulator's text does not name the side effects behind its 2011 review"]], watch: ["Involuntary movements of the mouth, lips or face, reported in a case that did not clear in the four months after stopping"], note: "WADA prohibits it in competition, and modafinil, its metabolite, is also tested for." }
   };
 
   delete M.methylene_blue_placeholder; delete M.oxandrolone_placeholder;

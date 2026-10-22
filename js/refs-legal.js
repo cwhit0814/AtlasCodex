@@ -308,6 +308,8 @@
     "2405": "Cytisinicline 1.5 mg tablets: summary of product characteristics. Bonteque Consulting Ltd (UK), electronic Medicines Compendium (emc) product 15789, section 4.5. https://www.medicines.org.uk/emc/product/15789/smpc",
     "2500": "Teng S, Potvin D, Mamputu JC, et al. Impact of tesamorelin, a growth hormone-releasing factor (GRF) analogue, on the pharmacokinetics of simvastatin and ritonavir in healthy volunteers. Clin Pharmacol Drug Dev. 2013;2(3):237-45. PMID 27121785.",
     "2501": "Lidoderm (lidocaine patch 5%) prescribing information. TPU Pharma, revised 12/2022. DailyMed: https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=db0092f5-02a0-4076-ac32-969f075a6ab1",
-    "2502": "Lidocaine Ointment USP 5% prescribing information. Taro Pharmaceuticals, October 2018: https://www.taro.com/sites/default/files/USA-Products-Rx/Lidocaine%20Ointment%20USP%205%20flavored%20Prescribing%20Information%20October%202018.pdf"
+    "2502": "Lidocaine Ointment USP 5% prescribing information. Taro Pharmaceuticals, October 2018: https://www.taro.com/sites/default/files/USA-Products-Rx/Lidocaine%20Ointment%20USP%205%20flavored%20Prescribing%20Information%20October%202018.pdf",
+    "3600": "Therapeutic Goods (Poisons Standard—October 2026) Instrument 2026 (F2026L01327), in force from 1 October 2026, Federal Register of Legislation, Australia (Word and PDF text retrieved through api.prod.legislation.gov.au). https://www.legislation.gov.au/F2026L01327/latest/text",
+    "3601": "Tranylcypromine 10 mg Tablets: summary of product characteristics. ADVANZ Pharma, electronic Medicines Compendium (legal category POM). https://www.medicines.org.uk/emc/product/2788/smpc"
   });
 })(window.ATLAS);
