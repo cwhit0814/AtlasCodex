@@ -14,6 +14,7 @@ const cases = [
   ["do a quick research task on PRL-8-53", "research"],
   ["add extra use cases for some drugs do deep research to find them", "research"],
   ["research a better layout for the stacks page and redesign it", "heavy"],
+  ["are there other ways to improve the hook? do deeper research on other mods that delegate to subagents", "heavy"],
   ["where is semax defined", "light"],
   ["how many entries are in the nootropic category", "standard"],
   ["list the files in css", "light"],

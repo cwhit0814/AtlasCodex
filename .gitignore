@@ -13,3 +13,8 @@
 .taste-skill/inspect/
 research_notes/
 .playwright-mcp/
+
+# Full MCP results the atlas-router mod trimmed out of context
+.claude/tool-output/
+# Type declarations the engine writes into each loaded mod
+.claude/skills/*/.claude-plugin/types/

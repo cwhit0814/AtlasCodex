@@ -87,7 +87,7 @@ function classify(raw) {
   const lookup = LOOKUP.test(lower);
   if (files.length) reasons.push(`names ${files.length} file(s): ${files.slice(0, 4).join(", ")}`);
 
-  if (RESEARCH.test(words) && !/\b(design|redesign|refactor\w*|debug\w*)\b/.test(words)) return { tier: "research", why: [...reasons, "source research"] };
+  if (RESEARCH.test(words) && !/\b(design|redesign|refactor\w*|debug\w*|hooks?|mods?|plugins?|router|subagents?|skills?|mcps?|settings|claude)\b/.test(words)) return { tier: "research", why: [...reasons, "source research"] };
   if (HEAVY_WORDS.test(words)) return heavy("design, judgement or open-ended work");
   // A prompt that only asks to commit/stage/push (no other edit) is a chore, whatever the changes it commits.
   if (GIT_CHORE.test(words) && text.length < 220 && !WRITE.test(words.replace(/\b(comm?it|push|stage|git add)\b/g, " "))) {

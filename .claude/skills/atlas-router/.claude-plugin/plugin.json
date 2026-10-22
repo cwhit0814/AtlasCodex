@@ -1,0 +1,5 @@
+{
+  "name": "atlas-router",
+  "version": "0.1.0",
+  "description": "Cuts token use in long Atlas Codex sessions: trims large MCP tool results to a saved file, runs unpinned general-purpose subagents on Sonnet, and lowers the main loop's effort on chore turns."
+}
