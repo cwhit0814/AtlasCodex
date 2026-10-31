@@ -59,6 +59,6 @@ export const register: Register = on => {
     }
     $.ui.log(`[atlas-router] ${e.tool}: ${ran.text.length} chars trimmed to ${TRIM_AT}, full text in ${path}`)
     const note = `\n\n[atlas-router: ${ran.text.length - TRIM_AT} more characters trimmed. Full result saved to ${path}; Read it with offset/limit if this part is not enough.]`
-    return { result: { content: [{ type: 'text', text: ran.text.slice(0, TRIM_AT) + note }], isError: false } }
+    return { result: ran.text.slice(0, TRIM_AT) + note } // core checks this against the MCP output shape: a string or content array, not { content }
   })
 }

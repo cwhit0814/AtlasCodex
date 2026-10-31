@@ -7,7 +7,8 @@ test('a long MCP result is trimmed and saved whole; a short one passes', async (
   on('tool.call', (_, e) => ({ result: {}, text: e.tool === 'mcp__web__scrape' ? long : 'short' }))
 
   const trimmed = await $.tool.call({ tool: 'mcp__web__scrape', url: 'https://example.com' })
-  const text = JSON.stringify(trimmed.result)
+  const text = trimmed.result as string
+  expect(typeof text).toBe('string') // an object here is refused by core's MCP output check
   expect(text.length < 9000).toBe(true)
   expect(text.includes('.claude/tool-output/')).toBe(true)
   expect(written).toEqual([long])
