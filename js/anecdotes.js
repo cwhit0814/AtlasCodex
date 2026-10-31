@@ -6,9 +6,10 @@
  * Both always show on a compound entry, straight after the human clinical record, with an honest
  * empty sheet when a compound has none. Nothing here is invented: no sample, filler or composite report.
  *
- * SCOPE — what people noticed, never how much they took. No doses, units, schedules, vendors or
- * product names: dosing comes only from labels and published trials (js/dosing.js), and
- * tools/check.js fails on a number followed by a dose unit. Paraphrase unless verbatim is set.
+ * SCOPE — what people noticed, not how much they took. Reported amounts have their own home in
+ * js/dosing.js, under `reported`, where every number carries a confidence grade and its source;
+ * tools/check.js still fails on a dose unit here, so that a figure is always read beside its
+ * grade rather than loose in a report. No vendors or product names. Paraphrase unless verbatim.
  *
  * Editor's anecdote:
  *   { kind, text, often, source: { name, href, year }, verbatim, record, recordNote, refs, added }

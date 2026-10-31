@@ -850,16 +850,42 @@
           </div>`));
       }
 
-      // dosing (from approved labels and published trials only), after the record it comes from
+      // dosing: labels and trials first, then what people report taking, graded and kept apart
       if (isCompound) {
         const d = (A.dosing || {})[e.slug];
         const fixed = "These are the amounts studied or approved, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.";
+        const CONF = {
+          wide: ["Widely reported", "t-weak"], some: ["Some reports", "t-weak"],
+          thin: ["Thinly reported", "t-plain"], none: ["No human use on record", "t-plain"]
+        };
+        // One block per source, so two sources that disagree are both shown rather than one winning.
+        const block = (r) => {
+          const [label, tone] = CONF[r.confidence] || CONF.thin;
+          const rows = r.rows || [], x = r.source || {};
+          const where = x.name ? (x.href
+            ? `<a class="link-plain" href="${esc(x.href)}" target="_blank" rel="noopener">${esc(x.name)}</a>${x.year ? `, <span class="nums">${esc(x.year)}</span>` : ""}`
+            : esc(x.name) + (x.year ? `, ${esc(x.year)}` : "")) : "";
+          return `
+            <div class="sheet reported-dose">
+              <p class="anec-kind">${where || "Reported use"} <span class="ev ${tone}">${esc(label)}</span></p>
+              ${rows.length
+                ? `<table class="table"><tbody>${rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>`
+                : `<p><strong>Nothing to report.</strong> No human use of this compound is on record, so there is no reported amount to give. That absence is the finding.</p>`}
+              ${r.note ? `<p class="caveat">${sent(r.note)}</p>` : ""}
+            </div>`;
+        };
+        const reported = (list) => {
+          if (!list || !list.length) return "";
+          return list.map(block).join("") + `
+            <p class="caveat reported-caveat">These are anecdotes from real-world use: amounts people say they take, not amounts anyone has tested. The tier words are the source's own and describe where an amount sits among people running it, not whether it is safe or whether it works. A record of practice, not a recommendation.</p>`;
+        };
         if (d) {
-          out.push(sec("dosing", "Dosing in labels and trials", `${esc(d.source || "Source")} ${badge(d.evidence)}`, `
-            <div class="sheet">
+          out.push(sec("dosing", "Dosing", `${esc(d.source || "Source")} ${badge(d.evidence)}`, `
+            ${(d.rows || []).length ? `<div class="sheet">
               <table class="table"><tbody>${d.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>
               <p class="caveat">${d.note ? sent(d.note) + " " : ""}${fixed}</p>${refsLine(d.refs)}
-            </div>`));
+            </div>` : ""}
+            ${reported(d.reported)}`));
         } else {
           const special = (A.site.noDoseBySlug || {})[e.slug];
           out.push(sec("dosing", "Dosing in labels and trials", "Only regulator labels and doses a published trial gave are recorded here.", `
@@ -1159,6 +1185,22 @@
       out.push(sec("Dosing in trials", "Only doses a published trial gave this combination are recorded.", s.studied
         ? `<div class="sheet"><p>${sent(s.studied)}</p><p class="soft" style="margin-top:1rem;font-size:1rem">These are the amounts studied, recorded for reference. They are not a recommendation, and they are not adjusted for any individual.</p></div>`
         : `<div class="sheet no-dose"><p><strong>No combination dose.</strong> No published trial has given this combination, so no dose is listed. Doses on each part's own entry come from that part's labels and trials, not from the pair.</p></div>`));
+      // What the people running it say they take. Kept under the trial section so the order is always record first.
+      if (s.reported) {
+        const CONF = {
+          wide: ["Widely reported", "t-weak"], some: ["Some reports", "t-weak"],
+          thin: ["Thinly reported", "t-plain"], none: ["No human use on record", "t-plain"]
+        };
+        const r = s.reported, [cLabel, cTone] = CONF[r.confidence] || CONF.thin;
+        const where = (r.sources || []).map((x) => x.href
+          ? `<a class="link-plain" href="${esc(x.href)}" target="_blank" rel="noopener">${esc(x.name)}</a>${x.year ? `, <span class="nums">${esc(x.year)}</span>` : ""}`
+          : esc(x.name) + (x.year ? `, ${esc(x.year)}` : "")).join("; ");
+        out.push(sec("What people report running", `How much agreement is behind these amounts <span class="ev ${cTone}">${esc(cLabel)}</span>`, `
+          <div class="sheet reported-dose">
+            ${(r.rows || []).length ? `<table class="table"><tbody>${r.rows.map(([k, v]) => `<tr><th scope="row">${esc(k)}</th><td>${sent(v)}</td></tr>`).join("")}</tbody></table>` : ""}
+            <p class="caveat">${r.note ? sent(r.note) + " " : ""}These are anecdotes from real-world use: amounts people say they run, not amounts anyone has tested. Nobody has studied this combination, so no part of this has been shown to be safe together. It is a record of what is done, not a recommendation.${where ? ` Collected from ${where}.` : ""}</p>
+          </div>`));
+      }
       const linked = s.parts.map((p) => p.slug && bySlug(p.slug)).filter(Boolean);
       if ((s.watch || []).length) out.push(sec("What to watch", "Signs and markers this combination makes worth watching. Target ranges are left out on purpose.", `
         <div class="sheet"><div class="watch" style="margin-top:0"><h3>Warning signs and markers</h3><ul>${s.watch.map((w) => `<li>${sent(w)}</li>`).join("")}</ul></div>
@@ -1174,7 +1216,7 @@
         ${more.length ? `<div class="bands">${more.map((x, i) => stackBand(x, i)).join("")}</div>` : ""}
         <p class="more-links">${u0 ? `<a class="link go" href="stacks.html?use=${u0.id}">Every stack for ${esc(u0.name.toLowerCase())}</a><a class="link go" href="codex.html?use=${u0.id}">Every compound for ${esc(u0.name.toLowerCase())}</a>` : `<a class="link go" href="stacks.html">Every stack</a>`}</p>`));
       if (mainSource()) out.push(sec("Support", "", supportBand(true)));
-      out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(s.added)}. Last updated ${fmtDate(s.updated)}.</p><p class="disclaimer" style="margin-top:1rem">A stack in the codex describes the record. It is not a recommendation to run it. Forum, vendor and coaching protocols are left out on purpose.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
+      out.push(sec("Record", "", `<p class="updated nums">Added ${fmtDate(s.added)}. Last updated ${fmtDate(s.updated)}.</p><p class="disclaimer" style="margin-top:1rem">A stack in the codex describes the record. It is not a recommendation to run it. Where a combination is one people actually run, the amounts they report are recorded under what people report running, graded by how much agreement is behind them and kept apart from anything a trial established.</p><p class="disclaimer" style="margin-top:1rem">${esc(A.site.disclaimer)}</p>`));
       host.innerHTML = out.join("");
       $$(".code-btn", host).forEach(copyCode);
     },

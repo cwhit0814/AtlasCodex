@@ -28,7 +28,25 @@ for (const e of A.entries) {
   (e.profile ? e.profile.rows : []).forEach((r) => (typeof r.score !== "number" || r.score < 0 || r.score > 5) && out.push(`${e.slug}: profile score ${r.score} outside 0-5`));
 }
 for (const k of ["dosing", "monitoring", "interactions", "legal", "buy"]) for (const s of Object.keys(A[k] || {})) has(s) || out.push(`${k}: ${s} has no entry`);
-for (const [s, d] of Object.entries(A.dosing || {})) { Array.isArray(d.rows) || out.push(`dosing ${s}: no rows`); refs(d.refs, "dosing " + s); }
+// Dosing: label and trial rows, plus reported blocks (js/dosing-reported.js) that must each carry a grade and a named source.
+const CONF = new Set(["wide", "some", "thin", "none"]);
+for (const [s, d] of Object.entries(A.dosing || {})) {
+  if (!Array.isArray(d.rows) && !d.reported) out.push(`dosing ${s}: no rows`);
+  refs(d.refs, "dosing " + s);
+  if (d.reported === undefined) continue;
+  if (!Array.isArray(d.reported)) { out.push(`dosing ${s}: reported must be a list of blocks, one per source`); continue; }
+  // One block per source: the same source twice on one compound means two entries were merged by mistake.
+  const named = d.reported.map((r) => (r.source || {}).name).filter(Boolean);
+  new Set(named).size === named.length || out.push(`dosing ${s}: reported carries two blocks from the same source (${named.join(", ")})`);
+  d.reported.forEach((r, i) => {
+    const at = `dosing ${s}: reported block ${i + 1}`;
+    if (!CONF.has(r.confidence)) out.push(`${at}: confidence "${r.confidence}" is not wide, some, thin or none`);
+    const rows = r.rows || [];
+    if (rows.length && !(r.source && r.source.name)) out.push(`${at}: carries numbers but names no source`);
+    if (rows.length && r.confidence === "none") out.push(`${at}: confidence is "none" but it carries ${rows.length} row(s)`);
+    rows.forEach((row) => Array.isArray(row) && row.length === 2 || out.push(`${at}: a row is not [context, amount]`));
+  });
+}
 for (const [s, rows] of Object.entries(A.interactions || {})) rows.forEach((r) => refs(r.refs, "interactions " + s));
 const JUR = new Set(["US", "UK", "EU", "CA", "AU", "NZ", "JP", "CN", "RU", "WADA"]);
 const KIND = new Set(["rx", "otc", "controlled", "supplement", "cosmetic", "unapproved", "prohibited", "vet", "sport-banned", "sport-in-comp", "sport-monitored", "sport-allowed"]);

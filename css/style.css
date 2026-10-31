@@ -1026,6 +1026,11 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
 
 /* a caveat the reader came for stays in the full ink */
 .caveat { margin-top: 1rem; color: var(--ink); font-size: var(--step-small); }
+/* Reported amounts sit under the studied ones and are drawn a step back, so the two are never read as one.
+   One block per source, so two sources that disagree are both legible. */
+.reported-dose { margin-top: 1.25rem; border-left: 3px solid var(--rule); }
+.reported-dose .anec-kind { margin-bottom: .85rem; }
+.reported-caveat { margin-top: 1rem; }
 
 /* contents of an entry, in the side zone under the facts */
 .toc { width: 100%; }

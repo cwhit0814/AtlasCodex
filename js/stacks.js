@@ -303,6 +303,29 @@
           "Vandenberghe K et al. Caffeine counteracts the ergogenic action of muscle creatine loading. J Appl Physiol 1996;80:452–457.",
           "Trexler ET, Smith-Ryan AE. Creatine and caffeine: considerations for concurrent supplementation. Int J Sport Nutr Exerc Metab 2015;25:607–623."
         ]
+      },
+      {
+        id: "uncoupler-glp", name: "An uncoupler stack with a GLP-1", aka: "ATX-304, BAM15 and SANA with a GLP-1", group: "parts", uses: ["fatloss"],
+        parts: [
+          { slug: "bam15", role: "Mitochondrial uncoupler. Raises expenditure as heat rather than through heart rate", ev: "animal" },
+          { slug: "sana", role: "Drives thermogenesis through the creatine cycle rather than by uncoupling", ev: "animal" },
+          { slug: "atx-304", role: "AMPK activator and mild uncoupler. Raises capacity and perfusion", ev: "animal" },
+          { slug: "tirzepatide", role: "The GLP-1 layer. Holds calorie intake down against the raised expenditure", ev: "human rct" }
+        ],
+        together: "unknown",
+        theory: "Three different routes to spending more energy at rest, none of them adrenergic, with appetite held down underneath. Uncoupling wastes the proton gradient as heat, SANA runs a futile creatine cycle, and ATX-304 keeps AMPK switched on; because none of the three touches β-receptors, the thinking is that expenditure can be raised without the heart rate, tremor and lost sleep a stimulant brings, and the GLP-1 stops the body eating the difference back.",
+        record: "No trial has given any two of these together, and the three thermogenic parts are the least studied compounds in the fat-loss field. BAM15 has never been given to a human in a published study. SANA's entire human record is a 15-day phase 1 in 24 adults, where the top multiple dose was followed by about 3% weight loss and single 800 mg doses caused reversible kidney tubular damage. ATX-304 has one 28-day phase 2a in type 2 diabetes, which measured glucose and blood flow rather than body composition. Only the GLP-1 layer has a real record for fat loss, and it is the part doing the work a trial has actually measured. The mechanistic logic is sound and the three routes genuinely are separate; what is missing is any evidence about what happens when they run at once.",
+        studied: null,
+        watch: [
+          "Core temperature, and any unexplained fever, heavy sweating or feeling overheated. Two of the three raise heat production, and in the uncoupler class that is the mechanism and the hazard at once",
+          "Kidney function, which SANA's phase 1 found it can affect",
+          "Hydration and heart rate, both of which a heat load raises the demand on",
+          "Nausea and vomiting from the GLP-1, worst while the dose is rising",
+          "Fasting glucose and lipids, since ATX-304's own trial was built around metabolic markers",
+          "No human has taken BAM15 under observation, so there is no baseline for what an abnormal result on it would look like"
+        ],
+        note: "A cleaner idea than most combinations filed here: three separate thermogenic routes with nothing adrenergic, and a GLP-1 doing the part that has actually been measured. The caution is not the design but the evidence under it, and the uncoupler is where that is thinnest. Warmth is often described as a sign it is working; in this drug class heat is also the thing that harms people, and no human dose-response curve exists to tell the two apart.",
+        refs: [6, 71, 72, 443, 884, "Reported dosing for each part is on its own entry, from js/dosing-reported.js."]
       }
     ]
   };

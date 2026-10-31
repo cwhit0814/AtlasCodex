@@ -4,9 +4,11 @@
  * SCOPE RULE — only two kinds of numbers belong in this file:
  *   1. Dosing from an approved regulator-reviewed label (say which regulator and indication).
  *   2. Dosing a published trial actually administered (tie it to that trial).
- * Nothing else. No protocols from forums, vendors, coaches or FAQ documents, and no
- * extrapolation from animal doses. A compound with neither source gets no entry here and
- * the page states that no human dose has been established, which is the honest answer.
+ * Nothing else here: no protocols from forums, vendors, coaches or FAQ documents, and no
+ * extrapolation from animal doses. What people report taking is real and worth recording, but it
+ * is a different kind of claim, so it lives in js/dosing-reported.js, is graded by how much
+ * agreement is behind it, and is drawn under these amounts rather than beside them. A compound
+ * with no label and no trial gets no entry here, and the page says so.
  *
  * Shape: slug: { source, evidence, rows: [[context, amount]], note, refs }
  */
@@ -636,5 +638,9 @@ window.ATLAS.dosing = {
     note: "The abstract does not describe the dosing schedule or a placebo group. It is not an approved drug." },
   flmodafinil: { source: "Anti-doping excretion study", evidence: "human obs", refs: [3100], rows: [
     ["Dose studied", "20 mg by mouth, taken by six volunteers as either flmodafinil or fladrafinil"]],
-    note: "The study measured urine and blood levels for sports drug testing, not effect or safety. No dose has been tested for wakefulness or cognition. WADA prohibits it in competition." }
+    note: "The study measured urine and blood levels for sports drug testing, not effect or safety. No dose has been tested for wakefulness or cognition. WADA prohibits it in competition." },
+  sana: { source: "Phase 1 trial", evidence: "human rct", refs: [884], rows: [
+    ["Phase 1B arms", "100, 150 or 200 mg twice daily for 15 days, in 18 adults given the drug"],
+    ["Phase 1A single doses", "200, 400 or 800 mg. The 800 mg dose caused reversible kidney tubular damage"]],
+    note: "Six people per dose group, run by the developer. Nothing is known past 15 days of use." }
 };
