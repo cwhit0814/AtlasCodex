@@ -1,0 +1,8 @@
+# js/dosing-reported.js is written by a generator rather than by hand. Pinning its line
+# endings keeps a regenerate on a machine with different defaults from showing up as a
+# whole-file diff instead of the handful of rows that actually changed.
+#
+# Deliberately not marked linguist-generated: that would collapse it behind a "generated
+# file" fold in review, and this is the file holding the dosing figures, which is the last
+# thing in the repo that should be reviewed unread.
+js/dosing-reported.js text eol=lf
