@@ -950,7 +950,7 @@ button.cmp-sw:focus-visible { outline-color: var(--ink-a); outline-offset: 2px; 
 .formula .t-bad { color: color-mix(in oklch, var(--bad) 45%, var(--paper-ink)); }
 .formula .t-plain { color: var(--paper-muted); }
 .entry-intro .aka { color: var(--muted); font-size: var(--step-small); }
-.entry-intro .aka + div p::first-letter { float: left; font-family: var(--font-display); font-weight: 600; font-size: 3.2em; line-height: .8; color: var(--accent); padding: .06em .1em 0 0; }
+.entry-intro .aka + div p::first-letter { font: inherit; color: inherit; }
 .more-links { display: flex; flex-wrap: wrap; gap: .5rem 1.75rem; margin-top: 1.25rem; font-size: var(--step-small); }
 .more-links .link { color: var(--accent); }
 
