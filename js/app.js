@@ -952,7 +952,8 @@
         </div>
         <p class="disclaimer" style="margin-top:1.5rem">${esc(A.site.disclaimer)}</p>`, false));
 
-      // head: the plate and the facts in the side zone, the name and the lede on the axis, then the contents
+      // head: the plate and the facts in the side zone, the name and the lede on the axis. The contents
+      // list sits below, under the key strip, where it has the full width to run across.
       const comparable = A.structures && A.structures.smiles[e.slug];
       const plate = e.pubchem ? `<figure class="plate-card" data-rise style="--i:0"><img alt="Structure drawing of ${esc(e.name)}" src="${plateUrl(e.pubchem, 500)}" width="500" height="500" onerror="this.closest('figure').remove()"></figure>${comparable ? `<a class="link plate-link" data-rise style="--i:0" href="compare.html?a=${encodeURIComponent(e.slug)}">Compare this structure</a>` : ""}` : "";
       const intro = e.type === "article"
@@ -991,14 +992,13 @@
             ${usesFor(e.slug).length ? `<span>Use case ${usesFor(e.slug).map((u) => `<a class="link-plain" href="codex.html?use=${u.id}">${esc(u.name)}</a>`).join(", ")}</span>` : ""}
           </div>
           ${isCompound ? buyBlock(e) : ""}
-          ${contents}
         </div>
         <div class="main">
           <h1 class="lines"><span class="line"><span data-line>${esc(e.name)}</span></span></h1>
           ${intro}
         </div>
       </header>`;
-      host.innerHTML = head + keys + out.join("");
+      host.innerHTML = head + keys + (contents ? `<div class="wrap">${contents}</div>` : "") + out.join("");
       $$(".code-btn", host).forEach(copyCode);
       $("#print-btn").addEventListener("click", () => print());
 
