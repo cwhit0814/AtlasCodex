@@ -1,9 +1,7 @@
 {
   "detector": {
     "ignoreRules": [],
-    "ignoreFiles": [
-      "design/entry-alternatives/**"
-    ],
+    "ignoreFiles": [],
     "ignoreValues": [
       {
         "rule": "cramped-padding",

@@ -183,6 +183,11 @@ The brand carries the atmosphere instead of pictures: the ATLAS CODEX wordmark w
 
 The compound and article entry page (`entry.html`, `body[data-page="entry"]`) is set in a second world, declared in `css/entry-instrument.css` and layered over `css/style.css`. Every other page keeps the printed annual. The two worlds are deliberate, not drift: the annual is a reading posture, and an entry page is a deciding posture.
 
+The three directions this was chosen from are kept on the orphan `design` branch, under
+`entry-alternatives/`, with a README saying how the shipped page differs from its comp. They are not
+on this branch because the site is published from it and design studies are not pages:
+`git worktree add ../atlas-design design` checks them out beside the repo.
+
 **North star.** A panel of readings. Someone arrives at an entry because they are deciding something, so the page answers with measurements before it answers with prose: a key strip of readings closes the hero, sections are divided by hairline rules rather than by steps of tone, and one amber accent is held back for the single action and the primary dosing source.
 
 **What changes from the annual:**
