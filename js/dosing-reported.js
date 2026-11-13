@@ -576,19 +576,89 @@
     note: "This source declines to put a human number on it, so the FAQ's 100–500 mcg daily is the only figure the codex has for MGF." }]
   };
 
+  /* Three compounds the Archive covers where the FAQ has a section but not a figure: its SNAP-8 and TA-1
+   * entries read "Coming soon", and its SR-9009 entry gives a volume without the vial strength that would
+   * turn it into an amount. The Archive fills what is missing, which is the order the codex works in. */
+  const ARCHIVE4 = {
+  "sr-9009": [{ source: TAT, confidence: "thin",
+    rows: [["Reported protocol", "Reconstitute the vial with 2 mL, then inject 0.2–0.5 mL on waking, repeated as needed to move a sleep schedule"],
+      ["Route and timing", "Injected, taken at the hour the user wants to start waking"]],
+    note: "A fraction of a vial rather than an amount: each dose is a tenth to a quarter of whatever the vial holds, and this source does not say what that is. The timing is the part worth reading, since the compound acts on the circadian clock rather than on a daily total." },
+    { source: MPA, confidence: "thin",
+    rows: [["Typical range", "20–30 mg daily, split across the day"]],
+    note: "The amount the other source leaves out, and for the oral form. SR-9009 is very poorly absorbed by mouth, so an oral figure and an injected one are not interchangeable: every endurance and fat-loss finding came from mouse studies that injected it." }],
+  "snap-8": [{ source: MPA, confidence: "thin",
+    rows: [["Typical range", "A 3–10% cream or solution applied twice daily"]],
+    note: "A concentration rather than a dose, which is how a cosmetic peptide is used. The other source lists an injectable vial for it, calls injected SNAP-8 understudied and gives no figure; nothing published supports injecting it." }],
+  "thymosin-alpha-1": [{ source: MPA, confidence: "thin",
+    rows: [["Typical range", "1.6 mg under the skin twice weekly"]],
+    note: "The same figure as the hepatitis B trials above, so this source reports the trial schedule rather than anything beyond it. The other source stocks it but gives no amount, and records that its author was disappointed with it." }]
+  };
+
   // Attach to the dosing record, creating an entry for compounds that have no label or trial dose at all.
   A.dosing = A.dosing || {};
-  for (const set of [REPORTED, ARCHIVE, ARCHIVE2, ARCHIVE3, AAS, MULTI, PROSE]) for (const [slug, blocks] of Object.entries(set)) {
+  for (const set of [REPORTED, ARCHIVE, ARCHIVE2, ARCHIVE3, ARCHIVE4, AAS, MULTI, PROSE]) for (const [slug, blocks] of Object.entries(set)) {
     const d = A.dosing[slug] || (A.dosing[slug] = { source: "No label or trial dose", evidence: "anecdotal" });
     d.reported = (d.reported || []).concat(blocks);
   }
 
-  /* The grade follows the corroboration, so it is derived here rather than written out on each block:
-   * a figure one source gives alone is "thin", and a second independent source reporting the same kind of
-   * use lifts it to "some". Blocks already graded higher, and "none", are left alone. */
+  /* Tanner Tattered's FAQ is the codex's primary dosing source: where both sources give a figure for the
+   * same compound, his is the one the page shows, and the Archive fills only what he leaves out.
+   *
+   * Where the two materially disagree AND his figure is the higher one, the Archive's block is folded into
+   * a line inside his rather than printed beside it. One figure leads, and the lower one a second source
+   * gives is still on the page, because suppressing it outright would hide the more cautious number.
+   * Disagreements about route, period or substance are not in this list: those two blocks describe
+   * different things rather than competing, so both stay. */
+  const PRIMARY = "Tanner Tattered, FAQ", SECOND = "Maximum Pharma Archive";
+  const ARCHIVE_SAYS = {
+    "methylene-blue": "0.5–10 mg daily",
+    "igf-1-des": "20–100 mcg per injection, or 50–150 mcg a day on training days",
+    "tb-500": "500–1000 mcg weekly",
+    "propranolol": "10–60 mg taken when needed, rather than daily",
+    "slu-pp-332": "100–400 mg",
+    "vip": "50–100 mcg once or twice daily",
+    "telmisartan": "40 mg daily, titrated to 80 mg",
+    "proviron": "25–100 mg daily",
+    "ezetimibe": "10 mg daily",
+    "hexarelin": "100–200 mcg once or twice daily, cycled"
+  };
+  for (const [slug, says] of Object.entries(ARCHIVE_SAYS)) {
+    const d = A.dosing[slug];
+    if (!d || !d.reported) continue;
+    const lead = d.reported.find((b) => (b.source || {}).name === PRIMARY);
+    if (!lead) continue;
+    lead.note = (lead.note ? lead.note + " " : "") +
+      "A second source, the Maximum Pharma Archive, gives " + says + " for the same use, below the figure above. " +
+      "The codex follows this source where the two disagree, so the lower amount is recorded here rather than shown beside it.";
+    d.reported = d.reported.filter((b) => (b.source || {}).name !== SECOND);
+  }
+
+  // The primary source leads wherever both are present.
   for (const d of Object.values(A.dosing)) {
     if (!d.reported || d.reported.length < 2) continue;
-    if (new Set(d.reported.map((b) => (b.source || {}).name)).size < 2) continue;
-    d.reported.forEach((b) => { if (b.confidence === "thin") b.confidence = "some"; });
+    d.reported.sort((a, b) => ((b.source || {}).name === PRIMARY ? 1 : 0) - ((a.source || {}).name === PRIMARY ? 1 : 0));
+  }
+
+  /* The grade follows the corroboration, so it is derived here rather than written out on each block:
+   * a figure one source gives alone is "thin", and a second independent source reporting the same kind of
+   * use lifts it to "some". Blocks already graded higher, and "none", are left alone. A compound whose
+   * second block was folded away above is back to one source, and its grade drops to "thin" to match. */
+  /* Two blocks are not corroboration when they are not describing the same thing. On these compounds one
+   * source declines to put a figure on it at all, or the two give different routes with no shared unit,
+   * so both blocks stay on the page and the grade stays at one source:
+   *   nandrolone  the Archive gives no figure, only that practice varies widely
+   *   mgf         the Archive declines a human figure and reports animal studies only
+   *   sr-9009     a fraction of an unstated vial, injected, against a daily oral amount */
+  const NO_LIFT = new Set(["nandrolone", "mgf", "sr-9009"]);
+
+  for (const [slug, d] of Object.entries(A.dosing)) {
+    if (!d.reported) continue;
+    const corroborated = !NO_LIFT.has(slug) &&
+      new Set(d.reported.map((b) => (b.source || {}).name)).size > 1;
+    d.reported.forEach((b) => {
+      if (!corroborated && b.confidence === "some") b.confidence = "thin";
+      if (corroborated && b.confidence === "thin") b.confidence = "some";
+    });
   }
 })(window.ATLAS);
