@@ -12,15 +12,17 @@ The primary reader is a self-experimenter who is already using a peptide, anabol
 
 ## Product Purpose
 
-Atlas Codex is an open reference library of peptides and research compounds, about 170 entries plus guides. Each entry covers what the compound is, its structure, its mechanism and receptor activity, a risk grid graded by evidence, the human clinical record, pharmacokinetics, monitoring and references. Success means a reader leaves knowing what the evidence supports, how strong that evidence is, and what to watch for, without having been told what to do.
+Atlas Codex is an open reference library of peptides and research compounds: 244 compound entries and 7 guides. Each entry covers what the compound is, its structure, its mechanism and receptor activity, a risk grid graded by evidence, the human clinical record, pharmacokinetics, monitoring and references. Success means a reader leaves knowing what the evidence supports, how strong that evidence is, and what to watch for, without having been told what to do.
 
 ## Positioning
 
-It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Pharma Archive, and is set apart by three things:
+It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Pharma Archive, and since 2026-11-12 it also draws on both of them by name for reported dosing (owner's decision: these amounts are required everywhere, to the best of the available sourcing). What sets the codex apart is therefore not what it refuses to carry, but how it separates, attributes and grades what it carries:
 
-- **Strict sourcing.** Dosing numbers come only from approved regulator-reviewed labels or from doses a published trial actually gave. Forum, vendor and coaching protocols are left out on purpose. Every claim carries an evidence grade. Where a creator's view and the published record disagree, the codex follows the record.
+- **Two dosing layers, never merged.** The first holds only what an approved regulator label or a published trial established. The second records what people report taking, each block attributed to a named, linked source and carrying its own confidence grade (`wide`, `some`, `thin`, `none`). A reported figure never overwrites, revises or stands in for the record: it prints beneath it, behind a rule, under a standing caveat that these are amounts people say they take rather than amounts anyone has tested. Of 183 dosing records, 143 have a label or trial dose, 118 carry a reported figure, and 40 have a reported figure and nothing else.
+- **A declared source order.** Where both reported sources cover a compound, Tanner Tattered's FAQ leads and the Maximum Pharma Archive fills only what it leaves out (owner's decision, 2026-11-12). Where the two materially disagree and the FAQ's figure is the higher one, the Archive's lower figure folds into a line inside the FAQ's block rather than printing beside it, so one figure leads without the more cautious number disappearing. The FAQ leads on 112 compounds, the Archive on 6, and no page prints the Archive above the FAQ. Two blocks are not treated as corroboration when a source declines to give a figure at all.
+- **Every claim still graded, and the record still outranks the creators.** The evidence grade sits beside the claim it belongs to, and the strength of a reported figure is derived from how many independent sources report it rather than asserted. Where a creator's view and the published record disagree, the record is what the record section says; the disagreement is named rather than resolved by deletion.
 - **The same structure on every compound.** Each entry has the same sections (profile scores, risk grid, mechanism, trials, PK, dosing, monitoring), so compounds can be compared side by side.
-- **A broader, curated catalog.** It covers compounds the others skip and leaves out ones that don't belong. Its overlap with Tanner's list is expected to shrink.
+- **A broader, curated catalog.** 244 compound entries and 7 guides. It covers compounds the others skip and leaves out ones that don't belong. Its overlap with Tanner's list is expected to shrink.
 
 ## Operating Context
 
@@ -32,9 +34,9 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 ## Capabilities and Constraints
 
 - A static site with no build step and no dependencies: plain HTML, `css/style.css` and `js/*.js`. It is served by any static host (GitHub Pages, Netlify, Vercel, Cloudflare Pages) and run locally with `python3 -m http.server 8000`.
-- Content lives in JS data files (`js/data.js`, `js/entries-*.js`, `js/builder.js` short form, `js/dosing.js`, `js/pk.js`, `js/monitoring.js`, `js/buy.js`). Each page is rendered from them.
+- Content lives in JS data files. `js/load.js` holds the load order and is the one place a new data file is registered. They are: `js/data.js`, `js/entries-*.js` (`js/builder.js` holds the short form they are written in), `js/pk.js`, `js/dosing.js`, `js/dosing-reported.js` (generated; see `.gitattributes`), `js/monitoring.js`, `js/interactions.js`, `js/legal.js`, `js/refs-research.js`, `js/refs-legal.js`, `js/anecdotes.js`, `js/buy.js`, `js/uses.js`, `js/stacks.js`. `js/structures.js` is loaded only by the pages that need it. Each page is rendered from them, and `node tools/check.js` validates them.
 - Evidence vocabulary: `human rct`, `human obs`, `established`, `animal`, `in vitro`, `anecdotal`, `contested`, `unknown`. Status labels include Research only, Never approved, Banned, Veterinary, Discontinued, Supplement, Cosmetic and Compounded.
-- Compounds with no label or trial dose show an honest "no established human dose" panel, with per-compound wording in `site.noDoseBySlug`. Never fill that gap with a number.
+- Compounds with no label or trial dose show an honest "no established human dose" panel, with per-compound wording in `site.noDoseBySlug`. That panel states a gap in the record and is never filled with an invented number. Where a named source reports an amount, it prints below the panel as a graded reported figure, which records practice and does not close the gap.
 - Commerce: Half Nattys referrals (code `ATLAS`) fund the codex. **Support is actively promoted** (owner's decision, 2026-10-14): a notice strip on every page, a gold Support me button in the header, a support band on the home page and at the end of every entry, and a support link on every compound page. Every page is built to lead the reader to the affiliate source (owner's goal, 2026-10-14): notice strip, header button, a rising support bar, side cards and an affiliate row on list pages, a shop row in search, and direct shop buttons for compounds the source lists. Three lines hold regardless: the commission disclosure sits beside every affiliate link, no support surface reads as a recommendation of a compound, and banned compounds never get a compound-specific shop prompt.
 - Contact and requests (interim, set 2026-10-17): corrections and entry requests go to the public GitHub issue tracker (`site.contact` in `js/data.js`). Every entry has a prefilled "Report an error in this entry" link, and About explains the process. A community channel is still undecided.
 
@@ -47,7 +49,7 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 
 ## Evidence on Hand
 
-- Around 170 compound entries plus guides, with PubMed-linked references, PubChem structure images, and dosing, PK and monitoring data.
+- 244 compound entries and 7 guides, carrying 1,110 PubMed-linked and primary-source references, PubChem structure images, 15 stacks, and dosing, PK and monitoring data.
 - Creator images in `img/creator-*.{png,webp}`, used with permission, and the Half Nattys logo in `img/halfnattys.png`.
 - Absences: no user testimonials, no community size, no traffic or usage numbers, and no clinician or expert review of entries. Future work must not invent any of these.
 
@@ -55,6 +57,6 @@ It sits in the same space as Tanner Tattered's FAQ and 1MinAnabolics' Maximum Ph
 
 1. **The record outranks everyone.** That includes creators, vendors and the site's own revenue.
 2. **Grade every claim.** Show how strong the evidence is right where the claim is made, not in a footnote.
-3. **Say "unknown" honestly.** A missing dose, trial or range is shown plainly and never filled in.
+3. **Say "unknown" honestly.** A missing dose, trial or range is shown plainly and never filled in. A reported figure from a named source is not a filling-in: it sits in its own layer, graded, and the gap in the record stays visible beside it.
 4. **Same shape, every compound.** Consistent structure is what makes comparison and quick lookups possible.
 5. **Inform about compounds; ask openly for support.** Harm-relevant information is easy to find and nothing pushes the reader toward using a compound. Asking readers to support the codex through the referral code is open, frequent and always disclosed.
