@@ -94,5 +94,30 @@ A.support.sources.flatMap((s) => s.popular || []).forEach((p) => p.slug && !has(
 for (const k of ["noDoseBySlug", "approvedWhere"]) for (const s of Object.keys(A.site[k] || {})) has(s) || out.push(`site.${k}: ${s} has no entry`);
 for (const s of Object.keys((A.structures || {}).smiles || {})) has(s) || out.push(`structures: ${s} has no entry`);
 
+/* PRODUCT.md states the size of the record in prose, and prose does not update itself: its entry
+ * count read "about 170" long after the record had passed 200. Every figure it gives is checked
+ * against the data here, at every mention, so the document cannot drift from the thing it describes
+ * and its three statements of the same count cannot drift from each other. A figure dropped from the
+ * document on purpose should be dropped from this list in the same change. */
+const product = fs.readFileSync(path.join(root, "PRODUCT.md"), "utf8");
+const typed = (t) => A.entries.filter((e) => e.type === t).length;
+const n = (x) => x.toLocaleString("en-US");
+for (const [what, re, truth] of [
+  ["compound entries", /([\d,]+) compound entries/g, typed("compound")],
+  ["guides", /([\d,]+) guides/g, typed("article")],
+  ["references", /([\d,]+) PubMed-linked/g, Object.keys(A.references).length],
+  ["stacks", /([\d,]+) stacks/g, A.stacks.items.length]
+]) {
+  const said = [...product.matchAll(re)].map((m) => Number(m[1].replace(/,/g, "")));
+  if (!said.length) {
+    out.push(`PRODUCT.md: no count of ${what} found, so this check is blind. Fix the pattern in ` +
+      `tools/check.js, or drop ${what} from its list if the document no longer gives that figure.`);
+    continue;
+  }
+  said.forEach((says, i) => says !== truth && out.push(
+    `PRODUCT.md: says ${n(says)} ${what}${said.length > 1 ? ` (mention ${i + 1} of ${said.length})` : ""}, ` +
+    `the data has ${n(truth)}`));
+}
+
 if (out.length) { console.error(out.join("\n") + `\n\n${out.length} problem(s).`); process.exit(1); }
 console.log(`OK: ${A.entries.length} entries, ${Object.keys(A.references).length} references, ${A.stacks.items.length} stacks.`);
