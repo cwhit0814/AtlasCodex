@@ -1,0 +1,121 @@
+<!doctype html><html lang="en" data-dir="instrument"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Tirzepatide record</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#101114;--panel:#17191d;--panel2:#1d2026;--rule:#2a2e36;--ink:#e8eaed;--soft:#969ba5;--accent:#f0a02a;--accent-ink:#17120a;
+--good:#6fcf97;--obs:#67b9c4;--weak:#e0ac5e;--bad:#ef8b8b;--r:0px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.5 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding:0 22px}
+a{color:var(--accent)}
+h1,h2,h3,h4{margin:0;font-weight:600}
+.mono,.n{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+header.top{border-bottom:1px solid var(--rule);background:var(--panel)}
+.topin{display:flex;align-items:center;justify-content:space-between;height:56px;gap:16px}
+.mark{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:14px;letter-spacing:.04em}
+.mark span{color:var(--accent)}
+.hero{border-bottom:1px solid var(--rule);background:var(--panel);padding:30px 0 18px}
+.hgrid{display:grid;grid-template-columns:1fr 300px;gap:34px;align-items:end}
+h1{font-size:clamp(32px,4vw,46px);line-height:1.04;letter-spacing:-.02em}
+.klass{margin:9px 0 0;color:var(--soft);font-size:16px;max-width:62ch;line-height:1.45}
+.keyrow{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-top:26px}
+.key{padding:13px 16px 15px;border-right:1px solid var(--rule)}
+.key:last-child{border-right:0}
+.key b{display:block;font-family:"IBM Plex Mono",monospace;font-size:21px;font-weight:500;letter-spacing:-.01em}
+.key span{display:block;margin-top:3px;font-size:12.5px;color:var(--soft)}
+.plate{background:#f3f3ef;padding:6px}
+.plate img{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+main{padding:0 0 70px}
+section{border-bottom:1px solid var(--rule);padding:26px 0}
+h2{font-size:14px;color:var(--soft);font-weight:500;font-family:"IBM Plex Mono",monospace;letter-spacing:.03em;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{text-align:left;padding:8px 14px 8px 0;vertical-align:top;border-bottom:1px solid var(--rule)}
+tbody tr:hover{background:var(--panel)}
+thead th{font-size:12px;color:var(--soft);font-weight:500;font-family:"IBM Plex Mono",monospace}
+.g{display:inline-block;padding:1px 7px;font-size:12px;font-weight:500;font-family:"IBM Plex Mono",monospace;white-space:nowrap;border:1px solid}
+.g-good{color:var(--good);border-color:#2e5c44}
+.g-obs{color:var(--obs);border-color:#2b5159}
+.g-weak{color:var(--weak);border-color:#5e4a26}
+.g-plain{color:var(--soft);border-color:var(--rule)}
+.lv-high{color:var(--bad)}.lv-moderate{color:var(--weak)}.lv-low{color:var(--good)}.lv-unknown{color:var(--soft)}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+.dose{border:1px solid var(--rule);background:var(--panel)}
+.dose+.dose{margin-top:12px}
+.dosehd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 14px;background:var(--panel2);border-bottom:1px solid var(--rule);font-size:13.5px}
+.dose table{font-size:14px}
+.dose th,.dose td{padding:7px 14px}
+.dose .note{margin:0;padding:10px 14px;border-top:1px solid var(--rule);font-size:13px;color:var(--soft);line-height:1.5}
+.primary{border-left:2px solid var(--accent)}
+.act{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.card{border:1px solid var(--rule);background:var(--panel);padding:16px 18px;display:flex;flex-direction:column}
+.card h3{font-size:19px}
+.card p{margin:7px 0 14px;font-size:14px;color:var(--soft);line-height:1.5;flex:1}
+.btn{display:inline-block;align-self:flex-start;padding:9px 16px;background:var(--accent);color:var(--accent-ink);text-decoration:none;font-weight:600;font-size:14px;transition:filter .18s}
+.btn:hover{filter:brightness(1.12)}
+.btn:active{transform:translateY(1px)}
+.btn.q{background:transparent;color:var(--ink);border:1px solid var(--rule)}
+.btn.q:hover{border-color:var(--accent);filter:none}
+.fine{margin:10px 0 0;font-size:12px;color:var(--soft);line-height:1.45}
+.trial{border-bottom:1px solid var(--rule);padding:13px 0}
+.trial:last-child{border-bottom:0}
+.trial h3{font-size:19px}
+.tm{margin:6px 0 0;font-size:13px;color:var(--soft);font-family:"IBM Plex Mono",monospace}
+.tm i{font-style:normal}
+.tm i+i::before{content:" / "}
+.trial p{margin:7px 0 0;font-size:14px;color:var(--soft);max-width:78ch}
+.refs{margin:0;padding-left:20px;font-size:13.5px;color:var(--soft);columns:2;column-gap:34px}
+.refs li{margin-bottom:6px;break-inside:avoid}
+footer{padding:24px 0 40px;color:var(--soft);font-size:13px}
+footer p{max-width:82ch;margin:0 0 8px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media(max-width:1020px){.hgrid{grid-template-columns:1fr}.plate{max-width:220px}.keyrow{grid-template-columns:repeat(2,1fr)}.key{border-bottom:1px solid var(--rule)}.cols,.act{grid-template-columns:1fr}.refs{columns:1}}
+@media(max-width:560px){.keyrow{grid-template-columns:1fr}}
+</style></head><body>
+<header class="top"><div class="wrap topin"><div class="mark">ATLAS<span>/</span>CODEX</div><a class="btn q" href="#act">Book a consult</a></div></header>
+<div class="hero"><div class="wrap">
+<div class="hgrid"><div><h1>Tirzepatide</h1><p class="klass">A once-weekly peptide that activates both the GIP and GLP-1 receptors, approved for type 2 diabetes and chronic weight management.</p></div>
+<figure class="plate" style="margin:0"><img src="https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/tirzepatide/PNG?image_size=500x500" alt="Structure drawing of tirzepatide" width="500" height="500" loading="lazy"></figure></div>
+<div class="keyrow">
+<div class="key"><b>Approved</b><span>Regulatory status</span></div>
+<div class="key"><b class="n">7</b><span>Controlled trials on file</span></div>
+<div class="key"><b class="n">22</b><span>References</span></div>
+<div class="key"><b class="n">5 days</b><span>Half-life</span></div>
+<div class="key"><b class="n">2026-10-17</b><span>Last reviewed</span></div>
+</div></div></div>
+<main class="wrap">
+<section><h2>Dosing</h2>
+<div class="dose"><div class="dosehd"><span>FDA label</span><span class="g g-good">Established</span></div>
+<table><tbody><tr><th scope="row">Type 2 diabetes (Mounjaro)</th><td>2.5 mg weekly for 4 weeks, then 5 mg; may increase in 2.5 mg steps at 4-week intervals to a maximum of 15 mg</td></tr><tr><th scope="row">Weight management (Zepbound)</th><td>Same escalation; maintenance at 5, 10 or 15 mg weekly</td></tr></tbody></table>
+<p class="note">Approved and studied amounts, recorded for reference. Not a recommendation, and not adjusted for any individual.</p></div>
+<div class="dose primary"><div class="dosehd"><span>Tanner Tattered, FAQ</span><span class="g g-weak">Some reports</span></div>
+<table><tbody><tr><th scope="row">Low</th><td>1-4 mg (1000-4000 mcg) per week</td></tr><tr><th scope="row">Average</th><td>5-8 mg per week</td></tr><tr><th scope="row">High</th><td>9-12 mg per week</td></tr><tr><th scope="row">The section's second protocol</th><td>2 mg/week low, 5 mg/week average, 10-15 mg/week high</td></tr></tbody></table>
+<p class="note">The approved maximum on both the Mounjaro and Zepbound labels is 15 mg weekly, reached by escalation, so the top of these ranges meets the label ceiling rather than exceeding it. The two protocols in the section differ at the top by 3 mg a week.</p>
+<p class="note">Maximum Pharma Archive: 2.5 mg weekly, titrated to 5, 7.5, 10 or 15 mg weekly, graded as human trial data</p></div>
+<div class="act" id="act">
+<div class="card"><h3>Reading this against your own bloodwork</h3><p>The record above is the same for everyone. What it means for one person depends on their labs, what else they are running, and what they are actually trying to do. That part is a conversation.</p><a class="btn" href="#">Book a consult</a></div>
+<div class="card"><h3>Where this is sourced</h3><p>The codex is funded by one referral code. It is named here because the page already cost you nothing. Code <span class="mono">ATLAS</span>.</p><a class="btn q" href="https://halfnattys.is/product/glp-tz-peptide/">Half Nattys · GLP-TZ vial, 10 mg</a><p class="fine">Affiliate link. A purchase may earn the codex a commission, at no cost to you. Listing a source is not a recommendation to take this compound.</p></div>
+</div></section>
+
+<section><h2>Risk and evidence</h2>
+<table><thead><tr><th>System</th><th>Level</th><th>What the record shows</th><th>Evidence</th></tr></thead><tbody>
+<tr><th scope="row">Gastrointestinal</th><td class="mono lv-moderate">Moderate</td><td>Nausea, diarrhea, vomiting and constipation, mostly during dose escalation</td><td><span class="g g-good">Human RCT</span></td></tr><tr><th scope="row">Gallbladder</th><td class="mono lv-low">Low</td><td>Gallbladder events are more frequent than with placebo</td><td><span class="g g-good">Human RCT</span></td></tr><tr><th scope="row">Pancreas</th><td class="mono lv-low">Low</td><td>Pancreatitis is a labeled warning. Events are rare</td><td><span class="g g-weak">Contested</span></td></tr><tr><th scope="row">Thyroid</th><td class="mono lv-low">Low</td><td>C-cell tumors in rodents. Relevance to humans is unknown</td><td><span class="g g-weak">Animal</span></td></tr><tr><th scope="row">Hypoglycemia</th><td class="mono lv-low">Low</td><td>Low risk on its own. Higher when combined with insulin or sulfonylureas</td><td><span class="g g-good">Established</span></td></tr>
+</tbody></table></section>
+
+<section><h2>Human record</h2>
+<article class="trial"><h3>SURPASS-2: Against semaglutide 1 mg in type 2 diabetes</h3><p class="tm"><i>1,879 adults with type 2 diabetes on metformin</i><i>tirzepatide 5, 10 or 15 mg weekly or semaglutide 1 mg weekly</i><i>40 weeks</i><i>randomized, open-label, active-controlled</i></p></article><article class="trial"><h3>SURMOUNT-1: Weight management without diabetes</h3><p class="tm"><i>2,539 adults, BMI ≥30 or ≥27 with a comorbidity, no diabetes</i><i>tirzepatide 5, 10 or 15 mg weekly or placebo</i><i>72 weeks</i><i>randomized, double-blind, placebo-controlled</i></p></article><article class="trial"><h3>SURMOUNT-5: Head to head with semaglutide in obesity</h3><p class="tm"><i>751 adults with obesity, no diabetes</i><i>tirzepatide at maximum tolerated dose or semaglutide at maximum tolerated dose</i><i>72 weeks</i><i>randomized, open-label</i></p></article><article class="trial"><h3>SURPASS-CVOT: Cardiovascular outcomes against dulaglutide</h3><p class="tm"><i>13,165 adults with type 2 diabetes and atherosclerotic cardiovascular disease</i><i>tirzepatide or dulaglutide 1.5 mg weekly</i><i>event-driven follow-up</i><i>randomized, double-blind, active-controlled non-inferiority</i></p></article><article class="trial"><h3>SURMOUNT-OSA: Obstructive sleep apnea with obesity</h3><p class="tm"><i>469 adults with moderate-to-severe obstructive sleep apnea and obesity, in two trials (without and with PAP therapy)</i><i>tirzepatide at maximum tolerated dose (10 or 15 mg weekly) or placebo</i><i>52 weeks</i><i>two randomized, double-blind, placebo-controlled trials</i></p></article><article class="trial"><h3>SUMMIT: Heart failure with preserved ejection fraction and obesity</h3><p class="tm"><i>731 adults with HFpEF and BMI ≥30</i><i>tirzepatide up to 15 mg weekly or placebo</i><i>median follow-up 104 weeks</i><i>randomized, double-blind, placebo-controlled</i></p></article><article class="trial"><h3>SURMOUNT-4: What happens when it is stopped</h3><p class="tm"><i>670 adults who had lost a mean 20.9% during a 36-week open-label lead-in</i><i>continued tirzepatide 10 or 15 mg weekly or switched to placebo</i><i>52 weeks after randomization</i><i>randomized withdrawal, double-blind</i></p></article>
+</section>
+
+<section><div class="cols">
+<div><h2>Pharmacokinetics</h2><table><tbody><tr><th scope="row">Route</th><td>Subcutaneous injection (weekly)</td></tr><tr><th scope="row">Bioavailability</th><td>About 80%</td></tr><tr><th scope="row">Time to peak</th><td>8-72 hours</td></tr><tr><th scope="row">Half-life</th><td>About 5 days</td></tr><tr><th scope="row">Steady state</th><td>About 4 weeks of weekly dosing</td></tr><tr><th scope="row">Metabolism</th><td>Proteolytic cleavage, β-oxidation of the C20 fatty diacid and amide hydrolysis</td></tr><tr><th scope="row">Excretion</th><td>Urine and feces as metabolites</td></tr></tbody></table></div>
+<div><h2>Monitoring</h2><table><tbody><tr><th scope="row">Fasting glucose and HbA1c</th><td>The effect being treated, and the number that shows whether it is working</td></tr><tr><th scope="row">Weight and waist</th><td>Tracks response, and a rapid fall raises gallstone risk</td></tr><tr><th scope="row">Lean mass, if available</th><td>A meaningful share of weight lost on any large deficit is lean tissue</td></tr></tbody></table></div>
+</div></section>
+
+<section><div class="cols">
+<div><h2>Interactions</h2><table><tbody><tr><th scope="row">Oral hormonal contraceptives</th><td class="mono lv-moderate">Moderate</td><td>May make the pill less reliable after starting or raising the dose</td></tr><tr><th scope="row">Insulin and sulfonylureas</th><td class="mono lv-moderate">Moderate</td><td>Raises the risk of low blood sugar, including severe episodes</td></tr><tr><th scope="row">Narrow-margin oral drugs such as warfarin</th><td class="mono lv-moderate">Moderate</td><td>Slowed stomach emptying can delay or blunt absorption of oral drugs</td></tr><tr><th scope="row">General anesthesia or deep sedation</th><td class="mono lv-moderate">Moderate</td><td>Rare reports of food in the stomach being inhaled during anesthesia</td></tr></tbody></table></div>
+<div><h2>Legal status</h2><table><tbody><tr><th scope="row">United States</th><td>FDA-approved and sold by prescription (Mounjaro, Zepbound).</td></tr><tr><th scope="row">United Kingdom</th><td>Licensed in the UK as Mounjaro; the electronic Medicines Compendium lists it as a prescription only medicine.</td></tr><tr><th scope="row">European Union</th><td>Authorised EU-wide as Mounjaro since September 2022, and the EMA says it can only be obtained with a prescription.</td></tr><tr><th scope="row">Canada</th><td>Tirzepatide is on the Prescription Drug List, and Mounjaro is marketed in Canada.</td></tr><tr><th scope="row">Australia</th><td>Listed in Schedule 4 of the Poisons Standard, so it is a prescription-only medicine.</td></tr><tr><th scope="row">New Zealand</th><td>Classified as a prescription medicine in the Medsafe classification database, which follows Schedule 1 of the Medicines Regulations 1984.</td></tr><tr><th scope="row">Japan</th><td>Listed in Japan's national health insurance drug price standard as a medical-use drug (Mounjaro). Its package insert is marked as a prescription drug (shohosen iyakuhin).</td></tr><tr><th scope="row">China</th><td>China’s drug regulator (NMPA) lists tirzepatide injection (Eli Lilly) with imported-drug approval HJ20240022.</td></tr><tr><th scope="row">Russia</th><td>Munzhelio (tirzepatide) solution for subcutaneous injection, 2.5 to 15 mg, has a record in the State Register of Medicinal Products, marked for dispensing by prescription.</td></tr><tr><th scope="row">Sport (WADA)</th><td>Markers of tirzepatide are on the 2026 Monitoring Program, in and out of competition. Tirzepatide itself is not on the Prohibited List.</td></tr></tbody></table></div>
+</div></section>
+
+<section><h2>References</h2><ol class="refs"><li>Frías JP et al. Tirzepatide versus Semaglutide Once Weekly in Patients with Type 2 Diabetes. N Engl J Med 2021;385:503-515.</li><li>Jastreboff AM et al. Tirzepatide Once Weekly for the Treatment of Obesity. N Engl J Med 2022;387:205-216.</li><li>Aronne LJ et al. Tirzepatide as Compared with Semaglutide for the Treatment of Obesity. N Engl J Med 2025.</li><li>Coskun T et al. LY3298176, a novel dual GIP and GLP-1 receptor agonist for the treatment of type 2 diabetes mellitus: from discovery to clinical proof of concept. Mol Metab 2018;18:3-14.</li><li>Mounjaro (tirzepatide) prescribing information. US FDA.</li><li>Malhotra A et al. Tirzepatide for the Treatment of Obstructive Sleep Apnea and Obesity. N Engl J Med 2024;391:1193-1205.</li><li>Packer M et al. Tirzepatide for Heart Failure with Preserved Ejection Fraction and Obesity. N Engl J Med 2025;392:427-437.</li><li>Nicholls SJ et al. Cardiovascular Outcomes with Tirzepatide versus Dulaglutide in Type 2 Diabetes. N Engl J Med 2025;393:2409-2420.</li><li>Aronne LJ et al. Continued Treatment With Tirzepatide for Maintenance of Weight Reduction in Adults With Obesity: The SURMOUNT-4 Randomized Clinical Trial. JAMA 2024;331:38-48.</li><li>US Food and Drug Administration. Drugs@FDA database (approved and discontinued products with marketing status), queried through the openFDA drugsfda endpoint, data updated 16 October 2026. https://api.fda.gov/drug/drugsfda.json ; https://www.accessdata.fda.gov/scripts/cder/daf/</li><li>Mounjaro KwikPen 10mg solution for injection in pre-filled pen: summary of product characteristics. Eli Lilly and Company Limited, electronic Medicines Compendium. https://www.medicines.org.uk/emc/product/15484/smpc</li><li>European Medicines Agency. Medicines output: medicines report (all EPARs, refusals and withdrawn applications), generated 19 October 2026: https://www.ema.europa.eu/en/documents/report/medicines-output-medicines-report_en.xlsx</li><li>European Medicines Agency. Mounjaro (tirzepatide) EPAR: https://www.ema.europa.eu/en/medicines/human/EPAR/mounjaro</li><li>Health Canada. Prescription Drug List: drugs for human use. Accessed 2026-10-19: https://hpr-rps.hres.ca/pdl-phu.php?lang=en</li><li>Health Canada. Drug Product Database (online query, API and bulk extracts of marketed, approved, dormant and cancelled products). Accessed 2026-10-19 and 2026-10-20: https://health-products.canada.ca/dpd-bdpp/</li><li>Therapeutic Goods (Poisons Standard-June 2026) Instrument 2026 (F2026L00633), Federal Register of Legislation, Australia. https://www.legislation.gov.au/F2026L00633/asmade/text</li><li>Medsafe Classification Database (compiled from Schedule 1 of the Medicines Regulations 1984 and the Schedules to the Misuse of Drugs Act 1975; database updated 25 September 2026), Medsafe, New Zealand Ministry of Health. https://www.medsafe.govt.nz/profs/class/classintro.asp</li><li>Ministry of Health, Labour and Welfare. Drug price standard listed products (yakka kijun shusai hinmoku risuto), applied 14 October 2026: oral, injection and topical lists. https://www.mhlw.go.jp/topics/2026/04/tp20260401-01.html</li><li>Pharmaceuticals and Medical Devices Agency (PMDA). Package insert, Mounjaro (マンジャロ皮下注アテオス), 2026年9月改訂(第11版). https://www.pmda.go.jp/PmdaSearch/iyakuDetail/530471_2499422G1024_1_11</li><li>NMPA. 2026年02月14日药品批准证明文件送达信息 (approval documents delivered, 14 Feb 2026; lists tirzepatide injection, Lilly Suzhou, HJ20240022): https://www.nmpa.gov.cn/zwfw/sdxx/sdxxyp/yppjfb/20260214122428192.html</li><li>Ministry of Health of the Russian Federation. State Register of Medicinal Products (GRLS): Munzhelio (tirzepatide) solution for subcutaneous injection 2.5, 5, 7.5, 10, 12.5 and 15 mg, AlPharma LLC, ND LP-No.(016416)-(RG-RU)-270826. https://grls.rosminzdrav.ru/Grls_View_v2.aspx?routingGuid=0daa6ce1-e9b0-4e96-974e-08abd2b36d48</li><li>World Anti-Doping Agency. The 2026 Monitoring Program. https://www.wada-ama.org/sites/default/files/2025-09/2026_list_monitoring_program_en_final_clean_september_2025.pdf</li></ol></section>
+</main>
+<footer class="wrap"><p>Atlas Codex is an educational reference. Nothing here is medical advice, and nothing here is an endorsement of using any compound. Talk to a licensed clinician before making health decisions.</p><p>Structure drawing from PubChem, US National Library of Medicine, public domain.</p></footer>
+</body></html>
