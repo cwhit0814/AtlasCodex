@@ -18,3 +18,8 @@ research_notes/
 .claude/tool-output/
 # Type declarations the engine writes into each loaded mod
 .claude/skills/*/.claude-plugin/types/
+
+# Source documents the dosing pipeline reads. Another author's work, kept locally and
+# never redistributed here; tools/dosing/README.md explains what to put back.
+tools/dosing/faq.txt
+tools/dosing/faq-doses.json

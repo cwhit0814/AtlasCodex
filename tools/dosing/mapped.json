@@ -1,0 +1,3177 @@
+{
+ "clean": [
+  {
+   "name": "5-Amino-1mQ",
+   "line": 1548,
+   "slug": "5-amino-1mq",
+   "via": "5-Amino-1mQ",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500+mcg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "9-Me-BC",
+   "line": 1637,
+   "slug": "9-me-bc",
+   "via": "9-Me-BC",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5mg/day or 10mg every other day"
+     ],
+     [
+      "Medium",
+      "10-20mg/day"
+     ],
+     [
+      "High",
+      "30mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take orally with water"
+   ]
+  },
+  {
+   "name": "ACE-031",
+   "line": 1690,
+   "slug": "ace-031",
+   "via": "ACE-031",
+   "blocks": [
+    [
+     [
+      "Low",
+      "50mcg/day"
+     ],
+     [
+      "Medium",
+      "100mcg/day"
+     ],
+     [
+      "High",
+      "200mcg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Adamax",
+   "line": 1746,
+   "slug": "adamax",
+   "via": "Adamax",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500+mcg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "AHK-Cu",
+   "line": 1822,
+   "slug": "ahk-cu",
+   "via": "AHK-Cu",
+   "blocks": [
+    [
+     [
+      "Low",
+      "2.5mg/day"
+     ],
+     [
+      "Medium",
+      "5mg/day"
+     ],
+     [
+      "High",
+      "7.5-10mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "AICAR",
+   "line": 1887,
+   "slug": "aicar",
+   "via": "AICAR",
+   "blocks": [
+    [
+     [
+      "Low",
+      "20mg/day or less"
+     ],
+     [
+      "Medium",
+      "25mg/day"
+     ],
+     [
+      "High",
+      "100mg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "ARA-290",
+   "line": 2262,
+   "slug": "ara-290",
+   "via": "ARA-290",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.25-0.5mg/day (250-500mcg/day)"
+     ],
+     [
+      "Medium",
+      "1mg/day"
+     ],
+     [
+      "High",
+      "2-5mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "ATX-304",
+   "line": 2491,
+   "slug": "atx-304",
+   "via": "ATX-304",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mg every other day"
+     ],
+     [
+      "Average",
+      "100mg/day"
+     ],
+     [
+      "High",
+      "200mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take orally/sublingually with water upon waking"
+   ]
+  },
+  {
+   "name": "B12",
+   "line": 2545,
+   "slug": "vitamin-b12",
+   "via": "B12",
+   "blocks": [
+    [
+     [
+      "Low",
+      "125-250mcg per day"
+     ],
+     [
+      "Average",
+      "500-750mcg per day"
+     ],
+     [
+      "High",
+      "1000-2000mcg per day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer the B12 (tutorials available online, google it)"
+   ]
+  },
+  {
+   "name": "Bronchogen",
+   "line": 3069,
+   "slug": "bronchogen",
+   "via": "Bronchogen",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.5mg/day"
+     ],
+     [
+      "Medium",
+      "1mg/day"
+     ],
+     [
+      "High",
+      "2mg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Cagrilintide",
+   "line": 3142,
+   "slug": "cagrilintide",
+   "via": "Cagrilintide",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.1mg/day | ~1mg/wk"
+     ],
+     [
+      "Medium",
+      "0.25mg/day | ~2mg/wk"
+     ],
+     [
+      "High",
+      "0.5-1mg/day or more | 3.5-7mg/wk or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Use Ondansetron (Zofran) to eliminate the nausea"
+   ]
+  },
+  {
+   "name": "CJC-1295",
+   "line": 3461,
+   "slug": "cjc-1295",
+   "via": "CJC-1295",
+   "blocks": [
+    [
+     [
+      "Low",
+      "150mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500mcg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Use SGLT-2 or DPP-4 inhibitors if necessary beyond this"
+   ]
+  },
+  {
+   "name": "Clen (Clenbuterol)",
+   "line": 3630,
+   "slug": "clenbuterol",
+   "via": "Clen",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10-20mcg/day, probably won’t even feel the clen shakes"
+     ],
+     [
+      "Average",
+      "30-40mcg/day, should definitely feel clen"
+     ],
+     [
+      "High",
+      "50+mcg/day, far too aggressive for most non-competitors"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Dapoxetine",
+   "line": 3773,
+   "slug": "dapoxetine",
+   "via": "Dapoxetine",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10mg"
+     ],
+     [
+      "Average",
+      "20mg"
+     ],
+     [
+      "High",
+      "40mg or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer 15-30 min or less before sexual activity",
+    "Take with water"
+   ]
+  },
+  {
+   "name": "Dihexa",
+   "line": 3851,
+   "slug": "dihexa",
+   "via": "Dihexa",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5mg/day"
+     ],
+     [
+      "Average",
+      "10-15mg/day"
+     ],
+     [
+      "High",
+      "15-50mg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Take orally/sublingually with water"
+   ]
+  },
+  {
+   "name": "DMAA (1,3-Dimethylamylamine)",
+   "line": 3923,
+   "slug": "1-3-dmaa",
+   "via": "DMAA",
+   "blocks": [
+    [
+     [
+      "Low",
+      "12.5mg of DMAA and 5mg of Sildenafil/Tadalafil"
+     ],
+     [
+      "Average",
+      "25mg of DMAA and 10mg of Sildenafil/Tadalafil"
+     ],
+     [
+      "High",
+      "50mg of DMAA and 20mg of Sildenafil/Tadalafil"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "Ecdysterone",
+   "line": 4133,
+   "slug": "ecdysterone",
+   "via": "Ecdysterone",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.5ml/day (0.25 in each administration)"
+     ],
+     [
+      "Medium",
+      "1ml/day (0.5 in each administration)"
+     ],
+     [
+      "High",
+      "1.5+ml/day (0.75+ in each administration)"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject every training day for 16-20 weeks"
+   ]
+  },
+  {
+   "name": "Emoxypine Succinate",
+   "line": 4166,
+   "slug": "emoxypine",
+   "via": "Emoxypine Succinate",
+   "blocks": [
+    [
+     [
+      "Low",
+      "50-125mg as desired"
+     ],
+     [
+      "Average",
+      "125mg/day"
+     ],
+     [
+      "High",
+      "250mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "Enclomiphene (Enclomiphene Citrate)",
+   "line": 4423,
+   "slug": "enclomiphene",
+   "via": "Enclomiphene",
+   "blocks": [
+    [
+     [
+      "Low",
+      "12.5mg daily, total 87.5mg per week"
+     ],
+     [
+      "High",
+      "25mg daily, total 175mg per week"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Ezetimibe (Zetia, Ezetrol)",
+   "line": 4565,
+   "slug": "ezetimibe",
+   "via": "Ezetimibe",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5 mg/day"
+     ],
+     [
+      "Average",
+      "10 mg/day"
+     ],
+     [
+      "High",
+      "20 mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Finasteride",
+   "line": 4641,
+   "slug": "finasteride",
+   "via": "Finasteride",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.25mg/day"
+     ],
+     [
+      "Average",
+      "0.5 - 1mg/day"
+     ],
+     [
+      "High",
+      "1.5+mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Fladrafinil (CRL-40,941)",
+   "line": 4706,
+   "slug": "fladrafinil",
+   "via": "Fladrafinil",
+   "blocks": [
+    [
+     [
+      "Low",
+      "50mg per session"
+     ],
+     [
+      "Average",
+      "100mg per session"
+     ],
+     [
+      "High",
+      "150mg per session"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer sublingually"
+   ]
+  },
+  {
+   "name": "FOX04-DRI",
+   "line": 4755,
+   "slug": "foxo4-dri",
+   "via": "FOX04-DRI",
+   "blocks": [
+    [
+     [
+      "Low",
+      "250-750mcg/day"
+     ],
+     [
+      "Average",
+      "750-1500mcg/day"
+     ],
+     [
+      "High",
+      "1500-5000mcg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "GHK-Cu",
+   "line": 4822,
+   "slug": "ghk-cu",
+   "via": "GHK-Cu",
+   "blocks": [
+    [
+     [
+      "Low",
+      "2.5mg/day"
+     ],
+     [
+      "Medium",
+      "5mg/day"
+     ],
+     [
+      "High",
+      "7.5-10mg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Apply to areas where effects are desired 1-2x per day"
+   ]
+  },
+  {
+   "name": "GHRP-2",
+   "line": 4935,
+   "slug": "ghrp-2",
+   "via": "GHRP-2",
+   "blocks": [
+    [
+     [
+      "Low",
+      "125mcg"
+     ],
+     [
+      "Medium",
+      "250mcg"
+     ],
+     [
+      "High",
+      "500mcg"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "GHRP-6",
+   "line": 5007,
+   "slug": "ghrp-6",
+   "via": "GHRP-6",
+   "blocks": [
+    [
+     [
+      "Low",
+      "125mcg"
+     ],
+     [
+      "Medium",
+      "250mcg"
+     ],
+     [
+      "High",
+      "500mcg"
+     ]
+    ]
+   ],
+   "route": [
+    "Use peptiwiki's peptide calculatorto find out how much you need to fill the syringe to get your desired dose"
+   ]
+  },
+  {
+   "name": "HCG (Human Chorionic Gonadotropin)",
+   "line": 5258,
+   "slug": "hcg",
+   "via": "HCG",
+   "blocks": [
+    [
+     [
+      "Low",
+      "500IU per week"
+     ],
+     [
+      "Average",
+      "250IU every other day / 250IU per day"
+     ],
+     [
+      "High",
+      "500+IU per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Hexarelin",
+   "line": 5407,
+   "slug": "hexarelin",
+   "via": "Hexarelin",
+   "blocks": [
+    [
+     [
+      "Low",
+      "150mcg/day"
+     ],
+     [
+      "Average",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500mcg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "HGH FRAG 176-191",
+   "line": 5641,
+   "slug": "hgh-frag-176-191",
+   "via": "HGH FRAG 176-191",
+   "blocks": [
+    [
+     [
+      "Low",
+      "125mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500+mcg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject your HGH FRAG before any activity (fasted cardio, lifting) for best results"
+   ]
+  },
+  {
+   "name": "HMG (Human menopausal gonadotrophin)",
+   "line": 5717,
+   "slug": "hmg",
+   "via": "HMG",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100IU per week or 37.5IU per day (half a vial per day)"
+     ],
+     [
+      "Medium",
+      "75IU per day (one full vial per day)"
+     ],
+     [
+      "High",
+      "150IU per day (two full vials per day)"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Humanin",
+   "line": 5775,
+   "slug": "humanin",
+   "via": "Humanin",
+   "blocks": [
+    [
+     [
+      "Low",
+      "250-1000mcg per day"
+     ],
+     [
+      "Average",
+      "2500-5000mcg per day"
+     ],
+     [
+      "High",
+      "5000mcg (or more) per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "IGF-1 DES",
+   "line": 5855,
+   "slug": "igf-1-des",
+   "via": "IGF-1 DES",
+   "blocks": [
+    [
+     [
+      "Average",
+      "100-200mcg pre workout and/or intra workout"
+     ],
+     [
+      "High",
+      "300-500mcg pre workout and/or intra workout"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "IGF-1 LR3",
+   "line": 5938,
+   "slug": "igf-1-lr3",
+   "via": "IGF-1 LR3",
+   "blocks": [
+    [
+     [
+      "Average",
+      "100-200mcg per day"
+     ],
+     [
+      "High",
+      "300-500mcg per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "L-Carnitine",
+   "line": 6427,
+   "slug": "l-carnitine",
+   "via": "L-Carnitine",
+   "blocks": [
+    [
+     [
+      "Low",
+      "250mg per day"
+     ],
+     [
+      "Average",
+      "500-1000mg per day"
+     ],
+     [
+      "High",
+      "1500+mg per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "LL-37",
+   "line": 6547,
+   "slug": "ll-37",
+   "via": "LL-37",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100-250mcg per day"
+     ],
+     [
+      "Average",
+      "250-500mcg per day"
+     ],
+     [
+      "High",
+      "500-1000mcg (or more) per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Mazdutide",
+   "line": 6838,
+   "slug": "mazdutide",
+   "via": "Mazdutide",
+   "blocks": [
+    [
+     [
+      "Low",
+      "2mg per week or 285mcg per day"
+     ],
+     [
+      "Average",
+      "4-6mg per week or 570-860mcg per day"
+     ],
+     [
+      "High",
+      "9mg per week or 1.3mg per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Use Ondansetron (Zofran) to eliminate the nausea"
+   ]
+  },
+  {
+   "name": "Melanotan-I",
+   "line": 6941,
+   "slug": "melanotan-1",
+   "via": "Melanotan-I",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500+mcg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Use your dose once per week instead of once daily, and reduce it as desired"
+   ]
+  },
+  {
+   "name": "Metformin",
+   "line": 7443,
+   "slug": "metformin",
+   "via": "Metformin",
+   "blocks": [
+    [
+     [
+      "Low",
+      "1mg per 1g of carbs consumed per day"
+     ],
+     [
+      "Average",
+      "500mg/day"
+     ],
+     [
+      "High",
+      "1000 to 2000mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Methylene Blue",
+   "line": 7492,
+   "slug": "methylene-blue",
+   "via": "Methylene Blue",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5-10mg/day"
+     ],
+     [
+      "Average",
+      "10-20mg/day"
+     ],
+     [
+      "High",
+      "20mg-30mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "MGF (Mechano Growth Factor)",
+   "line": 7549,
+   "slug": "mgf",
+   "via": "MGF",
+   "blocks": [
+    [
+     [
+      "Average",
+      "100-200mcg per day"
+     ],
+     [
+      "High",
+      "300-500mcg per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "MOTS-c",
+   "line": 7843,
+   "slug": "mots-c",
+   "via": "MOTS-c",
+   "blocks": [
+    [
+     [
+      "Low",
+      "500mcg/day"
+     ],
+     [
+      "Medium",
+      "750mcg/day"
+     ],
+     [
+      "High",
+      "1000-2000mcg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "NAD+ (Nicotinamide Adenine Dinucleotide)",
+   "line": 7914,
+   "slug": "nad-plus",
+   "via": "NAD+",
+   "blocks": [
+    [
+     [
+      "Low",
+      "50mg/week"
+     ],
+     [
+      "Medium",
+      "125mg/week"
+     ],
+     [
+      "High",
+      "250-500mg/week or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Naltrexone",
+   "line": 7995,
+   "slug": "naltrexone",
+   "via": "Naltrexone",
+   "blocks": [
+    [
+     [
+      "Medium",
+      "1 pill"
+     ],
+     [
+      "High",
+      "2 pills"
+     ]
+    ]
+   ],
+   "route": [
+    "Take dose with water"
+   ]
+  },
+  {
+   "name": "Nebivolol (Nebilet, Bystolic)",
+   "line": 8037,
+   "slug": "nebivolol",
+   "via": "Nebivolol",
+   "blocks": [
+    [
+     [
+      "Low",
+      "2.5mg daily"
+     ],
+     [
+      "Average",
+      "5mg daily"
+     ],
+     [
+      "High",
+      "10mg daily"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Nefiracetam",
+   "line": 8096,
+   "slug": "nefiracetam",
+   "via": "Nefiracetam",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10-20mg on-demand (whenever cognition is desired)"
+     ],
+     [
+      "Average",
+      "10-20mg/day"
+     ],
+     [
+      "High",
+      "30-50mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take orally with water"
+   ]
+  },
+  {
+   "name": "Nolvadex (Tamoxifen)",
+   "line": 8176,
+   "slug": "tamoxifen",
+   "via": "Nolvadex",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10mg/day"
+     ],
+     [
+      "Average",
+      "20mg/day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Nolvadex (Tamoxifen)",
+   "line": 8223,
+   "slug": "tamoxifen",
+   "via": "Nolvadex",
+   "blocks": [
+    [
+     [
+      "Low",
+      "2 sprays per day = 4mg/day"
+     ],
+     [
+      "Average",
+      "4 sprays per day = 8mg/day"
+     ],
+     [
+      "High",
+      "6 or more sprays per day = 12mg or more per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer sublingually"
+   ]
+  },
+  {
+   "name": "NSI-189",
+   "line": 8322,
+   "slug": "nsi-189",
+   "via": "NSI-189",
+   "blocks": [
+    [
+     [
+      "Low",
+      "20mg/day"
+     ],
+     [
+      "Average",
+      "40mg every other day"
+     ],
+     [
+      "High",
+      "40mg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Take orally/sublingually with water upon waking"
+   ]
+  },
+  {
+   "name": "Ondansetron (Zofran)",
+   "line": 8362,
+   "slug": "ondansetron",
+   "via": "Ondansetron",
+   "blocks": [
+    [
+     [
+      "Average",
+      "1 pill"
+     ],
+     [
+      "High",
+      "2 pills"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Orforglipron (Foundayo)",
+   "line": 8384,
+   "slug": "orforglipron",
+   "via": "Orforglipron",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5mg/day"
+     ],
+     [
+      "Average",
+      "10-30mg/day"
+     ],
+     [
+      "High",
+      "40-50mg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water",
+    "Use Ondansetron (Zofran) to eliminate any nausea",
+    "Use Ondansetron (Zofran) to eliminate the nausea"
+   ]
+  },
+  {
+   "name": "Ostarine (MK-2866)",
+   "line": 8446,
+   "slug": "ostarine",
+   "via": "Ostarine",
+   "blocks": [
+    [
+     [
+      "Low",
+      "12.5mg/day or 25mg every other day"
+     ],
+     [
+      "Average",
+      "25mg/day"
+     ],
+     [
+      "High",
+      "50+mg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer desired dose orally",
+    "Administer desired dose orally",
+    "Take with food and a drink to minimize stomach discomfort"
+   ]
+  },
+  {
+   "name": "Oxiracetam",
+   "line": 8589,
+   "slug": "oxiracetam",
+   "via": "Oxiracetam",
+   "blocks": [
+    [
+     [
+      "Low",
+      "500mg on-demand (whenever cognition is desired)"
+     ],
+     [
+      "Average",
+      "500-1000mg/day"
+     ],
+     [
+      "High",
+      "1500mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water before cognitively-demanding tasks"
+   ]
+  },
+  {
+   "name": "PE-22-28",
+   "line": 8747,
+   "slug": "pe-22-28",
+   "via": "PE-22-28",
+   "blocks": [
+    [
+     [
+      "Low",
+      "150mcg/day"
+     ],
+     [
+      "Average",
+      "500mcg/day"
+     ],
+     [
+      "High",
+      "1000mcg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Phenibut",
+   "line": 8821,
+   "slug": "phenibut",
+   "via": "Phenibut",
+   "blocks": [
+    [
+     [
+      "Low",
+      "300mg-1000mg (0.3g-1g)"
+     ],
+     [
+      "Average",
+      "1000mg-2000mg (1g-2g)"
+     ],
+     [
+      "High",
+      "2000-5000mg (2g-5g)"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Phenylpiracetam",
+   "line": 8870,
+   "slug": "phenylpiracetam",
+   "via": "Phenylpiracetam",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mg on-demand (whenever cognition is desired)"
+     ],
+     [
+      "Average",
+      "100mg/day"
+     ],
+     [
+      "High",
+      "200-300mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take orally with water"
+   ]
+  },
+  {
+   "name": "Picamilon (Nicotinoyl-GABA)",
+   "line": 8916,
+   "slug": "picamilon",
+   "via": "Picamilon",
+   "blocks": [
+    [
+     [
+      "Low",
+      "50mg as desired"
+     ],
+     [
+      "Average",
+      "50mg/day"
+     ],
+     [
+      "High",
+      "100mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "Pinealon",
+   "line": 8954,
+   "slug": "pinealon",
+   "via": "Pinealon",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.5mg/day"
+     ],
+     [
+      "Medium",
+      "1mg/day"
+     ],
+     [
+      "High",
+      "2mg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Pramipexole",
+   "line": 9105,
+   "slug": "pramipexole",
+   "via": "Pramipexole",
+   "blocks": [
+    [
+     [
+      "Low",
+      "125mcg as symptoms persist"
+     ],
+     [
+      "Average",
+      "250mcg as symptoms persist"
+     ],
+     [
+      "High",
+      "750-1000mcg as symptoms persist"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer orally"
+   ]
+  },
+  {
+   "name": "Propranolol",
+   "line": 9155,
+   "slug": "propranolol",
+   "via": "Propranolol",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10-20mg daily upon waking"
+     ],
+     [
+      "Average",
+      "40-80mg daily, divided across 2 doses per day (AM/PM)"
+     ],
+     [
+      "High",
+      "120mg\\+ daily, divided across 3 doses per day (AM/noon/PM)"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Proviron",
+   "line": 9224,
+   "slug": "proviron",
+   "via": "Proviron",
+   "blocks": [
+    [
+     [
+      "Low",
+      "25-50mg daily"
+     ],
+     [
+      "Average",
+      "75-100mg daily"
+     ],
+     [
+      "High",
+      "125-200mg daily"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer"
+   ]
+  },
+  {
+   "name": "RAD-140",
+   "line": 9518,
+   "slug": "rad-140",
+   "via": "RAD-140",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10mg/day or 20mg every other day"
+     ],
+     [
+      "Average",
+      "20mg/day"
+     ],
+     [
+      "High",
+      "30+mg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer desired dose orally",
+    "Administer desired dose orally",
+    "Take with food and a drink to minimize stomach discomfort"
+   ]
+  },
+  {
+   "name": "Retatrutide (R; “big R”)",
+   "line": 9655,
+   "slug": "retatrutide",
+   "via": "Retatrutide",
+   "blocks": [
+    [
+     [
+      "Low",
+      "1mg or 1000mcg per week to 4mg or 4000mcg per week"
+     ],
+     [
+      "Average",
+      "5mg or 5000mcg per week to 8mg or 8000mcg per week"
+     ],
+     [
+      "High",
+      "9mg or 9000mcg per week to 12mg or 12000mcg per week"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject by pressing and holding the button until the dose window returns to 0"
+   ]
+  },
+  {
+   "name": "Selank",
+   "line": 9867,
+   "slug": "selank",
+   "via": "Selank",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500mcg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Spray:"
+   ]
+  },
+  {
+   "name": "Sildenafil (Viagra)",
+   "line": 10359,
+   "slug": "sildenafil",
+   "via": "Sildenafil",
+   "blocks": [
+    [
+     [
+      "Low",
+      "12.5mg daily"
+     ],
+     [
+      "Average",
+      "25mg daily"
+     ],
+     [
+      "High",
+      "50mg daily"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer sublingually",
+    "Swallow after 10-30 seconds",
+    "Take one pill shortly before working out, or before sexual activity"
+   ]
+  },
+  {
+   "name": "SS-31 (MTP 131)",
+   "line": 10546,
+   "slug": "ss-31",
+   "via": "SS-31",
+   "blocks": [
+    [
+     [
+      "Low",
+      "250-1000mcg per day"
+     ],
+     [
+      "Average",
+      "2500-5000mcg per day"
+     ],
+     [
+      "High",
+      "5000mcg (or more) per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "TB-500 (Synthetic Thymosin Beta-4)",
+   "line": 10841,
+   "slug": "tb-500",
+   "via": "TB-500",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg per day"
+     ],
+     [
+      "Average",
+      "200-250mcg per day"
+     ],
+     [
+      "High",
+      "400+mcg per day"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Testagen",
+   "line": 11087,
+   "slug": "testagen",
+   "via": "Testagen",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.5mg/day"
+     ],
+     [
+      "Medium",
+      "1mg/day"
+     ],
+     [
+      "High",
+      "2mg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Thymalin",
+   "line": 11680,
+   "slug": "thymalin",
+   "via": "Thymalin",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.5mg/day"
+     ],
+     [
+      "Medium",
+      "1mg/day"
+     ],
+     [
+      "High",
+      "2mg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Tri-Amino Pump",
+   "line": 12018,
+   "slug": "tri-amino",
+   "via": "Tri-Amino Pump",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.5mL or 150mg"
+     ],
+     [
+      "Average",
+      "1mL or 300mg"
+     ],
+     [
+      "High",
+      "2mL+ or 600mg+"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject the muscle you’re going to train (see http://spotinjections.com)"
+   ]
+  },
+  {
+   "name": "Turinabol (Tbol)",
+   "line": 12058,
+   "slug": "turinabol",
+   "via": "Turinabol",
+   "blocks": [
+    [
+     [
+      "Low",
+      "25mg daily"
+     ],
+     [
+      "Average",
+      "50mg daily"
+     ],
+     [
+      "High",
+      "75-100mg daily"
+     ]
+    ]
+   ],
+   "route": [
+    "Take your dose sublingually 20-40 minutes pre workout",
+    "Take your full daily dose all at once preferably pre workout, or around the same time on rest days"
+   ]
+  },
+  {
+   "name": "VIP (Vasoactive Intestinal)",
+   "line": 12201,
+   "slug": "vip",
+   "via": "VIP",
+   "blocks": [
+    [
+     [
+      "Low",
+      "50mcg/day"
+     ],
+     [
+      "Average",
+      "150-250mcg/day"
+     ],
+     [
+      "High",
+      "500mcg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  },
+  {
+   "name": "Winstrol (Stanozolol)",
+   "line": 12288,
+   "slug": "winstrol",
+   "via": "Winstrol",
+   "blocks": [
+    [
+     [
+      "Low",
+      "10mg daily"
+     ],
+     [
+      "Average",
+      "25mg daily"
+     ],
+     [
+      "High",
+      "50-75mg daily"
+     ]
+    ]
+   ],
+   "route": [
+    "Take your dose sublingually 20-40 minutes pre workout",
+    "Take your full daily dose all at once preferably pre workout, or around the same time on rest days",
+    "Administer your gear daily, or every other day, to minimize hormone fluctuations. The acne on my face improved due to more stable hormone levels."
+   ]
+  }
+ ],
+ "multi": [
+  {
+   "name": "Anadrol (Oxymetholone)",
+   "line": 1954,
+   "slug": "anadrol",
+   "via": "Anadrol",
+   "blocks": [
+    [
+     [
+      "Low",
+      "25mg daily"
+     ],
+     [
+      "Average",
+      "50mg daily"
+     ],
+     [
+      "High",
+      "75-100mg daily"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "5mg daily"
+     ],
+     [
+      "Average",
+      "10mg daily"
+     ],
+     [
+      "High",
+      "20mg daily"
+     ]
+    ]
+   ],
+   "route": [
+    "Take your dose sublingually 20-40 minutes pre workout",
+    "Take your full daily dose all at once preferably pre workout, or around the same time on rest days",
+    "Take your dose sublingually 20-40 minutes pre workout"
+   ]
+  },
+  {
+   "name": "BPC-157 (Body Protective Compound 157)",
+   "line": 2839,
+   "slug": "bpc-157",
+   "via": "BPC-157",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100-250mcg per day"
+     ],
+     [
+      "Average",
+      "250-500mcg per day"
+     ],
+     [
+      "High",
+      "500-1000mcg (or more) per day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "500mcg/day"
+     ],
+     [
+      "Medium",
+      "1000mcg/day"
+     ],
+     [
+      "High",
+      "1500+mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray per day = 4-5mg/day"
+     ],
+     [
+      "Average",
+      "2 sprays per day = 8-10mg/day"
+     ],
+     [
+      "High",
+      "3 or more sprays per day = 12-15mg or more per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Use peptiwiki's peptide calculator or do the math the measure out your desired dose",
+    "Take with water",
+    "Use a needle to add 1-2mL BAC from the bottle into the Bromantane vial; Stir gently to mix"
+   ]
+  },
+  {
+   "name": "Cardarine (GW-501516)",
+   "line": 3228,
+   "slug": "gw501516",
+   "via": "Cardarine",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5-10mg/day"
+     ],
+     [
+      "Medium",
+      "10-25mg/day"
+     ],
+     [
+      "High",
+      "50mg/day or more"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "5mg daily"
+     ],
+     [
+      "Average",
+      "10mg daily"
+     ],
+     [
+      "High",
+      "20mg daily"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "5mg/day or 10mg every other day"
+     ],
+     [
+      "Medium",
+      "10mg/day"
+     ],
+     [
+      "High",
+      "20mg/day or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer sublingually",
+    "Take with water"
+   ]
+  },
+  {
+   "name": "DSIP (Delta Sleep Inducing Peptide)",
+   "line": 4028,
+   "slug": "dsip",
+   "via": "DSIP",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "200mcg/day"
+     ],
+     [
+      "High",
+      "500mcg/day or more"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray per day = 5mg/day"
+     ],
+     [
+      "Average",
+      "2 sprays per day = 10mg/day"
+     ],
+     [
+      "High",
+      "3 or more sprays per day = 15mg or more per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Spray:",
+    "Use needle to add 1-2mL BAC from the spray bottle into the DSIP vial; Stir gently to mix"
+   ]
+  },
+  {
+   "name": "Enclomiphene (Enclomiphene Citrate)",
+   "line": 4199,
+   "slug": "enclomiphene",
+   "via": "Enclomiphene",
+   "blocks": [
+    [
+     [
+      "Low",
+      "12.5mg twice per week, total 25mg per week"
+     ],
+     [
+      "Average",
+      "12.5mg every other day or 6.25mg daily, total 43.75mg per week"
+     ],
+     [
+      "High",
+      "12.5mg daily, total 87.5mg per week"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "12.5mg 2-3x a week"
+     ],
+     [
+      "Average",
+      "12.5mg every other day, or 6.25mg every day"
+     ],
+     [
+      "High",
+      "25mg every day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "12.5mg (0.012-0.013) twice per week, total 25mg (0.025) per week"
+     ],
+     [
+      "Average",
+      "12.5mg (0.012-0.013) every other day"
+     ],
+     [
+      "High",
+      "12.5mg (0.012-0.013) daily, total 87.5mg (0.088) per week"
+     ]
+    ],
+    [
+     [
+      "Average",
+      "1mL (12.5mg) every other day lasts 100 days; 1mL (12.5mg) every day lasts 50 days"
+     ],
+     [
+      "High",
+      "2mL every day (25mg) lasts 25 days"
+     ]
+    ]
+   ],
+   "route": [
+    "Swallow the pill with food, preferably during your first meal of the day"
+   ]
+  },
+  {
+   "name": "Glutathione",
+   "line": 5119,
+   "slug": "glutathione",
+   "via": "Glutathione",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mg 3x per week"
+     ],
+     [
+      "Average",
+      "200mg 3x per week"
+     ],
+     [
+      "High",
+      "200mg per day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "0.5mL 3x per week (half a 100-unit/1mL syringe)"
+     ],
+     [
+      "Average",
+      "1.0mL 3x per week (one full 100-unit/1mL syringe)"
+     ],
+     [
+      "High",
+      "1.0mL per day (one full 100-unit/1mL syringe)"
+     ]
+    ]
+   ],
+   "route": [
+    "Take it after alcohol consumption has concluded (example: before bed)"
+   ]
+  },
+  {
+   "name": "Ipamorelin",
+   "line": 6024,
+   "slug": "ipamorelin",
+   "via": "Ipamorelin",
+   "blocks": [
+    [
+     [
+      "Low",
+      "150mcg/day"
+     ],
+     [
+      "Average",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray per day = 125mcg per day"
+     ],
+     [
+      "Average",
+      "2 to 3 sprays per day = 250mcg to 375mcg per day"
+     ],
+     [
+      "High",
+      "4 or more sprays per day = 500mcg or more per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject 2mL of BAC water into the nasal spray bottle"
+   ]
+  },
+  {
+   "name": "KPV",
+   "line": 6266,
+   "slug": "kpv",
+   "via": "KPV",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100-250mcg per day"
+     ],
+     [
+      "Average",
+      "250-500mcg per day"
+     ],
+     [
+      "High",
+      "500-1000mcg (or more) per day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "500mcg every other day"
+     ],
+     [
+      "Average",
+      "500mcg per day"
+     ],
+     [
+      "High",
+      "500mcg twice per day (1000mcg/day)"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "Melanotan-II",
+   "line": 7071,
+   "slug": "melanotan-2",
+   "via": "Melanotan-II",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100-250mcg/day"
+     ],
+     [
+      "Average",
+      "300-500mcg/day"
+     ],
+     [
+      "High",
+      "1000mcg \\- 1500mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray = 125mcg/day"
+     ],
+     [
+      "Average",
+      "2 - 4 sprays = 250mcg/day - 500mcg/day"
+     ],
+     [
+      "High",
+      "5 or more sprays, max 8 = 625mcg/day or more, max 1000mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "2 sprays = 200mcg/day"
+     ],
+     [
+      "Average",
+      "3 - 5 sprays = 300mcg/day - 500mcg/day"
+     ],
+     [
+      "High",
+      "6 or more sprays, max 10 = 600mcg/day or more, max 1000mcg/day"
+     ]
+    ]
+   ],
+   "route": [
+    "Spray (DIY):",
+    "Spray (premade):",
+    "Use before tanning for fastest results, or before bed to minimize side effects"
+   ]
+  },
+  {
+   "name": "Meldonium (Mildronate)",
+   "line": 7276,
+   "slug": "meldonium",
+   "via": "Meldonium",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5mg/kg per day"
+     ],
+     [
+      "Average",
+      "10mg/kg per day"
+     ],
+     [
+      "High",
+      "15-20mg/kg"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1-4mg daily (7-28mg weekly)"
+     ],
+     [
+      "Moderate",
+      "5-19mg daily (35-133mg weekly)"
+     ],
+     [
+      "High",
+      "20+ mg daily (140+mg weekly)"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "MK-677 (Ibutamoren)",
+   "line": 7714,
+   "slug": "mk-677",
+   "via": "MK-677",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5mg daily"
+     ],
+     [
+      "Average",
+      "10mg daily"
+     ],
+     [
+      "High",
+      "20-30mg daily"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "5-10mg daily or 10-25mg every other day"
+     ],
+     [
+      "Average",
+      "10-25mg daily"
+     ],
+     [
+      "High",
+      "25-50mg daily"
+     ]
+    ]
+   ],
+   "route": [
+    "Take with water",
+    "Use SGLT-2 or DPP-4 inhibitors if necessary beyond this"
+   ]
+  },
+  {
+   "name": "Oxytocin",
+   "line": 8624,
+   "slug": "oxytocin",
+   "via": "Oxytocin",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500+mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "10iu"
+     ],
+     [
+      "Medium",
+      "20iu"
+     ],
+     [
+      "High",
+      "30-50iu or more"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "10iu, one spray"
+     ],
+     [
+      "Medium",
+      "20iu, two sprays"
+     ],
+     [
+      "High",
+      "30-50iu or more, 3-5 sprays or more"
+     ]
+    ]
+   ],
+   "route": [
+    "Spray:"
+   ]
+  },
+  {
+   "name": "PT-141",
+   "line": 9303,
+   "slug": "bremelanotide",
+   "via": "PT-141",
+   "blocks": [
+    [
+     [
+      "Low",
+      "125mcg/day"
+     ],
+     [
+      "Average",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500mcg \\- 1000mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "20iu on-demand (before sexual activity)"
+     ],
+     [
+      "Average",
+      "20iu/day"
+     ],
+     [
+      "High",
+      "40iu/day or more"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray per day = 250mcg per day"
+     ],
+     [
+      "Average",
+      "2 to 3 sprays per day = 500mcg to 750mcg per day"
+     ],
+     [
+      "High",
+      "4 or more sprays per day = 1000mcg or more per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Spray:",
+    "Inject 2mL of BAC water into the nasal spray bottle"
+   ]
+  },
+  {
+   "name": "Semaglutide",
+   "line": 9972,
+   "slug": "semaglutide",
+   "via": "Semaglutide",
+   "blocks": [
+    [
+     [
+      "Low",
+      "0.25mg or 250mcg/wk"
+     ],
+     [
+      "Average",
+      "0.5mg or 500mcg/wk"
+     ],
+     [
+      "High",
+      "1mg/wk"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "500mcg/day"
+     ],
+     [
+      "Average",
+      "1000-3000mcg/day"
+     ],
+     [
+      "High",
+      "4000-5000mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray per day = 0.04mg/day, 0.28mg per week"
+     ],
+     [
+      "Average",
+      "2 or 3 sprays per day = 0.08mg/day, 0.56mg per week (or 3 sprays: 0.12mg/day, 0.84mg per week)"
+     ],
+     [
+      "High",
+      "4 or more sprays = 0.16mg/day, 1.12mg per week"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject by pressing and holding the button until the dose window returns to 0",
+    "Take with water",
+    "Use Ondansetron (Zofran) to eliminate any nausea"
+   ]
+  },
+  {
+   "name": "Semax",
+   "line": 10165,
+   "slug": "semax",
+   "via": "Semax",
+   "blocks": [
+    [
+     [
+      "Low",
+      "100mcg/day"
+     ],
+     [
+      "Medium",
+      "250mcg/day"
+     ],
+     [
+      "High",
+      "500+mcg/day"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "1 spray per day = 125mcg per day"
+     ],
+     [
+      "Average",
+      "2 to 3 sprays per day = 250mcg to 375mcg per day"
+     ],
+     [
+      "High",
+      "4 or more sprays per day = 500mcg or more per day"
+     ]
+    ]
+   ],
+   "route": [
+    "Spray:",
+    "Inject 2mL of BAC water into the nasal spray bottle"
+   ]
+  },
+  {
+   "name": "Tadalafil (Cialis)",
+   "line": 10698,
+   "slug": "tadalafil",
+   "via": "Tadalafil",
+   "blocks": [
+    [
+     [
+      "Low",
+      "5mg daily"
+     ],
+     [
+      "Average",
+      "10mg daily"
+     ],
+     [
+      "High",
+      "20mg daily"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "5mg daily (0.005g)"
+     ],
+     [
+      "Average",
+      "10mg daily (0.010g)"
+     ],
+     [
+      "High",
+      "20mg daily (0.020g)"
+     ]
+    ]
+   ],
+   "route": [
+    "Administer sublingually",
+    "Swallow, preferably with water",
+    "Take desired dose with beverage of choice 30 minutes to 1 hour before working out"
+   ]
+  },
+  {
+   "name": "Telmisartan",
+   "line": 10957,
+   "slug": "telmisartan",
+   "via": "Telmisartan",
+   "blocks": [
+    [
+     [
+      "Low",
+      "20mg daily"
+     ],
+     [
+      "Average",
+      "40-80mg daily"
+     ],
+     [
+      "High",
+      "80-160mg daily"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "20mg daily (half a dropper)"
+     ],
+     [
+      "Average",
+      "40-80mg daily (one to two full droppers)"
+     ],
+     [
+      "High",
+      "80-160mg daily (two to four full droppers)"
+     ]
+    ]
+   ],
+   "route": [
+    "Swallow with water / food",
+    "Administer sublingually",
+    "Swallow, preferably with water"
+   ]
+  },
+  {
+   "name": "Tirzepatide",
+   "line": 11764,
+   "slug": "tirzepatide",
+   "via": "Tirzepatide",
+   "blocks": [
+    [
+     [
+      "Low",
+      "1mg or 1000mcg per week to 4mg or 4000mcg per week"
+     ],
+     [
+      "Average",
+      "5mg or 5000mcg per week to 8mg or 8000mcg per week"
+     ],
+     [
+      "High",
+      "9mg or 9000mcg per week to 12mg or 12000mcg per week"
+     ]
+    ],
+    [
+     [
+      "Low",
+      "2mg or 2000mcg/wk"
+     ],
+     [
+      "Average",
+      "5mg or 5000 mcg/wk"
+     ],
+     [
+      "High",
+      "10 - 15mg/wk or 10000 mcg - 15000 mcg/wk"
+     ]
+    ]
+   ],
+   "route": [
+    "Inject by pressing and holding the button until the dose window returns to 0",
+    "Use Ondansetron (Zofran) to eliminate the nausea"
+   ]
+  }
+ ],
+ "nodose": [
+  {
+   "name": "Acarbose",
+   "line": 1676,
+   "slug": "acarbose",
+   "via": "Acarbose",
+   "blocks": [],
+   "route": [
+    "Take as directed"
+   ]
+  },
+  {
+   "name": "AOD-9604",
+   "line": 2219,
+   "slug": "aod-9604",
+   "via": "AOD-9604",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Arimidex (Anastrozole)",
+   "line": 2336,
+   "slug": "anastrozole",
+   "via": "Arimidex",
+   "blocks": [],
+   "route": [
+    "Use a pill cutter to divide 1mg tablets into 0.5mg or 0.25mg tablets if needed",
+    "Take with water"
+   ]
+  },
+  {
+   "name": "Aromasin (Exemestane)",
+   "line": 2425,
+   "slug": "exemestane",
+   "via": "Aromasin",
+   "blocks": [],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "B7-33",
+   "line": 2520,
+   "slug": "b7-33",
+   "via": "B7-33",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Berberine",
+   "line": 2591,
+   "slug": "berberine",
+   "via": "Berberine",
+   "blocks": [],
+   "route": [
+    "Take 1500mg Berberine with 8-12 fl oz of water with your first meal of the day (every day)"
+   ]
+  },
+  {
+   "name": "Boldenone (Bold Cyp, Equipoise, etc.)",
+   "line": 2634,
+   "slug": "equipoise",
+   "via": "Boldenone",
+   "blocks": [],
+   "route": [
+    "Apply a bandage if bleeding is persisting (that’s normal sometimes, don’t worry)"
+   ]
+  },
+  {
+   "name": "Cabergoline",
+   "line": 3124,
+   "slug": "cabergoline",
+   "via": "Cabergoline",
+   "blocks": [],
+   "route": [
+    "Take as directed"
+   ]
+  },
+  {
+   "name": "Cardiogen",
+   "line": 3343,
+   "slug": "cardiogen",
+   "via": "Cardiogen",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "CB-03-01",
+   "line": 3370,
+   "slug": "clascoterone",
+   "via": "CB-03-01",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Cerebroprotein Hydrolysate",
+   "line": 3404,
+   "slug": "cerebroprotein-hydrolysate",
+   "via": "Cerebroprotein Hydrolysate",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Chonluten",
+   "line": 3434,
+   "slug": "chonluten",
+   "via": "Chonluten",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Cortagen",
+   "line": 3715,
+   "slug": "cortagen",
+   "via": "Cortagen",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Crystagen",
+   "line": 3742,
+   "slug": "crystagen",
+   "via": "Crystagen",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Deca (Nandrolone Decanoate)",
+   "line": 3826,
+   "slug": "nandrolone",
+   "via": "Nandrolone Decanoate",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Dianabol (Dbol)",
+   "line": 3834,
+   "slug": "dianabol",
+   "via": "Dianabol",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "DNSP-11",
+   "line": 3971,
+   "slug": "dnsp-11",
+   "via": "DNSP-11",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Doxepin",
+   "line": 4001,
+   "slug": "doxepin",
+   "via": "Doxepin",
+   "blocks": [],
+   "route": [
+    "Take with water 10-45 minutes before bed"
+   ]
+  },
+  {
+   "name": "\\*Dutasteride (Avodart)",
+   "line": 4123,
+   "slug": "dutasteride",
+   "via": "Dutasteride",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Epobis",
+   "line": 4530,
+   "slug": "epobis",
+   "via": "Epobis",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "EQ (Equipoise)",
+   "line": 4559,
+   "slug": "equipoise",
+   "via": "EQ",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "FGL",
+   "line": 4610,
+   "slug": "fgl",
+   "via": "FGL",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*GLOW (BPC, GHK, TB)",
+   "line": 5079,
+   "slug": "glow",
+   "via": "GLOW",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Halotestin (Fluoxymesterone)",
+   "line": 5250,
+   "slug": "halotestin",
+   "via": "Halotestin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "HCG (Human Chorionic Gonadotropin)",
+   "line": 5342,
+   "slug": "hcg",
+   "via": "HCG",
+   "blocks": [],
+   "route": [
+    "Use peptiwiki's peptide calculatorto find out how much you need to fill the syringe to get your desired dose"
+   ]
+  },
+  {
+   "name": "HGH (Human Growth Hormone)",
+   "line": 5477,
+   "slug": "growth-hormone",
+   "via": "HGH",
+   "blocks": [],
+   "route": [
+    "Use responsible dosages and the likelihood of such risks will be largely mitigated"
+   ]
+  },
+  {
+   "name": "Ketoconazole",
+   "line": 6170,
+   "slug": "ketoconazole",
+   "via": "Ketoconazole",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Kisspeptin",
+   "line": 6197,
+   "slug": "kisspeptin",
+   "via": "Kisspeptin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*KLOW",
+   "line": 6228,
+   "slug": "klow",
+   "via": "KLOW",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "KX-826 (Pyrilutamide)",
+   "line": 6374,
+   "slug": "pyrilutamide",
+   "via": "KX-826",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Letrozole",
+   "line": 6488,
+   "slug": "letrozole",
+   "via": "Letrozole",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*LGD-4033",
+   "line": 6494,
+   "slug": "lgd-4033",
+   "via": "LGD-4033",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Livagen",
+   "line": 6520,
+   "slug": "livagen",
+   "via": "Livagen",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Masteron (Mast, Drostanolone)",
+   "line": 6625,
+   "slug": "masteron",
+   "via": "Masteron",
+   "blocks": [],
+   "route": [
+    "Apply a bandage if bleeding is persisting (that’s normal sometimes, don’t worry)"
+   ]
+  },
+  {
+   "name": "Minoxidil",
+   "line": 7622,
+   "slug": "minoxidil",
+   "via": "Minoxidil",
+   "blocks": [],
+   "route": [
+    "Take with water"
+   ]
+  },
+  {
+   "name": "\\*Nandrolone (NPP, Deca)",
+   "line": 8025,
+   "slug": "nandrolone",
+   "via": "Nandrolone",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Nemifitide",
+   "line": 8149,
+   "slug": "nemifitide",
+   "via": "Nemifitide",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "NPP (Nandrolone Phenyl-Propionate)",
+   "line": 8316,
+   "slug": "nandrolone",
+   "via": "NPP",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "P-21",
+   "line": 8720,
+   "slug": "p-21",
+   "via": "P-21",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Pitavastatin (Livolo)",
+   "line": 9007,
+   "slug": "pitavastatin",
+   "via": "Pitavastatin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*PNC-27",
+   "line": 9024,
+   "slug": "pnc-27",
+   "via": "PNC-27",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "PP405 (JXL-069)",
+   "line": 9051,
+   "slug": "pp405",
+   "via": "PP405",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Primobolan (Metenolone, Methenolone)",
+   "line": 9145,
+   "slug": "primobolan",
+   "via": "Primobolan",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Prostamax",
+   "line": 9197,
+   "slug": "prostamax",
+   "via": "Prostamax",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "PTD-DBM (PTD)",
+   "line": 9480,
+   "slug": "ptd-dbm",
+   "via": "PTD-DBM",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Raloxifene",
+   "line": 9617,
+   "slug": "raloxifene",
+   "via": "Raloxifene",
+   "blocks": [],
+   "route": [
+    "Administer orally"
+   ]
+  },
+  {
+   "name": "\\*Rosuvastatin (Crestor)",
+   "line": 9770,
+   "slug": "rosuvastatin",
+   "via": "Rosuvastatin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "RU-58841",
+   "line": 9787,
+   "slug": "ru-58841",
+   "via": "RU-58841",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Scar Cream (Nourisil, Betamethasone, Lidocaine)",
+   "line": 9840,
+   "slug": "scar-cream",
+   "via": "Scar Cream",
+   "blocks": [],
+   "route": [
+    "Apply as directed"
+   ]
+  },
+  {
+   "name": "Sermorelin",
+   "line": 10328,
+   "slug": "sermorelin",
+   "via": "Sermorelin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*SLU-PP-332",
+   "line": 10415,
+   "slug": "slu-pp-332",
+   "via": "SLU-PP-332",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "SM04554",
+   "line": 10437,
+   "slug": "sm04554",
+   "via": "SM04554",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*SNAP-8",
+   "line": 10491,
+   "slug": "snap-8",
+   "via": "SNAP-8",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*SR-9009",
+   "line": 10519,
+   "slug": "sr-9009",
+   "via": "SR-9009",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "\\*Superdrol (methyldrostanolone)",
+   "line": 10633,
+   "slug": "superdrol",
+   "via": "Superdrol",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Survodutide",
+   "line": 10641,
+   "slug": "survodutide",
+   "via": "Survodutide",
+   "blocks": [],
+   "route": [
+    "Use Ondansetron (Zofran) to eliminate the nausea"
+   ]
+  },
+  {
+   "name": "\\*Taltirelin",
+   "line": 10814,
+   "slug": "taltirelin",
+   "via": "Taltirelin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Teriparatide",
+   "line": 11030,
+   "slug": "teriparatide",
+   "via": "Teriparatide",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Tesamorelin",
+   "line": 11062,
+   "slug": "tesamorelin",
+   "via": "Tesamorelin",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Testosterone",
+   "line": 11153,
+   "slug": "testosterone",
+   "via": "Testosterone",
+   "blocks": [],
+   "route": [
+    "Apply a bandage if bleeding is persisting (that’s normal sometimes, don’t worry)",
+    "Use a diuretic (discouraged); examples: Hydrochlorothiazide, Diazide"
+   ]
+  },
+  {
+   "name": "Throne GHK Charcoal Soap",
+   "line": 11519,
+   "slug": "throne-ghk-soap",
+   "via": "Throne GHK Charcoal Soap",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Throne THR001",
+   "line": 11553,
+   "slug": "throne-thr001",
+   "via": "Throne THR001",
+   "blocks": [],
+   "route": [
+    "Apply serums if desired, such as Throne's GHK serum",
+    "Apply sunscreen if desired",
+    "Apply serums if desired, such as Throne's GHK serum"
+   ]
+  },
+  {
+   "name": "Throne THR002",
+   "line": 11609,
+   "slug": "throne-thr002",
+   "via": "Throne THR002",
+   "blocks": [],
+   "route": [
+    "Apply serums if desired, such as Throne's GHK serum",
+    "Apply sunscreen if desired",
+    "Apply serums if desired, such as Throne's GHK serum"
+   ]
+  },
+  {
+   "name": "Throne THR004",
+   "line": 11648,
+   "slug": "throne-thr004",
+   "via": "Throne THR004",
+   "blocks": [],
+   "route": [
+    "Apply serums if desired, such as Throne's GHK serum",
+    "Apply sunscreen if desired",
+    "Apply serums if desired, such as Throne's GHK serum"
+   ]
+  },
+  {
+   "name": "Thymosin Alpha-1 (TA-1)",
+   "line": 11733,
+   "slug": "thymosin-alpha-1",
+   "via": "Thymosin Alpha-1",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Topilutamide (Topi)",
+   "line": 11878,
+   "slug": "topilutamide",
+   "via": "Topilutamide",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Trazodone",
+   "line": 11933,
+   "slug": "trazodone",
+   "via": "Trazodone",
+   "blocks": [],
+   "route": [
+    "Take with water 10-45 minutes before bed"
+   ]
+  },
+  {
+   "name": "\\*Trenbolone (Parabolan)",
+   "line": 11966,
+   "slug": "trenbolone",
+   "via": "Trenbolone",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Vesugen",
+   "line": 12147,
+   "slug": "vesugen",
+   "via": "Vesugen",
+   "blocks": [],
+   "route": []
+  },
+  {
+   "name": "Vilon",
+   "line": 12174,
+   "slug": "vilon",
+   "via": "Vilon",
+   "blocks": [],
+   "route": []
+  }
+ ],
+ "unmatched": [
+  {
+   "name": "Epithalon/Epitalon",
+   "line": 4463,
+   "slug": null,
+   "via": null,
+   "blocks": [
+    [
+     [
+      "Low",
+      "250mcg/day or less"
+     ],
+     [
+      "Medium",
+      "500mcg/day"
+     ],
+     [
+      "High",
+      "1000mcg/day or more"
+     ]
+    ]
+   ],
+   "route": []
+  }
+ ]
+}

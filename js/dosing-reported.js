@@ -2,6 +2,9 @@
  * Atlas Codex: reported dosing. What people say they take, kept apart from js/dosing.js, which holds
  * only what a regulator label or a published trial established.
  *
+ * GENERATED FILE. Do not edit by hand: edit tools/dosing/gen.js and run `node tools/dosing/gen.js`.
+ * tools/dosing/README.md says where the figures come from and how to rebuild them.
+ *
  * Keyed by entry slug, each one a list of blocks, one block per source, so two sources that disagree
  * are both on the page rather than one overwriting the other.
  *   { source: { name, href, year }, confidence, rows: [[context, amount]], note }
