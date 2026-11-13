@@ -1,74 +1,16 @@
-/* Atlas Codex entry page: "The instrument".
-   A reading surface for someone deciding something, so the page is built like a panel of readings
-   rather than a printed page: figures before prose, hairline rules instead of tone blocks, one
-   amber accent reserved for the single action, and measurement set in mono with tabular figures
-   so columns of numbers line up down the page.
+/* Atlas Codex entry page: the components only this surface has.
 
-   Scoped to the entry page alone. Every rule here hangs off :root:has(body[data-page="entry"]) or
-   body[data-page="entry"], so codex.html, stacks and the home page keep the printed annual. The
-   :root scope is deliberate: the scrollbar, the caret and the selection colour are set on html and
-   would otherwise keep the old accent.
+   The instrument is the whole site's world now and lives in css/style.css: the tokens, the type
+   ramp, the hairline rules, the outlined grades. This file holds what no other page needs, and
+   nothing here is a visual world of its own.
 
-   Load after css/style.css. This file re-declares that file's tokens and overrides the components
-   whose character is the printed page itself: the drop cap, the tone-separated sheets, the serif
-   section heads, the paper grain. */
+   What is only here: the key strip of readings that closes the head, the paired rail that sets the
+   structure plate beside the facts, the section labels set in mono, the dosing blocks whose first
+   source carries the accent edge, and the one authored moment on the page.
 
-:root:has(body[data-page="entry"]) {
-  --bg: #101114;
-  --surface: #17191d;
-  --surface-2: #1d2026;
-  --ink: #e8eaed;
-  --muted: #969ba5;
-  --accent: #f0a02a;
-  --accent-ink: #17120a;
-  --accent-hover: #f7b14b;
+   The entry page is also the densest surface in the site, so it tightens the shared ramp rather
+   than redefining it. Load after css/style.css. */
 
-  /* The plate the structure drawing sits on stays near-white: the PubChem line art is black on
-     transparent and is multiplied onto it. It is the one light surface on the page, and it is a
-     material, not a field, so it keeps no ink of its own. */
-  --paper: #f3f3ef;
-  --paper-2: #e7e7e1;
-  --paper-ink: #17181d;
-  --paper-muted: #4a4d52;
-
-  --gilt: #f0a02a;
-  --gilt-ink: #17120a;
-  --paper-gilt: #8a5a06;
-
-  /* Evidence and risk, each checked at 7:1 or better against both the ground and the panel. */
-  --good: #6fcf97;
-  --obs: #67b9c4;
-  --weak: #e0ac5e;
-  --bad: #ef8b8b;
-  /* No tinted fills: grades read as outlined words here, so the fill is dropped and the hue moves
-     to the border below. --tint is still read by other rules, which this zeroes out at the source. */
-  --tint: 0%;
-
-  --rule: #2a2e36;
-  --table-line: #2a2e36;
-  /* The paper grain belongs to the annual. An instrument face has no tooth. */
-  --hatch: transparent;
-  --chain: transparent;
-
-  --font-display: "IBM Plex Sans", system-ui, sans-serif;
-  --font-text: "IBM Plex Sans", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
-
-  /* Denser than the annual, and sans needs less leading than Garamond at the same measure. */
-  /* The annual's ramp is cut for Garamond at a wide measure. These steps are cut for Plex at this
-     density, and are declared in DESIGN.md under the entry surface so the detector can read them. */
-  --step-micro: 0.75rem;
-  --step-small: 0.8125rem;
-  --step-reading: 1.0625rem;
-  --step-figure: 1.1875rem;
-  --step-body: 0.96875rem;
-  --step-lead: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
-  --step-head: clamp(1.5rem, 1.2rem + 0.9vw, 2rem);
-  --step-display: clamp(2.25rem, 1.5rem + 3.2vw, 4rem);
-  --section: clamp(2rem, 3.5vw, 3.25rem);
-
-  color-scheme: dark;
-}
 
 body[data-page="entry"] {
   line-height: 1.5;
@@ -229,24 +171,6 @@ body[data-page="entry"] .table th { font-weight: 500; color: var(--ink); }
 body[data-page="entry"] .table tbody tr:last-child th,
 body[data-page="entry"] .table tbody tr:last-child td { border-bottom: 0; }
 
-/* ---------- grades, as outlined words ---------- */
-body[data-page="entry"] .ev,
-body[data-page="entry"] .st {
-  font-family: var(--font-mono);
-  font-size: var(--step-micro);
-  font-weight: 500;
-  padding: 0.05rem 0.4rem;
-  border: 1px solid var(--rule);
-  background: transparent;
-  letter-spacing: 0.01em;
-}
-body[data-page="entry"] .t-good { border-color: color-mix(in srgb, var(--good) 40%, var(--bg)); }
-body[data-page="entry"] .t-obs { border-color: color-mix(in srgb, var(--obs) 40%, var(--bg)); }
-body[data-page="entry"] .t-weak { border-color: color-mix(in srgb, var(--weak) 40%, var(--bg)); }
-body[data-page="entry"] .t-bad { border-color: color-mix(in srgb, var(--bad) 40%, var(--bg)); }
-body[data-page="entry"] .t-plain { border-color: var(--rule); color: var(--muted); background: transparent; }
-/* The one grade that is not a reading but a warning keeps its fill, so it still stops the eye. */
-body[data-page="entry"] .t-solid-bad { background: var(--bad); color: var(--bg); border-color: var(--bad); }
 
 /* ---------- risk and anecdote rows ---------- */
 /* No zebra: rows are divided by a rule, and the row under the pointer lifts instead. */
@@ -403,7 +327,7 @@ body[data-page="entry"] .buy-logo { background: var(--surface-2); }
 @media print {
   :root:has(body[data-page="entry"]) {
     --bg: #fff; --surface: #fff; --surface-2: #fff;
-    --ink: #000; --muted: #333; --accent: #000;
+    --ink: #000; --muted: #333; --accent: #000; --accent-ink: #fff; --accent-hover: #000;
     --rule: #999; --table-line: #999;
     --good: #000; --obs: #000; --weak: #000; --bad: #000;
   }
