@@ -963,6 +963,24 @@
             ${!e.names && !e.structure ? `<p>${esc(e.summary)}</p>` : ""}
           </div>`;
       const contents = toc.length > 3 ? `<nav class="toc" aria-label="On this page" data-rise style="--i:3"><p class="toc-h">On this page</p><ol>${toc.map(([id, t]) => `<li><a href="#${id}">${esc(t)}</a></li>`).join("")}</ol></nav>` : "";
+      /* The key strip: the readings a visitor checks before anything else, pulled off the record rather
+         than restated. A value earns a cell only if it reads as a figure at a glance, so the long
+         half-lives stay in the pharmacokinetics table, where testosterone's four esters have room. */
+      const pkRow = (re) => ((e.pk || {}).rows || []).find((r) => re.test(r[0]));
+      const atAGlance = (row) => row && String(row[1]).length <= 32 ? strip(row[1]) : "";
+      const nTrials = (e.trials || []).length;
+      const keyCells = [
+        [nTrials ? String(nTrials) : "None", nTrials === 1 ? "Controlled trial on file" : "Controlled trials on file"],
+        ids.size ? [String(ids.size), ids.size === 1 ? "Reference" : "References"] : null,
+        [atAGlance(pkRow(/half.?life/i)), "Half-life"],
+        [atAGlance(pkRow(/^route/i)), "Route"],
+        e.updated ? [fmtDate(e.updated), "Last reviewed"] : null
+      ].filter((c) => c && c[0]);
+      // Below three readings it is a list of leftovers, not a strip, and the record section says the rest.
+      const keys = keyCells.length > 2
+        ? `<div class="wrap"><div class="keys">${keyCells.map(([v, label], i) =>
+            `<div class="key" style="--k:${i}"><b>${esc(v)}</b><span>${esc(label)}</span></div>`).join("")}</div></div>`
+        : "";
       const head = `<header class="wrap spread entry-head" style="padding-top:clamp(2rem,5vw,4rem)">
         <div class="side entry-side">
           ${plate}
@@ -980,7 +998,7 @@
           ${intro}
         </div>
       </header>`;
-      host.innerHTML = head + out.join("");
+      host.innerHTML = head + keys + out.join("");
       $$(".code-btn", host).forEach(copyCode);
       $("#print-btn").addEventListener("click", () => print());
 

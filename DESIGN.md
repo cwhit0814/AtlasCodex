@@ -22,6 +22,21 @@ colors:
   light-surface-raised: "#ddd5be"
   light-soft-ink: "#555043"
   light-gold: "#7d571c"
+  # The entry surface's own world, "The Instrument". Scoped to entry.html alone.
+  instrument-ground: "#101114"
+  instrument-panel: "#17191d"
+  instrument-panel-raised: "#1d2026"
+  instrument-rule: "#2a2e36"
+  instrument-ink: "#e8eaed"
+  instrument-soft-ink: "#969ba5"
+  instrument-amber: "#f0a02a"
+  instrument-amber-hover: "#f7b14b"
+  instrument-amber-ink: "#17120a"
+  instrument-plate: "#f3f3ef"
+  instrument-laurel: "#6fcf97"
+  instrument-verdigris: "#67b9c4"
+  instrument-signal: "#e0ac5e"
+  instrument-alarm: "#ef8b8b"
 typography:
   display:
     fontFamily: "Cormorant Garamond, EB Garamond, Georgia, serif"
@@ -60,6 +75,45 @@ typography:
     fontWeight: 600
     lineHeight: 0.8
     letterSpacing: "-0.03em"
+  # The entry surface's ramp, cut for IBM Plex at panel density.
+  instrument-display:
+    fontFamily: "IBM Plex Sans, system-ui, sans-serif"
+    fontSize: "clamp(2rem, 1.3rem + 2.4vw, 2.875rem)"
+    fontWeight: 600
+    lineHeight: 1.04
+    letterSpacing: "-0.02em"
+  instrument-head:
+    fontFamily: "IBM Plex Sans, system-ui, sans-serif"
+    fontSize: "clamp(1.5rem, 1.2rem + 0.9vw, 2rem)"
+    fontWeight: 600
+    lineHeight: 1.1
+  instrument-figure:
+    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
+    fontSize: "1.1875rem"
+    fontWeight: 500
+    lineHeight: 1.2
+    letterSpacing: "-0.01em"
+  instrument-reading:
+    fontFamily: "IBM Plex Sans, system-ui, sans-serif"
+    fontSize: "1.0625rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  instrument-body:
+    fontFamily: "IBM Plex Sans, system-ui, sans-serif"
+    fontSize: "0.96875rem"
+    fontWeight: 400
+    lineHeight: 1.5
+  instrument-label:
+    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
+    fontSize: "0.8125rem"
+    fontWeight: 500
+    lineHeight: 1.35
+    letterSpacing: "0.03em"
+  instrument-micro:
+    fontFamily: "IBM Plex Mono, ui-monospace, monospace"
+    fontSize: "0.75rem"
+    fontWeight: 500
+    lineHeight: 1.5
 rounded:
   none: "0px"
 spacing:
@@ -124,6 +178,33 @@ The brand carries the atmosphere instead of pictures: the ATLAS CODEX wordmark w
 - Surfaces separated by 4px gaps and steps of tone, never by lines or shadows (tables excepted)
 - Square corners everywhere
 - Evidence and status written as words on a tint of their meaning colour
+
+## The entry surface: "The Instrument"
+
+The compound and article entry page (`entry.html`, `body[data-page="entry"]`) is set in a second world, declared in `css/entry-instrument.css` and layered over `css/style.css`. Every other page keeps the printed annual. The two worlds are deliberate, not drift: the annual is a reading posture, and an entry page is a deciding posture.
+
+**North star.** A panel of readings. Someone arrives at an entry because they are deciding something, so the page answers with measurements before it answers with prose: a key strip of readings closes the hero, sections are divided by hairline rules rather than by steps of tone, and one amber accent is held back for the single action and the primary dosing source.
+
+**What changes from the annual:**
+- IBM Plex Sans for everything read, IBM Plex Mono for measurement and section labels
+- Ground `#101114`, panels `#17191d`, every surface bordered by a `#2a2e36` hairline
+- Amber `#f0a02a` replaces antique gold, and is the only accent on the surface
+- Surfaces separated by 1px rules, not 4px gaps and tone steps
+- No laid-paper texture, no gold drop cap, no compass ornament between sections
+- Evidence and status are outlined words, not words on a tint
+- Risk and anecdote rows lose their zebra tone; a rule divides them and the row under the pointer lifts
+- Denser type throughout: body 15.5px against the annual's 18–21px
+
+**What does not change.** The 42% axis, square corners, the content and its order, every grade and caveat, the structure plate on its near-white ground, and the meaning of each colour.
+
+### Named Rules
+**The Readings Rule.** The key strip prints only values that read as a figure at a glance; the cutoff is 32 characters. Testosterone's half-life names four esters, so it has no half-life cell and the figure stays in the pharmacokinetics table where it has room. A strip is suppressed below three readings. No cell is ever truncated and no cell is ever empty.
+
+**The Leading Source Rule.** The first reported-dosing block carries the accent hairline on its left edge and every block after it stays plain, so the primary source is identifiable before a word is read. This is the one coloured edge on the surface, and it is 1px.
+
+**The No Costume Rule, amended here.** The annual forbids monospace outright. On this surface mono is the voice of measurement — amounts, counts, half-lives, dates, trial metadata — and of the section labels that name each reading. Nothing else takes it. Mono for section labels is a deliberate departure from the house rule, chosen with the direction.
+
+**One Authored Moment.** The key strip wipes open cell by cell as the readings come up. Everything else settles in opacity without drifting, because a panel of figures that floats upward reads as a slide rather than an instrument.
 
 ## Colors
 
